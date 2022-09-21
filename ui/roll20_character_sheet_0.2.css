@@ -1,0 +1,953 @@
+/* Styles that apply everywhere */
+
+input[type=text] {
+    padding: 1px 4px 1px 4px;
+    background-color: white;
+    height: 22px;
+}
+
+input[type=number] {
+    padding: 1px 0px 1px 3px;
+    text-align: center;
+    background-color: white;
+    height: 22px;
+}
+
+[data-groupname] button:not([type="roll"]) {
+    padding: 3px 8px 3px 8px;
+    margin-top: 3px;
+}
+
+select {
+    padding: 1px 4px 1px 4px;
+    height: 22px;
+    margin-bottom: 0px;
+    text-align: center;
+    text-align-last: center;
+}
+
+/* Change the character for dice roll buttons to be
+   the two joined squares character and give them the blue background */
+button.btn.ui-draggable[type=roll] {
+    background-image: linear-gradient(90deg, #ddf, #99f);
+}
+button.btn.ui-draggable[type=roll]::before {
+    font-family: sans-serif;
+    content: "⧉";
+}
+
+/* Change the character for the do and roll dice button to be
+   a big heavy two joined squares character */
+button.sheet-do-and-roll::before {
+    font-family: sans-serif;
+    content: "⧉";
+    font-size: 200%;
+    font-weight: bold;
+}
+
+/* Change the character for do buttons to be
+   the play forward character */
+button.sheet-do::before {
+    font-family: sans-serif;
+    content: "▶";
+}
+
+button.sheet-do, button.sheet-do-and-roll {
+    background-image: linear-gradient(90deg, #ddf, #44f);
+}
+
+button.sheet-do {
+    width: 18px;
+}
+
+button.sheet-big-control.sheet-do-and-roll {
+    width: 20px;
+}
+
+.sheet-disable-do[value="1"] ~ .sheet-do {
+    background-image: linear-gradient(90deg, #ddd, #ddd);
+    pointer-events:none;
+}
+
+.sheet-disable-do-and-roll[value="1"] ~ .sheet-do-and-roll {
+    background-image: linear-gradient(90deg, #ddd, #ddd);
+    pointer-events:none;
+}
+
+
+/* Change the character for undo buttons to be
+   the play backward character */
+button.sheet-undo::before {
+    font-family: sans-serif;
+    content: "◀";
+}
+
+button.sheet-undo {
+    background-image: linear-gradient(90deg, #f44, #fdd);
+    line-height: 1;
+    padding: 1px 1px;
+}
+
+/* Make action buttons look like roll buttons, but darken the borders */
+button.sheet-do, button.sheet-do-and-roll, button.sheet-undo {
+    border: 1px solid #999;
+    border-bottom-color: #777;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+
+/* Generic styles */
+
+.sheet-invisible { display: none; }
+.sheet-inline { display: inline-block; }
+
+.sheet-right { text-align: right; }
+.sheet-center { text-align: center; }
+.sheet-left { text-align: left; }
+
+.sheet-middle { vertical-align: middle; }
+
+.sheet-narrow.sheet-narrow.sheet-narrow { width: 25px; }
+.sheet-modifier-width.sheet-modifier-width.sheet-modifier-width { width: 35px; }
+.sheet-narrowish.sheet-narrowish.sheet-narrowish { width: 40px; }
+.sheet-medium.sheet-medium.sheet-medium { width: 50px; }
+.sheet-wideish.sheet-wideish.sheet-wideish { width: 60px; }
+.sheet-wide.sheet-wide.sheet-wide { width: 90px; }
+.sheet-wider.sheet-wider.sheet-wider { width: 150px; }
+
+.sheet-narrow-spacing { line-height: 1; }
+
+.sheet-spacer { height: 20px; }
+
+.sheet-horizontal-flex {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+.sheet-horizontal-flex-center {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.sheet-align-center.sheet-align-center.sheet-align-center {
+    align-items: center;
+}
+
+.sheet-flexing {
+    flex-grow: 1;
+}
+
+.sheet-no-shrink {
+    flex-shrink: 0;
+}
+
+.sheet-big.sheet-big.sheet-big.sheet-big {
+    font-size:150%;
+    font-weight: normal;
+}
+
+.sheet-biggish.sheet-biggish.sheet-biggish.sheet-biggish {
+    font-size:130%;
+    font-weight: normal;
+}
+
+.sheet-larger.sheet-larger.sheet-larger.sheet-larger {
+    font-size:110%;
+}
+
+.sheet-CP.sheet-CP.sheet-CP.sheet-CP { color: blue; }
+.sheet-TP.sheet-TP.sheet-TP.sheet-TP { color: #40C000; }
+.sheet-bold { font-weight: bold; }
+.sheet-number.sheet-ability { font-weight: bold; }
+
+.sheet-children-separated > :not(:first-child) {
+    border: solid lightgrey;
+    border-width: 1px 0px 0px 0px;
+}
+
+.sheet-label {
+    display: inline-block;
+    vertical-align: middle;
+    text-align: right;
+}
+
+.sheet-value {
+    display: inline-block;
+    box-sizing: border-box;
+} 
+
+.sheet-attribute-name {
+    display: inline-block;
+    vertical-align: middle;
+    text-align: right;
+}
+
+.sheet-attribute-value {
+    font-size: 150%;
+    vertical-align: middle;
+    margin: 1px;
+    border-width: 1px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+/* Make the height override the box's usual height */
+input.sheet-attribute-value.sheet-attribute-value.sheet-attribute-value {
+    height: 24px;
+}    
+
+span.sheet-attribute-value {
+    display: inline-block; /* Make the height work for span. */
+    border-color: transparent;
+}
+
+button.sheet-reset-total {
+    background-color: white;
+    font-weight: bold;
+    border-width: 1px;
+    border-radius: 4px;
+    border-color: lightgrey;
+    line-height: 1;
+    padding: 2px;
+    vertical-align: middle;
+}
+
+button.sheet-convert-button {
+    background-color: white;
+    font-weight: bold;
+    border-width: 1px;
+    border-radius: 4px;
+    border-color: lightgrey;
+    padding: 0px 2px 4px 2px;
+    vertical-align: middle;
+    font-size: 200%;
+}    
+
+input[disabled], input[readonly] {
+    border-color: transparent;
+    background-color: transparent;
+    padding: 0px;
+}
+
+.sheet-flex-stack {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.sheet-align-middle.sheet-align-middle.sheet-align-middle {
+    align-items: middle;
+}
+
+.sheet-space-between {
+    justify-content: space-between;
+}
+
+.sheet-text-stack {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.sheet-table-header > div {
+    display:inline-block;
+    text-align: center;
+    font-weight: bold;
+    border-color: black;
+    border-style: solid;
+    border-width: 0px 0px 1px 0px;
+    margin-bottom: 2px;
+}
+
+/* ---------- Roll section ------------- */
+
+.sheet-roll-section {
+    display: flex;
+    margin-top: -26px;  /* Get rid of the space the sheet puts above us. */
+}
+
+.sheet-roll-select-section {
+    display: inline-flex;
+    flex-direction: row;
+}
+
+.sheet-save-roll {
+    font-size: 14px;
+    line-height: 15px;
+    width: 15px;
+    overflow-x: visible;
+    padding: 1px 2px;
+    border-width: 1px;
+    border-radius: 3px;
+    background-color: white;
+}
+
+input.sheet-saved-roll {
+    height: 8px;
+}
+
+.sheet-save-radio-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.sheet-save-pending[value="1"] ~ .sheet-save-roll {
+    border-color: #FFBF00;
+    box-shadow: 3px 3px 3px #FFBF00;
+}
+
+.sheet-save-pending[value="1"] ~ .sheet-save-radio-stack .sheet-radio {
+    border-color: #FFBF00;
+    background: #E8E8E8;
+    box-shadow: 3px 3px 3px #FFBF00;
+}
+
+.sheet-roll-chosen[value="1"] ~ .sheet-save-radio-row > button.sheet-roll-1,
+.sheet-roll-chosen[value="2"] ~ .sheet-save-radio-row > button.sheet-roll-2,
+.sheet-roll-chosen[value="3"] ~ .sheet-save-radio-row > button.sheet-roll-3,
+.sheet-roll-chosen[value="4"] ~ .sheet-save-radio-row > button.sheet-roll-4,
+.sheet-roll-chosen[value="5"] ~ .sheet-save-radio-row > button.sheet-roll-5,
+.sheet-roll-chosen[value="6"] ~ .sheet-save-radio-row > button.sheet-roll-6 {
+    background-color: white;
+    border-color:black;
+}
+
+/* Configure the radio button styling. */
+.sheet-radio {
+    padding: 0;
+    margin: 2px;
+    border: solid 1px #a8a8a8;
+    cursor: pointer;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sheet-save-radio-stack {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around; 
+    flex: 1;
+}
+
+sheet-radio > span.sheet-checked {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: buttontext;
+}
+
+
+.sheet-roll-description-section {
+    display: inline-flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.sheet-roll-description-line {
+    display: flex;
+    align-items: baseline;
+}
+
+/* --------- Top section ----------------- */
+
+.sheet-top-section {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: solid black 1px;
+    margin-bottom: 6px;
+    background: linear-gradient(to top, lightcyan 0%, white 100%);
+}
+
+/* ------ generic conditional appearance ------ */
+
+.sheet-conditional-one > * {
+    display: none;
+}
+
+.sheet-conditional-one > :first-child[value="1"] ~ * {
+    display: inline-block;
+}
+
+.sheet-conditional-something > * {
+    display: inline-block;
+}
+
+.sheet-conditional-something > :first-child[value=" "] ~ * {
+    display: none;
+}
+
+.sheet-no-add-or-modify-buttons [data-groupname] button:not([type="roll"]) {
+    display: none;
+}
+
+/* ----------- Tabs and what they control  ------------- */
+
+/* Attributes */
+
+.sheet-attributecontrol[value="basic"] ~ span.sheet-attribute-value,
+.sheet-attributecontrol[value="basic"] ~ button.sheet-reset-total,
+.sheet-attributecontrol[value="basic"] ~ .sheet-attribute-roll,
+.sheet-attributecontrol[value="basic"] ~ .sheet-not-basic-tab,
+.sheet-cpcontrol[value="basic"] ~ .sheet-not-basic-tab {
+    display: none;
+}
+.sheet-attributecontrol:not([value="basic"]) ~ input.sheet-attribute-value,
+.sheet-attributecontrol:not([value="basic"]) ~ button.sheet-reset-total
+.sheet-attributecontrol:not([value="basic"]) ~ .sheet-CP,
+.sheet-attributecontrol:not([value="basic"]) ~ .sheet-basic-tab-only,
+.sheet-cpcontrol:not([value="basic"]) ~ .sheet-basic-tab-only {
+    display: none;
+}
+
+/* Tabs */
+.sheet-tab-holder {
+    margin-bottom:-1px;
+}
+
+.sheet-tab {
+    border: 1px solid #999;
+    background: #EEE;
+    padding: 4px 4px;
+    border-radius: 4px 4px 0 0;
+    font-size: 110%
+}
+
+.sheet-tabcontrol[value="overview"] ~ .sheet-tab[name="act_overview"],
+.sheet-tabcontrol[value="basic"] ~ .sheet-tab[name="act_basic"],
+.sheet-tabcontrol[value="equipment"] ~ .sheet-tab[name="act_equipment"],
+.sheet-tabcontrol[value="skills"] ~ .sheet-tab[name="act_skills"],
+.sheet-tabcontrol[value="spells"] ~ .sheet-tab[name="act_spells"],
+.sheet-tabcontrol[value="notes"] ~ .sheet-tab[name="act_notes"] {
+    background: #FFF;
+    border-bottom: 1px solid transparent;
+}
+
+/* Sections */
+.sheet-section {
+    display: none;
+}
+
+.sheet-sectioncontrol[value="overview"] ~ div.sheet-overview,
+.sheet-sectioncontrol[value="basic"] ~ div.sheet-basic,
+.sheet-sectioncontrol[value="equipment"] ~ div.sheet-equipment,
+.sheet-sectioncontrol[value="skills"] ~ div.sheet-skills,
+.sheet-sectioncontrol[value="spells"] ~ div.sheet-spells,
+.sheet-sectioncontrol[value="notes"] ~ div.sheet-notes {
+    display: block;
+}
+
+/* Weight penalties */
+
+.sheet-weight-penalty-table {
+    border: solid black;
+    border-width: 1px 0px;
+}
+
+.sheet-weight-penalty-table > div {
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+}
+
+.sheet-weight-penalty-table > div:not(:last-child):not(.sheet-table-header) {
+    border-bottom: solid lightgrey 1px;
+}
+
+.sheet-weight-penalty-table > div > :nth-child(2) {
+    display: inline-block;
+    width: 30px;
+}
+
+.sheet-weight-penalty-table > div > :last-child {
+    display: inline-block;
+    width: 30px;
+}
+
+.sheet-weight-penalty-table > div > :first-child[value="1"] ~ * {
+    font-weight: bold;
+    padding: 2px 0px;
+}
+
+
+/* --------- Advantages ------------ */
+
+.sheet-advantage-overview {
+    display: flex;
+    flex-direction: column;
+}
+
+.sheet-advantage-overview > div.sheet-table-header > div {
+    text-align:center
+}
+
+.sheet-advantage-overview > div.sheet-conditional-something > div,
+.sheet-advantage-overview > div[data-groupname] > div {
+    border: solid lightgrey;
+    border-width: 0px 0px 1px 0px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+.sheet-advantage-overview >.sheet-conditional-something > :first-child[value="-1"] ~ * {
+    color: red;
+}
+
+/* If the name wraps, make the lines close. */
+.sheet-advantage-overview > div > div,
+.sheet-advantage-overview span {
+    line-height: 1;
+    width: 120px;
+    text-align: left
+}
+
+/* Keep line height low for the containers of the names,
+   or they will make single lines too tall. */
+.sheet-advantage-overview > div.sheet-conditional-something {
+    line-height: 1;
+}
+
+/* This avoids spaces between the elements in the row */
+.sheet-advantage-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.sheet-advantage-row > div {
+    display: inline-block;
+}
+
+.sheet-advantage-row.sheet-advantage-row > :first-child {
+    width: 120px;
+    padding-right: 4px;
+    text-align:right;
+}
+
+.sheet-advantages .sheet-count-placeholder {
+    height: 18px;
+    width: 40px;
+}
+
+.sheet-advantage-row > .sheet-CP {
+    display: inline-block;
+    text-align: center;
+    width: 26px;
+}
+
+.sheet-advantages .sheet-extraadvantagename {
+    width: 124px;
+    margin-top: -1px;
+}
+
+.sheet-advantages .sheet-extraadvantageCP.sheet-extraadvantageCP {
+    color: blue;
+    width: 40px;
+    margin-top: -1px;
+}
+
+.sheet-advantages .sheet-extraadvantageCPdescription {
+    display: inline-block;
+    text-align: center;
+    width: 26px;
+}
+
+/* ---------------- Epic Feats --------------- */
+
+.sheet-feat-overview {
+    display: inline-flex;
+    flex-direction: column;
+}
+
+/* Add back margin for line spacing. 
+   And avoid gaps between items in the row */
+.sheet-feat-overview > div[data-groupname] > div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    border: solid lightgrey;
+    border-width: 0px 0px 1px 0px;
+}
+
+div.sheet-featextraordinaryletter {
+    width: 24px;
+    margin-left: -2px;
+    margin-right: -2px;
+    font-weight: normal;
+    border-color: transparent;
+}
+
+span.sheet-featextraordinaryletter {
+    display: inline-block;
+    width: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.sheet-feat-overview > .sheet-table-header > div.sheet-featname {
+    width: 120px;
+    margin-left: -2px;
+}
+
+/* Make multi-line names have less spacing */
+.sheet-feat-overview span.sheet-featname {
+    width: 120px;
+    text-align:left;
+    line-height: 1;
+}
+
+.sheet-featname {
+    display: inline-block;
+    width: 180px;
+    text-align: right;
+}
+
+input.sheet-featname {
+    margin-left: 3px;
+    margin-top: -1px
+}
+
+input.sheet-featextraordinary {
+    width: 18px;
+    margin-left: 4px;
+    margin-top: -1px
+}
+
+.sheet-featCP.sheet-featCP.sheet-featCP.sheet-featCP {
+    width: 30px;
+    color: blue;
+}
+
+input.sheet-featCP{
+    margin-top: -1px;
+}
+
+
+/* ------------ Skills -------------- */
+.sheet-skilldisciplineinfo { width: 40px; }
+.sheet-skillname {
+    width: 150px;
+    text-align: right; 
+    border-left-color: black; }
+.sheet-skillability {
+    width: 40px;
+    text-align: center;
+ }
+.sheet-skillTP.sheet-skillTP.sheet-skillTP.sheet-skillTP {
+    width: 30px; margin-left: 15px; margin-right:-10px; color: #40C000;
+ }
+.sheet-skillCP.sheet-skillCP.sheet-skillCP.sheet-skillCP {
+    width: 30px; color: blue;
+ }
+.sheet-skillexpertise { width: 40px; }
+.sheet-skillattribute { width: 65px; }
+.sheet-skillbase.sheet-skillbase.sheet-skillbase { width: 40px; }
+
+.sheet-skills div[data-groupname] span,
+.sheet-skills-overview div[data-groupname] span {
+    display: inline-block;
+}
+
+/* overview section */
+
+.sheet-skills-overview .sheet-skillname {
+    width: 100px;
+}
+
+.sheet-skills-overview > div[data-groupname] .sheet-skillname {
+    line-height: 1;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+.sheet-skills-overview .sheet-skillability {
+    margin-left: -4px;
+    margin-right: -4px;
+    font-weight: normal;
+    border-color: transparent;
+}
+
+/* Avoid gaps between items in the row 
+   And make multi-line stuff line up */
+/* Avoid space between items in the row */
+.sheet-skills-overview .sheet-table-header {
+    display: flex;
+    flex-direction: row;
+}
+.sheet-skills-overview > div[data-groupname] > div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.sheet-skills-overview .sheet-isdiscipline[value="1"] ~ * {
+    display: none;
+}
+
+.sheet-skill-overview-row-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-width: 0px 0px 1px 0px;
+    border-color: lightgrey;
+    border-style: solid
+}
+
+.sheet-skill-roll.sheet-skill-roll.sheet-skill-roll.sheet-skill-roll {
+    padding: 0px 2px;
+    width: 24px;
+    box-sizing: border-box;
+    margin-left: 3px;
+    margin-right: 3px;
+}
+
+/* skills section */
+
+.sheet-isdiscipline[value="1"] ~ .sheet-skillname {
+    width: 190px; text-align:left;
+    border-top-color: black;
+    border-left-color: black;
+    font-weight: bold;
+    z-index: 1; /* Make the border go above other borders */
+}
+
+.sheet-isdiscipline[value="1"] ~ .sheet-skillability,
+.sheet-isdiscipline[value="1"] ~ .sheet-skillattribute,
+.sheet-isdiscipline[value="1"] ~ .sheet-skillbase {
+    display: none; }
+
+/* Avoid space between items in the row */
+.sheet-skills .sheet-table-header {
+    display: flex;
+    flex-direction: row;
+}
+.sheet-skills div[data-groupname] > div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: -1px; /* and make rows overlap */
+}
+
+/* -------- Equipment --------- */
+
+/* overview section */
+
+.sheet-weapons-overview div[data-groupname] span {
+    display: inline-block;
+}
+
+.sheet-weapons-overview .sheet-equipmentname {
+    width: 100px;
+    flex: 0 0 100px;
+}
+
+.sheet-weapons-overview > div[data-groupname] .sheet-equipmentname {
+    line-height: 1;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+/* Avoid gaps between items in the row 
+   And make multi-line stuff line up */
+/* Avoid space between items in the row */
+.sheet-weapons-overview .sheet-table-header {
+    display: flex;
+    flex-direction: row;
+}
+
+.sheet-weapons-overview > div[data-groupname] > div {
+    border-width: 0px 0px 1px 0px;
+    border-color: lightgrey;
+    border-style: solid
+}
+
+.sheet-weapons-overview-row-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.sheet-weapons-overview .sheet-equipmentnotes {
+    margin-left: 90px;
+    margin-bottom: 6px;
+    width: 150px;
+}
+
+/* equipment section */
+
+.sheet-equipmentname {
+    text-align: right;
+    flex: 0 0 170px;
+    width: 170px;
+}
+.sheet-equipmentweight.sheet-equipmentweight.sheet-equipmentweight {
+    width: 50px;
+}
+.sheet-equipmentvalue.sheet-equipmentvalue.sheet-equipmentvalue {
+    width: 50px;
+}
+.sheet-equipmentcount.sheet-equipmentcount.sheet-equipmentcount {
+    width: 50px;
+}
+.sheet-armordefense.sheet-armordefense.sheet-armordefense {
+    width: 40px;
+    border-right: 0px;
+    text-align: right; }
+.sheet-armormod.sheet-armormod.sheet-armormod {
+    width: 40px;
+    border-left: 0px; }
+.sheet-equipmentdamage { width: 60px; text-align: center}
+.sheet-equipmentrange.sheet-equipmentrange.sheet-equipmentrange {
+    width: 50px;
+    text-align: center;
+}
+.sheet-equipmentnotes {
+    flex:1 1;
+    width: 50px;}
+
+.sheet-equipment-list {
+    width: 560px;
+}
+
+/* Avoid space between items in the row */
+.sheet-equipment-list .sheet-table-header {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+}
+.sheet-equipment div[data-groupname] > div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: -1px; /* and make rows overlap */
+}
+
+/* ------------- Spells ------------*/
+
+.sheet-tabcontrol[value="arcane"] ~ .sheet-tab[name="act_arcane"],
+.sheet-tabcontrol[value="divine"] ~ .sheet-tab[name="act_divine"],
+.sheet-tabcontrol[value="innate"] ~ .sheet-tab[name="act_innate"]{
+    background: #FFF;
+    margin-bottom: -1px;
+    border-bottom: 1px solid transparent;
+}
+
+.sheet-sectioncontrol[value="arcane"] ~ div.sheet-arcane,
+.sheet-sectioncontrol[value="divine"] ~ div.sheet-divine,
+.sheet-sectioncontrol[value="innate"] ~ div.sheet-innate {
+    display: inline-flex;
+}
+
+.sheet-spell-tabs {
+    border-bottom: solid black 1px;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+}
+
+.sheet-spell-tabs > button[type="action"] {
+    border-bottom: 0px;
+}
+
+.sheet-spell-tabs > button[type="roll"] {
+    margin-bottom: 1px;
+}
+
+.sheet-spells div[data-groupname] span {
+    display: inline-block;
+}
+
+.sheet-spells input[type="text"]:not(.sheet-skillname) {
+    text-align: center;
+}
+
+.sheet-arcane .sheet-skillattribute {
+    text-align: right;
+    width: 30px;
+    margin-bottom: 2px;
+}
+
+.sheet-spellEP.sheet-spellEP.sheet-spellEP { width: 50px; margin-left: 15px; }
+.sheet-spellcasttime { width: 50px; }
+.sheet-spelltype { width: 65px; }
+.sheet-spellrange { width: 40px; }
+.sheet-spelltarget { width: 60px; }
+.sheet-spellduration { width: 70px; }
+.sheet-spellhasnote.sheet-spellhasnote.sheet-spellhasnote.sheet-spellhasnote {
+    width: 12px;
+    margin-left: 0px;
+    margin-right: 1px;
+    margin-bottom: 2px;
+}
+
+.sheet-isdiscipline[value="1"] ~ .sheet-skill-roll,
+.sheet-isdiscipline[value="1"] ~ .sheet-spellEP,
+.sheet-isdiscipline[value="1"] ~ .sheet-spellcasttime,
+.sheet-isdiscipline[value="1"] ~ .sheet-spelltype,
+.sheet-isdiscipline[value="1"] ~ .sheet-spellrange,
+.sheet-isdiscipline[value="1"] ~ .sheet-spelltarget,
+.sheet-isdiscipline[value="1"] ~ .sheet-spellduration,
+.sheet-isdiscipline[value="1"] ~ .sheet-spellhasnote {
+    display: none; }
+
+.sheet-isdiscipline[value="1"] ~ .sheet-spellhasnote + span.sheet-skillTP {
+    margin-left: 442px;
+}
+
+.sheet-table-header .sheet-skill-roll {
+    border-width: 0px;
+}
+
+.sheet-spell-note {
+    flex-grow: 1;
+    margin-bottom: 1px;
+    margin-left: 50px;
+}
+
+.sheet-spell-note.sheet-spell-note.sheet-spell-note.sheet-spell-note {
+    text-align: left;
+    margin-top: -1px;
+}
+
+.sheet-arcane .sheet-spell-note {
+    margin-left: 90px;
+}
+
+/* Avoid space between items in the row */
+.sheet-spells .sheet-table-header {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+}
+.sheet-spells div[data-groupname] > div {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    margin-top: -1px; /* and make rows overlap */
+}
+.sheet-spell-row {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+}
+
+.sheet-spell-row > input ~ input,
+.sheet-spell-row > input ~ select,
+.sheet-spell-row > select ~ input {
+    margin-left: -1px; /* Make consecutive buttons overlap
+}
+
+/* ------------ Notes -------------- */
+.sheet-notecategory { width: 120px; text-align: right }
+.sheet-notenote { width: 500px; }
+.sheet-notes div[data-groupname] > div {
+    margin-top: -1px; /* and make rows overlap */
+}

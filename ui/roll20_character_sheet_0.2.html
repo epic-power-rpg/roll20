@@ -1,0 +1,2329 @@
+<!-- Roll section -->
+
+<div class="roll-section">
+  <!-- This field is monitored by the api script. Whenever it is changed,
+       the script chats the contents. This gets around sheetworkers not being
+       able to chat directly. --> 
+  <input name="attr_pendingchat" type="hidden" value=""/>
+  <div class="roll-select-section">
+    <input type="hidden" class="save-pending"
+	   name="attr_save_pending" value="0" />
+    <button name="act_saveroll" class="big-control save-roll" type="action">
+      ↓ ◯
+    </button>
+    &ensp;
+    <div class="save-radio-stack">
+      <input type="hidden" class="roll-chosen"
+  	     name="attr_roll_chosen" value="" />
+      <div class="save-radio-row">
+        <button type="action" name="act_choose_roll_1" class="radio roll-1">
+        </button>
+        <input type="hidden" class="saved-roll"
+	       name="attr_saved_roll_1" value="" />
+        <button type="action" name="act_choose_roll_2" class="radio roll-2">
+        </button>
+        <input type="hidden" class="saved-roll"
+	       name="attr_saved_roll_2" value="" />
+        <button type="action" name="act_choose_roll_3" class="radio roll-3">
+        </button>
+        <input type="hidden" class="saved-roll"
+	       name="attr_saved_roll_3" value="" />
+      </div>
+      <div class="save-radio-row">
+        <button type="action" name="act_choose_roll_4" class="radio roll-4">
+        </button>
+        <input type="hidden" class="saved-roll"
+	       name="attr_saved_roll_4" value="" />
+        <button type="action" name="act_choose_roll_5" class="radio roll-5">
+        </button>
+        <input type="hidden" class="saved-roll"
+	       name="attr_saved_roll_5" value="" />
+        <button type="action" name="act_choose_roll_6" class="radio roll-6">
+        </button>
+        <input type="hidden" class="saved-roll"
+	       name="attr_saved_roll_6" value="" />
+      </div>
+    </div>
+    &emsp;
+  </div>
+  <div class="roll-description-section">
+    <div class="roll-description-line">
+      Description
+      <input name="attr_action_description" class="flexing" type="text"/>
+      &emsp; Feats
+      <input name="attr_action_feats"
+	     class="narrowish"
+	     type="number"
+             value="0"/>
+      &emsp; EP &ensp;
+      <input name="attr_action_feats_EP"
+	     class="narrow"
+             value="@{action_feats}"
+	     disabled="true"/>
+      &emsp; EP
+      <input name="attr_action_EP"
+	     class="narrowish"
+	     type="number"
+             value="0"/>
+      &emsp; SP
+      <input name="attr_action_SP"
+	     class="narrowish"
+	     type="number"
+             value="0"/>
+      &emsp;
+      <input name="attr_disable_do" class="disable-do"
+	     type="hidden" value="0"/>
+      <button name="act_topaction" class="do" type="action">
+      </button>
+      &ensp;
+      <button name="act_undotopaction" class="undo" type="action">
+      </button>
+    </div>
+    <div class="roll-description-line">
+      Skill
+      <input name="attr_roll_skill" class="flexing" type="text"/>
+      &emsp; Ability
+      <input name="attr_roll_ability"
+	     class="narrowish"
+	     type="number"
+             value="0"/>
+      &emsp; Mods
+      <input name="attr_roll_mod1"
+	     class="narrowish"
+	     type="number"
+             value="0"/>
+      <input name="attr_roll_mod2"
+	     class="narrowish"
+	     type="number"
+             value="0"/>
+      <input name="attr_roll_mod3"
+	     class="narrowish"
+	     type="number"
+             value="0"/>
+      &emsp; Boost
+      <input name="attr_roll_advance_boost"
+	     class="narrowish"
+	     type="number"
+             value="0"/>
+      &emsp; EP &ensp;
+      <input name="attr_action_roll_EP"
+	     class="narrow"
+             value="@{roll_advance_boost}"
+	     disabled="true"/>
+    </div>
+  </div>
+  &ensp;
+  <input name="attr_disable_do_and_roll" class="disable-do-and-roll"
+	 type="hidden" value="0"/>
+  <button name="act_toproll" class="big-control do-and-roll" type="action">
+  </button>
+  &ensp;
+  <button name="act_undotoproll" class="big-control undo" type="action">
+  </button>
+</div>
+<hr style="margin:1px; border-top: 1px solid gray;">
+
+<!-- Top section -->
+
+<div class="top-section">
+  
+  <!-- Left top section -->
+  <div class="flex-stack space-between">
+        <!-- Power, CP, TP -->
+    <div>
+      <input name="attr_chosentab" class="cpcontrol" type="hidden"
+	     value="basic"/>
+      <div class="power larger inline right middle">Power Depth</div>
+      <!-- Power is editable in basic tab only -->
+      <span name="attr_power"
+	      class="power larger left bold middle not-basic-tab"> </span>
+      <input name="attr_power"
+	     class="power medium bold middle basic-tab-only"
+	     type="number" value="0"/>
+      &emsp;
+      <div class="CP larger label">CP</div>
+      <input name="attr_distributed_CP" type="hidden" value="0"/>
+      <div class="inline middle">
+        <input name="attr_CPU"
+	       class="CP bold larger right narrow"
+               value="@{CP} + (@{distributed_CP})
+                      -(@{attribute_CP})
+                      -(@{advantage_total_CP})
+                      -(@{feat_total_CP})
+                      -(@{skill_total_CP})
+                      -(@{arcane_total_CP})
+                      -(@{innate_total_CP})"
+	       disabled="true"/>
+      </div>
+      <div class="inline">/</div>
+      <!-- CP is editable in basic tab only -->
+      <span name="attr_CP"
+	    class="CP bold larger middle not-basic-tab"> </span>
+      <input name="attr_CP"
+	     class="CP bold larger medium middle basic-tab-only"
+	     type="number" value="25"/>
+      &emsp;
+      <div class="TP larger label">TP</div>
+      <div class="inline middle">
+        <input name="attr_TPU"
+	       class="TP bold larger right narrow"
+               value="@{TP}
+                      - (@{skill_total_TP})
+                      - (@{arcane_total_TP})"
+	       disabled="true"/>
+      </div>
+      <div class="inline big middle">/</div>
+      <div class="inline middle">
+        <span name="attr_TP"
+	      class="TP bold larger middle"
+	      value="2"></span>
+      </div>
+    </div>
+
+    <!-- IQ, DX, BR -->    
+    <!-- These are read only, except in the basic tab, 
+         where they can be changed, and their CP cost is shown -->    
+    <div class="horizontal-flex-center">
+      <input name="attr_chosentab" class="attributecontrol cpcontrol"
+	     type="hidden"
+	     value="basic"/>
+      <div class = "attribute-name big">IQ</div>
+      &ensp;
+      <span name="attr_IQ"
+	    class="attribute-value center not-basic-tab"></span>
+      <div class="inline not-basic-tab"> + </div>
+      <input name="attr_IQmodifier"
+	     class="modifier-width not-basic-tab"
+	     type="number"
+             value="0"/>
+      <button class="not-basic-tab"
+	      type="roll"
+	      value="!EPRoll @{IQ}+@{IQmodifier} Tries to be smart: @{IQ} + @{IQmodifier}"></button>
+      <input name="attr_IQ"
+	     class="attribute-value narrowish center basic-tab-only"
+	     type="number"
+	     value="1"/>
+      &emsp;
+      <div class = "attribute-name big">DX</div>
+      &ensp;
+      <span name="attr_DX"
+	    class="attribute-value center"></span>
+      <div class="inline not-basic-tab"> + </div>
+      <input name="attr_DXmodifier"
+	     class="modifier-width not-basic-tab"
+	     type="number"
+             value="0"/>
+      <button class="not-basic-tab"
+	      type="roll"
+	      value="!EPRoll @{DX}+@{DXmodifier} Tries to be nimble: @{DX} + @{DXmodifier}"></button>
+      <input name="attr_DX"
+	     class="attribute-value narrowish center"
+	     type="number"
+	     value="1"/>
+      &emsp;
+      <div class = "attribute-name big">BR</div>
+      &ensp;
+      <span name="attr_BR"
+	    class="attribute-value center"></span>
+      <div class="inline not-basic-tab"> + </div>
+      <input name="attr_BRmodifier"
+	     class="modifier-width not-basic-tab"
+	     type="number"
+             value="0"/>
+      <button class="not-basic-tab"
+	      type="roll"
+	      value="!EPRoll @{BR}+@{BRmodifier} Tries to be strong: @{BR} + @{BRmodifier}"></button>
+      <input name="attr_BR"
+	     class="attribute-value narrowish center basic-tab-only"
+	     type="number"
+	     value="1"/>
+
+      <input name="attr_attribute_CP" type="hidden" value="-5"/>
+      <input name="attr_displayed_attribute_CP" type="hidden" value="-5"/>
+      <input name="attr_show_displayed_attribute_CP"
+	     class="narrow right CP basic-tab-only"
+	     value="@{displayed_attribute_CP}"
+	     disabled="true"/>
+      <input name="attr_never_used"
+	     class="narrow right CP basic-tab-only"
+	     value="CP"
+	     disabled="true"/>
+
+    </div>
+
+    <!-- Rolling -->
+    <div display="inline-block">
+      <button type="roll" value="!EPRoll"></button>
+      &emsp;
+      <button type="roll"
+	      value="!EPRoll @{roll_modifier}">
+      </button>
+      +
+      <input name="attr_roll_modifier"
+	     class="narrowish"
+	     type="number"
+             value="0"/>
+      &emsp;
+      <div class="attribute-name wideish larger">Initiative</div>
+      <span name="attr_initiative"
+            class="narrow center bold larger value"></span>
+       +
+      <input name="attr_initiativemodifier"
+	     class="narrowish"
+	     type="number"
+             value="0"/>
+      <button type="roll"
+	      value="!EPRoll @{initiative}+@{initiativemodifier} Rolls initiative @{initiative} + @{initiativemodifier} SEND_TO_TRACKER @{character_id}">
+      </button>
+
+    </div>
+   
+    <!-- tab buttons -->
+    <div class="tab-holder">
+      <!-- This input's value names the currently selected tab.
+           its value is used for css selection of its siblings. -->
+      <input name="attr_chosentab" class="tabcontrol" type="hidden"
+	     value="basic"/>
+      <button name="act_overview" class="tab" type="action">
+	Overview
+      </button>
+      <button name="act_basic" class="tab" type="action">
+	Basic
+      </button>
+      <button name="act_equipment" class="tab" type="action">
+	Equipment
+      </button>
+      <button name="act_skills" class="tab" type="action">
+	Skills
+      </button>
+      <button name="act_spells" class="tab" type="action">
+	Spells
+      </button>
+      <button name="act_notes" class="tab" type="action">
+	Notes
+      </button>
+    </div>
+  </div>
+  
+  <!-- Movement & DR -->
+  <div class="children-separated no-shrink">
+    <div class="center">
+      <div class="label wideish larger narrow-spacing">Defense Penalty</div>
+      <input name="attr_reaction_penalty"
+	     class="attribute-value narrowish center"
+	     type="number"
+	     value="0"/>
+    </div>
+    <div>
+      <div class="attribute-name wide larger">Wt. Load</div>
+      <span name="attr_equipment_total_weight"
+             class="narrowish center bold larger value"></span>
+    </div>
+    <div>
+      <div class="attribute-name wide larger">Wt. Pen.</div>
+      <span name="attr_displayed_weight_penalty"
+            class="narrowish center bold larger value"></span>
+    </div>
+    <div>
+      <div class="attribute-name wide larger">Speed</div>
+      <span name="attr_speed"
+            class="narrowish center bold larger value"></span>
+    </div>
+  </div>
+  <!-- Defense -->
+  <div>
+    <div>
+      <div class="label medium">+bonus</div>
+      <input name="attr_melee_boost" class="center narrowish" type="number" value="0"/>
+      <input name="attr_ranged_boost" class="center narrowish" type="number" value="0"/>
+    </div>
+    <div class="table-header">
+      <div class="medium larger"></div>
+      <div class="narrowish">Melee</div>
+      <div class="narrowish">Range</div>
+    </div>
+    <div class="children-separated no-shrink">
+      <div>
+	<div class="inline medium right larger bold">Dodge</div>
+	<input name="attr_dodge" type="hidden"/>
+	<span name="attr_current_dodge_melee" class="center narrowish bold larger inline"
+              value="0"></span>
+	<span name="attr_current_dodge_ranged" class="center narrowish bold larger inline"
+              value="0"></span>
+      </div>
+      <div>
+	<div class="inline medium right larger bold">Parry</div>
+	<input name="attr_current_parry_melee" type="number" class="center narrowish bold larger inline"
+              value="0"></span>
+	<span class="center narrowish bold larger inline">--</span>
+      </div>
+      <div>
+	<div class="inline medium right larger bold">Block</div>
+	<input name="attr_block" type="hidden"/>
+	<span name="attr_current_block_melee" class="center narrowish bold larger inline"
+              value="0"></span>
+	<span name="attr_current_block_ranged" class="center narrowish bold larger inline"
+              value="0"></span>
+      </div>
+    </div>
+  </div>
+  
+  <!-- HP, EP, SP -->
+  <div class="children-separated no-shrink">
+    
+    <div>
+      <div class = "attribute-name biggish">EP</div>
+      <input name="attr_EP_t"
+	     class="attribute-value biggish medium center"
+	     type="number"/>
+      <input name="attr_chosentab" class="attributecontrol" type="hidden"
+	     value="basic"/>
+      <div class="inline biggish middle basic-tab-only">/</div>
+      <button name="act_reset_ep_t" class="reset-total" type="action">
+        ⇦
+      </button>
+      <span name="attr_EP_t_max"
+	    class="attribute-value biggish narrow"></span>
+      <input name="attr_EP_t_max"
+	     class="attribute-value biggish medium center"
+	     type="number"
+	     value="0"/>
+    </div>
+  
+    <div>
+      &emsp;&emsp;&emsp;
+      <button name="act_convert_sp" class="convert-button" type="action">
+          ⇯
+      </button>
+    </div>
+
+    <div>
+      <div class = "attribute-name biggish">SP</div>
+      <input name="attr_SP"
+	     class="attribute-value biggish medium center"
+	     type="number"/>
+      <span>
+        <input name="attr_chosentab" class="attributecontrol" type="hidden"
+	       value="basic"/>
+       <div class="inline biggish middle basic-tab-only">/</div>
+       <button name="act_reset_sp" class="reset-total" type="action">
+          ⇦
+        </button>
+      </span>
+      <span name="attr_SP_max"
+	    class="attribute-value biggish narrow"
+	    value="0"></span>
+    </div>
+    
+    <div>
+      <div class = "attribute-name biggish">HP</div>
+      <!-- TODO: Move this to sheet worker, who can do it right. -->
+      <input name="attr_HP"
+	     class="attribute-value biggish medium center"
+	     type="number"/>
+      <span>
+        <input name="attr_chosentab" class="attributecontrol" type="hidden"
+	       value="basic"/>
+        <div class="inline biggish middle basic-tab-only">/</div>
+        <button name="act_reset_hp" class="reset-total" type="action">
+          ⇦
+        </button>
+      </span>
+      <span name="attr_HP_max"
+	     class="attribute-value biggish narrow"
+	     value="16"></span>
+    </div>
+  </div>
+ 
+</div>
+
+<!-- Each tabbed section -->
+
+<!-- This input's value names the currently selected tab.
+     its value is used for css selection of its siblings. -->
+<input name="attr_chosentab" class="sectioncontrol" type="hidden"
+       value="basic"/>
+
+
+<!-- Overview section -->
+
+<div class="overview section">
+  <div class="horizontal-flex">
+
+    <!-- Advantages -->
+    <div class="flex-stack advantage-overview no-add-or-modify-buttons">
+      <div class="table-header">
+	<div>Advantage / Disadvantage</div>
+      </div>
+      <div class="conditional-something">
+	<input name="attr_advantage_healthy_count" type="hidden"/>
+	<div>Healthy
+	  <span name="attr_advantage_healthy_count"></span>
+	</div>
+      </div>
+      <div class="conditional-something">
+	<input name="attr_advantage_packmule_count" type="hidden"/>
+	<div>Pack Mule 
+	  <span name="attr_advantage_packmule_count"></span>
+	</div>
+      </div>
+      <div class="conditional-something">
+	<input name="attr_advantage_strongarms_count" type="hidden"/>
+	<div>Strong Arms  
+	  <span name="attr_advantage_strongarms_count"></span>
+	</div>
+      </div>
+      <div class="conditional-something">
+	<input name="attr_advantage_brute_count" type="hidden"/>
+	<div>Brute 
+	  <span name="attr_advantage_brute_count"></span>
+	</div>
+      </div>
+      <div class="conditional-something">
+	<input name="attr_advantage_fast_count" type="hidden"/>
+	<div>Fast 
+	  <span name="attr_advantage_fast_count"></span>
+	</div>
+      </div>
+      <div class="conditional-something">
+	<input name="attr_advantage_athlete_count" type="hidden"/>
+	<div>Natural Athlete 
+	  <span name="attr_advantage_athlete_count"></span>
+	</div>
+      </div>
+      <div class="conditional-something">
+	<input name="attr_advantage_alert_count" type="hidden"/>
+	<div>Alert 
+	  <span name="attr_advantage_alert_count"></span>
+	</div>
+      </div>
+      <div class="conditional-something">
+	<input name="attr_advantage_wary_count" type="hidden"/>
+	<div>Wary 
+	  <span name="attr_advantage_wary_count"></span>
+	</div>
+      </div>
+      <div class="conditional-something">
+	<input name="attr_advantage_mage_count" type="hidden"/>
+	<div>Mage 
+	  <span name="attr_advantage_mage_count"></span>
+	</div>
+      </div>
+      <div class="conditional-something">
+	<input name="attr_advantage_devout_count" type="hidden"/>
+	<div>Devout 
+	  <span name="attr_advantage_devout_count"></span>
+	</div>
+      </div>
+      <fieldset class="repeating_extraadvantage">
+	<span name="attr_extraadvantagename" class="extraadvantagename">
+	</span>
+      <fieldset>
+    </div>
+
+    &emsp;&emsp;
+    <!-- Feats -->
+    <div class="feat-overview no-add-or-modify-buttons">
+      <div class="table-header">
+	<div class="featextraordinaryletter">Extr</div>
+	<div class="featname">Epic Feat</div>
+      </div>
+      <fieldset class="repeating_feat"> 
+        <span name="attr_featextraordinaryletter"
+	      class="featextraordinaryletter"></span>
+	<span name="attr_featname" class="featname"> </span>
+      </fieldset>
+    </div>
+    
+    &emsp;&emsp;
+    <!-- Skills -->
+    <div class="skills-overview no-add-or-modify-buttons flex-stack">
+      <div class="table-header">
+	<div class="skillname">Skill</div>
+	<div class="skillability">Ability</div>
+	<div class="skillbase">Mod</div>
+      </div>
+      <fieldset class="repeating_skill">
+        <!-- This input is used by CSS to hide disciplines -->
+        <input name="attr_skillisdiscipline" class="isdiscipline"
+               type="hidden"/>
+        <div class="skill-overview-row-container">
+	  <span name="attr_skillname" class="skillname"></span>
+	  <span name="attr_skillability" class="skillability"></span>
+	  <input name="attr_skillmodifier" class="skillbase" type="number">
+          <!-- These hidden inputs are necessary for the roll to find
+               skillability and skillname -->
+          <input name="attr_skillability" type="hidden">
+          <input name="attr_skillname" type="hidden">
+	  <button name="roll_skillroll" class="skill-roll" type="roll"
+                  value="!EPRoll @{skillability}+@{skillmodifier} Tries @{skillname}: @{skillability} + @{skillmodifier}"
+		  />
+        </div>
+      </fieldset>
+    </div>
+
+    &emsp;&emsp;
+    <!-- Weapons -->
+    <div class="weapons-overview no-add-or-modify-buttons flex-stack">
+      <div class="table-header">
+  	<div class="equipmentname">Weapon</div>
+  	<div class="equipmentcount">Count</div>
+  	<div class="equipmentdamage">Damage</div>
+  	<div class="equipmentrange">Range</div>
+      </div>
+      <fieldset class="repeating_weapon">
+	<div class="weapons-overview-row-container">
+  	  <span name="attr_weaponname" class="equipmentname"></span>
+  	  <input name="attr_weaponcount" class="equipmentcount"
+  	         type="number" value="1"/>
+  	  <span name="attr_weapondamage" class="equipmentdamage"></span>
+  	  <span name="attr_weaponrange" class="equipmentrange"></span>
+	</div>
+  	<span name="attr_weaponnotes" class="equipmentnotes"></span>
+      </fieldset>
+    </div>
+  </div>
+</div>
+
+
+<!-- Basic section -->
+
+<div class="basic section">
+  Race <input name="attr_race" class="wide" type="text"/>
+  Gender <input name="attr_gender" class="wideish" type="text"/>
+  Height <input name="attr_height" class="wideish" type="text"/>
+  Weight <input name="attr_weight" class="wideish" type="number"/>
+  Age <input name="attr_age" class="wideish" type="number"/>
+
+  <div class="horizontal-flex">
+    
+    <!-- Advantages and Disadvantages -->
+    <div class="advantages flex-stack">
+      <input name="attr_advantage_total_CP" type="hidden" value="0"/>
+      <div class="advantage-row table-header">
+	<div>Advantage</div>
+        <div class="count-placeholder"></div>
+        <div class="CP">CP</div>
+      </div>
+      <div class="advantage-row">
+	<div>Healthy</div>
+	<select name="attr_advantage_healthy_count" class="skillexpertise">
+           <option value=" "></option>
+           <option value="-1">-1</option>
+           <option value="1">1</option>
+           <option value="2">2</option>
+           <option value="3">3</option>
+        </select>
+	<span class="CP" name="attr_advantage_healthy_CPdescription"></span>
+      </div>
+      <div class="advantage-row">
+	<div>Pack Mule</div>
+	<select name="attr_advantage_packmule_count" class="skillexpertise">
+           <option value=" "></option>
+           <option value="-1">-1</option>
+           <option value="1">1</option>
+           <option value="2">2</option>
+           <option value="3">3</option>
+        </select>
+	<span class="CP" name="attr_advantage_packmule_CPdescription"></span>
+      </div>
+      <div class="advantage-row">
+	<div>Strong Arms</div>
+	<select name="attr_advantage_strongarms_count" class="skillexpertise">
+           <option value=" "></option>
+           <option value="-1">-1</option>
+           <option value="1">1</option>
+           <option value="2">2</option>
+           <option value="3">3</option>
+        </select>
+	<span class="CP" name="attr_advantage_strongarms_CPdescription"></span>
+      </div>
+      <div class="advantage-row">
+	<div>Brute</div>
+	<select name="attr_advantage_brute_count" class="skillexpertise">
+           <option value=" "></option>
+           <option value="-1">-1</option>
+           <option value="1">1</option>
+           <option value="2">2</option>
+           <option value="3">3</option>
+        </select>
+	<span class="CP" name="attr_advantage_brute_CPdescription"></span>
+      </div>
+      <div class="advantage-row">
+	<div>Fast</div>
+	<select name="attr_advantage_fast_count" class="skillexpertise">
+           <option value=" "></option>
+           <option value="-1">-1</option>
+           <option value="1">1</option>
+           <option value="2">2</option>
+           <option value="3">3</option>
+        </select>
+	<span class="CP" name="attr_advantage_fast_CPdescription"></span>
+      </div>
+      <div class="advantage-row">
+	<div>Natural Athlete</div>
+	<select name="attr_advantage_athlete_count" class="skillexpertise">
+           <option value=" "></option>
+           <option value="-1">-1</option>
+           <option value="1">1</option>
+           <option value="2">2</option>
+           <option value="3">3</option>
+        </select>
+	<span class="CP" name="attr_advantage_athlete_CPdescription"></span>
+      </div>
+      <div class="advantage-row">
+	<div>Alert</div>
+	<select name="attr_advantage_alert_count" class="skillexpertise">
+           <option value=" "></option>
+           <option value="-1">-1</option>
+           <option value="1">1</option>
+           <option value="2">2</option>
+           <option value="3">3</option>
+        </select>
+	<span class="CP" name="attr_advantage_alert_CPdescription"></span>
+      </div>
+      <div class="advantage-row">
+	<div>Wary</div>
+	<select name="attr_advantage_wary_count" class="skillexpertise">
+           <option value=" "></option>
+           <option value="-1">-1</option>
+           <option value="1">1</option>
+           <option value="2">2</option>
+           <option value="3">3</option>
+        </select>
+	<span class="CP" name="attr_advantage_wary_CPdescription"></span>
+      </div>
+      <div class="advantage-row">
+	<div>Mage</div>
+	<input name="attr_advantage_mage_minus" type="checkbox" value="1"
+	       hidden="true"/>
+	<select name="attr_advantage_mage_count" class="skillexpertise">
+           <option value=" "></option>
+           <option value="1">1</option>
+        </select>
+	<span class="CP" name="attr_advantage_mage_CPdescription"></span>
+      </div>
+      <div class="advantage-row">
+	<div>Devout</div>
+	<input name="attr_advantage_devout_minus" type="checkbox" value="1"
+               hidden="true"/>
+	<select name="attr_advantage_devout_count" class="skillexpertise">
+           <option value=" "></option>
+           <option value="1">1</option>
+        </select>
+	<span class="CP" name="attr_advantage_devout_CPdescription"></span>
+      </div>
+      <fieldset class="repeating_extraadvantage">
+	<!--- We leave no space between the inputs, so there won't be
+              any inside the repeating section -->
+	<input name="attr_extraadvantagename" class="extraadvantagename"
+	       type="text"
+	/><input name="attr_extraadvantageCP" class="extraadvantageCP"
+	         type="number"
+        /><span class="CP extraadvantageCPdescription"
+                name="attr_extraadvantageCPdescription"></span>
+      </fieldset>
+
+    </div>
+    
+    &emsp; &emsp;
+    <!-- Feats -->
+    <div class="flex-stack">
+      <input name="attr_feat_total_CP" type="hidden" value="0"/>
+      <input name="attr_feat_total_single_CP" type="hidden" value="0"/>
+      <div class="table-header">
+	<div class="featextraordinary">Extr</div>
+	<div class="featname">Epic Feat</div>
+	<div class="featCP">CP</div>
+      </div>
+      <fieldset class="repeating_feat"> 
+	<input name="attr_featextraordinary" class="featextraordinary"
+	       type="checkbox" value="1"/>
+	<input name="attr_featname" class="featname"
+	       type="text"/> 
+	<input name="attr_featCP" class="featCP" value=""
+	       type="number"/> 
+      </fieldset>
+    </div>
+    
+    &emsp; &emsp;
+    <!-- weight penalty table -->
+    <div class="flex-stack">
+      <div class="center wideish bold">Weight Penalties</div>
+      <div class="weight-penalty-table flex-stack">
+        <div class="table-header">
+          <div></div> <div>Pen.</div> <div>Wt.</div>
+        </div>
+        <div> <input name="attr_highlight_weight_penalty_1" type="hidden"/>
+              <div>-1</div> <span name="attr_penalty_weight_1"></span> </div>
+        <div> <input name="attr_highlight_weight_penalty_2" type="hidden"/>
+              <div>-2</div> <span name="attr_penalty_weight_2"></span> </div>
+        <div> <input name="attr_highlight_weight_penalty_3" type="hidden"/>
+              <div>-3</div> <span name="attr_penalty_weight_3"></span> </div>
+        <div> <input name="attr_highlight_weight_penalty_4" type="hidden"/>
+              <div>-4</div> <span name="attr_penalty_weight_4"></span> </div>
+        <div> <input name="attr_highlight_weight_penalty_5" type="hidden"/>
+              <div>-5</div> <span name="attr_penalty_weight_5"></span> </div>
+        <div> <input name="attr_highlight_weight_penalty_6" type="hidden"/>
+              <div>-∞</div> <span name="attr_penalty_weight_6"></span> </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- skill section -->
+<div class="skills section">
+    <div class="flex-stack">
+      <input name="attr_skill_total_TP" type="hidden" value="0"/>
+      <input name="attr_skill_total_CP" type="hidden" value="0"/>
+      <input name="attr_skill_total_single_CP" type="hidden" value="0"/>
+      <div class="center bold">Disciplines & Skills</div>
+      <div class="table-header">
+	<div class="skilldisciplineinfo">Discipline?</div>
+	<div class="skillname">Name</div>
+	<div class="skillability">Ability</div>
+	<div class="skillTP">TP</div>
+	<div class="skillCP">CP</div>
+	<div class="skillexpertise">Exper.</div>
+	<div class="skillattribute">Attribute</div>
+	<div class="skillbase">Base</div>
+      </div>
+      <fieldset class="repeating_skill">
+        <select name="attr_skilldisciplineinfo" class="skilldisciplineinfo">
+           <option value=" "></option>
+           <option value="D">D</option>
+           <option value="⇡">⇡</option>
+        </select>
+	<!-- The next input puts whether we have a discipline into the
+             value property, where CSS can see it -->
+	<input name="attr_skillisdiscipline" class="isdiscipline" type="hidden">
+	<input name="attr_skillname" class="skillname"
+	       type="text"/> 
+	<span name="attr_skillability" class="skillability"></span>
+	<span name="attr_skillTP" class="skillTP center"></span> 
+	<span name="attr_skillCP" class="skillCP center"></span> 
+        <select name="attr_skillexpertise" class="skillexpertise">
+           <option value="--">--</option>
+           <option value="ST">st</option>
+           <option value="-1">-1</option>
+           <option value="0">0</option>
+           <option value="1">1</option>
+           <option value="2">2</option>
+           <option value="3">3</option>
+	   <option value="4">4</option>
+	   <option value="5">5</option>
+	   <option value="6">6</option>
+           <option value="7">7</option>
+           <option value="8">8</option>
+	   <option value="9">9</option>
+        </select>
+        <input name="attr_skilldisciplineexpertise" type="hidden"/>
+        <select name="attr_skillattribute" class="skillattribute">
+	   <option value=""> choose</option>
+           <option value="IQ">IQ</option>
+           <option value="DX">DX</option>
+           <option value="IQ+DX">IQ+DX</option>
+        </select>
+        <input name="attr_skillbase" class="skillbase"
+               type="number" value=""/>	
+      </fieldset>
+    </div>
+</div>
+
+
+<!-- Equipment section -->
+<div class="equipment section">
+  <div class="horizontal-flex">
+    <div class="flex-stack align-center">
+      <input name="attr_weight_penalty" type="hidden" value=" "/>
+  
+      <div class="children-separated">
+        <div>
+          <div class="attribute-name wideish larger">Cash</div>
+          <input name="attr_cash" type="number"
+		 class="wide center bold larger value"/>
+        </div>
+        <div>
+          <div class="attribute-name wide larger">Equip Value</div>
+          <span name="attr_equipment_total_value"
+		class="narrowish center bold larger value"></span>
+        </div>
+        <div>
+          <div class="attribute-name wide larger">Equip Weight</div>
+          <span name="attr_equipment_total_weight"
+		class="narrowish center bold larger value"></span>
+        </div>
+      </div>
+      <div class="spacer"></div>
+      <!-- Copy of weight penalty table -->
+      <div class="flex-stack align-center">
+        <div class="center wideish bold">Weight Penalties</div>
+        <div class="weight-penalty-table flex-stack">
+          <div class="table-header">
+            <div></div> <div>Pen.</div> <div>Wt.</div>
+          </div>
+          <div> <input name="attr_highlight_weight_penalty_1" type="hidden"/>
+                <div>-1</div> <span name="attr_penalty_weight_1"></span> </div>
+          <div> <input name="attr_highlight_weight_penalty_2" type="hidden"/>
+                <div>-2</div> <span name="attr_penalty_weight_2"></span> </div>
+          <div> <input name="attr_highlight_weight_penalty_3" type="hidden"/>
+                <div>-3</div> <span name="attr_penalty_weight_3"></span> </div>
+          <div> <input name="attr_highlight_weight_penalty_4" type="hidden"/>
+                <div>-4</div> <span name="attr_penalty_weight_4"></span> </div>
+          <div> <input name="attr_highlight_weight_penalty_5" type="hidden"/>
+                <div>-5</div> <span name="attr_penalty_weight_5"></span> </div>
+          <div> <input name="attr_highlight_weight_penalty_6" type="hidden"/>
+                <div>-∞</div> <span name="attr_penalty_weight_6"></span> </div>
+        </div>
+      </div>
+    </div>
+  
+      &emsp;&emsp;
+      <div class="flex-stack equipment-list">
+        <div class="table-header">
+  	<div class="equipmentname">Armor</div>
+  	<div class="armordefense">Def.</div>
+  	<div class="equipmentweight">Weight</div>
+  	<div class="equipmentvalue">Value</div>
+  	<div class="equipmentnotes">Notes</div>
+        </div>
+        <div class="horizontal-flex">
+  	<input name="attr_armor_name" class="equipmentname"
+                 type="text"/>
+  	<input name="attr_armor_defense" class="armordefense" 
+               type="number"/>
+  	<input name="attr_armor_weight" class="equipmentweight" 
+                 type="text"/>    
+  	<input name="attr_armor_value" class="equipmentvalue" 
+                 type="text"/>    
+  	<input name="attr_armor_notes" class="equipmentnotes"
+  	       type="text"/>
+        </div>
+        
+        <div class="table-header">
+  	<div class="equipmentname">Shield</div>
+  	<div class="armordefense">Def.</div>
+  	<div class="armordefense">Str.</div>
+  	<div class="equipmentweight">Weight</div>
+  	<div class="equipmentvalue">Value</div>
+  	<div class="equipmentnotes">Notes</div>
+        </div>
+        <div class="horizontal-flex">
+  	<input name="attr_shield_name" class="equipmentname"
+                 type="text"/>
+  	<input name="attr_shield_defense" class="armordefense" 
+               type="number"/>
+  	<input name="attr_shield_stopping_strength" class="armordefense" 
+                 type="number"/>    
+  	<input name="attr_shield_weight" class="equipmentweight" 
+                 type="text"/>    
+  	<input name="attr_shield_value" class="equipmentvalue" 
+                 type="text"/>    
+  	<input name="attr_shield_notes" class="equipmentnotes"
+  	       type="text"/>
+        </div>
+        
+        <input name="attr_weapon_total_weight" type="hidden" value="0"/>
+        <input name="attr_weapon_total_value" type="hidden" value="0"/>
+        <div class="table-header">
+  	<div class="equipmentname">Weapon</div>
+  	<div class="equipmentcount">Count</div>
+  	<div class="equipmentweight">Weight Each</div>
+  	<div class="equipmentvalue">Value Each</div>
+  	<div class="equipmentdamage">Damage</div>
+  	<div class="equipmentrange">Range</div>
+  	<div class="equipmentnotes">Notes</div>
+        </div>
+        <fieldset class="repeating_weapon"> 
+  	<input name="attr_weaponname" class="equipmentname"
+  	       type="text"/> 
+  	<input name="attr_weaponcount" class="equipmentcount"
+  	       type="number" value="1"/>
+  	<input name="attr_weaponweight" class="equipmentweight"
+  	       type="text"/> 
+  	<input name="attr_weaponvalue" class="equipmentvalue"
+  	       type="text"/> 
+  	<input name="attr_weapondamage" class="equipmentdamage"
+  	       type="text"/>
+  	<input name="attr_weaponrange" class="equipmentrange"
+  	       type="number"/>
+  	<input name="attr_weaponnotes" class="equipmentnotes"
+  	       type="text"/>
+        </fieldset>
+  
+        <input name="attr_item_total_weight" type="hidden" value="0"/>
+        <input name="attr_item_total_value" type="hidden" value="0"/>
+        <div class="table-header">
+  	<div class="equipmentname">Item</div>
+  	<div class="equipmentcount">Count</div>
+  	<div class="equipmentweight">Weight Each</div>
+  	<div class="equipmentvalue">Value Each</div>
+  	<div class="equipmentnotes">Notes</div>
+        </div>
+        <fieldset class="repeating_item"> 
+  	<input name="attr_itemname" class="equipmentname"
+  	       type="text"/> 
+  	<input name="attr_itemcount" class="equipmentcount"
+  	       type="number" value="1"/>
+  	<input name="attr_itemweight" class="equipmentweight"
+  	       type="text"/> 
+  	<input name="attr_itemvalue" class="equipmentvalue"
+  	       type="text"/> 
+  	<input name="attr_itemnotes" class="equipmentnotes"
+  	       type="text"/>
+        </fieldset>
+      </div>
+  </div>
+
+</div>
+
+<!-- Spells section -->
+<div class="spells section horizontal-flex">
+  <!-- This input's value names the currently selected tab.
+       its value is used for css selection of the tab content. -->
+  <input name="attr_chosenspelltype" class="sectioncontrol" type="hidden"
+	   value="arcane"/>
+  <!-- Spell tab buttons -->
+  <div class="spell-tabs">
+    <!-- This input's value names the currently selected tab.
+         its value is used for css selection of its siblings. -->
+    <input name="attr_chosenspelltype" class="tabcontrol" type="hidden"
+           value="arcane"/>
+    <button name="act_arcane" class="tab" type="action">
+      Arcane
+    </button>
+    <button name="act_divine" class="tab" type="action">
+      Divine
+    </button>
+    <button name="act_innate" class="tab" type="action">
+      Innate
+    </button>
+
+    &emsp; &emsp;
+    <div class="label wide larger">Spell Touch</div>
+    <input name="attr_spell_touch" type="hidden"/>
+    <span name="attr_spell_touch" class="center narrowish bold larger middle">
+    </span>
+    <button type="roll"
+	    value="!EPRoll @{spell_touch} Touches with Spell: @{spell_touch}">
+    </button>
+    &emsp;
+    <div class="label wide larger">Aim Spell</div>
+    <input name="attr_aim_spell" type="hidden"/>
+    <span name="attr_aim_spell" class="center narrowish bold larger middle">
+    </span>
+    <button type="roll"
+	    value="!EPRoll @{aim_spell} Aims Spell: @{aim_spell}">
+    </button>
+
+  </div>
+
+  <!-- Arcane spells -->
+    <div class="arcane section flex-stack">
+      <input name="attr_arcane_total_TP" type="hidden" value="0"/>
+      <input name="attr_arcane_total_CP" type="hidden" value="0"/>
+      <input name="attr_arcane_total_single_CP" type="hidden" value="0"/>
+      <div class="table-header">
+	<div class="skilldisciplineinfo">Discipline?</div>
+	<div class="skillname">Name</div>
+	<div class="skillability">Ability</div>
+	<div class="skillbase">Mod</div>
+	<div class="skill-roll"></div>
+        <div class="spellEP">EP</div>
+        <div class="spellcasttime">Cast Time</div>
+        <div class="spelltype">Touch/ Ray/ Missile</div>
+        <div class="spellrange">Range</div>
+        <div class="spelltarget">Target</div>
+        <div class="spellduration">Damage/ Duration</div>
+	<div class="spellhasnote">N</div>
+	<div class="skillTP">TP</div>
+	<div class="skillCP">CP</div>
+	<div class="skillexpertise">Exper.</div>
+        <div class="skillattribute">IQ ±</div>
+	<div class="skillbase">Base</div>
+      </div>
+      <fieldset class="repeating_arcane">
+	<div class="spell-row">
+        <select name="attr_skilldisciplineinfo" class="skilldisciplineinfo">
+           <option value=" "></option>
+           <option value="D">D</option>
+           <option value="⇡">⇡</option>
+        </select>
+	<!-- The next input puts whether we are a discipline into the
+             value property, where CSS can see it -->
+	<input name="attr_skillisdiscipline" class="isdiscipline" type="hidden">
+	<input name="attr_skillname" class="skillname"
+	       type="text"/> 
+	<span name="attr_skillability" class="skillability"></span>
+        <!-- Make the button able to access the ability -->
+	<input name="attr_skillability" hidden="true"/>
+	<input name="attr_skillmodifier" class="skillbase" type="number">
+	<button name="roll_spellroll" class="skill-roll" type="roll"
+                value="!EPRoll @{skillability}+@{skillmodifier} Tries @{skillname}: @{skillability} + @{skillmodifier}"/>
+	</button>
+        <input name="attr_spellEP" class="spellEP" type="text"/>
+        <input name="attr_spellcasttime" class="spellcasttime" type="text"/>
+        <select name="attr_spelltype" class="spelltype" type="text">
+           <option value="-">None</option>
+           <option value="touch">Touch</option>
+           <option value="ray">Ray</option>
+           <option value="missile">Missile</option>
+        </select>
+        <input name="attr_spellrange" class="spellrange" type="text"/>
+        <input name="attr_spelltarget" class="spelltarget" type="text"/>
+        <input name="attr_spellduration" class="spellduration" type="text"/>
+	<input name="attr_spellhasnote" class="spellhasnote"
+	       type="checkbox" value="1"/>
+	<span name="attr_skillTP" class="skillTP center"></span> 
+	<span name="attr_skillCP" class="skillCP center"></span> 
+        <select name="attr_skillexpertise" class="skillexpertise">
+           <option value="--">--</option>
+           <option value="-1">-1</option>
+           <option value="0">0</option>
+           <option value="1">1</option>
+           <option value="2">2</option>
+           <option value="3">3</option>
+	   <option value="4">4</option>
+	   <option value="5">5</option>
+	   <option value="6">6</option>
+	   <option value="7">7</option>
+	   <option value="8">8</option>
+	   <option value="9">9</option>
+        </select>
+        <input name="attr_skilldisciplineexpertise" type="hidden"/>
+        <input name="attr_skillattribute" value="IQ" type="hidden"/>
+        <span class="skillattribute">IQ ±</span>
+        <input name="attr_skillbase" class="skillbase"
+               type="number" value=""/>
+	</div>
+	<div class="spell-row conditional-one">
+	  <!-- The next input puts whether we have a note into the
+          value property, where CSS can see it -->
+	  <input name="attr_spellhasnote" class="spellhasnote" type="hidden">
+	  <input name="attr_spellnote" class="spell-note"
+		 type="text">
+	</div>
+      </fieldset>
+    </div>
+
+    <div class="divine section flex-stack">
+      <input name="attr_divine_total_CP" type="hidden" value="0"/>
+      <input name="attr_divine_total_single_CP" type="hidden" value="0"/>
+      <div class="table-header">
+	<div class="skillname">Name</div>
+        <div class="spellEP">EP</div>
+        <div class="spellcasttime">Cast Time</div>
+        <div class="spelltype">Touch/ Ray/ Missile</div>
+        <div class="spellrange">Range</div>
+        <div class="spelltarget">Target</div>
+        <div class="spellduration">Damage/ Duration</div>
+	<div class="spellhasnote">N</div>
+      </div>
+      <fieldset class="repeating_divine"> 
+	<div class="spell-row">
+	<input name="attr_skillname" class="skillname"
+	       type="text"/>
+        <input name="attr_spellEP" class="spellEP" type="number"/>
+        <input name="attr_spellcasttime" class="spellcasttime" type="text"/>
+        <select name="attr_spelltype" class="spelltype" type="text">
+           <option value="-">None</option>
+           <option value="touch">Touch</option>
+           <option value="ray">Ray</option>
+           <option value="missile">Missile</option>
+        </select>
+        <input name="attr_spellrange" class="spellrange" type="text"/>
+        <input name="attr_spelltarget" class="spelltarget" type="text"/>
+        <input name="attr_spellduration" class="spellduration" type="text"/>
+	<input name="attr_spellhasnote" class="spellhasnote"
+	       type="checkbox" value="1"/>
+	</div>
+	<div class="spell-row conditional-one">
+	  <!-- The next input puts whether we we have a note into the
+          value property, where CSS can see it -->
+	  <input name="attr_spellhasnote" class="spellhasnote" type="hidden">
+	  <input name="attr_spellnote" class="spell-note"
+		 type="text">
+	</div>
+      </fieldset>
+    </div>
+
+    <div class="innate section flex-stack">
+      <input name="attr_innate_total_CP" type="hidden" value="0"/>
+      <input name="attr_innate_total_single_CP" type="hidden" value="0"/>
+      <div class="table-header">
+	<div class="skillname">Name</div>
+        <div class="spellEP">EP</div>
+        <div class="spellcasttime">Cast Time</div>
+        <div class="spelltype">Touch/ Ray/ Missile</div>
+        <div class="spellrange">Range</div>
+        <div class="spelltarget">Target</div>
+        <div class="spellduration">Duration</div>
+	<div class="spellhasnote">N</div>
+	<div class="skillCP">CP</div>
+      </div>
+      <fieldset class="repeating_innate">
+        <div class="spell-row">
+	<input name="attr_skillname" class="skillname"
+	       type="text"/> 
+        <input name="attr_spellEP" class="spellEP" type="text"/>
+        <input name="attr_spellcasttime" class="spellcasttime" type="text"/>
+        <select name="attr_spelltype" class="spelltype" type="text">
+           <option value="-">None</option>
+           <option value="touch">Touch</option>
+           <option value="ray">Ray</option>
+           <option value="missile">Missile</option>
+        </select>
+        <input name="attr_spellrange" class="spellrange" type="text"/>
+        <input name="attr_spelltarget" class="spelltarget" type="text"/>
+        <input name="attr_spellduration" class="spellduration" type="text"/>
+	<input name="attr_spellhasnote" class="spellhasnote"
+	       type="checkbox" value="1"/>
+	<input name="attr_skillCP" class="skillCP" type="number"/>
+	</div>
+	<div class="spell-row conditional-one">
+	  <!-- The next input puts whether we have a note into the
+          value property, where CSS can see it -->
+	  <input name="attr_spellhasnote" class="spellhasnote" type="hidden">
+	  <input name="attr_spellnote" class="spell-note"
+		 type="text">
+	</div>
+      </fieldset>
+    </div>
+  </div>
+
+  <!-- Notes section -->
+  <div class="notes section">
+    <div class="flex-stack">
+      <div class="table-header">
+	<div class="notecategory">Category</div>
+	<div class="notenote">Note</div>
+      </div>
+      <fieldset class="repeating_note"> 
+	<input name="attr_notecategory" class="notecategory"
+	       type="text"/> 
+	<input name="attr_notenote" class="notenote"
+	       type="text"/> 
+      </fieldset>
+    </div>
+
+</div>
+
+<!-- Scripts -->
+
+<script type="text/worker">
+  "use strict";
+  
+  // ----- Utilities -----
+  const removeNonNumeric = function(s) {
+    return String(s).trim().replace(/[^\d.-]/g, '')
+  }
+
+  const convertToFloat = function(s) {
+    var str = removeNonNumeric(s)
+    if (!str) {
+      return 0
+    } else {
+      var f = parseFloat(str)
+      if (isNaN(f)) {
+        return 0
+      } else {
+        return f
+      }
+    }
+  }
+
+  const roundToTwoPlaces = function(s) {
+    return Math.floor(s*100)/100
+  }
+
+  const sumValues = function(value_map) {
+    return Object.values(value_map).reduce(
+      (accum, b) => accum + convertToFloat(b), 0);
+  }
+
+  const sumSingleValues = function(value_map) {
+    return Object.values(value_map).reduce(
+      (accum, b) => accum + (convertToFloat(b) === 1 ? 1 : 0),
+      0);
+  }
+
+  const isEmptyValue = function(value) {
+    return value === undefined || value.trim() === ""
+  }
+
+  // Add up the total cost for repeating_<section>:<name>TP
+  // and put it in <section>_total_TP
+  const updateTotalTP = function(section, name) {
+    if (name === undefined) { name = section }
+    getSectionIDs(section, function(ids) {
+      var TP_fields = ids.map(id => `repeating_${section}_${id}_${name}TP`);
+      getAttrs(TP_fields, function(tps) {
+        var update = {}
+        update[section + "_total_TP"] = sumValues(tps)
+        setAttrs(update);
+      });
+    });
+  }
+
+  // We record the number of CP costs of 1. This adds them all up,
+  // and subtracts as many of them from the total as breadth allows.
+  const updateDistributedCP = function() {
+    const feat = "feat_total_single_CP";
+    const skill = "skill_total_single_CP";
+    const arcane = "arcane_total_single_CP";
+    const innate = "innate_total_single_CP";
+    const tp = "TP";
+    getAttrs([feat, skill, arcane, innate, tp], 
+    function(singles) {
+      const total = (Number(singles[feat])
+	             + Number(singles[skill])
+	             + Number(singles[arcane])
+	             + Number(singles[innate]));
+      // log("inputs: " + "'" + singles[advantage] 
+      //                + "' '" + singles[feat]
+      //                + "' '" + singles[skill]
+      //                + "' '" + singles[arcane]
+      //                + "' '" + singles[innate] + "'");
+      // log("Distributed: " + Math.min(total, Math.min(singles[tp], 6)
+      //     + "  " + total);
+      setAttrs({"distributed_CP": Math.min(total, Math.min(singles[tp], 6))});
+    });
+  }
+
+  on("change:tp" +
+     " change:feat_total_single_CP" +
+     " change:skill_total_single_CP" +
+     " change:arcane_total_single_CP" +
+     " change:innate_total_single_CP",
+     updateDistributedCP);	
+
+  // Add up the total cost for repeating_<section>:<name>CP
+  // and put it in <section>_total_CP
+  const updateTotalCP = function(section, name) {
+    if (name === undefined) { name = section }
+    getSectionIDs(section, function(ids) {
+      var CP_fields = ids.map(id => `repeating_${section}_${id}_${name}CP`);
+      getAttrs(CP_fields, function(cps) {
+        var update = {}
+        update[section + "_total_CP"] = sumValues(cps)
+        update[section + "_total_single_CP"] = sumSingleValues(cps)
+        setAttrs(update);
+      });
+    });
+  }
+
+
+  var getSectionIDsOrdered = function (sectionName, callback) {
+    const order_name = `_reporder_repeating_${sectionName}`
+    getAttrs([order_name], function (v) {
+      getSectionIDs(sectionName, function (idArray) {
+        let reporderArray = (v[order_name] ?
+                             v[order_name].toLowerCase().split(',') :
+                             []),
+            still_present = reporderArray.filter(x => idArray.includes(x))
+        callback([...new Set(still_present.concat(idArray))]);
+      });
+    });
+  };
+
+  // ----- Top action and roll -----
+
+  var toggleSavePending = function() {
+    getAttrs(["save_pending"],
+             function(values) {
+               var new_value = Number(values["save_pending"]) ? 0 : 1;
+               setAttrs({"save_pending": new_value});
+	     });
+  }
+  on('clicked:saveroll', toggleSavePending);
+
+  const roll_keys = ["action_description", "action_feats",
+                     "action_EP", "action_SP",
+                     "roll_skill", "roll_ability",
+                     "roll_mod1", "roll_mod2", "roll_mod3",
+                     "roll_advance_boost"];
+
+  var saveRollState = function(key, roll_chosen) {
+    getAttrs(roll_keys,
+             function(values) {
+               var update = {"save_pending": 0,
+	                     "roll_chosen": roll_chosen};
+               // We write the values in a fixed order, so we can do equality
+               // checks.
+               update[key] = JSON.stringify(values, roll_keys);
+               setAttrs(update);
+             });
+  }
+
+  var loadRollState = function(key, roll_chosen) {
+    getAttrs([key],
+             function(values) {
+               if (values[key] != "") {
+                 var change = JSON.parse(values[key]);
+                 change["roll_chosen"] = roll_chosen;
+                 setAttrs(change);
+                 return true;
+               } else {
+                 return false;
+               }
+             });
+  }
+
+  var checkRollChosen = function() {
+    getAttrs(["roll_chosen"], function(values) {
+      var roll_chosen = Number(values["roll_chosen"]);
+      if (roll_chosen) {
+        var saved_roll = "saved_roll_" + roll_chosen;
+        getAttrs(roll_keys.concat([saved_roll]), function(values) {
+          var saved = values[saved_roll];
+          var current = JSON.stringify(values, roll_keys);
+          if (saved != current) {          
+            setAttrs({"roll_chosen": ""});
+          }
+        });
+      }
+    });
+  }
+  on(roll_keys.map(name => "change:" + name).join(" "),
+     checkRollChosen);
+
+  var doChooseRoll = function(number) {
+    var saved_roll = "saved_roll_" + number;
+    getAttrs(["save_pending"], function(values) {
+      if (Number(values["save_pending"])) {
+        saveRollState(saved_roll, number);
+      } else {
+        loadRollState(saved_roll, number);
+      }
+    });
+  }
+  const roll_choices = ["1", "2", "3", "4", "5", "6"];
+  roll_choices.forEach(function(value) {
+    on(`clicked:choose_roll_${value}`, function() { doChooseRoll(value); });
+  });
+
+  var topActionDeltas = function(values) {
+    var action_feats =  Number(values["action_feats"]);
+    var feats_EP = action_feats;
+    var action_EP = Number(values["action_EP"]);
+    var action_SP = Number(values["action_SP"]);
+    return {"EPS": (action_feats != 0 ? [-feats_EP] : []).concat(
+                      (action_EP != 0 ? [-action_EP] : [])),
+            "SPS": action_SP != 0 ? [-action_SP] : []};
+  }
+
+  var topRollDeltas = function(values) {
+    var advance_boost =  Number(values["roll_advance_boost"]);
+    var boost_EP = advance_boost;
+    return {"EPS": advance_boost != 0 ? [-boost_EP] : [],
+            "SPS": []};
+  }
+
+  var addDeltas = function(deltas1, deltas2) {
+    return {"EPS": deltas1["EPS"].concat(deltas2["EPS"]),
+            "SPS": deltas1["SPS"].concat(deltas2["SPS"])};
+   }
+
+  var multiplyDeltas = function(deltas, multiplier) {
+    return {"EPS": deltas["EPS"].map(x => x * multiplier),
+            "SPS": deltas["SPS"].map(x => x * multiplier)};
+  }
+
+  var modifiersToTotal = function(modifiers) {
+    return modifiers.reduce((accum, modifier) => accum + modifier,
+                            0);
+  }
+
+  var modifiersToString = function(modifiers) {
+    return modifiers.reduce(function(accum, modifier) {
+      if (modifier == 0) {
+        return accum;
+      } else if (modifier > 0) {
+        return accum + "+" + String(modifier);
+      } else {
+        return accum + String(modifier);
+      }
+    },
+    "");
+  }
+
+  var isLegalUpdate = function(current, deltas) {
+  return (   (-modifiersToTotal(deltas["EPS"]) <=  Number(current["EP_t"]))
+          && (-modifiersToTotal(deltas["SPS"]) <=  Number(current["SP"])))
+  }
+
+  var makeUpdate = function(current, deltas) {
+    var EP_delta = modifiersToTotal(deltas["EPS"]);
+    const current_EP_t = Number(current["EP_t"]);
+    const EP_t_max = Number(current["EP_t_max"]);
+    const new_EP_t = Math.max(0, Math.min(EP_t_max, current_EP_t + EP_delta));
+    // log("EP_delta " + EP_delta + "  current_EP_t " + current_EP_t);
+    // log("EP_t_max " + EP_t_max + "  new_EP_t" + new_EP_t);
+    return {"EP_t": new_EP_t,
+            "SP": Number(current["SP"]) + modifiersToTotal(deltas["SPS"])};
+  }
+
+  var deltasDescription = function(deltas) {
+    var description = "";
+    if (deltas["EPS"].length) {
+      description = (description + " ("
+                     + modifiersToString(deltas["EPS"]) + " EP)");
+    }
+    if (deltas["SPS"].length) {
+      description = (description + " (" 
+                     + modifiersToString(deltas["SPS"]) + " SP)");
+    }
+    return description;
+  }
+
+  var doTopAction = function () {
+    getAttrs(["EP_t", "EP_t_max", "SP",
+              "action_description", "action_feats",
+              "action_EP", "action_SP"], 
+      function(values) {
+        var deltas = topActionDeltas(values);
+        var update = makeUpdate(values, deltas);
+        update["pendingchat"] = (  values["action_description"]
+                                 + deltasDescription(deltas));
+        setAttrs(update);
+      });
+  }
+  on('clicked:topaction', doTopAction);
+
+  var undoTopAction = function () {
+    getAttrs(["EP_t", "EP_t_max", "SP",
+              "action_feats", "action_EP", "action_SP"], 
+      function(values) {
+        var deltas = multiplyDeltas(topActionDeltas(values), -1);
+        var update = makeUpdate(values, deltas);
+        var restored = deltasDescription(deltas);
+        if (restored != "") {
+          update["pendingchat"] = "Undo restoring" + restored;
+        }
+        setAttrs(update);
+      });
+  }
+  on('clicked:undotopaction', undoTopAction);
+
+  var topRollCommand = function(values) {
+    var ability =  Number(values["roll_ability"]);
+    var modifiers = [Number(values["roll_mod1"]),
+                     Number(values["roll_mod2"]),
+                     Number(values["roll_mod3"]),
+                     Number(values["roll_advance_boost"])];
+    var base = ability + modifiersToTotal(modifiers);
+    var description = (  values["roll_skill"] + " "
+                       + String(ability) + modifiersToString(modifiers));
+    return "!EPRoll " + String(base) + " Tries " + description;
+  }
+
+  var doTopRoll = function (event) {
+    getAttrs(["EP_t", "EP_t_max", "SP",
+              "action_description", "action_feats",
+              "action_EP", "action_SP",
+              "roll_skill", "roll_ability",
+              "roll_mod1", "roll_mod2", "roll_mod3", "roll_advance_boost"],
+	function(values) {
+        var deltas = addDeltas(topActionDeltas(values),
+                               topRollDeltas(values));
+        var update = makeUpdate(values, deltas);
+        var description = (  values["action_description"]
+                           + deltasDescription(deltas));
+        if (description != "") {
+          description = description + "\n";
+        }
+        update["pendingchat"] = description + topRollCommand(values);
+        setAttrs(update);
+      });
+  }
+  on('clicked:toproll', doTopRoll);
+
+  var undoTopRoll = function () {
+    getAttrs(["EP_t", "EP_t_max", "SP",
+              "action_feats", "action_EP", "action_SP",
+              "roll_advance_boost"], 
+      function(values) {
+        var deltas = multiplyDeltas(addDeltas(topActionDeltas(values),
+                                              topRollDeltas(values)),
+                                    -1);
+        var update = makeUpdate(values, deltas);
+        var restored = deltasDescription(deltas);
+        if (restored != "") {
+          update["pendingchat"] = "Undo restoring" + restored;
+        }
+        setAttrs(update);
+      });
+  }
+  on('clicked:undotoproll', undoTopRoll);
+
+  var updateTopActEnables = function () {
+    log("Updating top action enables");
+    getAttrs(["EP_t", "SP",
+              "action_feats", "action_EP", "action_SP", "roll_advance_boost"],
+      function(values) {
+        var top_action_deltas = topActionDeltas(values);
+        var top_roll_deltas = addDeltas(topActionDeltas(values),
+					topRollDeltas(values));
+        log(values);
+	log(top_action_deltas);
+        var update = {"disable_do":
+                      isLegalUpdate(values, top_action_deltas) ? "0" : "1",
+                      "disable_do_and_roll":
+                      isLegalUpdate(values, top_roll_deltas) ? "0" : "1"};
+        log(update);
+        setAttrs(update);
+      });
+  }
+
+  on("change:ep_t" +
+     " change:sp" +
+     " change:action_feats" +
+     " change:action_ep" +
+     " change:action_sp" +
+     " change:roll_advance_boost",
+     updateTopActEnables);
+
+  // ----- EP_t, and SP ---- 
+  const updateEP = function() {
+    const power = "power";
+    const EP_t_max = "EP_t_max";
+    const SP_max = "SP_max";
+    getAttrs([power, EP_t_max, SP_max], function(values) {
+      var power_v = Number(values[power]);
+      const EP_t_max_v = Number(values[EP_t_max]);
+      const SP_max_v = Number(values[SP_max]);
+      const power_points = (power_v < 6 ?
+                            power_v :
+		            Math.floor(5*(Math.sqrt(power_v - 1) - 1)));
+      const new_SP_max = Math.floor((power_points - 3 * EP_t_max_v) / 2);
+      // We get called from spurrios changes to SP_max,
+      // So only reset all the values if something actually changed.
+      log("EP_t: " + EP_t_max_v + "  SP: " + SP_max_v
+          + "  new SP: " + new_SP_max);
+      if (new_SP_max != SP_max_v) {
+          setAttrs({"EP_t": EP_t_max_v,
+                    "SP_max": new_SP_max,
+                    "SP": new_SP_max});
+      }
+    });
+  }
+  on("change:power change:ep_t_max", updateEP);
+
+  const fixPower = function() {
+    const power = "power";
+    const EP_max = "EP_max";
+    const SP_max = "SP_max";
+    getAttrs([power, EP_max, SP_max], function(values) {
+      var power_v = Number(values[power]);
+      const EP_max_v = Number(values[EP_max]);
+      const SP_max_v = Number(values[SP_max]);
+      // Set power to EP if we have an old sheet, where it wasn't set yet.
+      if (power_v == 0 && SP_max_v == 0 && EP_max_v > 0) {
+        power_v = EP_max_v
+      }
+      setAttrs({"power": power_v}, null, updateEP);
+    });
+  }
+  on("sheet:opened", fixPower);
+
+  // ----- Tab navigation -----
+  ["overview", "basic", "equipment", "skills", "spells", "notes"].forEach(
+     button => { on(`clicked:${button}`, function() {
+                   setAttrs({chosentab: button});
+                  });
+  });
+
+  // ----- Discipline points -----
+  const updateTP = function () {
+    const CP = "CP";
+    const TP = "TP";
+    getAttrs([CP], function(values) {
+      const TP_v = Math.floor(Number(values[CP])/10)
+      setAttrs({"TP": TP_v});
+    });
+  }
+  on("change:cp sheet:opened",
+     updateTP);
+
+  // ----- Attribute costs -----
+  
+  const updateAttributeCost = function() {
+    getAttrs(["IQ", "DX", "BR"], function(attributes) {
+      const IQ = Number(attributes.IQ)
+      const DX = Number(attributes.DX)
+      const BR = Number(attributes.BR)
+      const total = IQ + DX + BR
+      const total_squares = IQ**2 + DX**2 + BR**2
+      var cost = "??"
+      if (total === 3) {
+        if (total_squares === 3) {
+          cost = -5;
+        } else if (total_squares === 5) {
+          cost = 0;
+        } else if (total_squares <= 9) {
+          cost = 10;
+        }
+      }
+      setAttrs({displayed_attribute_CP: String(cost),
+	        attribute_CP: cost === "??" ? 0 : cost})
+      });
+  }
+  on("change:iq change:dx change:br", updateAttributeCost);
+
+  // ----- Advantage and disadvantage costs -----
+  const advantageCosts = {healthy: 6,
+	                  packmule: 4,
+	                  strongarms: 6,
+	                  brute: 4,
+	                  fast: 6,
+	                  athlete: 4,
+	                  alert: 4,
+	                  wary: 4,
+	                  mage: 6,
+	                  devout: 6}
+  const advantageNameTranslations = {packmule: "Pack Mule",
+                                     strongarms: "Strong Arms",
+                                    athlete: "Natural Athlete"}
+
+  // Advantages used to be stored as _plus or _minus, rather than as _count.
+  // Go through all of those, transfer them to _count, and eliminate them.
+  const migrateAdvantages = function() {
+    const fixed_advantage_prefixes = Object.keys(advantageCosts).map(
+      advantage => "advantage_" + advantage + "_");
+    const fixed_advantage_plus_fields = fixed_advantage_prefixes.map(
+      prefix => prefix + "plus");
+    const fixed_advantage_minus_fields = fixed_advantage_prefixes.map(
+      prefix => prefix + "minus");
+    getAttrs(fixed_advantage_plus_fields.concat(fixed_advantage_minus_fields),
+             function(attributes) {
+      const update = {};
+      for (const advantage of Object.keys(advantageCosts)) {
+        const prefix = "advantage_" + advantage + "_";
+        for (const polarity of ["plus", "minus"]) {
+          if (Number(attributes[prefix + polarity]) == 1) {
+            update[prefix + "count"] = polarity == "plus" ? "1" : "-1";
+            update[prefix + polarity] = "0";
+          }
+        }
+      }
+      if (Object.keys(update).length > 0) {
+        setAttrs(update);
+        updateAdvantagesCosts();
+      }
+    });
+  }
+  on("sheet:opened", migrateAdvantages);
+
+  // Given a array, where each element is an advantage object containing:
+  //   {base_cost, count}
+  // update the objects in the array to also contain a cost_description
+  // property, which will be a string like "3" or "2*4", that describes
+  // how the cost of that advantage was computed.
+  // Return the total of all the costs.
+  // The order of the elements of the array may be changed by the function.
+  const calculateAdvantageCosts = function(advantages) {
+    log("Calculating");
+    // Sort them from most expensive to least.
+    advantages.sort(function (a, b) { return b.base_cost - a.base_cost });
+    var seen = 0; // the number of positive advantages we have seen so far
+    var total_cost = 0;
+    for (const advantage of advantages) {
+      const base_cost = Number(advantage.base_cost);
+      const count = advantage.count;
+      if (count < 0) {
+        total_cost += -Math.floor(base_cost / 2);
+        advantage.cost_description = "-" + String(base_cost) + "/2";
+      } else if (count > 0) {
+        if (base_cost <= 0 ) {
+          total_cost += base_cost;
+          advantage.cost_description = String(base_cost);
+        } else {
+          const multiplier = (seen+1 + seen+count) * count / 2;
+          total_cost += base_cost * multiplier;
+          if (multiplier == 1) {
+            advantage.cost_description = String(base_cost);
+          } else {
+            advantage.cost_description = (
+              String(multiplier) + "×" + String(base_cost));
+          }
+          seen = seen + count;
+        }
+      } else {
+        advantage.cost_description = " ";
+      }      
+    }
+    log("Total cost " + String(total_cost));
+    log("Advantages " + JSON.stringify(advantages));
+    return total_cost;
+  }
+
+  const updateAdvantagesCosts = function () {
+    const fixed_advantage_prefixes = Object.keys(advantageCosts).map(
+      advantage => "advantage_" + advantage + "_");
+    const fixed_advantage_count_fields = fixed_advantage_prefixes.map(
+      prefix => prefix + "count");
+    getSectionIDs("extraadvantage", function(extra_ids) {
+      const extra_advantage_cost_fields =  extra_ids.map(
+        id => "repeating_extraadvantage_" + id + "_extraadvantageCP");
+      getAttrs(fixed_advantage_count_fields.concat(extra_advantage_cost_fields),
+               function(attributes) {
+        const fixed_advantages = Object.keys(advantageCosts).map(
+          function(advantage) {
+            const prefix = "advantage_" + advantage + "_";
+            return {description_key: prefix + "CPdescription",
+                    base_cost: advantageCosts[advantage],
+                    count: Number(attributes[prefix + "count"])};
+	});
+        const extra_advantages = extra_ids.map(
+          function(extra_id) {
+            const prefix = "repeating_extraadvantage_" + extra_id + "_"
+            return {description_key: prefix + "extraadvantageCPdescription",
+                    base_cost: Number(attributes[prefix + "extraadvantageCP"]),
+                count: 1};
+	});
+        const advantages = fixed_advantages.concat(extra_advantages);
+        const total_cost = calculateAdvantageCosts(advantages);
+        const update = {advantage_total_CP: total_cost};
+        for (const advantage of advantages) {
+          update[advantage.description_key] = advantage.cost_description;
+        }
+        setAttrs(update);
+      });
+    });
+  }
+
+  on(Object.keys(advantageCosts).map(
+       advantage => `change:advantage_${advantage}_count`
+     ).join(" "),
+     updateAdvantagesCosts);
+
+  on((  "change:repeating_extraadvantage:extraadvantageCP"
+      + " remove:repeating_extraadvantage"),
+     updateAdvantagesCosts);
+
+  const updateHPMax = function () {
+    const BR = "BR";
+    const healthy = "advantage_healthy_count";
+    getAttrs([BR, healthy], function(values) {
+      const effective_BR = (Number(values[BR])
+	                    + Number(values[healthy]))
+      const max_hp = (effective_BR <= -3 ?
+                      8 + effective_BR :
+                      12 + effective_BR*(effective_BR+7)/2)
+      setAttrs({"HP_max": max_hp});
+    });
+  }
+  on("change:br change:advantage_healthy_count" +
+     " sheet:opened",
+     updateHPMax);
+
+  const reset_EP_t = function() {
+    const EP_t = "EP_t";
+    const EP_t_max = "EP_t_max";
+    getAttrs([EP_t, EP_t_max], function(values) {
+      const EP_t_max_v = Number(values[EP_t_max]);
+      setAttrs({EP_t: EP_t_max_v + Math.min(EP_t_max_v, Number(values[EP_t]))});
+    });
+  }
+  on("clicked:reset_ep_t", reset_EP_t);
+
+  const convertSP = function() {
+    const EP_t = "EP_t";
+    const SP = "SP";
+    getAttrs([EP_t, SP], function(attributes) {
+      var EP_t_v = Number(attributes[EP_t])
+      var SP_v = Number(attributes[SP])
+      if (SP_v > 0) {
+        setAttrs({"EP_t": EP_t_v + 2,
+                  "SP": SP_v - 1});
+      }
+    });
+  }
+  on("clicked:convert_sp", convertSP);
+
+  const reset_SP = function() {
+    const SP_max = "SP_max";
+    getAttrs([SP_max], function(values) {
+      setAttrs({"SP": values[SP_max]});
+    });
+  }
+  on("clicked:reset_sp", reset_SP);
+
+  const reset_HP = function() {
+    const HP_max = "HP_max";
+    getAttrs([HP_max], function(values) {
+      setAttrs({"HP": values[HP_max]});
+    });
+  }
+  on("clicked:reset_hp", reset_HP);
+
+
+  // ----- Epic Feats -----
+
+  // Set E for extraordinary
+  on("change:repeating_feat:featextraordinary", function() {
+    getAttrs(["repeating_feat_featextraordinary"], function (values) {
+      const letter = (
+        values.repeating_feat_featextraordinary === "1" ? "E" : " ")
+      setAttrs({"repeating_feat_featextraordinaryletter": letter})
+    });
+  });
+
+  on("change:repeating_feat:featcp remove:repeating_feat",
+     function () { updateTotalCP("feat"); });
+
+  // Set default CP cost
+  // There is no event for a row being added, so new rows start out with
+  // empty cost. Then we set it to the usual 4 when a feat name is entered.
+  on("change:repeating_feat:featname", function(event) {
+    var prev_name = event.previousValue
+    const new_name = event.newValue
+    // When a new row is filled in for the first time, previousValue
+    // comes back as the new value.
+    if (prev_name == new_name) { prev_name = undefined }
+    if (isEmptyValue(prev_name) !== isEmptyValue(new_name)) {
+      var field_name_parts = event.sourceAttribute.split("_")
+      field_name_parts.pop()
+      field_name_parts.push("featCP")
+      const CP_field = field_name_parts.join("_")
+      getAttrs([field_name_parts.join("_")], function(values) {
+        const prev_CP_cost = values[CP_field]
+        if (isEmptyValue(prev_CP_cost) === isEmptyValue(prev_name)) {
+          var default_value = {}
+          default_value[CP_field] = isEmptyValue(new_name) ? "0" : "4"
+          setAttrs(default_value);
+        }
+      });
+    }
+  });
+
+  // -------- Skills ---------
+
+  // Update the abilities that are copied elsewhere on the character sheet
+  const updateCopiedAbilities = function () {
+    const DX = "DX";
+    const weight_penalty = "weight_penalty";
+    getSectionIDsOrdered("skill", function(ids) {
+      const disciplineinfos = ids.map(
+	id => `repeating_skill_${id}_skilldisciplineinfo`);
+      const expertises = ids.map(
+        id => `repeating_skill_${id}_skillexpertise`);
+      const abilities = ids.map(
+        id => `repeating_skill_${id}_skillability`);
+      const names = ids.map(
+        id => `repeating_skill_${id}_skillname`);
+      getAttrs(disciplineinfos.concat(expertises)
+	                      .concat(abilities).concat(names)
+	                      .concat([DX, weight_penalty]), function(values) {
+        const DX_n = Number(values[DX])
+	const weight_penalty_n = Number(values[weight_penalty])
+        // Make a map from skill names to their index.
+        var skill_map = _.object(
+          names.map(name => values[name].toLowerCase().trim()),
+          _.range(ids.length))
+        var min_expertises = {}
+        for (var discipline of ["defense", "defend", // Try both ways.
+		                "attack"]) {
+          var min_expertise = -5
+          // If the character has the discipline, that gives them
+          // a better minimum expertise.
+          if (discipline in skill_map) {
+            const discipline_index = skill_map[discipline]
+            const expertise_v = values[expertises[discipline_index]]
+            if (values[disciplineinfos[discipline_index]] === "D"
+                && expertise_v !== "--") {
+              min_expertise = -2 + Number(expertise_v)
+            }
+          }
+          min_expertises[discipline] = min_expertise
+        }
+        // Try to find an ability for each skill.
+        var update = {}
+        for (var skill of ["defend", "aim spell", "spell touch"]) {
+	  // First, get the ability assuming there is no training
+          var ability = DX_n + (skill === "aim spell" ?
+                                min_expertises["attack"] + 3 :
+                                skill === "spell touch" ?
+                                min_expertises["attack"] + 4 :
+                                Math.max(min_expertises["defense"],
+                                         min_expertises["defend"])- 3)
+          var skill_index = skill_map[skill]
+          if (skill_index && values[disciplineinfos[skill_index]] === "D") {
+              skill_index = null
+          }
+          // Check for the user using "defense" as a skill
+          if (!skill_index & skill === "defend") {
+            skill_index = skill_map["defense"];
+            if (skill_index && values[disciplineinfos[skill_index]] === "D") {
+              skill_index = null;
+            }
+          }
+          if (skill_index) { 
+            ability = Number(values[abilities[skill_index]]);
+          }
+          if (skill === "defend") {
+              ability = ability + weight_penalty_n;
+          }
+          update[skill.replace(' ', '_')] = ability
+        }
+        setAttrs(update);
+      });
+    });
+  }
+  on("change:repeating_skill:skilldisciplineinfo" +
+     " change:repeating_skill:skillexpertise" +
+     " change:repeating_skill:skillability" +
+     " change:repeating_skill:skillname" +
+     " change:DX change:weight_penalty sheet:opened remove:repeating_skill",
+    updateCopiedAbilities);
+
+  // skilldisciplineexpertise holds the expertise of the discipline that
+  // applies to the skill. We walk through all the items, in order,
+  // note which are disciplines, and set the discipline expertise of
+  // all skills to that of the most recent discipline we encountered.
+  const updateSkillDisciplineExpertises = function (section) {
+    getSectionIDsOrdered(section, function(ids) {
+      const disciplineinfos = ids.map(
+	id => `repeating_${section}_${id}_skilldisciplineinfo`);
+      const isdisciplines = ids.map(
+	id => `repeating_${section}_${id}_skillisdiscipline`);
+      const expertises = ids.map(
+        id => `repeating_${section}_${id}_skillexpertise`);
+      const disciplineexpertises = ids.map(
+        id => `repeating_${section}_${id}_skilldisciplineexpertise`);
+      getAttrs(disciplineinfos.concat(isdisciplines).concat(expertises)
+               .concat(disciplineexpertises),
+               function(attributes) {
+        var discipline_expertise = 0;
+        var update = {}
+        for (var i = 0; i < ids.length; ++i) {
+          if (attributes[disciplineinfos[i]] === "D") {
+            discipline_expertise = attributes[expertises[i]]
+            if (attributes[isdisciplines[i]] != 1) {
+              update[isdisciplines[i]] = 1
+            }
+          } else {
+            if (attributes[isdisciplines[i]] != 0) {
+              update[isdisciplines[i]] = 0
+            }
+            var this_discipline_expertise = 0
+            if (attributes[disciplineinfos[i]] === "⇡") {
+              this_discipline_expertise = discipline_expertise
+            }
+	    if (this_discipline_expertise
+                     !== attributes[disciplineexpertises[i]]) {
+            update[disciplineexpertises[i]] = this_discipline_expertise
+            }
+          }
+        }
+        if (! _.isEmpty(update)) {
+          setAttrs(update);
+        }
+      });
+    });
+  }
+
+  const updateSkillDerivedForId = function(section, row_id) {
+    const name = `repeating_${section}_${row_id}_skillname`
+    const disciplineinfo = `repeating_${section}_${row_id}_skilldisciplineinfo`
+    const expertise = `repeating_${section}_${row_id}_skillexpertise`
+    const disciplineexpertise = (
+      `repeating_${section}_${row_id}_skilldisciplineexpertise`)
+    const attribute = `repeating_${section}_${row_id}_skillattribute`
+    const base = `repeating_${section}_${row_id}_skillbase`
+    const tp = `repeating_${section}_${row_id}_skillTP`
+    const cp = `repeating_${section}_${row_id}_skillCP`
+    const ability = `repeating_${section}_${row_id}_skillability`
+    const mage = "advantage_mage_count"
+    const devout = "advantage_devout_count"
+    getAttrs([name, disciplineinfo, expertise, disciplineexpertise,
+              attribute, base, "IQ", "DX", mage, devout],
+             function(values) {
+      // Update TP and CP costs
+      var update = {}
+      if (values[disciplineinfo] === "D") {
+        const cost = ({"--": 0, "ST": 0, "-1": 0, "0": 0, "1": 1,
+                       "2": 3, "3": 6, "4": 10, "5": 15, "6": 21,
+                       "7": 28, "8": 36, "9": 45}
+                      [values[expertise]])
+        update[tp] = cost === 0 ? " " : cost
+        update[cp] = " "
+        // Fix illegal values for expertise of discipline.
+        if ({"ST": true, "-1": true, "0": true}[values[expertise]]) {
+          update[expertise] = "--"
+        }
+      } else {
+        const cost = ({"--": 0, "ST": 0, "-1": 1, "0": 2, "1": 4, 
+                       "2": 8, "3": 15, "4": 25, "5": 38, "6": 54,
+                       "7": 73, "8": 95, "9": 120}
+                      [values[expertise]])
+        update[tp] = " "
+        update[cp] = cost === 0 ? " " : cost
+        // Clear base if it is 0.
+        if (values[base] == "0") {
+          update[base] = " "
+        }
+        // Update ability
+        const expertise_v = values[expertise]
+        const attribute_v = values[attribute]
+        const disciplineexpertise_v = values[disciplineexpertise]
+        const disciplineexpertise_n = (disciplineexpertise_v === "--" ? 0 :
+			               Number(disciplineexpertise_v))
+        const IQ_n = Number(values["IQ"])
+        const DX_n = Number(values["DX"])
+        if (attribute_v == "") {
+          update[ability] = "??"
+        } else {
+          update[ability] = (
+           (attribute_v == "IQ" ? IQ_n :
+            attribute_v == "DX" ? DX_n :
+                                  IQ_n + DX_n) +
+           (section === "arcane" ?
+            Number(values[mage]) * 2 :
+            values[name].toLowerCase().trim().startsWith("pray") ?
+            Number(values[devout]) * 2 :
+            0) +
+           Number(values[base]) +
+           disciplineexpertise_n +
+           (expertise_v == "ST" ? -1 :
+            expertise_v !== "--" ? Number(expertise_v) :
+            disciplineexpertise_n === 0 ? -5 : -2))
+        }
+      }
+      setAttrs(update);
+    });
+  }
+
+  const updateSkillDerived = function(section, event) {
+    const row_id = event.sourceAttribute.split("_")[2]
+    updateSkillDerivedForId(section, row_id);
+    updateTotalTP(section, "skill");
+    updateTotalCP(section, "skill");
+  }
+
+  const updateAllSkillsDerived = function (section) {
+    getSectionIDs(section, function(ids) {
+      for (var i = 0; i < ids.length; ++i) {
+        updateSkillDerivedForId(section, ids[i]);
+      }
+      updateTotalTP(section, "skill");
+      updateTotalCP(section, "skill");
+    });
+  }
+
+on("change:repeating_skill:skilldisciplineinfo" +
+     " change:repeating_skill:skillexpertise" +
+     " change:repeating_skill:skillname" + // Fires for new skill.
+     " remove:repeating_skill" +
+     " change:_reporder:skill",
+    function() { updateSkillDisciplineExpertises("skill") });
+
+on("change:repeating_skill:skilldisciplineinfo" +
+     " change:repeating_skill:skillexpertise" +
+     " change:repeating_skill:skilldisciplineexpertise" +
+     " change:repeating_skill:skillattribute" +
+     " change:repeating_skill:skillbase",
+    function (event) { updateSkillDerived("skill", event) });
+
+  on(  "change:IQ change:DX change:advantage_mage_count"
+     + " change:advantage_devout_count", 
+    function () { updateAllSkillsDerived("skill") });
+			
+  on("remove:repeating_skill",
+    function () { updateTotalTP("skill");
+                  updateTotalCP("skill")
+    });
+
+  // -------------- Equipment -------------
+  const updateArmorValue = function () {
+    const armor = "armor_defense";
+    const shield = "shield_defense";
+    const melee = "melee_boost";
+    const ranged = "ranged_boost";
+    const defend = "defend";
+    const reaction = "reaction_penalty";
+    getAttrs([armor, shield, melee, ranged, defend, reaction],
+      function(values) {
+      const cur_armor = Number(values[armor]);
+      const cur_shield = Number(values[shield]);
+      const cur_reaction = Number(values[reaction]);
+      const cur_defend = Number(values["defend"]) + cur_armor;
+      var update = {}
+      for (var defense of ["dodge", "block"]) {
+        var base = (  cur_defend
+                     + (defense === "block" ? cur_shield : 0)
+                     - Math.abs(Number(values[reaction])));
+        for (var attack of ["melee", "ranged"]) {
+          var total = base + Number(values[attack + "_boost"]);
+          update["current_" + defense + "_" + attack] = String(total);
+        }
+      }
+      setAttrs(update);
+    });
+  }
+  on("change:armor_defense change:shield_defense change:defend" +
+     " change:melee_boost change:ranged_boost change:reaction_penalty",
+     updateArmorValue);
+
+  const updateSpeed = function () {
+    const DX = "DX";
+    const fast = "advantage_fast_count";
+    const penalty = "weight_penalty";
+      getAttrs([DX, fast, penalty], function(values) {
+      const effective_DX = (Number(values[DX])
+                            + Number(values[fast]));
+      const penalty_n = Number(values[penalty]);
+      const DX_reduction = Math.max(0, Math.min(effective_DX,
+                                                Math.floor(-penalty_n/2)));
+      setAttrs({"speed":
+                Math.max(0, 6 + effective_DX + penalty_n - DX_reduction)});
+    });
+  }
+  on("change:dx change:advantage_fast_count"
+     + " change:weight_penalty sheet:opened",
+     updateSpeed);
+
+  const updateInitiative = function () {
+    const IQ = "IQ";
+    const alert = "advantage_alert_count";
+      getAttrs([IQ, alert], function(values) {
+      const effective_IQ = (Number(values[IQ])
+                            + Number(values[alert]))
+      setAttrs({"initiative": effective_IQ});
+    });
+  }
+  on("change:iq change:advantage_alert_count"
+     + " sheet:opened",
+     updateInitiative);
+
+  const updateWeightPenalties = function() {
+    const weight = "equipment_total_weight"
+    const BR = "BR"
+    const packmule = "advantage_packmule_count"
+    const highlight = function(penalty) { 
+      return `highlight_weight_penalty_${penalty}`
+    }
+    getAttrs([weight, BR, packmule], function(values) {
+      const weight_n = convertToFloat(values[weight])
+      const effective_BR = (Number(values[BR])
+                            + Number(values[packmule]))
+      var current_level = 0;
+      var update = {}
+      for (var level = 1; level <= 6; ++level) {
+        const limit = Math.round(((level*level-1)*12/7 + 8.333)
+                                 * 3 * 2**(effective_BR/3))
+        if (weight_n >= limit) { current_level = level } 
+        update[`penalty_weight_${level}`] = limit
+        update[highlight(level)] = "0"
+      }
+      if (current_level !== 0) {
+        update[highlight(current_level)] = "1"
+      }
+      if (current_level === 6) { current_level = 100 }
+      update["weight_penalty"] = -current_level
+      update["displayed_weight_penalty"] = (
+        current_level === 0 ? " " :
+        current_level === 100 ? "-∞" :
+        -current_level)
+      setAttrs(update);
+    });
+  }
+  on("change:equipment_total_weight" +
+    " change:br" +
+    " change:advantage_packmule_count" +
+    " sheet:opened",
+    updateWeightPenalties);
+
+  const updateTotalX = function(x) {
+    const armor = `armor_${x}`
+    const shield = `shield_${x}`
+    const weapons = `weapon_total_${x}`
+    const items = `item_total_${x}`
+    getAttrs([armor, shield, weapons, items], function(values) {
+      var update ={}
+      update[`equipment_total_${x}`] = roundToTwoPlaces(
+               convertToFloat(values[armor]) + convertToFloat(values[shield]) +
+               convertToFloat(values[weapons]) + convertToFloat(values[items]))
+      setAttrs(update);
+    });
+  }
+
+  on("change:armor_weight change:shield_weight" +
+     " change:weapon_total_weight change:item_total_weight",
+     function() { updateTotalX("weight") });
+  on("change:armor_value change:shield_value" +
+     " change:weapon_total_value change:item_total_value",
+     function() { updateTotalX("value") });
+
+  // Add up the total weight for repeating_<section>:<section><X>
+  // and put it in <section>_total_<X>
+  const updateTotalRepeatingX = function(section, x) {
+    getSectionIDs(section, function(ids) {
+      const x_fields = ids.map(
+        id => `repeating_${section}_${id}_${section}${x}`);
+      const count_fields = ids.map(
+        id => `repeating_${section}_${id}_${section}count`);
+      getAttrs(x_fields.concat(count_fields), function(values) {
+        var total = 0;
+        for (var i = 0; i < ids.length; ++i) {
+          total += (convertToFloat(values[x_fields[i]])
+                    * convertToFloat(values[count_fields[i]]))
+        }
+        var update = {}
+        update[`${section}_total_${x}`] = total
+        setAttrs(update);
+      });
+    });
+  }
+
+  on("change:repeating_weapon:weaponweight" +
+     " change:repeating_weapon:weaponcount" +
+     " remove:repeating_weapon",
+    function() { updateTotalRepeatingX("weapon", "weight") });
+  on("change:repeating_weapon:weaponvalue" +
+     " change:repeating_weapon:weaponcount" +
+     " remove:repeating_weapon",
+    function() { updateTotalRepeatingX("weapon", "value") });
+  on("change:repeating_item:itemweight" +
+     " change:repeating_item:itemcount" +
+     " remove:repeating_item",
+    function() { updateTotalRepeatingX("item", "weight") });
+  on("change:repeating_item:itemvalue" +
+     " change:repeating_item:itemcount" +
+     " remove:repeating_item",
+    function() { updateTotalRepeatingX("item", "value") });
+
+  // -------- Spells ----------
+  ["arcane","divine", "innate"].forEach(button => {
+     on(`clicked:${button}`, function() {
+      setAttrs({chosenspelltype: button});
+    });
+  });
+
+  on("change:repeating_arcane:skilldisciplineinfo" +
+     " change:repeating_arcane:skillexpertise" +
+     " change:repeating_arcane:skillname" + // Fires for new skill.
+     " remove:repeating_arcane" +
+     " change:_reporder:arcane",
+    function() { updateSkillDisciplineExpertises("arcane") });
+
+  on("change:repeating_arcane:skilldisciplineinfo" +
+     " change:repeating_arcane:skillexpertise" +
+     " change:repeating_arcane:skilldisciplineexpertise" +
+     " change:repeating_arcane:skillattribute" +
+     " change:repeating_arcane:skillbase",
+    function (event) { updateSkillDerived("arcane", event) });
+
+  on("change:IQ change:advantage_mage_count", 
+    function () { updateAllSkillsDerived("arcane") });
+			
+  on("remove:repeating_arcane",
+    function () { updateTotalTP("arcane", "skill");
+                  updateTotalCP("arcane", "skill")});
+
+  on("remove:repeating_innate change:repeating_innate:skillCP",
+    function () { updateTotalCP("innate", "skill") });
+
+  log("!!! SCRIPT LOADED !!!");	    
+
+</script>
