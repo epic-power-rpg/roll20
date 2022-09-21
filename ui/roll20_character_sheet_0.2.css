@@ -942,7 +942,7 @@ input.sheet-featCP{
 .sheet-spell-row > input ~ input,
 .sheet-spell-row > input ~ select,
 .sheet-spell-row > select ~ input {
-    margin-left: -1px; /* Make consecutive buttons overlap
+    margin-left: -1px; /* Make consecutive buttons overlap */
 }
 
 /* ------------ Notes -------------- */
