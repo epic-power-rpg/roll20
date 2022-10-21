@@ -1,4 +1,4 @@
-const EPRoll = function() {
+const prevEPRoll = function() {
     var total = 0;
     var text = '';
     var any_positive = false;
@@ -39,6 +39,80 @@ const EPRoll = function() {
     }
     return {total: total,
 	    text: text}
+}
+
+// Roll a single die, and return its value and text string.
+// If required_sign is present, flip any signed values so they agree with it.
+const RollDie = function(required_sign) {
+    const die = Math.ceil(6 * Math.random());
+    var value;
+    var text;
+    if (die === 6) {
+	value = "two_dice";
+	text = "\u29C9"; // two joined squares character
+    } else {
+	value = die - 3;
+	if (required_sign) {
+	    if (required_sign != Math.sign(value)) {
+		value = -value;
+	    }
+	}
+	text = value.toString();
+	if (value < 0) {
+            text = '<span style="color:red";>' + text + '</span>';
+	} else if (value >  0) {
+            text = '<span style="color:blue";>+' + text + '</span>';
+	}
+    }
+    return [value, text];
+}
+
+// Do the EP roll.
+const EPRoll = function() {
+    var total = 0;
+    var description = '';
+    var required_sign = null;
+    // We start with 2 dice.
+    var rolls_needed = 2;
+    var rolls_done = 0;
+    while (rolls_needed > rolls_done) {
+	var [value, text] = RollDie(required_sign);
+	rolls_done = rolls_done + 1;
+	if (value == "two_dice") {
+	    rolls_needed = rolls_needed + 2;
+	}
+	// If we are rolling extra dice, the 0s get rerolled.
+	else if (value == 0 && rolls_done > 2) {
+	    rolls_needed = rolls_needed + 1;
+	} else {
+	    total = total + value;
+	}
+	if (description === '') {
+	    description = text;
+	} else {
+            description = description + ", " + text;
+	}
+	// After we have rolled the first 2 dice,
+	// if we got any two_dice rolls, we have to do some special stuff.
+	if (rolls_done == 2 && rolls_needed > 2) {
+	    // If one of the dice was a 0, we have to reroll it.
+	    if (total == 0) {
+	        // If one of the dice was a 0, we have to reroll it.
+	        if (rolls_needed == 4) {
+		    rolls_needed = rolls_needed + 1;
+	        }
+	        value = 0
+	        while (value == 0 || value == "two_dice") {
+		    [value, text] = RollDie(null);
+	        }
+	        total = value;
+	        description = description + ", " + text;
+	    }
+            required_sign = Math.sign(total);
+	}
+    }
+    return {total: total,
+	    text: description}
 }
 
 // This script is for rolling success rolls in the Epic Power RPG system.
