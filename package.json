@@ -1,0 +1,24 @@
+{
+  "name": "epic-power-rpg",
+  "version": "1.0.0",
+  "description": "Code for Epic Power",
+  "main": " ",
+  "repository": "git@github.com:epic-power-rpg/roll20.git",
+  "author": "Jaz Singh <jaz@color.com>",
+  "license": "apache-2.0",
+  "private": false,
+  "devDependencies": {
+    "eslint": "8.26.0",
+    "eslint-config-airbnb-base": "15.0.0",
+    "eslint-config-prettier": "8.5.0",
+    "eslint-plugin-import": "2.26.0",
+    "eslint-plugin-prettier": "4.2.1",
+    "prettier": "2.7.1"
+  },
+  "scripts": {
+    "lint": "eslint",
+    "lint:fix": "yarn lint --fix",
+    "lint:all": "yarn lint --ext .js .",
+    "lint:fix-all": "yarn lint:all --fix"
+  }
+}
