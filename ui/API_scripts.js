@@ -34,7 +34,7 @@ const prevEPRoll = function() {
       if (text === '') {
         text = String(roll);
       } else {
-        text = text + ', ' + roll;
+        text = `${text}, ${roll}`;
       }
     }
   }
