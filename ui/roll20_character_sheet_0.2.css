@@ -251,8 +251,8 @@ input.sheet-attribute-value.sheet-attribute-value.sheet-attribute-value {
 }
 
 span.sheet-attribute-value {
-  display: inline-block;
   /* Make the height work for span. */
+  display: inline-block;
   border-color: transparent;
 }
 
@@ -317,8 +317,8 @@ input[disabled], input[readonly] {
 
 .sheet-roll-section {
   display: flex;
-  margin-top: -26px;
   /* Get rid of the space the sheet puts above us. */
+  margin-top: -26px;
 }
 
 .sheet-roll-select-section {
@@ -790,8 +790,8 @@ input.sheet-featCP {
   border-top-color: black;
   border-left-color: black;
   font-weight: bold;
-  z-index: 1;
   /* Make the border go above other borders */
+  z-index: 1;
 }
 
 .sheet-isdiscipline[value="1"]~.sheet-skillability,
@@ -810,8 +810,8 @@ input.sheet-featCP {
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin-top: -1px;
   /* and make rows overlap */
+  margin-top: -1px;
 }
 
 /* -------- Equipment --------- */
@@ -921,8 +921,8 @@ input.sheet-featCP {
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin-top: -1px;
   /* and make rows overlap */
+  margin-top: -1px;
 }
 
 /* ------------- Spells ------------*/
@@ -1047,8 +1047,8 @@ input.sheet-featCP {
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  margin-top: -1px;
   /* and make rows overlap */
+  margin-top: -1px;
 }
 
 .sheet-spell-row {
@@ -1060,8 +1060,8 @@ input.sheet-featCP {
 .sheet-spell-row>input~input,
 .sheet-spell-row>input~select,
 .sheet-spell-row>select~input {
-  margin-left: -1px;
   /* Make consecutive buttons overlap */
+  margin-left: -1px;
 }
 
 /* ------------ Notes -------------- */
@@ -1075,6 +1075,6 @@ input.sheet-featCP {
 }
 
 .sheet-notes div[data-groupname]>div {
-  margin-top: -1px;
   /* and make rows overlap */
+  margin-top: -1px;
 }
