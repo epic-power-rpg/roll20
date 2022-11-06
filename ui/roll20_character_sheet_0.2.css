@@ -995,6 +995,15 @@ input.sheet-featCP {
   width: 70px;
 }
 
+.sheet-addSpellDurationToTurnOrder {
+  width: 50px;
+}
+
+.sheet-addSpellDurationToTurnOrderButton {
+  /* Account for 2 pixel button border, and 8 pixel margin */
+  width: 30px;
+}
+
 .sheet-spellhasnote.sheet-spellhasnote.sheet-spellhasnote.sheet-spellhasnote {
   width: 12px;
   margin-left: 0px;

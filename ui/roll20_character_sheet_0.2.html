@@ -877,7 +877,6 @@
     </span>
     <button type="roll" value="!EPRoll @{aim_spell} Aims Spell: @{aim_spell}">
     </button>
-
   </div>
 
   <!-- Arcane spells -->
@@ -1017,6 +1016,7 @@
       <div class="spellrange">Range</div>
       <div class="spelltarget">Target</div>
       <div class="spellduration">Duration</div>
+      <div class="addSpellDurationToTurnOrder">Turn</div>
       <div class="spellhasnote">N</div>
       <div class="skillCP">CP</div>
     </div>
@@ -1034,6 +1034,8 @@
         <input name="attr_spellrange" class="spellrange" type="text" />
         <input name="attr_spelltarget" class="spelltarget" type="text" />
         <input name="attr_spellduration" class="spellduration" type="text" />
+        <button type="action" name="act_addspelldurationtoturnorder" class="addSpellDurationToTurnOrderButton"
+          >Add</button>
         <input name="attr_spellhasnote" class="spellhasnote" type="checkbox" value="1" />
         <input name="attr_skillCP" class="skillCP" type="number" />
       </div>
@@ -2183,6 +2185,34 @@
 
   on("remove:repeating_innate change:repeating_innate:skillCP",
     function () { updateTotalCP("innate", "skill") });
+
+  function getAttrsAfterUiUpdates(attributes, callback) {
+    setTimeout(() => {
+      getAttrs(attributes, callback);
+    }, 0);
+  }
+
+  on("clicked:repeating_innate:addspelldurationtoturnorder", function () {
+    getAttrsAfterUiUpdates([
+      "character_id",
+      "repeating_innate_skillname",
+      "repeating_innate_spellduration",
+    ], function(values) {
+      const {
+        character_id,
+        repeating_innate_skillname: skillName,
+        repeating_innate_spellduration: spellDuration,
+      } = values;
+      console.log("repeating_innate addspelldurationtoturnorder clicked !", {
+        skillName,
+        spellDuration,
+      });
+      const updatedAttributes = {
+        pendingchat: `\n!addSpellDurationToTurnOrder ${character_id} ${skillName.split(' ').join('-')} ${spellDuration}\n`
+      }
+      setAttrs(updatedAttributes);
+    });
+  });
 
   log("!!! SCRIPT LOADED !!!");
 
