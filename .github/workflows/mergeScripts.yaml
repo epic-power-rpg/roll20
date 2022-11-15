@@ -1,0 +1,17 @@
+name: "Merge Roll20 scripts"
+run-name: ${{ github.actor }} is merging roll20 scripts 🚀
+on: [push]
+jobs:
+  mergeScripts:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - name: Run mergeScripts.sh
+        run: |
+          source ${{ github.workspace }}/mergeScripts.sh
+      - name: Commit any generated files
+        uses: EndBug/add-and-commit@v9
+        with:
+          default_author: github_actions
+          message: Merge source scripts and generate `ui/bin/roll20.js`
