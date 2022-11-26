@@ -19,6 +19,7 @@
     "lint": "eslint",
     "lint:fix": "yarn lint --fix",
     "lint:all": "yarn lint --ext .js .",
-    "lint:fix-all": "yarn lint:all --fix"
+    "lint:fix-all": "yarn lint:all --fix",
+    "mergeScripts": "./mergeScripts.sh"
   }
 }
