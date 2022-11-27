@@ -1,6 +1,9 @@
 name: "Merge Roll20 scripts"
 run-name: ${{ github.actor }} is merging roll20 scripts 🚀
-on: [push]
+on:
+  push:
+    branches-ignore:
+      - 'main'
 jobs:
   mergeScripts:
     runs-on: ubuntu-latest
