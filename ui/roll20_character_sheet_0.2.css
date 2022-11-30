@@ -1,15 +1,26 @@
 /* Styles that apply everywhere */
+.characterviewer label, .characterviewer .label {
+  display: inline-block;
+  margin: 0;
+  text-align: right;
+  vertical-align: middle;
+  font-size: 1em;
+  font-weight: normal;
+}
+
+.characterviewer .charsheet {
+  padding: 0;
+  padding-top: 10px;
+}
 
 input[type=text] {
   padding: 1px 4px 1px 4px;
-  background-color: white;
   height: 22px;
 }
 
 input[type=number] {
   padding: 1px 0px 1px 3px;
   text-align: center;
-  background-color: white;
   height: 22px;
 }
 
@@ -39,7 +50,7 @@ button.btn.ui-draggable[type=roll]::before {
 
 /* Change the character for the do and roll dice button to be
    a big heavy two joined squares character */
-button.sheet-do-and-roll::before {
+button.do-and-roll::before {
   font-family: sans-serif;
   content: "⧉";
   font-size: 200%;
@@ -48,29 +59,29 @@ button.sheet-do-and-roll::before {
 
 /* Change the character for do buttons to be
    the play forward character */
-button.sheet-do::before {
+button.do::before {
   font-family: sans-serif;
   content: "▶";
 }
 
-button.sheet-do, button.sheet-do-and-roll {
+button.do, button.do-and-roll {
   background-image: linear-gradient(90deg, #ddf, #44f);
 }
 
-button.sheet-do {
+button.do {
   width: 18px;
 }
 
-button.sheet-big-control.sheet-do-and-roll {
+button.big-control.do-and-roll {
   width: 20px;
 }
 
-.sheet-disable-do[value="1"]~.sheet-do {
+.disable-do[value="1"]~.do {
   background-image: linear-gradient(90deg, #ddd, #ddd);
   pointer-events: none;
 }
 
-.sheet-disable-do-and-roll[value="1"]~.sheet-do-and-roll {
+.disable-do-and-roll[value="1"]~.do-and-roll {
   background-image: linear-gradient(90deg, #ddd, #ddd);
   pointer-events: none;
 }
@@ -78,19 +89,19 @@ button.sheet-big-control.sheet-do-and-roll {
 
 /* Change the character for undo buttons to be
    the play backward character */
-button.sheet-undo::before {
+button.undo::before {
   font-family: sans-serif;
   content: "◀";
 }
 
-button.sheet-undo {
+button.undo {
   background-image: linear-gradient(90deg, #f44, #fdd);
   line-height: 1;
   padding: 1px 1px;
 }
 
 /* Make action buttons look like roll buttons, but darken the borders */
-button.sheet-do, button.sheet-do-and-roll, button.sheet-undo {
+button.do, button.do-and-roll, button.undo {
   border: 1px solid #999;
   border-bottom-color: #777;
   -webkit-border-radius: 4px;
@@ -100,143 +111,147 @@ button.sheet-do, button.sheet-do-and-roll, button.sheet-undo {
 
 /* Generic styles */
 
-.sheet-invisible {
+.invisible {
   display: none;
 }
 
-.sheet-inline {
+.inline {
   display: inline-block;
 }
 
-.sheet-right {
+.right {
   text-align: right;
 }
 
-.sheet-center {
+.center {
   text-align: center;
 }
 
-.sheet-left {
+.left {
   text-align: left;
 }
 
-.sheet-middle {
+.middle {
   vertical-align: middle;
 }
 
-.sheet-narrow.sheet-narrow.sheet-narrow {
+.narrow.narrow.narrow {
   width: 25px;
 }
 
-.sheet-modifier-width.sheet-modifier-width.sheet-modifier-width {
+.modifier-width.modifier-width.modifier-width {
   width: 35px;
 }
 
-.sheet-narrowish.sheet-narrowish.sheet-narrowish {
+.narrowish.narrowish.narrowish {
   width: 40px;
 }
 
-.sheet-medium.sheet-medium.sheet-medium {
+.medium.medium.medium {
   width: 50px;
 }
 
-.sheet-wideish.sheet-wideish.sheet-wideish {
+.wideish.wideish.wideish {
   width: 60px;
 }
 
-.sheet-wide.sheet-wide.sheet-wide {
+.wide.wide.wide {
   width: 90px;
 }
 
-.sheet-wider.sheet-wider.sheet-wider {
+.wider.wider.wider {
   width: 150px;
 }
 
-.sheet-narrow-spacing {
+.narrow-spacing {
   line-height: 1;
 }
 
-.sheet-spacer {
+.spacer {
   height: 20px;
 }
 
-.sheet-horizontal-flex {
+.inlne-spacer {
+  width: 8px;
+}
+
+.horizontal-flex {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
 }
 
-.sheet-horizontal-flex-center {
+.horizontal-flex-center {
   display: flex;
   flex-direction: row;
   align-items: center;
 }
 
-.sheet-align-center.sheet-align-center.sheet-align-center {
+.align-center.align-center.align-center {
   align-items: center;
 }
 
-.sheet-flexing {
+.flexing {
   flex-grow: 1;
 }
 
-.sheet-no-shrink {
+.no-shrink {
   flex-shrink: 0;
 }
 
-.sheet-big.sheet-big.sheet-big.sheet-big {
+.big.big.big.big {
   font-size: 150%;
   font-weight: normal;
 }
 
-.sheet-biggish.sheet-biggish.sheet-biggish.sheet-biggish {
+.biggish.biggish.biggish.biggish {
   font-size: 130%;
   font-weight: normal;
 }
 
-.sheet-larger.sheet-larger.sheet-larger.sheet-larger {
+.larger.larger.larger.larger {
   font-size: 110%;
 }
 
-.sheet-CP.sheet-CP.sheet-CP.sheet-CP {
+.CP.CP.CP.CP {
   color: blue;
 }
 
-.sheet-TP.sheet-TP.sheet-TP.sheet-TP {
+.TP.TP.TP.TP {
   color: #40C000;
 }
 
-.sheet-bold {
+.bold {
   font-weight: bold;
 }
 
-.sheet-number.sheet-ability {
+.number.ability {
   font-weight: bold;
 }
 
-.sheet-children-separated> :not(:first-child) {
+.children-separated> :not(:first-child) {
   border: solid lightgrey;
   border-width: 1px 0px 0px 0px;
 }
 
-.sheet-label {
+.label {
   display: inline-block;
   vertical-align: middle;
   text-align: right;
 }
 
-.sheet-value {
+.value {
   display: inline-block;
   box-sizing: border-box;
 }
 
-.sheet-attribute-name {
+.attribute-name {
   display: inline-block;
   vertical-align: middle;
   text-align: right;
 }
 
-.sheet-attribute-value {
+.attribute-value {
   font-size: 150%;
   vertical-align: middle;
   margin: 1px;
@@ -246,17 +261,17 @@ button.sheet-do, button.sheet-do-and-roll, button.sheet-undo {
 }
 
 /* Make the height override the box's usual height */
-input.sheet-attribute-value.sheet-attribute-value.sheet-attribute-value {
+input.attribute-value.attribute-value.attribute-value {
   height: 24px;
 }
 
-span.sheet-attribute-value {
+span.attribute-value {
   /* Make the height work for span. */
   display: inline-block;
   border-color: transparent;
 }
 
-button.sheet-reset-total {
+button.reset-total {
   background-color: white;
   font-weight: bold;
   border-width: 1px;
@@ -267,7 +282,7 @@ button.sheet-reset-total {
   vertical-align: middle;
 }
 
-button.sheet-convert-button {
+button.convert-button {
   background-color: white;
   font-weight: bold;
   border-width: 1px;
@@ -284,26 +299,26 @@ input[disabled], input[readonly] {
   padding: 0px;
 }
 
-.sheet-flex-stack {
+.flex-stack {
   display: inline-flex;
   flex-direction: column;
   align-items: stretch;
 }
 
-.sheet-align-middle.sheet-align-middle.sheet-align-middle {
+.align-middle.align-middle.align-middle {
   align-items: middle;
 }
 
-.sheet-space-between {
+.space-between {
   justify-content: space-between;
 }
 
-.sheet-text-stack {
+.text-stack {
   display: inline-block;
   vertical-align: middle;
 }
 
-.sheet-table-header>div {
+.table-header>div {
   display: inline-block;
   text-align: center;
   font-weight: bold;
@@ -315,18 +330,18 @@ input[disabled], input[readonly] {
 
 /* ---------- Roll section ------------- */
 
-.sheet-roll-section {
+.roll-section {
   display: flex;
   /* Get rid of the space the sheet puts above us. */
   margin-top: -26px;
 }
 
-.sheet-roll-select-section {
+.roll-select-section {
   display: inline-flex;
   flex-direction: row;
 }
 
-.sheet-save-roll {
+.save-roll {
   font-size: 14px;
   line-height: 15px;
   width: 15px;
@@ -337,38 +352,38 @@ input[disabled], input[readonly] {
   background-color: white;
 }
 
-input.sheet-saved-roll {
+input.saved-roll {
   height: 8px;
 }
 
-.sheet-save-radio-row {
+.save-radio-row {
   display: flex;
   flex-direction: row;
 }
 
-.sheet-save-pending[value="1"]~.sheet-save-roll {
+.save-pending[value="1"]~.save-roll {
   border-color: #FFBF00;
   box-shadow: 3px 3px 3px #FFBF00;
 }
 
-.sheet-save-pending[value="1"]~.sheet-save-radio-stack .sheet-radio {
+.save-pending[value="1"]~.save-radio-stack .radio {
   border-color: #FFBF00;
   background: #E8E8E8;
   box-shadow: 3px 3px 3px #FFBF00;
 }
 
-.sheet-roll-chosen[value="1"]~.sheet-save-radio-row>button.sheet-roll-1,
-.sheet-roll-chosen[value="2"]~.sheet-save-radio-row>button.sheet-roll-2,
-.sheet-roll-chosen[value="3"]~.sheet-save-radio-row>button.sheet-roll-3,
-.sheet-roll-chosen[value="4"]~.sheet-save-radio-row>button.sheet-roll-4,
-.sheet-roll-chosen[value="5"]~.sheet-save-radio-row>button.sheet-roll-5,
-.sheet-roll-chosen[value="6"]~.sheet-save-radio-row>button.sheet-roll-6 {
+.roll-chosen[value="1"]~.save-radio-row>button.roll-1,
+.roll-chosen[value="2"]~.save-radio-row>button.roll-2,
+.roll-chosen[value="3"]~.save-radio-row>button.roll-3,
+.roll-chosen[value="4"]~.save-radio-row>button.roll-4,
+.roll-chosen[value="5"]~.save-radio-row>button.roll-5,
+.roll-chosen[value="6"]~.save-radio-row>button.roll-6 {
   background-color: white;
   border-color: black;
 }
 
 /* Configure the radio button styling. */
-.sheet-radio {
+.radio {
   padding: 0;
   margin: 2px;
   border: solid 1px #a8a8a8;
@@ -381,14 +396,14 @@ input.sheet-saved-roll {
   align-items: center;
 }
 
-.sheet-save-radio-stack {
+.save-radio-stack {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   flex: 1;
 }
 
-sheet-radio>span.sheet-checked {
+radio>span.checked {
   width: 6px;
   height: 6px;
   border-radius: 50%;
@@ -396,20 +411,31 @@ sheet-radio>span.sheet-checked {
 }
 
 
-.sheet-roll-description-section {
+.roll-description-section {
   display: inline-flex;
   flex-direction: column;
   flex-grow: 1;
 }
 
-.sheet-roll-description-line {
+.roll-description-line {
   display: flex;
   align-items: baseline;
 }
 
+.roll-description-line label {
+  width: unset;
+  margin: 0;
+  padding-right: 8px;
+  font-weight: normal;
+}
+
+.roll-description-line input+label {
+  padding-left: 8px;
+}
+
 /* --------- Top section ----------------- */
 
-.sheet-top-section {
+.top-section {
   display: flex;
   justify-content: space-between;
   border-bottom: solid black 1px;
@@ -419,23 +445,23 @@ sheet-radio>span.sheet-checked {
 
 /* ------ generic conditional appearance ------ */
 
-.sheet-conditional-one>* {
+.conditional-one>* {
   display: none;
 }
 
-.sheet-conditional-one> :first-child[value="1"]~* {
+.conditional-one> :first-child[value="1"]~* {
   display: inline-block;
 }
 
-.sheet-conditional-something>* {
+.conditional-something>* {
   display: inline-block;
 }
 
-.sheet-conditional-something> :first-child[value=" "]~* {
+.conditional-something> :first-child[value=" "]~* {
   display: none;
 }
 
-.sheet-no-add-or-modify-buttons [data-groupname] button:not([type="roll"]) {
+.no-add-or-modify-buttons [data-groupname] button:not([type="roll"]) {
   display: none;
 }
 
@@ -443,27 +469,48 @@ sheet-radio>span.sheet-checked {
 
 /* Attributes */
 
-.sheet-attributecontrol[value="basic"]~span.sheet-attribute-value,
-.sheet-attributecontrol[value="basic"]~button.sheet-reset-total,
-.sheet-attributecontrol[value="basic"]~.sheet-attribute-roll,
-.sheet-attributecontrol[value="basic"]~.sheet-not-basic-tab,
-.sheet-cpcontrol[value="basic"]~.sheet-not-basic-tab {
+.attributecontrol[value="basic"]~span.attribute-value,
+.attributecontrol[value="basic"]~button.reset-total,
+.attributecontrol[value="basic"]~.attribute-roll,
+.attributecontrol[value="basic"]~.not-basic-tab,
+.cpcontrol[value="basic"]~.not-basic-tab {
   display: none;
 }
 
-.sheet-attributecontrol:not([value="basic"])~input.sheet-attribute-value,
-.sheet-attributecontrol:not([value="basic"])~button.sheet-reset-total .sheet-attributecontrol:not([value="basic"])~.sheet-CP,
-.sheet-attributecontrol:not([value="basic"])~.sheet-basic-tab-only,
-.sheet-cpcontrol:not([value="basic"])~.sheet-basic-tab-only {
+.attributecontrol:not([value="basic"])~input.attribute-value,
+.attributecontrol:not([value="basic"])~button.reset-total .attributecontrol:not([value="basic"])~.CP,
+.attributecontrol:not([value="basic"])~.basic-tab-only,
+.cpcontrol:not([value="basic"])~.basic-tab-only {
   display: none;
 }
 
 /* Tabs */
-.sheet-tab-holder {
+.characterviewer .nav-tabs>li:not(.active) {
+  background: #EEE;
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.characterviewer .nav-tabs>li:not(.active)>a:hover, .characterviewer .nav-tabs>li:not(.active)>a:focus {
+  color: black;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.characterviewer .nav-tabs>.active>a {
+  font-weight: bold;
+  text-decoration: none;
+  background-color: #616161;
+  color: white;
+}
+
+.tab-holder {
   margin-bottom: -1px;
 }
 
-.sheet-tab {
+.tab {
   border: 1px solid #999;
   background: #EEE;
   padding: 4px 4px;
@@ -471,58 +518,61 @@ sheet-radio>span.sheet-checked {
   font-size: 110%
 }
 
-.sheet-tabcontrol[value="overview"]~.sheet-tab[name="act_overview"],
-.sheet-tabcontrol[value="basic"]~.sheet-tab[name="act_basic"],
-.sheet-tabcontrol[value="equipment"]~.sheet-tab[name="act_equipment"],
-.sheet-tabcontrol[value="skills"]~.sheet-tab[name="act_skills"],
-.sheet-tabcontrol[value="spells"]~.sheet-tab[name="act_spells"],
-.sheet-tabcontrol[value="notes"]~.sheet-tab[name="act_notes"] {
-  background: #FFF;
+.tabcontrol[value="overview"]~.tab[name="act_overview"],
+.tabcontrol[value="basic"]~.tab[name="act_basic"],
+.tabcontrol[value="equipment"]~.tab[name="act_equipment"],
+.tabcontrol[value="skills"]~.tab[name="act_skills"],
+.tabcontrol[value="spells"]~.tab[name="act_spells"],
+.tabcontrol[value="notes"]~.tab[name="act_notes"] {
+  font-weight: bold;
+  text-decoration: none;
+  background-color: #616161;
+  color: white;
   border-bottom: 1px solid transparent;
 }
 
 /* Sections */
-.sheet-section {
+.section {
   display: none;
 }
 
-.sheet-sectioncontrol[value="overview"]~div.sheet-overview,
-.sheet-sectioncontrol[value="basic"]~div.sheet-basic,
-.sheet-sectioncontrol[value="equipment"]~div.sheet-equipment,
-.sheet-sectioncontrol[value="skills"]~div.sheet-skills,
-.sheet-sectioncontrol[value="spells"]~div.sheet-spells,
-.sheet-sectioncontrol[value="notes"]~div.sheet-notes {
+.sectioncontrol[value="overview"]~div.overview,
+.sectioncontrol[value="basic"]~div.basic,
+.sectioncontrol[value="equipment"]~div.equipment,
+.sectioncontrol[value="skills"]~div.skills,
+.sectioncontrol[value="spells"]~div.spells,
+.sectioncontrol[value="notes"]~div.notes {
   display: block;
 }
 
 /* Weight penalties */
 
-.sheet-weight-penalty-table {
+.weight-penalty-table {
   border: solid black;
   border-width: 1px 0px;
 }
 
-.sheet-weight-penalty-table>div {
+.weight-penalty-table>div {
   text-align: center;
   display: flex;
   flex-direction: row;
 }
 
-.sheet-weight-penalty-table>div:not(:last-child):not(.sheet-table-header) {
+.weight-penalty-table>div:not(:last-child):not(.table-header) {
   border-bottom: solid lightgrey 1px;
 }
 
-.sheet-weight-penalty-table>div> :nth-child(2) {
+.weight-penalty-table>div> :nth-child(2) {
   display: inline-block;
   width: 30px;
 }
 
-.sheet-weight-penalty-table>div> :last-child {
+.weight-penalty-table>div> :last-child {
   display: inline-block;
   width: 30px;
 }
 
-.sheet-weight-penalty-table>div> :first-child[value="1"]~* {
+.weight-penalty-table>div> :first-child[value="1"]~* {
   font-weight: bold;
   padding: 2px 0px;
 }
@@ -530,30 +580,30 @@ sheet-radio>span.sheet-checked {
 
 /* --------- Advantages ------------ */
 
-.sheet-advantage-overview {
+.advantage-overview {
   display: flex;
   flex-direction: column;
 }
 
-.sheet-advantage-overview>div.sheet-table-header>div {
+.advantage-overview>div.table-header>div {
   text-align: center
 }
 
-.sheet-advantage-overview>div.sheet-conditional-something>div,
-.sheet-advantage-overview>div[data-groupname]>div {
+.advantage-overview>div.conditional-something>div,
+.advantage-overview>div[data-groupname]>div {
   border: solid lightgrey;
   border-width: 0px 0px 1px 0px;
   padding-top: 2px;
   padding-bottom: 2px;
 }
 
-.sheet-advantage-overview>.sheet-conditional-something> :first-child[value="-1"]~* {
+.advantage-overview>.conditional-something> :first-child[value="-1"]~* {
   color: red;
 }
 
 /* If the name wraps, make the lines close. */
-.sheet-advantage-overview>div>div,
-.sheet-advantage-overview span {
+.advantage-overview>div>div,
+.advantage-overview span {
   line-height: 1;
   width: 120px;
   text-align: left
@@ -561,50 +611,50 @@ sheet-radio>span.sheet-checked {
 
 /* Keep line height low for the containers of the names,
    or they will make single lines too tall. */
-.sheet-advantage-overview>div.sheet-conditional-something {
+.advantage-overview>div.conditional-something {
   line-height: 1;
 }
 
 /* This avoids spaces between the elements in the row */
-.sheet-advantage-row {
+.advantage-row {
   display: flex;
   flex-direction: row;
   align-items: center;
 }
 
-.sheet-advantage-row>div {
+.advantage-row>div {
   display: inline-block;
 }
 
-.sheet-advantage-row.sheet-advantage-row> :first-child {
+.advantage-row.advantage-row> :first-child {
   width: 120px;
   padding-right: 4px;
   text-align: right;
 }
 
-.sheet-advantages .sheet-count-placeholder {
+.advantages .count-placeholder {
   height: 18px;
   width: 40px;
 }
 
-.sheet-advantage-row>.sheet-CP {
+.advantage-row>.CP {
   display: inline-block;
   text-align: center;
   width: 26px;
 }
 
-.sheet-advantages .sheet-extraadvantagename {
+.advantages .extraadvantagename {
   width: 124px;
   margin-top: -1px;
 }
 
-.sheet-advantages .sheet-extraadvantageCP.sheet-extraadvantageCP {
+.advantages .extraadvantageCP.extraadvantageCP {
   color: blue;
   width: 40px;
   margin-top: -1px;
 }
 
-.sheet-advantages .sheet-extraadvantageCPdescription {
+.advantages .extraadvantageCPdescription {
   display: inline-block;
   text-align: center;
   width: 26px;
@@ -612,14 +662,14 @@ sheet-radio>span.sheet-checked {
 
 /* ---------------- Epic Feats --------------- */
 
-.sheet-feat-overview {
+.feat-overview {
   display: inline-flex;
   flex-direction: column;
 }
 
 /* Add back margin for line spacing. 
    And avoid gaps between items in the row */
-.sheet-feat-overview>div[data-groupname]>div {
+.feat-overview>div[data-groupname]>div {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -629,7 +679,7 @@ sheet-radio>span.sheet-checked {
   border-width: 0px 0px 1px 0px;
 }
 
-div.sheet-featextraordinaryletter {
+div.featextraordinaryletter {
   width: 24px;
   margin-left: -2px;
   margin-right: -2px;
@@ -637,110 +687,110 @@ div.sheet-featextraordinaryletter {
   border-color: transparent;
 }
 
-span.sheet-featextraordinaryletter {
+span.featextraordinaryletter {
   display: inline-block;
   width: 20px;
   text-align: center;
   font-weight: bold;
 }
 
-.sheet-feat-overview>.sheet-table-header>div.sheet-featname {
+.feat-overview>.table-header>div.featname {
   width: 120px;
   margin-left: -2px;
 }
 
 /* Make multi-line names have less spacing */
-.sheet-feat-overview span.sheet-featname {
+.feat-overview span.featname {
   width: 120px;
   text-align: left;
   line-height: 1;
 }
 
-.sheet-featname {
+.featname {
   display: inline-block;
   width: 180px;
   text-align: right;
 }
 
-input.sheet-featname {
+input.featname {
   margin-left: 3px;
   margin-top: -1px
 }
 
-input.sheet-featextraordinary {
+input.featextraordinary {
   width: 18px;
   margin-left: 4px;
   margin-top: -1px
 }
 
-.sheet-featCP.sheet-featCP.sheet-featCP.sheet-featCP {
+.featCP.featCP.featCP.featCP {
   width: 30px;
   color: blue;
 }
 
-input.sheet-featCP {
+input.featCP {
   margin-top: -1px;
 }
 
 
 /* ------------ Skills -------------- */
-.sheet-skilldisciplineinfo {
+.skilldisciplineinfo {
   width: 40px;
 }
 
-.sheet-skillname {
+.skillname {
   width: 150px;
   text-align: right;
   border-left-color: black;
 }
 
-.sheet-skillability {
+.skillability {
   width: 40px;
   text-align: center;
 }
 
-.sheet-skillTP.sheet-skillTP.sheet-skillTP.sheet-skillTP {
+.skillTP.skillTP.skillTP.skillTP {
   width: 30px;
   margin-left: 15px;
   margin-right: -10px;
   color: #40C000;
 }
 
-.sheet-skillCP.sheet-skillCP.sheet-skillCP.sheet-skillCP {
+.skillCP.skillCP.skillCP.skillCP {
   width: 30px;
   color: blue;
 }
 
-.sheet-skillexpertise {
+.skillexpertise {
   width: 40px;
 }
 
-.sheet-skillattribute {
+.skillattribute {
   width: 65px;
 }
 
-.sheet-skillbase.sheet-skillbase.sheet-skillbase {
+.skillbase.skillbase.skillbase {
   width: 40px;
 }
 
-.sheet-skills div[data-groupname] span,
-.sheet-skills-overview div[data-groupname] span {
+.skills div[data-groupname] span,
+.skills-overview div[data-groupname] span {
   display: inline-block;
 }
 
 /* overview section */
 
-.sheet-skills-overview .sheet-skillname {
+.skills-overview .skillname {
   width: 100px;
 }
 
-.sheet-skills-overview>div[data-groupname] .sheet-skillname {
+.skills-overview>div[data-groupname] .skillname {
   line-height: 1;
   padding-top: 2px;
   padding-bottom: 2px;
 }
 
-.sheet-skills-overview .sheet-skillability {
+.skills-overview .skillability {
   margin-left: -4px;
   margin-right: -4px;
   font-weight: normal;
@@ -750,22 +800,22 @@ input.sheet-featCP {
 /* Avoid gaps between items in the row 
    And make multi-line stuff line up */
 /* Avoid space between items in the row */
-.sheet-skills-overview .sheet-table-header {
+.skills-overview .table-header {
   display: flex;
   flex-direction: row;
 }
 
-.sheet-skills-overview>div[data-groupname]>div {
+.skills-overview>div[data-groupname]>div {
   display: flex;
   flex-direction: row;
   align-items: center;
 }
 
-.sheet-skills-overview .sheet-isdiscipline[value="1"]~* {
+.skills-overview .isdiscipline[value="1"]~* {
   display: none;
 }
 
-.sheet-skill-overview-row-container {
+.skill-overview-row-container {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -774,7 +824,7 @@ input.sheet-featCP {
   border-style: solid
 }
 
-.sheet-skill-roll.sheet-skill-roll.sheet-skill-roll.sheet-skill-roll {
+.skill-roll.skill-roll.skill-roll.skill-roll {
   padding: 0px 2px;
   width: 24px;
   box-sizing: border-box;
@@ -784,7 +834,7 @@ input.sheet-featCP {
 
 /* skills section */
 
-.sheet-isdiscipline[value="1"]~.sheet-skillname {
+.isdiscipline[value="1"]~.skillname {
   width: 190px;
   text-align: left;
   border-top-color: black;
@@ -794,19 +844,19 @@ input.sheet-featCP {
   z-index: 1;
 }
 
-.sheet-isdiscipline[value="1"]~.sheet-skillability,
-.sheet-isdiscipline[value="1"]~.sheet-skillattribute,
-.sheet-isdiscipline[value="1"]~.sheet-skillbase {
+.isdiscipline[value="1"]~.skillability,
+.isdiscipline[value="1"]~.skillattribute,
+.isdiscipline[value="1"]~.skillbase {
   display: none;
 }
 
 /* Avoid space between items in the row */
-.sheet-skills .sheet-table-header {
+.skills .table-header {
   display: flex;
   flex-direction: row;
 }
 
-.sheet-skills div[data-groupname]>div {
+.skills div[data-groupname]>div {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -818,16 +868,16 @@ input.sheet-featCP {
 
 /* overview section */
 
-.sheet-weapons-overview div[data-groupname] span {
+.weapons-overview div[data-groupname] span {
   display: inline-block;
 }
 
-.sheet-weapons-overview .sheet-equipmentname {
+.weapons-overview .equipmentname {
   width: 100px;
   flex: 0 0 100px;
 }
 
-.sheet-weapons-overview>div[data-groupname] .sheet-equipmentname {
+.weapons-overview>div[data-groupname] .equipmentname {
   line-height: 1;
   padding-top: 2px;
   padding-bottom: 2px;
@@ -836,24 +886,24 @@ input.sheet-featCP {
 /* Avoid gaps between items in the row 
    And make multi-line stuff line up */
 /* Avoid space between items in the row */
-.sheet-weapons-overview .sheet-table-header {
+.weapons-overview .table-header {
   display: flex;
   flex-direction: row;
 }
 
-.sheet-weapons-overview>div[data-groupname]>div {
+.weapons-overview>div[data-groupname]>div {
   border-width: 0px 0px 1px 0px;
   border-color: lightgrey;
   border-style: solid
 }
 
-.sheet-weapons-overview-row-container {
+.weapons-overview-row-container {
   display: flex;
   flex-direction: row;
   align-items: center;
 }
 
-.sheet-weapons-overview .sheet-equipmentnotes {
+.weapons-overview .equipmentnotes {
   margin-left: 90px;
   margin-bottom: 6px;
   width: 150px;
@@ -861,63 +911,63 @@ input.sheet-featCP {
 
 /* equipment section */
 
-.sheet-equipmentname {
+.equipmentname {
   text-align: right;
   flex: 0 0 170px;
   width: 170px;
 }
 
-.sheet-equipmentweight.sheet-equipmentweight.sheet-equipmentweight {
+.equipmentweight.equipmentweight.equipmentweight {
   width: 50px;
 }
 
-.sheet-equipmentvalue.sheet-equipmentvalue.sheet-equipmentvalue {
+.equipmentvalue.equipmentvalue.equipmentvalue {
   width: 50px;
 }
 
-.sheet-equipmentcount.sheet-equipmentcount.sheet-equipmentcount {
+.equipmentcount.equipmentcount.equipmentcount {
   width: 50px;
 }
 
-.sheet-armordefense.sheet-armordefense.sheet-armordefense {
+.armordefense.armordefense.armordefense {
   width: 40px;
   border-right: 0px;
   text-align: right;
 }
 
-.sheet-armormod.sheet-armormod.sheet-armormod {
+.armormod.armormod.armormod {
   width: 40px;
   border-left: 0px;
 }
 
-.sheet-equipmentdamage {
+.equipmentdamage {
   width: 60px;
   text-align: center
 }
 
-.sheet-equipmentrange.sheet-equipmentrange.sheet-equipmentrange {
+.equipmentrange.equipmentrange.equipmentrange {
   width: 50px;
   text-align: center;
 }
 
-.sheet-equipmentnotes {
+.equipmentnotes {
   flex: 1 1;
   width: 50px;
 }
 
-.sheet-equipment-list {
+.equipment-list {
   width: 560px;
 }
 
 /* Avoid space between items in the row */
-.sheet-equipment-list .sheet-table-header {
+.equipment-list .table-header {
   margin-top: 10px;
   display: flex;
   flex-direction: row;
   align-items: flex-end;
 }
 
-.sheet-equipment div[data-groupname]>div {
+.equipment div[data-groupname]>div {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -927,123 +977,126 @@ input.sheet-featCP {
 
 /* ------------- Spells ------------*/
 
-.sheet-tabcontrol[value="arcane"]~.sheet-tab[name="act_arcane"],
-.sheet-tabcontrol[value="divine"]~.sheet-tab[name="act_divine"],
-.sheet-tabcontrol[value="innate"]~.sheet-tab[name="act_innate"] {
-  background: #FFF;
+.tabcontrol[value="arcane"]~.tab[name="act_arcane"],
+.tabcontrol[value="divine"]~.tab[name="act_divine"],
+.tabcontrol[value="innate"]~.tab[name="act_innate"] {
+  font-weight: bold;
+  text-decoration: none;
+  background-color: #616161;
+  color: white;
   margin-bottom: -1px;
   border-bottom: 1px solid transparent;
 }
 
-.sheet-sectioncontrol[value="arcane"]~div.sheet-arcane,
-.sheet-sectioncontrol[value="divine"]~div.sheet-divine,
-.sheet-sectioncontrol[value="innate"]~div.sheet-innate {
+.sectioncontrol[value="arcane"]~div.arcane,
+.sectioncontrol[value="divine"]~div.divine,
+.sectioncontrol[value="innate"]~div.innate {
   display: inline-flex;
 }
 
-.sheet-spell-tabs {
+.spell-tabs {
   border-bottom: solid black 1px;
   margin-bottom: 6px;
   display: flex;
   align-items: center;
 }
 
-.sheet-spell-tabs>button[type="action"] {
+.spell-tabs>button[type="action"] {
   border-bottom: 0px;
 }
 
-.sheet-spell-tabs>button[type="roll"] {
+.spell-tabs>button[type="roll"] {
   margin-bottom: 1px;
 }
 
-.sheet-spells div[data-groupname] span {
+.spells div[data-groupname] span {
   display: inline-block;
 }
 
-.sheet-spells input[type="text"]:not(.sheet-skillname) {
+.spells input[type="text"]:not(.skillname) {
   text-align: center;
 }
 
-.sheet-arcane .sheet-skillattribute {
+.arcane .skillattribute {
   text-align: right;
   width: 30px;
   margin-bottom: 2px;
 }
 
-.sheet-spellEP.sheet-spellEP.sheet-spellEP {
+.spellEP.spellEP.spellEP {
   width: 50px;
   margin-left: 15px;
 }
 
-.sheet-spellcasttime {
+.spellcasttime {
   width: 50px;
 }
 
-.sheet-spelltype {
+.spelltype {
   width: 65px;
 }
 
-.sheet-spellrange {
+.spellrange {
   width: 40px;
 }
 
-.sheet-spelltarget {
+.spelltarget {
   width: 60px;
 }
 
-.sheet-spellduration {
+.spellduration {
   width: 70px;
 }
 
-.sheet-spellhasnote.sheet-spellhasnote.sheet-spellhasnote.sheet-spellhasnote {
+.spellhasnote.spellhasnote.spellhasnote.spellhasnote {
   width: 12px;
   margin-left: 0px;
   margin-right: 1px;
   margin-bottom: 2px;
 }
 
-.sheet-isdiscipline[value="1"]~.sheet-skill-roll,
-.sheet-isdiscipline[value="1"]~.sheet-spellEP,
-.sheet-isdiscipline[value="1"]~.sheet-spellcasttime,
-.sheet-isdiscipline[value="1"]~.sheet-spelltype,
-.sheet-isdiscipline[value="1"]~.sheet-spellrange,
-.sheet-isdiscipline[value="1"]~.sheet-spelltarget,
-.sheet-isdiscipline[value="1"]~.sheet-spellduration,
-.sheet-isdiscipline[value="1"]~.sheet-spellhasnote {
+.isdiscipline[value="1"]~.skill-roll,
+.isdiscipline[value="1"]~.spellEP,
+.isdiscipline[value="1"]~.spellcasttime,
+.isdiscipline[value="1"]~.spelltype,
+.isdiscipline[value="1"]~.spellrange,
+.isdiscipline[value="1"]~.spelltarget,
+.isdiscipline[value="1"]~.spellduration,
+.isdiscipline[value="1"]~.spellhasnote {
   display: none;
 }
 
-.sheet-isdiscipline[value="1"]~.sheet-spellhasnote+span.sheet-skillTP {
+.isdiscipline[value="1"]~.spellhasnote+span.skillTP {
   margin-left: 442px;
 }
 
-.sheet-table-header .sheet-skill-roll {
+.table-header .skill-roll {
   border-width: 0px;
 }
 
-.sheet-spell-note {
+.spell-note {
   flex-grow: 1;
   margin-bottom: 1px;
   margin-left: 50px;
 }
 
-.sheet-spell-note.sheet-spell-note.sheet-spell-note.sheet-spell-note {
+.spell-note.spell-note.spell-note.spell-note {
   text-align: left;
   margin-top: -1px;
 }
 
-.sheet-arcane .sheet-spell-note {
+.arcane .spell-note {
   margin-left: 90px;
 }
 
 /* Avoid space between items in the row */
-.sheet-spells .sheet-table-header {
+.spells .table-header {
   display: flex;
   flex-direction: row;
   align-items: flex-end;
 }
 
-.sheet-spells div[data-groupname]>div {
+.spells div[data-groupname]>div {
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -1051,30 +1104,30 @@ input.sheet-featCP {
   margin-top: -1px;
 }
 
-.sheet-spell-row {
+.spell-row {
   display: flex;
   flex-direction: row;
   align-items: flex-end;
 }
 
-.sheet-spell-row>input~input,
-.sheet-spell-row>input~select,
-.sheet-spell-row>select~input {
+.spell-row>input~input,
+.spell-row>input~select,
+.spell-row>select~input {
   /* Make consecutive buttons overlap */
   margin-left: -1px;
 }
 
 /* ------------ Notes -------------- */
-.sheet-notecategory {
+.notecategory {
   width: 120px;
   text-align: right
 }
 
-.sheet-notenote {
+.notenote {
   width: 500px;
 }
 
-.sheet-notes div[data-groupname]>div {
+.notes div[data-groupname]>div {
   /* and make rows overlap */
   margin-top: -1px;
 }

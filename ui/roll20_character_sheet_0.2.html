@@ -40,18 +40,18 @@
   </div>
   <div class="roll-description-section">
     <div class="roll-description-line">
-      Description
-      <input name="attr_action_description" class="flexing" type="text" />
-      &emsp; Feats
-      <input name="attr_action_feats" class="narrowish" type="number" value="0" />
-      &emsp; EP &ensp;
-      <input name="attr_action_feats_EP" class="narrow" value="@{action_feats}" disabled="true" />
-      &emsp; EP
-      <input name="attr_action_EP" class="narrowish" type="number" value="0" />
-      &emsp; SP
-      <input name="attr_action_SP" class="narrowish" type="number" value="0" />
-      &emsp;
-      <input name="attr_disable_do" class="disable-do" type="hidden" value="0" />
+      <label for="attr_action_description">Description</label>
+      <input name="attr_action_description" id="attr_action_description" class="flexing" type="text" />
+      <label for="attr_action_feats">Feats</label>
+      <input name="attr_action_feats" id="attr_action_feats" class="narrowish" type="number" value="0" />
+      <label for="attr_action_feats_EP">EP &ensp;</label>
+      <input name="attr_action_feats_EP" id="attr_action_feats_EP" class="narrow" value="@{action_feats}" disabled="true" />
+      <label for="attr_action_EP">EP</label>
+      <input name="attr_action_EP" id="attr_action_EP" class="narrowish" type="number" value="0" />
+      <label for="attr_action_SP">SP</label>
+      <input name="attr_action_SP" id="attr_action_SP" class="narrowish" type="number" value="0" />
+      <span class="inlne-spacer" />
+      <input name="attr_disable_do" id="attr_disable_do" class="disable-do" type="hidden" value="0" />
       <button name="act_topaction" class="do" type="action">
       </button>
       &ensp;
@@ -59,18 +59,18 @@
       </button>
     </div>
     <div class="roll-description-line">
-      Skill
-      <input name="attr_roll_skill" class="flexing" type="text" />
-      &emsp; Ability
-      <input name="attr_roll_ability" class="narrowish" type="number" value="0" />
-      &emsp; Mods
-      <input name="attr_roll_mod1" class="narrowish" type="number" value="0" />
-      <input name="attr_roll_mod2" class="narrowish" type="number" value="0" />
-      <input name="attr_roll_mod3" class="narrowish" type="number" value="0" />
-      &emsp; Boost
-      <input name="attr_roll_advance_boost" class="narrowish" type="number" value="0" />
-      &emsp; EP &ensp;
-      <input name="attr_action_roll_EP" class="narrow" value="@{roll_advance_boost}" disabled="true" />
+      <label for="attr_roll_skill">Skill</label>
+      <input name="attr_roll_skill" id="attr_roll_skill" class="flexing" type="text" />
+      <label for="attr_roll_ability">Ability</label>
+      <input name="attr_roll_ability" id="attr_roll_ability" class="narrowish" type="number" value="0" />
+      <label>Mods</label>
+      <input name="attr_roll_mod1" id="attr_roll_mod1" class="narrowish" type="number" value="0" />
+      <input name="attr_roll_mod2" id="attr_roll_mod2" class="narrowish" type="number" value="0" />
+      <input name="attr_roll_mod3" id="attr_roll_mod3" class="narrowish" type="number" value="0" />
+      <label for="attr_roll_advance_boost">Boost</label>
+      <input name="attr_roll_advance_boost" id="attr_roll_advance_boost" class="narrowish" type="number" value="0" />
+      <label for="attr_action_roll_EP">EP</label>
+      <input name="attr_action_roll_EP" id="attr_action_roll_EP" class="narrow" value="@{roll_advance_boost}" disabled="true" />
     </div>
   </div>
   &ensp;
@@ -217,8 +217,8 @@
   <!-- Movement & DR -->
   <div class="children-separated no-shrink">
     <div class="center">
-      <div class="label wideish larger narrow-spacing">Defense Penalty</div>
-      <input name="attr_reaction_penalty" class="attribute-value narrowish center" type="number" value="0" />
+      <label for="attr_reaction_penalty" class="wideish larger narrow-spacing">Defense Penalty</label>
+      <input name="attr_reaction_penalty" id="attr_reaction_penalty" class="attribute-value narrowish center" type="number" value="0" />
     </div>
     <div>
       <div class="attribute-name wide larger">Wt. Load</div>
@@ -236,7 +236,7 @@
   <!-- Defense -->
   <div>
     <div>
-      <div class="label medium">+bonus</div>
+      <label class="medium">+bonus</label>
       <input name="attr_melee_boost" class="center narrowish" type="number" value="0" />
       <input name="attr_ranged_boost" class="center narrowish" type="number" value="0" />
     </div>
