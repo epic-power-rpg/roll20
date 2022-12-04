@@ -37,13 +37,20 @@ select {
   text-align-last: center;
 }
 
+button.actionRollButton {
+  padding: 2px 3px;
+  font-size: 1.3em;
+  margin: 0 3px;
+  border-width: 1px;
+}
+
 /* Change the character for dice roll buttons to be
    the two joined squares character and give them the blue background */
-button.btn.ui-draggable[type=roll] {
+button.btn.ui-draggable[type=roll], button.actionRollButton {
   background-image: linear-gradient(90deg, #ddf, #99f);
 }
 
-button.btn.ui-draggable[type=roll]::before {
+button.btn.ui-draggable[type=roll]::before, button.actionRollButton::before {
   font-family: sans-serif;
   content: "⧉";
 }
