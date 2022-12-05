@@ -137,8 +137,7 @@
       <span name="attr_IQ" class="attribute-value center not-basic-tab"></span>
       <div class="inline not-basic-tab"> + </div>
       <input name="attr_IQmodifier" class="modifier-width not-basic-tab" type="number" value="0" />
-      <button class="not-basic-tab" type="roll"
-        value="!EPRoll @{IQ}+@{IQmodifier} Tries to be smart: @{IQ} + @{IQmodifier}"></button>
+      <button name="act_epRoll_IQmodifier" class="actionRollButton epRoll_IQmodifier not-basic-tab" type="action"></button>
       <input name="attr_IQ" class="attribute-value narrowish center basic-tab-only" type="number" value="1" />
       &emsp;
       <div class="attribute-name big">DX</div>
@@ -146,8 +145,7 @@
       <span name="attr_DX" class="attribute-value center"></span>
       <div class="inline not-basic-tab"> + </div>
       <input name="attr_DXmodifier" class="modifier-width not-basic-tab" type="number" value="0" />
-      <button class="not-basic-tab" type="roll"
-        value="!EPRoll @{DX}+@{DXmodifier} Tries to be nimble: @{DX} + @{DXmodifier}"></button>
+      <button name="act_epRoll_DXmodifier" class="actionRollButton epRoll_DXmodifier not-basic-tab" type="action"></button>
       <input name="attr_DX" class="attribute-value narrowish center" type="number" value="1" />
       &emsp;
       <div class="attribute-name big">BR</div>
@@ -155,8 +153,7 @@
       <span name="attr_BR" class="attribute-value center"></span>
       <div class="inline not-basic-tab"> + </div>
       <input name="attr_BRmodifier" class="modifier-width not-basic-tab" type="number" value="0" />
-      <button class="not-basic-tab" type="roll"
-        value="!EPRoll @{BR}+@{BRmodifier} Tries to be strong: @{BR} + @{BRmodifier}"></button>
+      <button name="act_epRoll_BRmodifier" class="actionRollButton epRoll_BRmodifier not-basic-tab" type="action"></button>
       <input name="attr_BR" class="attribute-value narrowish center basic-tab-only" type="number" value="1" />
 
       <input name="attr_attribute_CP" type="hidden" value="-5" />
@@ -171,7 +168,7 @@
     <div display="inline-block">
       <button name="act_epRoll" class="actionRollButton epRoll" type="action"></button>
       &emsp;
-      <button name="act_epRollWithModifier" class="actionRollButton epRollWithModifier" type="action"></button>
+      <button name="act_epRoll_roll_modifier" class="actionRollButton epRoll_roll_modifier" type="action"></button>
       +
       <input name="attr_roll_modifier" class="narrowish" type="number" value="0" />
       &emsp;
@@ -179,8 +176,7 @@
       <span name="attr_initiative" class="narrow center bold larger value"></span>
       +
       <input name="attr_initiativemodifier" class="narrowish" type="number" value="0" />
-      <button type="roll"
-        value="!EPRoll @{initiative}+@{initiativemodifier} Rolls initiative @{initiative} + @{initiativemodifier} SEND_TO_TRACKER @{character_id}">
+      <button name="act_epRoll_initiative" class="actionRollButton epRoll_initiative" type="action"></button>
       </button>
 
     </div>
@@ -1409,22 +1405,57 @@
   }
   on('clicked:undotoproll', undoTopRoll);
 
-  function epRoll() {
-    setAttrs({
-      pendingchat: "!EPRoll",
-    });
-  }
-  on('clicked:epRoll', epRoll);
-
-  function epRollWithModifier() {
-    getAttrs(["roll_modifier"], (values) => {
+  const EP_ROLL_OPTIONS = [{
+    actionId: 'epRoll',
+    attributes: [],
+    getChatMessage: (values) => {
+      return `!EPRoll`;
+    },
+  }, {
+    actionId: 'epRoll_roll_modifier',
+    attributes: ["roll_modifier"],
+    getChatMessage: (values) => {
       const { roll_modifier } = values;
-      setAttrs({
-        pendingchat: `!EPRoll ${roll_modifier}`,
+      return `!EPRoll ${roll_modifier}`;
+    },
+  }, {
+    actionId: 'epRoll_initiative',
+    attributes: ["initiative", "initiativemodifier", "character_id"],
+    getChatMessage: (values) => {
+      const { initiative, initiativemodifier, character_id } = values;
+      return `!EPRoll ${initiative}+${initiativemodifier} Rolls initiative ${initiative} + ${initiativemodifier} SEND_TO_TRACKER ${character_id}"`;
+    },
+  }, {
+    actionId: 'epRoll_IQmodifier',
+    attributes: ["IQ", "IQmodifier"],
+    getChatMessage: (values) => {
+      const { IQ, IQmodifier } = values;
+      return `!EPRoll ${IQ}+${IQmodifier} Tries to be smart: ${IQ} + ${IQmodifier}`;
+    },
+  }, {
+    actionId: 'epRoll_DXmodifier',
+    attributes: ["DX", "DXmodifier"],
+    getChatMessage: (values) => {
+      const { DX, DXmodifier } = values;
+      return `!EPRoll ${DX}+${DXmodifier} Tries to be nimble: ${DX} + ${DXmodifier}`;
+    },
+  }, {
+    actionId: 'epRoll_BRmodifier',
+    attributes: ["BR", "BRmodifier"],
+    getChatMessage: (values) => {
+      const { BR, BRmodifier } = values;
+      return `!EPRoll ${BR}+${BRmodifier} Tries to be strong: ${BR} + ${BRmodifier}`;
+    },
+  }]
+
+  EP_ROLL_OPTIONS.forEach((rollOption) => {
+    const { actionId, attributes, getChatMessage } = rollOption;
+    on(`clicked:${actionId}`, () => {
+      getAttrs(attributes, (values) => {
+        setAttrs({ pendingchat: getChatMessage(values) });
       });
     });
-  }
-  on('clicked:epRollWithModifier', (epRollWithModifier));
+  });
 
   var updateTopActEnables = function () {
     log("Updating top action enables");
