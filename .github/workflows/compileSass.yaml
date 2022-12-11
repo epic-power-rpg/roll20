@@ -1,0 +1,27 @@
+name: "Compile HTML and CSS files"
+run-name: ${{ github.actor }} is Compiling HTML and CSS 🚀
+on:
+  push:
+    branches-ignore:
+      - 'main'
+jobs:
+  mergeScripts:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - name: Set Node.js 18.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+      - name: Run `yarn install`
+        run: |
+          yarn install
+      - name: Run `yarn build:all`
+        run: |
+          yarn build:all
+      - name: Commit any generated files
+        uses: EndBug/add-and-commit@v9
+        with:
+          default_author: github_actions
+          message: Compile HTML and CSS into `bin`
