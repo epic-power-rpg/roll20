@@ -1,0 +1,129 @@
+/* ------------ Skills -------------- */
+.skilldisciplineinfo {
+  width: 40px;
+}
+
+.skillname {
+  width: 150px;
+  text-align: right;
+  border-left-color: black;
+}
+
+.skillability {
+  width: 40px;
+  text-align: center;
+}
+
+.skillTP.skillTP.skillTP.skillTP {
+  width: 30px;
+  margin-left: 15px;
+  margin-right: -10px;
+  color: #40C000;
+}
+
+.skillCP.skillCP.skillCP.skillCP {
+  width: 30px;
+  color: blue;
+}
+
+.skillexpertise {
+  width: 40px;
+}
+
+.skillattribute {
+  width: 65px;
+}
+
+.skillbase.skillbase.skillbase.skillbase {
+  width: 40px;
+}
+
+.skills div[data-groupname] span,
+.skills-overview div[data-groupname] span {
+  display: inline-block;
+}
+/* overview section */
+
+.skills-overview .skillname {
+  width: 100px;
+}
+
+.skills-overview>div[data-groupname] .skillname {
+  line-height: 1;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+.skills-overview .skillability {
+  margin-left: -4px;
+  margin-right: -4px;
+  font-weight: normal;
+  border-color: transparent;
+}
+
+/* Avoid gaps between items in the row 
+   And make multi-line stuff line up */
+/* Avoid space between items in the row */
+.skills-overview .table-header {
+  display: flex;
+  flex-direction: row;
+}
+
+.skills-overview>div[data-groupname]>div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.skills-overview .isdiscipline[value="1"]~* {
+  display: none;
+}
+
+.skill-overview-row-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-width: 0px 0px 1px 0px;
+  border-color: lightgrey;
+  border-style: solid
+}
+
+.skill-roll.skill-roll.skill-roll.skill-roll {
+  padding: 0px 2px;
+  width: 24px;
+  box-sizing: border-box;
+  margin-left: 3px;
+  margin-right: 3px;
+}
+
+/* skills section */
+
+.isdiscipline[value="1"]~.skillname {
+  width: 190px;
+  text-align: left;
+  border-top-color: black;
+  border-left-color: black;
+  font-weight: bold;
+  /* Make the border go above other borders */
+  z-index: 1;
+}
+
+.isdiscipline[value="1"]~.skillability,
+.isdiscipline[value="1"]~.skillattribute,
+.isdiscipline[value="1"]~.skillbase {
+  display: none;
+}
+
+/* Avoid space between items in the row */
+.skills .table-header {
+  display: flex;
+  flex-direction: row;
+}
+
+.skills div[data-groupname]>div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  /* and make rows overlap */
+  margin-top: -1px;
+}

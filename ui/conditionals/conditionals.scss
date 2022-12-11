@@ -1,0 +1,21 @@
+/* ------ generic conditional appearance ------ */
+
+.conditional-one>* {
+  display: none;
+}
+
+.conditional-one> :first-child[value="1"]~* {
+  display: inline-block;
+}
+
+.conditional-something>* {
+  display: inline-block;
+}
+
+.conditional-something> :first-child[value=" "]~* {
+  display: none;
+}
+
+.no-add-or-modify-buttons [data-groupname] button:not([type="roll"]) {
+  display: none;
+}

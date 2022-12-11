@@ -1,0 +1,39 @@
+/* Styles that apply everywhere */
+.characterviewer label,
+.characterviewer .label {
+  display: inline-block;
+  margin: 0;
+  text-align: right;
+  vertical-align: middle;
+  font-size: 1em;
+  font-weight: normal;
+}
+
+.characterviewer .charsheet {
+  padding: 0;
+  padding-top: 10px;
+}
+
+input[type=text] {
+  padding: 1px 4px 1px 4px;
+  height: 22px;
+}
+
+input[type=number] {
+  padding: 1px 0px 1px 3px;
+  text-align: center;
+  height: 22px;
+}
+
+[data-groupname] button:not([type="roll"]) {
+  padding: 3px 8px 3px 8px;
+  margin-top: 3px;
+}
+
+select {
+  padding: 1px 4px 1px 4px;
+  height: 22px;
+  margin-bottom: 0px;
+  text-align: center;
+  text-align-last: center;
+}

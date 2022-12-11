@@ -1,0 +1,83 @@
+button.actionRollButton {
+  padding: 2px 3px;
+  font-size: 1.3em;
+  margin: 0 3px;
+  border-width: 1px;
+}
+
+/* Change the character for dice roll buttons to be
+   the two joined squares character and give them the blue background */
+button.btn.ui-draggable[type=roll],
+button.actionRollButton {
+  background-image: linear-gradient(90deg, #ddf, #99f);
+}
+
+button.btn.ui-draggable[type=roll]::before,
+button.actionRollButton::before {
+  font-family: sans-serif;
+  content: "⧉";
+}
+
+/* Change the character for the do and roll dice button to be
+   a big heavy two joined squares character */
+button.do-and-roll::before {
+  font-family: sans-serif;
+  content: "⧉";
+  font-size: 200%;
+  font-weight: bold;
+}
+
+/* Change the character for do buttons to be
+   the play forward character */
+button.do::before {
+  font-family: sans-serif;
+  content: "▶";
+}
+
+button.do,
+button.do-and-roll {
+  background-image: linear-gradient(90deg, #ddf, #44f);
+}
+
+button.do {
+  width: 18px;
+}
+
+button.big-control.do-and-roll {
+  width: 20px;
+}
+
+.disable-do[value="1"]~.do {
+  background-image: linear-gradient(90deg, #ddd, #ddd);
+  pointer-events: none;
+}
+
+.disable-do-and-roll[value="1"]~.do-and-roll {
+  background-image: linear-gradient(90deg, #ddd, #ddd);
+  pointer-events: none;
+}
+
+
+/* Change the character for undo buttons to be
+   the play backward character */
+button.undo::before {
+  font-family: sans-serif;
+  content: "◀";
+}
+
+button.undo {
+  background-image: linear-gradient(90deg, #f44, #fdd);
+  line-height: 1;
+  padding: 1px 1px;
+}
+
+/* Make action buttons look like roll buttons, but darken the borders */
+button.do,
+button.do-and-roll,
+button.undo {
+  border: 1px solid #999;
+  border-bottom-color: #777;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}

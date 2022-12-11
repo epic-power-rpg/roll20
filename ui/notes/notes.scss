@@ -1,0 +1,14 @@
+/* ------------ Notes -------------- */
+.notecategory {
+  width: 120px;
+  text-align: right
+}
+
+.notenote {
+  width: 500px;
+}
+
+.notes div[data-groupname]>div {
+  /* and make rows overlap */
+  margin-top: -1px;
+}

@@ -1,0 +1,9 @@
+/* --------- Top section ----------------- */
+
+.top-section {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: solid black 1px;
+  margin-bottom: 6px;
+  background: linear-gradient(to top, lightcyan 0%, white 100%);
+}
