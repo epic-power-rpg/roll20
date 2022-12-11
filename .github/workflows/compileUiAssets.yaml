@@ -5,7 +5,7 @@ on:
     branches-ignore:
       - 'main'
 jobs:
-  mergeScripts:
+  compileUiAssets:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
