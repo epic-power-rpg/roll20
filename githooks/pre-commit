@@ -4,4 +4,7 @@ gitDirectory=$(dirname "${BASH_SOURCE:-$0}")
 
 source "${gitDirectory}"/../../mergeScripts.sh
 
+yarn sass
+
 git add bin/*
+
