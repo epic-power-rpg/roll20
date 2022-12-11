@@ -1,0 +1,71 @@
+/* ---------------- Epic Feats --------------- */
+
+.feat-overview {
+  display: inline-flex;
+  flex-direction: column;
+}
+
+/* Add back margin for line spacing. 
+   And avoid gaps between items in the row */
+.feat-overview>div[data-groupname]>div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  border: solid lightgrey;
+  border-width: 0px 0px 1px 0px;
+}
+
+div.featextraordinaryletter {
+  width: 24px;
+  margin-left: -2px;
+  margin-right: -2px;
+  font-weight: normal;
+  border-color: transparent;
+}
+
+span.featextraordinaryletter {
+  display: inline-block;
+  width: 20px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.feat-overview>.table-header>div.featname {
+  width: 120px;
+  margin-left: -2px;
+}
+
+/* Make multi-line names have less spacing */
+.feat-overview span.featname {
+  width: 120px;
+  text-align: left;
+  line-height: 1;
+}
+
+.featname {
+  display: inline-block;
+  width: 180px;
+  text-align: right;
+}
+
+input.featname {
+  margin-left: 3px;
+  margin-top: -1px
+}
+
+input.featextraordinary {
+  width: 18px;
+  margin-left: 4px;
+  margin-top: -1px
+}
+
+.featCP.featCP.featCP.featCP {
+  width: 30px;
+  color: blue;
+}
+
+input.featCP {
+  margin-top: -1px;
+}

@@ -1,0 +1,141 @@
+/* ------------- Spells ------------*/
+
+.tabcontrol[value="arcane"]~.tab[name="act_arcane"],
+.tabcontrol[value="divine"]~.tab[name="act_divine"],
+.tabcontrol[value="innate"]~.tab[name="act_innate"] {
+  font-weight: bold;
+  text-decoration: none;
+  background-color: #616161;
+  color: white;
+  margin-bottom: -1px;
+  border-bottom: 1px solid transparent;
+}
+
+.sectioncontrol[value="arcane"]~div.arcane,
+.sectioncontrol[value="divine"]~div.divine,
+.sectioncontrol[value="innate"]~div.innate {
+  display: inline-flex;
+}
+
+.spell-tabs {
+  border-bottom: solid black 1px;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+}
+
+.spell-tabs>button[type="action"] {
+  border-bottom: 0px;
+}
+
+.spell-tabs>button[type="roll"] {
+  margin-bottom: 1px;
+}
+
+.spells div[data-groupname] span {
+  display: inline-block;
+}
+
+.spells input[type="text"]:not(.skillname) {
+  text-align: center;
+}
+
+.arcane .skillattribute {
+  text-align: right;
+  width: 30px;
+  margin-bottom: 2px;
+}
+
+.spellEP.spellEP.spellEP {
+  width: 50px;
+  margin-left: 15px;
+}
+
+.spellcasttime {
+  width: 50px;
+}
+
+.spelltype {
+  width: 65px;
+}
+
+.spellrange {
+  width: 40px;
+}
+
+.spelltarget {
+  width: 60px;
+}
+
+.spellduration {
+  width: 70px;
+}
+
+.spellhasnote.spellhasnote.spellhasnote.spellhasnote {
+  width: 12px;
+  margin-left: 0px;
+  margin-right: 1px;
+  margin-bottom: 2px;
+}
+
+.isdiscipline[value="1"]~.skill-roll,
+.isdiscipline[value="1"]~.spellEP,
+.isdiscipline[value="1"]~.spellcasttime,
+.isdiscipline[value="1"]~.spelltype,
+.isdiscipline[value="1"]~.spellrange,
+.isdiscipline[value="1"]~.spelltarget,
+.isdiscipline[value="1"]~.spellduration,
+.isdiscipline[value="1"]~.spellhasnote {
+  display: none;
+}
+
+.isdiscipline[value="1"]~.spellhasnote+span.skillTP {
+  margin-left: 442px;
+}
+
+.table-header .skill-roll {
+  border-width: 0px;
+}
+
+.spell-note {
+  flex-grow: 1;
+  margin-bottom: 1px;
+  margin-left: 50px;
+}
+
+.spell-note.spell-note.spell-note.spell-note {
+  text-align: left;
+  margin-top: -1px;
+}
+
+.arcane .spell-note {
+  margin-left: 90px;
+}
+
+/* Avoid space between items in the row */
+.spells .table-header {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+}
+
+.spells div[data-groupname]>div {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  /* and make rows overlap */
+  margin-top: -1px;
+}
+
+.spell-row {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+}
+
+.spell-row>input~input,
+.spell-row>input~select,
+.spell-row>select~input {
+  /* Make consecutive buttons overlap */
+  margin-left: -1px;
+}

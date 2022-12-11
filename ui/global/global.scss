@@ -1,0 +1,219 @@
+/* Generic styles */
+
+.invisible {
+  display: none;
+}
+
+.inline {
+  display: inline-block;
+}
+
+.right {
+  text-align: right;
+}
+
+.center {
+  text-align: center;
+}
+
+.left {
+  text-align: left;
+}
+
+.middle {
+  vertical-align: middle;
+}
+
+.narrow.narrow.narrow {
+  width: 25px;
+}
+
+.modifier-width.modifier-width.modifier-width {
+  width: 35px;
+}
+
+.narrowish.narrowish.narrowish {
+  width: 40px;
+}
+
+.medium.medium.medium {
+  width: 50px;
+}
+
+.wideish.wideish.wideish {
+  width: 60px;
+}
+
+.wide.wide.wide {
+  width: 90px;
+}
+
+.wider.wider.wider {
+  width: 150px;
+}
+
+.narrow-spacing {
+  line-height: 1;
+}
+
+.spacer {
+  height: 20px;
+}
+
+.inlne-spacer {
+  width: 8px;
+}
+
+.horizontal-flex {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.horizontal-flex-center {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.align-center.align-center.align-center {
+  align-items: center;
+}
+
+.flexing {
+  flex-grow: 1;
+}
+
+.no-shrink {
+  flex-shrink: 0;
+}
+
+.big.big.big.big {
+  font-size: 150%;
+  font-weight: normal;
+}
+
+.biggish.biggish.biggish.biggish {
+  font-size: 130%;
+  font-weight: normal;
+}
+
+.larger.larger.larger.larger {
+  font-size: 110%;
+}
+
+.CP.CP.CP.CP {
+  color: blue;
+}
+
+.TP.TP.TP.TP {
+  color: #40C000;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.number.ability {
+  font-weight: bold;
+}
+
+.children-separated> :not(:first-child) {
+  border: solid lightgrey;
+  border-width: 1px 0px 0px 0px;
+}
+
+.label {
+  display: inline-block;
+  vertical-align: middle;
+  text-align: right;
+}
+
+.value {
+  display: inline-block;
+  box-sizing: border-box;
+}
+
+.attribute-name {
+  display: inline-block;
+  vertical-align: middle;
+  text-align: right;
+}
+
+.attribute-value {
+  font-size: 150%;
+  vertical-align: middle;
+  margin: 1px;
+  border-width: 1px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+/* Make the height override the box's usual height */
+input.attribute-value.attribute-value.attribute-value {
+  height: 24px;
+}
+
+span.attribute-value {
+  /* Make the height work for span. */
+  display: inline-block;
+  border-color: transparent;
+}
+
+button.reset-total {
+  background-color: white;
+  font-weight: bold;
+  border-width: 1px;
+  border-radius: 4px;
+  border-color: lightgrey;
+  line-height: 1;
+  padding: 2px;
+  vertical-align: middle;
+}
+
+button.convert-button {
+  background-color: white;
+  font-weight: bold;
+  border-width: 1px;
+  border-radius: 4px;
+  border-color: lightgrey;
+  padding: 0px 2px 4px 2px;
+  vertical-align: middle;
+  font-size: 200%;
+}
+
+input[disabled],
+input[readonly] {
+  border-color: transparent;
+  background-color: transparent;
+  padding: 0px;
+}
+
+.flex-stack {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.align-middle.align-middle.align-middle {
+  align-items: middle;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
+.text-stack {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.table-header>div {
+  display: inline-block;
+  text-align: center;
+  font-weight: bold;
+  border-color: black;
+  border-style: solid;
+  border-width: 0px 0px 1px 0px;
+  margin-bottom: 2px;
+}

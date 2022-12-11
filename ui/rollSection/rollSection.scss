@@ -1,0 +1,104 @@
+/* ---------- Roll section ------------- */
+
+.roll-section {
+  display: flex;
+  /* Get rid of the space the sheet puts above us. */
+  margin-top: -26px;
+}
+
+.roll-select-section {
+  display: inline-flex;
+  flex-direction: row;
+}
+
+.save-roll {
+  font-size: 14px;
+  line-height: 15px;
+  width: 15px;
+  overflow-x: visible;
+  padding: 1px 2px;
+  border-width: 1px;
+  border-radius: 3px;
+  background-color: white;
+}
+
+input.saved-roll {
+  height: 8px;
+}
+
+.save-radio-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.save-pending[value="1"]~.save-roll {
+  border-color: #FFBF00;
+  box-shadow: 3px 3px 3px #FFBF00;
+}
+
+.save-pending[value="1"]~.save-radio-stack .radio {
+  border-color: #FFBF00;
+  background: #E8E8E8;
+  box-shadow: 3px 3px 3px #FFBF00;
+}
+
+.roll-chosen[value="1"]~.save-radio-row>button.roll-1,
+.roll-chosen[value="2"]~.save-radio-row>button.roll-2,
+.roll-chosen[value="3"]~.save-radio-row>button.roll-3,
+.roll-chosen[value="4"]~.save-radio-row>button.roll-4,
+.roll-chosen[value="5"]~.save-radio-row>button.roll-5,
+.roll-chosen[value="6"]~.save-radio-row>button.roll-6 {
+  background-color: white;
+  border-color: black;
+}
+
+/* Configure the radio button styling. */
+.radio {
+  padding: 0;
+  margin: 2px;
+  border: solid 1px #a8a8a8;
+  cursor: pointer;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.save-radio-stack {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  flex: 1;
+}
+
+radio>span.checked {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: buttontext;
+}
+
+
+.roll-description-section {
+  display: inline-flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.roll-description-line {
+  display: flex;
+  align-items: baseline;
+}
+
+.roll-description-line label {
+  width: unset;
+  margin: 0;
+  padding-right: 8px;
+  font-weight: normal;
+}
+
+.roll-description-line input+label {
+  padding-left: 8px;
+}

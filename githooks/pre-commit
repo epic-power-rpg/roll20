@@ -4,4 +4,4 @@ gitDirectory=$(dirname "${BASH_SOURCE:-$0}")
 
 source "${gitDirectory}"/../../mergeScripts.sh
 
-git add ui/bin/*
+git add bin/*

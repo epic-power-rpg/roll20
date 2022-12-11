@@ -1,0 +1,66 @@
+/* ----------- Tabs and what they control  ------------- */
+
+/* Attributes */
+
+.attributecontrol[value="basic"]~span.attribute-value,
+.attributecontrol[value="basic"]~button.reset-total,
+.attributecontrol[value="basic"]~.attribute-roll,
+.attributecontrol[value="basic"]~.not-basic-tab,
+.cpcontrol[value="basic"]~.not-basic-tab {
+  display: none;
+}
+
+.attributecontrol:not([value="basic"])~input.attribute-value,
+.attributecontrol:not([value="basic"])~button.reset-total .attributecontrol:not([value="basic"])~.CP,
+.attributecontrol:not([value="basic"])~.basic-tab-only,
+.cpcontrol:not([value="basic"])~.basic-tab-only {
+  display: none;
+}
+
+/* Tabs */
+.characterviewer .nav-tabs>li:not(.active) {
+  background: #EEE;
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.characterviewer .nav-tabs>li:not(.active)>a:hover,
+.characterviewer .nav-tabs>li:not(.active)>a:focus {
+  color: black;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.characterviewer .nav-tabs>.active>a {
+  font-weight: bold;
+  text-decoration: none;
+  background-color: #616161;
+  color: white;
+}
+
+.tab-holder {
+  margin-bottom: -1px;
+}
+
+.tab {
+  border: 1px solid #999;
+  background: #EEE;
+  padding: 4px 4px;
+  border-radius: 4px 4px 0 0;
+  font-size: 110%
+}
+
+.tabcontrol[value="overview"]~.tab[name="act_overview"],
+.tabcontrol[value="basic"]~.tab[name="act_basic"],
+.tabcontrol[value="equipment"]~.tab[name="act_equipment"],
+.tabcontrol[value="skills"]~.tab[name="act_skills"],
+.tabcontrol[value="spells"]~.tab[name="act_spells"],
+.tabcontrol[value="notes"]~.tab[name="act_notes"] {
+  font-weight: bold;
+  text-decoration: none;
+  background-color: #616161;
+  color: white;
+  border-bottom: 1px solid transparent;
+}

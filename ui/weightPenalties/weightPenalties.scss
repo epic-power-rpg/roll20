@@ -1,0 +1,31 @@
+/* Weight penalties */
+
+.weight-penalty-table {
+  border: solid black;
+  border-width: 1px 0px;
+}
+
+.weight-penalty-table>div {
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+}
+
+.weight-penalty-table>div:not(:last-child):not(.table-header) {
+  border-bottom: solid lightgrey 1px;
+}
+
+.weight-penalty-table>div> :nth-child(2) {
+  display: inline-block;
+  width: 30px;
+}
+
+.weight-penalty-table>div> :last-child {
+  display: inline-block;
+  width: 30px;
+}
+
+.weight-penalty-table>div> :first-child[value="1"]~* {
+  font-weight: bold;
+  padding: 2px 0px;
+}

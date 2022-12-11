@@ -1,0 +1,13 @@
+/* Sections */
+.section {
+  display: none;
+}
+
+.sectioncontrol[value="overview"]~div.overview,
+.sectioncontrol[value="basic"]~div.basic,
+.sectioncontrol[value="equipment"]~div.equipment,
+.sectioncontrol[value="skills"]~div.skills,
+.sectioncontrol[value="spells"]~div.spells,
+.sectioncontrol[value="notes"]~div.notes {
+  display: block;
+}

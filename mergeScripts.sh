@@ -4,7 +4,7 @@ set -eux -o pipefail
 
 currentDirectory=$(dirname "${BASH_SOURCE:-$0}")
 
-targetDirectory="${currentDirectory}/ui/bin/"
+targetDirectory="${currentDirectory}/bin/"
 
 mkdir -p "${targetDirectory}"
 

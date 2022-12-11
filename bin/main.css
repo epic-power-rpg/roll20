@@ -1,5 +1,7 @@
+@charset "UTF-8";
 /* Styles that apply everywhere */
-.characterviewer label, .characterviewer .label {
+.characterviewer label,
+.characterviewer .label {
   display: inline-block;
   margin: 0;
   text-align: right;
@@ -24,7 +26,7 @@ input[type=number] {
   height: 22px;
 }
 
-[data-groupname] button:not([type="roll"]) {
+[data-groupname] button:not([type=roll]) {
   padding: 3px 8px 3px 8px;
   margin-top: 3px;
 }
@@ -46,11 +48,13 @@ button.actionRollButton {
 
 /* Change the character for dice roll buttons to be
    the two joined squares character and give them the blue background */
-button.btn.ui-draggable[type=roll], button.actionRollButton {
+button.btn.ui-draggable[type=roll],
+button.actionRollButton {
   background-image: linear-gradient(90deg, #ddf, #99f);
 }
 
-button.btn.ui-draggable[type=roll]::before, button.actionRollButton::before {
+button.btn.ui-draggable[type=roll]::before,
+button.actionRollButton::before {
   font-family: sans-serif;
   content: "⧉";
 }
@@ -71,7 +75,8 @@ button.do::before {
   content: "▶";
 }
 
-button.do, button.do-and-roll {
+button.do,
+button.do-and-roll {
   background-image: linear-gradient(90deg, #ddf, #44f);
 }
 
@@ -83,16 +88,15 @@ button.big-control.do-and-roll {
   width: 20px;
 }
 
-.disable-do[value="1"]~.do {
+.disable-do[value="1"] ~ .do {
   background-image: linear-gradient(90deg, #ddd, #ddd);
   pointer-events: none;
 }
 
-.disable-do-and-roll[value="1"]~.do-and-roll {
+.disable-do-and-roll[value="1"] ~ .do-and-roll {
   background-image: linear-gradient(90deg, #ddd, #ddd);
   pointer-events: none;
 }
-
 
 /* Change the character for undo buttons to be
    the play backward character */
@@ -108,7 +112,9 @@ button.undo {
 }
 
 /* Make action buttons look like roll buttons, but darken the borders */
-button.do, button.do-and-roll, button.undo {
+button.do,
+button.do-and-roll,
+button.undo {
   border: 1px solid #999;
   border-bottom-color: #777;
   -webkit-border-radius: 4px;
@@ -117,7 +123,6 @@ button.do, button.do-and-roll, button.undo {
 }
 
 /* Generic styles */
-
 .invisible {
   display: none;
 }
@@ -236,7 +241,7 @@ button.do, button.do-and-roll, button.undo {
   font-weight: bold;
 }
 
-.children-separated> :not(:first-child) {
+.children-separated > :not(:first-child) {
   border: solid lightgrey;
   border-width: 1px 0px 0px 0px;
 }
@@ -300,7 +305,8 @@ button.convert-button {
   font-size: 200%;
 }
 
-input[disabled], input[readonly] {
+input[disabled],
+input[readonly] {
   border-color: transparent;
   background-color: transparent;
   padding: 0px;
@@ -325,7 +331,7 @@ input[disabled], input[readonly] {
   vertical-align: middle;
 }
 
-.table-header>div {
+.table-header > div {
   display: inline-block;
   text-align: center;
   font-weight: bold;
@@ -336,7 +342,6 @@ input[disabled], input[readonly] {
 }
 
 /* ---------- Roll section ------------- */
-
 .roll-section {
   display: flex;
   /* Get rid of the space the sheet puts above us. */
@@ -368,23 +373,23 @@ input.saved-roll {
   flex-direction: row;
 }
 
-.save-pending[value="1"]~.save-roll {
+.save-pending[value="1"] ~ .save-roll {
   border-color: #FFBF00;
   box-shadow: 3px 3px 3px #FFBF00;
 }
 
-.save-pending[value="1"]~.save-radio-stack .radio {
+.save-pending[value="1"] ~ .save-radio-stack .radio {
   border-color: #FFBF00;
   background: #E8E8E8;
   box-shadow: 3px 3px 3px #FFBF00;
 }
 
-.roll-chosen[value="1"]~.save-radio-row>button.roll-1,
-.roll-chosen[value="2"]~.save-radio-row>button.roll-2,
-.roll-chosen[value="3"]~.save-radio-row>button.roll-3,
-.roll-chosen[value="4"]~.save-radio-row>button.roll-4,
-.roll-chosen[value="5"]~.save-radio-row>button.roll-5,
-.roll-chosen[value="6"]~.save-radio-row>button.roll-6 {
+.roll-chosen[value="1"] ~ .save-radio-row > button.roll-1,
+.roll-chosen[value="2"] ~ .save-radio-row > button.roll-2,
+.roll-chosen[value="3"] ~ .save-radio-row > button.roll-3,
+.roll-chosen[value="4"] ~ .save-radio-row > button.roll-4,
+.roll-chosen[value="5"] ~ .save-radio-row > button.roll-5,
+.roll-chosen[value="6"] ~ .save-radio-row > button.roll-6 {
   background-color: white;
   border-color: black;
 }
@@ -410,13 +415,12 @@ input.saved-roll {
   flex: 1;
 }
 
-radio>span.checked {
+radio > span.checked {
   width: 6px;
   height: 6px;
   border-radius: 50%;
   background: buttontext;
 }
-
 
 .roll-description-section {
   display: inline-flex;
@@ -436,12 +440,11 @@ radio>span.checked {
   font-weight: normal;
 }
 
-.roll-description-line input+label {
+.roll-description-line input + label {
   padding-left: 8px;
 }
 
 /* --------- Top section ----------------- */
-
 .top-section {
   display: flex;
   justify-content: space-between;
@@ -451,62 +454,60 @@ radio>span.checked {
 }
 
 /* ------ generic conditional appearance ------ */
-
-.conditional-one>* {
+.conditional-one > * {
   display: none;
 }
 
-.conditional-one> :first-child[value="1"]~* {
+.conditional-one > :first-child[value="1"] ~ * {
   display: inline-block;
 }
 
-.conditional-something>* {
+.conditional-something > * {
   display: inline-block;
 }
 
-.conditional-something> :first-child[value=" "]~* {
+.conditional-something > :first-child[value=" "] ~ * {
   display: none;
 }
 
-.no-add-or-modify-buttons [data-groupname] button:not([type="roll"]) {
+.no-add-or-modify-buttons [data-groupname] button:not([type=roll]) {
   display: none;
 }
 
 /* ----------- Tabs and what they control  ------------- */
-
 /* Attributes */
-
-.attributecontrol[value="basic"]~span.attribute-value,
-.attributecontrol[value="basic"]~button.reset-total,
-.attributecontrol[value="basic"]~.attribute-roll,
-.attributecontrol[value="basic"]~.not-basic-tab,
-.cpcontrol[value="basic"]~.not-basic-tab {
+.attributecontrol[value=basic] ~ span.attribute-value,
+.attributecontrol[value=basic] ~ button.reset-total,
+.attributecontrol[value=basic] ~ .attribute-roll,
+.attributecontrol[value=basic] ~ .not-basic-tab,
+.cpcontrol[value=basic] ~ .not-basic-tab {
   display: none;
 }
 
-.attributecontrol:not([value="basic"])~input.attribute-value,
-.attributecontrol:not([value="basic"])~button.reset-total .attributecontrol:not([value="basic"])~.CP,
-.attributecontrol:not([value="basic"])~.basic-tab-only,
-.cpcontrol:not([value="basic"])~.basic-tab-only {
+.attributecontrol:not([value=basic]) ~ input.attribute-value,
+.attributecontrol:not([value=basic]) ~ button.reset-total .attributecontrol:not([value=basic]) ~ .CP,
+.attributecontrol:not([value=basic]) ~ .basic-tab-only,
+.cpcontrol:not([value=basic]) ~ .basic-tab-only {
   display: none;
 }
 
 /* Tabs */
-.characterviewer .nav-tabs>li:not(.active) {
+.characterviewer .nav-tabs > li:not(.active) {
   background: #EEE;
   color: black;
   text-decoration: none;
   cursor: pointer;
 }
 
-.characterviewer .nav-tabs>li:not(.active)>a:hover, .characterviewer .nav-tabs>li:not(.active)>a:focus {
+.characterviewer .nav-tabs > li:not(.active) > a:hover,
+.characterviewer .nav-tabs > li:not(.active) > a:focus {
   color: black;
   font-weight: bold;
   text-decoration: none;
   cursor: pointer;
 }
 
-.characterviewer .nav-tabs>.active>a {
+.characterviewer .nav-tabs > .active > a {
   font-weight: bold;
   text-decoration: none;
   background-color: #616161;
@@ -522,15 +523,15 @@ radio>span.checked {
   background: #EEE;
   padding: 4px 4px;
   border-radius: 4px 4px 0 0;
-  font-size: 110%
+  font-size: 110%;
 }
 
-.tabcontrol[value="overview"]~.tab[name="act_overview"],
-.tabcontrol[value="basic"]~.tab[name="act_basic"],
-.tabcontrol[value="equipment"]~.tab[name="act_equipment"],
-.tabcontrol[value="skills"]~.tab[name="act_skills"],
-.tabcontrol[value="spells"]~.tab[name="act_spells"],
-.tabcontrol[value="notes"]~.tab[name="act_notes"] {
+.tabcontrol[value=overview] ~ .tab[name=act_overview],
+.tabcontrol[value=basic] ~ .tab[name=act_basic],
+.tabcontrol[value=equipment] ~ .tab[name=act_equipment],
+.tabcontrol[value=skills] ~ .tab[name=act_skills],
+.tabcontrol[value=spells] ~ .tab[name=act_spells],
+.tabcontrol[value=notes] ~ .tab[name=act_notes] {
   font-weight: bold;
   text-decoration: none;
   background-color: #616161;
@@ -543,82 +544,79 @@ radio>span.checked {
   display: none;
 }
 
-.sectioncontrol[value="overview"]~div.overview,
-.sectioncontrol[value="basic"]~div.basic,
-.sectioncontrol[value="equipment"]~div.equipment,
-.sectioncontrol[value="skills"]~div.skills,
-.sectioncontrol[value="spells"]~div.spells,
-.sectioncontrol[value="notes"]~div.notes {
+.sectioncontrol[value=overview] ~ div.overview,
+.sectioncontrol[value=basic] ~ div.basic,
+.sectioncontrol[value=equipment] ~ div.equipment,
+.sectioncontrol[value=skills] ~ div.skills,
+.sectioncontrol[value=spells] ~ div.spells,
+.sectioncontrol[value=notes] ~ div.notes {
   display: block;
 }
 
 /* Weight penalties */
-
 .weight-penalty-table {
   border: solid black;
   border-width: 1px 0px;
 }
 
-.weight-penalty-table>div {
+.weight-penalty-table > div {
   text-align: center;
   display: flex;
   flex-direction: row;
 }
 
-.weight-penalty-table>div:not(:last-child):not(.table-header) {
+.weight-penalty-table > div:not(:last-child):not(.table-header) {
   border-bottom: solid lightgrey 1px;
 }
 
-.weight-penalty-table>div> :nth-child(2) {
+.weight-penalty-table > div > :nth-child(2) {
   display: inline-block;
   width: 30px;
 }
 
-.weight-penalty-table>div> :last-child {
+.weight-penalty-table > div > :last-child {
   display: inline-block;
   width: 30px;
 }
 
-.weight-penalty-table>div> :first-child[value="1"]~* {
+.weight-penalty-table > div > :first-child[value="1"] ~ * {
   font-weight: bold;
   padding: 2px 0px;
 }
 
-
 /* --------- Advantages ------------ */
-
 .advantage-overview {
   display: flex;
   flex-direction: column;
 }
 
-.advantage-overview>div.table-header>div {
-  text-align: center
+.advantage-overview > div.table-header > div {
+  text-align: center;
 }
 
-.advantage-overview>div.conditional-something>div,
-.advantage-overview>div[data-groupname]>div {
+.advantage-overview > div.conditional-something > div,
+.advantage-overview > div[data-groupname] > div {
   border: solid lightgrey;
   border-width: 0px 0px 1px 0px;
   padding-top: 2px;
   padding-bottom: 2px;
 }
 
-.advantage-overview>.conditional-something> :first-child[value="-1"]~* {
+.advantage-overview > .conditional-something > :first-child[value="-1"] ~ * {
   color: red;
 }
 
 /* If the name wraps, make the lines close. */
-.advantage-overview>div>div,
+.advantage-overview > div > div,
 .advantage-overview span {
   line-height: 1;
   width: 120px;
-  text-align: left
+  text-align: left;
 }
 
 /* Keep line height low for the containers of the names,
    or they will make single lines too tall. */
-.advantage-overview>div.conditional-something {
+.advantage-overview > div.conditional-something {
   line-height: 1;
 }
 
@@ -629,11 +627,11 @@ radio>span.checked {
   align-items: center;
 }
 
-.advantage-row>div {
+.advantage-row > div {
   display: inline-block;
 }
 
-.advantage-row.advantage-row> :first-child {
+.advantage-row.advantage-row > :first-child {
   width: 120px;
   padding-right: 4px;
   text-align: right;
@@ -644,7 +642,7 @@ radio>span.checked {
   width: 40px;
 }
 
-.advantage-row>.CP {
+.advantage-row > .CP {
   display: inline-block;
   text-align: center;
   width: 26px;
@@ -668,7 +666,6 @@ radio>span.checked {
 }
 
 /* ---------------- Epic Feats --------------- */
-
 .feat-overview {
   display: inline-flex;
   flex-direction: column;
@@ -676,7 +673,7 @@ radio>span.checked {
 
 /* Add back margin for line spacing. 
    And avoid gaps between items in the row */
-.feat-overview>div[data-groupname]>div {
+.feat-overview > div[data-groupname] > div {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -701,7 +698,7 @@ span.featextraordinaryletter {
   font-weight: bold;
 }
 
-.feat-overview>.table-header>div.featname {
+.feat-overview > .table-header > div.featname {
   width: 120px;
   margin-left: -2px;
 }
@@ -721,13 +718,13 @@ span.featextraordinaryletter {
 
 input.featname {
   margin-left: 3px;
-  margin-top: -1px
+  margin-top: -1px;
 }
 
 input.featextraordinary {
   width: 18px;
   margin-left: 4px;
-  margin-top: -1px
+  margin-top: -1px;
 }
 
 .featCP.featCP.featCP.featCP {
@@ -738,7 +735,6 @@ input.featextraordinary {
 input.featCP {
   margin-top: -1px;
 }
-
 
 /* ------------ Skills -------------- */
 .skilldisciplineinfo {
@@ -786,12 +782,11 @@ input.featCP {
 }
 
 /* overview section */
-
 .skills-overview .skillname {
   width: 100px;
 }
 
-.skills-overview>div[data-groupname] .skillname {
+.skills-overview > div[data-groupname] .skillname {
   line-height: 1;
   padding-top: 2px;
   padding-bottom: 2px;
@@ -812,13 +807,13 @@ input.featCP {
   flex-direction: row;
 }
 
-.skills-overview>div[data-groupname]>div {
+.skills-overview > div[data-groupname] > div {
   display: flex;
   flex-direction: row;
   align-items: center;
 }
 
-.skills-overview .isdiscipline[value="1"]~* {
+.skills-overview .isdiscipline[value="1"] ~ * {
   display: none;
 }
 
@@ -828,7 +823,7 @@ input.featCP {
   align-items: center;
   border-width: 0px 0px 1px 0px;
   border-color: lightgrey;
-  border-style: solid
+  border-style: solid;
 }
 
 .skill-roll.skill-roll.skill-roll.skill-roll {
@@ -840,8 +835,7 @@ input.featCP {
 }
 
 /* skills section */
-
-.isdiscipline[value="1"]~.skillname {
+.isdiscipline[value="1"] ~ .skillname {
   width: 190px;
   text-align: left;
   border-top-color: black;
@@ -851,9 +845,9 @@ input.featCP {
   z-index: 1;
 }
 
-.isdiscipline[value="1"]~.skillability,
-.isdiscipline[value="1"]~.skillattribute,
-.isdiscipline[value="1"]~.skillbase {
+.isdiscipline[value="1"] ~ .skillability,
+.isdiscipline[value="1"] ~ .skillattribute,
+.isdiscipline[value="1"] ~ .skillbase {
   display: none;
 }
 
@@ -863,7 +857,7 @@ input.featCP {
   flex-direction: row;
 }
 
-.skills div[data-groupname]>div {
+.skills div[data-groupname] > div {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -872,9 +866,7 @@ input.featCP {
 }
 
 /* -------- Equipment --------- */
-
 /* overview section */
-
 .weapons-overview div[data-groupname] span {
   display: inline-block;
 }
@@ -884,7 +876,7 @@ input.featCP {
   flex: 0 0 100px;
 }
 
-.weapons-overview>div[data-groupname] .equipmentname {
+.weapons-overview > div[data-groupname] .equipmentname {
   line-height: 1;
   padding-top: 2px;
   padding-bottom: 2px;
@@ -898,10 +890,10 @@ input.featCP {
   flex-direction: row;
 }
 
-.weapons-overview>div[data-groupname]>div {
+.weapons-overview > div[data-groupname] > div {
   border-width: 0px 0px 1px 0px;
   border-color: lightgrey;
-  border-style: solid
+  border-style: solid;
 }
 
 .weapons-overview-row-container {
@@ -917,7 +909,6 @@ input.featCP {
 }
 
 /* equipment section */
-
 .equipmentname {
   text-align: right;
   flex: 0 0 170px;
@@ -949,7 +940,7 @@ input.featCP {
 
 .equipmentdamage {
   width: 60px;
-  text-align: center
+  text-align: center;
 }
 
 .equipmentrange.equipmentrange.equipmentrange {
@@ -974,7 +965,7 @@ input.featCP {
   align-items: flex-end;
 }
 
-.equipment div[data-groupname]>div {
+.equipment div[data-groupname] > div {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -983,10 +974,9 @@ input.featCP {
 }
 
 /* ------------- Spells ------------*/
-
-.tabcontrol[value="arcane"]~.tab[name="act_arcane"],
-.tabcontrol[value="divine"]~.tab[name="act_divine"],
-.tabcontrol[value="innate"]~.tab[name="act_innate"] {
+.tabcontrol[value=arcane] ~ .tab[name=act_arcane],
+.tabcontrol[value=divine] ~ .tab[name=act_divine],
+.tabcontrol[value=innate] ~ .tab[name=act_innate] {
   font-weight: bold;
   text-decoration: none;
   background-color: #616161;
@@ -995,9 +985,9 @@ input.featCP {
   border-bottom: 1px solid transparent;
 }
 
-.sectioncontrol[value="arcane"]~div.arcane,
-.sectioncontrol[value="divine"]~div.divine,
-.sectioncontrol[value="innate"]~div.innate {
+.sectioncontrol[value=arcane] ~ div.arcane,
+.sectioncontrol[value=divine] ~ div.divine,
+.sectioncontrol[value=innate] ~ div.innate {
   display: inline-flex;
 }
 
@@ -1008,11 +998,11 @@ input.featCP {
   align-items: center;
 }
 
-.spell-tabs>button[type="action"] {
+.spell-tabs > button[type=action] {
   border-bottom: 0px;
 }
 
-.spell-tabs>button[type="roll"] {
+.spell-tabs > button[type=roll] {
   margin-bottom: 1px;
 }
 
@@ -1020,7 +1010,7 @@ input.featCP {
   display: inline-block;
 }
 
-.spells input[type="text"]:not(.skillname) {
+.spells input[type=text]:not(.skillname) {
   text-align: center;
 }
 
@@ -1062,18 +1052,18 @@ input.featCP {
   margin-bottom: 2px;
 }
 
-.isdiscipline[value="1"]~.skill-roll,
-.isdiscipline[value="1"]~.spellEP,
-.isdiscipline[value="1"]~.spellcasttime,
-.isdiscipline[value="1"]~.spelltype,
-.isdiscipline[value="1"]~.spellrange,
-.isdiscipline[value="1"]~.spelltarget,
-.isdiscipline[value="1"]~.spellduration,
-.isdiscipline[value="1"]~.spellhasnote {
+.isdiscipline[value="1"] ~ .skill-roll,
+.isdiscipline[value="1"] ~ .spellEP,
+.isdiscipline[value="1"] ~ .spellcasttime,
+.isdiscipline[value="1"] ~ .spelltype,
+.isdiscipline[value="1"] ~ .spellrange,
+.isdiscipline[value="1"] ~ .spelltarget,
+.isdiscipline[value="1"] ~ .spellduration,
+.isdiscipline[value="1"] ~ .spellhasnote {
   display: none;
 }
 
-.isdiscipline[value="1"]~.spellhasnote+span.skillTP {
+.isdiscipline[value="1"] ~ .spellhasnote + span.skillTP {
   margin-left: 442px;
 }
 
@@ -1103,7 +1093,7 @@ input.featCP {
   align-items: flex-end;
 }
 
-.spells div[data-groupname]>div {
+.spells div[data-groupname] > div {
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -1117,9 +1107,9 @@ input.featCP {
   align-items: flex-end;
 }
 
-.spell-row>input~input,
-.spell-row>input~select,
-.spell-row>select~input {
+.spell-row > input ~ input,
+.spell-row > input ~ select,
+.spell-row > select ~ input {
   /* Make consecutive buttons overlap */
   margin-left: -1px;
 }
@@ -1127,14 +1117,14 @@ input.featCP {
 /* ------------ Notes -------------- */
 .notecategory {
   width: 120px;
-  text-align: right
+  text-align: right;
 }
 
 .notenote {
   width: 500px;
 }
 
-.notes div[data-groupname]>div {
+.notes div[data-groupname] > div {
   /* and make rows overlap */
   margin-top: -1px;
 }

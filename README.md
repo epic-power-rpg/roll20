@@ -23,9 +23,11 @@ Ideally, the linter will auto-format, but manually, you may need to set your edi
 
 ## Generate files for Roll20
 
+### Scripts
+
 It is useful to split scripts up into separate files for ease of development, however,
 it is easier to copy just one script to Roll20.
-In order to simplify this process, use the following to generate `./ui/bin/roll20.js` script
+In order to simplify this process, use the following to generate `./bin/roll20.js` script
 that is a combination of all scripts.
 
 Any of the following will merge scripts:
@@ -34,3 +36,18 @@ Any of the following will merge scripts:
 * `./mergeScripts.sh`
 * `git commit` runs the above script as a pre-commit hook
 
+The output is in `./bin/roll20.js`
+
+### CSS
+
+[Sass](https://sass-lang.com/guide) is a tool that provides the ability to compile CSS from individual
+SCSS files.
+It provides a number of useful tools like defining variables and nesting, along with
+compile time error checking and auto-formatting.
+
+To generate CSS:
+
+* In development, `yarn sass:watch`
+* In build systems: `yarn sass`
+
+The output is in `./bin/main.css`

@@ -13,13 +13,17 @@
     "eslint-config-prettier": "8.5.0",
     "eslint-plugin-import": "2.26.0",
     "eslint-plugin-prettier": "4.2.1",
-    "prettier": "2.7.1"
+    "prettier": "2.7.1",
+    "sass": "1.56.2"
   },
   "scripts": {
     "lint": "eslint",
     "lint:fix": "yarn lint --fix",
     "lint:all": "yarn lint --ext .js .",
     "lint:fix-all": "yarn lint:all --fix",
+    "start": "run-p sass",
+    "sass": "sass ./ui/main.scss ./bin/main.css --no-source-map",
+    "sass:watch": "yarn sass --watch --no-source-map",
     "mergeScripts": "./mergeScripts.sh"
   }
 }
