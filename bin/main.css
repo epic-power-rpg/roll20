@@ -341,6 +341,13 @@ input[readonly] {
   margin-bottom: 2px;
 }
 
+.characterviewer textarea {
+  box-sizing: border-box;
+  height: 80px;
+  overflow-y: auto;
+  text-align: left;
+}
+
 /* ---------- Roll section ------------- */
 .roll-section {
   display: flex;
@@ -997,11 +1004,9 @@ input.featCP {
   display: flex;
   align-items: center;
 }
-
 .spell-tabs > button[type=action] {
   border-bottom: 0px;
 }
-
 .spell-tabs > button[type=roll] {
   margin-bottom: 1px;
 }
@@ -1009,7 +1014,6 @@ input.featCP {
 .spells div[data-groupname] span {
   display: inline-block;
 }
-
 .spells input[type=text]:not(.skillname) {
   text-align: center;
 }
@@ -1062,9 +1066,8 @@ input.featCP {
 .isdiscipline[value="1"] ~ .spellhasnote {
   display: none;
 }
-
 .isdiscipline[value="1"] ~ .spellhasnote + span.skillTP {
-  margin-left: 442px;
+  margin-left: 448px;
 }
 
 .table-header .skill-roll {
@@ -1074,16 +1077,10 @@ input.featCP {
 .spell-note {
   flex-grow: 1;
   margin-bottom: 1px;
-  margin-left: 50px;
-}
-
-.spell-note.spell-note.spell-note.spell-note {
-  text-align: left;
-  margin-top: -1px;
 }
 
 .arcane .spell-note {
-  margin-left: 90px;
+  margin-left: 40px;
 }
 
 /* Avoid space between items in the row */
@@ -1092,7 +1089,6 @@ input.featCP {
   flex-direction: row;
   align-items: flex-end;
 }
-
 .spells div[data-groupname] > div {
   display: flex;
   flex-direction: column;
@@ -1105,13 +1101,6 @@ input.featCP {
   display: flex;
   flex-direction: row;
   align-items: flex-end;
-}
-
-.spell-row > input ~ input,
-.spell-row > input ~ select,
-.spell-row > select ~ input {
-  /* Make consecutive buttons overlap */
-  margin-left: -1px;
 }
 
 /* ------------ Notes -------------- */
