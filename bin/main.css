@@ -988,9 +988,12 @@ input.featCP {
 }
 
 .sectioncontrol[value=arcane] ~ div.arcane,
-.sectioncontrol[value=divine] ~ div.divine,
-.sectioncontrol[value=innate] ~ div.innate {
+.sectioncontrol[value=divine] ~ div.divine {
   display: inline-flex;
+}
+
+.sectioncontrol[value=innate] ~ div.innate {
+  display: block;
 }
 
 .spell-tabs {
@@ -1090,6 +1093,39 @@ input.featCP {
   align-items: stretch;
   /* and make rows overlap */
   margin-top: -1px;
+}
+.spells .innate-spells-header {
+  display: grid;
+  grid-template-columns: 4fr 1fr 1fr 2fr 1fr 2fr 2fr 1fr 1fr;
+  column-gap: 2px;
+  background: #93c6f2;
+  padding: 4px;
+}
+.spells .innate-spells-header > div {
+  text-align: center;
+  margin: auto;
+  font-weight: bold;
+  width: 100%;
+}
+.spells div[data-groupname=repeating_innate] > div {
+  display: grid;
+  grid-template-columns: 4fr 1fr 1fr 2fr 1fr 2fr 2fr 1fr 1fr;
+  row-gap: 4px;
+  column-gap: 2px;
+  background: aliceblue;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+.spells div[data-groupname=repeating_innate] > div > input, .spells div[data-groupname=repeating_innate] > div input[type=number], .spells div[data-groupname=repeating_innate] > div > select {
+  width: 100%;
+  margin-left: unset;
+}
+.spells div[data-groupname=repeating_innate] > div > input[type=text] {
+  text-align: left;
+}
+.spells div[data-groupname=repeating_innate] > div .spell-row.conditional-one {
+  grid-column-start: 1;
+  grid-column-end: 10;
 }
 
 .spell-row {

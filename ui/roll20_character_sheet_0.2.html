@@ -1001,37 +1001,35 @@
     </fieldset>
   </div>
 
-  <div class="innate section flex-stack">
+  <div class="innate section innate-spells-grid">
     <input name="attr_innate_total_CP" type="hidden" value="0" />
     <input name="attr_innate_total_single_CP" type="hidden" value="0" />
-    <div class="table-header">
-      <div class="skillname">Name</div>
-      <div class="spellEP">EP</div>
-      <div class="spellcasttime">Cast Time</div>
-      <div class="spelltype">Touch/ Ray/ Missile</div>
-      <div class="spellrange">Range</div>
-      <div class="spelltarget">Target</div>
-      <div class="spellduration">Duration</div>
-      <div class="spellhasnote">N</div>
-      <div class="skillCP">CP</div>
+    <div class="innate-spells-header">
+      <div class="skillname-grid">Name</div>
+      <div class="spellEP-grid">EP</div>
+      <div class="spellcasttime-grid">Cast Time</div>
+      <div class="spelltype-grid">Touch/ Ray/ Missile</div>
+      <div class="spellrange-grid">Range</div>
+      <div class="spelltarget-grid">Target</div>
+      <div class="spellduration-grid">Duration</div>
+      <div class="spellhasnote-grid">N</div>
+      <div class="skillCP-grid">CP</div>
     </div>
     <fieldset class="repeating_innate">
-      <div class="spell-row">
-        <input name="attr_skillname" class="skillname" type="text" />
-        <input name="attr_spellEP" class="spellEP" type="text" />
-        <input name="attr_spellcasttime" class="spellcasttime" type="text" />
-        <select name="attr_spelltype" class="spelltype" type="text">
-          <option value="-">None</option>
-          <option value="touch">Touch</option>
-          <option value="ray">Ray</option>
-          <option value="missile">Missile</option>
-        </select>
-        <input name="attr_spellrange" class="spellrange" type="text" />
-        <input name="attr_spelltarget" class="spelltarget" type="text" />
-        <input name="attr_spellduration" class="spellduration" type="text" />
-        <input name="attr_spellhasnote" class="spellhasnote" type="checkbox" value="1" />
-        <input name="attr_skillCP" class="skillCP" type="number" />
-      </div>
+      <input name="attr_skillname" class="skillname-grid" type="text" />
+      <input name="attr_spellEP" class="spellEP-grid" type="text" />
+      <input name="attr_spellcasttime" class="spellcasttime-grid" type="text" />
+      <select name="attr_spelltype" class="spelltype-grid" type="text">
+        <option value="-">None</option>
+        <option value="touch">Touch</option>
+        <option value="ray">Ray</option>
+        <option value="missile">Missile</option>
+      </select>
+      <input name="attr_spellrange" class="spellrange-grid" type="text" />
+      <input name="attr_spelltarget" class="spelltarget-grid" type="text" />
+      <input name="attr_spellduration" class="spellduration-grid" type="text" />
+      <input name="attr_spellhasnote" class="spellhasnote-grid" type="checkbox" value="1" />
+      <input name="attr_skillCP" class="skillCP-grid" type="number" />
       <div class="spell-row conditional-one">
         <!--
           The next input puts whether we have a note into the

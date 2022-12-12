@@ -12,9 +12,12 @@
 }
 
 .sectioncontrol[value="arcane"]~div.arcane,
-.sectioncontrol[value="divine"]~div.divine,
-.sectioncontrol[value="innate"]~div.innate {
+.sectioncontrol[value="divine"]~div.divine {
   display: inline-flex;
+}
+
+.sectioncontrol[value="innate"]~div.innate {
+  display: block;
 }
 
 .spell-tabs {
@@ -124,6 +127,45 @@
     align-items: stretch;
     /* and make rows overlap */
     margin-top: -1px;
+  }
+
+  $innate-grid: 4fr 1fr 1fr 2fr 1fr 2fr 2fr 1fr 1fr;
+  $innate-grid-padding: 4px;
+  $innate-grid-column-gap: 2px;
+
+  .innate-spells-header {
+    display: grid;
+    grid-template-columns: $innate-grid;
+    column-gap: $innate-grid-column-gap;
+    background: #93c6f2;
+    padding: $innate-grid-padding;
+    >div {
+        text-align: center;
+        margin: auto;
+        font-weight: bold;
+        width: 100%;
+      }
+  }
+
+  div[data-groupname="repeating_innate"] > div {
+    display: grid;
+    grid-template-columns: $innate-grid;
+    row-gap: 4px;
+    column-gap: $innate-grid-column-gap;
+    background: aliceblue;
+    padding-left: $innate-grid-padding;
+    padding-right: $innate-grid-padding;
+    > input, input[type=number], > select {
+      width: 100%;
+      margin-left: unset;
+    }
+    > input[type=text] {
+      text-align: left;
+    }
+    .spell-row.conditional-one {
+      grid-column-start: 1;
+      grid-column-end: 10;
+    }
   }
 }
 
