@@ -343,7 +343,7 @@ input[readonly] {
 
 .characterviewer textarea {
   box-sizing: border-box;
-  height: 80px;
+  height: 48px;
   overflow-y: auto;
   text-align: left;
 }
