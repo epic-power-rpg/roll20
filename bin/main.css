@@ -751,7 +751,6 @@ input.featCP {
 .skillname {
   width: 150px;
   text-align: right;
-  border-left-color: black;
 }
 
 .skillability {
@@ -845,11 +844,7 @@ input.featCP {
 .isdiscipline[value="1"] ~ .skillname {
   width: 190px;
   text-align: left;
-  border-top-color: black;
-  border-left-color: black;
   font-weight: bold;
-  /* Make the border go above other borders */
-  z-index: 1;
 }
 
 .isdiscipline[value="1"] ~ .skillability,
