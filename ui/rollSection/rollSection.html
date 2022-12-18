@@ -1,0 +1,84 @@
+<!-- Roll section -->
+
+<div class="roll-section">
+  <!-- This field is monitored by the api script. Whenever it is changed,
+      the script chats the contents. This gets around sheetworkers not being
+      able to chat directly. -->
+  <input name="attr_pendingchat" type="hidden" value="" />
+  <div class="roll-select-section">
+    <input type="hidden" class="save-pending" name="attr_save_pending" value="0" />
+    <button name="act_saveroll" class="big-control save-roll" type="action">
+      ↓ ◯
+    </button>
+    &ensp;
+    <div class="save-radio-stack">
+      <input type="hidden" class="roll-chosen" name="attr_roll_chosen" value="" />
+      <div class="save-radio-row">
+        <button type="action" name="act_choose_roll_1" class="radio roll-1">
+        </button>
+        <input type="hidden" class="saved-roll" name="attr_saved_roll_1" value="" />
+        <button type="action" name="act_choose_roll_2" class="radio roll-2">
+        </button>
+        <input type="hidden" class="saved-roll" name="attr_saved_roll_2" value="" />
+        <button type="action" name="act_choose_roll_3" class="radio roll-3">
+        </button>
+        <input type="hidden" class="saved-roll" name="attr_saved_roll_3" value="" />
+      </div>
+      <div class="save-radio-row">
+        <button type="action" name="act_choose_roll_4" class="radio roll-4">
+        </button>
+        <input type="hidden" class="saved-roll" name="attr_saved_roll_4" value="" />
+        <button type="action" name="act_choose_roll_5" class="radio roll-5">
+        </button>
+        <input type="hidden" class="saved-roll" name="attr_saved_roll_5" value="" />
+        <button type="action" name="act_choose_roll_6" class="radio roll-6">
+        </button>
+        <input type="hidden" class="saved-roll" name="attr_saved_roll_6" value="" />
+      </div>
+    </div>
+    &emsp;
+  </div>
+  <div class="roll-description-section">
+    <div class="roll-description-line">
+      <label for="attr_action_description">Description</label>
+      <input name="attr_action_description" id="attr_action_description" class="flexing" type="text" />
+      <label for="attr_action_feats">Feats</label>
+      <input name="attr_action_feats" id="attr_action_feats" class="narrowish" type="number" value="0" />
+      <label for="attr_action_feats_EP">EP &ensp;</label>
+      <input name="attr_action_feats_EP" id="attr_action_feats_EP" class="narrow" value="@{action_feats}" disabled="true" />
+      <label for="attr_action_EP">EP</label>
+      <input name="attr_action_EP" id="attr_action_EP" class="narrowish" type="number" value="0" />
+      <label for="attr_action_SP">SP</label>
+      <input name="attr_action_SP" id="attr_action_SP" class="narrowish" type="number" value="0" />
+      <span class="inlne-spacer" />
+      <input name="attr_disable_do" id="attr_disable_do" class="disable-do" type="hidden" value="0" />
+      <button name="act_topaction" class="do" type="action">
+      </button>
+      &ensp;
+      <button name="act_undotopaction" class="undo" type="action">
+      </button>
+    </div>
+    <div class="roll-description-line">
+      <label for="attr_roll_skill">Skill</label>
+      <input name="attr_roll_skill" id="attr_roll_skill" class="flexing" type="text" />
+      <label for="attr_roll_ability">Ability</label>
+      <input name="attr_roll_ability" id="attr_roll_ability" class="narrowish" type="number" value="0" />
+      <label>Mods</label>
+      <input name="attr_roll_mod1" id="attr_roll_mod1" class="narrowish" type="number" value="0" />
+      <input name="attr_roll_mod2" id="attr_roll_mod2" class="narrowish" type="number" value="0" />
+      <input name="attr_roll_mod3" id="attr_roll_mod3" class="narrowish" type="number" value="0" />
+      <label for="attr_roll_advance_boost">Boost</label>
+      <input name="attr_roll_advance_boost" id="attr_roll_advance_boost" class="narrowish" type="number" value="0" />
+      <label for="attr_action_roll_EP">EP</label>
+      <input name="attr_action_roll_EP" id="attr_action_roll_EP" class="narrow" value="@{roll_advance_boost}" disabled="true" />
+    </div>
+  </div>
+  &ensp;
+  <input name="attr_disable_do_and_roll" class="disable-do-and-roll" type="hidden" value="0" />
+  <button name="act_toproll" class="big-control do-and-roll" type="action">
+  </button>
+  &ensp;
+  <button name="act_undotoproll" class="big-control undo" type="action">
+  </button>
+</div>
+<hr style="margin:1px; border-top: 1px solid gray;">

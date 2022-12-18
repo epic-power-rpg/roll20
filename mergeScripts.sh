@@ -8,7 +8,7 @@ targetDirectory="${currentDirectory}/bin/"
 
 mkdir -p "${targetDirectory}"
 
-find "${currentDirectory}/ui/scripts" -name '*.js' -exec cat {} \; > "${targetDirectory}/roll20.js"
+find "${currentDirectory}/ui/scripts/api" -name '*.js' -exec cat {} \; > "${targetDirectory}/roll20.js"
 
 echo "Done"
 

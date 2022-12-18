@@ -1,0 +1,58 @@
+<!-- skill section -->
+<div class="skills section">
+  <div class="flex-stack">
+    <input name="attr_skill_total_TP" type="hidden" value="0" />
+    <input name="attr_skill_total_CP" type="hidden" value="0" />
+    <input name="attr_skill_total_single_CP" type="hidden" value="0" />
+    <div class="center bold">Disciplines & Skills</div>
+    <div class="table-header">
+      <div class="skilldisciplineinfo">Discipline?</div>
+      <div class="skillname">Name</div>
+      <div class="skillability">Ability</div>
+      <div class="skillTP">TP</div>
+      <div class="skillCP">CP</div>
+      <div class="skillexpertise">Exper.</div>
+      <div class="skillattribute">Attribute</div>
+      <div class="skillbase">Base</div>
+    </div>
+    <fieldset class="repeating_skill">
+      <select name="attr_skilldisciplineinfo" class="skilldisciplineinfo">
+        <option value=" "></option>
+        <option value="D">D</option>
+        <option value="⇡">⇡</option>
+      </select>
+      <!--
+        The next input puts whether we have a discipline into the
+        value property, where CSS can see it
+      -->
+      <input name="attr_skillisdiscipline" class="isdiscipline" type="hidden">
+      <input name="attr_skillname" class="skillname" type="text" />
+      <span name="attr_skillability" class="skillability"></span>
+      <span name="attr_skillTP" class="skillTP center"></span>
+      <span name="attr_skillCP" class="skillCP center"></span>
+      <select name="attr_skillexpertise" class="skillexpertise">
+        <option value="--">--</option>
+        <option value="ST">st</option>
+        <option value="-1">-1</option>
+        <option value="0">0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+      </select>
+      <input name="attr_skilldisciplineexpertise" type="hidden" />
+      <select name="attr_skillattribute" class="skillattribute">
+        <option value=""> choose</option>
+        <option value="IQ">IQ</option>
+        <option value="DX">DX</option>
+        <option value="IQ+DX">IQ+DX</option>
+      </select>
+      <input name="attr_skillbase" class="skillbase" type="number" value="" />
+    </fieldset>
+  </div>
+</div>

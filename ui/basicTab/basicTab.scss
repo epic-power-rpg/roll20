@@ -1,40 +1,5 @@
 /* --------- Advantages ------------ */
 
-.advantage-overview {
-  display: flex;
-  flex-direction: column;
-}
-
-.advantage-overview>div.table-header>div {
-  text-align: center
-}
-
-.advantage-overview>div.conditional-something>div,
-.advantage-overview>div[data-groupname]>div {
-  border: solid lightgrey;
-  border-width: 0px 0px 1px 0px;
-  padding-top: 2px;
-  padding-bottom: 2px;
-}
-
-.advantage-overview>.conditional-something> :first-child[value="-1"]~* {
-  color: red;
-}
-
-/* If the name wraps, make the lines close. */
-.advantage-overview>div>div,
-.advantage-overview span {
-  line-height: 1;
-  width: 120px;
-  text-align: left
-}
-
-/* Keep line height low for the containers of the names,
-   or they will make single lines too tall. */
-.advantage-overview>div.conditional-something {
-  line-height: 1;
-}
-
 /* This avoids spaces between the elements in the row */
 .advantage-row {
   display: flex;
