@@ -880,78 +880,76 @@
     <input name="attr_arcane_total_TP" type="hidden" value="0" />
     <input name="attr_arcane_total_CP" type="hidden" value="0" />
     <input name="attr_arcane_total_single_CP" type="hidden" value="0" />
-    <div class="table-header">
-      <div class="skilldisciplineinfo">Discipline?</div>
-      <div class="skillname">Name</div>
-      <div class="skillability">Ability</div>
-      <div class="skillbase">Mod</div>
-      <div class="skill-roll"></div>
-      <div class="spellEP">EP</div>
-      <div class="spellcasttime">Cast Time</div>
-      <div class="spelltype">Touch/ Ray/ Missile</div>
-      <div class="spellrange">Range</div>
-      <div class="spelltarget">Target</div>
-      <div class="spellduration">Damage/ Duration</div>
-      <div class="spellhasnote">N</div>
-      <div class="skillTP">TP</div>
-      <div class="skillCP">CP</div>
-      <div class="skillexpertise">Exper.</div>
-      <div class="skillattribute">IQ ±</div>
-      <div class="skillbase">Base</div>
+    <div class="arcane spells-header-grid">
+      <div class="skilldisciplineinfo-grid">Discipline?</div>
+      <div class="skillname-grid">Name</div>
+      <div class="skillability-grid">Ability</div>
+      <div class="skillbase-grid">Mod</div>
+      <div class="skill--gridroll"></div>
+      <div class="spellEP-grid">EP</div>
+      <div class="spellcasttime-grid">Cast Time</div>
+      <div class="spelltype-grid">Touch/ Ray/ Missile</div>
+      <div class="spellrange-grid">Range</div>
+      <div class="spelltarget-grid">Target</div>
+      <div class="spellduration-grid">Damage/ Duration</div>
+      <div class="spellhasnote-grid">N</div>
+      <div class="skillTP-grid">TP</div>
+      <div class="skillCP-grid">CP</div>
+      <div class="skillexpertise-grid">Exper.</div>
+      <div class="skillattribute-grid">IQ ±</div>
+      <div class="skillbase-grid">Base</div>
     </div>
     <fieldset class="repeating_arcane">
-      <div class="spell-row">
-        <select name="attr_skilldisciplineinfo" class="skilldisciplineinfo">
-          <option value=" "></option>
-          <option value="D">D</option>
-          <option value="⇡">⇡</option>
-        </select>
-        <!--
-          The next input puts whether we are a discipline into the
-          value property, where CSS can see it
-        -->
-        <input name="attr_skillisdiscipline" class="isdiscipline" type="hidden">
-        <input name="attr_skillname" class="skillname" type="text" />
-        <span name="attr_skillability" class="skillability"></span>
-        <!-- Make the button able to access the ability -->
-        <input name="attr_skillability" hidden="true" />
-        <input name="attr_skillmodifier" class="skillbase" type="number">
-        <button name="roll_spellroll" class="skill-roll" type="roll"
-          value="!EPRoll @{skillability}+@{skillmodifier} Tries @{skillname}: @{skillability} + @{skillmodifier}" />
-        </button>
-        <input name="attr_spellEP" class="spellEP" type="text" />
-        <input name="attr_spellcasttime" class="spellcasttime" type="text" />
-        <select name="attr_spelltype" class="spelltype" type="text">
-          <option value="-">None</option>
-          <option value="touch">Touch</option>
-          <option value="ray">Ray</option>
-          <option value="missile">Missile</option>
-        </select>
-        <input name="attr_spellrange" class="spellrange" type="text" />
-        <input name="attr_spelltarget" class="spelltarget" type="text" />
-        <input name="attr_spellduration" class="spellduration" type="text" />
-        <input name="attr_spellhasnote" class="spellhasnote" type="checkbox" value="1" />
-        <span name="attr_skillTP" class="skillTP center"></span>
-        <span name="attr_skillCP" class="skillCP center"></span>
-        <select name="attr_skillexpertise" class="skillexpertise">
-          <option value="--">--</option>
-          <option value="-1">-1</option>
-          <option value="0">0</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-          <option value="8">8</option>
-          <option value="9">9</option>
-        </select>
-        <input name="attr_skilldisciplineexpertise" type="hidden" />
-        <input name="attr_skillattribute" value="IQ" type="hidden" />
-        <span class="skillattribute">IQ ±</span>
-        <input name="attr_skillbase" class="skillbase" type="number" value="" />
-      </div>
+      <select name="attr_skilldisciplineinfo" class="skilldisciplineinfo-grid">
+        <option value=" "></option>
+        <option value="D">D</option>
+        <option value="⇡">⇡</option>
+      </select>
+      <!--
+        The next input puts whether we are a discipline into the
+        value property, where CSS can see it
+      -->
+      <input name="attr_skillisdiscipline" class="isdiscipline-grid" type="hidden">
+      <input name="attr_skillname" class="skillname-grid" type="text" />
+      <span name="attr_skillability" class="skillability-grid"></span>
+      <!-- Make the button able to access the ability -->
+      <input name="attr_skillability" hidden="true" />
+      <input name="attr_skillmodifier" class="skillbase-grid" type="number">
+      <button name="roll_spellroll" class="skill-grid-roll" type="roll"
+        value="!EPRoll @{skillability}+@{skillmodifier} Tries @{skillname}: @{skillability} + @{skillmodifier}" />
+      </button>
+      <input name="attr_spellEP" class="spellEP-grid" type="text" />
+      <input name="attr_spellcasttime" class="spellcasttime-grid" type="text" />
+      <select name="attr_spelltype" class="spelltype-grid" type="text">
+        <option value="-">None</option>
+        <option value="touch">Touch</option>
+        <option value="ray">Ray</option>
+        <option value="missile">Missile</option>
+      </select>
+      <input name="attr_spellrange" class="spellrange-grid" type="text" />
+      <input name="attr_spelltarget" class="spelltarget-grid" type="text" />
+      <input name="attr_spellduration" class="spellduration-grid" type="text" />
+      <input name="attr_spellhasnote" class="spellhasnote-grid" type="checkbox" value="1" />
+      <span name="attr_skillTP" class="skillTP-grid center"></span>
+      <span name="attr_skillCP" class="skillCP-grid center"></span>
+      <select name="attr_skillexpertise" class="skillexpertise-grid">
+        <option value="--">--</option>
+        <option value="-1">-1</option>
+        <option value="0">0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+      </select>
+      <input name="attr_skilldisciplineexpertise" type="hidden" />
+      <input name="attr_skillattribute" value="IQ" type="hidden" />
+      <span class="skillattribute-grid">IQ ±</span>
+      <input name="attr_skillbase" class="skillbase-grid" type="number" value="" />
       <div class="spell-row conditional-one">
         <!-- The next input puts whether we have a note into the
           value property, where CSS can see it -->
@@ -961,35 +959,33 @@
     </fieldset>
   </div>
 
-  <div class="divine section flex-stack">
+  <div class="divine section divine-spells-grid">
     <input name="attr_divine_total_CP" type="hidden" value="0" />
     <input name="attr_divine_total_single_CP" type="hidden" value="0" />
-    <div class="table-header">
-      <div class="skillname">Name</div>
-      <div class="spellEP">EP</div>
-      <div class="spellcasttime">Cast Time</div>
-      <div class="spelltype">Touch/ Ray/ Missile</div>
-      <div class="spellrange">Range</div>
-      <div class="spelltarget">Target</div>
-      <div class="spellduration">Damage/ Duration</div>
-      <div class="spellhasnote">N</div>
+    <div class="divine spells-header-grid">
+      <div class="skillname-grid">Name</div>
+      <div class="spellEP-grid">EP</div>
+      <div class="spellcasttime-grid">Cast Time</div>
+      <div class="spelltype-grid">Touch/ Ray/ Missile</div>
+      <div class="spellrange-grid">Range</div>
+      <div class="spelltarget-grid">Target</div>
+      <div class="spellduration-grid">Damage/ Duration</div>
+      <div class="spellhasnote-grid">N</div>
     </div>
     <fieldset class="repeating_divine">
-      <div class="spell-row">
-        <input name="attr_skillname" class="skillname" type="text" />
-        <input name="attr_spellEP" class="spellEP" type="number" />
-        <input name="attr_spellcasttime" class="spellcasttime" type="text" />
-        <select name="attr_spelltype" class="spelltype" type="text">
-          <option value="-">None</option>
-          <option value="touch">Touch</option>
-          <option value="ray">Ray</option>
-          <option value="missile">Missile</option>
-        </select>
-        <input name="attr_spellrange" class="spellrange" type="text" />
-        <input name="attr_spelltarget" class="spelltarget" type="text" />
-        <input name="attr_spellduration" class="spellduration" type="text" />
-        <input name="attr_spellhasnote" class="spellhasnote" type="checkbox" value="1" />
-      </div>
+      <input name="attr_skillname" class="skillname-grid" type="text" />
+      <input name="attr_spellEP" class="spellEP-grid" type="number" />
+      <input name="attr_spellcasttime" class="spellcasttime-grid" type="text" />
+      <select name="attr_spelltype" class="spelltype-grid" type="text">
+        <option value="-">None</option>
+        <option value="touch">Touch</option>
+        <option value="ray">Ray</option>
+        <option value="missile">Missile</option>
+      </select>
+      <input name="attr_spellrange" class="spellrange-grid" type="text" />
+      <input name="attr_spelltarget" class="spelltarget-grid" type="text" />
+      <input name="attr_spellduration" class="spellduration-grid" type="text" />
+      <input name="attr_spellhasnote" class="spellhasnote-grid" type="checkbox" value="1" />
       <div class="spell-row conditional-one">
         <!--
           The next input puts whether we we have a note into the
@@ -1004,7 +1000,7 @@
   <div class="innate section innate-spells-grid">
     <input name="attr_innate_total_CP" type="hidden" value="0" />
     <input name="attr_innate_total_single_CP" type="hidden" value="0" />
-    <div class="innate-spells-header">
+    <div class="innate spells-header-grid">
       <div class="skillname-grid">Name</div>
       <div class="spellEP-grid">EP</div>
       <div class="spellcasttime-grid">Cast Time</div>
