@@ -22,22 +22,24 @@
   margin-bottom: 6px;
   display: flex;
   align-items: center;
+
+  >button[type="action"] {
+    border-bottom: 0px;
+  }
+
+  >button[type="roll"] {
+    margin-bottom: 1px;
+  }
 }
 
-.spell-tabs>button[type="action"] {
-  border-bottom: 0px;
-}
+.spells {
+  div[data-groupname] span {
+    display: inline-block;
+  }
 
-.spell-tabs>button[type="roll"] {
-  margin-bottom: 1px;
-}
-
-.spells div[data-groupname] span {
-  display: inline-block;
-}
-
-.spells input[type="text"]:not(.skillname) {
-  text-align: center;
+  input[type="text"]:not(.skillname) {
+    text-align: center;
+  }
 }
 
 .arcane .skillattribute {
@@ -78,19 +80,22 @@
   margin-bottom: 2px;
 }
 
-.isdiscipline[value="1"]~.skill-roll,
-.isdiscipline[value="1"]~.spellEP,
-.isdiscipline[value="1"]~.spellcasttime,
-.isdiscipline[value="1"]~.spelltype,
-.isdiscipline[value="1"]~.spellrange,
-.isdiscipline[value="1"]~.spelltarget,
-.isdiscipline[value="1"]~.spellduration,
-.isdiscipline[value="1"]~.spellhasnote {
-  display: none;
-}
+.isdiscipline[value="1"] {
+  ~.skill-roll,
+  ~.spellEP,
+  ~.spellcasttime,
+  ~.spelltype,
+  ~.spellrange,
+  ~.spelltarget,
+  ~.spellduration,
+  ~.spellhasnote {
+    display: none;
+  }
 
-.isdiscipline[value="1"]~.spellhasnote+span.skillTP {
-  margin-left: 442px;
+  ~.spellhasnote+span.skillTP {
+    // This aligns the `Experience` column when the row is `isdispline`
+    margin-left: 448px;
+  }
 }
 
 .table-header .skill-roll {
@@ -100,42 +105,30 @@
 .spell-note {
   flex-grow: 1;
   margin-bottom: 1px;
-  margin-left: 50px;
 }
-
-.spell-note.spell-note.spell-note.spell-note {
-  text-align: left;
-  margin-top: -1px;
-}
-
 .arcane .spell-note {
-  margin-left: 90px;
+  margin-left: 40px;
 }
 
 /* Avoid space between items in the row */
-.spells .table-header {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-end;
-}
+.spells {
+  .table-header {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+  }
 
-.spells div[data-groupname]>div {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  /* and make rows overlap */
-  margin-top: -1px;
+  div[data-groupname]>div {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    /* and make rows overlap */
+    margin-top: -1px;
+  }
 }
 
 .spell-row {
   display: flex;
   flex-direction: row;
   align-items: flex-end;
-}
-
-.spell-row>input~input,
-.spell-row>input~select,
-.spell-row>select~input {
-  /* Make consecutive buttons overlap */
-  margin-left: -1px;
 }
