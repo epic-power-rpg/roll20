@@ -1,4 +1,11 @@
 /* Generic styles */
+@import '../colors.scss';
+
+.ui-dialog {
+  background-color: $paper-color;
+  background-size: cover;
+  background-image: url(https://raw.githubusercontent.com/Roll20/roll20-character-sheets/master/Pathfinder%20Second%20Edition%20by%20Roll20/images/background.png);
+}
 
 .invisible {
   display: none;
@@ -103,11 +110,11 @@
 }
 
 .CP.CP.CP.CP {
-  color: blue;
+  color: $cp-color;
 }
 
 .TP.TP.TP.TP {
-  color: #40C000;
+  color: $tp-color;
 }
 
 .bold {
@@ -158,28 +165,6 @@ span.attribute-value {
   /* Make the height work for span. */
   display: inline-block;
   border-color: transparent;
-}
-
-button.reset-total {
-  background-color: white;
-  font-weight: bold;
-  border-width: 1px;
-  border-radius: 4px;
-  border-color: lightgrey;
-  line-height: 1;
-  padding: 2px;
-  vertical-align: middle;
-}
-
-button.convert-button {
-  background-color: white;
-  font-weight: bold;
-  border-width: 1px;
-  border-radius: 4px;
-  border-color: lightgrey;
-  padding: 0px 2px 4px 2px;
-  vertical-align: middle;
-  font-size: 200%;
 }
 
 input[disabled],

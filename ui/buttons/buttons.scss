@@ -5,11 +5,23 @@ button.actionRollButton {
   border-width: 1px;
 }
 
+@mixin action-button {
+  font-weight: bold;
+  outline: 1px solid #666;
+  border: none;
+  border-radius: 4px;
+}
+
+@mixin roll-action-button {
+  @include action-button;
+  background-image: linear-gradient(90deg, $button-roll-color-1, $button-roll-color-2);
+}
+
 /* Change the character for dice roll buttons to be
    the two joined squares character and give them the blue background */
 button.btn.ui-draggable[type=roll],
 button.actionRollButton {
-  background-image: linear-gradient(90deg, #ddf, #99f);
+  @include roll-action-button;
 }
 
 button.btn.ui-draggable[type=roll]::before,
@@ -36,7 +48,7 @@ button.do::before {
 
 button.do,
 button.do-and-roll {
-  background-image: linear-gradient(90deg, #ddf, #44f);
+  @include roll-action-button;
 }
 
 button.do {
@@ -65,19 +77,29 @@ button.undo::before {
   content: "◀";
 }
 
-button.undo {
-  background-image: linear-gradient(90deg, #f44, #fdd);
+@mixin undo-action-button {
+  @include action-button;
+  background-image: linear-gradient(90deg, $button-undo-roll-color-1, $button-undo-roll-color-2);
   line-height: 1;
   padding: 1px 1px;
 }
 
-/* Make action buttons look like roll buttons, but darken the borders */
-button.do,
-button.do-and-roll,
 button.undo {
-  border: 1px solid #999;
-  border-bottom-color: #777;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
+  @include undo-action-button;
+}
+
+button.reset-total {
+  @include action-button;
+  background-image: linear-gradient(90deg, $button-roll-color-1, $button-roll-color-2);
+  line-height: 1;
+  padding: 2px;
+  vertical-align: middle;
+}
+
+button.convert-button {
+  @include action-button;
+  background-image: linear-gradient(180deg, $button-roll-color-1, $button-roll-color-2);
+  padding: 0px 2px 4px 2px;
+  vertical-align: middle;
+  font-size: 200%;
 }
