@@ -1017,6 +1017,9 @@ input.featCP {
 .spells input[type=text]:not(.skillname) {
   text-align: center;
 }
+.spells .label {
+  color: black;
+}
 
 .arcane .skillattribute {
   text-align: right;
