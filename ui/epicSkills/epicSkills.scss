@@ -28,13 +28,22 @@
 }
 
 .skillTP-grid {
-  color: #319000;
+  color: $tp-color;
   font-weight: bold;
 }
 
 .skillCP-grid {
-  color: blue;
+  color: $cp-color;
   font-weight: bold;
+}
+
+.spells-header-grid {
+  .skillTP-grid {
+    color: darken($tp-color, 10%);
+  }
+  .skillCP-grid {
+    color: darken($cp-color, 10%);
+  }
 }
 
 .skillexpertise {

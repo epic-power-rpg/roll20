@@ -6,7 +6,7 @@
   font-weight: bold;
   text-decoration: none;
   background-color: $selected-tab-color;
-  color: white;
+  color: $primary-background-color;
   margin-bottom: -1px;
   border-bottom: 1px solid transparent;
 }
@@ -137,7 +137,8 @@
     display: grid;
     grid-template-columns: $grid-template;
     column-gap: $grid-column-gap;
-    background: #93c6f2;
+    background: $primary-highlight-background-color;
+    color: $primary-highlight-color;
     padding: $grid-padding;
 
     > div {
@@ -153,11 +154,12 @@
     grid-template-columns: $grid-template;
     row-gap: 0;
     column-gap: $grid-column-gap;
-    background: aliceblue;
+    background: transparent;
     input, input[type=number], textarea, select {
       width: 100%;
       margin-left: unset;
-      background-color: white;
+      height: auto;
+      background-color: $primary-background-color;
     }
     input[type=text] {
       text-align: left;
