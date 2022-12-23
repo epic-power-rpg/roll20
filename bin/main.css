@@ -758,7 +758,6 @@ input.featCP {
 .skillname {
   width: 150px;
   text-align: right;
-  border-left-color: black;
 }
 
 .skillability {
@@ -776,6 +775,16 @@ input.featCP {
 .skillCP.skillCP.skillCP.skillCP {
   width: 30px;
   color: blue;
+}
+
+.skillTP-grid {
+  color: #319000;
+  font-weight: bold;
+}
+
+.skillCP-grid {
+  color: blue;
+  font-weight: bold;
 }
 
 .skillexpertise {
@@ -852,11 +861,7 @@ input.featCP {
 .isdiscipline[value="1"] ~ .skillname {
   width: 190px;
   text-align: left;
-  border-top-color: black;
-  border-left-color: black;
   font-weight: bold;
-  /* Make the border go above other borders */
-  z-index: 1;
 }
 
 .isdiscipline[value="1"] ~ .skillability,
@@ -1002,7 +1007,7 @@ input.featCP {
 .sectioncontrol[value=arcane] ~ div.arcane,
 .sectioncontrol[value=divine] ~ div.divine,
 .sectioncontrol[value=innate] ~ div.innate {
-  display: inline-flex;
+  display: block;
 }
 
 .spell-tabs {
@@ -1105,6 +1110,132 @@ input.featCP {
   align-items: stretch;
   /* and make rows overlap */
   margin-top: -1px;
+}
+.spells .spells-header-grid.arcane {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 4fr) minmax(0, 0.75fr) minmax(0, 1fr) minmax(0, 0.5fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.5fr) minmax(0, 0.5fr) minmax(0, 0.5fr) minmax(0, 0.5fr) minmax(0, 1fr) minmax(0, 0.5fr) minmax(0, 1fr);
+  column-gap: 2px;
+  background: #93c6f2;
+  padding: 2px;
+}
+.spells .spells-header-grid.arcane > div {
+  text-align: center;
+  margin: auto;
+  font-weight: bold;
+  width: 100%;
+}
+.spells div[data-groupname=repeating_arcane] > div {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 4fr) minmax(0, 0.75fr) minmax(0, 1fr) minmax(0, 0.5fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.5fr) minmax(0, 0.5fr) minmax(0, 0.5fr) minmax(0, 0.5fr) minmax(0, 1fr) minmax(0, 0.5fr) minmax(0, 1fr);
+  row-gap: 0;
+  column-gap: 2px;
+  background: aliceblue;
+}
+.spells div[data-groupname=repeating_arcane] > div input, .spells div[data-groupname=repeating_arcane] > div input[type=number], .spells div[data-groupname=repeating_arcane] > div textarea, .spells div[data-groupname=repeating_arcane] > div select {
+  width: 100%;
+  margin-left: unset;
+  background-color: white;
+}
+.spells div[data-groupname=repeating_arcane] > div input[type=text] {
+  text-align: left;
+}
+.spells div[data-groupname=repeating_arcane] > div input, .spells div[data-groupname=repeating_arcane] > div span, .spells div[data-groupname=repeating_arcane] > div select {
+  white-space: nowrap;
+}
+.spells div[data-groupname=repeating_arcane] > div span {
+  text-align: center;
+  margin: auto 0;
+}
+.spells div[data-groupname=repeating_arcane] > div button, .spells div[data-groupname=repeating_arcane] > div button[type=roll] {
+  margin: 0;
+}
+.spells div[data-groupname=repeating_arcane] > div .spell-row.conditional-one {
+  grid-column-start: 1;
+  grid-column-end: 19;
+}
+.spells .spells-header-grid.divine {
+  display: grid;
+  grid-template-columns: 6fr 1fr 1fr 2fr 1fr 1fr 2fr 0.5fr;
+  column-gap: 2px;
+  background: #93c6f2;
+  padding: 2px;
+}
+.spells .spells-header-grid.divine > div {
+  text-align: center;
+  margin: auto;
+  font-weight: bold;
+  width: 100%;
+}
+.spells div[data-groupname=repeating_divine] > div {
+  display: grid;
+  grid-template-columns: 6fr 1fr 1fr 2fr 1fr 1fr 2fr 0.5fr;
+  row-gap: 0;
+  column-gap: 2px;
+  background: aliceblue;
+}
+.spells div[data-groupname=repeating_divine] > div input, .spells div[data-groupname=repeating_divine] > div input[type=number], .spells div[data-groupname=repeating_divine] > div textarea, .spells div[data-groupname=repeating_divine] > div select {
+  width: 100%;
+  margin-left: unset;
+  background-color: white;
+}
+.spells div[data-groupname=repeating_divine] > div input[type=text] {
+  text-align: left;
+}
+.spells div[data-groupname=repeating_divine] > div input, .spells div[data-groupname=repeating_divine] > div span, .spells div[data-groupname=repeating_divine] > div select {
+  white-space: nowrap;
+}
+.spells div[data-groupname=repeating_divine] > div span {
+  text-align: center;
+  margin: auto 0;
+}
+.spells div[data-groupname=repeating_divine] > div button, .spells div[data-groupname=repeating_divine] > div button[type=roll] {
+  margin: 0;
+}
+.spells div[data-groupname=repeating_divine] > div .spell-row.conditional-one {
+  grid-column-start: 1;
+  grid-column-end: 9;
+}
+.spells .spells-header-grid.innate {
+  display: grid;
+  grid-template-columns: 6fr 1fr 2fr 3fr 2fr 3fr 2fr 0.5fr 1fr;
+  column-gap: 2px;
+  background: #93c6f2;
+  padding: 2px;
+}
+.spells .spells-header-grid.innate > div {
+  text-align: center;
+  margin: auto;
+  font-weight: bold;
+  width: 100%;
+}
+.spells div[data-groupname=repeating_innate] > div {
+  display: grid;
+  grid-template-columns: 6fr 1fr 2fr 3fr 2fr 3fr 2fr 0.5fr 1fr;
+  row-gap: 0;
+  column-gap: 2px;
+  background: aliceblue;
+}
+.spells div[data-groupname=repeating_innate] > div input, .spells div[data-groupname=repeating_innate] > div input[type=number], .spells div[data-groupname=repeating_innate] > div textarea, .spells div[data-groupname=repeating_innate] > div select {
+  width: 100%;
+  margin-left: unset;
+  background-color: white;
+}
+.spells div[data-groupname=repeating_innate] > div input[type=text] {
+  text-align: left;
+}
+.spells div[data-groupname=repeating_innate] > div input, .spells div[data-groupname=repeating_innate] > div span, .spells div[data-groupname=repeating_innate] > div select {
+  white-space: nowrap;
+}
+.spells div[data-groupname=repeating_innate] > div span {
+  text-align: center;
+  margin: auto 0;
+}
+.spells div[data-groupname=repeating_innate] > div button, .spells div[data-groupname=repeating_innate] > div button[type=roll] {
+  margin: 0;
+}
+.spells div[data-groupname=repeating_innate] > div .spell-row.conditional-one {
+  grid-column-start: 1;
+  grid-column-end: 10;
 }
 
 .spell-row {
