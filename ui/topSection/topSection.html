@@ -1,0 +1,230 @@
+<!-- Top section -->
+
+<div class="top-section">
+
+  <!-- Left top section -->
+  <div class="flex-stack space-between">
+    <!-- Power, CP, TP -->
+    <div>
+      <input name="attr_chosentab" class="cpcontrol" type="hidden" value="basic" />
+      <div class="power larger inline right middle">Power Depth</div>
+      <!-- Power is editable in basic tab only -->
+      <span name="attr_power" class="power larger left bold middle not-basic-tab"> </span>
+      <input name="attr_power" class="power medium bold middle basic-tab-only" type="number" value="0" />
+      &emsp;
+      <div class="CP larger label">CP</div>
+      <input name="attr_distributed_CP" type="hidden" value="0" />
+      <div class="inline middle">
+        <input name="attr_CPU" class="CP bold larger right narrow" value="@{CP} + (@{distributed_CP})
+                      -(@{attribute_CP})
+                      -(@{advantage_total_CP})
+                      -(@{feat_total_CP})
+                      -(@{skill_total_CP})
+                      -(@{arcane_total_CP})
+                      -(@{innate_total_CP})" disabled="true" />
+      </div>
+      <div class="inline">/</div>
+      <!-- CP is editable in basic tab only -->
+      <span name="attr_CP" class="CP bold larger middle not-basic-tab"> </span>
+      <input name="attr_CP" class="CP bold larger medium middle basic-tab-only" type="number" value="25" />
+      &emsp;
+      <div class="TP larger label">TP</div>
+      <div class="inline middle">
+        <input name="attr_TPU" class="TP bold larger right narrow" value="@{TP}
+                      - (@{skill_total_TP})
+                      - (@{arcane_total_TP})" disabled="true" />
+      </div>
+      <div class="inline big middle">/</div>
+      <div class="inline middle">
+        <span name="attr_TP" class="TP bold larger middle" value="2"></span>
+      </div>
+    </div>
+
+    <!-- IQ, DX, BR -->
+    <!--
+      These are read only, except in the basic tab,
+      where they can be changed, and their CP cost is shown
+    -->
+    <div class="horizontal-flex-center">
+      <input name="attr_chosentab" class="attributecontrol cpcontrol" type="hidden" value="basic" />
+      <div class="attribute-name big">IQ</div>
+      &ensp;
+      <span name="attr_IQ" class="attribute-value center not-basic-tab"></span>
+      <div class="inline not-basic-tab"> + </div>
+      <input name="attr_IQmodifier" class="modifier-width not-basic-tab" type="number" value="0" />
+      <button name="act_epRoll_IQmodifier" class="actionRollButton epRoll_IQmodifier not-basic-tab" type="action"></button>
+      <input name="attr_IQ" class="attribute-value narrowish center basic-tab-only" type="number" value="1" />
+      &emsp;
+      <div class="attribute-name big">DX</div>
+      &ensp;
+      <span name="attr_DX" class="attribute-value center"></span>
+      <div class="inline not-basic-tab"> + </div>
+      <input name="attr_DXmodifier" class="modifier-width not-basic-tab" type="number" value="0" />
+      <button name="act_epRoll_DXmodifier" class="actionRollButton epRoll_DXmodifier not-basic-tab" type="action"></button>
+      <input name="attr_DX" class="attribute-value narrowish center" type="number" value="1" />
+      &emsp;
+      <div class="attribute-name big">BR</div>
+      &ensp;
+      <span name="attr_BR" class="attribute-value center"></span>
+      <div class="inline not-basic-tab"> + </div>
+      <input name="attr_BRmodifier" class="modifier-width not-basic-tab" type="number" value="0" />
+      <button name="act_epRoll_BRmodifier" class="actionRollButton epRoll_BRmodifier not-basic-tab" type="action"></button>
+      <input name="attr_BR" class="attribute-value narrowish center basic-tab-only" type="number" value="1" />
+
+      <input name="attr_attribute_CP" type="hidden" value="-5" />
+      <input name="attr_displayed_attribute_CP" type="hidden" value="-5" />
+      <input name="attr_show_displayed_attribute_CP" class="narrow right CP basic-tab-only"
+        value="@{displayed_attribute_CP}" disabled="true" />
+      <input name="attr_never_used" class="narrow right CP basic-tab-only" value="CP" disabled="true" />
+
+    </div>
+
+    <!-- Rolling -->
+    <div display="inline-block">
+      <button name="act_epRoll" class="actionRollButton epRoll" type="action"></button>
+      &emsp;
+      <button name="act_epRoll_roll_modifier" class="actionRollButton epRoll_roll_modifier" type="action"></button>
+      +
+      <input name="attr_roll_modifier" class="narrowish" type="number" value="0" />
+      &emsp;
+      <div class="attribute-name wideish larger">Initiative</div>
+      <span name="attr_initiative" class="narrow center bold larger value"></span>
+      +
+      <input name="attr_initiativemodifier" class="narrowish" type="number" value="0" />
+      <button name="act_epRoll_initiative" class="actionRollButton epRoll_initiative" type="action"></button>
+      </button>
+
+    </div>
+
+    <!-- tab buttons -->
+    <div class="tab-holder">
+      <!--
+        This input's value names the currently selected tab.
+        its value is used for css selection of its siblings.
+      -->
+      <input name="attr_chosentab" class="tabcontrol" type="hidden" value="basic" />
+      <button name="act_overview" class="tab" type="action">
+        Overview
+      </button>
+      <button name="act_basic" class="tab" type="action">
+        Basic
+      </button>
+      <button name="act_equipment" class="tab" type="action">
+        Equipment
+      </button>
+      <button name="act_skills" class="tab" type="action">
+        Skills
+      </button>
+      <button name="act_spells" class="tab" type="action">
+        Spells
+      </button>
+      <button name="act_notes" class="tab" type="action">
+        Notes
+      </button>
+    </div>
+  </div>
+
+  <!-- Movement & DR -->
+  <div class="children-separated no-shrink">
+    <div class="center">
+      <label for="attr_reaction_penalty" class="wideish larger narrow-spacing">Defense Penalty</label>
+      <input name="attr_reaction_penalty" id="attr_reaction_penalty" class="attribute-value narrowish center" type="number" value="0" />
+    </div>
+    <div>
+      <div class="attribute-name wide larger">Wt. Load</div>
+      <span name="attr_equipment_total_weight" class="narrowish center bold larger value"></span>
+    </div>
+    <div>
+      <div class="attribute-name wide larger">Wt. Pen.</div>
+      <span name="attr_displayed_weight_penalty" class="narrowish center bold larger value"></span>
+    </div>
+    <div>
+      <div class="attribute-name wide larger">Speed</div>
+      <span name="attr_speed" class="narrowish center bold larger value"></span>
+    </div>
+  </div>
+  <!-- Defense -->
+  <div>
+    <div>
+      <label class="medium">+bonus</label>
+      <input name="attr_melee_boost" class="center narrowish" type="number" value="0" />
+      <input name="attr_ranged_boost" class="center narrowish" type="number" value="0" />
+    </div>
+    <div class="table-header">
+      <div class="medium larger"></div>
+      <div class="narrowish">Melee</div>
+      <div class="narrowish">Range</div>
+    </div>
+    <div class="children-separated no-shrink">
+      <div>
+        <div class="inline medium right larger bold">Dodge</div>
+        <input name="attr_dodge" type="hidden" />
+        <span name="attr_current_dodge_melee" class="center narrowish bold larger inline" value="0"></span>
+        <span name="attr_current_dodge_ranged" class="center narrowish bold larger inline" value="0"></span>
+      </div>
+      <div>
+        <div class="inline medium right larger bold">Parry</div>
+        <input name="attr_current_parry_melee" type="number" class="center narrowish bold larger inline"
+          value="0"></span>
+        <span class="center narrowish bold larger inline">--</span>
+      </div>
+      <div>
+        <div class="inline medium right larger bold">Block</div>
+        <input name="attr_block" type="hidden" />
+        <span name="attr_current_block_melee" class="center narrowish bold larger inline" value="0"></span>
+        <span name="attr_current_block_ranged" class="center narrowish bold larger inline" value="0"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- HP, EP, SP -->
+  <div class="children-separated no-shrink">
+
+    <div>
+      <div class="attribute-name biggish">EP</div>
+      <input name="attr_EP_t" class="attribute-value biggish medium center" type="number" />
+      <input name="attr_chosentab" class="attributecontrol" type="hidden" value="basic" />
+      <div class="inline biggish middle basic-tab-only">/</div>
+      <button name="act_reset_ep_t" class="reset-total" type="action">
+        ⇦
+      </button>
+      <span name="attr_EP_t_max" class="attribute-value biggish narrow"></span>
+      <input name="attr_EP_t_max" class="attribute-value biggish medium center" type="number" value="0" />
+    </div>
+
+    <div>
+      &emsp;&emsp;&emsp;
+      <button name="act_convert_sp" class="convert-button" type="action">
+        ⇯
+      </button>
+    </div>
+
+    <div>
+      <div class="attribute-name biggish">SP</div>
+      <input name="attr_SP" class="attribute-value biggish medium center" type="number" />
+      <span>
+        <input name="attr_chosentab" class="attributecontrol" type="hidden" value="basic" />
+        <div class="inline biggish middle basic-tab-only">/</div>
+        <button name="act_reset_sp" class="reset-total" type="action">
+          ⇦
+        </button>
+      </span>
+      <span name="attr_SP_max" class="attribute-value biggish narrow" value="0"></span>
+    </div>
+
+    <div>
+      <div class="attribute-name biggish">HP</div>
+      <!-- TODO: Move this to sheet worker, who can do it right. -->
+      <input name="attr_HP" class="attribute-value biggish medium center" type="number" />
+      <span>
+        <input name="attr_chosentab" class="attributecontrol" type="hidden" value="basic" />
+        <div class="inline biggish middle basic-tab-only">/</div>
+        <button name="act_reset_hp" class="reset-total" type="action">
+          ⇦
+        </button>
+      </span>
+      <span name="attr_HP_max" class="attribute-value biggish narrow" value="16"></span>
+    </div>
+  </div>
+
+</div>

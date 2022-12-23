@@ -598,7 +598,7 @@ radio > span.checked {
   padding: 2px 0px;
 }
 
-/* --------- Advantages ------------ */
+/* ---------- Overview tab ------------- */
 .advantage-overview {
   display: flex;
   flex-direction: column;
@@ -634,6 +634,7 @@ radio > span.checked {
   line-height: 1;
 }
 
+/* --------- Advantages ------------ */
 /* This avoids spaces between the elements in the row */
 .advantage-row {
   display: flex;

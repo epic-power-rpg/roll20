@@ -1,0 +1,127 @@
+<!-- Equipment section -->
+<div class="equipment section">
+  <div class="horizontal-flex">
+    <div class="flex-stack align-center">
+      <input name="attr_weight_penalty" type="hidden" value=" " />
+
+      <div class="children-separated">
+        <div>
+          <div class="attribute-name wideish larger">Cash</div>
+          <input name="attr_cash" type="number" class="wide center bold larger value" />
+        </div>
+        <div>
+          <div class="attribute-name wide larger">Equip Value</div>
+          <span name="attr_equipment_total_value" class="narrowish center bold larger value"></span>
+        </div>
+        <div>
+          <div class="attribute-name wide larger">Equip Weight</div>
+          <span name="attr_equipment_total_weight" class="narrowish center bold larger value"></span>
+        </div>
+      </div>
+      <div class="spacer"></div>
+      <!-- Copy of weight penalty table -->
+      <div class="flex-stack align-center">
+        <div class="center wideish bold">Weight Penalties</div>
+        <div class="weight-penalty-table flex-stack">
+          <div class="table-header">
+            <div></div>
+            <div>Pen.</div>
+            <div>Wt.</div>
+          </div>
+          <div> <input name="attr_highlight_weight_penalty_1" type="hidden" />
+            <div>-1</div> <span name="attr_penalty_weight_1"></span>
+          </div>
+          <div> <input name="attr_highlight_weight_penalty_2" type="hidden" />
+            <div>-2</div> <span name="attr_penalty_weight_2"></span>
+          </div>
+          <div> <input name="attr_highlight_weight_penalty_3" type="hidden" />
+            <div>-3</div> <span name="attr_penalty_weight_3"></span>
+          </div>
+          <div> <input name="attr_highlight_weight_penalty_4" type="hidden" />
+            <div>-4</div> <span name="attr_penalty_weight_4"></span>
+          </div>
+          <div> <input name="attr_highlight_weight_penalty_5" type="hidden" />
+            <div>-5</div> <span name="attr_penalty_weight_5"></span>
+          </div>
+          <div> <input name="attr_highlight_weight_penalty_6" type="hidden" />
+            <div>-∞</div> <span name="attr_penalty_weight_6"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    &emsp;&emsp;
+    <div class="flex-stack equipment-list">
+      <div class="table-header">
+        <div class="equipmentname">Armor</div>
+        <div class="armordefense">Def.</div>
+        <div class="equipmentweight">Weight</div>
+        <div class="equipmentvalue">Value</div>
+        <div class="equipmentnotes">Notes</div>
+      </div>
+      <div class="horizontal-flex">
+        <input name="attr_armor_name" class="equipmentname" type="text" />
+        <input name="attr_armor_defense" class="armordefense" type="number" />
+        <input name="attr_armor_weight" class="equipmentweight" type="text" />
+        <input name="attr_armor_value" class="equipmentvalue" type="text" />
+        <input name="attr_armor_notes" class="equipmentnotes" type="text" />
+      </div>
+
+      <div class="table-header">
+        <div class="equipmentname">Shield</div>
+        <div class="armordefense">Def.</div>
+        <div class="armordefense">Str.</div>
+        <div class="equipmentweight">Weight</div>
+        <div class="equipmentvalue">Value</div>
+        <div class="equipmentnotes">Notes</div>
+      </div>
+      <div class="horizontal-flex">
+        <input name="attr_shield_name" class="equipmentname" type="text" />
+        <input name="attr_shield_defense" class="armordefense" type="number" />
+        <input name="attr_shield_stopping_strength" class="armordefense" type="number" />
+        <input name="attr_shield_weight" class="equipmentweight" type="text" />
+        <input name="attr_shield_value" class="equipmentvalue" type="text" />
+        <input name="attr_shield_notes" class="equipmentnotes" type="text" />
+      </div>
+
+      <input name="attr_weapon_total_weight" type="hidden" value="0" />
+      <input name="attr_weapon_total_value" type="hidden" value="0" />
+      <div class="table-header">
+        <div class="equipmentname">Weapon</div>
+        <div class="equipmentcount">Count</div>
+        <div class="equipmentweight">Weight Each</div>
+        <div class="equipmentvalue">Value Each</div>
+        <div class="equipmentdamage">Damage</div>
+        <div class="equipmentrange">Range</div>
+        <div class="equipmentnotes">Notes</div>
+      </div>
+      <fieldset class="repeating_weapon">
+        <input name="attr_weaponname" class="equipmentname" type="text" />
+        <input name="attr_weaponcount" class="equipmentcount" type="number" value="1" />
+        <input name="attr_weaponweight" class="equipmentweight" type="text" />
+        <input name="attr_weaponvalue" class="equipmentvalue" type="text" />
+        <input name="attr_weapondamage" class="equipmentdamage" type="text" />
+        <input name="attr_weaponrange" class="equipmentrange" type="number" />
+        <input name="attr_weaponnotes" class="equipmentnotes" type="text" />
+      </fieldset>
+
+      <input name="attr_item_total_weight" type="hidden" value="0" />
+      <input name="attr_item_total_value" type="hidden" value="0" />
+      <div class="table-header">
+        <div class="equipmentname">Item</div>
+        <div class="equipmentcount">Count</div>
+        <div class="equipmentweight">Weight Each</div>
+        <div class="equipmentvalue">Value Each</div>
+        <div class="equipmentnotes">Notes</div>
+      </div>
+      <fieldset class="repeating_item">
+        <input name="attr_itemname" class="equipmentname" type="text" />
+        <input name="attr_itemcount" class="equipmentcount" type="number" value="1" />
+        <input name="attr_itemweight" class="equipmentweight" type="text" />
+        <input name="attr_itemvalue" class="equipmentvalue" type="text" />
+        <input name="attr_itemnotes" class="equipmentnotes" type="text" />
+      </fieldset>
+    </div>
+  </div>
+
+</div>

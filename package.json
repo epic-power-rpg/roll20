@@ -23,7 +23,7 @@
     "lint:all": "yarn lint --ext .js .",
     "lint:fix-all": "yarn lint:all --fix",
     "build:all": "npm-run-all --print-name --parallel sass html",
-    "html": "cat ./ui/roll20_character_sheet_0.2.html > ./bin/main.html",
+    "html": "./ui/main.sh > ./bin/main.html",
     "sass": "sass ./ui/main.scss ./bin/main.css --no-source-map",
     "sass:watch": "yarn sass --watch --no-source-map",
     "mergeScripts": "./mergeScripts.sh"

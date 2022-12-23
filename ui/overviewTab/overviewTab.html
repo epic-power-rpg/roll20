@@ -1,0 +1,137 @@
+<!-- Overview section -->
+
+<div class="overview section">
+  <div class="horizontal-flex">
+
+    <!-- Advantages -->
+    <div class="flex-stack advantage-overview no-add-or-modify-buttons">
+      <div class="table-header">
+        <div>Advantage / Disadvantage</div>
+      </div>
+      <div class="conditional-something">
+        <input name="attr_advantage_healthy_count" type="hidden" />
+        <div>Healthy
+          <span name="attr_advantage_healthy_count"></span>
+        </div>
+      </div>
+      <div class="conditional-something">
+        <input name="attr_advantage_packmule_count" type="hidden" />
+        <div>Pack Mule
+          <span name="attr_advantage_packmule_count"></span>
+        </div>
+      </div>
+      <div class="conditional-something">
+        <input name="attr_advantage_strongarms_count" type="hidden" />
+        <div>Strong Arms
+          <span name="attr_advantage_strongarms_count"></span>
+        </div>
+      </div>
+      <div class="conditional-something">
+        <input name="attr_advantage_brute_count" type="hidden" />
+        <div>Brute
+          <span name="attr_advantage_brute_count"></span>
+        </div>
+      </div>
+      <div class="conditional-something">
+        <input name="attr_advantage_fast_count" type="hidden" />
+        <div>Fast
+          <span name="attr_advantage_fast_count"></span>
+        </div>
+      </div>
+      <div class="conditional-something">
+        <input name="attr_advantage_athlete_count" type="hidden" />
+        <div>Natural Athlete
+          <span name="attr_advantage_athlete_count"></span>
+        </div>
+      </div>
+      <div class="conditional-something">
+        <input name="attr_advantage_alert_count" type="hidden" />
+        <div>Alert
+          <span name="attr_advantage_alert_count"></span>
+        </div>
+      </div>
+      <div class="conditional-something">
+        <input name="attr_advantage_wary_count" type="hidden" />
+        <div>Wary
+          <span name="attr_advantage_wary_count"></span>
+        </div>
+      </div>
+      <div class="conditional-something">
+        <input name="attr_advantage_mage_count" type="hidden" />
+        <div>Mage
+          <span name="attr_advantage_mage_count"></span>
+        </div>
+      </div>
+      <div class="conditional-something">
+        <input name="attr_advantage_devout_count" type="hidden" />
+        <div>Devout
+          <span name="attr_advantage_devout_count"></span>
+        </div>
+      </div>
+      <fieldset class="repeating_extraadvantage">
+        <span name="attr_extraadvantagename" class="extraadvantagename">
+        </span>
+        <fieldset>
+    </div>
+
+    &emsp;&emsp;
+    <!-- Feats -->
+    <div class="feat-overview no-add-or-modify-buttons">
+      <div class="table-header">
+        <div class="featextraordinaryletter">Extr</div>
+        <div class="featname">Epic Feat</div>
+      </div>
+      <fieldset class="repeating_feat">
+        <span name="attr_featextraordinaryletter" class="featextraordinaryletter"></span>
+        <span name="attr_featname" class="featname"> </span>
+      </fieldset>
+    </div>
+
+    &emsp;&emsp;
+    <!-- Skills -->
+    <div class="skills-overview no-add-or-modify-buttons flex-stack">
+      <div class="table-header">
+        <div class="skillname">Skill</div>
+        <div class="skillability">Ability</div>
+        <div class="skillbase">Mod</div>
+      </div>
+      <fieldset class="repeating_skill">
+        <!-- This input is used by CSS to hide disciplines -->
+        <input name="attr_skillisdiscipline" class="isdiscipline" type="hidden" />
+        <div class="skill-overview-row-container">
+          <span name="attr_skillname" class="skillname"></span>
+          <span name="attr_skillability" class="skillability"></span>
+          <input name="attr_skillmodifier" class="skillbase" type="number">
+          <!--
+            These hidden inputs are necessary for the roll to find
+            skillability and skillname
+          -->
+          <input name="attr_skillability" type="hidden">
+          <input name="attr_skillname" type="hidden">
+          <button name="roll_skillroll" class="skill-roll" type="roll"
+            value="!EPRoll @{skillability}+@{skillmodifier} Tries @{skillname}: @{skillability} + @{skillmodifier}" />
+        </div>
+      </fieldset>
+    </div>
+
+    &emsp;&emsp;
+    <!-- Weapons -->
+    <div class="weapons-overview no-add-or-modify-buttons flex-stack">
+      <div class="table-header">
+        <div class="equipmentname">Weapon</div>
+        <div class="equipmentcount">Count</div>
+        <div class="equipmentdamage">Damage</div>
+        <div class="equipmentrange">Range</div>
+      </div>
+      <fieldset class="repeating_weapon">
+        <div class="weapons-overview-row-container">
+          <span name="attr_weaponname" class="equipmentname"></span>
+          <input name="attr_weaponcount" class="equipmentcount" type="number" value="1" />
+          <span name="attr_weapondamage" class="equipmentdamage"></span>
+          <span name="attr_weaponrange" class="equipmentrange"></span>
+        </div>
+        <span name="attr_weaponnotes" class="equipmentnotes"></span>
+      </fieldset>
+    </div>
+  </div>
+</div>
