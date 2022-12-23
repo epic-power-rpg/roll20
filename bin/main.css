@@ -50,7 +50,11 @@ button.actionRollButton {
    the two joined squares character and give them the blue background */
 button.btn.ui-draggable[type=roll],
 button.actionRollButton {
-  background-image: linear-gradient(90deg, #ddf, #99f);
+  font-weight: bold;
+  outline: 1px solid #666;
+  border: none;
+  border-radius: 4px;
+  background-image: linear-gradient(90deg, rgb(245, 201, 162), #c2815b);
 }
 
 button.btn.ui-draggable[type=roll]::before,
@@ -77,7 +81,11 @@ button.do::before {
 
 button.do,
 button.do-and-roll {
-  background-image: linear-gradient(90deg, #ddf, #44f);
+  font-weight: bold;
+  outline: 1px solid #666;
+  border: none;
+  border-radius: 4px;
+  background-image: linear-gradient(90deg, rgb(245, 201, 162), #c2815b);
 }
 
 button.do {
@@ -106,23 +114,44 @@ button.undo::before {
 }
 
 button.undo {
-  background-image: linear-gradient(90deg, #f44, #fdd);
+  font-weight: bold;
+  outline: 1px solid #666;
+  border: none;
+  border-radius: 4px;
+  background-image: linear-gradient(90deg, #c2945b, rgb(138, 103, 103));
   line-height: 1;
   padding: 1px 1px;
 }
 
-/* Make action buttons look like roll buttons, but darken the borders */
-button.do,
-button.do-and-roll,
-button.undo {
-  border: 1px solid #999;
-  border-bottom-color: #777;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
+button.reset-total {
+  font-weight: bold;
+  outline: 1px solid #666;
+  border: none;
   border-radius: 4px;
+  background-image: linear-gradient(90deg, rgb(245, 201, 162), #c2815b);
+  line-height: 1;
+  padding: 2px;
+  vertical-align: middle;
+}
+
+button.convert-button {
+  font-weight: bold;
+  outline: 1px solid #666;
+  border: none;
+  border-radius: 4px;
+  background-image: linear-gradient(180deg, rgb(245, 201, 162), #c2815b);
+  padding: 0px 2px 4px 2px;
+  vertical-align: middle;
+  font-size: 200%;
 }
 
 /* Generic styles */
+.ui-dialog {
+  background-color: #c4bdaf;
+  background-size: cover;
+  background-image: url(https://raw.githubusercontent.com/Roll20/roll20-character-sheets/master/Pathfinder%20Second%20Edition%20by%20Roll20/images/background.png);
+}
+
 .invisible {
   display: none;
 }
@@ -230,7 +259,7 @@ button.undo {
 }
 
 .TP.TP.TP.TP {
-  color: #40C000;
+  color: #277500;
 }
 
 .bold {
@@ -281,28 +310,6 @@ span.attribute-value {
   /* Make the height work for span. */
   display: inline-block;
   border-color: transparent;
-}
-
-button.reset-total {
-  background-color: white;
-  font-weight: bold;
-  border-width: 1px;
-  border-radius: 4px;
-  border-color: lightgrey;
-  line-height: 1;
-  padding: 2px;
-  vertical-align: middle;
-}
-
-button.convert-button {
-  background-color: white;
-  font-weight: bold;
-  border-width: 1px;
-  border-radius: 4px;
-  border-color: lightgrey;
-  padding: 0px 2px 4px 2px;
-  vertical-align: middle;
-  font-size: 200%;
 }
 
 input[disabled],
@@ -457,7 +464,7 @@ radio > span.checked {
   justify-content: space-between;
   border-bottom: solid black 1px;
   margin-bottom: 6px;
-  background: linear-gradient(to top, lightcyan 0%, white 100%);
+  background: linear-gradient(to top, rgba(194, 148, 91, 0.5019607843) 0%, transparent 100%);
 }
 
 /* ------ generic conditional appearance ------ */
@@ -500,7 +507,7 @@ radio > span.checked {
 
 /* Tabs */
 .characterviewer .nav-tabs > li:not(.active) {
-  background: #EEE;
+  background: #eee;
   color: black;
   text-decoration: none;
   cursor: pointer;
@@ -517,7 +524,7 @@ radio > span.checked {
 .characterviewer .nav-tabs > .active > a {
   font-weight: bold;
   text-decoration: none;
-  background-color: #616161;
+  background-color: #b56632;
   color: white;
 }
 
@@ -527,7 +534,7 @@ radio > span.checked {
 
 .tab {
   border: 1px solid #999;
-  background: #EEE;
+  background: #eee;
   padding: 4px 4px;
   border-radius: 4px 4px 0 0;
   font-size: 110%;
@@ -541,7 +548,7 @@ radio > span.checked {
 .tabcontrol[value=notes] ~ .tab[name=act_notes] {
   font-weight: bold;
   text-decoration: none;
-  background-color: #616161;
+  background-color: #b56632;
   color: white;
   border-bottom: 1px solid transparent;
 }
@@ -763,7 +770,7 @@ input.featCP {
   width: 30px;
   margin-left: 15px;
   margin-right: -10px;
-  color: #40C000;
+  color: #277500;
 }
 
 .skillCP.skillCP.skillCP.skillCP {
@@ -986,7 +993,7 @@ input.featCP {
 .tabcontrol[value=innate] ~ .tab[name=act_innate] {
   font-weight: bold;
   text-decoration: none;
-  background-color: #616161;
+  background-color: #b56632;
   color: white;
   margin-bottom: -1px;
   border-bottom: 1px solid transparent;
