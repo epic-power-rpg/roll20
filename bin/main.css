@@ -149,7 +149,7 @@ button.convert-button {
 .ui-dialog {
   background-color: #c4bdaf;
   background-size: cover;
-  background-image: url(https://raw.githubusercontent.com/Roll20/roll20-character-sheets/master/Pathfinder%20Second%20Edition%20by%20Roll20/images/background.png);
+  background-image: url(https://raw.githubusercontent.com/epic-power-rpg/roll20/main/ui/images/background.png);
 }
 .ui-dialog .dialog, .ui-dialog .largedialog {
   padding: 0 16px;
