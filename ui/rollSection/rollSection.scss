@@ -19,7 +19,7 @@
   padding: 1px 2px;
   border-width: 1px;
   border-radius: 3px;
-  background-color: white;
+  background-color: $primary-background-color;
 }
 
 input.saved-roll {
@@ -48,7 +48,7 @@ input.saved-roll {
 .roll-chosen[value="4"]~.save-radio-row>button.roll-4,
 .roll-chosen[value="5"]~.save-radio-row>button.roll-5,
 .roll-chosen[value="6"]~.save-radio-row>button.roll-6 {
-  background-color: white;
+  background-color: $primary-background-color;
   border-color: black;
 }
 

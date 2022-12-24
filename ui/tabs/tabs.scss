@@ -37,7 +37,7 @@
   font-weight: bold;
   text-decoration: none;
   background-color: $selected-tab-color;
-  color: white;
+  color: $primary-background-color;
 }
 
 .tab-holder {
@@ -61,6 +61,6 @@
   font-weight: bold;
   text-decoration: none;
   background-color: $selected-tab-color;
-  color: white;
+  color: $primary-background-color;
   border-bottom: 1px solid transparent;
 }

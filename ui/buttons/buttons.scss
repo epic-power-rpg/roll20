@@ -18,7 +18,7 @@ button.actionRollButton {
 }
 
 /* Change the character for dice roll buttons to be
-   the two joined squares character and give them the blue background */
+   the two joined squares character and add styles */
 button.btn.ui-draggable[type=roll],
 button.actionRollButton {
   @include roll-action-button;
