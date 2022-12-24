@@ -1,0 +1,28 @@
+button.popoverButton {
+  background: transparent;
+  line-height: unset;
+  border: 1px solid gray;
+  border-radius: 100%;
+  margin: 0;
+}
+
+div.popoverContainer {
+  display: none;
+  position: relative;
+  > .popover {
+    position: absolute;
+    top: 24px;
+    left: -40px;
+    background: $primary-background-color;
+    padding: 16px;
+    border: 1px solid black;
+    border-radius: 6px;
+    z-index: 100;
+  }
+}
+
+@mixin popover-control($popoverName) {
+  .sectioncontrol[value="#{$popoverName}"]~div.popoverContainer.#{$popoverName} {
+    display: inline;
+  }
+}

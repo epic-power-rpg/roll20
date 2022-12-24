@@ -1,4 +1,27 @@
 @charset "UTF-8";
+button.popoverButton {
+  background: transparent;
+  line-height: unset;
+  border: 1px solid gray;
+  border-radius: 100%;
+  margin: 0;
+}
+
+div.popoverContainer {
+  display: none;
+  position: relative;
+}
+div.popoverContainer > .popover {
+  position: absolute;
+  top: 24px;
+  left: -40px;
+  background: #faf2ec;
+  padding: 16px;
+  border: 1px solid black;
+  border-radius: 6px;
+  z-index: 100;
+}
+
 /* Styles that apply everywhere */
 .characterviewer label,
 .characterviewer .label {
@@ -472,6 +495,10 @@ radio > span.checked {
   border-bottom: solid black 1px;
   margin-bottom: 6px;
   background: linear-gradient(to top, rgba(194, 148, 91, 0.5019607843) 0%, transparent 100%);
+}
+
+.sectioncontrol[value=weightPenalties] ~ div.popoverContainer.weightPenalties {
+  display: inline;
 }
 
 /* ------ generic conditional appearance ------ */
