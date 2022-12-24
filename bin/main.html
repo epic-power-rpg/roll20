@@ -90,14 +90,14 @@
   <!-- Left top section -->
   <div class="flex-stack space-between">
     <!-- Power, CP, TP -->
-    <div>
+    <div class="top-left-section">
       <input name="attr_chosentab" class="cpcontrol" type="hidden" value="basic" />
-      <div class="power larger inline right middle">Power Depth</div>
+      <div class="power larger inline bold right middle">Power Depth</div>
       <!-- Power is editable in basic tab only -->
       <span name="attr_power" class="power larger left bold middle not-basic-tab"> </span>
       <input name="attr_power" class="power medium bold middle basic-tab-only" type="number" value="0" />
       &emsp;
-      <div class="CP larger label">CP</div>
+      <div class="CP larger inline bold right middle">CP</div>
       <input name="attr_distributed_CP" type="hidden" value="0" />
       <div class="inline middle">
         <input name="attr_CPU" class="CP bold larger right narrow" value="@{CP} + (@{distributed_CP})
@@ -113,7 +113,7 @@
       <span name="attr_CP" class="CP bold larger middle not-basic-tab"> </span>
       <input name="attr_CP" class="CP bold larger medium middle basic-tab-only" type="number" value="25" />
       &emsp;
-      <div class="TP larger label">TP</div>
+      <div class="TP larger inline bold right middle">TP</div>
       <div class="inline middle">
         <input name="attr_TPU" class="TP bold larger right narrow" value="@{TP}
                       - (@{skill_total_TP})
