@@ -216,7 +216,43 @@
       <input name="attr_reaction_penalty" id="attr_reaction_penalty" class="attribute-value narrowish center" type="number" value="0" />
     </div>
     <div>
-      <div class="attribute-name wide larger">Wt. Load</div>
+      <div class="attribute-name wide larger">
+        <button name="act_popover_weightPenalties" class="popoverButton" type="action">
+          ?
+        </button>
+        <input name="attr_chosenPopover" class="sectioncontrol" type="hidden" value="false" />
+        <div class="section weightPenalties popoverContainer">
+          <div class="flex-stack align-center popover">
+            <div class="center wideish bold">Weight Penalties</div>
+            <div class="weight-penalty-table flex-stack">
+              <div class="table-header">
+                <div></div>
+                <div>Pen.</div>
+                <div>Wt.</div>
+              </div>
+              <div> <input name="attr_highlight_weight_penalty_1" type="hidden" />
+                <div>-1</div> <span name="attr_penalty_weight_1"></span>
+              </div>
+              <div> <input name="attr_highlight_weight_penalty_2" type="hidden" />
+                <div>-2</div> <span name="attr_penalty_weight_2"></span>
+              </div>
+              <div> <input name="attr_highlight_weight_penalty_3" type="hidden" />
+                <div>-3</div> <span name="attr_penalty_weight_3"></span>
+              </div>
+              <div> <input name="attr_highlight_weight_penalty_4" type="hidden" />
+                <div>-4</div> <span name="attr_penalty_weight_4"></span>
+              </div>
+              <div> <input name="attr_highlight_weight_penalty_5" type="hidden" />
+                <div>-5</div> <span name="attr_penalty_weight_5"></span>
+              </div>
+              <div> <input name="attr_highlight_weight_penalty_6" type="hidden" />
+                <div>-∞</div> <span name="attr_penalty_weight_6"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        Wt. Load
+      </div>
       <span name="attr_equipment_total_weight" class="narrowish center bold larger value"></span>
     </div>
     <div>
@@ -313,7 +349,6 @@
   </div>
 
 </div>
-
 <!-- Each tabbed section -->
 
 <!--
@@ -1523,6 +1558,19 @@ on('sheet:opened', fixPower);
   button => { on(`clicked:${button}`, function() {
     setAttrs({chosentab: button});
   });
+  });
+
+// ----- Popovers -----
+// Close all popovers on page load
+on('sheet:opened', () => setAttrs({ chosenPopover: 'false' }));
+['weightPenalties'].forEach(
+  popoverToToggle => {
+    on(`clicked:popover_${popoverToToggle}`, function () {
+      getAttrs(['chosenPopover'], (attributes) => {
+        const { chosenPopover } = attributes;
+        setAttrs({ chosenPopover: chosenPopover === popoverToToggle ? 'false' : popoverToToggle });
+      });
+    });
   });
 
 // ----- Discipline points -----

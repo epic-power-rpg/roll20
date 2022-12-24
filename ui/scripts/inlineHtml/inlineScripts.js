@@ -470,6 +470,19 @@ on('sheet:opened', fixPower);
   });
   });
 
+// ----- Popovers -----
+// Close all popovers on page load
+on('sheet:opened', () => setAttrs({ chosenPopover: 'false' }));
+['weightPenalties'].forEach(
+  popoverToToggle => {
+    on(`clicked:popover_${popoverToToggle}`, function () {
+      getAttrs(['chosenPopover'], (attributes) => {
+        const { chosenPopover } = attributes;
+        setAttrs({ chosenPopover: chosenPopover === popoverToToggle ? 'false' : popoverToToggle });
+      });
+    });
+  });
+
 // ----- Discipline points -----
 const updateTP = function () {
   const CP = 'CP';
