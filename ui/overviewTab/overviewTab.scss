@@ -11,7 +11,7 @@
 
 .advantage-overview>div.conditional-something>div,
 .advantage-overview>div[data-groupname]>div {
-  border: solid lightgrey;
+  border: solid $border-underline-color;
   border-width: 0px 0px 1px 0px;
   padding-top: 2px;
   padding-bottom: 2px;
@@ -33,4 +33,64 @@
    or they will make single lines too tall. */
 .advantage-overview>div.conditional-something {
   line-height: 1;
+}
+
+.weapons-overview {
+  .table-header {
+    display: flex;
+    flex-direction: row;
+    div {
+      text-align: center;
+    }
+  }
+
+  .weapons-overview-row-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  div[data-groupname] .equipmentname {
+    text-align: right;
+  }
+
+  .table-header, div[data-groupname] {
+    span {
+      display: inline-block;
+    }
+
+    >div {
+      border-width: 0px 0px 1px 0px;
+      border-color: $border-underline-color;
+      border-style: solid;
+      margin-bottom: 2px;
+    }
+
+    .equipmentname {
+      line-height: 1;
+      padding-top: 2px;
+      padding-bottom: 2px;
+      margin-right: 4px;
+      flex: 0 0 100px;
+      width: 100px;
+    }
+
+    .equipmentdamage {
+      width: 60px;
+      text-align: center
+    }
+
+    .equipmentrange {
+      width: 50px;
+      text-align: center;
+    }
+
+    .equipmentnotes {
+      margin-left: 90px;
+      margin-bottom: 2px;
+      width: 150px;
+      line-height: 1;
+      flex: 1 1;
+    }
+  }
 }

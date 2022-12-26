@@ -7,6 +7,7 @@
   background-image: url(https://raw.githubusercontent.com/epic-power-rpg/roll20/main/ui/images/background.png);
   .dialog, .largedialog {
     padding: 0 16px;
+    padding-bottom: 16px;
   }
 }
 
@@ -54,7 +55,7 @@
   width: 60px;
 }
 
-.wide.wide.wide {
+.wide.wide.wide.wide {
   width: 90px;
 }
 
@@ -66,8 +67,13 @@
   line-height: 1;
 }
 
+
 .spacer {
-  height: 20px;
+  height: 16px;
+}
+
+.small-spacer {
+  height: 8px;
 }
 
 .inlne-spacer {
@@ -78,6 +84,10 @@
   display: flex;
   flex-direction: row;
   align-items: flex-start;
+}
+
+.flex-gap {
+  gap: 16px;
 }
 
 .horizontal-flex-center {
@@ -129,7 +139,7 @@
 }
 
 .children-separated> :not(:first-child) {
-  border: solid lightgrey;
+  border: solid $border-underline-color;
   border-width: 1px 0px 0px 0px;
 }
 

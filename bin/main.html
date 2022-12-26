@@ -645,37 +645,6 @@
         <input name="attr_featCP" class="featCP" value="" type="number" />
       </fieldset>
     </div>
-
-    &emsp; &emsp;
-    <!-- weight penalty table -->
-    <div class="flex-stack">
-      <div class="center wideish bold">Weight Penalties</div>
-      <div class="weight-penalty-table flex-stack">
-        <div class="table-header">
-          <div></div>
-          <div>Pen.</div>
-          <div>Wt.</div>
-        </div>
-        <div> <input name="attr_highlight_weight_penalty_1" type="hidden" />
-          <div>-1</div> <span name="attr_penalty_weight_1"></span>
-        </div>
-        <div> <input name="attr_highlight_weight_penalty_2" type="hidden" />
-          <div>-2</div> <span name="attr_penalty_weight_2"></span>
-        </div>
-        <div> <input name="attr_highlight_weight_penalty_3" type="hidden" />
-          <div>-3</div> <span name="attr_penalty_weight_3"></span>
-        </div>
-        <div> <input name="attr_highlight_weight_penalty_4" type="hidden" />
-          <div>-4</div> <span name="attr_penalty_weight_4"></span>
-        </div>
-        <div> <input name="attr_highlight_weight_penalty_5" type="hidden" />
-          <div>-5</div> <span name="attr_penalty_weight_5"></span>
-        </div>
-        <div> <input name="attr_highlight_weight_penalty_6" type="hidden" />
-          <div>-∞</div> <span name="attr_penalty_weight_6"></span>
-        </div>
-      </div>
-    </div>
   </div>
 </div>
 
@@ -739,131 +708,105 @@
 </div>
 
 <!-- Equipment section -->
-<div class="equipment section">
-  <div class="horizontal-flex">
-    <div class="flex-stack align-center">
-      <input name="attr_weight_penalty" type="hidden" value=" " />
-
-      <div class="children-separated">
-        <div>
-          <div class="attribute-name wideish larger">Cash</div>
-          <input name="attr_cash" type="number" class="wide center bold larger value" />
-        </div>
-        <div>
-          <div class="attribute-name wide larger">Equip Value</div>
-          <span name="attr_equipment_total_value" class="narrowish center bold larger value"></span>
-        </div>
-        <div>
-          <div class="attribute-name wide larger">Equip Weight</div>
-          <span name="attr_equipment_total_weight" class="narrowish center bold larger value"></span>
-        </div>
-      </div>
-      <div class="spacer"></div>
-      <!-- Copy of weight penalty table -->
-      <div class="flex-stack align-center">
-        <div class="center wideish bold">Weight Penalties</div>
-        <div class="weight-penalty-table flex-stack">
-          <div class="table-header">
-            <div></div>
-            <div>Pen.</div>
-            <div>Wt.</div>
-          </div>
-          <div> <input name="attr_highlight_weight_penalty_1" type="hidden" />
-            <div>-1</div> <span name="attr_penalty_weight_1"></span>
-          </div>
-          <div> <input name="attr_highlight_weight_penalty_2" type="hidden" />
-            <div>-2</div> <span name="attr_penalty_weight_2"></span>
-          </div>
-          <div> <input name="attr_highlight_weight_penalty_3" type="hidden" />
-            <div>-3</div> <span name="attr_penalty_weight_3"></span>
-          </div>
-          <div> <input name="attr_highlight_weight_penalty_4" type="hidden" />
-            <div>-4</div> <span name="attr_penalty_weight_4"></span>
-          </div>
-          <div> <input name="attr_highlight_weight_penalty_5" type="hidden" />
-            <div>-5</div> <span name="attr_penalty_weight_5"></span>
-          </div>
-          <div> <input name="attr_highlight_weight_penalty_6" type="hidden" />
-            <div>-∞</div> <span name="attr_penalty_weight_6"></span>
-          </div>
-        </div>
-      </div>
+<div class="equipment section equipment-tab">
+  <div class="horizontal-flex flex-gap">
+    <div>
+      <div class="attribute-name wideish larger inline bold right middle">Cash</div>
+      <input name="attr_cash" type="number" class="wide center bold larger value" />
     </div>
-
-    &emsp;&emsp;
-    <div class="flex-stack equipment-list">
-      <div class="table-header">
-        <div class="equipmentname">Armor</div>
-        <div class="armordefense">Def.</div>
-        <div class="equipmentweight">Weight</div>
-        <div class="equipmentvalue">Value</div>
-        <div class="equipmentnotes">Notes</div>
-      </div>
-      <div class="horizontal-flex">
-        <input name="attr_armor_name" class="equipmentname" type="text" />
-        <input name="attr_armor_defense" class="armordefense" type="number" />
-        <input name="attr_armor_weight" class="equipmentweight" type="text" />
-        <input name="attr_armor_value" class="equipmentvalue" type="text" />
-        <input name="attr_armor_notes" class="equipmentnotes" type="text" />
-      </div>
-
-      <div class="table-header">
-        <div class="equipmentname">Shield</div>
-        <div class="armordefense">Def.</div>
-        <div class="armordefense">Str.</div>
-        <div class="equipmentweight">Weight</div>
-        <div class="equipmentvalue">Value</div>
-        <div class="equipmentnotes">Notes</div>
-      </div>
-      <div class="horizontal-flex">
-        <input name="attr_shield_name" class="equipmentname" type="text" />
-        <input name="attr_shield_defense" class="armordefense" type="number" />
-        <input name="attr_shield_stopping_strength" class="armordefense" type="number" />
-        <input name="attr_shield_weight" class="equipmentweight" type="text" />
-        <input name="attr_shield_value" class="equipmentvalue" type="text" />
-        <input name="attr_shield_notes" class="equipmentnotes" type="text" />
-      </div>
-
-      <input name="attr_weapon_total_weight" type="hidden" value="0" />
-      <input name="attr_weapon_total_value" type="hidden" value="0" />
-      <div class="table-header">
-        <div class="equipmentname">Weapon</div>
-        <div class="equipmentcount">Count</div>
-        <div class="equipmentweight">Weight Each</div>
-        <div class="equipmentvalue">Value Each</div>
-        <div class="equipmentdamage">Damage</div>
-        <div class="equipmentrange">Range</div>
-        <div class="equipmentnotes">Notes</div>
-      </div>
-      <fieldset class="repeating_weapon">
-        <input name="attr_weaponname" class="equipmentname" type="text" />
-        <input name="attr_weaponcount" class="equipmentcount" type="number" value="1" />
-        <input name="attr_weaponweight" class="equipmentweight" type="text" />
-        <input name="attr_weaponvalue" class="equipmentvalue" type="text" />
-        <input name="attr_weapondamage" class="equipmentdamage" type="text" />
-        <input name="attr_weaponrange" class="equipmentrange" type="number" />
-        <input name="attr_weaponnotes" class="equipmentnotes" type="text" />
-      </fieldset>
-
-      <input name="attr_item_total_weight" type="hidden" value="0" />
-      <input name="attr_item_total_value" type="hidden" value="0" />
-      <div class="table-header">
-        <div class="equipmentname">Item</div>
-        <div class="equipmentcount">Count</div>
-        <div class="equipmentweight">Weight Each</div>
-        <div class="equipmentvalue">Value Each</div>
-        <div class="equipmentnotes">Notes</div>
-      </div>
-      <fieldset class="repeating_item">
-        <input name="attr_itemname" class="equipmentname" type="text" />
-        <input name="attr_itemcount" class="equipmentcount" type="number" value="1" />
-        <input name="attr_itemweight" class="equipmentweight" type="text" />
-        <input name="attr_itemvalue" class="equipmentvalue" type="text" />
-        <input name="attr_itemnotes" class="equipmentnotes" type="text" />
-      </fieldset>
+    <div>
+      <div class="attribute-name larger inline bold right middle">Equip Value</div>
+      <span name="attr_equipment_total_value" class="narrowish center bold larger value middle"></span>
+    </div>
+    <div>
+      <div class="attribute-name larger inline bold right middle">Equip Weight</div>
+      <span name="attr_equipment_total_weight" class="narrowish center bold larger value middle"></span>
     </div>
   </div>
 
+  <div class="spacer" />
+  <div class="armor-table">
+    <div class="armor-shield-weapons-tables">
+      <div class="epic-table-header-grid armor">
+        <div class="equipmentname-grid">Armor</div>
+        <div class="armordefense-grid">Def.</div>
+        <div class="equipmentweight-grid">Weight</div>
+        <div class="equipmentvalue-grid">Value</div>
+        <div class="equipmentnotes-grid">Notes</div>
+      </div>
+      <div data-epic-table-name="armor">
+        <input name="attr_armor_name" class="equipmentname-grid" type="text" />
+        <input name="attr_armor_defense" class="armordefense-grid" type="number" />
+        <input name="attr_armor_weight" class="equipmentweight-grid" type="text" />
+        <input name="attr_armor_value" class="equipmentvalue-grid" type="text" />
+        <input name="attr_armor_notes" class="equipmentnotes-grid" type="text" />
+      </div>
+    </div>
+
+    <div class="spacer" />
+    <div class="shield-table">
+      <div class="epic-table-header-grid shield">
+        <div class="equipmentname-grid">Shield</div>
+        <div class="armordefense-grid">Def.</div>
+        <div class="armordefense-grid">Str.</div>
+        <div class="equipmentweight-grid">Weight</div>
+        <div class="equipmentvalue-grid">Value</div>
+        <div class="equipmentnotes-grid">Notes</div>
+      </div>
+      <div data-epic-table-name="shield">
+        <input name="attr_shield_name" class="equipmentname-grid" type="text" />
+        <input name="attr_shield_defense" class="armordefense-grid" type="number" />
+        <input name="attr_shield_stopping_strength" class="armordefense-grid" type="number" />
+        <input name="attr_shield_weight" class="equipmentweight-grid" type="text" />
+        <input name="attr_shield_value" class="equipmentvalue-grid" type="text" />
+        <input name="attr_shield_notes" class="equipmentnotes-grid" type="text" />
+      </div>
+    </div>
+
+    <div class="spacer" />
+    <div class="weapons-table">
+      <input name="attr_weapon_total_weight" type="hidden" value="0" />
+      <input name="attr_weapon_total_value" type="hidden" value="0" />
+      <div class="epic-table-header-grid weapon">
+        <div class="equipmentname-grid">Weapon</div>
+        <div class="equipmentcount-grid">Count</div>
+        <div class="equipmentweight-grid">Weight Each</div>
+        <div class="equipmentvalue-grid">Value Each</div>
+        <div class="equipmentdamage-grid">Damage</div>
+        <div class="equipmentrange-grid">Range</div>
+        <div class="equipmentnotes-grid">Notes</div>
+      </div>
+      <fieldset class="repeating_weapon">
+        <input name="attr_weaponname" class="equipmentname-grid" type="text" />
+        <input name="attr_weaponcount" class="equipmentcount-grid" type="number" value="1" />
+        <input name="attr_weaponweight" class="equipmentweight-grid" type="text" />
+        <input name="attr_weaponvalue" class="equipmentvalue-grid" type="text" />
+        <input name="attr_weapondamage" class="equipmentdamage-grid" type="text" />
+        <input name="attr_weaponrange" class="equipmentrange-grid" type="number" />
+        <input name="attr_weaponnotes" class="equipmentnotes-grid" type="text" />
+      </fieldset>
+    </div>
+
+    <div class="spacer" />
+    <div class="items-table">
+      <input name="attr_item_total_weight" type="hidden" value="0" />
+      <input name="attr_item_total_value" type="hidden" value="0" />
+      <div class="epic-table-header-grid item">
+        <div class="equipmentname-grid">Item</div>
+        <div class="equipmentcount-grid">Count</div>
+        <div class="equipmentweight-grid">Weight Each</div>
+        <div class="equipmentvalue-grid">Value Each</div>
+        <div class="equipmentnotes-grid">Notes</div>
+      </div>
+      <fieldset class="repeating_item">
+        <input name="attr_itemname" class="equipmentname-grid" type="text" />
+        <input name="attr_itemcount" class="equipmentcount-grid" type="number" value="1" />
+        <input name="attr_itemweight" class="equipmentweight-grid" type="text" />
+        <input name="attr_itemvalue" class="equipmentvalue-grid" type="text" />
+        <input name="attr_itemnotes" class="equipmentnotes-grid" type="text" />
+      </fieldset>
+    </div>
+  </div>
 </div>
 
 <!-- Spells section -->
@@ -912,7 +855,7 @@
     <input name="attr_arcane_total_TP" type="hidden" value="0" />
     <input name="attr_arcane_total_CP" type="hidden" value="0" />
     <input name="attr_arcane_total_single_CP" type="hidden" value="0" />
-    <div class="arcane spells-header-grid">
+    <div class="arcane epic-table-header-grid">
       <div class="skilldisciplineinfo-grid">Discipline?</div>
       <div class="skillname-grid">Name</div>
       <div class="skillability-grid">Ability</div>
@@ -982,7 +925,7 @@
       <input name="attr_skillattribute" value="IQ" type="hidden" />
       <span class="skillattribute-grid">IQ ±</span>
       <input name="attr_skillbase" class="skillbase-grid" type="number" value="" />
-      <div class="spell-row conditional-one">
+      <div class="epic-table-row conditional-one">
         <!-- The next input puts whether we have a note into the
           value property, where CSS can see it -->
         <input name="attr_spellhasnote" class="spellhasnote" type="hidden">
@@ -994,7 +937,7 @@
   <div class="divine section divine-spells-grid">
     <input name="attr_divine_total_CP" type="hidden" value="0" />
     <input name="attr_divine_total_single_CP" type="hidden" value="0" />
-    <div class="divine spells-header-grid">
+    <div class="divine epic-table-header-grid">
       <div class="skillname-grid">Name</div>
       <div class="spellEP-grid">EP</div>
       <div class="spellcasttime-grid">Cast Time</div>
@@ -1018,7 +961,7 @@
       <input name="attr_spelltarget" class="spelltarget-grid" type="text" />
       <input name="attr_spellduration" class="spellduration-grid" type="text" />
       <input name="attr_spellhasnote" class="spellhasnote-grid" type="checkbox" value="1" />
-      <div class="spell-row conditional-one">
+      <div class="epic-table-row conditional-one">
         <!--
           The next input puts whether we we have a note into the
           value property, where CSS can see it
@@ -1032,7 +975,7 @@
   <div class="innate section innate-spells-grid">
     <input name="attr_innate_total_CP" type="hidden" value="0" />
     <input name="attr_innate_total_single_CP" type="hidden" value="0" />
-    <div class="innate spells-header-grid">
+    <div class="innate epic-table-header-grid">
       <div class="skillname-grid">Name</div>
       <div class="spellEP-grid">EP</div>
       <div class="spellcasttime-grid">Cast Time</div>
@@ -1058,7 +1001,7 @@
       <input name="attr_spellduration" class="spellduration-grid" type="text" />
       <input name="attr_spellhasnote" class="spellhasnote-grid" type="checkbox" value="1" />
       <input name="attr_skillCP" class="skillCP-grid" type="number" />
-      <div class="spell-row conditional-one">
+      <div class="epic-table-row conditional-one">
         <!--
           The next input puts whether we have a note into the
           value property, where CSS can see it

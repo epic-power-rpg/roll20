@@ -1,0 +1,72 @@
+@use "sass:list";
+
+$grid-padding: 2px;
+$grid-column-gap: 2px;
+
+@mixin epic-table-header($grid-template) {
+  display: grid;
+  grid-template-columns: $grid-template;
+  column-gap: $grid-column-gap;
+  background: $primary-highlight-background-color;
+  color: $primary-highlight-color;
+  padding: $grid-padding;
+
+  > div {
+    text-align: center;
+    margin: auto;
+    font-weight: bold;
+    width: 100%;
+  }
+}
+
+@mixin epic-table-rows($grid-template) {
+  display: grid;
+  grid-template-columns: $grid-template;
+  row-gap: 0;
+  column-gap: $grid-column-gap;
+  background: transparent;
+  input, input[type=number], textarea, select {
+    width: 100% !important;
+    margin-left: unset;
+    height: auto;
+    background-color: $primary-background-color;
+  }
+  input[type=text] {
+    text-align: left;
+  }
+  input, span, select {
+    white-space: nowrap;
+  }
+  span {
+    text-align: center;
+    margin: auto 0;
+  }
+  button, button[type=roll] {
+    margin: 0;
+  }
+  .epic-table-row.conditional-one {
+    display: grid;
+    // This makes the notes span all columns
+    grid-column-start: 1;
+    grid-column-end: (length($grid-template) + 1);
+  }
+}
+
+@mixin epic-table-grid($epic-table-type, $grid-template) {
+  .epic-table-header-grid.#{$epic-table-type} {
+    @include epic-table-header($grid-template);
+  }
+
+  div[data-groupname="repeating_#{$epic-table-type}"] > div,
+  div[data-epic-table-name="#{$epic-table-type}"] {
+    @include epic-table-rows($grid-template);
+  }
+}
+
+@function getResponsiveGridWidths($gridWidths...) {
+  $result: ();
+  @each $width in $gridWidths {
+    $result: list.append($result, minmax(0, $width))
+  }
+  @return $result;
+}

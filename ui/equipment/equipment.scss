@@ -1,110 +1,16 @@
+@import '../components/gridTable/gridTable.scss';
+
 /* -------- Equipment --------- */
+.equipment-tab {
+  $armor-grid-template: getResponsiveGridWidths(5fr, 1fr, 1fr, 1fr, 5fr);
+  @include epic-table-grid('armor', $armor-grid-template);
 
-/* overview section */
+  $shield-grid-template: getResponsiveGridWidths(5fr, 1fr, 1fr, 1fr, 1fr, 5fr);
+  @include epic-table-grid('shield', $shield-grid-template);
 
-.weapons-overview div[data-groupname] span {
-  display: inline-block;
-}
+  $weapon-grid-template: getResponsiveGridWidths(5fr, 1fr, 1fr, 1fr, 1fr, 1fr, 5fr);
+  @include epic-table-grid('weapon', $weapon-grid-template);
 
-.weapons-overview .equipmentname {
-  width: 100px;
-  flex: 0 0 100px;
-}
-
-.weapons-overview>div[data-groupname] .equipmentname {
-  line-height: 1;
-  padding-top: 2px;
-  padding-bottom: 2px;
-}
-
-/* Avoid gaps between items in the row 
-   And make multi-line stuff line up */
-/* Avoid space between items in the row */
-.weapons-overview .table-header {
-  display: flex;
-  flex-direction: row;
-}
-
-.weapons-overview>div[data-groupname]>div {
-  border-width: 0px 0px 1px 0px;
-  border-color: lightgrey;
-  border-style: solid
-}
-
-.weapons-overview-row-container {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-.weapons-overview .equipmentnotes {
-  margin-left: 90px;
-  margin-bottom: 6px;
-  width: 150px;
-}
-
-/* equipment section */
-
-.equipmentname {
-  text-align: right;
-  flex: 0 0 170px;
-  width: 170px;
-}
-
-.equipmentweight.equipmentweight.equipmentweight {
-  width: 50px;
-}
-
-.equipmentvalue.equipmentvalue.equipmentvalue {
-  width: 50px;
-}
-
-.equipmentcount.equipmentcount.equipmentcount {
-  width: 50px;
-}
-
-.armordefense.armordefense.armordefense {
-  width: 40px;
-  border-right: 0px;
-  text-align: right;
-}
-
-.armormod.armormod.armormod {
-  width: 40px;
-  border-left: 0px;
-}
-
-.equipmentdamage {
-  width: 60px;
-  text-align: center
-}
-
-.equipmentrange.equipmentrange.equipmentrange {
-  width: 50px;
-  text-align: center;
-}
-
-.equipmentnotes {
-  flex: 1 1;
-  width: 50px;
-}
-
-.equipment-list {
-  width: 560px;
-}
-
-/* Avoid space between items in the row */
-.equipment-list .table-header {
-  margin-top: 10px;
-  display: flex;
-  flex-direction: row;
-  align-items: flex-end;
-}
-
-.equipment div[data-groupname]>div {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  /* and make rows overlap */
-  margin-top: -1px;
+  $item-grid-template: getResponsiveGridWidths(5fr, 1fr, 1fr, 1fr, 5fr);
+  @include epic-table-grid('item', $item-grid-template);
 }
