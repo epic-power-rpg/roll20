@@ -159,6 +159,8 @@
 
   $innate-grid-template: getResponsiveGridWidths(6fr, 1fr, 2fr, 3fr, 2fr, 3fr, 2fr, 0.5fr, 1fr);
   @include epic-table-grid('innate', $innate-grid-template);
+
+  @include grid-table-tp-cp-columns();
 }
 
 .spell-row {

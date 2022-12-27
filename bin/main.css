@@ -1510,6 +1510,20 @@ input.featCP {
   grid-column-start: 1;
   grid-column-end: 10;
 }
+.spells .skillTP-grid {
+  color: #267200;
+  font-weight: bold;
+}
+.spells .skillCP-grid {
+  color: blue;
+  font-weight: bold;
+}
+.spells .epic-table-header-grid .skillTP-grid {
+  color: #153f00;
+}
+.spells .epic-table-header-grid .skillCP-grid {
+  color: #0000cc;
+}
 
 .spell-row {
   display: flex;

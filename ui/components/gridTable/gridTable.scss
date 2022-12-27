@@ -70,3 +70,24 @@ $grid-column-gap: 2px;
   }
   @return $result;
 }
+
+@mixin grid-table-tp-cp-columns {
+  .skillTP-grid {
+    color: $tp-color;
+    font-weight: bold;
+  }
+
+  .skillCP-grid {
+    color: $cp-color;
+    font-weight: bold;
+  }
+
+  .epic-table-header-grid {
+    .skillTP-grid {
+      color: darken($tp-color, 10%);
+    }
+    .skillCP-grid {
+      color: darken($cp-color, 10%);
+    }
+  }
+}
