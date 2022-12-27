@@ -35,6 +35,7 @@
   line-height: 1;
 }
 
+/* ------------ Weapons Overview -------------- */
 .weapons-overview {
   .table-header {
     display: flex;
@@ -91,6 +92,78 @@
       width: 150px;
       line-height: 1;
       flex: 1 1;
+    }
+  }
+}
+
+/* ------------ Skills Overview -------------- */
+.skills-overview {
+  .table-header {
+    display: flex;
+    flex-direction: row;
+    div {
+      text-align: center;
+    }
+  }
+
+  .skill-overview-row-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-width: 0px 0px 1px 0px;
+    border-color: $border-underline-color;
+    border-style: solid;
+  }
+
+  .isdiscipline[value="1"]~* {
+    display: none;
+  }
+
+  div[data-groupname] .skillname {
+    text-align: right;
+    margin-right: 4px;
+  }
+
+  div[data-groupname] .skillability {
+    margin-left: -4px;
+    margin-right: -4px;
+  }
+
+
+  .table-header, div[data-groupname] {
+    span {
+      display: inline-block;
+    }
+
+    >div {
+      margin-bottom: 2px;
+    }
+
+    .skillname {
+      line-height: 1;
+      padding-top: 2px;
+      padding-bottom: 2px;
+      flex: 0 0 100px;
+      width: 100px;
+    }
+
+    .skillability {
+      font-weight: normal;
+      border-color: transparent;
+      width: 40px;
+      text-align: center;
+    }
+
+    .skillbase.skillbase {
+      width: 40px;
+    }
+
+    .skill-roll.skill-roll {
+      padding: 0px 2px;
+      width: 24px;
+      box-sizing: border-box;
+      margin-left: 3px;
+      margin-right: 3px;
     }
   }
 }
