@@ -1,46 +1,54 @@
 /* --------- Advantages ------------ */
 
 /* This avoids spaces between the elements in the row */
-.advantage-row {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
+.advantages {
+  $input-field-width: 40px;
 
-.advantage-row>div {
-  display: inline-block;
-}
+  .advantage-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 
-.advantage-row.advantage-row> :first-child {
-  width: 120px;
-  padding-right: 4px;
-  text-align: right;
-}
+    >div {
+      display: inline-block;
+    }
 
-.advantages .count-placeholder {
-  height: 18px;
-  width: 40px;
-}
+    > :first-child {
+      width: 120px;
+      padding-right: 4px;
+      text-align: right;
+    }
 
-.advantage-row>.CP {
-  display: inline-block;
-  text-align: center;
-  width: 26px;
-}
+    select.skillexpertise {
+      width: $input-field-width;
+    }
 
-.advantages .extraadvantagename {
-  width: 124px;
-  margin-top: -1px;
-}
+    >.CP {
+      display: inline-block;
+      text-align: center;
+      width: 26px;
+    }
+  }
 
-.advantages .extraadvantageCP.extraadvantageCP {
-  color: $cp-color;
-  width: 40px;
-  margin-top: -1px;
-}
+  .count-placeholder {
+    height: 18px;
+    width: $input-field-width;
+  }
 
-.advantages .extraadvantageCPdescription {
-  display: inline-block;
-  text-align: center;
-  width: 26px;
+  .extraadvantagename {
+    width: 124px;
+    margin-top: -1px;
+  }
+
+  .extraadvantageCP.extraadvantageCP.extraadvantageCP {
+    color: $cp-color;
+    width: $input-field-width;
+    margin-top: -1px;
+  }
+
+  .extraadvantageCPdescription {
+    display: inline-block;
+    text-align: center;
+    width: 26px;
+  }
 }

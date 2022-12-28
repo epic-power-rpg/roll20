@@ -84,10 +84,10 @@ $grid-column-gap: 2px;
 
   .epic-table-header-grid {
     .skillTP-grid {
-      color: darken($tp-color, 10%);
+      color: lighten($tp-color, 25%);
     }
     .skillCP-grid {
-      color: darken($cp-color, 10%);
+      color: darken($cp-color, 20%);
     }
   }
 }

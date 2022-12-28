@@ -203,6 +203,10 @@ button.convert-button {
   vertical-align: middle;
 }
 
+.full-width {
+  width: 100%;
+}
+
 .narrow.narrow.narrow {
   width: 25px;
 }
@@ -677,6 +681,7 @@ radio > span.checked {
   line-height: 1;
 }
 
+/* ------------ Weapons Overview -------------- */
 .weapons-overview .table-header {
   display: flex;
   flex-direction: row;
@@ -725,46 +730,99 @@ radio > span.checked {
   flex: 1 1;
 }
 
+/* ------------ Skills Overview -------------- */
+.skills-overview .table-header {
+  display: flex;
+  flex-direction: row;
+}
+.skills-overview .table-header div {
+  text-align: center;
+}
+.skills-overview .skill-overview-row-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-width: 0px 0px 1px 0px;
+  border-color: #b56632;
+  border-style: solid;
+}
+.skills-overview .isdiscipline[value="1"] ~ * {
+  display: none;
+}
+.skills-overview div[data-groupname] .skillname {
+  text-align: right;
+  margin-right: 4px;
+}
+.skills-overview div[data-groupname] .skillability {
+  margin-left: -4px;
+  margin-right: -4px;
+}
+.skills-overview .table-header span, .skills-overview div[data-groupname] span {
+  display: inline-block;
+}
+.skills-overview .table-header > div, .skills-overview div[data-groupname] > div {
+  margin-bottom: 2px;
+}
+.skills-overview .table-header .skillname, .skills-overview div[data-groupname] .skillname {
+  line-height: 1;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  flex: 0 0 100px;
+  width: 100px;
+}
+.skills-overview .table-header .skillability, .skills-overview div[data-groupname] .skillability {
+  font-weight: normal;
+  border-color: transparent;
+  width: 40px;
+  text-align: center;
+}
+.skills-overview .table-header .skillbase.skillbase, .skills-overview div[data-groupname] .skillbase.skillbase {
+  width: 40px;
+}
+.skills-overview .table-header .skill-roll.skill-roll, .skills-overview div[data-groupname] .skill-roll.skill-roll {
+  padding: 0px 2px;
+  width: 24px;
+  box-sizing: border-box;
+  margin-left: 3px;
+  margin-right: 3px;
+}
+
 /* --------- Advantages ------------ */
 /* This avoids spaces between the elements in the row */
-.advantage-row {
+.advantages .advantage-row {
   display: flex;
   flex-direction: row;
   align-items: center;
 }
-
-.advantage-row > div {
+.advantages .advantage-row > div {
   display: inline-block;
 }
-
-.advantage-row.advantage-row > :first-child {
+.advantages .advantage-row > :first-child {
   width: 120px;
   padding-right: 4px;
   text-align: right;
 }
-
-.advantages .count-placeholder {
-  height: 18px;
+.advantages .advantage-row select.skillexpertise {
   width: 40px;
 }
-
-.advantage-row > .CP {
+.advantages .advantage-row > .CP {
   display: inline-block;
   text-align: center;
   width: 26px;
 }
-
+.advantages .count-placeholder {
+  height: 18px;
+  width: 40px;
+}
 .advantages .extraadvantagename {
   width: 124px;
   margin-top: -1px;
 }
-
-.advantages .extraadvantageCP.extraadvantageCP {
+.advantages .extraadvantageCP.extraadvantageCP.extraadvantageCP {
   color: blue;
   width: 40px;
   margin-top: -1px;
 }
-
 .advantages .extraadvantageCPdescription {
   display: inline-block;
   text-align: center;
@@ -842,145 +900,86 @@ input.featCP {
   margin-top: -1px;
 }
 
-/* ------------ Skills -------------- */
-.skilldisciplineinfo {
-  width: 40px;
+/* -------- Skills --------- */
+.epic-skills-tab .epic-table-header-grid.skill {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 5fr) minmax(0, 1fr) minmax(0, 0.5fr) minmax(0, 0.5fr) minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr);
+  column-gap: 2px;
+  background: #b56632;
+  color: #fff;
+  padding: 2px;
 }
-
-.skillname {
-  width: 150px;
-  text-align: right;
-}
-
-.skillability {
-  width: 40px;
+.epic-skills-tab .epic-table-header-grid.skill > div {
   text-align: center;
-}
-
-.skillTP.skillTP.skillTP.skillTP {
-  width: 30px;
-  margin-left: 15px;
-  margin-right: -10px;
-  color: #267200;
-}
-
-.skillCP.skillCP.skillCP.skillCP {
-  width: 30px;
-  color: blue;
-}
-
-.skillTP-grid {
-  color: #267200;
+  margin: auto;
   font-weight: bold;
+  width: 100%;
 }
-
-.skillCP-grid {
-  color: blue;
-  font-weight: bold;
+.epic-skills-tab div[data-groupname=repeating_skill] > div,
+.epic-skills-tab div[data-epic-table-name=skill] {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 5fr) minmax(0, 1fr) minmax(0, 0.5fr) minmax(0, 0.5fr) minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr);
+  row-gap: 0;
+  column-gap: 2px;
+  background: transparent;
 }
-
-.spells-header-grid .skillTP-grid {
-  color: #153f00;
+.epic-skills-tab div[data-groupname=repeating_skill] > div input, .epic-skills-tab div[data-groupname=repeating_skill] > div input[type=number], .epic-skills-tab div[data-groupname=repeating_skill] > div textarea, .epic-skills-tab div[data-groupname=repeating_skill] > div select,
+.epic-skills-tab div[data-epic-table-name=skill] input,
+.epic-skills-tab div[data-epic-table-name=skill] input[type=number],
+.epic-skills-tab div[data-epic-table-name=skill] textarea,
+.epic-skills-tab div[data-epic-table-name=skill] select {
+  width: 100% !important;
+  margin-left: unset;
+  height: auto;
+  background-color: #faf2ec;
 }
-.spells-header-grid .skillCP-grid {
-  color: #0000cc;
-}
-
-.skillexpertise {
-  width: 40px;
-}
-
-.skillattribute {
-  width: 65px;
-}
-
-.skillbase.skillbase.skillbase.skillbase {
-  width: 40px;
-}
-
-.skills div[data-groupname] span,
-.skills-overview div[data-groupname] span {
-  display: inline-block;
-}
-
-/* overview section */
-.skills-overview .skillname {
-  width: 100px;
-}
-
-.skills-overview > div[data-groupname] .skillname {
-  line-height: 1;
-  padding-top: 2px;
-  padding-bottom: 2px;
-}
-
-.skills-overview .skillability {
-  margin-left: -4px;
-  margin-right: -4px;
-  font-weight: normal;
-  border-color: transparent;
-}
-
-/* Avoid gaps between items in the row 
-   And make multi-line stuff line up */
-/* Avoid space between items in the row */
-.skills-overview .table-header {
-  display: flex;
-  flex-direction: row;
-}
-
-.skills-overview > div[data-groupname] > div {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-.skills-overview .isdiscipline[value="1"] ~ * {
-  display: none;
-}
-
-.skill-overview-row-container {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  border-width: 0px 0px 1px 0px;
-  border-color: #b56632;
-  border-style: solid;
-}
-
-.skill-roll.skill-roll.skill-roll.skill-roll {
-  padding: 0px 2px;
-  width: 24px;
-  box-sizing: border-box;
-  margin-left: 3px;
-  margin-right: 3px;
-}
-
-/* skills section */
-.isdiscipline[value="1"] ~ .skillname {
-  width: 190px;
+.epic-skills-tab div[data-groupname=repeating_skill] > div input[type=text],
+.epic-skills-tab div[data-epic-table-name=skill] input[type=text] {
   text-align: left;
+}
+.epic-skills-tab div[data-groupname=repeating_skill] > div input, .epic-skills-tab div[data-groupname=repeating_skill] > div span, .epic-skills-tab div[data-groupname=repeating_skill] > div select,
+.epic-skills-tab div[data-epic-table-name=skill] input,
+.epic-skills-tab div[data-epic-table-name=skill] span,
+.epic-skills-tab div[data-epic-table-name=skill] select {
+  white-space: nowrap;
+}
+.epic-skills-tab div[data-groupname=repeating_skill] > div span,
+.epic-skills-tab div[data-epic-table-name=skill] span {
+  text-align: center;
+  margin: auto 0;
+}
+.epic-skills-tab div[data-groupname=repeating_skill] > div button, .epic-skills-tab div[data-groupname=repeating_skill] > div button[type=roll],
+.epic-skills-tab div[data-epic-table-name=skill] button,
+.epic-skills-tab div[data-epic-table-name=skill] button[type=roll] {
+  margin: 0;
+}
+.epic-skills-tab div[data-groupname=repeating_skill] > div .epic-table-row.conditional-one,
+.epic-skills-tab div[data-epic-table-name=skill] .epic-table-row.conditional-one {
+  display: grid;
+  grid-column-start: 1;
+  grid-column-end: 9;
+}
+.epic-skills-tab .isdiscipline-grid[value="1"] ~ .skillname-grid {
   font-weight: bold;
 }
-
-.isdiscipline[value="1"] ~ .skillability,
-.isdiscipline[value="1"] ~ .skillattribute,
-.isdiscipline[value="1"] ~ .skillbase {
-  display: none;
+.epic-skills-tab .isdiscipline-grid[value="1"] ~ .skillability-grid,
+.epic-skills-tab .isdiscipline-grid[value="1"] ~ .skillattribute-grid,
+.epic-skills-tab .isdiscipline-grid[value="1"] ~ .skillbase-grid {
+  opacity: 0;
 }
-
-/* Avoid space between items in the row */
-.skills .table-header {
-  display: flex;
-  flex-direction: row;
+.epic-skills-tab .skillTP-grid {
+  color: #267200;
+  font-weight: bold;
 }
-
-.skills div[data-groupname] > div {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  /* and make rows overlap */
-  margin-top: -1px;
+.epic-skills-tab .skillCP-grid {
+  color: blue;
+  font-weight: bold;
+}
+.epic-skills-tab .epic-table-header-grid .skillTP-grid {
+  color: #51f200;
+}
+.epic-skills-tab .epic-table-header-grid .skillCP-grid {
+  color: #000099;
 }
 
 /* -------- Equipment --------- */
@@ -1519,10 +1518,10 @@ input.featCP {
   font-weight: bold;
 }
 .spells .epic-table-header-grid .skillTP-grid {
-  color: #153f00;
+  color: #51f200;
 }
 .spells .epic-table-header-grid .skillCP-grid {
-  color: #0000cc;
+  color: #000099;
 }
 
 .spell-row {

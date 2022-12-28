@@ -1,145 +1,29 @@
 @import '../colors.scss';
+@import '../components/gridTable/gridTable.scss';
 
-/* ------------ Skills -------------- */
-.skilldisciplineinfo {
-  width: 40px;
-}
+/* -------- Skills --------- */
+.epic-skills-tab {
+  $skill-grid-template: getResponsiveGridWidths(
+    1fr, // Discipline?
+    5fr, // Name
+    1fr, // Ability
+    0.5fr, // TP
+    0.5fr, // CP
+    1fr, // Exper
+    2fr, // Attribute
+    1fr // Base
+  );
+  @include epic-table-grid('skill', $skill-grid-template);
 
-.skillname {
-  width: 150px;
-  text-align: right;
-}
-
-.skillability {
-  width: 40px;
-  text-align: center;
-}
-
-.skillTP.skillTP.skillTP.skillTP {
-  width: 30px;
-  margin-left: 15px;
-  margin-right: -10px;
-  color: $tp-color;
-}
-
-.skillCP.skillCP.skillCP.skillCP {
-  width: 30px;
-  color: $cp-color;
-}
-
-.skillTP-grid {
-  color: $tp-color;
-  font-weight: bold;
-}
-
-.skillCP-grid {
-  color: $cp-color;
-  font-weight: bold;
-}
-
-.spells-header-grid {
-  .skillTP-grid {
-    color: darken($tp-color, 10%);
+    .isdiscipline-grid[value="1"]~.skillname-grid {
+    font-weight: bold;
   }
-  .skillCP-grid {
-    color: darken($cp-color, 10%);
+
+  .isdiscipline-grid[value="1"]~.skillability-grid,
+  .isdiscipline-grid[value="1"]~.skillattribute-grid,
+  .isdiscipline-grid[value="1"]~.skillbase-grid {
+    opacity: 0;
   }
-}
 
-.skillexpertise {
-  width: 40px;
-}
-
-.skillattribute {
-  width: 65px;
-}
-
-.skillbase.skillbase.skillbase.skillbase {
-  width: 40px;
-}
-
-.skills div[data-groupname] span,
-.skills-overview div[data-groupname] span {
-  display: inline-block;
-}
-/* overview section */
-
-.skills-overview .skillname {
-  width: 100px;
-}
-
-.skills-overview>div[data-groupname] .skillname {
-  line-height: 1;
-  padding-top: 2px;
-  padding-bottom: 2px;
-}
-
-.skills-overview .skillability {
-  margin-left: -4px;
-  margin-right: -4px;
-  font-weight: normal;
-  border-color: transparent;
-}
-
-/* Avoid gaps between items in the row 
-   And make multi-line stuff line up */
-/* Avoid space between items in the row */
-.skills-overview .table-header {
-  display: flex;
-  flex-direction: row;
-}
-
-.skills-overview>div[data-groupname]>div {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-.skills-overview .isdiscipline[value="1"]~* {
-  display: none;
-}
-
-.skill-overview-row-container {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  border-width: 0px 0px 1px 0px;
-  border-color: $border-underline-color;
-  border-style: solid
-}
-
-.skill-roll.skill-roll.skill-roll.skill-roll {
-  padding: 0px 2px;
-  width: 24px;
-  box-sizing: border-box;
-  margin-left: 3px;
-  margin-right: 3px;
-}
-
-/* skills section */
-
-.isdiscipline[value="1"]~.skillname {
-  width: 190px;
-  text-align: left;
-  font-weight: bold;
-}
-
-.isdiscipline[value="1"]~.skillability,
-.isdiscipline[value="1"]~.skillattribute,
-.isdiscipline[value="1"]~.skillbase {
-  display: none;
-}
-
-/* Avoid space between items in the row */
-.skills .table-header {
-  display: flex;
-  flex-direction: row;
-}
-
-.skills div[data-groupname]>div {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  /* and make rows overlap */
-  margin-top: -1px;
+  @include grid-table-tp-cp-columns();
 }

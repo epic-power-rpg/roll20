@@ -649,21 +649,23 @@
 </div>
 
 <!-- skill section -->
-<div class="skills section">
-  <div class="flex-stack">
+<div class="skills section epic-skills-tab">
+  <div class="flex-stack full-width">
+    <div class="center bold">Disciplines & Skills</div>
+  </div>
+  <div class="epic-skill-table">
     <input name="attr_skill_total_TP" type="hidden" value="0" />
     <input name="attr_skill_total_CP" type="hidden" value="0" />
     <input name="attr_skill_total_single_CP" type="hidden" value="0" />
-    <div class="center bold">Disciplines & Skills</div>
-    <div class="table-header">
-      <div class="skilldisciplineinfo">Discipline?</div>
-      <div class="skillname">Name</div>
-      <div class="skillability">Ability</div>
-      <div class="skillTP">TP</div>
-      <div class="skillCP">CP</div>
-      <div class="skillexpertise">Exper.</div>
-      <div class="skillattribute">Attribute</div>
-      <div class="skillbase">Base</div>
+    <div class="epic-table-header-grid skill">
+      <div class="skilldisciplineinfo-grid">Discipline?</div>
+      <div class="skillname-grid">Name</div>
+      <div class="skillability-grid">Ability</div>
+      <div class="skillTP-grid">TP</div>
+      <div class="skillCP-grid">CP</div>
+      <div class="skillexpertise-grid">Exper.</div>
+      <div class="skillattribute-grid">Attribute</div>
+      <div class="skillbase-grid">Base</div>
     </div>
     <fieldset class="repeating_skill">
       <select name="attr_skilldisciplineinfo" class="skilldisciplineinfo">
@@ -675,12 +677,12 @@
         The next input puts whether we have a discipline into the
         value property, where CSS can see it
       -->
-      <input name="attr_skillisdiscipline" class="isdiscipline" type="hidden">
-      <input name="attr_skillname" class="skillname" type="text" />
-      <span name="attr_skillability" class="skillability"></span>
-      <span name="attr_skillTP" class="skillTP center"></span>
-      <span name="attr_skillCP" class="skillCP center"></span>
-      <select name="attr_skillexpertise" class="skillexpertise">
+      <input name="attr_skillisdiscipline" class="isdiscipline-grid" type="hidden">
+      <input name="attr_skillname" class="skillname-grid" type="text" />
+      <span name="attr_skillability" class="skillability-grid"></span>
+      <span name="attr_skillTP" class="skillTP-grid center"></span>
+      <span name="attr_skillCP" class="skillCP-grid center"></span>
+      <select name="attr_skillexpertise" class="skillexpertise-grid">
         <option value="--">--</option>
         <option value="ST">st</option>
         <option value="-1">-1</option>
@@ -696,13 +698,13 @@
         <option value="9">9</option>
       </select>
       <input name="attr_skilldisciplineexpertise" type="hidden" />
-      <select name="attr_skillattribute" class="skillattribute">
+      <select name="attr_skillattribute" class="skillattribute-grid">
         <option value=""> choose</option>
         <option value="IQ">IQ</option>
         <option value="DX">DX</option>
         <option value="IQ+DX">IQ+DX</option>
       </select>
-      <input name="attr_skillbase" class="skillbase" type="number" value="" />
+      <input name="attr_skillbase" class="skillbase-grid" type="number" value="" />
     </fieldset>
   </div>
 </div>
