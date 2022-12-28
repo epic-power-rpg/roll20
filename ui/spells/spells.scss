@@ -1,3 +1,5 @@
+@import '../components/gridTable/gridTable.scss';
+
 /* ------------- Spells ------------*/
 
 .tabcontrol[value="arcane"]~.tab[name="act_arcane"],
@@ -130,110 +132,35 @@
     margin-top: -1px;
   }
 
-  $grid-padding: 2px;
-  $grid-column-gap: 2px;
+  $arcane-grid-template: getResponsiveGridWidths(
+    1fr, // Discipline?
+    4fr, // Name
+    0.75fr, // Ability
+    1fr, // Mod
+    0.5fr, // (Dice)
+    1fr, // EP
+    1fr, // Cast Time
+    2fr, // Touch/ Ray/ Missile
+    1fr, // Range
+    1fr, // Target
+    1.5fr, // Damage/ Duration
+    0.5fr, // N(otes)
+    0.5fr, // TP
+    0.5fr, // CP
+    1fr, // Exper.
+    0.5fr, // IQ ±
+    1fr, // Base
+  );
 
-  @mixin spells-header($grid-template) {
-    display: grid;
-    grid-template-columns: $grid-template;
-    column-gap: $grid-column-gap;
-    background: $primary-highlight-background-color;
-    color: $primary-highlight-color;
-    padding: $grid-padding;
+  @include epic-table-grid('arcane', $arcane-grid-template);
 
-    > div {
-      text-align: center;
-      margin: auto;
-      font-weight: bold;
-      width: 100%;
-    }
-  }
+  $divine-grid-template: getResponsiveGridWidths(6fr, 1fr, 1fr, 2fr, 1fr, 1fr, 2fr, 0.5fr);
+  @include epic-table-grid('divine', $divine-grid-template);
 
-  @mixin spells-rows($grid-template, $column-count) {
-    display: grid;
-    grid-template-columns: $grid-template;
-    row-gap: 0;
-    column-gap: $grid-column-gap;
-    background: transparent;
-    input, input[type=number], textarea, select {
-      width: 100%;
-      margin-left: unset;
-      height: auto;
-      background-color: $primary-background-color;
-    }
-    input[type=text] {
-      text-align: left;
-    }
-    input, span, select {
-      white-space: nowrap;
-    }
-    span {
-      text-align: center;
-      margin: auto 0;
-    }
-    button, button[type=roll] {
-      margin: 0;
-    }
-    .spell-row.conditional-one {
-      // This makes the notes span all columns
-      grid-column-start: 1;
-      grid-column-end: ($column-count + 1);
-    }
-  }
+  $innate-grid-template: getResponsiveGridWidths(6fr, 1fr, 2fr, 3fr, 2fr, 3fr, 2fr, 0.5fr, 1fr);
+  @include epic-table-grid('innate', $innate-grid-template);
 
-  @mixin spells-grid($spell-type, $grid-template, $column-count) {
-    .spells-header-grid.#{$spell-type} {
-      @include spells-header($grid-template);
-    }
-
-    div[data-groupname="repeating_#{$spell-type}"] > div {
-      @include spells-rows($grid-template, $column-count);
-    }
-  }
-
-  $arcane-grid-template:
-    // Discipline?
-    minmax(0, 1fr)
-    // Name
-    minmax(0, 4fr)
-    // Ability
-    minmax(0, 0.75fr)
-    // Mod
-    minmax(0, 1fr)
-    // (Dice)
-    minmax(0, 0.5fr)
-    // EP
-    minmax(0, 1fr)
-    // Cast Time
-    minmax(0, 1fr)
-    // Touch/ Ray/ Missile
-    minmax(0, 2fr)
-    // Range
-    minmax(0, 1fr)
-    // Target
-    minmax(0, 1fr)
-    // Damage/ Duration
-    minmax(0, 1.5fr)
-    // N(otes)
-    minmax(0, 0.5fr)
-    // TP
-    minmax(0, 0.5fr)
-    // CP
-    minmax(0, 0.5fr)
-    // Exper.
-    minmax(0, 1fr)
-    // IQ ±
-    minmax(0, 0.5fr)
-    // Base
-    minmax(0, 1fr);
-
-  @include spells-grid('arcane', $arcane-grid-template, 18);
-
-  $divine-grid-template: 6fr 1fr 1fr 2fr 1fr 1fr 2fr 0.5fr;
-  @include spells-grid('divine', $divine-grid-template, 8);
-
-  $innate-grid-template: 6fr 1fr 2fr 3fr 2fr 3fr 2fr 0.5fr 1fr;
-  @include spells-grid('innate', $innate-grid-template, 9);
+  @include grid-table-tp-cp-columns();
 }
 
 .spell-row {

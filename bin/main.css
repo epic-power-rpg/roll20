@@ -176,6 +176,7 @@ button.convert-button {
 }
 .ui-dialog .dialog, .ui-dialog .largedialog {
   padding: 0 16px;
+  padding-bottom: 16px;
 }
 
 .invisible {
@@ -222,7 +223,7 @@ button.convert-button {
   width: 60px;
 }
 
-.wide.wide.wide {
+.wide.wide.wide.wide {
   width: 90px;
 }
 
@@ -235,7 +236,11 @@ button.convert-button {
 }
 
 .spacer {
-  height: 20px;
+  height: 16px;
+}
+
+.small-spacer {
+  height: 8px;
 }
 
 .inlne-spacer {
@@ -246,6 +251,10 @@ button.convert-button {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
+}
+
+.flex-gap {
+  gap: 16px;
 }
 
 .horizontal-flex-center {
@@ -297,7 +306,7 @@ button.convert-button {
 }
 
 .children-separated > :not(:first-child) {
-  border: solid lightgrey;
+  border: solid #b56632;
   border-width: 1px 0px 0px 0px;
 }
 
@@ -614,7 +623,7 @@ radio > span.checked {
 }
 
 .weight-penalty-table > div:not(:last-child):not(.table-header) {
-  border-bottom: solid lightgrey 1px;
+  border-bottom: solid #b56632 1px;
 }
 
 .weight-penalty-table > div > :nth-child(2) {
@@ -644,7 +653,7 @@ radio > span.checked {
 
 .advantage-overview > div.conditional-something > div,
 .advantage-overview > div[data-groupname] > div {
-  border: solid lightgrey;
+  border: solid #b56632;
   border-width: 0px 0px 1px 0px;
   padding-top: 2px;
   padding-bottom: 2px;
@@ -666,6 +675,54 @@ radio > span.checked {
    or they will make single lines too tall. */
 .advantage-overview > div.conditional-something {
   line-height: 1;
+}
+
+.weapons-overview .table-header {
+  display: flex;
+  flex-direction: row;
+}
+.weapons-overview .table-header div {
+  text-align: center;
+}
+.weapons-overview .weapons-overview-row-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.weapons-overview div[data-groupname] .equipmentname {
+  text-align: right;
+}
+.weapons-overview .table-header span, .weapons-overview div[data-groupname] span {
+  display: inline-block;
+}
+.weapons-overview .table-header > div, .weapons-overview div[data-groupname] > div {
+  border-width: 0px 0px 1px 0px;
+  border-color: #b56632;
+  border-style: solid;
+  margin-bottom: 2px;
+}
+.weapons-overview .table-header .equipmentname, .weapons-overview div[data-groupname] .equipmentname {
+  line-height: 1;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  margin-right: 4px;
+  flex: 0 0 100px;
+  width: 100px;
+}
+.weapons-overview .table-header .equipmentdamage, .weapons-overview div[data-groupname] .equipmentdamage {
+  width: 60px;
+  text-align: center;
+}
+.weapons-overview .table-header .equipmentrange, .weapons-overview div[data-groupname] .equipmentrange {
+  width: 50px;
+  text-align: center;
+}
+.weapons-overview .table-header .equipmentnotes, .weapons-overview div[data-groupname] .equipmentnotes {
+  margin-left: 90px;
+  margin-bottom: 2px;
+  width: 150px;
+  line-height: 1;
+  flex: 1 1;
 }
 
 /* --------- Advantages ------------ */
@@ -728,7 +785,7 @@ radio > span.checked {
   align-items: center;
   padding-top: 2px;
   padding-bottom: 2px;
-  border: solid lightgrey;
+  border: solid #b56632;
   border-width: 0px 0px 1px 0px;
 }
 
@@ -887,7 +944,7 @@ input.featCP {
   flex-direction: row;
   align-items: center;
   border-width: 0px 0px 1px 0px;
-  border-color: lightgrey;
+  border-color: #b56632;
   border-style: solid;
 }
 
@@ -927,111 +984,237 @@ input.featCP {
 }
 
 /* -------- Equipment --------- */
-/* overview section */
-.weapons-overview div[data-groupname] span {
-  display: inline-block;
+.equipment-tab .epic-table-header-grid.armor {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 5fr);
+  column-gap: 2px;
+  background: #b56632;
+  color: #fff;
+  padding: 2px;
 }
-
-.weapons-overview .equipmentname {
-  width: 100px;
-  flex: 0 0 100px;
-}
-
-.weapons-overview > div[data-groupname] .equipmentname {
-  line-height: 1;
-  padding-top: 2px;
-  padding-bottom: 2px;
-}
-
-/* Avoid gaps between items in the row 
-   And make multi-line stuff line up */
-/* Avoid space between items in the row */
-.weapons-overview .table-header {
-  display: flex;
-  flex-direction: row;
-}
-
-.weapons-overview > div[data-groupname] > div {
-  border-width: 0px 0px 1px 0px;
-  border-color: lightgrey;
-  border-style: solid;
-}
-
-.weapons-overview-row-container {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-.weapons-overview .equipmentnotes {
-  margin-left: 90px;
-  margin-bottom: 6px;
-  width: 150px;
-}
-
-/* equipment section */
-.equipmentname {
-  text-align: right;
-  flex: 0 0 170px;
-  width: 170px;
-}
-
-.equipmentweight.equipmentweight.equipmentweight {
-  width: 50px;
-}
-
-.equipmentvalue.equipmentvalue.equipmentvalue {
-  width: 50px;
-}
-
-.equipmentcount.equipmentcount.equipmentcount {
-  width: 50px;
-}
-
-.armordefense.armordefense.armordefense {
-  width: 40px;
-  border-right: 0px;
-  text-align: right;
-}
-
-.armormod.armormod.armormod {
-  width: 40px;
-  border-left: 0px;
-}
-
-.equipmentdamage {
-  width: 60px;
+.equipment-tab .epic-table-header-grid.armor > div {
   text-align: center;
+  margin: auto;
+  font-weight: bold;
+  width: 100%;
 }
-
-.equipmentrange.equipmentrange.equipmentrange {
-  width: 50px;
+.equipment-tab div[data-groupname=repeating_armor] > div,
+.equipment-tab div[data-epic-table-name=armor] {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 5fr);
+  row-gap: 0;
+  column-gap: 2px;
+  background: transparent;
+}
+.equipment-tab div[data-groupname=repeating_armor] > div input, .equipment-tab div[data-groupname=repeating_armor] > div input[type=number], .equipment-tab div[data-groupname=repeating_armor] > div textarea, .equipment-tab div[data-groupname=repeating_armor] > div select,
+.equipment-tab div[data-epic-table-name=armor] input,
+.equipment-tab div[data-epic-table-name=armor] input[type=number],
+.equipment-tab div[data-epic-table-name=armor] textarea,
+.equipment-tab div[data-epic-table-name=armor] select {
+  width: 100% !important;
+  margin-left: unset;
+  height: auto;
+  background-color: #faf2ec;
+}
+.equipment-tab div[data-groupname=repeating_armor] > div input[type=text],
+.equipment-tab div[data-epic-table-name=armor] input[type=text] {
+  text-align: left;
+}
+.equipment-tab div[data-groupname=repeating_armor] > div input, .equipment-tab div[data-groupname=repeating_armor] > div span, .equipment-tab div[data-groupname=repeating_armor] > div select,
+.equipment-tab div[data-epic-table-name=armor] input,
+.equipment-tab div[data-epic-table-name=armor] span,
+.equipment-tab div[data-epic-table-name=armor] select {
+  white-space: nowrap;
+}
+.equipment-tab div[data-groupname=repeating_armor] > div span,
+.equipment-tab div[data-epic-table-name=armor] span {
   text-align: center;
+  margin: auto 0;
 }
-
-.equipmentnotes {
-  flex: 1 1;
-  width: 50px;
+.equipment-tab div[data-groupname=repeating_armor] > div button, .equipment-tab div[data-groupname=repeating_armor] > div button[type=roll],
+.equipment-tab div[data-epic-table-name=armor] button,
+.equipment-tab div[data-epic-table-name=armor] button[type=roll] {
+  margin: 0;
 }
-
-.equipment-list {
-  width: 560px;
+.equipment-tab div[data-groupname=repeating_armor] > div .epic-table-row.conditional-one,
+.equipment-tab div[data-epic-table-name=armor] .epic-table-row.conditional-one {
+  display: grid;
+  grid-column-start: 1;
+  grid-column-end: 6;
 }
-
-/* Avoid space between items in the row */
-.equipment-list .table-header {
-  margin-top: 10px;
-  display: flex;
-  flex-direction: row;
-  align-items: flex-end;
+.equipment-tab .epic-table-header-grid.shield {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 5fr);
+  column-gap: 2px;
+  background: #b56632;
+  color: #fff;
+  padding: 2px;
 }
-
-.equipment div[data-groupname] > div {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  /* and make rows overlap */
-  margin-top: -1px;
+.equipment-tab .epic-table-header-grid.shield > div {
+  text-align: center;
+  margin: auto;
+  font-weight: bold;
+  width: 100%;
+}
+.equipment-tab div[data-groupname=repeating_shield] > div,
+.equipment-tab div[data-epic-table-name=shield] {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 5fr);
+  row-gap: 0;
+  column-gap: 2px;
+  background: transparent;
+}
+.equipment-tab div[data-groupname=repeating_shield] > div input, .equipment-tab div[data-groupname=repeating_shield] > div input[type=number], .equipment-tab div[data-groupname=repeating_shield] > div textarea, .equipment-tab div[data-groupname=repeating_shield] > div select,
+.equipment-tab div[data-epic-table-name=shield] input,
+.equipment-tab div[data-epic-table-name=shield] input[type=number],
+.equipment-tab div[data-epic-table-name=shield] textarea,
+.equipment-tab div[data-epic-table-name=shield] select {
+  width: 100% !important;
+  margin-left: unset;
+  height: auto;
+  background-color: #faf2ec;
+}
+.equipment-tab div[data-groupname=repeating_shield] > div input[type=text],
+.equipment-tab div[data-epic-table-name=shield] input[type=text] {
+  text-align: left;
+}
+.equipment-tab div[data-groupname=repeating_shield] > div input, .equipment-tab div[data-groupname=repeating_shield] > div span, .equipment-tab div[data-groupname=repeating_shield] > div select,
+.equipment-tab div[data-epic-table-name=shield] input,
+.equipment-tab div[data-epic-table-name=shield] span,
+.equipment-tab div[data-epic-table-name=shield] select {
+  white-space: nowrap;
+}
+.equipment-tab div[data-groupname=repeating_shield] > div span,
+.equipment-tab div[data-epic-table-name=shield] span {
+  text-align: center;
+  margin: auto 0;
+}
+.equipment-tab div[data-groupname=repeating_shield] > div button, .equipment-tab div[data-groupname=repeating_shield] > div button[type=roll],
+.equipment-tab div[data-epic-table-name=shield] button,
+.equipment-tab div[data-epic-table-name=shield] button[type=roll] {
+  margin: 0;
+}
+.equipment-tab div[data-groupname=repeating_shield] > div .epic-table-row.conditional-one,
+.equipment-tab div[data-epic-table-name=shield] .epic-table-row.conditional-one {
+  display: grid;
+  grid-column-start: 1;
+  grid-column-end: 7;
+}
+.equipment-tab .epic-table-header-grid.weapon {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 5fr);
+  column-gap: 2px;
+  background: #b56632;
+  color: #fff;
+  padding: 2px;
+}
+.equipment-tab .epic-table-header-grid.weapon > div {
+  text-align: center;
+  margin: auto;
+  font-weight: bold;
+  width: 100%;
+}
+.equipment-tab div[data-groupname=repeating_weapon] > div,
+.equipment-tab div[data-epic-table-name=weapon] {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 5fr);
+  row-gap: 0;
+  column-gap: 2px;
+  background: transparent;
+}
+.equipment-tab div[data-groupname=repeating_weapon] > div input, .equipment-tab div[data-groupname=repeating_weapon] > div input[type=number], .equipment-tab div[data-groupname=repeating_weapon] > div textarea, .equipment-tab div[data-groupname=repeating_weapon] > div select,
+.equipment-tab div[data-epic-table-name=weapon] input,
+.equipment-tab div[data-epic-table-name=weapon] input[type=number],
+.equipment-tab div[data-epic-table-name=weapon] textarea,
+.equipment-tab div[data-epic-table-name=weapon] select {
+  width: 100% !important;
+  margin-left: unset;
+  height: auto;
+  background-color: #faf2ec;
+}
+.equipment-tab div[data-groupname=repeating_weapon] > div input[type=text],
+.equipment-tab div[data-epic-table-name=weapon] input[type=text] {
+  text-align: left;
+}
+.equipment-tab div[data-groupname=repeating_weapon] > div input, .equipment-tab div[data-groupname=repeating_weapon] > div span, .equipment-tab div[data-groupname=repeating_weapon] > div select,
+.equipment-tab div[data-epic-table-name=weapon] input,
+.equipment-tab div[data-epic-table-name=weapon] span,
+.equipment-tab div[data-epic-table-name=weapon] select {
+  white-space: nowrap;
+}
+.equipment-tab div[data-groupname=repeating_weapon] > div span,
+.equipment-tab div[data-epic-table-name=weapon] span {
+  text-align: center;
+  margin: auto 0;
+}
+.equipment-tab div[data-groupname=repeating_weapon] > div button, .equipment-tab div[data-groupname=repeating_weapon] > div button[type=roll],
+.equipment-tab div[data-epic-table-name=weapon] button,
+.equipment-tab div[data-epic-table-name=weapon] button[type=roll] {
+  margin: 0;
+}
+.equipment-tab div[data-groupname=repeating_weapon] > div .epic-table-row.conditional-one,
+.equipment-tab div[data-epic-table-name=weapon] .epic-table-row.conditional-one {
+  display: grid;
+  grid-column-start: 1;
+  grid-column-end: 8;
+}
+.equipment-tab .epic-table-header-grid.item {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 5fr);
+  column-gap: 2px;
+  background: #b56632;
+  color: #fff;
+  padding: 2px;
+}
+.equipment-tab .epic-table-header-grid.item > div {
+  text-align: center;
+  margin: auto;
+  font-weight: bold;
+  width: 100%;
+}
+.equipment-tab div[data-groupname=repeating_item] > div,
+.equipment-tab div[data-epic-table-name=item] {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 5fr);
+  row-gap: 0;
+  column-gap: 2px;
+  background: transparent;
+}
+.equipment-tab div[data-groupname=repeating_item] > div input, .equipment-tab div[data-groupname=repeating_item] > div input[type=number], .equipment-tab div[data-groupname=repeating_item] > div textarea, .equipment-tab div[data-groupname=repeating_item] > div select,
+.equipment-tab div[data-epic-table-name=item] input,
+.equipment-tab div[data-epic-table-name=item] input[type=number],
+.equipment-tab div[data-epic-table-name=item] textarea,
+.equipment-tab div[data-epic-table-name=item] select {
+  width: 100% !important;
+  margin-left: unset;
+  height: auto;
+  background-color: #faf2ec;
+}
+.equipment-tab div[data-groupname=repeating_item] > div input[type=text],
+.equipment-tab div[data-epic-table-name=item] input[type=text] {
+  text-align: left;
+}
+.equipment-tab div[data-groupname=repeating_item] > div input, .equipment-tab div[data-groupname=repeating_item] > div span, .equipment-tab div[data-groupname=repeating_item] > div select,
+.equipment-tab div[data-epic-table-name=item] input,
+.equipment-tab div[data-epic-table-name=item] span,
+.equipment-tab div[data-epic-table-name=item] select {
+  white-space: nowrap;
+}
+.equipment-tab div[data-groupname=repeating_item] > div span,
+.equipment-tab div[data-epic-table-name=item] span {
+  text-align: center;
+  margin: auto 0;
+}
+.equipment-tab div[data-groupname=repeating_item] > div button, .equipment-tab div[data-groupname=repeating_item] > div button[type=roll],
+.equipment-tab div[data-epic-table-name=item] button,
+.equipment-tab div[data-epic-table-name=item] button[type=roll] {
+  margin: 0;
+}
+.equipment-tab div[data-groupname=repeating_item] > div .epic-table-row.conditional-one,
+.equipment-tab div[data-epic-table-name=item] .epic-table-row.conditional-one {
+  display: grid;
+  grid-column-start: 1;
+  grid-column-end: 6;
 }
 
 /* ------------- Spells ------------*/
@@ -1153,7 +1336,7 @@ input.featCP {
   /* and make rows overlap */
   margin-top: -1px;
 }
-.spells .spells-header-grid.arcane {
+.spells .epic-table-header-grid.arcane {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 4fr) minmax(0, 0.75fr) minmax(0, 1fr) minmax(0, 0.5fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.5fr) minmax(0, 0.5fr) minmax(0, 0.5fr) minmax(0, 0.5fr) minmax(0, 1fr) minmax(0, 0.5fr) minmax(0, 1fr);
   column-gap: 2px;
@@ -1161,129 +1344,185 @@ input.featCP {
   color: #fff;
   padding: 2px;
 }
-.spells .spells-header-grid.arcane > div {
+.spells .epic-table-header-grid.arcane > div {
   text-align: center;
   margin: auto;
   font-weight: bold;
   width: 100%;
 }
-.spells div[data-groupname=repeating_arcane] > div {
+.spells div[data-groupname=repeating_arcane] > div,
+.spells div[data-epic-table-name=arcane] {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 4fr) minmax(0, 0.75fr) minmax(0, 1fr) minmax(0, 0.5fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.5fr) minmax(0, 0.5fr) minmax(0, 0.5fr) minmax(0, 0.5fr) minmax(0, 1fr) minmax(0, 0.5fr) minmax(0, 1fr);
   row-gap: 0;
   column-gap: 2px;
   background: transparent;
 }
-.spells div[data-groupname=repeating_arcane] > div input, .spells div[data-groupname=repeating_arcane] > div input[type=number], .spells div[data-groupname=repeating_arcane] > div textarea, .spells div[data-groupname=repeating_arcane] > div select {
-  width: 100%;
+.spells div[data-groupname=repeating_arcane] > div input, .spells div[data-groupname=repeating_arcane] > div input[type=number], .spells div[data-groupname=repeating_arcane] > div textarea, .spells div[data-groupname=repeating_arcane] > div select,
+.spells div[data-epic-table-name=arcane] input,
+.spells div[data-epic-table-name=arcane] input[type=number],
+.spells div[data-epic-table-name=arcane] textarea,
+.spells div[data-epic-table-name=arcane] select {
+  width: 100% !important;
   margin-left: unset;
   height: auto;
   background-color: #faf2ec;
 }
-.spells div[data-groupname=repeating_arcane] > div input[type=text] {
+.spells div[data-groupname=repeating_arcane] > div input[type=text],
+.spells div[data-epic-table-name=arcane] input[type=text] {
   text-align: left;
 }
-.spells div[data-groupname=repeating_arcane] > div input, .spells div[data-groupname=repeating_arcane] > div span, .spells div[data-groupname=repeating_arcane] > div select {
+.spells div[data-groupname=repeating_arcane] > div input, .spells div[data-groupname=repeating_arcane] > div span, .spells div[data-groupname=repeating_arcane] > div select,
+.spells div[data-epic-table-name=arcane] input,
+.spells div[data-epic-table-name=arcane] span,
+.spells div[data-epic-table-name=arcane] select {
   white-space: nowrap;
 }
-.spells div[data-groupname=repeating_arcane] > div span {
+.spells div[data-groupname=repeating_arcane] > div span,
+.spells div[data-epic-table-name=arcane] span {
   text-align: center;
   margin: auto 0;
 }
-.spells div[data-groupname=repeating_arcane] > div button, .spells div[data-groupname=repeating_arcane] > div button[type=roll] {
+.spells div[data-groupname=repeating_arcane] > div button, .spells div[data-groupname=repeating_arcane] > div button[type=roll],
+.spells div[data-epic-table-name=arcane] button,
+.spells div[data-epic-table-name=arcane] button[type=roll] {
   margin: 0;
 }
-.spells div[data-groupname=repeating_arcane] > div .spell-row.conditional-one {
+.spells div[data-groupname=repeating_arcane] > div .epic-table-row.conditional-one,
+.spells div[data-epic-table-name=arcane] .epic-table-row.conditional-one {
+  display: grid;
   grid-column-start: 1;
-  grid-column-end: 19;
+  grid-column-end: 18;
 }
-.spells .spells-header-grid.divine {
+.spells .epic-table-header-grid.divine {
   display: grid;
-  grid-template-columns: 6fr 1fr 1fr 2fr 1fr 1fr 2fr 0.5fr;
+  grid-template-columns: minmax(0, 6fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr) minmax(0, 0.5fr);
   column-gap: 2px;
   background: #b56632;
   color: #fff;
   padding: 2px;
 }
-.spells .spells-header-grid.divine > div {
+.spells .epic-table-header-grid.divine > div {
   text-align: center;
   margin: auto;
   font-weight: bold;
   width: 100%;
 }
-.spells div[data-groupname=repeating_divine] > div {
+.spells div[data-groupname=repeating_divine] > div,
+.spells div[data-epic-table-name=divine] {
   display: grid;
-  grid-template-columns: 6fr 1fr 1fr 2fr 1fr 1fr 2fr 0.5fr;
+  grid-template-columns: minmax(0, 6fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr) minmax(0, 0.5fr);
   row-gap: 0;
   column-gap: 2px;
   background: transparent;
 }
-.spells div[data-groupname=repeating_divine] > div input, .spells div[data-groupname=repeating_divine] > div input[type=number], .spells div[data-groupname=repeating_divine] > div textarea, .spells div[data-groupname=repeating_divine] > div select {
-  width: 100%;
+.spells div[data-groupname=repeating_divine] > div input, .spells div[data-groupname=repeating_divine] > div input[type=number], .spells div[data-groupname=repeating_divine] > div textarea, .spells div[data-groupname=repeating_divine] > div select,
+.spells div[data-epic-table-name=divine] input,
+.spells div[data-epic-table-name=divine] input[type=number],
+.spells div[data-epic-table-name=divine] textarea,
+.spells div[data-epic-table-name=divine] select {
+  width: 100% !important;
   margin-left: unset;
   height: auto;
   background-color: #faf2ec;
 }
-.spells div[data-groupname=repeating_divine] > div input[type=text] {
+.spells div[data-groupname=repeating_divine] > div input[type=text],
+.spells div[data-epic-table-name=divine] input[type=text] {
   text-align: left;
 }
-.spells div[data-groupname=repeating_divine] > div input, .spells div[data-groupname=repeating_divine] > div span, .spells div[data-groupname=repeating_divine] > div select {
+.spells div[data-groupname=repeating_divine] > div input, .spells div[data-groupname=repeating_divine] > div span, .spells div[data-groupname=repeating_divine] > div select,
+.spells div[data-epic-table-name=divine] input,
+.spells div[data-epic-table-name=divine] span,
+.spells div[data-epic-table-name=divine] select {
   white-space: nowrap;
 }
-.spells div[data-groupname=repeating_divine] > div span {
+.spells div[data-groupname=repeating_divine] > div span,
+.spells div[data-epic-table-name=divine] span {
   text-align: center;
   margin: auto 0;
 }
-.spells div[data-groupname=repeating_divine] > div button, .spells div[data-groupname=repeating_divine] > div button[type=roll] {
+.spells div[data-groupname=repeating_divine] > div button, .spells div[data-groupname=repeating_divine] > div button[type=roll],
+.spells div[data-epic-table-name=divine] button,
+.spells div[data-epic-table-name=divine] button[type=roll] {
   margin: 0;
 }
-.spells div[data-groupname=repeating_divine] > div .spell-row.conditional-one {
+.spells div[data-groupname=repeating_divine] > div .epic-table-row.conditional-one,
+.spells div[data-epic-table-name=divine] .epic-table-row.conditional-one {
+  display: grid;
   grid-column-start: 1;
   grid-column-end: 9;
 }
-.spells .spells-header-grid.innate {
+.spells .epic-table-header-grid.innate {
   display: grid;
-  grid-template-columns: 6fr 1fr 2fr 3fr 2fr 3fr 2fr 0.5fr 1fr;
+  grid-template-columns: minmax(0, 6fr) minmax(0, 1fr) minmax(0, 2fr) minmax(0, 3fr) minmax(0, 2fr) minmax(0, 3fr) minmax(0, 2fr) minmax(0, 0.5fr) minmax(0, 1fr);
   column-gap: 2px;
   background: #b56632;
   color: #fff;
   padding: 2px;
 }
-.spells .spells-header-grid.innate > div {
+.spells .epic-table-header-grid.innate > div {
   text-align: center;
   margin: auto;
   font-weight: bold;
   width: 100%;
 }
-.spells div[data-groupname=repeating_innate] > div {
+.spells div[data-groupname=repeating_innate] > div,
+.spells div[data-epic-table-name=innate] {
   display: grid;
-  grid-template-columns: 6fr 1fr 2fr 3fr 2fr 3fr 2fr 0.5fr 1fr;
+  grid-template-columns: minmax(0, 6fr) minmax(0, 1fr) minmax(0, 2fr) minmax(0, 3fr) minmax(0, 2fr) minmax(0, 3fr) minmax(0, 2fr) minmax(0, 0.5fr) minmax(0, 1fr);
   row-gap: 0;
   column-gap: 2px;
   background: transparent;
 }
-.spells div[data-groupname=repeating_innate] > div input, .spells div[data-groupname=repeating_innate] > div input[type=number], .spells div[data-groupname=repeating_innate] > div textarea, .spells div[data-groupname=repeating_innate] > div select {
-  width: 100%;
+.spells div[data-groupname=repeating_innate] > div input, .spells div[data-groupname=repeating_innate] > div input[type=number], .spells div[data-groupname=repeating_innate] > div textarea, .spells div[data-groupname=repeating_innate] > div select,
+.spells div[data-epic-table-name=innate] input,
+.spells div[data-epic-table-name=innate] input[type=number],
+.spells div[data-epic-table-name=innate] textarea,
+.spells div[data-epic-table-name=innate] select {
+  width: 100% !important;
   margin-left: unset;
   height: auto;
   background-color: #faf2ec;
 }
-.spells div[data-groupname=repeating_innate] > div input[type=text] {
+.spells div[data-groupname=repeating_innate] > div input[type=text],
+.spells div[data-epic-table-name=innate] input[type=text] {
   text-align: left;
 }
-.spells div[data-groupname=repeating_innate] > div input, .spells div[data-groupname=repeating_innate] > div span, .spells div[data-groupname=repeating_innate] > div select {
+.spells div[data-groupname=repeating_innate] > div input, .spells div[data-groupname=repeating_innate] > div span, .spells div[data-groupname=repeating_innate] > div select,
+.spells div[data-epic-table-name=innate] input,
+.spells div[data-epic-table-name=innate] span,
+.spells div[data-epic-table-name=innate] select {
   white-space: nowrap;
 }
-.spells div[data-groupname=repeating_innate] > div span {
+.spells div[data-groupname=repeating_innate] > div span,
+.spells div[data-epic-table-name=innate] span {
   text-align: center;
   margin: auto 0;
 }
-.spells div[data-groupname=repeating_innate] > div button, .spells div[data-groupname=repeating_innate] > div button[type=roll] {
+.spells div[data-groupname=repeating_innate] > div button, .spells div[data-groupname=repeating_innate] > div button[type=roll],
+.spells div[data-epic-table-name=innate] button,
+.spells div[data-epic-table-name=innate] button[type=roll] {
   margin: 0;
 }
-.spells div[data-groupname=repeating_innate] > div .spell-row.conditional-one {
+.spells div[data-groupname=repeating_innate] > div .epic-table-row.conditional-one,
+.spells div[data-epic-table-name=innate] .epic-table-row.conditional-one {
+  display: grid;
   grid-column-start: 1;
   grid-column-end: 10;
+}
+.spells .skillTP-grid {
+  color: #267200;
+  font-weight: bold;
+}
+.spells .skillCP-grid {
+  color: blue;
+  font-weight: bold;
+}
+.spells .epic-table-header-grid .skillTP-grid {
+  color: #153f00;
+}
+.spells .epic-table-header-grid .skillCP-grid {
+  color: #0000cc;
 }
 
 .spell-row {
