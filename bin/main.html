@@ -158,8 +158,7 @@
 
       <input name="attr_attribute_CP" type="hidden" value="-5" />
       <input name="attr_displayed_attribute_CP" type="hidden" value="-5" />
-      <input name="attr_show_displayed_attribute_CP" class="narrow right CP basic-tab-only"
-        value="@{displayed_attribute_CP}" disabled="true" />
+      <input name="attr_show_displayed_attribute_CP" class="narrow right CP basic-tab-only" value="@{displayed_attribute_CP}" disabled="true" />
       <input name="attr_never_used" class="narrow right CP basic-tab-only" value="CP" disabled="true" />
 
     </div>
@@ -230,23 +229,35 @@
                 <div>Pen.</div>
                 <div>Wt.</div>
               </div>
-              <div> <input name="attr_highlight_weight_penalty_1" type="hidden" />
-                <div>-1</div> <span name="attr_penalty_weight_1"></span>
+              <div>
+                <input name="attr_highlight_weight_penalty_1" type="hidden" />
+                <div>-1</div>
+                <span name="attr_penalty_weight_1"></span>
               </div>
-              <div> <input name="attr_highlight_weight_penalty_2" type="hidden" />
-                <div>-2</div> <span name="attr_penalty_weight_2"></span>
+              <div>
+                <input name="attr_highlight_weight_penalty_2" type="hidden" />
+                <div>-2</div>
+                <span name="attr_penalty_weight_2"></span>
               </div>
-              <div> <input name="attr_highlight_weight_penalty_3" type="hidden" />
-                <div>-3</div> <span name="attr_penalty_weight_3"></span>
+              <div>
+                <input name="attr_highlight_weight_penalty_3" type="hidden" />
+                <div>-3</div>
+                <span name="attr_penalty_weight_3"></span>
               </div>
-              <div> <input name="attr_highlight_weight_penalty_4" type="hidden" />
-                <div>-4</div> <span name="attr_penalty_weight_4"></span>
+              <div>
+                <input name="attr_highlight_weight_penalty_4" type="hidden" />
+                <div>-4</div>
+                <span name="attr_penalty_weight_4"></span>
               </div>
-              <div> <input name="attr_highlight_weight_penalty_5" type="hidden" />
-                <div>-5</div> <span name="attr_penalty_weight_5"></span>
+              <div>
+                <input name="attr_highlight_weight_penalty_5" type="hidden" />
+                <div>-5</div>
+                <span name="attr_penalty_weight_5"></span>
               </div>
-              <div> <input name="attr_highlight_weight_penalty_6" type="hidden" />
-                <div>-∞</div> <span name="attr_penalty_weight_6"></span>
+              <div>
+                <input name="attr_highlight_weight_penalty_6" type="hidden" />
+                <div>-∞</div>
+                <span name="attr_penalty_weight_6"></span>
               </div>
             </div>
           </div>
@@ -285,8 +296,8 @@
       </div>
       <div>
         <div class="inline medium right larger bold">Parry</div>
-        <input name="attr_current_parry_melee" type="number" class="center narrowish bold larger inline"
-          value="0"></span>
+        <input name="attr_current_parry_melee" type="number" class="center narrowish bold larger inline" value="0">
+        </span>
         <span class="center narrowish bold larger inline">--</span>
       </div>
       <div>
@@ -358,10 +369,8 @@
 <input name="attr_chosentab" class="sectioncontrol" type="hidden" value="basic" />
 
 <!-- Overview section -->
-
 <div class="overview section">
   <div class="horizontal-flex">
-
     <!-- Advantages -->
     <div class="flex-stack advantage-overview no-add-or-modify-buttons">
       <div class="table-header">
@@ -428,11 +437,9 @@
         </div>
       </div>
       <fieldset class="repeating_extraadvantage">
-        <span name="attr_extraadvantagename" class="extraadvantagename">
-        </span>
+        <span class="extraadvantagename" name="attr_extraadvantagename"></span>
       </fieldset>
     </div>
-
     &emsp;&emsp;
     <!-- Feats -->
     <div class="feat-overview no-add-or-modify-buttons">
@@ -441,11 +448,10 @@
         <div class="featname">Epic Feat</div>
       </div>
       <fieldset class="repeating_feat">
-        <span name="attr_featextraordinaryletter" class="featextraordinaryletter"></span>
-        <span name="attr_featname" class="featname"> </span>
+        <span class="featextraordinaryletter" name="attr_featextraordinaryletter"></span>
+        <span class="featname" name="attr_featname"></span>
       </fieldset>
     </div>
-
     &emsp;&emsp;
     <!-- Skills -->
     <div class="skills-overview no-add-or-modify-buttons flex-stack">
@@ -455,24 +461,22 @@
         <div class="skillbase">Mod</div>
       </div>
       <fieldset class="repeating_skill">
-        <!-- This input is used by CSS to hide disciplines -->
-        <input name="attr_skillisdiscipline" class="isdiscipline" type="hidden" />
+        <!-- This input is used by CSS to hide disciplines-->
+        <input class="isdiscipline" name="attr_skillisdiscipline" type="hidden" />
         <div class="skill-overview-row-container">
-          <span name="attr_skillname" class="skillname"></span>
-          <span name="attr_skillability" class="skillability"></span>
-          <input name="attr_skillmodifier" class="skillbase" type="number">
+          <span class="skillname" name="attr_skillname"></span>
+          <span class="skillability" name="attr_skillability"></span>
+          <input class="skillbase" name="attr_skillmodifier" type="number" />
           <!--
-            These hidden inputs are necessary for the roll to find
-            skillability and skillname
+          These hidden inputs are necessary for the roll to find
+          skillability and skillname
           -->
-          <input name="attr_skillability" type="hidden">
-          <input name="attr_skillname" type="hidden">
-          <button name="roll_skillroll" class="skill-roll" type="roll"
-            value="!EPRoll @{skillability}+@{skillmodifier} Tries @{skillname}: @{skillability} + @{skillmodifier}" />
+          <input name="attr_skillability" type="hidden" />
+          <input name="attr_skillname" type="hidden" />
+          <button class="skill-roll" name="roll_skillroll" type="roll" value="!EPRoll @{skillability}+@{skillmodifier} Tries @{skillname}: @{skillability} + @{skillmodifier}"></button>
         </div>
       </fieldset>
     </div>
-
     &emsp;&emsp;
     <!-- Weapons -->
     <div class="weapons-overview no-add-or-modify-buttons flex-stack">
@@ -484,24 +488,28 @@
       </div>
       <fieldset class="repeating_weapon">
         <div class="weapons-overview-row-container">
-          <span name="attr_weaponname" class="equipmentname"></span>
-          <input name="attr_weaponcount" class="equipmentcount" type="number" value="1" />
-          <span name="attr_weapondamage" class="equipmentdamage"></span>
-          <span name="attr_weaponrange" class="equipmentrange"></span>
+          <span class="equipmentname" name="attr_weaponname"></span>
+          <input class="equipmentcount" name="attr_weaponcount" type="number" value="1" />
+          <span class="equipmentdamage" name="attr_weapondamage"></span>
+          <span class="equipmentrange" name="attr_weaponrange"></span>
         </div>
-        <span name="attr_weaponnotes" class="equipmentnotes"></span>
+        <span class="equipmentnotes" name="attr_weaponnotes"></span>
       </fieldset>
     </div>
   </div>
 </div>
-
 <!-- Basic section -->
 <div class="basic section">
-  Race <input name="attr_race" class="wide" type="text" />
-  Gender <input name="attr_gender" class="wideish" type="text" />
-  Height <input name="attr_height" class="wideish" type="text" />
-  Weight <input name="attr_weight" class="wideish" type="number" />
-  Age <input name="attr_age" class="wideish" type="number" />
+  Race
+  <input name="attr_race" class="wide" type="text" />
+  Gender
+  <input name="attr_gender" class="wideish" type="text" />
+  Height
+  <input name="attr_height" class="wideish" type="text" />
+  Weight
+  <input name="attr_weight" class="wideish" type="number" />
+  Age
+  <input name="attr_age" class="wideish" type="number" />
 
   <div class="horizontal-flex">
 
@@ -622,9 +630,9 @@
       <fieldset class="repeating_extraadvantage">
         <!--- We leave no space between the inputs, so there won't be
               any inside the repeating section -->
-        <input name="attr_extraadvantagename" class="extraadvantagename" type="text" /><input
-          name="attr_extraadvantageCP" class="extraadvantageCP" type="number" /><span
-          class="CP extraadvantageCPdescription" name="attr_extraadvantageCPdescription"></span>
+        <input name="attr_extraadvantagename" class="extraadvantagename" type="text" />
+        <input name="attr_extraadvantageCP" class="extraadvantageCP" type="number" />
+        <span class="CP extraadvantageCPdescription" name="attr_extraadvantageCPdescription"></span>
       </fieldset>
 
     </div>
@@ -892,8 +900,7 @@
       <!-- Make the button able to access the ability -->
       <input name="attr_skillability" hidden="true" />
       <input name="attr_skillmodifier" class="skillbase-grid" type="number">
-      <button name="roll_spellroll" class="skill-grid-roll" type="roll"
-        value="!EPRoll @{skillability}+@{skillmodifier} Tries @{skillname}: @{skillability} + @{skillmodifier}" />
+      <button name="roll_spellroll" class="skill-grid-roll" type="roll" value="!EPRoll @{skillability}+@{skillmodifier} Tries @{skillname}: @{skillability} + @{skillmodifier}" />
       </button>
       <input name="attr_spellEP" class="spellEP-grid" type="text" />
       <input name="attr_spellcasttime" class="spellcasttime-grid" type="text" />
@@ -1033,7 +1040,7 @@
 <!-- Scripts -->
 
 <script type="text/worker">
-'use strict';
+  'use strict';
 // ----- Utilities -----
 const removeNonNumeric = function(s) {
   return String(s).trim().replace(/[^\d.-]/g, '');
