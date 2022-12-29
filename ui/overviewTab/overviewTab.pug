@@ -1,0 +1,77 @@
+-
+  var advantages = {
+    'attr_advantage_healthy_count': 'Healthy',
+    'attr_advantage_packmule_count': 'Pack Mule',
+    'attr_advantage_strongarms_count': 'Strong Arms',
+    'attr_advantage_brute_count': 'Brute',
+    'attr_advantage_fast_count': 'Fast',
+    'attr_advantage_athlete_count': 'Natural Athlete',
+    'attr_advantage_alert_count': 'Alert',
+    'attr_advantage_wary_count': 'Wary',
+    'attr_advantage_mage_count': 'Mage',
+    'attr_advantage_devout_count': 'Devout',
+  }
+
+// Overview section 
+.overview.section
+  .horizontal-flex
+    // Advantages 
+    .flex-stack.advantage-overview.no-add-or-modify-buttons
+      .table-header
+        div Advantage / Disadvantage
+      each advantageDescription, advantageName in advantages
+        .conditional-something
+          input(name=advantageName type='hidden')
+          div
+            = advantageDescription
+            = '\n'
+            span(name=advantageName)
+      fieldset.repeating_extraadvantage
+        span.extraadvantagename(name='attr_extraadvantagename')
+    = '\n'
+    | &emsp;&emsp;
+    // Feats 
+    .feat-overview.no-add-or-modify-buttons
+      .table-header
+        .featextraordinaryletter Extr
+        .featname Epic Feat
+      fieldset.repeating_feat
+        span.featextraordinaryletter(name='attr_featextraordinaryletter')
+        span.featname(name='attr_featname')
+    = '\n'
+    | &emsp;&emsp;
+    // Skills 
+    .skills-overview.no-add-or-modify-buttons.flex-stack
+      .table-header
+        .skillname Skill
+        .skillability Ability
+        .skillbase Mod
+      fieldset.repeating_skill
+        // This input is used by CSS to hide disciplines
+        input.isdiscipline(name='attr_skillisdiscipline' type='hidden')
+        .skill-overview-row-container
+          span.skillname(name='attr_skillname')
+          span.skillability(name='attr_skillability')
+          input.skillbase(name='attr_skillmodifier' type='number')
+          //
+            These hidden inputs are necessary for the roll to find
+            skillability and skillname
+          input(name='attr_skillability' type='hidden')
+          input(name='attr_skillname' type='hidden')
+          button.skill-roll(name='roll_skillroll' type='roll' value='!EPRoll @{skillability}+@{skillmodifier} Tries @{skillname}: @{skillability} + @{skillmodifier}')
+    = '\n'
+    | &emsp;&emsp;
+    // Weapons 
+    .weapons-overview.no-add-or-modify-buttons.flex-stack
+      .table-header
+        .equipmentname Weapon
+        .equipmentcount Count
+        .equipmentdamage Damage
+        .equipmentrange Range
+      fieldset.repeating_weapon
+        .weapons-overview-row-container
+          span.equipmentname(name='attr_weaponname')
+          input.equipmentcount(name='attr_weaponcount' type='number' value='1')
+          span.equipmentdamage(name='attr_weapondamage')
+          span.equipmentrange(name='attr_weaponrange')
+        span.equipmentnotes(name='attr_weaponnotes')
