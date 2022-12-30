@@ -1,16 +1,37 @@
 -
-  var advantages = {
-    'attr_advantage_healthy_count': 'Healthy',
-    'attr_advantage_packmule_count': 'Pack Mule',
-    'attr_advantage_strongarms_count': 'Strong Arms',
-    'attr_advantage_brute_count': 'Brute',
-    'attr_advantage_fast_count': 'Fast',
-    'attr_advantage_athlete_count': 'Natural Athlete',
-    'attr_advantage_alert_count': 'Alert',
-    'attr_advantage_wary_count': 'Wary',
-    'attr_advantage_mage_count': 'Mage',
-    'attr_advantage_devout_count': 'Devout',
-  }
+  var advantages = [
+    {
+      name: 'attr_advantage_healthy_count',
+      description: 'Healthy',
+    }, {
+      name: 'attr_advantage_packmule_count',
+      description: 'Pack Mule',
+    }, {
+      name: 'attr_advantage_strongarms_count',
+      description: 'Strong Arms',
+    }, {
+      name: 'attr_advantage_brute_count',
+      description: 'Brute',
+    }, {
+      name: 'attr_advantage_fast_count',
+      description: 'Fast',
+    }, {
+      name: 'attr_advantage_athlete_count',
+      description: 'Natural Athlete',
+    }, {
+      name: 'attr_advantage_alert_count',
+      description: 'Alert',
+    }, {
+      name: 'attr_advantage_wary_count',
+      description: 'Wary',
+    }, {
+      name: 'attr_advantage_mage_count',
+      description: 'Mage',
+    }, {
+      name: 'attr_advantage_devout_count',
+      description: 'Devout',
+    },
+  ]
 
 // Overview section 
 .overview.section
@@ -19,13 +40,13 @@
     .flex-stack.advantage-overview.no-add-or-modify-buttons
       .table-header
         div Advantage / Disadvantage
-      each advantageDescription, advantageName in advantages
+      each advantage in advantages
         .conditional-something
-          input(name=advantageName type='hidden')
+          input(name=advantage.name type='hidden')
           div
-            = advantageDescription
+            = advantage.description
             = '\n'
-            span(name=advantageName)
+            span(name=advantage.name)
       fieldset.repeating_extraadvantage
         span.extraadvantagename(name='attr_extraadvantagename')
     = '\n'
