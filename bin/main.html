@@ -501,18 +501,16 @@
 <!-- Basic section -->
 <div class="basic section">
   Race
-  <input name="attr_race" class="wide" type="text" />
+  <input class="wide" name="attr_race" type="text" />
   Gender
-  <input name="attr_gender" class="wideish" type="text" />
+  <input class="wideish" name="attr_gender" type="text" />
   Height
-  <input name="attr_height" class="wideish" type="text" />
+  <input class="wideish" name="attr_height" type="text" />
   Weight
-  <input name="attr_weight" class="wideish" type="number" />
+  <input class="wideish" name="attr_weight" type="number" />
   Age
-  <input name="attr_age" class="wideish" type="number" />
-
+  <input class="wideish" name="attr_age" type="number" />
   <div class="horizontal-flex">
-
     <!-- Advantages and Disadvantages -->
     <div class="advantages flex-stack">
       <input name="attr_advantage_total_CP" type="hidden" value="0" />
@@ -523,7 +521,7 @@
       </div>
       <div class="advantage-row">
         <div>Healthy</div>
-        <select name="attr_advantage_healthy_count" class="skillexpertise">
+        <select class="skillexpertise" name="attr_advantage_healthy_count">
           <option value=" "></option>
           <option value="-1">-1</option>
           <option value="1">1</option>
@@ -534,7 +532,7 @@
       </div>
       <div class="advantage-row">
         <div>Pack Mule</div>
-        <select name="attr_advantage_packmule_count" class="skillexpertise">
+        <select class="skillexpertise" name="attr_advantage_packmule_count">
           <option value=" "></option>
           <option value="-1">-1</option>
           <option value="1">1</option>
@@ -545,7 +543,7 @@
       </div>
       <div class="advantage-row">
         <div>Strong Arms</div>
-        <select name="attr_advantage_strongarms_count" class="skillexpertise">
+        <select class="skillexpertise" name="attr_advantage_strongarms_count">
           <option value=" "></option>
           <option value="-1">-1</option>
           <option value="1">1</option>
@@ -556,7 +554,7 @@
       </div>
       <div class="advantage-row">
         <div>Brute</div>
-        <select name="attr_advantage_brute_count" class="skillexpertise">
+        <select class="skillexpertise" name="attr_advantage_brute_count">
           <option value=" "></option>
           <option value="-1">-1</option>
           <option value="1">1</option>
@@ -567,7 +565,7 @@
       </div>
       <div class="advantage-row">
         <div>Fast</div>
-        <select name="attr_advantage_fast_count" class="skillexpertise">
+        <select class="skillexpertise" name="attr_advantage_fast_count">
           <option value=" "></option>
           <option value="-1">-1</option>
           <option value="1">1</option>
@@ -578,7 +576,7 @@
       </div>
       <div class="advantage-row">
         <div>Natural Athlete</div>
-        <select name="attr_advantage_athlete_count" class="skillexpertise">
+        <select class="skillexpertise" name="attr_advantage_athlete_count">
           <option value=" "></option>
           <option value="-1">-1</option>
           <option value="1">1</option>
@@ -589,7 +587,7 @@
       </div>
       <div class="advantage-row">
         <div>Alert</div>
-        <select name="attr_advantage_alert_count" class="skillexpertise">
+        <select class="skillexpertise" name="attr_advantage_alert_count">
           <option value=" "></option>
           <option value="-1">-1</option>
           <option value="1">1</option>
@@ -600,7 +598,7 @@
       </div>
       <div class="advantage-row">
         <div>Wary</div>
-        <select name="attr_advantage_wary_count" class="skillexpertise">
+        <select class="skillexpertise" name="attr_advantage_wary_count">
           <option value=" "></option>
           <option value="-1">-1</option>
           <option value="1">1</option>
@@ -612,7 +610,7 @@
       <div class="advantage-row">
         <div>Mage</div>
         <input name="attr_advantage_mage_minus" type="checkbox" value="1" hidden="true" />
-        <select name="attr_advantage_mage_count" class="skillexpertise">
+        <select class="skillexpertise" name="attr_advantage_mage_count">
           <option value=" "></option>
           <option value="1">1</option>
         </select>
@@ -621,22 +619,22 @@
       <div class="advantage-row">
         <div>Devout</div>
         <input name="attr_advantage_devout_minus" type="checkbox" value="1" hidden="true" />
-        <select name="attr_advantage_devout_count" class="skillexpertise">
+        <select class="skillexpertise" name="attr_advantage_devout_count">
           <option value=" "></option>
           <option value="1">1</option>
         </select>
         <span class="CP" name="attr_advantage_devout_CPdescription"></span>
       </div>
       <fieldset class="repeating_extraadvantage">
-        <!--- We leave no space between the inputs, so there won't be
-              any inside the repeating section -->
-        <input name="attr_extraadvantagename" class="extraadvantagename" type="text" />
-        <input name="attr_extraadvantageCP" class="extraadvantageCP" type="number" />
+        <!--
+        - We leave no space between the inputs, so there won't be
+        any inside the repeating section
+        -->
+        <input class="extraadvantagename" name="attr_extraadvantagename" type="text" />
+        <input class="extraadvantageCP" name="attr_extraadvantageCP" type="number" />
         <span class="CP extraadvantageCPdescription" name="attr_extraadvantageCPdescription"></span>
       </fieldset>
-
     </div>
-
     &emsp; &emsp;
     <!-- Feats -->
     <div class="flex-stack">
@@ -648,9 +646,9 @@
         <div class="featCP">CP</div>
       </div>
       <fieldset class="repeating_feat">
-        <input name="attr_featextraordinary" class="featextraordinary" type="checkbox" value="1" />
-        <input name="attr_featname" class="featname" type="text" />
-        <input name="attr_featCP" class="featCP" value="" type="number" />
+        <input class="featextraordinary" name="attr_featextraordinary" type="checkbox" value="1" />
+        <input class="featname" name="attr_featname" type="text" />
+        <input class="featCP" name="attr_featCP" value="" type="number" />
       </fieldset>
     </div>
   </div>

@@ -1,37 +1,4 @@
--
-  var advantages = [
-    {
-      name: 'attr_advantage_healthy_count',
-      description: 'Healthy',
-    }, {
-      name: 'attr_advantage_packmule_count',
-      description: 'Pack Mule',
-    }, {
-      name: 'attr_advantage_strongarms_count',
-      description: 'Strong Arms',
-    }, {
-      name: 'attr_advantage_brute_count',
-      description: 'Brute',
-    }, {
-      name: 'attr_advantage_fast_count',
-      description: 'Fast',
-    }, {
-      name: 'attr_advantage_athlete_count',
-      description: 'Natural Athlete',
-    }, {
-      name: 'attr_advantage_alert_count',
-      description: 'Alert',
-    }, {
-      name: 'attr_advantage_wary_count',
-      description: 'Wary',
-    }, {
-      name: 'attr_advantage_mage_count',
-      description: 'Mage',
-    }, {
-      name: 'attr_advantage_devout_count',
-      description: 'Devout',
-    },
-  ]
+include ../global/advantages.pug
 
 // Overview section 
 .overview.section
@@ -42,11 +9,11 @@
         div Advantage / Disadvantage
       each advantage in advantages
         .conditional-something
-          input(name=advantage.name type='hidden')
+          input(name=advantage.fieldName type='hidden')
           div
             = advantage.description
             = '\n'
-            span(name=advantage.name)
+            span(name=advantage.fieldName)
       fieldset.repeating_extraadvantage
         span.extraadvantagename(name='attr_extraadvantagename')
     = '\n'
