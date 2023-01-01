@@ -36,9 +36,6 @@ include ../global/advantages.pug
               option(value=optionValue)=optionValue
           span.CP(name=advantage.cpFieldName)
       fieldset.repeating_extraadvantage
-        //
-          - We leave no space between the inputs, so there won't be
-          any inside the repeating section
         input.extraadvantagename(name='attr_extraadvantagename' type='text')
         input.extraadvantageCP(name='attr_extraadvantageCP' type='number')
         span.CP.extraadvantageCPdescription(name='attr_extraadvantageCPdescription')
