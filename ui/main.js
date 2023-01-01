@@ -38,7 +38,7 @@ function renderHtml() {
 }
 
 if (argv.watch) {
-  const watcher = chokidar.watch(`${__dirname}/**/*.{html,pug}`, {
+  const watcher = chokidar.watch(`${__dirname}/**/*.{html,pug,js}`, {
     persistent: true
   });
   watcher.on('ready', renderHtml);
