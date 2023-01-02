@@ -15,7 +15,6 @@ $grid-column-gap: 2px;
     text-align: center;
     margin: auto;
     font-weight: bold;
-    width: 100%;
   }
 }
 
@@ -72,21 +71,21 @@ $grid-column-gap: 2px;
 }
 
 @mixin grid-table-tp-cp-columns {
-  .skillTP-grid {
+  .skillTP-grid, .TP-grid {
     color: $tp-color;
     font-weight: bold;
   }
 
-  .skillCP-grid {
+  .skillCP-grid, .CP-grid {
     color: $cp-color;
     font-weight: bold;
   }
 
   .epic-table-header-grid {
-    .skillTP-grid {
+    .skillTP-grid, .TP-grid {
       color: lighten($tp-color, 25%);
     }
-    .skillCP-grid {
+    .skillCP-grid, .CP-grid {
       color: darken($cp-color, 20%);
     }
   }

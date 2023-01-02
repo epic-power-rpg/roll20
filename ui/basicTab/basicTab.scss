@@ -1,54 +1,54 @@
-/* --------- Advantages ------------ */
+@import '../components/gridTable/gridTable.scss';
 
-/* This avoids spaces between the elements in the row */
-.advantages {
-  $input-field-width: 40px;
-
-  .advantage-row {
+/* --------- Basic Tab ------------ */
+.basic-tab {
+  .advantages-and-feats {
     display: flex;
-    flex-direction: row;
-    align-items: center;
+    gap: 16px;
+  }
+  .character-attributes {
+    $character-attributes-grid-template: getResponsiveGridWidths(64px, 96px);
+    @include epic-table-grid('character-attributes', $character-attributes-grid-template);
 
-    >div {
-      display: inline-block;
-    }
-
-    > :first-child {
-      width: 120px;
-      padding-right: 4px;
-      text-align: right;
-    }
-
-    select.skillexpertise {
-      width: $input-field-width;
-    }
-
-    >.CP {
-      display: inline-block;
-      text-align: center;
-      width: 26px;
+    .character-attributes-table {
+      .character-attributes-name-grid {
+        text-align: right;
+        font-weight: bold;
+        margin-right: 8px;
+      }
+      input.character-attributes-value-grid {
+        text-align: center !important;
+      }
     }
   }
 
-  .count-placeholder {
-    height: 18px;
-    width: $input-field-width;
+  .advantages {
+    $advantage-grid-template: getResponsiveGridWidths(160px, 48px, 32px);
+    @include epic-table-grid('advantage', $advantage-grid-template);
+    @include epic-table-grid('extraadvantage', $advantage-grid-template);
+
+    .advantage-grid, .extraadvantagename-grid {
+      text-align: right !important;
+      font-weight: bold;
+      margin-right: 8px !important;
+    }
+
+    .count-placeholder-grid {
+      height: 100%;
+      width: 100%;
+    }
+
+    @include grid-table-tp-cp-columns();
   }
 
-  .extraadvantagename {
-    width: 124px;
-    margin-top: -1px;
-  }
+  .feats {
+    $feat-grid-template: getResponsiveGridWidths(24px, 160px, 48px);
+    @include epic-table-grid('feat', $feat-grid-template);
 
-  .extraadvantageCP.extraadvantageCP.extraadvantageCP {
-    color: $cp-color;
-    width: $input-field-width;
-    margin-top: -1px;
-  }
+    input.featname-grid {
+      text-align: right !important;
+    }
 
-  .extraadvantageCPdescription {
-    display: inline-block;
-    text-align: center;
-    width: 26px;
+    @include grid-table-tp-cp-columns();
   }
 }
