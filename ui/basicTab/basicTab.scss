@@ -23,7 +23,7 @@
   }
 
   .advantages {
-    $advantage-grid-template: getResponsiveGridWidths(192px, 48px, 32px);
+    $advantage-grid-template: getResponsiveGridWidths(160px, 48px, 32px);
     @include epic-table-grid('advantage', $advantage-grid-template);
     @include epic-table-grid('extraadvantage', $advantage-grid-template);
 
@@ -42,7 +42,7 @@
   }
 
   .feats {
-    $feat-grid-template: getResponsiveGridWidths(24px, 192px, 48px);
+    $feat-grid-template: getResponsiveGridWidths(24px, 160px, 48px);
     @include epic-table-grid('feat', $feat-grid-template);
 
     input.featname-grid {

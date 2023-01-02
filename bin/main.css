@@ -859,7 +859,7 @@ radio > span.checked {
 }
 .basic-tab .advantages .epic-table-header-grid.advantage {
   display: grid;
-  grid-template-columns: minmax(0, 192px) minmax(0, 48px) minmax(0, 32px);
+  grid-template-columns: minmax(0, 160px) minmax(0, 48px) minmax(0, 32px);
   column-gap: 2px;
   background: #b56632;
   color: #fff;
@@ -873,7 +873,7 @@ radio > span.checked {
 .basic-tab .advantages div[data-groupname=repeating_advantage] > div,
 .basic-tab .advantages div[data-epic-table-name=advantage] {
   display: grid;
-  grid-template-columns: minmax(0, 192px) minmax(0, 48px) minmax(0, 32px);
+  grid-template-columns: minmax(0, 160px) minmax(0, 48px) minmax(0, 32px);
   row-gap: 0;
   column-gap: 2px;
   background: transparent;
@@ -916,7 +916,7 @@ radio > span.checked {
 }
 .basic-tab .advantages .epic-table-header-grid.extraadvantage {
   display: grid;
-  grid-template-columns: minmax(0, 192px) minmax(0, 48px) minmax(0, 32px);
+  grid-template-columns: minmax(0, 160px) minmax(0, 48px) minmax(0, 32px);
   column-gap: 2px;
   background: #b56632;
   color: #fff;
@@ -930,7 +930,7 @@ radio > span.checked {
 .basic-tab .advantages div[data-groupname=repeating_extraadvantage] > div,
 .basic-tab .advantages div[data-epic-table-name=extraadvantage] {
   display: grid;
-  grid-template-columns: minmax(0, 192px) minmax(0, 48px) minmax(0, 32px);
+  grid-template-columns: minmax(0, 160px) minmax(0, 48px) minmax(0, 32px);
   row-gap: 0;
   column-gap: 2px;
   background: transparent;
@@ -996,7 +996,7 @@ radio > span.checked {
 }
 .basic-tab .feats .epic-table-header-grid.feat {
   display: grid;
-  grid-template-columns: minmax(0, 24px) minmax(0, 192px) minmax(0, 48px);
+  grid-template-columns: minmax(0, 24px) minmax(0, 160px) minmax(0, 48px);
   column-gap: 2px;
   background: #b56632;
   color: #fff;
@@ -1010,7 +1010,7 @@ radio > span.checked {
 .basic-tab .feats div[data-groupname=repeating_feat] > div,
 .basic-tab .feats div[data-epic-table-name=feat] {
   display: grid;
-  grid-template-columns: minmax(0, 24px) minmax(0, 192px) minmax(0, 48px);
+  grid-template-columns: minmax(0, 24px) minmax(0, 160px) minmax(0, 48px);
   row-gap: 0;
   column-gap: 2px;
   background: transparent;
