@@ -790,7 +790,7 @@ radio > span.checked {
 /* --------- Advantages ------------ */
 .basic-tab .advantages .epic-table-header-grid.advantage {
   display: grid;
-  grid-template-columns: minmax(0, 3fr) minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 192px) minmax(0, 48px) minmax(0, 32px);
   column-gap: 2px;
   background: #b56632;
   color: #fff;
@@ -805,7 +805,7 @@ radio > span.checked {
 .basic-tab .advantages div[data-groupname=repeating_advantage] > div,
 .basic-tab .advantages div[data-epic-table-name=advantage] {
   display: grid;
-  grid-template-columns: minmax(0, 3fr) minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 192px) minmax(0, 48px) minmax(0, 32px);
   row-gap: 0;
   column-gap: 2px;
   background: transparent;
@@ -848,7 +848,7 @@ radio > span.checked {
 }
 .basic-tab .advantages .epic-table-header-grid.extraadvantage {
   display: grid;
-  grid-template-columns: minmax(0, 3fr) minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 192px) minmax(0, 48px) minmax(0, 32px);
   column-gap: 2px;
   background: #b56632;
   color: #fff;
@@ -863,7 +863,7 @@ radio > span.checked {
 .basic-tab .advantages div[data-groupname=repeating_extraadvantage] > div,
 .basic-tab .advantages div[data-epic-table-name=extraadvantage] {
   display: grid;
-  grid-template-columns: minmax(0, 3fr) minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 192px) minmax(0, 48px) minmax(0, 32px);
   row-gap: 0;
   column-gap: 2px;
   background: transparent;
@@ -907,6 +907,7 @@ radio > span.checked {
 .basic-tab .advantages .advantage-grid, .basic-tab .advantages .extraadvantagename-grid {
   text-align: right !important;
   font-weight: bold;
+  margin-right: 8px !important;
 }
 .basic-tab .advantages .count-placeholder-grid {
   height: 100%;
@@ -928,7 +929,7 @@ radio > span.checked {
 }
 .basic-tab .feats .epic-table-header-grid.feat {
   display: grid;
-  grid-template-columns: minmax(0, 0.5fr) minmax(0, 3fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 24px) minmax(0, 192px) minmax(0, 48px);
   column-gap: 2px;
   background: #b56632;
   color: #fff;
@@ -943,7 +944,7 @@ radio > span.checked {
 .basic-tab .feats div[data-groupname=repeating_feat] > div,
 .basic-tab .feats div[data-epic-table-name=feat] {
   display: grid;
-  grid-template-columns: minmax(0, 0.5fr) minmax(0, 3fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 24px) minmax(0, 192px) minmax(0, 48px);
   row-gap: 0;
   column-gap: 2px;
   background: transparent;
@@ -983,6 +984,9 @@ radio > span.checked {
   display: grid;
   grid-column-start: 1;
   grid-column-end: 4;
+}
+.basic-tab .feats input.featname-grid {
+  text-align: right !important;
 }
 .basic-tab .feats .skillTP-grid, .basic-tab .feats .TP-grid {
   color: #267200;

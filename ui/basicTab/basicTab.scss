@@ -3,13 +3,14 @@
 /* --------- Advantages ------------ */
 .basic-tab {
   .advantages {
-    $advantage-grid-template: getResponsiveGridWidths(3fr, 1fr, 1fr);
+    $advantage-grid-template: getResponsiveGridWidths(192px, 48px, 32px);
     @include epic-table-grid('advantage', $advantage-grid-template);
     @include epic-table-grid('extraadvantage', $advantage-grid-template);
 
     .advantage-grid, .extraadvantagename-grid {
       text-align: right !important;
       font-weight: bold;
+      margin-right: 8px !important;
     }
 
     .count-placeholder-grid {
@@ -21,8 +22,13 @@
   }
 
   .feats {
-    $feat-grid-template: getResponsiveGridWidths(0.5fr, 3fr, 1fr);
+    $feat-grid-template: getResponsiveGridWidths(24px, 192px, 48px);
     @include epic-table-grid('feat', $feat-grid-template);
+
+    input.featname-grid {
+      text-align: right !important;
+    }
+
     @include grid-table-tp-cp-columns();
   }
 }
