@@ -1,7 +1,7 @@
 include ../global/advantages.pug
 
 // Basic section 
-.basic.section
+.basic.section.basic-tab
   = '\n'
   | Race 
   input.wide(name='attr_race' type='text')
@@ -17,39 +17,40 @@ include ../global/advantages.pug
   = '\n'
   |   Age 
   input.wideish(name='attr_age' type='number')
-  .horizontal-flex
+  .small-spacer
+  .advantages-and-feats.horizontal-flex
     // Advantages and Disadvantages 
-    .advantages.flex-stack
+    .advantages
       input(name='attr_advantage_total_CP' type='hidden' value='0')
-      .advantage-row.table-header
-        div Advantage
-        .count-placeholder
-        .CP CP
+      .advantage.epic-table-header-grid
+        .advantage-grid Advantage
+        .count-placeholder-grid
+        .CP-grid CP
       each advantage in advantages
-        .advantage-row
-          div= advantage.description
+        .advantage-table(data-epic-table-name="advantage")
+          div.advantage-grid= advantage.description
           if advantage.minusAdvantageFieldName
             input(name=advantage.minusAdvantageFieldName type='checkbox' value='1' hidden='true')
-          select.skillexpertise(name=advantage.fieldName)
+          select.skillexpertise-grid(name=advantage.fieldName)
             option(value=' ')
             each optionValue in advantage.skillExpertiseOptions || [-1, 1, 2, 3]
               option(value=optionValue)=optionValue
-          span.CP(name=advantage.cpFieldName)
+          span.CP-grid(name=advantage.cpFieldName)
       fieldset.repeating_extraadvantage
-        input.extraadvantagename(name='attr_extraadvantagename' type='text')
-        input.extraadvantageCP(name='attr_extraadvantageCP' type='number')
-        span.CP.extraadvantageCPdescription(name='attr_extraadvantageCPdescription')
+        input.extraadvantagename-grid(name='attr_extraadvantagename' type='text')
+        input.extraadvantageCP-grid(name='attr_extraadvantageCP' type='number')
+        span.CP-grid.extraadvantageCPdescription-grid(name='attr_extraadvantageCPdescription')
     = '\n'
     | &emsp; &emsp;
     // Feats 
-    .flex-stack
+    .feats
       input(name='attr_feat_total_CP' type='hidden' value='0')
       input(name='attr_feat_total_single_CP' type='hidden' value='0')
-      .table-header
-        .featextraordinary Extr
-        .featname Epic Feat
-        .featCP CP
+      .feat.epic-table-header-grid
+        .featextraordinary-grid Extr
+        .featname-grid Epic Feat
+        .CP-grid CP
       fieldset.repeating_feat
-        input.featextraordinary(name='attr_featextraordinary' type='checkbox' value='1')
-        input.featname(name='attr_featname' type='text')
-        input.featCP(name='attr_featCP' value='' type='number')
+        input.featextraordinary-grid(name='attr_featextraordinary' type='checkbox' value='1')
+        input.featname-grid(name='attr_featname' type='text')
+        input.CP-grid(name='attr_featCP' value='' type='number')

@@ -499,7 +499,7 @@
   </div>
 </div>
 <!-- Basic section -->
-<div class="basic section">
+<div class="basic section basic-tab">
   Race
   <input class="wide" name="attr_race" type="text" />
   Gender
@@ -510,141 +510,142 @@
   <input class="wideish" name="attr_weight" type="number" />
   Age
   <input class="wideish" name="attr_age" type="number" />
-  <div class="horizontal-flex">
+  <div class="small-spacer"></div>
+  <div class="advantages-and-feats horizontal-flex">
     <!-- Advantages and Disadvantages -->
-    <div class="advantages flex-stack">
+    <div class="advantages">
       <input name="attr_advantage_total_CP" type="hidden" value="0" />
-      <div class="advantage-row table-header">
-        <div>Advantage</div>
-        <div class="count-placeholder"></div>
-        <div class="CP">CP</div>
+      <div class="advantage epic-table-header-grid">
+        <div class="advantage-grid">Advantage</div>
+        <div class="count-placeholder-grid"></div>
+        <div class="CP-grid">CP</div>
       </div>
-      <div class="advantage-row">
-        <div>Healthy</div>
-        <select class="skillexpertise" name="attr_advantage_healthy_count">
+      <div class="advantage-table" data-epic-table-name="advantage">
+        <div class="advantage-grid">Healthy</div>
+        <select class="skillexpertise-grid" name="attr_advantage_healthy_count">
           <option value=" "></option>
           <option value="-1">-1</option>
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
         </select>
-        <span class="CP" name="attr_advantage_healthy_CPdescription"></span>
+        <span class="CP-grid" name="attr_advantage_healthy_CPdescription"></span>
       </div>
-      <div class="advantage-row">
-        <div>Pack Mule</div>
-        <select class="skillexpertise" name="attr_advantage_packmule_count">
+      <div class="advantage-table" data-epic-table-name="advantage">
+        <div class="advantage-grid">Pack Mule</div>
+        <select class="skillexpertise-grid" name="attr_advantage_packmule_count">
           <option value=" "></option>
           <option value="-1">-1</option>
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
         </select>
-        <span class="CP" name="attr_advantage_packmule_CPdescription"></span>
+        <span class="CP-grid" name="attr_advantage_packmule_CPdescription"></span>
       </div>
-      <div class="advantage-row">
-        <div>Strong Arms</div>
-        <select class="skillexpertise" name="attr_advantage_strongarms_count">
+      <div class="advantage-table" data-epic-table-name="advantage">
+        <div class="advantage-grid">Strong Arms</div>
+        <select class="skillexpertise-grid" name="attr_advantage_strongarms_count">
           <option value=" "></option>
           <option value="-1">-1</option>
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
         </select>
-        <span class="CP" name="attr_advantage_strongarms_CPdescription"></span>
+        <span class="CP-grid" name="attr_advantage_strongarms_CPdescription"></span>
       </div>
-      <div class="advantage-row">
-        <div>Brute</div>
-        <select class="skillexpertise" name="attr_advantage_brute_count">
+      <div class="advantage-table" data-epic-table-name="advantage">
+        <div class="advantage-grid">Brute</div>
+        <select class="skillexpertise-grid" name="attr_advantage_brute_count">
           <option value=" "></option>
           <option value="-1">-1</option>
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
         </select>
-        <span class="CP" name="attr_advantage_brute_CPdescription"></span>
+        <span class="CP-grid" name="attr_advantage_brute_CPdescription"></span>
       </div>
-      <div class="advantage-row">
-        <div>Fast</div>
-        <select class="skillexpertise" name="attr_advantage_fast_count">
+      <div class="advantage-table" data-epic-table-name="advantage">
+        <div class="advantage-grid">Fast</div>
+        <select class="skillexpertise-grid" name="attr_advantage_fast_count">
           <option value=" "></option>
           <option value="-1">-1</option>
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
         </select>
-        <span class="CP" name="attr_advantage_fast_CPdescription"></span>
+        <span class="CP-grid" name="attr_advantage_fast_CPdescription"></span>
       </div>
-      <div class="advantage-row">
-        <div>Natural Athlete</div>
-        <select class="skillexpertise" name="attr_advantage_athlete_count">
+      <div class="advantage-table" data-epic-table-name="advantage">
+        <div class="advantage-grid">Natural Athlete</div>
+        <select class="skillexpertise-grid" name="attr_advantage_athlete_count">
           <option value=" "></option>
           <option value="-1">-1</option>
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
         </select>
-        <span class="CP" name="attr_advantage_athlete_CPdescription"></span>
+        <span class="CP-grid" name="attr_advantage_athlete_CPdescription"></span>
       </div>
-      <div class="advantage-row">
-        <div>Alert</div>
-        <select class="skillexpertise" name="attr_advantage_alert_count">
+      <div class="advantage-table" data-epic-table-name="advantage">
+        <div class="advantage-grid">Alert</div>
+        <select class="skillexpertise-grid" name="attr_advantage_alert_count">
           <option value=" "></option>
           <option value="-1">-1</option>
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
         </select>
-        <span class="CP" name="attr_advantage_alert_CPdescription"></span>
+        <span class="CP-grid" name="attr_advantage_alert_CPdescription"></span>
       </div>
-      <div class="advantage-row">
-        <div>Wary</div>
-        <select class="skillexpertise" name="attr_advantage_wary_count">
+      <div class="advantage-table" data-epic-table-name="advantage">
+        <div class="advantage-grid">Wary</div>
+        <select class="skillexpertise-grid" name="attr_advantage_wary_count">
           <option value=" "></option>
           <option value="-1">-1</option>
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
         </select>
-        <span class="CP" name="attr_advantage_wary_CPdescription"></span>
+        <span class="CP-grid" name="attr_advantage_wary_CPdescription"></span>
       </div>
-      <div class="advantage-row">
-        <div>Mage</div>
+      <div class="advantage-table" data-epic-table-name="advantage">
+        <div class="advantage-grid">Mage</div>
         <input name="attr_advantage_mage_minus" type="checkbox" value="1" hidden="true" />
-        <select class="skillexpertise" name="attr_advantage_mage_count">
+        <select class="skillexpertise-grid" name="attr_advantage_mage_count">
           <option value=" "></option>
           <option value="1">1</option>
         </select>
-        <span class="CP" name="attr_advantage_mage_CPdescription"></span>
+        <span class="CP-grid" name="attr_advantage_mage_CPdescription"></span>
       </div>
-      <div class="advantage-row">
-        <div>Devout</div>
+      <div class="advantage-table" data-epic-table-name="advantage">
+        <div class="advantage-grid">Devout</div>
         <input name="attr_advantage_devout_minus" type="checkbox" value="1" hidden="true" />
-        <select class="skillexpertise" name="attr_advantage_devout_count">
+        <select class="skillexpertise-grid" name="attr_advantage_devout_count">
           <option value=" "></option>
           <option value="1">1</option>
         </select>
-        <span class="CP" name="attr_advantage_devout_CPdescription"></span>
+        <span class="CP-grid" name="attr_advantage_devout_CPdescription"></span>
       </div>
       <fieldset class="repeating_extraadvantage">
-        <input class="extraadvantagename" name="attr_extraadvantagename" type="text" />
-        <input class="extraadvantageCP" name="attr_extraadvantageCP" type="number" />
-        <span class="CP extraadvantageCPdescription" name="attr_extraadvantageCPdescription"></span>
+        <input class="extraadvantagename-grid" name="attr_extraadvantagename" type="text" />
+        <input class="extraadvantageCP-grid" name="attr_extraadvantageCP" type="number" />
+        <span class="CP-grid extraadvantageCPdescription-grid" name="attr_extraadvantageCPdescription"></span>
       </fieldset>
     </div>
     &emsp; &emsp;
     <!-- Feats -->
-    <div class="flex-stack">
+    <div class="feats">
       <input name="attr_feat_total_CP" type="hidden" value="0" />
       <input name="attr_feat_total_single_CP" type="hidden" value="0" />
-      <div class="table-header">
-        <div class="featextraordinary">Extr</div>
-        <div class="featname">Epic Feat</div>
-        <div class="featCP">CP</div>
+      <div class="feat epic-table-header-grid">
+        <div class="featextraordinary-grid">Extr</div>
+        <div class="featname-grid">Epic Feat</div>
+        <div class="CP-grid">CP</div>
       </div>
       <fieldset class="repeating_feat">
-        <input class="featextraordinary" name="attr_featextraordinary" type="checkbox" value="1" />
-        <input class="featname" name="attr_featname" type="text" />
-        <input class="featCP" name="attr_featCP" value="" type="number" />
+        <input class="featextraordinary-grid" name="attr_featextraordinary" type="checkbox" value="1" />
+        <input class="featname-grid" name="attr_featname" type="text" />
+        <input class="CP-grid" name="attr_featCP" value="" type="number" />
       </fieldset>
     </div>
   </div>

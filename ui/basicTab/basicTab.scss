@@ -1,54 +1,28 @@
+@import '../components/gridTable/gridTable.scss';
+
 /* --------- Advantages ------------ */
+.basic-tab {
+  .advantages {
+    $advantage-grid-template: getResponsiveGridWidths(3fr, 1fr, 1fr);
+    @include epic-table-grid('advantage', $advantage-grid-template);
+    @include epic-table-grid('extraadvantage', $advantage-grid-template);
 
-/* This avoids spaces between the elements in the row */
-.advantages {
-  $input-field-width: 40px;
-
-  .advantage-row {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-
-    >div {
-      display: inline-block;
+    .advantage-grid, .extraadvantagename-grid {
+      text-align: right !important;
+      font-weight: bold;
     }
 
-    > :first-child {
-      width: 120px;
-      padding-right: 4px;
-      text-align: right;
+    .count-placeholder-grid {
+      height: 100%;
+      width: 100%;
     }
 
-    select.skillexpertise {
-      width: $input-field-width;
-    }
-
-    >.CP {
-      display: inline-block;
-      text-align: center;
-      width: 26px;
-    }
+    @include grid-table-tp-cp-columns();
   }
 
-  .count-placeholder {
-    height: 18px;
-    width: $input-field-width;
-  }
-
-  .extraadvantagename {
-    width: 124px;
-    margin-top: -1px;
-  }
-
-  .extraadvantageCP.extraadvantageCP.extraadvantageCP {
-    color: $cp-color;
-    width: $input-field-width;
-    margin-top: -1px;
-  }
-
-  .extraadvantageCPdescription {
-    display: inline-block;
-    text-align: center;
-    width: 26px;
+  .feats {
+    $feat-grid-template: getResponsiveGridWidths(0.5fr, 3fr, 1fr);
+    @include epic-table-grid('feat', $feat-grid-template);
+    @include grid-table-tp-cp-columns();
   }
 }

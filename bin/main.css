@@ -788,45 +788,215 @@ radio > span.checked {
 }
 
 /* --------- Advantages ------------ */
-/* This avoids spaces between the elements in the row */
-.advantages .advantage-row {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+.basic-tab .advantages .epic-table-header-grid.advantage {
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(0, 1fr) minmax(0, 1fr);
+  column-gap: 2px;
+  background: #b56632;
+  color: #fff;
+  padding: 2px;
 }
-.advantages .advantage-row > div {
-  display: inline-block;
-}
-.advantages .advantage-row > :first-child {
-  width: 120px;
-  padding-right: 4px;
-  text-align: right;
-}
-.advantages .advantage-row select.skillexpertise {
-  width: 40px;
-}
-.advantages .advantage-row > .CP {
-  display: inline-block;
+.basic-tab .advantages .epic-table-header-grid.advantage > div {
   text-align: center;
-  width: 26px;
+  margin: auto;
+  font-weight: bold;
+  width: 100%;
 }
-.advantages .count-placeholder {
-  height: 18px;
-  width: 40px;
+.basic-tab .advantages div[data-groupname=repeating_advantage] > div,
+.basic-tab .advantages div[data-epic-table-name=advantage] {
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(0, 1fr) minmax(0, 1fr);
+  row-gap: 0;
+  column-gap: 2px;
+  background: transparent;
 }
-.advantages .extraadvantagename {
-  width: 124px;
-  margin-top: -1px;
+.basic-tab .advantages div[data-groupname=repeating_advantage] > div input, .basic-tab .advantages div[data-groupname=repeating_advantage] > div input[type=number], .basic-tab .advantages div[data-groupname=repeating_advantage] > div textarea, .basic-tab .advantages div[data-groupname=repeating_advantage] > div select,
+.basic-tab .advantages div[data-epic-table-name=advantage] input,
+.basic-tab .advantages div[data-epic-table-name=advantage] input[type=number],
+.basic-tab .advantages div[data-epic-table-name=advantage] textarea,
+.basic-tab .advantages div[data-epic-table-name=advantage] select {
+  width: 100% !important;
+  margin-left: unset;
+  height: auto;
+  background-color: #faf2ec;
 }
-.advantages .extraadvantageCP.extraadvantageCP.extraadvantageCP {
+.basic-tab .advantages div[data-groupname=repeating_advantage] > div input[type=text],
+.basic-tab .advantages div[data-epic-table-name=advantage] input[type=text] {
+  text-align: left;
+}
+.basic-tab .advantages div[data-groupname=repeating_advantage] > div input, .basic-tab .advantages div[data-groupname=repeating_advantage] > div span, .basic-tab .advantages div[data-groupname=repeating_advantage] > div select,
+.basic-tab .advantages div[data-epic-table-name=advantage] input,
+.basic-tab .advantages div[data-epic-table-name=advantage] span,
+.basic-tab .advantages div[data-epic-table-name=advantage] select {
+  white-space: nowrap;
+}
+.basic-tab .advantages div[data-groupname=repeating_advantage] > div span,
+.basic-tab .advantages div[data-epic-table-name=advantage] span {
+  text-align: center;
+  margin: auto 0;
+}
+.basic-tab .advantages div[data-groupname=repeating_advantage] > div button, .basic-tab .advantages div[data-groupname=repeating_advantage] > div button[type=roll],
+.basic-tab .advantages div[data-epic-table-name=advantage] button,
+.basic-tab .advantages div[data-epic-table-name=advantage] button[type=roll] {
+  margin: 0;
+}
+.basic-tab .advantages div[data-groupname=repeating_advantage] > div .epic-table-row.conditional-one,
+.basic-tab .advantages div[data-epic-table-name=advantage] .epic-table-row.conditional-one {
+  display: grid;
+  grid-column-start: 1;
+  grid-column-end: 4;
+}
+.basic-tab .advantages .epic-table-header-grid.extraadvantage {
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(0, 1fr) minmax(0, 1fr);
+  column-gap: 2px;
+  background: #b56632;
+  color: #fff;
+  padding: 2px;
+}
+.basic-tab .advantages .epic-table-header-grid.extraadvantage > div {
+  text-align: center;
+  margin: auto;
+  font-weight: bold;
+  width: 100%;
+}
+.basic-tab .advantages div[data-groupname=repeating_extraadvantage] > div,
+.basic-tab .advantages div[data-epic-table-name=extraadvantage] {
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(0, 1fr) minmax(0, 1fr);
+  row-gap: 0;
+  column-gap: 2px;
+  background: transparent;
+}
+.basic-tab .advantages div[data-groupname=repeating_extraadvantage] > div input, .basic-tab .advantages div[data-groupname=repeating_extraadvantage] > div input[type=number], .basic-tab .advantages div[data-groupname=repeating_extraadvantage] > div textarea, .basic-tab .advantages div[data-groupname=repeating_extraadvantage] > div select,
+.basic-tab .advantages div[data-epic-table-name=extraadvantage] input,
+.basic-tab .advantages div[data-epic-table-name=extraadvantage] input[type=number],
+.basic-tab .advantages div[data-epic-table-name=extraadvantage] textarea,
+.basic-tab .advantages div[data-epic-table-name=extraadvantage] select {
+  width: 100% !important;
+  margin-left: unset;
+  height: auto;
+  background-color: #faf2ec;
+}
+.basic-tab .advantages div[data-groupname=repeating_extraadvantage] > div input[type=text],
+.basic-tab .advantages div[data-epic-table-name=extraadvantage] input[type=text] {
+  text-align: left;
+}
+.basic-tab .advantages div[data-groupname=repeating_extraadvantage] > div input, .basic-tab .advantages div[data-groupname=repeating_extraadvantage] > div span, .basic-tab .advantages div[data-groupname=repeating_extraadvantage] > div select,
+.basic-tab .advantages div[data-epic-table-name=extraadvantage] input,
+.basic-tab .advantages div[data-epic-table-name=extraadvantage] span,
+.basic-tab .advantages div[data-epic-table-name=extraadvantage] select {
+  white-space: nowrap;
+}
+.basic-tab .advantages div[data-groupname=repeating_extraadvantage] > div span,
+.basic-tab .advantages div[data-epic-table-name=extraadvantage] span {
+  text-align: center;
+  margin: auto 0;
+}
+.basic-tab .advantages div[data-groupname=repeating_extraadvantage] > div button, .basic-tab .advantages div[data-groupname=repeating_extraadvantage] > div button[type=roll],
+.basic-tab .advantages div[data-epic-table-name=extraadvantage] button,
+.basic-tab .advantages div[data-epic-table-name=extraadvantage] button[type=roll] {
+  margin: 0;
+}
+.basic-tab .advantages div[data-groupname=repeating_extraadvantage] > div .epic-table-row.conditional-one,
+.basic-tab .advantages div[data-epic-table-name=extraadvantage] .epic-table-row.conditional-one {
+  display: grid;
+  grid-column-start: 1;
+  grid-column-end: 4;
+}
+.basic-tab .advantages .advantage-grid, .basic-tab .advantages .extraadvantagename-grid {
+  text-align: right !important;
+  font-weight: bold;
+}
+.basic-tab .advantages .count-placeholder-grid {
+  height: 100%;
+  width: 100%;
+}
+.basic-tab .advantages .skillTP-grid, .basic-tab .advantages .TP-grid {
+  color: #267200;
+  font-weight: bold;
+}
+.basic-tab .advantages .skillCP-grid, .basic-tab .advantages .CP-grid {
   color: blue;
-  width: 40px;
-  margin-top: -1px;
+  font-weight: bold;
 }
-.advantages .extraadvantageCPdescription {
-  display: inline-block;
+.basic-tab .advantages .epic-table-header-grid .skillTP-grid, .basic-tab .advantages .epic-table-header-grid .TP-grid {
+  color: #51f200;
+}
+.basic-tab .advantages .epic-table-header-grid .skillCP-grid, .basic-tab .advantages .epic-table-header-grid .CP-grid {
+  color: #000099;
+}
+.basic-tab .feats .epic-table-header-grid.feat {
+  display: grid;
+  grid-template-columns: minmax(0, 0.5fr) minmax(0, 3fr) minmax(0, 1fr);
+  column-gap: 2px;
+  background: #b56632;
+  color: #fff;
+  padding: 2px;
+}
+.basic-tab .feats .epic-table-header-grid.feat > div {
   text-align: center;
-  width: 26px;
+  margin: auto;
+  font-weight: bold;
+  width: 100%;
+}
+.basic-tab .feats div[data-groupname=repeating_feat] > div,
+.basic-tab .feats div[data-epic-table-name=feat] {
+  display: grid;
+  grid-template-columns: minmax(0, 0.5fr) minmax(0, 3fr) minmax(0, 1fr);
+  row-gap: 0;
+  column-gap: 2px;
+  background: transparent;
+}
+.basic-tab .feats div[data-groupname=repeating_feat] > div input, .basic-tab .feats div[data-groupname=repeating_feat] > div input[type=number], .basic-tab .feats div[data-groupname=repeating_feat] > div textarea, .basic-tab .feats div[data-groupname=repeating_feat] > div select,
+.basic-tab .feats div[data-epic-table-name=feat] input,
+.basic-tab .feats div[data-epic-table-name=feat] input[type=number],
+.basic-tab .feats div[data-epic-table-name=feat] textarea,
+.basic-tab .feats div[data-epic-table-name=feat] select {
+  width: 100% !important;
+  margin-left: unset;
+  height: auto;
+  background-color: #faf2ec;
+}
+.basic-tab .feats div[data-groupname=repeating_feat] > div input[type=text],
+.basic-tab .feats div[data-epic-table-name=feat] input[type=text] {
+  text-align: left;
+}
+.basic-tab .feats div[data-groupname=repeating_feat] > div input, .basic-tab .feats div[data-groupname=repeating_feat] > div span, .basic-tab .feats div[data-groupname=repeating_feat] > div select,
+.basic-tab .feats div[data-epic-table-name=feat] input,
+.basic-tab .feats div[data-epic-table-name=feat] span,
+.basic-tab .feats div[data-epic-table-name=feat] select {
+  white-space: nowrap;
+}
+.basic-tab .feats div[data-groupname=repeating_feat] > div span,
+.basic-tab .feats div[data-epic-table-name=feat] span {
+  text-align: center;
+  margin: auto 0;
+}
+.basic-tab .feats div[data-groupname=repeating_feat] > div button, .basic-tab .feats div[data-groupname=repeating_feat] > div button[type=roll],
+.basic-tab .feats div[data-epic-table-name=feat] button,
+.basic-tab .feats div[data-epic-table-name=feat] button[type=roll] {
+  margin: 0;
+}
+.basic-tab .feats div[data-groupname=repeating_feat] > div .epic-table-row.conditional-one,
+.basic-tab .feats div[data-epic-table-name=feat] .epic-table-row.conditional-one {
+  display: grid;
+  grid-column-start: 1;
+  grid-column-end: 4;
+}
+.basic-tab .feats .skillTP-grid, .basic-tab .feats .TP-grid {
+  color: #267200;
+  font-weight: bold;
+}
+.basic-tab .feats .skillCP-grid, .basic-tab .feats .CP-grid {
+  color: blue;
+  font-weight: bold;
+}
+.basic-tab .feats .epic-table-header-grid .skillTP-grid, .basic-tab .feats .epic-table-header-grid .TP-grid {
+  color: #51f200;
+}
+.basic-tab .feats .epic-table-header-grid .skillCP-grid, .basic-tab .feats .epic-table-header-grid .CP-grid {
+  color: #000099;
 }
 
 /* ---------------- Epic Feats --------------- */
@@ -967,18 +1137,18 @@ input.featCP {
 .epic-skills-tab .isdiscipline-grid[value="1"] ~ .skillbase-grid {
   opacity: 0;
 }
-.epic-skills-tab .skillTP-grid {
+.epic-skills-tab .skillTP-grid, .epic-skills-tab .TP-grid {
   color: #267200;
   font-weight: bold;
 }
-.epic-skills-tab .skillCP-grid {
+.epic-skills-tab .skillCP-grid, .epic-skills-tab .CP-grid {
   color: blue;
   font-weight: bold;
 }
-.epic-skills-tab .epic-table-header-grid .skillTP-grid {
+.epic-skills-tab .epic-table-header-grid .skillTP-grid, .epic-skills-tab .epic-table-header-grid .TP-grid {
   color: #51f200;
 }
-.epic-skills-tab .epic-table-header-grid .skillCP-grid {
+.epic-skills-tab .epic-table-header-grid .skillCP-grid, .epic-skills-tab .epic-table-header-grid .CP-grid {
   color: #000099;
 }
 
@@ -1509,18 +1679,18 @@ input.featCP {
   grid-column-start: 1;
   grid-column-end: 10;
 }
-.spells .skillTP-grid {
+.spells .skillTP-grid, .spells .TP-grid {
   color: #267200;
   font-weight: bold;
 }
-.spells .skillCP-grid {
+.spells .skillCP-grid, .spells .CP-grid {
   color: blue;
   font-weight: bold;
 }
-.spells .epic-table-header-grid .skillTP-grid {
+.spells .epic-table-header-grid .skillTP-grid, .spells .epic-table-header-grid .TP-grid {
   color: #51f200;
 }
-.spells .epic-table-header-grid .skillCP-grid {
+.spells .epic-table-header-grid .skillCP-grid, .spells .epic-table-header-grid .CP-grid {
   color: #000099;
 }
 
