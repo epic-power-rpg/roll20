@@ -2,23 +2,23 @@ include ../global/advantages.pug
 
 // Basic section 
 .basic.section.basic-tab
-  = '\n'
-  | Race 
-  input.wide(name='attr_race' type='text')
-  = '\n'
-  |   Gender 
-  input.wideish(name='attr_gender' type='text')
-  = '\n'
-  |   Height 
-  input.wideish(name='attr_height' type='text')
-  = '\n'
-  |   Weight 
-  input.wideish(name='attr_weight' type='number')
-  = '\n'
-  |   Age 
-  input.wideish(name='attr_age' type='number')
-  .small-spacer
   .advantages-and-feats.horizontal-flex
+    // Character Attributes 
+    .character-attributes
+      .character-attributes.epic-table-header-grid
+        .character-attributes-name-grid Attr.
+        .character-attributes-value-grid Value
+      .character-attributes-table(data-epic-table-name="character-attributes")
+        .character-attributes-name-grid Race
+        input.character-attributes-value-grid(name='attr_race' type='text')
+        .character-attributes-name-grid Gender
+        input.character-attributes-value-grid(name='attr_gender' type='text')
+        .character-attributes-name-grid Height
+        input.character-attributes-value-grid(name='attr_height' type='text')
+        .character-attributes-name-grid Weight
+        input.character-attributes-value-grid(name='attr_weight' type='number')
+        .character-attributes-name-grid Age
+        input.character-attributes-value-grid(name='attr_age' type='number')
     // Advantages and Disadvantages 
     .advantages
       input(name='attr_advantage_total_CP' type='hidden' value='0')
@@ -40,8 +40,6 @@ include ../global/advantages.pug
         input.extraadvantagename-grid(name='attr_extraadvantagename' type='text')
         input.extraadvantageCP-grid(name='attr_extraadvantageCP' type='number')
         span.CP-grid.extraadvantageCPdescription-grid(name='attr_extraadvantageCPdescription')
-    = '\n'
-    | &emsp; &emsp;
     // Feats 
     .feats
       input(name='attr_feat_total_CP' type='hidden' value='0')

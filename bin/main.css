@@ -787,7 +787,76 @@ radio > span.checked {
   margin-right: 3px;
 }
 
-/* --------- Advantages ------------ */
+/* --------- Basic Tab ------------ */
+.basic-tab .advantages-and-feats {
+  display: flex;
+  gap: 16px;
+}
+.basic-tab .character-attributes .epic-table-header-grid.character-attributes {
+  display: grid;
+  grid-template-columns: minmax(0, 64px) minmax(0, 96px);
+  column-gap: 2px;
+  background: #b56632;
+  color: #fff;
+  padding: 2px;
+}
+.basic-tab .character-attributes .epic-table-header-grid.character-attributes > div {
+  text-align: center;
+  margin: auto;
+  font-weight: bold;
+}
+.basic-tab .character-attributes div[data-groupname=repeating_character-attributes] > div,
+.basic-tab .character-attributes div[data-epic-table-name=character-attributes] {
+  display: grid;
+  grid-template-columns: minmax(0, 64px) minmax(0, 96px);
+  row-gap: 0;
+  column-gap: 2px;
+  background: transparent;
+}
+.basic-tab .character-attributes div[data-groupname=repeating_character-attributes] > div input, .basic-tab .character-attributes div[data-groupname=repeating_character-attributes] > div input[type=number], .basic-tab .character-attributes div[data-groupname=repeating_character-attributes] > div textarea, .basic-tab .character-attributes div[data-groupname=repeating_character-attributes] > div select,
+.basic-tab .character-attributes div[data-epic-table-name=character-attributes] input,
+.basic-tab .character-attributes div[data-epic-table-name=character-attributes] input[type=number],
+.basic-tab .character-attributes div[data-epic-table-name=character-attributes] textarea,
+.basic-tab .character-attributes div[data-epic-table-name=character-attributes] select {
+  width: 100% !important;
+  margin-left: unset;
+  height: auto;
+  background-color: #faf2ec;
+}
+.basic-tab .character-attributes div[data-groupname=repeating_character-attributes] > div input[type=text],
+.basic-tab .character-attributes div[data-epic-table-name=character-attributes] input[type=text] {
+  text-align: left;
+}
+.basic-tab .character-attributes div[data-groupname=repeating_character-attributes] > div input, .basic-tab .character-attributes div[data-groupname=repeating_character-attributes] > div span, .basic-tab .character-attributes div[data-groupname=repeating_character-attributes] > div select,
+.basic-tab .character-attributes div[data-epic-table-name=character-attributes] input,
+.basic-tab .character-attributes div[data-epic-table-name=character-attributes] span,
+.basic-tab .character-attributes div[data-epic-table-name=character-attributes] select {
+  white-space: nowrap;
+}
+.basic-tab .character-attributes div[data-groupname=repeating_character-attributes] > div span,
+.basic-tab .character-attributes div[data-epic-table-name=character-attributes] span {
+  text-align: center;
+  margin: auto 0;
+}
+.basic-tab .character-attributes div[data-groupname=repeating_character-attributes] > div button, .basic-tab .character-attributes div[data-groupname=repeating_character-attributes] > div button[type=roll],
+.basic-tab .character-attributes div[data-epic-table-name=character-attributes] button,
+.basic-tab .character-attributes div[data-epic-table-name=character-attributes] button[type=roll] {
+  margin: 0;
+}
+.basic-tab .character-attributes div[data-groupname=repeating_character-attributes] > div .epic-table-row.conditional-one,
+.basic-tab .character-attributes div[data-epic-table-name=character-attributes] .epic-table-row.conditional-one {
+  display: grid;
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+.basic-tab .character-attributes .character-attributes-table .character-attributes-name-grid {
+  text-align: right;
+  font-weight: bold;
+  margin-right: 8px;
+}
+.basic-tab .character-attributes .character-attributes-table input.character-attributes-value-grid {
+  text-align: center !important;
+}
 .basic-tab .advantages .epic-table-header-grid.advantage {
   display: grid;
   grid-template-columns: minmax(0, 192px) minmax(0, 48px) minmax(0, 32px);
@@ -800,7 +869,6 @@ radio > span.checked {
   text-align: center;
   margin: auto;
   font-weight: bold;
-  width: 100%;
 }
 .basic-tab .advantages div[data-groupname=repeating_advantage] > div,
 .basic-tab .advantages div[data-epic-table-name=advantage] {
@@ -858,7 +926,6 @@ radio > span.checked {
   text-align: center;
   margin: auto;
   font-weight: bold;
-  width: 100%;
 }
 .basic-tab .advantages div[data-groupname=repeating_extraadvantage] > div,
 .basic-tab .advantages div[data-epic-table-name=extraadvantage] {
@@ -939,7 +1006,6 @@ radio > span.checked {
   text-align: center;
   margin: auto;
   font-weight: bold;
-  width: 100%;
 }
 .basic-tab .feats div[data-groupname=repeating_feat] > div,
 .basic-tab .feats div[data-epic-table-name=feat] {
@@ -1087,7 +1153,6 @@ input.featCP {
   text-align: center;
   margin: auto;
   font-weight: bold;
-  width: 100%;
 }
 .epic-skills-tab div[data-groupname=repeating_skill] > div,
 .epic-skills-tab div[data-epic-table-name=skill] {
@@ -1169,7 +1234,6 @@ input.featCP {
   text-align: center;
   margin: auto;
   font-weight: bold;
-  width: 100%;
 }
 .equipment-tab div[data-groupname=repeating_armor] > div,
 .equipment-tab div[data-epic-table-name=armor] {
@@ -1227,7 +1291,6 @@ input.featCP {
   text-align: center;
   margin: auto;
   font-weight: bold;
-  width: 100%;
 }
 .equipment-tab div[data-groupname=repeating_shield] > div,
 .equipment-tab div[data-epic-table-name=shield] {
@@ -1285,7 +1348,6 @@ input.featCP {
   text-align: center;
   margin: auto;
   font-weight: bold;
-  width: 100%;
 }
 .equipment-tab div[data-groupname=repeating_weapon] > div,
 .equipment-tab div[data-epic-table-name=weapon] {
@@ -1343,7 +1405,6 @@ input.featCP {
   text-align: center;
   margin: auto;
   font-weight: bold;
-  width: 100%;
 }
 .equipment-tab div[data-groupname=repeating_item] > div,
 .equipment-tab div[data-epic-table-name=item] {
@@ -1521,7 +1582,6 @@ input.featCP {
   text-align: center;
   margin: auto;
   font-weight: bold;
-  width: 100%;
 }
 .spells div[data-groupname=repeating_arcane] > div,
 .spells div[data-epic-table-name=arcane] {
@@ -1579,7 +1639,6 @@ input.featCP {
   text-align: center;
   margin: auto;
   font-weight: bold;
-  width: 100%;
 }
 .spells div[data-groupname=repeating_divine] > div,
 .spells div[data-epic-table-name=divine] {
@@ -1637,7 +1696,6 @@ input.featCP {
   text-align: center;
   margin: auto;
   font-weight: bold;
-  width: 100%;
 }
 .spells div[data-groupname=repeating_innate] > div,
 .spells div[data-epic-table-name=innate] {

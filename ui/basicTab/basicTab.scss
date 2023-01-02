@@ -1,7 +1,27 @@
 @import '../components/gridTable/gridTable.scss';
 
-/* --------- Advantages ------------ */
+/* --------- Basic Tab ------------ */
 .basic-tab {
+  .advantages-and-feats {
+    display: flex;
+    gap: 16px;
+  }
+  .character-attributes {
+    $character-attributes-grid-template: getResponsiveGridWidths(64px, 96px);
+    @include epic-table-grid('character-attributes', $character-attributes-grid-template);
+
+    .character-attributes-table {
+      .character-attributes-name-grid {
+        text-align: right;
+        font-weight: bold;
+        margin-right: 8px;
+      }
+      input.character-attributes-value-grid {
+        text-align: center !important;
+      }
+    }
+  }
+
   .advantages {
     $advantage-grid-template: getResponsiveGridWidths(192px, 48px, 32px);
     @include epic-table-grid('advantage', $advantage-grid-template);

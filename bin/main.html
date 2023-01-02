@@ -500,18 +500,26 @@
 </div>
 <!-- Basic section -->
 <div class="basic section basic-tab">
-  Race
-  <input class="wide" name="attr_race" type="text" />
-  Gender
-  <input class="wideish" name="attr_gender" type="text" />
-  Height
-  <input class="wideish" name="attr_height" type="text" />
-  Weight
-  <input class="wideish" name="attr_weight" type="number" />
-  Age
-  <input class="wideish" name="attr_age" type="number" />
-  <div class="small-spacer"></div>
   <div class="advantages-and-feats horizontal-flex">
+    <!-- Character Attributes -->
+    <div class="character-attributes">
+      <div class="character-attributes epic-table-header-grid">
+        <div class="character-attributes-name-grid">Attr.</div>
+        <div class="character-attributes-value-grid">Value</div>
+      </div>
+      <div class="character-attributes-table" data-epic-table-name="character-attributes">
+        <div class="character-attributes-name-grid">Race</div>
+        <input class="character-attributes-value-grid" name="attr_race" type="text" />
+        <div class="character-attributes-name-grid">Gender</div>
+        <input class="character-attributes-value-grid" name="attr_gender" type="text" />
+        <div class="character-attributes-name-grid">Height</div>
+        <input class="character-attributes-value-grid" name="attr_height" type="text" />
+        <div class="character-attributes-name-grid">Weight</div>
+        <input class="character-attributes-value-grid" name="attr_weight" type="number" />
+        <div class="character-attributes-name-grid">Age</div>
+        <input class="character-attributes-value-grid" name="attr_age" type="number" />
+      </div>
+    </div>
     <!-- Advantages and Disadvantages -->
     <div class="advantages">
       <input name="attr_advantage_total_CP" type="hidden" value="0" />
@@ -632,7 +640,6 @@
         <span class="CP-grid extraadvantageCPdescription-grid" name="attr_extraadvantageCPdescription"></span>
       </fieldset>
     </div>
-    &emsp; &emsp;
     <!-- Feats -->
     <div class="feats">
       <input name="attr_feat_total_CP" type="hidden" value="0" />
