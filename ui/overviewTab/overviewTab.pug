@@ -1,43 +1,39 @@
 include ../global/advantages.pug
 
 // Overview section 
-.overview.section
+.overview.section.overview-tab
   .horizontal-flex
     // Advantages 
-    .flex-stack.advantage-overview.no-add-or-modify-buttons
-      .table-header
+    .advantage-overview.no-add-or-modify-buttons
+      .advantage.epic-table-header-grid
         div Advantage / Disadvantage
       each advantage in advantages
-        .conditional-something
-          input(name=advantage.fieldName type='hidden')
-          div
-            = advantage.description
-            = '\n'
-            span(name=advantage.fieldName)
+        .advantage-table(data-epic-table-name="advantage")
+          .conditional-something
+            input(name=advantage.fieldName type='hidden')
+            .advantage-row
+              div.advantage-name=advantage.description
+              span.advantage-value(name=advantage.fieldName)
       fieldset.repeating_extraadvantage
-        span.extraadvantagename(name='attr_extraadvantagename')
-    = '\n'
-    | &emsp;&emsp;
+        span.extraadvantagename.extraadvantage-row(name='attr_extraadvantagename')
     // Feats 
     .feat-overview.no-add-or-modify-buttons
-      .table-header
+      .feat.epic-table-header-grid
         .featextraordinaryletter Extr
         .featname Epic Feat
       fieldset.repeating_feat
-        span.featextraordinaryletter(name='attr_featextraordinaryletter')
-        span.featname(name='attr_featname')
-    = '\n'
-    | &emsp;&emsp;
+        span.featextraordinaryletter.feat-row(name='attr_featextraordinaryletter')
+        span.featname.feat-row(name='attr_featname')
     // Skills 
     .skills-overview.no-add-or-modify-buttons.flex-stack
-      .table-header
+      .skills-table.epic-table-header-grid
         .skillname Skill
         .skillability Ability
         .skillbase Mod
       fieldset.repeating_skill
         // This input is used by CSS to hide disciplines
         input.isdiscipline(name='attr_skillisdiscipline' type='hidden')
-        .skill-overview-row-container
+        .skill-overview-row-container(data-epic-table-name="skills-table")
           span.skillname(name='attr_skillname')
           span.skillability(name='attr_skillability')
           input.skillbase(name='attr_skillmodifier' type='number')
@@ -47,8 +43,6 @@ include ../global/advantages.pug
           input(name='attr_skillability' type='hidden')
           input(name='attr_skillname' type='hidden')
           button.skill-roll(name='roll_skillroll' type='roll' value='!EPRoll @{skillability}+@{skillmodifier} Tries @{skillname}: @{skillability} + @{skillmodifier}')
-    = '\n'
-    | &emsp;&emsp;
     // Weapons 
     .weapons-overview.no-add-or-modify-buttons.flex-stack
       .table-header

@@ -1,169 +1,162 @@
-/* ---------- Overview tab ------------- */
+@import '../components/gridTable/gridTable.scss';
 
-.advantage-overview {
-  display: flex;
-  flex-direction: column;
-}
-
-.advantage-overview>div.table-header>div {
-  text-align: center
-}
-
-.advantage-overview>div.conditional-something>div,
-.advantage-overview>div[data-groupname]>div {
+@mixin underline-row() {
   border: solid $border-underline-color;
   border-width: 0px 0px 1px 0px;
   padding-top: 2px;
   padding-bottom: 2px;
 }
 
-.advantage-overview>.conditional-something> :first-child[value="-1"]~* {
-  color: red;
-}
-
-/* If the name wraps, make the lines close. */
-.advantage-overview>div>div,
-.advantage-overview span {
-  line-height: 1;
-  width: 120px;
-  text-align: left
-}
-
-/* Keep line height low for the containers of the names,
-   or they will make single lines too tall. */
-.advantage-overview>div.conditional-something {
-  line-height: 1;
-}
-
-/* ------------ Weapons Overview -------------- */
-.weapons-overview {
-  .table-header {
+/* ---------- Overview tab ------------- */
+.overview-tab {
+  > .horizontal-flex {
     display: flex;
-    flex-direction: row;
-    div {
-      text-align: center;
-    }
+    gap: 16px;
   }
 
-  .weapons-overview-row-container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-  }
+  .advantage-overview {
+    $advantage-grid-template: getResponsiveGridWidths(128px);
+    @include epic-table-grid('advantage', $advantage-grid-template);
+    @include epic-table-grid('extraadvantage', $advantage-grid-template);
 
-  div[data-groupname] .equipmentname {
-    text-align: right;
-  }
-
-  .table-header, div[data-groupname] {
-    span {
-      display: inline-block;
-    }
-
-    >div {
-      border-width: 0px 0px 1px 0px;
-      border-color: $border-underline-color;
-      border-style: solid;
-      margin-bottom: 2px;
-    }
-
-    .equipmentname {
+    .advantage-row {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      @include underline-row();
+      /* If the name wraps, make the lines close. */
       line-height: 1;
-      padding-top: 2px;
-      padding-bottom: 2px;
-      margin-right: 4px;
-      flex: 0 0 100px;
-      width: 100px;
+      div, span {
+        text-align: left !important;
+      }
     }
 
-    .equipmentdamage {
-      width: 60px;
-      text-align: center
-    }
-
-    .equipmentrange {
-      width: 50px;
-      text-align: center;
-    }
-
-    .equipmentnotes {
-      margin-left: 90px;
-      margin-bottom: 2px;
-      width: 150px;
+    .extraadvantage-row {
+      @include underline-row();
+      /* If the name wraps, make the lines close. */
       line-height: 1;
-      flex: 1 1;
+      text-align: left !important;
     }
-  }
-}
 
-/* ------------ Skills Overview -------------- */
-.skills-overview {
-  .table-header {
-    display: flex;
-    flex-direction: row;
-    div {
-      text-align: center;
+    >.conditional-something> :first-child[value="-1"]~* {
+      color: red;
     }
   }
 
-  .skill-overview-row-container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    border-width: 0px 0px 1px 0px;
-    border-color: $border-underline-color;
-    border-style: solid;
+
+  /* ------------ Feat Overview -------------- */
+  .feat-overview {
+    $feat-grid-template: getResponsiveGridWidths(24px, 96px);
+    @include epic-table-grid('feat', $feat-grid-template);
+
+    >div[data-groupname] {
+      >div {
+        @include underline-row();
+      }
+      .feat-row {
+        &.featextraordinaryletter {
+          text-align: center;
+        }
+        &.featname {
+          text-align: left;
+        }
+      }
+    }
   }
 
-  .isdiscipline[value="1"]~* {
-    display: none;
+  /* ------------ Weapons Overview -------------- */
+  .weapons-overview {
+    .table-header {
+      display: flex;
+      flex-direction: row;
+      div {
+        text-align: center;
+      }
+    }
+
+    .weapons-overview-row-container {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
+
+    div[data-groupname] .equipmentname {
+      text-align: right;
+    }
+
+    .table-header, div[data-groupname] {
+      span {
+        display: inline-block;
+      }
+
+      >div {
+        border-width: 0px 0px 1px 0px;
+        border-color: $border-underline-color;
+        border-style: solid;
+        margin-bottom: 2px;
+      }
+
+      .equipmentname {
+        line-height: 1;
+        padding-top: 2px;
+        padding-bottom: 2px;
+        margin-right: 4px;
+        flex: 0 0 100px;
+        width: 100px;
+      }
+
+      .equipmentdamage {
+        width: 60px;
+        text-align: center
+      }
+
+      .equipmentrange {
+        width: 50px;
+        text-align: center;
+      }
+
+      .equipmentnotes {
+        margin-left: 90px;
+        margin-bottom: 2px;
+        width: 150px;
+        line-height: 1;
+        flex: 1 1;
+      }
+    }
   }
 
-  div[data-groupname] .skillname {
-    text-align: right;
-    margin-right: 4px;
-  }
-
-  div[data-groupname] .skillability {
-    margin-left: -4px;
-    margin-right: -4px;
-  }
-
-
-  .table-header, div[data-groupname] {
-    span {
-      display: inline-block;
+  /* ------------ Skills Overview -------------- */
+  .skills-overview {
+    .isdiscipline[value="1"]~* {
+      // Hide all siblings to `isdiscipline` class names.
+      display: none;
     }
 
-    >div {
-      margin-bottom: 2px;
+    $skills-table-grid-template: getResponsiveGridWidths(96px, 32px, 32px, 24px);
+    @include epic-table-grid('skills-table', $skills-table-grid-template);
+    .epic-table-header-grid {
+      .skillability {
+        font-weight: normal !important;
+      }
     }
-
-    .skillname {
-      line-height: 1;
-      padding-top: 2px;
-      padding-bottom: 2px;
-      flex: 0 0 100px;
-      width: 100px;
-    }
-
-    .skillability {
-      font-weight: normal;
-      border-color: transparent;
-      width: 40px;
-      text-align: center;
-    }
-
-    .skillbase.skillbase {
-      width: 40px;
-    }
-
-    .skill-roll.skill-roll {
-      padding: 0px 2px;
-      width: 24px;
-      box-sizing: border-box;
-      margin-left: 3px;
-      margin-right: 3px;
+    >div[data-groupname] {
+      .skill-overview-row-container {
+        @include underline-row();
+        .skillname {
+          text-align: right;
+          margin-right: 4px;
+        }
+        .skillbase {
+          margin: auto 0;
+          height: 24px;
+        }
+        .skill-roll {
+          padding: 0px 2px;
+          box-sizing: border-box;
+          margin: auto 2px;
+          height: 24px;
+        }
+      }
     }
   }
 }
