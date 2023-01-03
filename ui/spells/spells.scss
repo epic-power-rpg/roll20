@@ -154,6 +154,10 @@
 
   @include epic-table-grid('arcane', $arcane-grid-template);
 
+  .arcane-iq-plus-minus-attribute {
+    white-space: nowrap;
+  }
+
   $divine-grid-template: getResponsiveGridWidths(6fr, 1fr, 1fr, 2fr, 1fr, 1fr, 2fr, 0.5fr);
   @include epic-table-grid('divine', $divine-grid-template);
 
