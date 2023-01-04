@@ -59,68 +59,8 @@
         }
         &.featname {
           text-align: left;
+          line-height: 1;
         }
-      }
-    }
-  }
-
-  /* ------------ Weapons Overview -------------- */
-  .weapons-overview {
-    .table-header {
-      display: flex;
-      flex-direction: row;
-      div {
-        text-align: center;
-      }
-    }
-
-    .weapons-overview-row-container {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-    }
-
-    div[data-groupname] .equipmentname {
-      text-align: right;
-    }
-
-    .table-header, div[data-groupname] {
-      span {
-        display: inline-block;
-      }
-
-      >div {
-        border-width: 0px 0px 1px 0px;
-        border-color: $border-underline-color;
-        border-style: solid;
-        margin-bottom: 2px;
-      }
-
-      .equipmentname {
-        line-height: 1;
-        padding-top: 2px;
-        padding-bottom: 2px;
-        margin-right: 4px;
-        flex: 0 0 100px;
-        width: 100px;
-      }
-
-      .equipmentdamage {
-        width: 60px;
-        text-align: center
-      }
-
-      .equipmentrange {
-        width: 50px;
-        text-align: center;
-      }
-
-      .equipmentnotes {
-        margin-left: 90px;
-        margin-bottom: 2px;
-        width: 150px;
-        line-height: 1;
-        flex: 1 1;
       }
     }
   }
@@ -142,19 +82,60 @@
     >div[data-groupname] {
       .skill-overview-row-container {
         @include underline-row();
+        margin: 2px 0;
         .skillname {
           text-align: right;
           margin-right: 4px;
+          line-height: 1;
         }
         .skillbase {
           margin: auto 0;
-          height: 24px;
+          height: 22px;
         }
         .skill-roll {
           padding: 0px 2px;
           box-sizing: border-box;
           margin: auto 2px;
-          height: 24px;
+          height: 20px;
+        }
+      }
+    }
+  }
+
+  /* ------------ Weapons Overview -------------- */
+  .weapons-overview {
+    width: 50%;
+    $weapons-table-grid-template: getResponsiveGridWidths(128px, 48px, 60px, 32px);
+    @include epic-table-grid('weapons-table', $weapons-table-grid-template);
+    $weapons-equipmentnotes-table-grid-template: getResponsiveGridWidths(1fr);
+    @include epic-table-grid('weapons-equipmentnotes-table', $weapons-equipmentnotes-table-grid-template);
+    input.attr_weaponnotes:not([value])~.weapons-overview-row-notes-container {
+      // Hide the notes container
+      display: none;
+    }
+
+    >div[data-groupname] {
+      .weapons-table-row {
+        @include underline-row();
+        margin: 2px 0;
+        .equipmentname {
+          text-align: right;
+          margin-right: 4px;
+          line-height: 1;
+        }
+        .equipmentcount {
+          margin: auto 0;
+          height: 22px;
+        }
+        .equipmentdamage {
+          line-height: 1;
+        }
+        .equipmentnotes {
+          line-height: 1;
+          text-align: left;
+          margin-left: 40px;
+          margin-top: 4px;
+          font-style: italic;
         }
       }
     }

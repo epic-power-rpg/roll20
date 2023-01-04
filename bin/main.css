@@ -648,8 +648,8 @@ radio > span.checked {
 /* ---------- Overview tab ------------- */
 .overview-tab {
   /* ------------ Feat Overview -------------- */
-  /* ------------ Weapons Overview -------------- */
   /* ------------ Skills Overview -------------- */
+  /* ------------ Weapons Overview -------------- */
 }
 .overview-tab > .horizontal-flex {
   display: flex;
@@ -860,53 +860,7 @@ radio > span.checked {
 }
 .overview-tab .feat-overview > div[data-groupname] .feat-row.featname {
   text-align: left;
-}
-.overview-tab .weapons-overview .table-header {
-  display: flex;
-  flex-direction: row;
-}
-.overview-tab .weapons-overview .table-header div {
-  text-align: center;
-}
-.overview-tab .weapons-overview .weapons-overview-row-container {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-.overview-tab .weapons-overview div[data-groupname] .equipmentname {
-  text-align: right;
-}
-.overview-tab .weapons-overview .table-header span, .overview-tab .weapons-overview div[data-groupname] span {
-  display: inline-block;
-}
-.overview-tab .weapons-overview .table-header > div, .overview-tab .weapons-overview div[data-groupname] > div {
-  border-width: 0px 0px 1px 0px;
-  border-color: #b56632;
-  border-style: solid;
-  margin-bottom: 2px;
-}
-.overview-tab .weapons-overview .table-header .equipmentname, .overview-tab .weapons-overview div[data-groupname] .equipmentname {
   line-height: 1;
-  padding-top: 2px;
-  padding-bottom: 2px;
-  margin-right: 4px;
-  flex: 0 0 100px;
-  width: 100px;
-}
-.overview-tab .weapons-overview .table-header .equipmentdamage, .overview-tab .weapons-overview div[data-groupname] .equipmentdamage {
-  width: 60px;
-  text-align: center;
-}
-.overview-tab .weapons-overview .table-header .equipmentrange, .overview-tab .weapons-overview div[data-groupname] .equipmentrange {
-  width: 50px;
-  text-align: center;
-}
-.overview-tab .weapons-overview .table-header .equipmentnotes, .overview-tab .weapons-overview div[data-groupname] .equipmentnotes {
-  margin-left: 90px;
-  margin-bottom: 2px;
-  width: 150px;
-  line-height: 1;
-  flex: 1 1;
 }
 .overview-tab .skills-overview .isdiscipline[value="1"] ~ * {
   display: none;
@@ -975,20 +929,166 @@ radio > span.checked {
   border-width: 0px 0px 1px 0px;
   padding-top: 2px;
   padding-bottom: 2px;
+  margin: 2px 0;
 }
 .overview-tab .skills-overview > div[data-groupname] .skill-overview-row-container .skillname {
   text-align: right;
   margin-right: 4px;
+  line-height: 1;
 }
 .overview-tab .skills-overview > div[data-groupname] .skill-overview-row-container .skillbase {
   margin: auto 0;
-  height: 24px;
+  height: 22px;
 }
 .overview-tab .skills-overview > div[data-groupname] .skill-overview-row-container .skill-roll {
   padding: 0px 2px;
   box-sizing: border-box;
   margin: auto 2px;
-  height: 24px;
+  height: 20px;
+}
+.overview-tab .weapons-overview {
+  width: 50%;
+}
+.overview-tab .weapons-overview .epic-table-header-grid.weapons-table {
+  display: grid;
+  grid-template-columns: minmax(0, 128px) minmax(0, 48px) minmax(0, 60px) minmax(0, 32px);
+  column-gap: 2px;
+  background: #b56632;
+  color: #fff;
+  padding: 2px;
+}
+.overview-tab .weapons-overview .epic-table-header-grid.weapons-table > div {
+  text-align: center;
+  margin: auto;
+  font-weight: bold;
+}
+.overview-tab .weapons-overview div[data-groupname=repeating_weapons-table] > div,
+.overview-tab .weapons-overview div[data-epic-table-name=weapons-table] {
+  display: grid;
+  grid-template-columns: minmax(0, 128px) minmax(0, 48px) minmax(0, 60px) minmax(0, 32px);
+  row-gap: 0;
+  column-gap: 2px;
+  background: transparent;
+}
+.overview-tab .weapons-overview div[data-groupname=repeating_weapons-table] > div input, .overview-tab .weapons-overview div[data-groupname=repeating_weapons-table] > div input[type=number], .overview-tab .weapons-overview div[data-groupname=repeating_weapons-table] > div textarea, .overview-tab .weapons-overview div[data-groupname=repeating_weapons-table] > div select,
+.overview-tab .weapons-overview div[data-epic-table-name=weapons-table] input,
+.overview-tab .weapons-overview div[data-epic-table-name=weapons-table] input[type=number],
+.overview-tab .weapons-overview div[data-epic-table-name=weapons-table] textarea,
+.overview-tab .weapons-overview div[data-epic-table-name=weapons-table] select {
+  width: 100% !important;
+  margin-left: unset;
+  height: auto;
+  background-color: #faf2ec;
+}
+.overview-tab .weapons-overview div[data-groupname=repeating_weapons-table] > div input[type=text],
+.overview-tab .weapons-overview div[data-epic-table-name=weapons-table] input[type=text] {
+  text-align: left;
+}
+.overview-tab .weapons-overview div[data-groupname=repeating_weapons-table] > div input, .overview-tab .weapons-overview div[data-groupname=repeating_weapons-table] > div select,
+.overview-tab .weapons-overview div[data-epic-table-name=weapons-table] input,
+.overview-tab .weapons-overview div[data-epic-table-name=weapons-table] select {
+  white-space: nowrap;
+}
+.overview-tab .weapons-overview div[data-groupname=repeating_weapons-table] > div span,
+.overview-tab .weapons-overview div[data-epic-table-name=weapons-table] span {
+  text-align: center;
+  margin: auto 0;
+}
+.overview-tab .weapons-overview div[data-groupname=repeating_weapons-table] > div button, .overview-tab .weapons-overview div[data-groupname=repeating_weapons-table] > div button[type=roll],
+.overview-tab .weapons-overview div[data-epic-table-name=weapons-table] button,
+.overview-tab .weapons-overview div[data-epic-table-name=weapons-table] button[type=roll] {
+  margin: 0;
+}
+.overview-tab .weapons-overview div[data-groupname=repeating_weapons-table] > div .epic-table-row.conditional-one,
+.overview-tab .weapons-overview div[data-epic-table-name=weapons-table] .epic-table-row.conditional-one {
+  display: grid;
+  grid-column-start: 1;
+  grid-column-end: 5;
+}
+.overview-tab .weapons-overview .epic-table-header-grid.weapons-equipmentnotes-table {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  column-gap: 2px;
+  background: #b56632;
+  color: #fff;
+  padding: 2px;
+}
+.overview-tab .weapons-overview .epic-table-header-grid.weapons-equipmentnotes-table > div {
+  text-align: center;
+  margin: auto;
+  font-weight: bold;
+}
+.overview-tab .weapons-overview div[data-groupname=repeating_weapons-equipmentnotes-table] > div,
+.overview-tab .weapons-overview div[data-epic-table-name=weapons-equipmentnotes-table] {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  row-gap: 0;
+  column-gap: 2px;
+  background: transparent;
+}
+.overview-tab .weapons-overview div[data-groupname=repeating_weapons-equipmentnotes-table] > div input, .overview-tab .weapons-overview div[data-groupname=repeating_weapons-equipmentnotes-table] > div input[type=number], .overview-tab .weapons-overview div[data-groupname=repeating_weapons-equipmentnotes-table] > div textarea, .overview-tab .weapons-overview div[data-groupname=repeating_weapons-equipmentnotes-table] > div select,
+.overview-tab .weapons-overview div[data-epic-table-name=weapons-equipmentnotes-table] input,
+.overview-tab .weapons-overview div[data-epic-table-name=weapons-equipmentnotes-table] input[type=number],
+.overview-tab .weapons-overview div[data-epic-table-name=weapons-equipmentnotes-table] textarea,
+.overview-tab .weapons-overview div[data-epic-table-name=weapons-equipmentnotes-table] select {
+  width: 100% !important;
+  margin-left: unset;
+  height: auto;
+  background-color: #faf2ec;
+}
+.overview-tab .weapons-overview div[data-groupname=repeating_weapons-equipmentnotes-table] > div input[type=text],
+.overview-tab .weapons-overview div[data-epic-table-name=weapons-equipmentnotes-table] input[type=text] {
+  text-align: left;
+}
+.overview-tab .weapons-overview div[data-groupname=repeating_weapons-equipmentnotes-table] > div input, .overview-tab .weapons-overview div[data-groupname=repeating_weapons-equipmentnotes-table] > div select,
+.overview-tab .weapons-overview div[data-epic-table-name=weapons-equipmentnotes-table] input,
+.overview-tab .weapons-overview div[data-epic-table-name=weapons-equipmentnotes-table] select {
+  white-space: nowrap;
+}
+.overview-tab .weapons-overview div[data-groupname=repeating_weapons-equipmentnotes-table] > div span,
+.overview-tab .weapons-overview div[data-epic-table-name=weapons-equipmentnotes-table] span {
+  text-align: center;
+  margin: auto 0;
+}
+.overview-tab .weapons-overview div[data-groupname=repeating_weapons-equipmentnotes-table] > div button, .overview-tab .weapons-overview div[data-groupname=repeating_weapons-equipmentnotes-table] > div button[type=roll],
+.overview-tab .weapons-overview div[data-epic-table-name=weapons-equipmentnotes-table] button,
+.overview-tab .weapons-overview div[data-epic-table-name=weapons-equipmentnotes-table] button[type=roll] {
+  margin: 0;
+}
+.overview-tab .weapons-overview div[data-groupname=repeating_weapons-equipmentnotes-table] > div .epic-table-row.conditional-one,
+.overview-tab .weapons-overview div[data-epic-table-name=weapons-equipmentnotes-table] .epic-table-row.conditional-one {
+  display: grid;
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
+.overview-tab .weapons-overview input.attr_weaponnotes:not([value]) ~ .weapons-overview-row-notes-container {
+  display: none;
+}
+.overview-tab .weapons-overview > div[data-groupname] .weapons-table-row {
+  border: solid #b56632;
+  border-width: 0px 0px 1px 0px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  margin: 2px 0;
+}
+.overview-tab .weapons-overview > div[data-groupname] .weapons-table-row .equipmentname {
+  text-align: right;
+  margin-right: 4px;
+  line-height: 1;
+}
+.overview-tab .weapons-overview > div[data-groupname] .weapons-table-row .equipmentcount {
+  margin: auto 0;
+  height: 22px;
+}
+.overview-tab .weapons-overview > div[data-groupname] .weapons-table-row .equipmentdamage {
+  line-height: 1;
+}
+.overview-tab .weapons-overview > div[data-groupname] .weapons-table-row .equipmentnotes {
+  line-height: 1;
+  text-align: left;
+  margin-left: 40px;
+  margin-top: 4px;
+  font-style: italic;
 }
 
 /* --------- Basic Tab ------------ */

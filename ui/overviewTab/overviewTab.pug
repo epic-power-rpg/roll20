@@ -25,7 +25,7 @@ include ../global/advantages.pug
         span.featextraordinaryletter.feat-row(name='attr_featextraordinaryletter')
         span.featname.feat-row(name='attr_featname')
     // Skills 
-    .skills-overview.no-add-or-modify-buttons.flex-stack
+    .skills-overview.no-add-or-modify-buttons
       .skills-table.epic-table-header-grid
         .skillname Skill
         .skillability Ability
@@ -44,16 +44,20 @@ include ../global/advantages.pug
           input(name='attr_skillname' type='hidden')
           button.skill-roll(name='roll_skillroll' type='roll' value='!EPRoll @{skillability}+@{skillmodifier} Tries @{skillname}: @{skillability} + @{skillmodifier}')
     // Weapons 
-    .weapons-overview.no-add-or-modify-buttons.flex-stack
-      .table-header
+    .weapons-overview.no-add-or-modify-buttons
+      .weapons-table.epic-table-header-grid
         .equipmentname Weapon
         .equipmentcount Count
         .equipmentdamage Damage
         .equipmentrange Range
       fieldset.repeating_weapon
-        .weapons-overview-row-container
-          span.equipmentname(name='attr_weaponname')
-          input.equipmentcount(name='attr_weaponcount' type='number' value='1')
-          span.equipmentdamage(name='attr_weapondamage')
-          span.equipmentrange(name='attr_weaponrange')
-        span.equipmentnotes(name='attr_weaponnotes')
+        .weapons-table-row
+          .weapons-overview-row-container(data-epic-table-name="weapons-table")
+            span.equipmentname(name='attr_weaponname')
+            input.equipmentcount(name='attr_weaponcount' type='number' value='1')
+            span.equipmentdamage(name='attr_weapondamage')
+            span.equipmentrange(name='attr_weaponrange')
+          // This input is used by CSS to hide weaponnotes
+          input.attr_weaponnotes(name='attr_weaponnotes' type='hidden')
+          .weapons-overview-row-notes-container(data-epic-table-name="weapons-equipmentnotes-table")
+            span.equipmentnotes(name='attr_weaponnotes')
