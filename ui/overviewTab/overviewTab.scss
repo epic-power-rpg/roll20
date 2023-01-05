@@ -13,11 +13,18 @@
     display: flex;
     gap: 16px;
   }
-
+  
   .advantage-overview {
     $advantage-grid-template: getResponsiveGridWidths(128px);
     @include epic-table-grid('advantage', $advantage-grid-template);
     @include epic-table-grid('extraadvantage', $advantage-grid-template);
+
+    input.advantageField:not([value])~.advantage-row,
+    input.advantageField[value=""]~.advantage-row,
+    input.advantageField[value=" "]~.advantage-row {
+      // Hide the .advantage-row
+      display: none;
+    }
 
     .advantage-row {
       display: flex;

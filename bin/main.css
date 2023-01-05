@@ -767,6 +767,11 @@ radio > span.checked {
   grid-column-start: 1;
   grid-column-end: 2;
 }
+.overview-tab .advantage-overview input.advantageField:not([value]) ~ .advantage-row,
+.overview-tab .advantage-overview input.advantageField[value=""] ~ .advantage-row,
+.overview-tab .advantage-overview input.advantageField[value=" "] ~ .advantage-row {
+  display: none;
+}
 .overview-tab .advantage-overview .advantage-row {
   display: flex;
   justify-content: space-between;

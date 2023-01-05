@@ -10,7 +10,8 @@ include ../global/advantages.pug
       each advantage in advantages
         .advantage-table(data-epic-table-name="advantage")
           .conditional-something
-            input(name=advantage.fieldName type='hidden')
+            // This input is used by CSS to hide advantage-row
+            input.advantageField(name=advantage.fieldName type='hidden')
             .advantage-row
               div.advantage-name=advantage.description
               span.advantage-value(name=advantage.fieldName)
