@@ -1807,7 +1807,7 @@ radio > span.checked {
 }
 .spells .epic-table-header-grid.arcane {
   display: grid;
-  grid-template-columns: minmax(0, 40px) minmax(0, 4fr) minmax(0, 0.75fr) minmax(0, 1fr) minmax(0, 0.5fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.5fr) minmax(0, 0.5fr) minmax(0, 0.5fr) minmax(0, 0.5fr) minmax(0, 1fr) minmax(0, 0.5fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 40px) minmax(0, 4fr) minmax(0, 24px) minmax(0, 1fr) minmax(0, 0.5fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.5fr) minmax(0, 0.5fr) minmax(0, 24px) minmax(0, 24px) minmax(0, 1fr) minmax(0, auto) minmax(0, 1fr);
   column-gap: 2px;
   background: #b56632;
   color: #fff;
@@ -1821,7 +1821,7 @@ radio > span.checked {
 .spells div[data-groupname=repeating_arcane] > div,
 .spells div[data-epic-table-name=arcane] {
   display: grid;
-  grid-template-columns: minmax(0, 40px) minmax(0, 4fr) minmax(0, 0.75fr) minmax(0, 1fr) minmax(0, 0.5fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.5fr) minmax(0, 0.5fr) minmax(0, 0.5fr) minmax(0, 0.5fr) minmax(0, 1fr) minmax(0, 0.5fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 40px) minmax(0, 4fr) minmax(0, 24px) minmax(0, 1fr) minmax(0, 0.5fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.5fr) minmax(0, 0.5fr) minmax(0, 24px) minmax(0, 24px) minmax(0, 1fr) minmax(0, auto) minmax(0, 1fr);
   row-gap: 0;
   column-gap: 2px;
   background: transparent;

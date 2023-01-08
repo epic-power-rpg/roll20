@@ -135,7 +135,7 @@
   $arcane-grid-template: getResponsiveGridWidths(
     40px, // Discipline?
     4fr, // Name
-    0.75fr, // Ability
+    24px, // Ability
     1fr, // Mod
     0.5fr, // (Dice)
     1fr, // EP
@@ -145,10 +145,10 @@
     1fr, // Target
     1.5fr, // Damage/ Duration
     0.5fr, // N(otes)
-    0.5fr, // TP
-    0.5fr, // CP
+    24px, // TP
+    24px, // CP
     1fr, // Exper.
-    0.5fr, // IQ ±
+    auto, // IQ ±
     1fr, // Base
   );
 
