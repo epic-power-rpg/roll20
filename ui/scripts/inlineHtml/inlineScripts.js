@@ -483,6 +483,29 @@ on('sheet:opened', () => setAttrs({ chosenPopover: 'false' }));
     });
   });
 
+function closeAllSpellNotes() {
+  getSectionIDs('repeating_arcane', function (ids) {
+    console.log('*** Close all spell notes ***');
+    ids.forEach((id) => {
+      setAttrs({ [`repeating_arcane_${id}_visiblepopover`]: 'false' });
+    });
+  });
+}
+
+on('sheet:opened', closeAllSpellNotes);
+
+on('clicked:repeating_arcane:togglepopoverspellnote', function () {
+  closeAllSpellNotes();
+  getAttrs(['repeating_arcane_visiblepopover'], (attributes) => {
+    const { repeating_arcane_visiblepopover: visiblePoppover } = attributes;
+    setAttrs({ repeating_arcane_visiblepopover: visiblePoppover === 'false' ? '1' : 'false' });
+  });
+});
+
+on('clicked:closepopoverspellnotes', function () {
+  closeAllSpellNotes();
+});
+
 // ----- Discipline points -----
 const updateTP = function () {
   const CP = 'CP';

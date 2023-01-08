@@ -4,6 +4,9 @@ button.popoverButton {
   border: 1px solid gray;
   border-radius: 100%;
   margin: 0;
+  &.smallerPopoverButton {
+    padding: 2px 6px !important;
+  }
 }
 
 div.popoverContainer {
@@ -18,11 +21,22 @@ div.popoverContainer {
     border: 1px solid black;
     border-radius: 6px;
     z-index: 100;
+    .closePopoverButton {
+      position: absolute;
+      right: 4px;
+      top: 4px;
+      border: unset;
+      background: unset;
+    }
   }
 }
 
 @mixin popover-control($popoverName) {
-  .sectioncontrol[value="#{$popoverName}"]~div.popoverContainer.#{$popoverName} {
+  .sectioncontrol[value="#{$popoverName}"]~div.popoverContainer.#{$popoverName},
+  input.popoverController[value="1"]~div.popoverContainer.#{$popoverName} {
     display: inline;
+    .popover {
+      display: block;
+    }
   }
 }

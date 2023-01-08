@@ -94,7 +94,22 @@
       <input name="attr_spellrange" class="spellrange-grid" type="text" />
       <input name="attr_spelltarget" class="spelltarget-grid" type="text" />
       <input name="attr_spellduration" class="spellduration-grid" type="text" />
-      <input name="attr_spellhasnote" class="spellhasnote-grid" type="checkbox" value="1" />
+      <div>
+        <button name="act_togglepopoverspellnote" class="popoverButton smallerPopoverButton" type="action">
+          ?
+        </button>
+        <!-- The next input puts whether we have a note into the
+                  value property, where CSS can see it -->
+        <input name="attr_visiblepopover" class="popoverController" type="hidden" value="false" />
+        <div class="spellNotePopover popoverContainer">
+          <div class="popover">
+            <!-- Buttons in a popover break stacking order, and pop out of the repeating stack. -->
+            <button name="act_closepopoverspellnotes" class="closePopoverButton" type="action">X</button>
+            <label>Spell Notes</label>
+            <textarea name="attr_spellnote" class="spell-note" rows="6" />
+          </div>
+        </div>
+      </div>
       <span name="attr_skillTP" class="skillTP-grid center"></span>
       <span name="attr_skillCP" class="skillCP-grid center"></span>
       <select name="attr_skillexpertise" class="skillexpertise-grid">
@@ -115,12 +130,6 @@
       <input name="attr_skillattribute" value="IQ" type="hidden" />
       <span class="skillattribute-grid arcane-iq-plus-minus-attribute">IQ ±</span>
       <input name="attr_skillbase" class="skillbase-grid" type="number" value="" />
-      <div class="epic-table-row conditional-one">
-        <!-- The next input puts whether we have a note into the
-          value property, where CSS can see it -->
-        <input name="attr_spellhasnote" class="spellhasnote" type="hidden">
-        <textarea name="attr_spellnote" class="spell-note" rows="2" />
-      </div>
     </fieldset>
   </div>
 

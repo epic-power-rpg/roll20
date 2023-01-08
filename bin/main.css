@@ -6,6 +6,9 @@ button.popoverButton {
   border-radius: 100%;
   margin: 0;
 }
+button.popoverButton.smallerPopoverButton {
+  padding: 2px 6px !important;
+}
 
 div.popoverContainer {
   display: none;
@@ -20,6 +23,13 @@ div.popoverContainer > .popover {
   border: 1px solid black;
   border-radius: 6px;
   z-index: 100;
+}
+div.popoverContainer > .popover .closePopoverButton {
+  position: absolute;
+  right: 4px;
+  top: 4px;
+  border: unset;
+  background: unset;
 }
 
 /* Styles that apply everywhere */
@@ -510,8 +520,13 @@ radio > span.checked {
   background: linear-gradient(to top, rgba(194, 148, 91, 0.5019607843) 0%, transparent 100%);
 }
 
-.sectioncontrol[value=weightPenalties] ~ div.popoverContainer.weightPenalties {
+.sectioncontrol[value=weightPenalties] ~ div.popoverContainer.weightPenalties,
+input.popoverController[value="1"] ~ div.popoverContainer.weightPenalties {
   display: inline;
+}
+.sectioncontrol[value=weightPenalties] ~ div.popoverContainer.weightPenalties .popover,
+input.popoverController[value="1"] ~ div.popoverContainer.weightPenalties .popover {
+  display: block;
 }
 
 /* ------ generic conditional appearance ------ */
@@ -1918,6 +1933,22 @@ radio > span.checked {
 }
 .spells .spell-note {
   margin-bottom: 1px;
+}
+.spells .sectioncontrol[value=spellNotePopover] ~ div.popoverContainer.spellNotePopover,
+.spells input.popoverController[value="1"] ~ div.popoverContainer.spellNotePopover {
+  display: inline;
+}
+.spells .sectioncontrol[value=spellNotePopover] ~ div.popoverContainer.spellNotePopover .popover,
+.spells input.popoverController[value="1"] ~ div.popoverContainer.spellNotePopover .popover {
+  display: block;
+}
+.spells div.spellNotePopover .popover {
+  width: 500px;
+  left: -40vw;
+  top: -40px;
+}
+.spells div.spellNotePopover .popover label {
+  text-align: left;
 }
 
 /* ------------ Notes -------------- */
