@@ -24,6 +24,7 @@ div.popoverContainer {
     position: absolute;
     top: 24px;
     left: -40px;
+    max-width: unset;
     background: $primary-background-color;
     padding: 16px;
     border: 1px solid black;
@@ -36,6 +37,12 @@ div.popoverContainer {
       border: unset;
       background: unset;
     }
+  }
+  > .fixedPlacementPopover {
+    position: fixed;
+    top: 50vh;
+    left: 20vw;
+    right: 20vw;
   }
 }
 

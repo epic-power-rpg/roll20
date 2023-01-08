@@ -98,9 +98,6 @@
   @include popover-control('spellNotePopover');
   div.spellNotePopover {
     .popover {
-      width: 500px;
-      left: -40vw;
-      top: -40px;
       label {
         text-align: left;
       }
