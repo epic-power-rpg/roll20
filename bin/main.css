@@ -67,7 +67,7 @@ div.popoverContainer > .popover .closePopoverButton {
 }
 div.popoverContainer > .fixedPlacementPopover {
   position: fixed;
-  top: 50vh;
+  top: 30vh;
   left: 20vw;
   right: 20vw;
 }
@@ -1984,6 +1984,7 @@ input.popoverController[value="1"] ~ div.popoverContainer.weightPenalties .popov
 }
 .spells div.spellNotePopover .popover label {
   text-align: left;
+  font-weight: bold;
 }
 
 /* ------------ Notes -------------- */
