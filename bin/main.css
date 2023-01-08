@@ -1438,6 +1438,8 @@ radio > span.checked {
 .epic-skills-tab .isdiscipline-grid[value="1"] ~ .skillattribute-grid,
 .epic-skills-tab .isdiscipline-grid[value="1"] ~ .skillbase-grid {
   opacity: 0;
+  cursor: default;
+  pointer-events: none;
 }
 .epic-skills-tab .skillTP-grid, .epic-skills-tab .TP-grid {
   color: #267200;

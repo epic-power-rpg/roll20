@@ -15,7 +15,7 @@
   );
   @include epic-table-grid('skill', $skill-grid-template);
 
-    .isdiscipline-grid[value="1"]~.skillname-grid {
+  .isdiscipline-grid[value="1"]~.skillname-grid {
     font-weight: bold;
   }
 
@@ -23,6 +23,8 @@
   .isdiscipline-grid[value="1"]~.skillattribute-grid,
   .isdiscipline-grid[value="1"]~.skillbase-grid {
     opacity: 0;
+    cursor: default;
+    pointer-events: none;
   }
 
   @include grid-table-tp-cp-columns();
