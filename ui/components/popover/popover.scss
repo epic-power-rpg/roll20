@@ -17,9 +17,36 @@ button.popoverButton {
   }
 }
 
+$popover-zIndex: 100;
+
 div.popoverContainer {
   display: none;
   position: relative;
+  .popoverBackdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #00000040;
+    z-index: $popover-zIndex - 1;
+    cursor: pointer;
+    button {
+      /**
+       * Unfortunately, the Roll20/jquery setup fails if the button is styled as the popoverBackdrop.
+       * This needs to be a button with a parent, otherwise, we see errors like:
+       * ```
+       * vtt.bundle.js:formatted:556749 Uncaught TypeError: Cannot read properties of null (reading 'dataset')
+       *   at HTMLButtonElement.<anonymous> (vtt.bundle.js:formatted:556749:45)
+       *   at HTMLBodyElement.dispatch (jquery-1.9.1.js:3074:9)
+       *   at elemData.handle (jquery-1.9.1.js:2750:28)
+       * ```
+       */
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+    }
+  }
   > .popover {
     position: absolute;
     top: 24px;
@@ -29,7 +56,7 @@ div.popoverContainer {
     padding: 16px;
     border: 1px solid black;
     border-radius: 6px;
-    z-index: 100;
+    z-index: $popover-zIndex;
     .closePopoverButton {
       position: absolute;
       right: 4px;
