@@ -138,18 +138,18 @@
     32px, // Ability
     1fr, // Mod
     0.5fr, // (Dice)
-    1fr, // EP
+    40px, // EP
     1fr, // Cast Time
-    2fr, // Touch/ Ray/ Missile
-    1fr, // Range
-    1fr, // Target
+    88px, // Touch/ Ray/ Missile
+    40px, // Range
+    40px, // Target
     1.5fr, // Damage/ Duration
-    0.5fr, // N(otes)
+    24px, // N(otes)
     24px, // TP
     24px, // CP
-    1fr, // Exper.
+    40px, // Exper.
     auto, // IQ ±
-    1fr, // Base
+    40px, // Base
   );
 
   @include epic-table-grid('arcane', $arcane-grid-template);
