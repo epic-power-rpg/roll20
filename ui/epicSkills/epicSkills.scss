@@ -4,26 +4,30 @@
 /* -------- Skills --------- */
 .epic-skills-tab {
   $skill-grid-template: getResponsiveGridWidths(
-    1fr, // Discipline?
+    40px, // Discipline?
     5fr, // Name
-    1fr, // Ability
-    0.5fr, // TP
-    0.5fr, // CP
+    36px, // Ability
+    24px, // TP
+    24px, // CP
     1fr, // Exper
     2fr, // Attribute
     1fr // Base
   );
   @include epic-table-grid('skill', $skill-grid-template);
 
-    .isdiscipline-grid[value="1"]~.skillname-grid {
+  .isdiscipline-grid[value="1"] {
+    ~.skillability-grid, ~.skillattribute-grid, ~.skillbase-grid {
+      opacity: 0;
+      cursor: default;
+      pointer-events: none;
+    }
+  }
+  .isdiscipline-grid[value="1"]~.skillname-grid {
     font-weight: bold;
+    text-align: center;
   }
-
-  .isdiscipline-grid[value="1"]~.skillability-grid,
-  .isdiscipline-grid[value="1"]~.skillattribute-grid,
-  .isdiscipline-grid[value="1"]~.skillbase-grid {
-    opacity: 0;
+  .isdiscipline-grid:not([value="1"])~.skillname-grid {
+    text-align: right;
   }
-
   @include grid-table-tp-cp-columns();
 }
