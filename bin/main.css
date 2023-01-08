@@ -1377,7 +1377,7 @@ radio > span.checked {
 /* -------- Skills --------- */
 .epic-skills-tab .epic-table-header-grid.skill {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 5fr) minmax(0, 1fr) minmax(0, 0.5fr) minmax(0, 0.5fr) minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 40px) minmax(0, 5fr) minmax(0, 1fr) minmax(0, 0.5fr) minmax(0, 0.5fr) minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr);
   column-gap: 2px;
   background: #b56632;
   color: #fff;
@@ -1391,7 +1391,7 @@ radio > span.checked {
 .epic-skills-tab div[data-groupname=repeating_skill] > div,
 .epic-skills-tab div[data-epic-table-name=skill] {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 5fr) minmax(0, 1fr) minmax(0, 0.5fr) minmax(0, 0.5fr) minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 40px) minmax(0, 5fr) minmax(0, 1fr) minmax(0, 0.5fr) minmax(0, 0.5fr) minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr);
   row-gap: 0;
   column-gap: 2px;
   background: transparent;
@@ -1431,15 +1431,19 @@ radio > span.checked {
   grid-column-start: 1;
   grid-column-end: 9;
 }
-.epic-skills-tab .isdiscipline-grid[value="1"] ~ .skillname-grid {
-  font-weight: bold;
-}
 .epic-skills-tab .isdiscipline-grid[value="1"] ~ .skillability-grid,
 .epic-skills-tab .isdiscipline-grid[value="1"] ~ .skillattribute-grid,
 .epic-skills-tab .isdiscipline-grid[value="1"] ~ .skillbase-grid {
   opacity: 0;
   cursor: default;
   pointer-events: none;
+}
+.epic-skills-tab .isdiscipline-grid[value="1"] ~ .skillname-grid {
+  font-weight: bold;
+  text-align: center;
+}
+.epic-skills-tab .isdiscipline-grid:not([value="1"]) ~ .skillname-grid {
+  text-align: right;
 }
 .epic-skills-tab .skillTP-grid, .epic-skills-tab .TP-grid {
   color: #267200;
@@ -1803,7 +1807,7 @@ radio > span.checked {
 }
 .spells .epic-table-header-grid.arcane {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 4fr) minmax(0, 0.75fr) minmax(0, 1fr) minmax(0, 0.5fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.5fr) minmax(0, 0.5fr) minmax(0, 0.5fr) minmax(0, 0.5fr) minmax(0, 1fr) minmax(0, 0.5fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 40px) minmax(0, 4fr) minmax(0, 0.75fr) minmax(0, 1fr) minmax(0, 0.5fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.5fr) minmax(0, 0.5fr) minmax(0, 0.5fr) minmax(0, 0.5fr) minmax(0, 1fr) minmax(0, 0.5fr) minmax(0, 1fr);
   column-gap: 2px;
   background: #b56632;
   color: #fff;
@@ -1817,7 +1821,7 @@ radio > span.checked {
 .spells div[data-groupname=repeating_arcane] > div,
 .spells div[data-epic-table-name=arcane] {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 4fr) minmax(0, 0.75fr) minmax(0, 1fr) minmax(0, 0.5fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.5fr) minmax(0, 0.5fr) minmax(0, 0.5fr) minmax(0, 0.5fr) minmax(0, 1fr) minmax(0, 0.5fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 40px) minmax(0, 4fr) minmax(0, 0.75fr) minmax(0, 1fr) minmax(0, 0.5fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.5fr) minmax(0, 0.5fr) minmax(0, 0.5fr) minmax(0, 0.5fr) minmax(0, 1fr) minmax(0, 0.5fr) minmax(0, 1fr);
   row-gap: 0;
   column-gap: 2px;
   background: transparent;
@@ -1856,6 +1860,13 @@ radio > span.checked {
   display: grid;
   grid-column-start: 1;
   grid-column-end: 18;
+}
+.spells .isdiscipline-grid[value="1"] ~ .skillname-grid {
+  font-weight: bold;
+  text-align: center;
+}
+.spells .isdiscipline-grid:not([value="1"]) ~ .skillname-grid {
+  text-align: right;
 }
 .spells .arcane-iq-plus-minus-attribute {
   white-space: nowrap;
