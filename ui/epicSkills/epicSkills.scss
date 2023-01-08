@@ -15,12 +15,12 @@
   );
   @include epic-table-grid('skill', $skill-grid-template);
 
-  .isdiscipline-grid[value="1"]~.skillability-grid,
-  .isdiscipline-grid[value="1"]~.skillattribute-grid,
-  .isdiscipline-grid[value="1"]~.skillbase-grid {
-    opacity: 0;
-    cursor: default;
-    pointer-events: none;
+  .isdiscipline-grid[value="1"] {
+    ~.skillability-grid, ~.skillattribute-grid, ~.skillbase-grid {
+      opacity: 0;
+      cursor: default;
+      pointer-events: none;
+    }
   }
   .isdiscipline-grid[value="1"]~.skillname-grid {
     font-weight: bold;

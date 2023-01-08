@@ -135,7 +135,7 @@
   $arcane-grid-template: getResponsiveGridWidths(
     40px, // Discipline?
     4fr, // Name
-    24px, // Ability
+    32px, // Ability
     1fr, // Mod
     0.5fr, // (Dice)
     1fr, // EP
@@ -153,6 +153,13 @@
   );
 
   @include epic-table-grid('arcane', $arcane-grid-template);
+  .isdiscipline-grid[value="1"] {
+    ~:not(.skillname-grid, .skillTP-grid, .skillexpertise-grid) {
+      opacity: 0;
+      cursor: default;
+      pointer-events: none;
+    }
+  }
 
   .isdiscipline-grid[value="1"]~.skillname-grid {
     font-weight: bold;
