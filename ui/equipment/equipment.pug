@@ -1,0 +1,81 @@
+// Equipment section 
+.equipment.section.equipment-tab
+  .horizontal-flex.flex-gap
+    div
+      .attribute-name.wideish.larger.inline.bold.right.middle Cash
+      input.wide.center.bold.larger.value(name='attr_cash' type='number')
+    div
+      .attribute-name.larger.inline.bold.right.middle Equip Value
+      span.narrowish.center.bold.larger.value.middle(name='attr_equipment_total_value')
+    div
+      .attribute-name.larger.inline.bold.right.middle Equip Weight
+      span.narrowish.center.bold.larger.value.middle(name='attr_equipment_total_weight')
+  = '\n'
+  .spacer
+  .armor-table
+    .armor-shield-weapons-tables
+      .epic-table-header-grid.armor
+        .equipmentname-grid Armor
+        .armordefense-grid Def.
+        .equipmentweight-grid Weight
+        .equipmentvalue-grid Value
+        .equipmentnotes-grid Notes
+      div(data-epic-table-name='armor')
+        input.equipmentname-grid(name='attr_armor_name' type='text')
+        input.armordefense-grid(name='attr_armor_defense' type='number')
+        input.equipmentweight-grid(name='attr_armor_weight' type='text')
+        input.equipmentvalue-grid(name='attr_armor_value' type='text')
+        input.equipmentnotes-grid(name='attr_armor_notes' type='text')
+    = '\n'
+    .spacer
+    .shield-table
+      .epic-table-header-grid.shield
+        .equipmentname-grid Shield
+        .armordefense-grid Def.
+        .armordefense-grid Str.
+        .equipmentweight-grid Weight
+        .equipmentvalue-grid Value
+        .equipmentnotes-grid Notes
+      div(data-epic-table-name='shield')
+        input.equipmentname-grid(name='attr_shield_name' type='text')
+        input.armordefense-grid(name='attr_shield_defense' type='number')
+        input.armordefense-grid(name='attr_shield_stopping_strength' type='number')
+        input.equipmentweight-grid(name='attr_shield_weight' type='text')
+        input.equipmentvalue-grid(name='attr_shield_value' type='text')
+        input.equipmentnotes-grid(name='attr_shield_notes' type='text')
+    .spacer
+    .weapons-table
+      input(name='attr_weapon_total_weight' type='hidden' value='0')
+      input(name='attr_weapon_total_value' type='hidden' value='0')
+      .epic-table-header-grid.weapon
+        .equipmentname-grid Weapon
+        .equipmentcount-grid Count
+        .equipmentweight-grid Weight Each
+        .equipmentvalue-grid Value Each
+        .equipmentdamage-grid Damage
+        .equipmentrange-grid Range
+        .equipmentnotes-grid Notes
+      fieldset.repeating_weapon
+        input.equipmentname-grid(name='attr_weaponname' type='text')
+        input.equipmentcount-grid(name='attr_weaponcount' type='number' value='1')
+        input.equipmentweight-grid(name='attr_weaponweight' type='text')
+        input.equipmentvalue-grid(name='attr_weaponvalue' type='text')
+        input.equipmentdamage-grid(name='attr_weapondamage' type='text')
+        input.equipmentrange-grid(name='attr_weaponrange' type='number')
+        input.equipmentnotes-grid(name='attr_weaponnotes' type='text')
+    .spacer
+    .items-table
+      input(name='attr_item_total_weight' type='hidden' value='0')
+      input(name='attr_item_total_value' type='hidden' value='0')
+      .epic-table-header-grid.item
+        .equipmentname-grid Item
+        .equipmentcount-grid Count
+        .equipmentweight-grid Weight Each
+        .equipmentvalue-grid Value Each
+        .equipmentnotes-grid Notes
+      fieldset.repeating_item
+        input.equipmentname-grid(name='attr_itemname' type='text')
+        input.equipmentcount-grid(name='attr_itemcount' type='number' value='1')
+        input.equipmentweight-grid(name='attr_itemweight' type='text')
+        input.equipmentvalue-grid(name='attr_itemvalue' type='text')
+        input.equipmentnotes-grid(name='attr_itemnotes' type='text')
