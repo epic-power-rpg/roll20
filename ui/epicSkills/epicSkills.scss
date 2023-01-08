@@ -6,9 +6,9 @@
   $skill-grid-template: getResponsiveGridWidths(
     40px, // Discipline?
     5fr, // Name
-    1fr, // Ability
-    0.5fr, // TP
-    0.5fr, // CP
+    36px, // Ability
+    24px, // TP
+    24px, // CP
     1fr, // Exper
     2fr, // Attribute
     1fr // Base
