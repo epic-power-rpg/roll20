@@ -889,24 +889,25 @@
     </button>
 
     &emsp; &emsp;
-    <div class="label wide larger">Spell Touch</div>
-    <input name="attr_spell_touch" type="hidden" />
-    <span name="attr_spell_touch" class="center narrowish bold larger middle">
-    </span>
-    <button type="roll" value="!EPRoll @{spell_touch} Touches with Spell: @{spell_touch}">
-    </button>
-    &emsp;
-    <div class="label wide larger">Aim Spell</div>
-    <input name="attr_aim_spell" type="hidden" />
-    <span name="attr_aim_spell" class="center narrowish bold larger middle">
-    </span>
-    <button type="roll" value="!EPRoll @{aim_spell} Aims Spell: @{aim_spell}">
-    </button>
-
+    <div class="spell-header-action-area">
+      <div class="label wide larger">Spell Touch</div>
+      <input name="attr_spell_touch" type="hidden" />
+      <span name="attr_spell_touch" class="center narrowish bold larger middle">
+      </span>
+      <button type="roll" value="!EPRoll @{spell_touch} Touches with Spell: @{spell_touch}">
+      </button>
+      &emsp;
+      <div class="label wide larger">Aim Spell</div>
+      <input name="attr_aim_spell" type="hidden" />
+      <span name="attr_aim_spell" class="center narrowish bold larger middle">
+      </span>
+      <button type="roll" value="!EPRoll @{aim_spell} Aims Spell: @{aim_spell}">
+      </button>
+    </div>
   </div>
 
   <!-- Arcane spells -->
-  <div class="arcane section flex-stack">
+  <div class="arcane section">
     <input name="attr_arcane_total_TP" type="hidden" value="0" />
     <input name="attr_arcane_total_CP" type="hidden" value="0" />
     <input name="attr_arcane_total_single_CP" type="hidden" value="0" />

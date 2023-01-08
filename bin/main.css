@@ -1715,93 +1715,9 @@ radio > span.checked {
   margin-bottom: 1px;
 }
 
-.spells div[data-groupname] span {
-  display: inline-block;
-}
-.spells input[type=text]:not(.skillname) {
-  text-align: center;
-}
-.spells .label {
-  color: black;
-}
-
-.arcane .skillattribute {
-  text-align: right;
-  width: 30px;
-  margin-bottom: 2px;
-}
-
-.spellEP.spellEP.spellEP {
-  width: 50px;
-  margin-left: 15px;
-}
-
-.spellcasttime {
-  width: 50px;
-}
-
-.spelltype {
-  width: 65px;
-}
-
-.spellrange {
-  width: 40px;
-}
-
-.spelltarget {
-  width: 60px;
-}
-
-.spellduration {
-  width: 70px;
-}
-
-.spellhasnote.spellhasnote.spellhasnote.spellhasnote {
-  width: 12px;
-  margin-left: 0px;
-  margin-right: 1px;
-  margin-bottom: 2px;
-}
-
-.isdiscipline[value="1"] ~ .skill-roll,
-.isdiscipline[value="1"] ~ .spellEP,
-.isdiscipline[value="1"] ~ .spellcasttime,
-.isdiscipline[value="1"] ~ .spelltype,
-.isdiscipline[value="1"] ~ .spellrange,
-.isdiscipline[value="1"] ~ .spelltarget,
-.isdiscipline[value="1"] ~ .spellduration,
-.isdiscipline[value="1"] ~ .spellhasnote {
-  display: none;
-}
-.isdiscipline[value="1"] ~ .spellhasnote + span.skillTP {
-  margin-left: 448px;
-}
-
-.table-header .skill-roll {
-  border-width: 0px;
-}
-
-.spell-note {
-  flex-grow: 1;
-  margin-bottom: 1px;
-}
-
-.arcane .spell-note {
-  margin-left: 40px;
-}
-
 /* Avoid space between items in the row */
-.spells .table-header {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-end;
-}
-.spells div[data-groupname] > div {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  /* and make rows overlap */
-  margin-top: -1px;
+.spells .spell-header-action-area label, .spells .spell-header-action-area .label {
+  color: black;
 }
 .spells .epic-table-header-grid.arcane {
   display: grid;
@@ -2000,11 +1916,8 @@ radio > span.checked {
 .spells .epic-table-header-grid .skillCP-grid, .spells .epic-table-header-grid .CP-grid {
   color: #000099;
 }
-
-.spell-row {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-end;
+.spells .spell-note {
+  margin-bottom: 1px;
 }
 
 /* ------------ Notes -------------- */
