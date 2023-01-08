@@ -1,11 +1,19 @@
 button.popoverButton {
   background: transparent;
   line-height: unset;
-  border: 1px solid gray;
-  border-radius: 100%;
   margin: 0;
+  padding: 0 6px !important;
+  border: none;
+  &.circledButton {
+    border: 1px solid gray;
+    border-radius: 100%;
+    background-color: #66666633;
+  }
   &.smallerPopoverButton {
-    padding: 2px 6px !important;
+    padding: 0 4px !important;
+  }
+  &.noPaddingButton {
+    padding: 0 !important;
   }
 }
 

@@ -216,7 +216,7 @@
     </div>
     <div>
       <div class="attribute-name wide larger">
-        <button name="act_popover_weightPenalties" class="popoverButton" type="action">
+        <button name="act_popover_weightPenalties" class="popoverButton circledButton" type="action">
           ?
         </button>
         <input name="attr_chosenPopover" class="sectioncontrol" type="hidden" value="false" />
@@ -949,7 +949,7 @@
       <input class="spelltarget-grid" name="attr_spelltarget" type="text" />
       <input class="spellduration-grid" name="attr_spellduration" type="text" />
       <div>
-        <button class="popoverButton smallerPopoverButton" name="act_togglepopoverspellnote" type="action">?</button>
+        <button class="popoverButton noPaddingButton" name="act_togglepopoverspellnote" type="action">&#128269;</button>
         <!--
         The next input puts whether we have a note into the
         value property, where CSS can see it
@@ -1012,14 +1012,21 @@
       <input class="spellrange-grid" name="attr_spellrange" type="text" />
       <input class="spelltarget-grid" name="attr_spelltarget" type="text" />
       <input class="spellduration-grid" name="attr_spellduration" type="text" />
-      <input class="spellhasnote-grid" name="attr_spellhasnote" type="checkbox" value="1" />
-      <div class="epic-table-row conditional-one">
+      <div>
+        <button class="popoverButton noPaddingButton" name="act_togglepopoverspellnote" type="action">&#128269;</button>
         <!--
-        The next input puts whether we we have a note into the
+        The next input puts whether we have a note into the
         value property, where CSS can see it
         -->
-        <input class="spellhasnote" name="attr_spellhasnote" type="hidden" />
-        <textarea class="spell-note" name="attr_spellnote" rows="2"></textarea>
+        <input class="popoverController" name="attr_visiblepopover" type="hidden" value="false" />
+        <div class="spellNotePopover popoverContainer">
+          <div class="popover">
+            <!-- Buttons in a popover break stacking order, and pop out of the repeating stack.-->
+            <button class="closePopoverButton" name="act_closepopoverspellnotes" type="action">X</button>
+            <label>Spell Notes</label>
+            <textarea class="spell-note" name="attr_spellnote" rows="6"></textarea>
+          </div>
+        </div>
       </div>
     </fieldset>
   </div>
@@ -1050,16 +1057,23 @@
       <input class="spellrange-grid" name="attr_spellrange" type="text" />
       <input class="spelltarget-grid" name="attr_spelltarget" type="text" />
       <input class="spellduration-grid" name="attr_spellduration" type="text" />
-      <input class="spellhasnote-grid" name="attr_spellhasnote" type="checkbox" value="1" />
-      <input class="skillCP-grid" name="attr_skillCP" type="number" />
-      <div class="epic-table-row conditional-one">
+      <div>
+        <button class="popoverButton noPaddingButton" name="act_togglepopoverspellnote" type="action">&#128269;</button>
         <!--
         The next input puts whether we have a note into the
         value property, where CSS can see it
         -->
-        <input class="spellhasnote" name="attr_spellhasnote" type="hidden" />
-        <textarea class="spell-note" name="attr_spellnote" rows="2"></textarea>
+        <input class="popoverController" name="attr_visiblepopover" type="hidden" value="false" />
+        <div class="spellNotePopover popoverContainer">
+          <div class="popover">
+            <!-- Buttons in a popover break stacking order, and pop out of the repeating stack.-->
+            <button class="closePopoverButton" name="act_closepopoverspellnotes" type="action">X</button>
+            <label>Spell Notes</label>
+            <textarea class="spell-note" name="attr_spellnote" rows="6"></textarea>
+          </div>
+        </div>
       </div>
+      <input class="skillCP-grid" name="attr_skillCP" type="number" />
     </fieldset>
   </div>
 </div>
@@ -1564,28 +1578,29 @@ on('sheet:opened', () => setAttrs({ chosenPopover: 'false' }));
     });
   });
 
-function closeAllSpellNotes() {
-  getSectionIDs('repeating_arcane', function (ids) {
-    console.log('*** Close all spell notes ***');
-    ids.forEach((id) => {
-      setAttrs({ [`repeating_arcane_${id}_visiblepopover`]: 'false' });
+function setupSpellNotes(spellDomain) {
+  function closeAllSpellNotes() {
+    getSectionIDs(`repeating_${spellDomain}`, function (ids) {
+      console.log('*** Close all spell notes ***');
+      ids.forEach((id) => {
+        setAttrs({ [`repeating_${spellDomain}_${id}_visiblepopover`]: 'false' });
+      });
+    });
+  }
+
+  on('sheet:opened', closeAllSpellNotes);
+
+  on(`clicked:repeating_${spellDomain}:togglepopoverspellnote`, function () {
+    closeAllSpellNotes();
+    getAttrs([`repeating_${spellDomain}_visiblepopover`], (attributes) => {
+      const { [`repeating_${spellDomain}_visiblepopover`]: visiblePoppover } = attributes;
+      setAttrs({ [`repeating_${spellDomain}_visiblepopover`]: visiblePoppover === 'false' ? '1' : 'false' });
     });
   });
+
+  on('clicked:closepopoverspellnotes', closeAllSpellNotes);
 }
-
-on('sheet:opened', closeAllSpellNotes);
-
-on('clicked:repeating_arcane:togglepopoverspellnote', function () {
-  closeAllSpellNotes();
-  getAttrs(['repeating_arcane_visiblepopover'], (attributes) => {
-    const { repeating_arcane_visiblepopover: visiblePoppover } = attributes;
-    setAttrs({ repeating_arcane_visiblepopover: visiblePoppover === 'false' ? '1' : 'false' });
-  });
-});
-
-on('clicked:closepopoverspellnotes', function () {
-  closeAllSpellNotes();
-});
+['arcane', 'divine', 'innate'].forEach(setupSpellNotes);
 
 // ----- Discipline points -----
 const updateTP = function () {
