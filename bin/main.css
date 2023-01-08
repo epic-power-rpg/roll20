@@ -2,9 +2,20 @@
 button.popoverButton {
   background: transparent;
   line-height: unset;
+  margin: 0;
+  padding: 0 6px !important;
+  border: none;
+}
+button.popoverButton.circledButton {
   border: 1px solid gray;
   border-radius: 100%;
-  margin: 0;
+  background-color: rgba(102, 102, 102, 0.2);
+}
+button.popoverButton.smallerPopoverButton {
+  padding: 0 4px !important;
+}
+button.popoverButton.noPaddingButton {
+  padding: 0 !important;
 }
 
 div.popoverContainer {
@@ -15,11 +26,25 @@ div.popoverContainer > .popover {
   position: absolute;
   top: 24px;
   left: -40px;
+  max-width: unset;
   background: #faf2ec;
   padding: 16px;
   border: 1px solid black;
   border-radius: 6px;
   z-index: 100;
+}
+div.popoverContainer > .popover .closePopoverButton {
+  position: absolute;
+  right: 4px;
+  top: 4px;
+  border: unset;
+  background: unset;
+}
+div.popoverContainer > .fixedPlacementPopover {
+  position: fixed;
+  top: 50vh;
+  left: 20vw;
+  right: 20vw;
 }
 
 /* Styles that apply everywhere */
@@ -510,8 +535,13 @@ radio > span.checked {
   background: linear-gradient(to top, rgba(194, 148, 91, 0.5019607843) 0%, transparent 100%);
 }
 
-.sectioncontrol[value=weightPenalties] ~ div.popoverContainer.weightPenalties {
+.sectioncontrol[value=weightPenalties] ~ div.popoverContainer.weightPenalties,
+input.popoverController[value="1"] ~ div.popoverContainer.weightPenalties {
   display: inline;
+}
+.sectioncontrol[value=weightPenalties] ~ div.popoverContainer.weightPenalties .popover,
+input.popoverController[value="1"] ~ div.popoverContainer.weightPenalties .popover {
+  display: block;
 }
 
 /* ------ generic conditional appearance ------ */
@@ -1918,6 +1948,17 @@ radio > span.checked {
 }
 .spells .spell-note {
   margin-bottom: 1px;
+}
+.spells .sectioncontrol[value=spellNotePopover] ~ div.popoverContainer.spellNotePopover,
+.spells input.popoverController[value="1"] ~ div.popoverContainer.spellNotePopover {
+  display: inline;
+}
+.spells .sectioncontrol[value=spellNotePopover] ~ div.popoverContainer.spellNotePopover .popover,
+.spells input.popoverController[value="1"] ~ div.popoverContainer.spellNotePopover .popover {
+  display: block;
+}
+.spells div.spellNotePopover .popover label {
+  text-align: left;
 }
 
 /* ------------ Notes -------------- */

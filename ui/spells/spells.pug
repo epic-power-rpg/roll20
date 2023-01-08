@@ -1,0 +1,161 @@
+// Spells section 
+.spells.section.horizontal-flex
+  //
+    This input's value names the currently selected tab.
+    its value is used for css selection of the tab content.
+  input.sectioncontrol(name='attr_chosenspelltype' type='hidden' value='arcane')
+  // Spell tab buttons 
+  .spell-tabs
+    //
+      This input's value names the currently selected tab.
+      its value is used for css selection of its siblings.
+    input.tabcontrol(name='attr_chosenspelltype' type='hidden' value='arcane')
+    button.tab(name='act_arcane' type='action')
+      | Arcane
+    button.tab(name='act_divine' type='action')
+      | Divine
+    button.tab(name='act_innate' type='action')
+      | Innate
+    = '\n'
+    = '\n'
+    | &emsp; &emsp;
+    .spell-header-action-area
+      .label.wide.larger Spell Touch
+      input(name='attr_spell_touch' type='hidden')
+      span.center.narrowish.bold.larger.middle(name='attr_spell_touch')
+      button(type='roll' value='!EPRoll @{spell_touch} Touches with Spell: @{spell_touch}')
+      = '\n'
+      | &emsp;
+      .label.wide.larger Aim Spell
+      input(name='attr_aim_spell' type='hidden')
+      span.center.narrowish.bold.larger.middle(name='attr_aim_spell')
+      button(type='roll' value='!EPRoll @{aim_spell} Aims Spell: @{aim_spell}')
+  // Arcane spells 
+  .arcane.section
+    input(name='attr_arcane_total_TP' type='hidden' value='0')
+    input(name='attr_arcane_total_CP' type='hidden' value='0')
+    input(name='attr_arcane_total_single_CP' type='hidden' value='0')
+    .arcane.epic-table-header-grid
+      .skilldisciplineinfo-grid Discipline?
+      .skillname-grid Name
+      .skillability-grid Ability
+      .skillbase-grid Mod
+      .skill--gridroll
+      .spellEP-grid EP
+      .spellcasttime-grid Cast Time
+      .spelltype-grid Touch/ Ray/ Missile
+      .spellrange-grid Range
+      .spelltarget-grid Target
+      .spellduration-grid Damage/ Duration
+      .spellhasnote-grid N
+      .skillTP-grid TP
+      .skillCP-grid CP
+      .skillexpertise-grid Exper.
+      .skillattribute-grid.arcane-iq-plus-minus-attribute IQ &pm;
+      .skillbase-grid Base
+    fieldset.repeating_arcane
+      select.skilldisciplineinfo-grid(name='attr_skilldisciplineinfo')
+        option(value=' ')
+        option(value='D') D
+        option(value='⇡') &#x21E1;
+      //
+        The next input puts whether we are a discipline into the
+        value property, where CSS can see it
+      input.isdiscipline-grid(name='attr_skillisdiscipline' type='hidden')
+      input.skillname-grid(name='attr_skillname' type='text')
+      span.skillability-grid(name='attr_skillability')
+      // Make the button able to access the ability 
+      input(name='attr_skillability' hidden='true')
+      input.skillbase-grid(name='attr_skillmodifier' type='number')
+      button.skill-grid-roll(name='roll_spellroll' type='roll' value='!EPRoll @{skillability}+@{skillmodifier} Tries @{skillname}: @{skillability} + @{skillmodifier}')
+      input.spellEP-grid(name='attr_spellEP' type='text')
+      input.spellcasttime-grid(name='attr_spellcasttime' type='text')
+      select.spelltype-grid(name='attr_spelltype' type='text')
+        option(value='-') None
+        option(value='touch') Touch
+        option(value='ray') Ray
+        option(value='missile') Missile
+      input.spellrange-grid(name='attr_spellrange' type='text')
+      input.spelltarget-grid(name='attr_spelltarget' type='text')
+      input.spellduration-grid(name='attr_spellduration' type='text')
+      include ./spellsNotesPopover.pug
+      span.skillTP-grid.center(name='attr_skillTP')
+      span.skillCP-grid.center(name='attr_skillCP')
+      select.skillexpertise-grid(name='attr_skillexpertise')
+        option(value='--') --
+        option(value='-1') -1
+        option(value='0') 0
+        option(value='1') 1
+        option(value='2') 2
+        option(value='3') 3
+        option(value='4') 4
+        option(value='5') 5
+        option(value='6') 6
+        option(value='7') 7
+        option(value='8') 8
+        option(value='9') 9
+      input(name='attr_skilldisciplineexpertise' type='hidden')
+      input(name='attr_skillattribute' value='IQ' type='hidden')
+      span.skillattribute-grid.arcane-iq-plus-minus-attribute IQ &pm;
+      input.skillbase-grid(name='attr_skillbase' type='number' value='')
+  .divine.section.divine-spells-grid
+    input(name='attr_divine_total_CP' type='hidden' value='0')
+    input(name='attr_divine_total_single_CP' type='hidden' value='0')
+    .divine.epic-table-header-grid
+      .skillname-grid Name
+      .spellEP-grid EP
+      .spellcasttime-grid Cast Time
+      .spelltype-grid Touch/ Ray/ Missile
+      .spellrange-grid Range
+      .spelltarget-grid Target
+      .spellduration-grid Damage/ Duration
+      .spellhasnote-grid N
+    fieldset.repeating_divine
+      input.skillname-grid(name='attr_skillname' type='text')
+      input.spellEP-grid(name='attr_spellEP' type='number')
+      input.spellcasttime-grid(name='attr_spellcasttime' type='text')
+      select.spelltype-grid(name='attr_spelltype' type='text')
+        option(value='-') None
+        option(value='touch') Touch
+        option(value='ray') Ray
+        option(value='missile') Missile
+      input.spellrange-grid(name='attr_spellrange' type='text')
+      input.spelltarget-grid(name='attr_spelltarget' type='text')
+      input.spellduration-grid(name='attr_spellduration' type='text')
+      include ./spellsNotesPopover.pug
+  .innate.section.innate-spells-grid
+    input(name='attr_innate_total_CP' type='hidden' value='0')
+    input(name='attr_innate_total_single_CP' type='hidden' value='0')
+    .innate.epic-table-header-grid
+      .skillname-grid Name
+      .spellEP-grid EP
+      .spellcasttime-grid Cast Time
+      .spelltype-grid Touch/ Ray/ Missile
+      .spellrange-grid Range
+      .spelltarget-grid Target
+      .spellduration-grid Duration
+      .spellhasnote-grid N
+      .skillCP-grid CP
+    fieldset.repeating_innate
+      input.skillname-grid(name='attr_skillname' type='text')
+      input.spellEP-grid(name='attr_spellEP' type='text')
+      input.spellcasttime-grid(name='attr_spellcasttime' type='text')
+      select.spelltype-grid(name='attr_spelltype' type='text')
+        option(value='-') None
+        option(value='touch') Touch
+        option(value='ray') Ray
+        option(value='missile') Missile
+      input.spellrange-grid(name='attr_spellrange' type='text')
+      input.spelltarget-grid(name='attr_spelltarget' type='text')
+      input.spellduration-grid(name='attr_spellduration' type='text')
+      include ./spellsNotesPopover.pug
+      input.skillCP-grid(name='attr_skillCP' type='number')
+// Notes section 
+.notes.section
+  .flex-stack
+    .table-header
+      .notecategory Category
+      .notenote Note
+    fieldset.repeating_note
+      input.notecategory(name='attr_notecategory' type='text')
+      input.notenote(name='attr_notenote' type='text')

@@ -216,12 +216,13 @@
     </div>
     <div>
       <div class="attribute-name wide larger">
-        <button name="act_popover_weightPenalties" class="popoverButton" type="action">
+        <button name="act_popover_weightPenalties" class="popoverButton circledButton" type="action">
           ?
         </button>
         <input name="attr_chosenPopover" class="sectioncontrol" type="hidden" value="false" />
         <div class="section weightPenalties popoverContainer">
           <div class="flex-stack align-center popover">
+            <button name="act_popover_weightPenalties" class="closePopoverButton" type="action">X</button>
             <div class="center wideish bold">Weight Penalties</div>
             <div class="weight-penalty-table flex-stack">
               <div class="table-header">
@@ -867,45 +868,34 @@
 <!-- Spells section -->
 <div class="spells section horizontal-flex">
   <!--
-    This input's value names the currently selected tab.
-    its value is used for css selection of the tab content.
+  This input's value names the currently selected tab.
+  its value is used for css selection of the tab content.
   -->
-  <input name="attr_chosenspelltype" class="sectioncontrol" type="hidden" value="arcane" />
+  <input class="sectioncontrol" name="attr_chosenspelltype" type="hidden" value="arcane" />
   <!-- Spell tab buttons -->
   <div class="spell-tabs">
     <!--
-      This input's value names the currently selected tab.
-      its value is used for css selection of its siblings.
+    This input's value names the currently selected tab.
+    its value is used for css selection of its siblings.
     -->
-    <input name="attr_chosenspelltype" class="tabcontrol" type="hidden" value="arcane" />
-    <button name="act_arcane" class="tab" type="action">
-      Arcane
-    </button>
-    <button name="act_divine" class="tab" type="action">
-      Divine
-    </button>
-    <button name="act_innate" class="tab" type="action">
-      Innate
-    </button>
+    <input class="tabcontrol" name="attr_chosenspelltype" type="hidden" value="arcane" />
+    <button class="tab" name="act_arcane" type="action">Arcane</button>
+    <button class="tab" name="act_divine" type="action">Divine</button>
+    <button class="tab" name="act_innate" type="action">Innate</button>
 
     &emsp; &emsp;
     <div class="spell-header-action-area">
       <div class="label wide larger">Spell Touch</div>
       <input name="attr_spell_touch" type="hidden" />
-      <span name="attr_spell_touch" class="center narrowish bold larger middle">
-      </span>
-      <button type="roll" value="!EPRoll @{spell_touch} Touches with Spell: @{spell_touch}">
-      </button>
+      <span class="center narrowish bold larger middle" name="attr_spell_touch"></span>
+      <button type="roll" value="!EPRoll @{spell_touch} Touches with Spell: @{spell_touch}"></button>
       &emsp;
       <div class="label wide larger">Aim Spell</div>
       <input name="attr_aim_spell" type="hidden" />
-      <span name="attr_aim_spell" class="center narrowish bold larger middle">
-      </span>
-      <button type="roll" value="!EPRoll @{aim_spell} Aims Spell: @{aim_spell}">
-      </button>
+      <span class="center narrowish bold larger middle" name="attr_aim_spell"></span>
+      <button type="roll" value="!EPRoll @{aim_spell} Aims Spell: @{aim_spell}"></button>
     </div>
   </div>
-
   <!-- Arcane spells -->
   <div class="arcane section">
     <input name="attr_arcane_total_TP" type="hidden" value="0" />
@@ -927,42 +917,56 @@
       <div class="skillTP-grid">TP</div>
       <div class="skillCP-grid">CP</div>
       <div class="skillexpertise-grid">Exper.</div>
-      <div class="skillattribute-grid arcane-iq-plus-minus-attribute">IQ ±</div>
+      <div class="skillattribute-grid arcane-iq-plus-minus-attribute">IQ &pm;</div>
       <div class="skillbase-grid">Base</div>
     </div>
     <fieldset class="repeating_arcane">
-      <select name="attr_skilldisciplineinfo" class="skilldisciplineinfo-grid">
+      <select class="skilldisciplineinfo-grid" name="attr_skilldisciplineinfo">
         <option value=" "></option>
         <option value="D">D</option>
-        <option value="⇡">⇡</option>
+        <option value="⇡">&#x21E1;</option>
       </select>
       <!--
-        The next input puts whether we are a discipline into the
-        value property, where CSS can see it
+      The next input puts whether we are a discipline into the
+      value property, where CSS can see it
       -->
-      <input name="attr_skillisdiscipline" class="isdiscipline-grid" type="hidden">
-      <input name="attr_skillname" class="skillname-grid" type="text" />
-      <span name="attr_skillability" class="skillability-grid"></span>
+      <input class="isdiscipline-grid" name="attr_skillisdiscipline" type="hidden" />
+      <input class="skillname-grid" name="attr_skillname" type="text" />
+      <span class="skillability-grid" name="attr_skillability"></span>
       <!-- Make the button able to access the ability -->
       <input name="attr_skillability" hidden="true" />
-      <input name="attr_skillmodifier" class="skillbase-grid" type="number">
-      <button name="roll_spellroll" class="skill-grid-roll" type="roll" value="!EPRoll @{skillability}+@{skillmodifier} Tries @{skillname}: @{skillability} + @{skillmodifier}" />
-      </button>
-      <input name="attr_spellEP" class="spellEP-grid" type="text" />
-      <input name="attr_spellcasttime" class="spellcasttime-grid" type="text" />
-      <select name="attr_spelltype" class="spelltype-grid" type="text">
+      <input class="skillbase-grid" name="attr_skillmodifier" type="number" />
+      <button class="skill-grid-roll" name="roll_spellroll" type="roll" value="!EPRoll @{skillability}+@{skillmodifier} Tries @{skillname}: @{skillability} + @{skillmodifier}"></button>
+      <input class="spellEP-grid" name="attr_spellEP" type="text" />
+      <input class="spellcasttime-grid" name="attr_spellcasttime" type="text" />
+      <select class="spelltype-grid" name="attr_spelltype" type="text">
         <option value="-">None</option>
         <option value="touch">Touch</option>
         <option value="ray">Ray</option>
         <option value="missile">Missile</option>
       </select>
-      <input name="attr_spellrange" class="spellrange-grid" type="text" />
-      <input name="attr_spelltarget" class="spelltarget-grid" type="text" />
-      <input name="attr_spellduration" class="spellduration-grid" type="text" />
-      <input name="attr_spellhasnote" class="spellhasnote-grid" type="checkbox" value="1" />
-      <span name="attr_skillTP" class="skillTP-grid center"></span>
-      <span name="attr_skillCP" class="skillCP-grid center"></span>
-      <select name="attr_skillexpertise" class="skillexpertise-grid">
+      <input class="spellrange-grid" name="attr_spellrange" type="text" />
+      <input class="spelltarget-grid" name="attr_spelltarget" type="text" />
+      <input class="spellduration-grid" name="attr_spellduration" type="text" />
+      <div>
+        <button class="popoverButton noPaddingButton" name="act_togglepopoverspellnote" type="action">&#128269;</button>
+        <!--
+        The next input puts whether we have a note into the
+        value property, where CSS can see it
+        -->
+        <input class="popoverController" name="attr_visiblepopover" type="hidden" value="false" />
+        <div class="spellNotePopover popoverContainer">
+          <div class="popover fixedPlacementPopover">
+            <!-- Buttons in a popover break stacking order, and pop out of the repeating stack.-->
+            <button class="closePopoverButton" name="act_closepopoverspellnotes" type="action">X</button>
+            <label>Spell Notes</label>
+            <textarea class="spell-note" name="attr_spellnote" rows="6"></textarea>
+          </div>
+        </div>
+      </div>
+      <span class="skillTP-grid center" name="attr_skillTP"></span>
+      <span class="skillCP-grid center" name="attr_skillCP"></span>
+      <select class="skillexpertise-grid" name="attr_skillexpertise">
         <option value="--">--</option>
         <option value="-1">-1</option>
         <option value="0">0</option>
@@ -978,17 +982,10 @@
       </select>
       <input name="attr_skilldisciplineexpertise" type="hidden" />
       <input name="attr_skillattribute" value="IQ" type="hidden" />
-      <span class="skillattribute-grid arcane-iq-plus-minus-attribute">IQ ±</span>
-      <input name="attr_skillbase" class="skillbase-grid" type="number" value="" />
-      <div class="epic-table-row conditional-one">
-        <!-- The next input puts whether we have a note into the
-          value property, where CSS can see it -->
-        <input name="attr_spellhasnote" class="spellhasnote" type="hidden">
-        <textarea name="attr_spellnote" class="spell-note" rows="2" />
-      </div>
+      <span class="skillattribute-grid arcane-iq-plus-minus-attribute">IQ &pm;</span>
+      <input class="skillbase-grid" name="attr_skillbase" type="number" value="" />
     </fieldset>
   </div>
-
   <div class="divine section divine-spells-grid">
     <input name="attr_divine_total_CP" type="hidden" value="0" />
     <input name="attr_divine_total_single_CP" type="hidden" value="0" />
@@ -1003,30 +1000,36 @@
       <div class="spellhasnote-grid">N</div>
     </div>
     <fieldset class="repeating_divine">
-      <input name="attr_skillname" class="skillname-grid" type="text" />
-      <input name="attr_spellEP" class="spellEP-grid" type="number" />
-      <input name="attr_spellcasttime" class="spellcasttime-grid" type="text" />
-      <select name="attr_spelltype" class="spelltype-grid" type="text">
+      <input class="skillname-grid" name="attr_skillname" type="text" />
+      <input class="spellEP-grid" name="attr_spellEP" type="number" />
+      <input class="spellcasttime-grid" name="attr_spellcasttime" type="text" />
+      <select class="spelltype-grid" name="attr_spelltype" type="text">
         <option value="-">None</option>
         <option value="touch">Touch</option>
         <option value="ray">Ray</option>
         <option value="missile">Missile</option>
       </select>
-      <input name="attr_spellrange" class="spellrange-grid" type="text" />
-      <input name="attr_spelltarget" class="spelltarget-grid" type="text" />
-      <input name="attr_spellduration" class="spellduration-grid" type="text" />
-      <input name="attr_spellhasnote" class="spellhasnote-grid" type="checkbox" value="1" />
-      <div class="epic-table-row conditional-one">
+      <input class="spellrange-grid" name="attr_spellrange" type="text" />
+      <input class="spelltarget-grid" name="attr_spelltarget" type="text" />
+      <input class="spellduration-grid" name="attr_spellduration" type="text" />
+      <div>
+        <button class="popoverButton noPaddingButton" name="act_togglepopoverspellnote" type="action">&#128269;</button>
         <!--
-          The next input puts whether we we have a note into the
-          value property, where CSS can see it
+        The next input puts whether we have a note into the
+        value property, where CSS can see it
         -->
-        <input name="attr_spellhasnote" class="spellhasnote" type="hidden">
-        <textarea name="attr_spellnote" class="spell-note" rows="2" />
+        <input class="popoverController" name="attr_visiblepopover" type="hidden" value="false" />
+        <div class="spellNotePopover popoverContainer">
+          <div class="popover fixedPlacementPopover">
+            <!-- Buttons in a popover break stacking order, and pop out of the repeating stack.-->
+            <button class="closePopoverButton" name="act_closepopoverspellnotes" type="action">X</button>
+            <label>Spell Notes</label>
+            <textarea class="spell-note" name="attr_spellnote" rows="6"></textarea>
+          </div>
+        </div>
       </div>
     </fieldset>
   </div>
-
   <div class="innate section innate-spells-grid">
     <input name="attr_innate_total_CP" type="hidden" value="0" />
     <input name="attr_innate_total_single_CP" type="hidden" value="0" />
@@ -1042,32 +1045,38 @@
       <div class="skillCP-grid">CP</div>
     </div>
     <fieldset class="repeating_innate">
-      <input name="attr_skillname" class="skillname-grid" type="text" />
-      <input name="attr_spellEP" class="spellEP-grid" type="text" />
-      <input name="attr_spellcasttime" class="spellcasttime-grid" type="text" />
-      <select name="attr_spelltype" class="spelltype-grid" type="text">
+      <input class="skillname-grid" name="attr_skillname" type="text" />
+      <input class="spellEP-grid" name="attr_spellEP" type="text" />
+      <input class="spellcasttime-grid" name="attr_spellcasttime" type="text" />
+      <select class="spelltype-grid" name="attr_spelltype" type="text">
         <option value="-">None</option>
         <option value="touch">Touch</option>
         <option value="ray">Ray</option>
         <option value="missile">Missile</option>
       </select>
-      <input name="attr_spellrange" class="spellrange-grid" type="text" />
-      <input name="attr_spelltarget" class="spelltarget-grid" type="text" />
-      <input name="attr_spellduration" class="spellduration-grid" type="text" />
-      <input name="attr_spellhasnote" class="spellhasnote-grid" type="checkbox" value="1" />
-      <input name="attr_skillCP" class="skillCP-grid" type="number" />
-      <div class="epic-table-row conditional-one">
+      <input class="spellrange-grid" name="attr_spellrange" type="text" />
+      <input class="spelltarget-grid" name="attr_spelltarget" type="text" />
+      <input class="spellduration-grid" name="attr_spellduration" type="text" />
+      <div>
+        <button class="popoverButton noPaddingButton" name="act_togglepopoverspellnote" type="action">&#128269;</button>
         <!--
-          The next input puts whether we have a note into the
-          value property, where CSS can see it
+        The next input puts whether we have a note into the
+        value property, where CSS can see it
         -->
-        <input name="attr_spellhasnote" class="spellhasnote" type="hidden">
-        <textarea name="attr_spellnote" class="spell-note" rows="2" />
+        <input class="popoverController" name="attr_visiblepopover" type="hidden" value="false" />
+        <div class="spellNotePopover popoverContainer">
+          <div class="popover fixedPlacementPopover">
+            <!-- Buttons in a popover break stacking order, and pop out of the repeating stack.-->
+            <button class="closePopoverButton" name="act_closepopoverspellnotes" type="action">X</button>
+            <label>Spell Notes</label>
+            <textarea class="spell-note" name="attr_spellnote" rows="6"></textarea>
+          </div>
+        </div>
       </div>
+      <input class="skillCP-grid" name="attr_skillCP" type="number" />
     </fieldset>
   </div>
 </div>
-
 <!-- Notes section -->
 <div class="notes section">
   <div class="flex-stack">
@@ -1076,13 +1085,11 @@
       <div class="notenote">Note</div>
     </div>
     <fieldset class="repeating_note">
-      <input name="attr_notecategory" class="notecategory" type="text" />
-      <input name="attr_notenote" class="notenote" type="text" />
+      <input class="notecategory" name="attr_notecategory" type="text" />
+      <input class="notenote" name="attr_notenote" type="text" />
     </fieldset>
   </div>
-
 </div>
-
 <!-- Scripts -->
 
 <script type="text/worker">
@@ -1570,6 +1577,30 @@ on('sheet:opened', () => setAttrs({ chosenPopover: 'false' }));
       });
     });
   });
+
+function setupSpellNotes(spellDomain) {
+  function closeAllSpellNotes() {
+    getSectionIDs(`repeating_${spellDomain}`, function (ids) {
+      console.log('*** Close all spell notes ***');
+      ids.forEach((id) => {
+        setAttrs({ [`repeating_${spellDomain}_${id}_visiblepopover`]: 'false' });
+      });
+    });
+  }
+
+  on('sheet:opened', closeAllSpellNotes);
+
+  on(`clicked:repeating_${spellDomain}:togglepopoverspellnote`, function () {
+    closeAllSpellNotes();
+    getAttrs([`repeating_${spellDomain}_visiblepopover`], (attributes) => {
+      const { [`repeating_${spellDomain}_visiblepopover`]: visiblePoppover } = attributes;
+      setAttrs({ [`repeating_${spellDomain}_visiblepopover`]: visiblePoppover === 'false' ? '1' : 'false' });
+    });
+  });
+
+  on('clicked:closepopoverspellnotes', closeAllSpellNotes);
+}
+['arcane', 'divine', 'innate'].forEach(setupSpellNotes);
 
 // ----- Discipline points -----
 const updateTP = function () {

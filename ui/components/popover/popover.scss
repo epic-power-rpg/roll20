@@ -1,9 +1,20 @@
 button.popoverButton {
   background: transparent;
   line-height: unset;
-  border: 1px solid gray;
-  border-radius: 100%;
   margin: 0;
+  padding: 0 6px !important;
+  border: none;
+  &.circledButton {
+    border: 1px solid gray;
+    border-radius: 100%;
+    background-color: #66666633;
+  }
+  &.smallerPopoverButton {
+    padding: 0 4px !important;
+  }
+  &.noPaddingButton {
+    padding: 0 !important;
+  }
 }
 
 div.popoverContainer {
@@ -13,16 +24,34 @@ div.popoverContainer {
     position: absolute;
     top: 24px;
     left: -40px;
+    max-width: unset;
     background: $primary-background-color;
     padding: 16px;
     border: 1px solid black;
     border-radius: 6px;
     z-index: 100;
+    .closePopoverButton {
+      position: absolute;
+      right: 4px;
+      top: 4px;
+      border: unset;
+      background: unset;
+    }
+  }
+  > .fixedPlacementPopover {
+    position: fixed;
+    top: 50vh;
+    left: 20vw;
+    right: 20vw;
   }
 }
 
 @mixin popover-control($popoverName) {
-  .sectioncontrol[value="#{$popoverName}"]~div.popoverContainer.#{$popoverName} {
+  .sectioncontrol[value="#{$popoverName}"]~div.popoverContainer.#{$popoverName},
+  input.popoverController[value="1"]~div.popoverContainer.#{$popoverName} {
     display: inline;
+    .popover {
+      display: block;
+    }
   }
 }

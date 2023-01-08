@@ -94,4 +94,13 @@
   .spell-note {
     margin-bottom: 1px;
   }
+
+  @include popover-control('spellNotePopover');
+  div.spellNotePopover {
+    .popover {
+      label {
+        text-align: left;
+      }
+    }
+  }
 }
