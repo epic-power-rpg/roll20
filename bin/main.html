@@ -647,7 +647,7 @@
 <!-- skill section -->
 <div class="skills section epic-skills-tab">
   <div class="flex-stack full-width">
-    <div class="center bold">Disciplines & Skills</div>
+    <div class="center bold">Disciplines &amp; Skills</div>
   </div>
   <div class="epic-skill-table">
     <input name="attr_skill_total_TP" type="hidden" value="0" />
@@ -664,21 +664,21 @@
       <div class="skillbase-grid">Base</div>
     </div>
     <fieldset class="repeating_skill">
-      <select name="attr_skilldisciplineinfo" class="skilldisciplineinfo">
+      <select class="skilldisciplineinfo" name="attr_skilldisciplineinfo">
         <option value=" "></option>
         <option value="D">D</option>
-        <option value="⇡">⇡</option>
+        <option value="⇡">&#x21E1;</option>
       </select>
       <!--
-        The next input puts whether we have a discipline into the
-        value property, where CSS can see it
+      The next input puts whether we have a discipline into the
+      value property, where CSS can see it
       -->
-      <input name="attr_skillisdiscipline" class="isdiscipline-grid" type="hidden">
-      <input name="attr_skillname" class="skillname-grid" type="text" />
-      <span name="attr_skillability" class="skillability-grid"></span>
-      <span name="attr_skillTP" class="skillTP-grid center"></span>
-      <span name="attr_skillCP" class="skillCP-grid center"></span>
-      <select name="attr_skillexpertise" class="skillexpertise-grid">
+      <input class="isdiscipline-grid" name="attr_skillisdiscipline" type="hidden" />
+      <input class="skillname-grid" name="attr_skillname" type="text" />
+      <span class="skillability-grid" name="attr_skillability"></span>
+      <span class="skillTP-grid center" name="attr_skillTP"></span>
+      <span class="skillCP-grid center" name="attr_skillCP"></span>
+      <select class="skillexpertise-grid" name="attr_skillexpertise">
         <option value="--">--</option>
         <option value="ST">st</option>
         <option value="-1">-1</option>
@@ -694,13 +694,13 @@
         <option value="9">9</option>
       </select>
       <input name="attr_skilldisciplineexpertise" type="hidden" />
-      <select name="attr_skillattribute" class="skillattribute-grid">
+      <select class="skillattribute-grid" name="attr_skillattribute">
         <option value=""> choose</option>
         <option value="IQ">IQ</option>
         <option value="DX">DX</option>
         <option value="IQ+DX">IQ+DX</option>
       </select>
-      <input name="attr_skillbase" class="skillbase-grid" type="number" value="" />
+      <input class="skillbase-grid" name="attr_skillbase" type="number" value="" />
     </fieldset>
   </div>
 </div>
