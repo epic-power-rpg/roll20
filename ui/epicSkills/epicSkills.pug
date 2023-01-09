@@ -1,0 +1,51 @@
+// skill section 
+.skills.section.epic-skills-tab
+  .flex-stack.full-width
+    .center.bold Disciplines &amp; Skills
+  .epic-skill-table
+    input(name='attr_skill_total_TP' type='hidden' value='0')
+    input(name='attr_skill_total_CP' type='hidden' value='0')
+    input(name='attr_skill_total_single_CP' type='hidden' value='0')
+    .epic-table-header-grid.skill
+      .skilldisciplineinfo-grid Discipline?
+      .skillname-grid Name
+      .skillability-grid Ability
+      .skillTP-grid TP
+      .skillCP-grid CP
+      .skillexpertise-grid Exper.
+      .skillattribute-grid Attribute
+      .skillbase-grid Base
+    fieldset.repeating_skill
+      select.skilldisciplineinfo(name='attr_skilldisciplineinfo')
+        option(value=' ')
+        option(value='D') D
+        option(value='⇡') &#x21E1;
+      //
+        The next input puts whether we have a discipline into the
+        value property, where CSS can see it
+      input.isdiscipline-grid(name='attr_skillisdiscipline' type='hidden')
+      input.skillname-grid(name='attr_skillname' type='text')
+      span.skillability-grid(name='attr_skillability')
+      span.skillTP-grid.center(name='attr_skillTP')
+      span.skillCP-grid.center(name='attr_skillCP')
+      select.skillexpertise-grid(name='attr_skillexpertise')
+        option(value='--') --
+        option(value='ST') st
+        option(value='-1') -1
+        option(value='0') 0
+        option(value='1') 1
+        option(value='2') 2
+        option(value='3') 3
+        option(value='4') 4
+        option(value='5') 5
+        option(value='6') 6
+        option(value='7') 7
+        option(value='8') 8
+        option(value='9') 9
+      input(name='attr_skilldisciplineexpertise' type='hidden')
+      select.skillattribute-grid(name='attr_skillattribute')
+        option(value='')  choose
+        option(value='IQ') IQ
+        option(value='DX') DX
+        option(value='IQ+DX') IQ+DX
+      input.skillbase-grid(name='attr_skillbase' type='number' value='')
