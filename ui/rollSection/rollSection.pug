@@ -1,0 +1,69 @@
+// Roll section 
+= '\n'
+.roll-section
+  //
+    This field is monitored by the api script. Whenever it is changed,
+    the script chats the contents. This gets around sheetworkers not being
+    able to chat directly.
+  input(name='attr_pendingchat' type='hidden' value='')
+  .roll-select-section
+    input.save-pending(type='hidden' name='attr_save_pending' value='0')
+    button.big-control.save-roll(name='act_saveroll' type='action')
+      | &darr; &xcirc;
+    .save-radio-stack
+      input.roll-chosen(type='hidden' name='attr_roll_chosen' value='')
+      .save-radio-row
+        button.radio.roll-1(type='action' name='act_choose_roll_1')
+        input.saved-roll(type='hidden' name='attr_saved_roll_1' value='')
+        button.radio.roll-2(type='action' name='act_choose_roll_2')
+        input.saved-roll(type='hidden' name='attr_saved_roll_2' value='')
+        button.radio.roll-3(type='action' name='act_choose_roll_3')
+        input.saved-roll(type='hidden' name='attr_saved_roll_3' value='')
+      .save-radio-row
+        button.radio.roll-4(type='action' name='act_choose_roll_4')
+        input.saved-roll(type='hidden' name='attr_saved_roll_4' value='')
+        button.radio.roll-5(type='action' name='act_choose_roll_5')
+        input.saved-roll(type='hidden' name='attr_saved_roll_5' value='')
+        button.radio.roll-6(type='action' name='act_choose_roll_6')
+        input.saved-roll(type='hidden' name='attr_saved_roll_6' value='')
+    = '\n'
+    | &emsp;
+  .roll-description-section
+    .roll-description-line
+      label(for='attr_action_description') Description
+      input#attr_action_description.flexing(name='attr_action_description' type='text')
+      label(for='attr_action_feats') Feats
+      input#attr_action_feats.narrowish(name='attr_action_feats' type='number' value='0')
+      label(for='attr_action_feats_EP') EP &ensp;
+      input#attr_action_feats_EP.narrow(name='attr_action_feats_EP' value='@{action_feats}' disabled='true')
+      label(for='attr_action_EP') EP
+      input#attr_action_EP.narrowish(name='attr_action_EP' type='number' value='0')
+      label(for='attr_action_SP') SP
+      input#attr_action_SP.narrowish(name='attr_action_SP' type='number' value='0')
+      span.inlne-spacer
+      input#attr_disable_do.disable-do(name='attr_disable_do' type='hidden' value='0')
+      button.do(name='act_topaction' type='action')
+      = '\n'
+      | &ensp;
+      button.undo(name='act_undotopaction' type='action')
+    .roll-description-line
+      label(for='attr_roll_skill') Skill
+      input#attr_roll_skill.flexing(name='attr_roll_skill' type='text')
+      label(for='attr_roll_ability') Ability
+      input#attr_roll_ability.narrowish(name='attr_roll_ability' type='number' value='0')
+      label Mods
+      input#attr_roll_mod1.narrowish(name='attr_roll_mod1' type='number' value='0')
+      input#attr_roll_mod2.narrowish(name='attr_roll_mod2' type='number' value='0')
+      input#attr_roll_mod3.narrowish(name='attr_roll_mod3' type='number' value='0')
+      label(for='attr_roll_advance_boost') Boost
+      input#attr_roll_advance_boost.narrowish(name='attr_roll_advance_boost' type='number' value='0')
+      label(for='attr_action_roll_EP') EP
+      input#attr_action_roll_EP.narrow(name='attr_action_roll_EP' value='@{roll_advance_boost}' disabled='true')
+  = '\n'
+  | &ensp;
+  input.disable-do-and-roll(name='attr_disable_do_and_roll' type='hidden' value='0')
+  button.big-control.do-and-roll(name='act_toproll' type='action')
+  = '\n'
+  | &ensp;
+  button.big-control.undo(name='act_undotoproll' type='action')
+hr(style='margin:1px; border-top: 1px solid gray;')
