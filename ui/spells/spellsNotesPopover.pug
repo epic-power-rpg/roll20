@@ -6,8 +6,16 @@ div
     value property, where CSS can see it
   input.popoverController(name='attr_visiblepopover' type='hidden' value='false')
   .spellNotePopover.popoverContainer
+    .popoverBackdrop
+      button(name='act_closepopoverspellnotes' type='action') Close popover
     .popover.fixedPlacementPopover
       // Buttons in a popover break stacking order, and pop out of the repeating stack.
       button.closePopoverButton(name='act_closepopoverspellnotes' type='action') X
+      h2
+        span.spell-name(name='attr_skillname')
+      .small-spacer
+      label Name
+      input.skillname-grid(name='attr_skillname' type='text')
       label Spell Notes
       textarea.spell-note(name='attr_spellnote' rows='6')
+      button(name='act_closepopoverspellnotes' type='action') Close
