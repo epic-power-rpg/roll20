@@ -19,7 +19,9 @@
   display: block;
 }
 
+$notes-popover-width: 16px;
 .spell-tabs {
+
   border-bottom: solid black 1px;
   margin-bottom: 6px;
   display: flex;
@@ -46,15 +48,15 @@
     40px, // Discipline?
     4fr, // Name
     32px, // Ability
-    1fr, // Mod
+    40px, // Mod
     0.5fr, // (Dice)
     40px, // EP
     1fr, // Cast Time
-    88px, // Touch/ Ray/ Missile
-    40px, // Range
-    40px, // Target
+    72px, // Touch/ Ray/ Missile
+    1.5fr, // Range
+    2fr, // Target
     1.5fr, // Damage/ Duration
-    24px, // N(otes)
+    $notes-popover-width, // N(otes)
     24px, // TP
     24px, // CP
     40px, // Exper.
@@ -71,6 +73,12 @@
     }
   }
 
+  .skillname-hidden[value|="----"]~.skillname-grid {
+    // If the name starts with dashes, style the name
+    font-weight: bold;
+    text-align: center;
+  }
+
   .isdiscipline-grid[value="1"]~.skillname-grid {
     font-weight: bold;
     text-align: center;
@@ -83,10 +91,10 @@
     white-space: nowrap;
   }
 
-  $divine-grid-template: getResponsiveGridWidths(6fr, 1fr, 1fr, 2fr, 1fr, 1fr, 2fr, 0.5fr);
+  $divine-grid-template: getResponsiveGridWidths(6fr, $notes-popover-width, 1fr, 1fr, 2fr, 1fr, 1fr, 2fr);
   @include epic-table-grid('divine', $divine-grid-template);
 
-  $innate-grid-template: getResponsiveGridWidths(6fr, 1fr, 2fr, 3fr, 2fr, 3fr, 2fr, 0.5fr, 1fr);
+  $innate-grid-template: getResponsiveGridWidths(6fr, $notes-popover-width, 1fr, 2fr, 2fr, 2fr, 3fr, 2fr, 32px);
   @include epic-table-grid('innate', $innate-grid-template);
 
   @include grid-table-tp-cp-columns();

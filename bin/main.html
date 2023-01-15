@@ -939,16 +939,42 @@ its value is used for css selection of its siblings.
     <input name="attr_divine_total_single_CP" type="hidden" value="0" />
     <div class="divine epic-table-header-grid">
       <div class="skillname-grid">Name</div>
+      <div class="spellhasnote-grid">N</div>
       <div class="spellEP-grid">EP</div>
       <div class="spellcasttime-grid">Cast Time</div>
       <div class="spelltype-grid">Touch/ Ray/ Missile</div>
       <div class="spellrange-grid">Range</div>
       <div class="spelltarget-grid">Target</div>
       <div class="spellduration-grid">Damage/ Duration</div>
-      <div class="spellhasnote-grid">N</div>
     </div>
     <fieldset class="repeating_divine">
       <input class="skillname-grid" name="attr_skillname" type="text" />
+      <div>
+        <button class="popoverButton noPaddingButton" name="act_togglepopoverspellnote" type="action">&#128269;</button>
+        <!--
+        The next input puts whether we have a note into the
+        value property, where CSS can see it
+        -->
+        <input class="popoverController" name="attr_visiblepopover" type="hidden" value="false" />
+        <div class="spellNotePopover popoverContainer">
+          <div class="popoverBackdrop">
+            <button name="act_closepopoverspellnotes" type="action">Close popover</button>
+          </div>
+          <div class="popover fixedPlacementPopover">
+            <!-- Buttons in a popover break stacking order, and pop out of the repeating stack.-->
+            <button class="closePopoverButton" name="act_closepopoverspellnotes" type="action">X</button>
+            <h2>
+              <span class="spell-name" name="attr_skillname"></span>
+            </h2>
+            <div class="small-spacer"></div>
+            <label>Name</label>
+            <input class="skillname-grid" name="attr_skillname" type="text" />
+            <label>Spell Notes</label>
+            <textarea class="spell-note" name="attr_spellnote" rows="6"></textarea>
+            <button name="act_closepopoverspellnotes" type="action">Close</button>
+          </div>
+        </div>
+      </div>
       <input class="spellEP-grid" name="attr_spellEP" type="number" />
       <input class="spellcasttime-grid" name="attr_spellcasttime" type="text" />
       <select class="spelltype-grid" name="attr_spelltype" type="text">
@@ -960,6 +986,26 @@ its value is used for css selection of its siblings.
       <input class="spellrange-grid" name="attr_spellrange" type="text" />
       <input class="spelltarget-grid" name="attr_spelltarget" type="text" />
       <input class="spellduration-grid" name="attr_spellduration" type="text" />
+    </fieldset>
+  </div>
+  <div class="innate section innate-spells-grid">
+    <input name="attr_innate_total_CP" type="hidden" value="0" />
+    <input name="attr_innate_total_single_CP" type="hidden" value="0" />
+    <div class="innate epic-table-header-grid">
+      <div class="skillname-grid">Name</div>
+      <div class="spellhasnote-grid">N</div>
+      <div class="spellEP-grid">EP</div>
+      <div class="spellcasttime-grid">Cast Time</div>
+      <div class="spelltype-grid">Touch/ Ray/ Missile</div>
+      <div class="spellrange-grid">Range</div>
+      <div class="spelltarget-grid">Target</div>
+      <div class="spellduration-grid">Damage/ Duration</div>
+      <div class="skillCP-grid">CP</div>
+    </div>
+    <fieldset class="repeating_innate">
+      <!-- The next input allows targeting in CSS-->
+      <input class="skillname-hidden" name="attr_skillname" type="hidden" />
+      <input class="skillname-grid" name="attr_skillname" type="text" />
       <div>
         <button class="popoverButton noPaddingButton" name="act_togglepopoverspellnote" type="action">&#128269;</button>
         <!--
@@ -986,24 +1032,6 @@ its value is used for css selection of its siblings.
           </div>
         </div>
       </div>
-    </fieldset>
-  </div>
-  <div class="innate section innate-spells-grid">
-    <input name="attr_innate_total_CP" type="hidden" value="0" />
-    <input name="attr_innate_total_single_CP" type="hidden" value="0" />
-    <div class="innate epic-table-header-grid">
-      <div class="skillname-grid">Name</div>
-      <div class="spellEP-grid">EP</div>
-      <div class="spellcasttime-grid">Cast Time</div>
-      <div class="spelltype-grid">Touch/ Ray/ Missile</div>
-      <div class="spellrange-grid">Range</div>
-      <div class="spelltarget-grid">Target</div>
-      <div class="spellduration-grid">Duration</div>
-      <div class="spellhasnote-grid">N</div>
-      <div class="skillCP-grid">CP</div>
-    </div>
-    <fieldset class="repeating_innate">
-      <input class="skillname-grid" name="attr_skillname" type="text" />
       <input class="spellEP-grid" name="attr_spellEP" type="text" />
       <input class="spellcasttime-grid" name="attr_spellcasttime" type="text" />
       <select class="spelltype-grid" name="attr_spelltype" type="text">
@@ -1015,32 +1043,6 @@ its value is used for css selection of its siblings.
       <input class="spellrange-grid" name="attr_spellrange" type="text" />
       <input class="spelltarget-grid" name="attr_spelltarget" type="text" />
       <input class="spellduration-grid" name="attr_spellduration" type="text" />
-      <div>
-        <button class="popoverButton noPaddingButton" name="act_togglepopoverspellnote" type="action">&#128269;</button>
-        <!--
-        The next input puts whether we have a note into the
-        value property, where CSS can see it
-        -->
-        <input class="popoverController" name="attr_visiblepopover" type="hidden" value="false" />
-        <div class="spellNotePopover popoverContainer">
-          <div class="popoverBackdrop">
-            <button name="act_closepopoverspellnotes" type="action">Close popover</button>
-          </div>
-          <div class="popover fixedPlacementPopover">
-            <!-- Buttons in a popover break stacking order, and pop out of the repeating stack.-->
-            <button class="closePopoverButton" name="act_closepopoverspellnotes" type="action">X</button>
-            <h2>
-              <span class="spell-name" name="attr_skillname"></span>
-            </h2>
-            <div class="small-spacer"></div>
-            <label>Name</label>
-            <input class="skillname-grid" name="attr_skillname" type="text" />
-            <label>Spell Notes</label>
-            <textarea class="spell-note" name="attr_spellnote" rows="6"></textarea>
-            <button name="act_closepopoverspellnotes" type="action">Close</button>
-          </div>
-        </div>
-      </div>
       <input class="skillCP-grid" name="attr_skillCP" type="number" />
     </fieldset>
   </div>

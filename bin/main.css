@@ -129,6 +129,11 @@ button.actionRollButton {
   border-radius: 4px;
   background-image: linear-gradient(90deg, rgb(245, 201, 162), #c2815b);
 }
+button.btn.ui-draggable[type=roll]:hover,
+button.actionRollButton:hover {
+  background-image: unset;
+  background-color: #c2815b;
+}
 
 button.btn.ui-draggable[type=roll]::before,
 button.actionRollButton::before {
@@ -160,6 +165,11 @@ button.do-and-roll {
   border-radius: 4px;
   background-image: linear-gradient(90deg, rgb(245, 201, 162), #c2815b);
 }
+button.do:hover,
+button.do-and-roll:hover {
+  background-image: unset;
+  background-color: #c2815b;
+}
 
 button.do {
   width: 18px;
@@ -173,10 +183,18 @@ button.big-control.do-and-roll {
   background-image: linear-gradient(90deg, #ddd, #ddd);
   pointer-events: none;
 }
+.disable-do[value="1"] ~ .do:hover {
+  background-image: unset;
+  background-color: #c2815b;
+}
 
 .disable-do-and-roll[value="1"] ~ .do-and-roll {
   background-image: linear-gradient(90deg, #ddd, #ddd);
   pointer-events: none;
+}
+.disable-do-and-roll[value="1"] ~ .do-and-roll:hover {
+  background-image: unset;
+  background-color: #c2815b;
 }
 
 /* Change the character for undo buttons to be
@@ -195,6 +213,10 @@ button.undo {
   line-height: 1;
   padding: 1px 1px;
 }
+button.undo:hover {
+  background-image: unset;
+  background-color: rgb(138, 103, 103);
+}
 
 button.reset-total {
   font-weight: bold;
@@ -206,6 +228,10 @@ button.reset-total {
   padding: 2px;
   vertical-align: middle;
 }
+button.reset-total:hover {
+  background-image: unset;
+  background-color: #c2815b;
+}
 
 button.convert-button {
   font-weight: bold;
@@ -216,6 +242,10 @@ button.convert-button {
   padding: 0px 2px 4px 2px;
   vertical-align: middle;
   font-size: 200%;
+}
+button.convert-button:hover {
+  background-image: unset;
+  background-color: #c2815b;
 }
 
 /* Generic styles */
@@ -717,6 +747,7 @@ input.popoverController[value="1"] ~ div.popoverContainer.weightPenalties .popov
   background: #b56632;
   color: #fff;
   padding: 2px;
+  word-break: break-word;
 }
 .overview-tab .advantage-overview .epic-table-header-grid.advantage > div {
   text-align: center;
@@ -773,6 +804,7 @@ input.popoverController[value="1"] ~ div.popoverContainer.weightPenalties .popov
   background: #b56632;
   color: #fff;
   padding: 2px;
+  word-break: break-word;
 }
 .overview-tab .advantage-overview .epic-table-header-grid.extraadvantage > div {
   text-align: center;
@@ -855,11 +887,12 @@ input.popoverController[value="1"] ~ div.popoverContainer.weightPenalties .popov
 }
 .overview-tab .feat-overview .epic-table-header-grid.feat {
   display: grid;
-  grid-template-columns: minmax(0, 24px) minmax(0, 96px);
+  grid-template-columns: minmax(0, 32px) minmax(0, 96px);
   column-gap: 2px;
   background: #b56632;
   color: #fff;
   padding: 2px;
+  word-break: break-word;
 }
 .overview-tab .feat-overview .epic-table-header-grid.feat > div {
   text-align: center;
@@ -869,7 +902,7 @@ input.popoverController[value="1"] ~ div.popoverContainer.weightPenalties .popov
 .overview-tab .feat-overview div[data-groupname=repeating_feat] > div,
 .overview-tab .feat-overview div[data-epic-table-name=feat] {
   display: grid;
-  grid-template-columns: minmax(0, 24px) minmax(0, 96px);
+  grid-template-columns: minmax(0, 32px) minmax(0, 96px);
   row-gap: 0;
   column-gap: 2px;
   background: transparent;
@@ -927,11 +960,12 @@ input.popoverController[value="1"] ~ div.popoverContainer.weightPenalties .popov
 }
 .overview-tab .skills-overview .epic-table-header-grid.skills-table {
   display: grid;
-  grid-template-columns: minmax(0, 96px) minmax(0, 32px) minmax(0, 32px) minmax(0, 24px);
+  grid-template-columns: minmax(0, 96px) minmax(0, 36px) minmax(0, 36px) minmax(0, 24px);
   column-gap: 2px;
   background: #b56632;
   color: #fff;
   padding: 2px;
+  word-break: break-word;
 }
 .overview-tab .skills-overview .epic-table-header-grid.skills-table > div {
   text-align: center;
@@ -941,7 +975,7 @@ input.popoverController[value="1"] ~ div.popoverContainer.weightPenalties .popov
 .overview-tab .skills-overview div[data-groupname=repeating_skills-table] > div,
 .overview-tab .skills-overview div[data-epic-table-name=skills-table] {
   display: grid;
-  grid-template-columns: minmax(0, 96px) minmax(0, 32px) minmax(0, 32px) minmax(0, 24px);
+  grid-template-columns: minmax(0, 96px) minmax(0, 36px) minmax(0, 36px) minmax(0, 24px);
   row-gap: 0;
   column-gap: 2px;
   background: transparent;
@@ -1011,11 +1045,12 @@ input.popoverController[value="1"] ~ div.popoverContainer.weightPenalties .popov
 }
 .overview-tab .weapons-overview .epic-table-header-grid.weapons-table {
   display: grid;
-  grid-template-columns: minmax(0, 128px) minmax(0, 48px) minmax(0, 60px) minmax(0, 32px);
+  grid-template-columns: minmax(0, 128px) minmax(0, 48px) minmax(0, 60px) minmax(0, 56px);
   column-gap: 2px;
   background: #b56632;
   color: #fff;
   padding: 2px;
+  word-break: break-word;
 }
 .overview-tab .weapons-overview .epic-table-header-grid.weapons-table > div {
   text-align: center;
@@ -1025,7 +1060,7 @@ input.popoverController[value="1"] ~ div.popoverContainer.weightPenalties .popov
 .overview-tab .weapons-overview div[data-groupname=repeating_weapons-table] > div,
 .overview-tab .weapons-overview div[data-epic-table-name=weapons-table] {
   display: grid;
-  grid-template-columns: minmax(0, 128px) minmax(0, 48px) minmax(0, 60px) minmax(0, 32px);
+  grid-template-columns: minmax(0, 128px) minmax(0, 48px) minmax(0, 60px) minmax(0, 56px);
   row-gap: 0;
   column-gap: 2px;
   background: transparent;
@@ -1072,6 +1107,7 @@ input.popoverController[value="1"] ~ div.popoverContainer.weightPenalties .popov
   background: #b56632;
   color: #fff;
   padding: 2px;
+  word-break: break-word;
 }
 .overview-tab .weapons-overview .epic-table-header-grid.weapons-equipmentnotes-table > div {
   text-align: center;
@@ -1163,6 +1199,7 @@ input.popoverController[value="1"] ~ div.popoverContainer.weightPenalties .popov
   background: #b56632;
   color: #fff;
   padding: 2px;
+  word-break: break-word;
 }
 .basic-tab .character-attributes .epic-table-header-grid.character-attributes > div {
   text-align: center;
@@ -1227,6 +1264,7 @@ input.popoverController[value="1"] ~ div.popoverContainer.weightPenalties .popov
   background: #b56632;
   color: #fff;
   padding: 2px;
+  word-break: break-word;
 }
 .basic-tab .advantages .epic-table-header-grid.advantage > div {
   text-align: center;
@@ -1283,6 +1321,7 @@ input.popoverController[value="1"] ~ div.popoverContainer.weightPenalties .popov
   background: #b56632;
   color: #fff;
   padding: 2px;
+  word-break: break-word;
 }
 .basic-tab .advantages .epic-table-header-grid.extraadvantage > div {
   text-align: center;
@@ -1357,11 +1396,12 @@ input.popoverController[value="1"] ~ div.popoverContainer.weightPenalties .popov
 }
 .basic-tab .feats .epic-table-header-grid.feat {
   display: grid;
-  grid-template-columns: minmax(0, 24px) minmax(0, 160px) minmax(0, 48px);
+  grid-template-columns: minmax(0, 32px) minmax(0, 160px) minmax(0, 48px);
   column-gap: 2px;
   background: #b56632;
   color: #fff;
   padding: 2px;
+  word-break: break-word;
 }
 .basic-tab .feats .epic-table-header-grid.feat > div {
   text-align: center;
@@ -1371,7 +1411,7 @@ input.popoverController[value="1"] ~ div.popoverContainer.weightPenalties .popov
 .basic-tab .feats div[data-groupname=repeating_feat] > div,
 .basic-tab .feats div[data-epic-table-name=feat] {
   display: grid;
-  grid-template-columns: minmax(0, 24px) minmax(0, 160px) minmax(0, 48px);
+  grid-template-columns: minmax(0, 32px) minmax(0, 160px) minmax(0, 48px);
   row-gap: 0;
   column-gap: 2px;
   background: transparent;
@@ -1437,6 +1477,7 @@ input.popoverController[value="1"] ~ div.popoverContainer.weightPenalties .popov
   background: #b56632;
   color: #fff;
   padding: 2px;
+  word-break: break-word;
 }
 .epic-skills-tab .epic-table-header-grid.skill > div {
   text-align: center;
@@ -1521,6 +1562,7 @@ input.popoverController[value="1"] ~ div.popoverContainer.weightPenalties .popov
   background: #b56632;
   color: #fff;
   padding: 2px;
+  word-break: break-word;
 }
 .equipment-tab .epic-table-header-grid.armor > div {
   text-align: center;
@@ -1577,6 +1619,7 @@ input.popoverController[value="1"] ~ div.popoverContainer.weightPenalties .popov
   background: #b56632;
   color: #fff;
   padding: 2px;
+  word-break: break-word;
 }
 .equipment-tab .epic-table-header-grid.shield > div {
   text-align: center;
@@ -1633,6 +1676,7 @@ input.popoverController[value="1"] ~ div.popoverContainer.weightPenalties .popov
   background: #b56632;
   color: #fff;
   padding: 2px;
+  word-break: break-word;
 }
 .equipment-tab .epic-table-header-grid.weapon > div {
   text-align: center;
@@ -1689,6 +1733,7 @@ input.popoverController[value="1"] ~ div.popoverContainer.weightPenalties .popov
   background: #b56632;
   color: #fff;
   padding: 2px;
+  word-break: break-word;
 }
 .equipment-tab .epic-table-header-grid.item > div {
   text-align: center;
@@ -1776,11 +1821,12 @@ input.popoverController[value="1"] ~ div.popoverContainer.weightPenalties .popov
 }
 .spells .epic-table-header-grid.arcane {
   display: grid;
-  grid-template-columns: minmax(0, 40px) minmax(0, 4fr) minmax(0, 32px) minmax(0, 1fr) minmax(0, 0.5fr) minmax(0, 40px) minmax(0, 1fr) minmax(0, 88px) minmax(0, 40px) minmax(0, 40px) minmax(0, 1.5fr) minmax(0, 24px) minmax(0, 24px) minmax(0, 24px) minmax(0, 40px) minmax(0, auto) minmax(0, 40px);
+  grid-template-columns: minmax(0, 40px) minmax(0, 4fr) minmax(0, 32px) minmax(0, 40px) minmax(0, 0.5fr) minmax(0, 40px) minmax(0, 1fr) minmax(0, 72px) minmax(0, 1.5fr) minmax(0, 2fr) minmax(0, 1.5fr) minmax(0, 16px) minmax(0, 24px) minmax(0, 24px) minmax(0, 40px) minmax(0, auto) minmax(0, 40px);
   column-gap: 2px;
   background: #b56632;
   color: #fff;
   padding: 2px;
+  word-break: break-word;
 }
 .spells .epic-table-header-grid.arcane > div {
   text-align: center;
@@ -1790,7 +1836,7 @@ input.popoverController[value="1"] ~ div.popoverContainer.weightPenalties .popov
 .spells div[data-groupname=repeating_arcane] > div,
 .spells div[data-epic-table-name=arcane] {
   display: grid;
-  grid-template-columns: minmax(0, 40px) minmax(0, 4fr) minmax(0, 32px) minmax(0, 1fr) minmax(0, 0.5fr) minmax(0, 40px) minmax(0, 1fr) minmax(0, 88px) minmax(0, 40px) minmax(0, 40px) minmax(0, 1.5fr) minmax(0, 24px) minmax(0, 24px) minmax(0, 24px) minmax(0, 40px) minmax(0, auto) minmax(0, 40px);
+  grid-template-columns: minmax(0, 40px) minmax(0, 4fr) minmax(0, 32px) minmax(0, 40px) minmax(0, 0.5fr) minmax(0, 40px) minmax(0, 1fr) minmax(0, 72px) minmax(0, 1.5fr) minmax(0, 2fr) minmax(0, 1.5fr) minmax(0, 16px) minmax(0, 24px) minmax(0, 24px) minmax(0, 40px) minmax(0, auto) minmax(0, 40px);
   row-gap: 0;
   column-gap: 2px;
   background: transparent;
@@ -1835,6 +1881,10 @@ input.popoverController[value="1"] ~ div.popoverContainer.weightPenalties .popov
   cursor: default;
   pointer-events: none;
 }
+.spells .skillname-hidden[value|="----"] ~ .skillname-grid {
+  font-weight: bold;
+  text-align: center;
+}
 .spells .isdiscipline-grid[value="1"] ~ .skillname-grid {
   font-weight: bold;
   text-align: center;
@@ -1847,11 +1897,12 @@ input.popoverController[value="1"] ~ div.popoverContainer.weightPenalties .popov
 }
 .spells .epic-table-header-grid.divine {
   display: grid;
-  grid-template-columns: minmax(0, 6fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr) minmax(0, 0.5fr);
+  grid-template-columns: minmax(0, 6fr) minmax(0, 16px) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr);
   column-gap: 2px;
   background: #b56632;
   color: #fff;
   padding: 2px;
+  word-break: break-word;
 }
 .spells .epic-table-header-grid.divine > div {
   text-align: center;
@@ -1861,7 +1912,7 @@ input.popoverController[value="1"] ~ div.popoverContainer.weightPenalties .popov
 .spells div[data-groupname=repeating_divine] > div,
 .spells div[data-epic-table-name=divine] {
   display: grid;
-  grid-template-columns: minmax(0, 6fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr) minmax(0, 0.5fr);
+  grid-template-columns: minmax(0, 6fr) minmax(0, 16px) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr);
   row-gap: 0;
   column-gap: 2px;
   background: transparent;
@@ -1903,11 +1954,12 @@ input.popoverController[value="1"] ~ div.popoverContainer.weightPenalties .popov
 }
 .spells .epic-table-header-grid.innate {
   display: grid;
-  grid-template-columns: minmax(0, 6fr) minmax(0, 1fr) minmax(0, 2fr) minmax(0, 3fr) minmax(0, 2fr) minmax(0, 3fr) minmax(0, 2fr) minmax(0, 0.5fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 6fr) minmax(0, 16px) minmax(0, 1fr) minmax(0, 2fr) minmax(0, 2fr) minmax(0, 2fr) minmax(0, 3fr) minmax(0, 2fr) minmax(0, 32px);
   column-gap: 2px;
   background: #b56632;
   color: #fff;
   padding: 2px;
+  word-break: break-word;
 }
 .spells .epic-table-header-grid.innate > div {
   text-align: center;
@@ -1917,7 +1969,7 @@ input.popoverController[value="1"] ~ div.popoverContainer.weightPenalties .popov
 .spells div[data-groupname=repeating_innate] > div,
 .spells div[data-epic-table-name=innate] {
   display: grid;
-  grid-template-columns: minmax(0, 6fr) minmax(0, 1fr) minmax(0, 2fr) minmax(0, 3fr) minmax(0, 2fr) minmax(0, 3fr) minmax(0, 2fr) minmax(0, 0.5fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 6fr) minmax(0, 16px) minmax(0, 1fr) minmax(0, 2fr) minmax(0, 2fr) minmax(0, 2fr) minmax(0, 3fr) minmax(0, 2fr) minmax(0, 32px);
   row-gap: 0;
   column-gap: 2px;
   background: transparent;

@@ -12,9 +12,18 @@ button.actionRollButton {
   border-radius: 4px;
 }
 
+@mixin hovered-button($background-color: $button-roll-color-2) {
+  &:hover {
+    // Remove Roll20 default styles
+    background-image: unset;
+    background-color: $background-color;
+  }
+}
+
 @mixin roll-action-button {
   @include action-button;
   background-image: linear-gradient(90deg, $button-roll-color-1, $button-roll-color-2);
+  @include hovered-button();
 }
 
 /* Change the character for dice roll buttons to be
@@ -62,11 +71,13 @@ button.big-control.do-and-roll {
 .disable-do[value="1"]~.do {
   background-image: linear-gradient(90deg, #ddd, #ddd);
   pointer-events: none;
+  @include hovered-button();
 }
 
 .disable-do-and-roll[value="1"]~.do-and-roll {
   background-image: linear-gradient(90deg, #ddd, #ddd);
   pointer-events: none;
+  @include hovered-button();
 }
 
 
@@ -82,6 +93,7 @@ button.undo::before {
   background-image: linear-gradient(90deg, $button-undo-roll-color-1, $button-undo-roll-color-2);
   line-height: 1;
   padding: 1px 1px;
+  @include hovered-button($button-undo-roll-color-2);
 }
 
 button.undo {
@@ -94,6 +106,7 @@ button.reset-total {
   line-height: 1;
   padding: 2px;
   vertical-align: middle;
+  @include hovered-button();
 }
 
 button.convert-button {
@@ -102,4 +115,5 @@ button.convert-button {
   padding: 0px 2px 4px 2px;
   vertical-align: middle;
   font-size: 200%;
+  @include hovered-button();
 }

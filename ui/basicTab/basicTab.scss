@@ -42,7 +42,7 @@
   }
 
   .feats {
-    $feat-grid-template: getResponsiveGridWidths(24px, 160px, 48px);
+    $feat-grid-template: getResponsiveGridWidths(32px, 160px, 48px);
     @include epic-table-grid('feat', $feat-grid-template);
 
     input.featname-grid {

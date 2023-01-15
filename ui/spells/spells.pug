@@ -103,15 +103,16 @@
     input(name='attr_divine_total_single_CP' type='hidden' value='0')
     .divine.epic-table-header-grid
       .skillname-grid Name
+      .spellhasnote-grid N
       .spellEP-grid EP
       .spellcasttime-grid Cast Time
       .spelltype-grid Touch/ Ray/ Missile
       .spellrange-grid Range
       .spelltarget-grid Target
       .spellduration-grid Damage/ Duration
-      .spellhasnote-grid N
     fieldset.repeating_divine
       input.skillname-grid(name='attr_skillname' type='text')
+      include ./spellsNotesPopover.pug
       input.spellEP-grid(name='attr_spellEP' type='number')
       input.spellcasttime-grid(name='attr_spellcasttime' type='text')
       select.spelltype-grid(name='attr_spelltype' type='text')
@@ -122,22 +123,24 @@
       input.spellrange-grid(name='attr_spellrange' type='text')
       input.spelltarget-grid(name='attr_spelltarget' type='text')
       input.spellduration-grid(name='attr_spellduration' type='text')
-      include ./spellsNotesPopover.pug
   .innate.section.innate-spells-grid
     input(name='attr_innate_total_CP' type='hidden' value='0')
     input(name='attr_innate_total_single_CP' type='hidden' value='0')
     .innate.epic-table-header-grid
       .skillname-grid Name
+      .spellhasnote-grid N
       .spellEP-grid EP
       .spellcasttime-grid Cast Time
       .spelltype-grid Touch/ Ray/ Missile
       .spellrange-grid Range
       .spelltarget-grid Target
-      .spellduration-grid Duration
-      .spellhasnote-grid N
+      .spellduration-grid Damage/ Duration
       .skillCP-grid CP
     fieldset.repeating_innate
+      // The next input allows targeting in CSS
+      input.skillname-hidden(name='attr_skillname' type='hidden')
       input.skillname-grid(name='attr_skillname' type='text')
+      include ./spellsNotesPopover.pug
       input.spellEP-grid(name='attr_spellEP' type='text')
       input.spellcasttime-grid(name='attr_spellcasttime' type='text')
       select.spelltype-grid(name='attr_spelltype' type='text')
@@ -148,5 +151,4 @@
       input.spellrange-grid(name='attr_spellrange' type='text')
       input.spelltarget-grid(name='attr_spelltarget' type='text')
       input.spellduration-grid(name='attr_spellduration' type='text')
-      include ./spellsNotesPopover.pug
       input.skillCP-grid(name='attr_skillCP' type='number')
