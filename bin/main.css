@@ -1470,9 +1470,12 @@ input.popoverController[value="1"] ~ div.popoverContainer.weightPenalties .popov
 }
 
 /* -------- Skills --------- */
+.epic-skills-tab {
+  max-width: 600px;
+}
 .epic-skills-tab .epic-table-header-grid.skill {
   display: grid;
-  grid-template-columns: minmax(0, 40px) minmax(0, 5fr) minmax(0, 36px) minmax(0, 24px) minmax(0, 24px) minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 40px) minmax(0, 4fr) minmax(0, 40px) minmax(0, 24px) minmax(0, 24px) minmax(0, 1fr) minmax(0, 2fr) minmax(0, 40px);
   column-gap: 2px;
   background: #b56632;
   color: #fff;
@@ -1487,7 +1490,7 @@ input.popoverController[value="1"] ~ div.popoverContainer.weightPenalties .popov
 .epic-skills-tab div[data-groupname=repeating_skill] > div,
 .epic-skills-tab div[data-epic-table-name=skill] {
   display: grid;
-  grid-template-columns: minmax(0, 40px) minmax(0, 5fr) minmax(0, 36px) minmax(0, 24px) minmax(0, 24px) minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 40px) minmax(0, 4fr) minmax(0, 40px) minmax(0, 24px) minmax(0, 24px) minmax(0, 1fr) minmax(0, 2fr) minmax(0, 40px);
   row-gap: 0;
   column-gap: 2px;
   background: transparent;
@@ -1821,7 +1824,7 @@ input.popoverController[value="1"] ~ div.popoverContainer.weightPenalties .popov
 }
 .spells .epic-table-header-grid.arcane {
   display: grid;
-  grid-template-columns: minmax(0, 40px) minmax(0, 4fr) minmax(0, 32px) minmax(0, 40px) minmax(0, 0.5fr) minmax(0, 40px) minmax(0, 1fr) minmax(0, 72px) minmax(0, 1.5fr) minmax(0, 2fr) minmax(0, 1.5fr) minmax(0, 16px) minmax(0, 24px) minmax(0, 24px) minmax(0, 40px) minmax(0, auto) minmax(0, 40px);
+  grid-template-columns: minmax(0, 40px) minmax(0, 4fr) minmax(0, 32px) minmax(0, 40px) minmax(0, 0.5fr) minmax(0, 40px) minmax(0, 1fr) minmax(0, 80px) minmax(0, 1.5fr) minmax(0, 2fr) minmax(0, 1.5fr) minmax(0, 16px) minmax(0, 24px) minmax(0, 24px) minmax(0, 40px) minmax(0, auto) minmax(0, 40px);
   column-gap: 2px;
   background: #b56632;
   color: #fff;
@@ -1836,7 +1839,7 @@ input.popoverController[value="1"] ~ div.popoverContainer.weightPenalties .popov
 .spells div[data-groupname=repeating_arcane] > div,
 .spells div[data-epic-table-name=arcane] {
   display: grid;
-  grid-template-columns: minmax(0, 40px) minmax(0, 4fr) minmax(0, 32px) minmax(0, 40px) minmax(0, 0.5fr) minmax(0, 40px) minmax(0, 1fr) minmax(0, 72px) minmax(0, 1.5fr) minmax(0, 2fr) minmax(0, 1.5fr) minmax(0, 16px) minmax(0, 24px) minmax(0, 24px) minmax(0, 40px) minmax(0, auto) minmax(0, 40px);
+  grid-template-columns: minmax(0, 40px) minmax(0, 4fr) minmax(0, 32px) minmax(0, 40px) minmax(0, 0.5fr) minmax(0, 40px) minmax(0, 1fr) minmax(0, 80px) minmax(0, 1.5fr) minmax(0, 2fr) minmax(0, 1.5fr) minmax(0, 16px) minmax(0, 24px) minmax(0, 24px) minmax(0, 40px) minmax(0, auto) minmax(0, 40px);
   row-gap: 0;
   column-gap: 2px;
   background: transparent;

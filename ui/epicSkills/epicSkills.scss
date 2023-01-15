@@ -3,15 +3,16 @@
 
 /* -------- Skills --------- */
 .epic-skills-tab {
+  max-width: 600px;
   $skill-grid-template: getResponsiveGridWidths(
     40px, // Discipline?
-    5fr, // Name
-    36px, // Ability
+    4fr, // Name
+    40px, // Ability
     24px, // TP
     24px, // CP
     1fr, // Exper
     2fr, // Attribute
-    1fr // Base
+    40px // Base
   );
   @include epic-table-grid('skill', $skill-grid-template);
 
