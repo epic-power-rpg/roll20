@@ -580,13 +580,18 @@ radio > span.checked {
   display: flex;
   align-items: center;
 }
-
-.sectioncontrol[value=weightPenalties] ~ div.popoverContainer.weightPenalties,
-input.popoverController[value="1"] ~ div.popoverContainer.weightPenalties {
+.top-section .tab-holder {
+  margin-top: 4px;
+}
+.top-section .sectioncontrol[value=weightPenalties] ~ div.popoverContainer.weightPenalties,
+.top-section input.popoverController[value="1"] ~ div.popoverContainer.weightPenalties {
   display: inline;
 }
-.sectioncontrol[value=weightPenalties] ~ div.popoverContainer.weightPenalties .popover,
-input.popoverController[value="1"] ~ div.popoverContainer.weightPenalties .popover {
+.top-section .sectioncontrol[value=weightPenalties] ~ div.popoverContainer.weightPenalties .popover,
+.top-section input.popoverController[value="1"] ~ div.popoverContainer.weightPenalties .popover {
+  display: block;
+}
+.top-section .defenseBlock {
   display: block;
 }
 

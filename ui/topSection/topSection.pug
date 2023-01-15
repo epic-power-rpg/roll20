@@ -158,31 +158,7 @@
     div
       .attribute-name.wide.larger Speed
       span.narrowish.center.bold.larger.value(name='attr_speed')
-  // Defense 
-  div
-    div
-      label.medium +bonus
-      input.center.narrowish(name='attr_melee_boost' type='number' value='0')
-      input.center.narrowish(name='attr_ranged_boost' type='number' value='0')
-    .table-header
-      .medium.larger
-      .narrowish Melee
-      .narrowish Range
-    .children-separated.no-shrink
-      div
-        .inline.medium.right.larger.bold Dodge
-        input(name='attr_dodge' type='hidden')
-        span.center.narrowish.bold.larger.inline(name='attr_current_dodge_melee' value='0')
-        span.center.narrowish.bold.larger.inline(name='attr_current_dodge_ranged' value='0')
-      div
-        .inline.medium.right.larger.bold Parry
-        input.center.narrowish.bold.larger.inline(name='attr_current_parry_melee' type='number' value='0')
-        span.center.narrowish.bold.larger.inline --
-      div
-        .inline.medium.right.larger.bold Block
-        input(name='attr_block' type='hidden')
-        span.center.narrowish.bold.larger.inline(name='attr_current_block_melee' value='0')
-        span.center.narrowish.bold.larger.inline(name='attr_current_block_ranged' value='0')
+  include ./components/defenseBlock.pug
   = '\n'
   // HP, EP, SP 
   .children-separated.no-shrink
