@@ -761,6 +761,7 @@ input.popoverController[value="1"] ~ div.popoverContainer.weightPenalties .popov
   row-gap: 0;
   column-gap: 2px;
   background: transparent;
+  word-break: break-word;
 }
 .overview-tab .advantage-overview div[data-groupname=repeating_advantage] > div input, .overview-tab .advantage-overview div[data-groupname=repeating_advantage] > div input[type=number], .overview-tab .advantage-overview div[data-groupname=repeating_advantage] > div textarea, .overview-tab .advantage-overview div[data-groupname=repeating_advantage] > div select,
 .overview-tab .advantage-overview div[data-epic-table-name=advantage] input,
@@ -818,6 +819,7 @@ input.popoverController[value="1"] ~ div.popoverContainer.weightPenalties .popov
   row-gap: 0;
   column-gap: 2px;
   background: transparent;
+  word-break: break-word;
 }
 .overview-tab .advantage-overview div[data-groupname=repeating_extraadvantage] > div input, .overview-tab .advantage-overview div[data-groupname=repeating_extraadvantage] > div input[type=number], .overview-tab .advantage-overview div[data-groupname=repeating_extraadvantage] > div textarea, .overview-tab .advantage-overview div[data-groupname=repeating_extraadvantage] > div select,
 .overview-tab .advantage-overview div[data-epic-table-name=extraadvantage] input,
@@ -906,6 +908,7 @@ input.popoverController[value="1"] ~ div.popoverContainer.weightPenalties .popov
   row-gap: 0;
   column-gap: 2px;
   background: transparent;
+  word-break: break-word;
 }
 .overview-tab .feat-overview div[data-groupname=repeating_feat] > div input, .overview-tab .feat-overview div[data-groupname=repeating_feat] > div input[type=number], .overview-tab .feat-overview div[data-groupname=repeating_feat] > div textarea, .overview-tab .feat-overview div[data-groupname=repeating_feat] > div select,
 .overview-tab .feat-overview div[data-epic-table-name=feat] input,
@@ -979,6 +982,7 @@ input.popoverController[value="1"] ~ div.popoverContainer.weightPenalties .popov
   row-gap: 0;
   column-gap: 2px;
   background: transparent;
+  word-break: break-word;
 }
 .overview-tab .skills-overview div[data-groupname=repeating_skills-table] > div input, .overview-tab .skills-overview div[data-groupname=repeating_skills-table] > div input[type=number], .overview-tab .skills-overview div[data-groupname=repeating_skills-table] > div textarea, .overview-tab .skills-overview div[data-groupname=repeating_skills-table] > div select,
 .overview-tab .skills-overview div[data-epic-table-name=skills-table] input,
@@ -1064,6 +1068,7 @@ input.popoverController[value="1"] ~ div.popoverContainer.weightPenalties .popov
   row-gap: 0;
   column-gap: 2px;
   background: transparent;
+  word-break: break-word;
 }
 .overview-tab .weapons-overview div[data-groupname=repeating_weapons-table] > div input, .overview-tab .weapons-overview div[data-groupname=repeating_weapons-table] > div input[type=number], .overview-tab .weapons-overview div[data-groupname=repeating_weapons-table] > div textarea, .overview-tab .weapons-overview div[data-groupname=repeating_weapons-table] > div select,
 .overview-tab .weapons-overview div[data-epic-table-name=weapons-table] input,
@@ -1121,6 +1126,7 @@ input.popoverController[value="1"] ~ div.popoverContainer.weightPenalties .popov
   row-gap: 0;
   column-gap: 2px;
   background: transparent;
+  word-break: break-word;
 }
 .overview-tab .weapons-overview div[data-groupname=repeating_weapons-equipmentnotes-table] > div input, .overview-tab .weapons-overview div[data-groupname=repeating_weapons-equipmentnotes-table] > div input[type=number], .overview-tab .weapons-overview div[data-groupname=repeating_weapons-equipmentnotes-table] > div textarea, .overview-tab .weapons-overview div[data-groupname=repeating_weapons-equipmentnotes-table] > div select,
 .overview-tab .weapons-overview div[data-epic-table-name=weapons-equipmentnotes-table] input,
@@ -1213,6 +1219,7 @@ input.popoverController[value="1"] ~ div.popoverContainer.weightPenalties .popov
   row-gap: 0;
   column-gap: 2px;
   background: transparent;
+  word-break: break-word;
 }
 .basic-tab .character-attributes div[data-groupname=repeating_character-attributes] > div input, .basic-tab .character-attributes div[data-groupname=repeating_character-attributes] > div input[type=number], .basic-tab .character-attributes div[data-groupname=repeating_character-attributes] > div textarea, .basic-tab .character-attributes div[data-groupname=repeating_character-attributes] > div select,
 .basic-tab .character-attributes div[data-epic-table-name=character-attributes] input,
@@ -1278,6 +1285,7 @@ input.popoverController[value="1"] ~ div.popoverContainer.weightPenalties .popov
   row-gap: 0;
   column-gap: 2px;
   background: transparent;
+  word-break: break-word;
 }
 .basic-tab .advantages div[data-groupname=repeating_advantage] > div input, .basic-tab .advantages div[data-groupname=repeating_advantage] > div input[type=number], .basic-tab .advantages div[data-groupname=repeating_advantage] > div textarea, .basic-tab .advantages div[data-groupname=repeating_advantage] > div select,
 .basic-tab .advantages div[data-epic-table-name=advantage] input,
@@ -1335,6 +1343,7 @@ input.popoverController[value="1"] ~ div.popoverContainer.weightPenalties .popov
   row-gap: 0;
   column-gap: 2px;
   background: transparent;
+  word-break: break-word;
 }
 .basic-tab .advantages div[data-groupname=repeating_extraadvantage] > div input, .basic-tab .advantages div[data-groupname=repeating_extraadvantage] > div input[type=number], .basic-tab .advantages div[data-groupname=repeating_extraadvantage] > div textarea, .basic-tab .advantages div[data-groupname=repeating_extraadvantage] > div select,
 .basic-tab .advantages div[data-epic-table-name=extraadvantage] input,
@@ -1415,6 +1424,7 @@ input.popoverController[value="1"] ~ div.popoverContainer.weightPenalties .popov
   row-gap: 0;
   column-gap: 2px;
   background: transparent;
+  word-break: break-word;
 }
 .basic-tab .feats div[data-groupname=repeating_feat] > div input, .basic-tab .feats div[data-groupname=repeating_feat] > div input[type=number], .basic-tab .feats div[data-groupname=repeating_feat] > div textarea, .basic-tab .feats div[data-groupname=repeating_feat] > div select,
 .basic-tab .feats div[data-epic-table-name=feat] input,
@@ -1494,6 +1504,7 @@ input.popoverController[value="1"] ~ div.popoverContainer.weightPenalties .popov
   row-gap: 0;
   column-gap: 2px;
   background: transparent;
+  word-break: break-word;
 }
 .epic-skills-tab div[data-groupname=repeating_skill] > div input, .epic-skills-tab div[data-groupname=repeating_skill] > div input[type=number], .epic-skills-tab div[data-groupname=repeating_skill] > div textarea, .epic-skills-tab div[data-groupname=repeating_skill] > div select,
 .epic-skills-tab div[data-epic-table-name=skill] input,
@@ -1579,6 +1590,7 @@ input.popoverController[value="1"] ~ div.popoverContainer.weightPenalties .popov
   row-gap: 0;
   column-gap: 2px;
   background: transparent;
+  word-break: break-word;
 }
 .equipment-tab div[data-groupname=repeating_armor] > div input, .equipment-tab div[data-groupname=repeating_armor] > div input[type=number], .equipment-tab div[data-groupname=repeating_armor] > div textarea, .equipment-tab div[data-groupname=repeating_armor] > div select,
 .equipment-tab div[data-epic-table-name=armor] input,
@@ -1636,6 +1648,7 @@ input.popoverController[value="1"] ~ div.popoverContainer.weightPenalties .popov
   row-gap: 0;
   column-gap: 2px;
   background: transparent;
+  word-break: break-word;
 }
 .equipment-tab div[data-groupname=repeating_shield] > div input, .equipment-tab div[data-groupname=repeating_shield] > div input[type=number], .equipment-tab div[data-groupname=repeating_shield] > div textarea, .equipment-tab div[data-groupname=repeating_shield] > div select,
 .equipment-tab div[data-epic-table-name=shield] input,
@@ -1693,6 +1706,7 @@ input.popoverController[value="1"] ~ div.popoverContainer.weightPenalties .popov
   row-gap: 0;
   column-gap: 2px;
   background: transparent;
+  word-break: break-word;
 }
 .equipment-tab div[data-groupname=repeating_weapon] > div input, .equipment-tab div[data-groupname=repeating_weapon] > div input[type=number], .equipment-tab div[data-groupname=repeating_weapon] > div textarea, .equipment-tab div[data-groupname=repeating_weapon] > div select,
 .equipment-tab div[data-epic-table-name=weapon] input,
@@ -1750,6 +1764,7 @@ input.popoverController[value="1"] ~ div.popoverContainer.weightPenalties .popov
   row-gap: 0;
   column-gap: 2px;
   background: transparent;
+  word-break: break-word;
 }
 .equipment-tab div[data-groupname=repeating_item] > div input, .equipment-tab div[data-groupname=repeating_item] > div input[type=number], .equipment-tab div[data-groupname=repeating_item] > div textarea, .equipment-tab div[data-groupname=repeating_item] > div select,
 .equipment-tab div[data-epic-table-name=item] input,
@@ -1843,6 +1858,7 @@ input.popoverController[value="1"] ~ div.popoverContainer.weightPenalties .popov
   row-gap: 0;
   column-gap: 2px;
   background: transparent;
+  word-break: break-word;
 }
 .spells div[data-groupname=repeating_arcane] > div input, .spells div[data-groupname=repeating_arcane] > div input[type=number], .spells div[data-groupname=repeating_arcane] > div textarea, .spells div[data-groupname=repeating_arcane] > div select,
 .spells div[data-epic-table-name=arcane] input,
@@ -1919,6 +1935,7 @@ input.popoverController[value="1"] ~ div.popoverContainer.weightPenalties .popov
   row-gap: 0;
   column-gap: 2px;
   background: transparent;
+  word-break: break-word;
 }
 .spells div[data-groupname=repeating_divine] > div input, .spells div[data-groupname=repeating_divine] > div input[type=number], .spells div[data-groupname=repeating_divine] > div textarea, .spells div[data-groupname=repeating_divine] > div select,
 .spells div[data-epic-table-name=divine] input,
@@ -1976,6 +1993,7 @@ input.popoverController[value="1"] ~ div.popoverContainer.weightPenalties .popov
   row-gap: 0;
   column-gap: 2px;
   background: transparent;
+  word-break: break-word;
 }
 .spells div[data-groupname=repeating_innate] > div input, .spells div[data-groupname=repeating_innate] > div input[type=number], .spells div[data-groupname=repeating_innate] > div textarea, .spells div[data-groupname=repeating_innate] > div select,
 .spells div[data-epic-table-name=innate] input,

@@ -24,6 +24,7 @@ $grid-column-gap: 2px;
   row-gap: 0;
   column-gap: $grid-column-gap;
   background: transparent;
+  word-break: break-word;
   input, input[type=number], textarea, select {
     width: 100% !important;
     margin-left: unset;
