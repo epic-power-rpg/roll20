@@ -39,7 +39,7 @@
     //
       These are read only, except in the basic tab,
       where they can be changed, and their CP cost is shown
-    .horizontal-flex-center
+    .attribute-row
       input.attributecontrol.cpcontrol(name='attr_chosentab' type='hidden' value='basic')
       .attribute-name.big IQ
       = '\n'
@@ -118,7 +118,7 @@
         .section.weightPenalties.popoverContainer
           .popoverBackdrop
             button(name='act_popover_weightPenalties' type='action') Close popover
-          .flex-stack.align-center.popover
+          .popover
             button.closePopoverButton(name='act_popover_weightPenalties' type='action') X
             .center.wideish.bold Weight Penalties
             .weight-penalty-table.flex-stack

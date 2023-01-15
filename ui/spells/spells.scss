@@ -39,6 +39,8 @@ $notes-popover-width: 16px;
 /* Avoid space between items in the row */
 .spells {
   .spell-header-action-area {
+    display: flex;
+    gap: 8px;
     label, .label {
       color: black;
     }

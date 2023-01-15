@@ -109,7 +109,7 @@
     These are read only, except in the basic tab,
     where they can be changed, and their CP cost is shown
     -->
-    <div class="horizontal-flex-center">
+    <div class="attribute-row">
       <input class="attributecontrol cpcontrol" name="attr_chosentab" type="hidden" value="basic" />
       <div class="attribute-name big">IQ</div>
       &ensp;
@@ -178,7 +178,7 @@
           <div class="popoverBackdrop">
             <button name="act_popover_weightPenalties" type="action">Close popover</button>
           </div>
-          <div class="flex-stack align-center popover">
+          <div class="popover">
             <button class="closePopoverButton" name="act_popover_weightPenalties" type="action">X</button>
             <div class="center wideish bold">Weight Penalties</div>
             <div class="weight-penalty-table flex-stack">
@@ -311,7 +311,7 @@ its value is used for css selection of its siblings.
 <input class="sectioncontrol" name="attr_chosentab" type="hidden" value="basic" />
 <!-- Overview section -->
 <div class="overview section overview-tab">
-  <div class="horizontal-flex">
+  <div class="tables-container">
     <!-- Advantages -->
     <div class="advantage-overview no-add-or-modify-buttons">
       <div class="advantage epic-table-header-grid">
@@ -484,7 +484,7 @@ its value is used for css selection of its siblings.
 </div>
 <!-- Basic section -->
 <div class="basic section basic-tab">
-  <div class="advantages-and-feats horizontal-flex">
+  <div class="advantages-and-feats">
     <!-- Character Attributes -->
     <div class="character-attributes">
       <div class="character-attributes epic-table-header-grid">
@@ -644,8 +644,8 @@ its value is used for css selection of its siblings.
 
 <!-- skill section -->
 <div class="skills section epic-skills-tab">
-  <div class="flex-stack full-width">
-    <div class="center bold">Disciplines &amp; Skills</div>
+  <div>
+    <div class="bold">Disciplines &amp; Skills</div>
   </div>
   <div class="epic-skill-table">
     <input name="attr_skill_total_TP" type="hidden" value="0" />
@@ -705,22 +705,22 @@ its value is used for css selection of its siblings.
 
 <!-- Equipment section -->
 <div class="equipment section equipment-tab">
-  <div class="horizontal-flex flex-gap">
+  <div class="cash-and-equipment-summary">
     <div>
-      <div class="attribute-name wideish larger inline bold right middle">Cash</div>
+      <div class="attribute-name larger inline bold right middle">Cash</div>
       <input class="wide center bold larger value" name="attr_cash" type="number" />
     </div>
     <div>
       <div class="attribute-name larger inline bold right middle">Equip Value</div>
-      <span class="narrowish center bold larger value middle" name="attr_equipment_total_value"></span>
+      <span class="center bold larger value middle" name="attr_equipment_total_value"></span>
     </div>
     <div>
       <div class="attribute-name larger inline bold right middle">Equip Weight</div>
-      <span class="narrowish center bold larger value middle" name="attr_equipment_total_weight"></span>
+      <span class="center bold larger value middle" name="attr_equipment_total_weight"></span>
     </div>
   </div>
 
-  <div class="spacer"></div>
+  <div class="small-spacer"></div>
   <div class="armor-table">
     <div class="armor-shield-weapons-tables">
       <div class="epic-table-header-grid armor">
@@ -804,7 +804,7 @@ its value is used for css selection of its siblings.
 </div>
 
 <!-- Spells section -->
-<div class="spells section horizontal-flex">
+<div class="spells section">
   <!--
   This input's value names the currently selected tab.
   its value is used for css selection of the tab content.
@@ -825,12 +825,12 @@ its value is used for css selection of its siblings.
     <div class="spell-header-action-area">
       <div class="label wide larger">Spell Touch</div>
       <input name="attr_spell_touch" type="hidden" />
-      <span class="center narrowish bold larger middle" name="attr_spell_touch"></span>
+      <span class="center bold larger middle" name="attr_spell_touch"></span>
       <button type="roll" value="!EPRoll @{spell_touch} Touches with Spell: @{spell_touch}"></button>
       &emsp;
       <div class="label wide larger">Aim Spell</div>
       <input name="attr_aim_spell" type="hidden" />
-      <span class="center narrowish bold larger middle" name="attr_aim_spell"></span>
+      <span class="center bold larger middle" name="attr_aim_spell"></span>
       <button type="roll" value="!EPRoll @{aim_spell} Aims Spell: @{aim_spell}"></button>
     </div>
   </div>

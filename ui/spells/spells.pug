@@ -1,5 +1,5 @@
 // Spells section 
-.spells.section.horizontal-flex
+.spells.section
   //
     This input's value names the currently selected tab.
     its value is used for css selection of the tab content.
@@ -22,13 +22,13 @@
     .spell-header-action-area
       .label.wide.larger Spell Touch
       input(name='attr_spell_touch' type='hidden')
-      span.center.narrowish.bold.larger.middle(name='attr_spell_touch')
+      span.center.bold.larger.middle(name='attr_spell_touch')
       button(type='roll' value='!EPRoll @{spell_touch} Touches with Spell: @{spell_touch}')
       = '\n'
       | &emsp;
       .label.wide.larger Aim Spell
       input(name='attr_aim_spell' type='hidden')
-      span.center.narrowish.bold.larger.middle(name='attr_aim_spell')
+      span.center.bold.larger.middle(name='attr_aim_spell')
       button(type='roll' value='!EPRoll @{aim_spell} Aims Spell: @{aim_spell}')
   // Arcane spells 
   .arcane.section

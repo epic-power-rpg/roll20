@@ -259,10 +259,6 @@ button.convert-button:hover {
   padding-bottom: 16px;
 }
 
-.invisible {
-  display: none;
-}
-
 .inline {
   display: inline-block;
 }
@@ -281,10 +277,6 @@ button.convert-button:hover {
 
 .middle {
   vertical-align: middle;
-}
-
-.full-width {
-  width: 100%;
 }
 
 .narrow.narrow.narrow {
@@ -311,10 +303,6 @@ button.convert-button:hover {
   width: 90px;
 }
 
-.wider.wider.wider {
-  width: 150px;
-}
-
 .narrow-spacing {
   line-height: 1;
 }
@@ -329,26 +317,6 @@ button.convert-button:hover {
 
 .inlne-spacer {
   width: 8px;
-}
-
-.horizontal-flex {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-}
-
-.flex-gap {
-  gap: 16px;
-}
-
-.horizontal-flex-center {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-.align-center.align-center.align-center {
-  align-items: center;
 }
 
 .flexing {
@@ -382,10 +350,6 @@ button.convert-button:hover {
 }
 
 .bold {
-  font-weight: bold;
-}
-
-.number.ability {
   font-weight: bold;
 }
 
@@ -589,6 +553,10 @@ radio > span.checked {
   margin-bottom: 6px;
   background: linear-gradient(to top, rgba(194, 148, 91, 0.5019607843) 0%, transparent 100%);
 }
+.top-section .attribute-row {
+  display: flex;
+  align-items: center;
+}
 
 .sectioncontrol[value=weightPenalties] ~ div.popoverContainer.weightPenalties,
 input.popoverController[value="1"] ~ div.popoverContainer.weightPenalties {
@@ -736,7 +704,7 @@ input.popoverController[value="1"] ~ div.popoverContainer.weightPenalties .popov
   /* ------------ Skills Overview -------------- */
   /* ------------ Weapons Overview -------------- */
 }
-.overview-tab > .horizontal-flex {
+.overview-tab .tables-container {
   display: flex;
   gap: 16px;
 }
@@ -1569,6 +1537,10 @@ input.popoverController[value="1"] ~ div.popoverContainer.weightPenalties .popov
 }
 
 /* -------- Equipment --------- */
+.equipment-tab .cash-and-equipment-summary {
+  display: flex;
+  gap: 16px;
+}
 .equipment-tab .epic-table-header-grid.armor {
   display: grid;
   grid-template-columns: minmax(0, 5fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 5fr);
@@ -1834,6 +1806,10 @@ input.popoverController[value="1"] ~ div.popoverContainer.weightPenalties .popov
 }
 
 /* Avoid space between items in the row */
+.spells .spell-header-action-area {
+  display: flex;
+  gap: 8px;
+}
 .spells .spell-header-action-area label, .spells .spell-header-action-area .label {
   color: black;
 }

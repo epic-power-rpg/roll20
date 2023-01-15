@@ -9,7 +9,7 @@
 
 /* ---------- Overview tab ------------- */
 .overview-tab {
-  > .horizontal-flex {
+  .tables-container {
     display: flex;
     gap: 16px;
   }
