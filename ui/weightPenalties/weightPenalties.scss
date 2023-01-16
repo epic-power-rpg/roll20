@@ -12,7 +12,7 @@
 }
 
 .weight-penalty-table>div:not(:last-child):not(.table-header) {
-  border-bottom: solid $border-underline-color 1px;
+  border-bottom: solid $table-row-underline-color 1px;
 }
 
 .weight-penalty-table>div> :nth-child(2) {

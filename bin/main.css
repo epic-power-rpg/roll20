@@ -2254,15 +2254,6 @@ radio > span.checked {
   grid-column-start: 1;
   grid-column-end: 11;
 }
-.spells .innatesphere-hidden[value|=S] ~ .skillname-grid {
-  font-weight: bold;
-  text-align: center;
-}
-.spells .innatesphere-hidden[value|=S] ~ :not(.skillname-grid) {
-  opacity: 0;
-  cursor: default;
-  pointer-events: none;
-}
 .spells div[data-groupname=repeating_innate] > div input, .spells div[data-groupname=repeating_innate] > div select, .spells div[data-groupname=repeating_innate] > div textarea,
 .spells div[data-epic-table-name=innate] input,
 .spells div[data-epic-table-name=innate] select,
@@ -2272,6 +2263,15 @@ radio > span.checked {
 .spells div[data-groupname=repeating_innate] > div + div,
 .spells div[data-epic-table-name=innate] + div[data-epic-table-name=innate] {
   border-top: 1px solid rgba(181, 102, 50, 0.7);
+}
+.spells .innatesphere-hidden[value|=S] ~ .skillname-grid {
+  font-weight: bold;
+  text-align: center;
+}
+.spells .innatesphere-hidden[value|=S] ~ :not(.skillname-grid) {
+  opacity: 0;
+  cursor: default;
+  pointer-events: none;
 }
 .spells .skillTP-grid, .spells .TP-grid {
   color: #267200;

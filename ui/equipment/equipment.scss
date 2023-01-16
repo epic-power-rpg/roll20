@@ -9,13 +9,17 @@
 
   $armor-grid-template: getResponsiveGridWidths(5fr, 1fr, 1fr, 1fr, 5fr);
   @include epic-table-grid('armor', $armor-grid-template);
+  @include epic-table-grid-row-border('armor');
 
   $shield-grid-template: getResponsiveGridWidths(5fr, 1fr, 1fr, 1fr, 1fr, 5fr);
   @include epic-table-grid('shield', $shield-grid-template);
+  @include epic-table-grid-row-border('shield');
 
   $weapon-grid-template: getResponsiveGridWidths(5fr, 1fr, 1fr, 1fr, 1fr, 1fr, 5fr);
   @include epic-table-grid('weapon', $weapon-grid-template);
+  @include epic-table-grid-row-border('weapon');
 
   $item-grid-template: getResponsiveGridWidths(5fr, 1fr, 1fr, 1fr, 5fr);
   @include epic-table-grid('item', $item-grid-template);
+  @include epic-table-grid-row-border('item');
 }

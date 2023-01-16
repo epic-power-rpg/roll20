@@ -9,6 +9,7 @@
   .character-attributes {
     $character-attributes-grid-template: getResponsiveGridWidths(64px, 96px);
     @include epic-table-grid('character-attributes', $character-attributes-grid-template);
+    @include epic-table-grid-row-border('character-attributes');
 
     .character-attributes-table {
       .character-attributes-name-grid {
@@ -25,7 +26,9 @@
   .advantages {
     $advantage-grid-template: getResponsiveGridWidths(160px, 48px, 32px);
     @include epic-table-grid('advantage', $advantage-grid-template);
+    @include epic-table-grid-row-border('advantage');
     @include epic-table-grid('extraadvantage', $advantage-grid-template);
+    @include epic-table-grid-row-border('extraadvantage');
 
     .advantage-grid, .extraadvantagename-grid {
       text-align: right !important;
@@ -44,6 +47,7 @@
   .feats {
     $feat-grid-template: getResponsiveGridWidths(32px, 160px, 48px);
     @include epic-table-grid('feat', $feat-grid-template);
+    @include epic-table-grid-row-border('feat');
 
     input.featname-grid {
       text-align: right !important;

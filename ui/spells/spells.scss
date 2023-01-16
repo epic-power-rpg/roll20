@@ -68,6 +68,8 @@ $notes-popover-width: 16px;
   );
 
   @include epic-table-grid('arcane', $arcane-grid-template);
+  @include epic-table-grid-row-border('arcane');
+
   .isdiscipline-grid[value="1"] {
     ~:not(.skillname-grid, .skillTP-grid, .skillexpertise-grid) {
       opacity: 0;
@@ -90,6 +92,7 @@ $notes-popover-width: 16px;
 
   $divine-grid-template: getResponsiveGridWidths(6fr, $notes-popover-width, 1fr, 1fr, 2fr, 1fr, 1fr, 2fr);
   @include epic-table-grid('divine', $divine-grid-template);
+  @include epic-table-grid-row-border('divine');
 
   $innate-grid-template: getResponsiveGridWidths(
     40px, // Sphere?
@@ -104,6 +107,7 @@ $notes-popover-width: 16px;
     32px, // CP
   );
   @include epic-table-grid('innate', $innate-grid-template);
+  @include epic-table-grid-row-border('innate');
 
   .innatesphere-hidden[value|="S"]{
     ~.skillname-grid {

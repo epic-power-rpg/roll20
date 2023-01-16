@@ -1,3 +1,5 @@
+@use "sass:color";
+
 $cp-color: blue;
 $tp-color: #267200;
 $paper-color: #c4bdaf;
@@ -11,4 +13,4 @@ $primary-highlight-color: #fff;
 $primary-background-color: lighten($primary-highlight-background-color, 50%);
 $selected-tab-color: $primary-highlight-background-color;
 $unselected-tab-color: $primary-background-color;
-$border-underline-color: $primary-highlight-background-color;
+$table-row-underline-color: color.scale($primary-highlight-background-color, $alpha: -30%);
