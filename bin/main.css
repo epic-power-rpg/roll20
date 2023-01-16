@@ -72,6 +72,29 @@ div.popoverContainer > .fixedPlacementPopover {
   right: 20vw;
 }
 
+.epic-tooltip {
+  position: relative;
+  display: inline-block;
+}
+.epic-tooltip .epic-tooltip-text {
+  visibility: hidden;
+  max-width: 300px;
+  word-break: normal;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 4px;
+  padding: 4px;
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  top: 105%;
+  left: 0;
+}
+.epic-tooltip:hover .epic-tooltip-text {
+  visibility: visible;
+}
+
 /* Styles that apply everywhere */
 .characterviewer label,
 .characterviewer .label {
