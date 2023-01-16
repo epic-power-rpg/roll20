@@ -1,3 +1,17 @@
-.defenseBlock {
-  display: block;
+@import '../../components/gridTable/gridTable.scss';
+
+.defense-block {
+  $defenses-grid-template: getResponsiveGridWidths(50px, 50px, 50px);
+  @include epic-table-grid('defenses', $defenses-grid-template);
+
+  .table-label {
+    text-align: right;
+    margin: auto;
+    margin-right: 2px;
+    font-weight: bold;
+  }
+
+  input[type=number] {
+    text-align: right;
+  }
 }

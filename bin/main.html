@@ -233,35 +233,33 @@
     </div>
   </div>
   <!-- Defense -->
-  <div class="defenseBlock">
-    <div>
-      <label class="medium">+bonus</label>
-      <input class="center narrowish" name="attr_melee_boost" type="number" value="0" />
-      <input class="center narrowish" name="attr_ranged_boost" type="number" value="0" />
+  <div class="defense-block">
+    <div class="defenses epic-table-header-grid">
+      <div></div>
+      <div>Melee</div>
+      <div>Range</div>
     </div>
-    <div class="table-header">
-      <div class="medium larger"></div>
-      <div class="narrowish">Melee</div>
-      <div class="narrowish">Range</div>
+    <div class="defenses-table" data-epic-table-name="defenses">
+      <div class="table-label">+bonus</div>
+      <input class="center bold larger" name="attr_melee_boost" type="number" value="0" />
+      <input class="center bold larger" name="attr_ranged_boost" type="number" value="0" />
     </div>
-    <div class="children-separated no-shrink">
-      <div>
-        <div class="inline medium right larger bold">Dodge</div>
-        <input name="attr_dodge" type="hidden" />
-        <span class="center narrowish bold larger inline" name="attr_current_dodge_melee" value="0"></span>
-        <span class="center narrowish bold larger inline" name="attr_current_dodge_ranged" value="0"></span>
-      </div>
-      <div>
-        <div class="inline medium right larger bold">Parry</div>
-        <input class="center narrowish bold larger inline" name="attr_current_parry_melee" type="number" value="0" />
-        <span class="center narrowish bold larger inline">--</span>
-      </div>
-      <div>
-        <div class="inline medium right larger bold">Block</div>
-        <input name="attr_block" type="hidden" />
-        <span class="center narrowish bold larger inline" name="attr_current_block_melee" value="0"></span>
-        <span class="center narrowish bold larger inline" name="attr_current_block_ranged" value="0"></span>
-      </div>
+    <div class="defenses-table-row" data-epic-table-name="defenses">
+      <div class="table-label larger">Dodge</div>
+      <input name="attr_dodge" type="hidden" />
+      <span class="center bold larger" name="attr_current_dodge_melee" value="0"></span>
+      <span class="center bold larger" name="attr_current_dodge_ranged" value="0"></span>
+    </div>
+    <div class="defenses-table-row" data-epic-table-name="defenses">
+      <div class="table-label larger">Parry</div>
+      <input class="center bold larger" name="attr_current_parry_melee" type="number" value="0" />
+      <span class="center bold larger">--</span>
+    </div>
+    <div class="defenses-table-row" data-epic-table-name="defenses">
+      <div class="table-label larger">Block</div>
+      <input name="attr_block" type="hidden" />
+      <span class="center bold larger" name="attr_current_block_melee" value="0"></span>
+      <span class="center bold larger" name="attr_current_block_ranged" value="0"></span>
     </div>
   </div>
 
@@ -494,12 +492,20 @@ its value is used for css selection of its siblings.
       <div class="character-attributes-table" data-epic-table-name="character-attributes">
         <div class="character-attributes-name-grid">Race</div>
         <input class="character-attributes-value-grid" name="attr_race" type="text" />
+      </div>
+      <div class="character-attributes-table" data-epic-table-name="character-attributes">
         <div class="character-attributes-name-grid">Gender</div>
         <input class="character-attributes-value-grid" name="attr_gender" type="text" />
+      </div>
+      <div class="character-attributes-table" data-epic-table-name="character-attributes">
         <div class="character-attributes-name-grid">Height</div>
         <input class="character-attributes-value-grid" name="attr_height" type="text" />
+      </div>
+      <div class="character-attributes-table" data-epic-table-name="character-attributes">
         <div class="character-attributes-name-grid">Weight</div>
         <input class="character-attributes-value-grid" name="attr_weight" type="number" />
+      </div>
+      <div class="character-attributes-table" data-epic-table-name="character-attributes">
         <div class="character-attributes-name-grid">Age</div>
         <input class="character-attributes-value-grid" name="attr_age" type="number" />
       </div>

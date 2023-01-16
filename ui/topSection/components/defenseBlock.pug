@@ -1,25 +1,24 @@
 // Defense 
-div.defenseBlock
-  div
-    label.medium +bonus
-    input.center.narrowish(name='attr_melee_boost' type='number' value='0')
-    input.center.narrowish(name='attr_ranged_boost' type='number' value='0')
-  .table-header
-    .medium.larger
-    .narrowish Melee
-    .narrowish Range
-  .children-separated.no-shrink
+.defense-block
+  .defenses.epic-table-header-grid
     div
-      .inline.medium.right.larger.bold Dodge
-      input(name='attr_dodge' type='hidden')
-      span.center.narrowish.bold.larger.inline(name='attr_current_dodge_melee' value='0')
-      span.center.narrowish.bold.larger.inline(name='attr_current_dodge_ranged' value='0')
-    div
-      .inline.medium.right.larger.bold Parry
-      input.center.narrowish.bold.larger.inline(name='attr_current_parry_melee' type='number' value='0')
-      span.center.narrowish.bold.larger.inline --
-    div
-      .inline.medium.right.larger.bold Block
-      input(name='attr_block' type='hidden')
-      span.center.narrowish.bold.larger.inline(name='attr_current_block_melee' value='0')
-      span.center.narrowish.bold.larger.inline(name='attr_current_block_ranged' value='0')
+    div Melee
+    div Range
+  .defenses-table(data-epic-table-name="defenses")
+    .table-label +bonus
+    input.center.bold.larger(name='attr_melee_boost' type='number' value='0')
+    input.center.bold.larger(name='attr_ranged_boost' type='number' value='0')
+  .defenses-table(data-epic-table-name="defenses")
+    .table-label.larger Dodge
+    input(name='attr_dodge' type='hidden')
+    span.center.bold.larger(name='attr_current_dodge_melee' value='0')
+    span.center.bold.larger(name='attr_current_dodge_ranged' value='0')
+  .defenses-table(data-epic-table-name="defenses")
+    .table-label.larger Parry
+    input.center.bold.larger(name='attr_current_parry_melee' type='number' value='0')
+    span.center.bold.larger --
+  .defenses-table(data-epic-table-name="defenses")
+    .table-label.larger Block
+    input(name='attr_block' type='hidden')
+    span.center.bold.larger(name='attr_current_block_melee' value='0')
+    span.center.bold.larger(name='attr_current_block_ranged' value='0')
