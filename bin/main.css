@@ -1453,7 +1453,7 @@ input.popoverController[value="1"] ~ div.popoverContainer.weightPenalties .popov
 }
 .epic-skills-tab .epic-table-header-grid.skill {
   display: grid;
-  grid-template-columns: minmax(0, 40px) minmax(0, 4fr) minmax(0, 40px) minmax(0, 24px) minmax(0, 24px) minmax(0, 1fr) minmax(0, 2fr) minmax(0, 40px);
+  grid-template-columns: minmax(0, 40px) minmax(0, 4fr) minmax(0, 40px) minmax(0, 24px) minmax(0, 24px) minmax(0, 1fr) minmax(0, 72px) minmax(0, 40px);
   column-gap: 2px;
   background: #b56632;
   color: #fff;
@@ -1468,7 +1468,7 @@ input.popoverController[value="1"] ~ div.popoverContainer.weightPenalties .popov
 .epic-skills-tab div[data-groupname=repeating_skill] > div,
 .epic-skills-tab div[data-epic-table-name=skill] {
   display: grid;
-  grid-template-columns: minmax(0, 40px) minmax(0, 4fr) minmax(0, 40px) minmax(0, 24px) minmax(0, 24px) minmax(0, 1fr) minmax(0, 2fr) minmax(0, 40px);
+  grid-template-columns: minmax(0, 40px) minmax(0, 4fr) minmax(0, 40px) minmax(0, 24px) minmax(0, 24px) minmax(0, 1fr) minmax(0, 72px) minmax(0, 40px);
   row-gap: 0;
   column-gap: 2px;
   background: transparent;
@@ -1876,10 +1876,6 @@ input.popoverController[value="1"] ~ div.popoverContainer.weightPenalties .popov
   cursor: default;
   pointer-events: none;
 }
-.spells .skillname-hidden[value|="----"] ~ .skillname-grid {
-  font-weight: bold;
-  text-align: center;
-}
 .spells .isdiscipline-grid[value="1"] ~ .skillname-grid {
   font-weight: bold;
   text-align: center;
@@ -1950,7 +1946,7 @@ input.popoverController[value="1"] ~ div.popoverContainer.weightPenalties .popov
 }
 .spells .epic-table-header-grid.innate {
   display: grid;
-  grid-template-columns: minmax(0, 6fr) minmax(0, 16px) minmax(0, 1fr) minmax(0, 2fr) minmax(0, 2fr) minmax(0, 2fr) minmax(0, 3fr) minmax(0, 2fr) minmax(0, 32px);
+  grid-template-columns: minmax(0, 40px) minmax(0, 6fr) minmax(0, 16px) minmax(0, 32px) minmax(0, 2fr) minmax(0, 2fr) minmax(0, 2fr) minmax(0, 3fr) minmax(0, 2fr) minmax(0, 32px);
   column-gap: 2px;
   background: #b56632;
   color: #fff;
@@ -1965,7 +1961,7 @@ input.popoverController[value="1"] ~ div.popoverContainer.weightPenalties .popov
 .spells div[data-groupname=repeating_innate] > div,
 .spells div[data-epic-table-name=innate] {
   display: grid;
-  grid-template-columns: minmax(0, 6fr) minmax(0, 16px) minmax(0, 1fr) minmax(0, 2fr) minmax(0, 2fr) minmax(0, 2fr) minmax(0, 3fr) minmax(0, 2fr) minmax(0, 32px);
+  grid-template-columns: minmax(0, 40px) minmax(0, 6fr) minmax(0, 16px) minmax(0, 32px) minmax(0, 2fr) minmax(0, 2fr) minmax(0, 2fr) minmax(0, 3fr) minmax(0, 2fr) minmax(0, 32px);
   row-gap: 0;
   column-gap: 2px;
   background: transparent;
@@ -2004,7 +2000,16 @@ input.popoverController[value="1"] ~ div.popoverContainer.weightPenalties .popov
 .spells div[data-epic-table-name=innate] .epic-table-row.conditional-one {
   display: grid;
   grid-column-start: 1;
-  grid-column-end: 10;
+  grid-column-end: 11;
+}
+.spells .innatesphere-hidden[value|=S] ~ .skillname-grid {
+  font-weight: bold;
+  text-align: center;
+}
+.spells .innatesphere-hidden[value|=S] ~ :not(.skillname-grid) {
+  opacity: 0;
+  cursor: default;
+  pointer-events: none;
 }
 .spells .skillTP-grid, .spells .TP-grid {
   color: #267200;

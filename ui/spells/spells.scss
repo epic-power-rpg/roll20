@@ -75,12 +75,6 @@ $notes-popover-width: 16px;
     }
   }
 
-  .skillname-hidden[value|="----"]~.skillname-grid {
-    // If the name starts with dashes, style the name
-    font-weight: bold;
-    text-align: center;
-  }
-
   .isdiscipline-grid[value="1"]~.skillname-grid {
     font-weight: bold;
     text-align: center;
@@ -96,8 +90,32 @@ $notes-popover-width: 16px;
   $divine-grid-template: getResponsiveGridWidths(6fr, $notes-popover-width, 1fr, 1fr, 2fr, 1fr, 1fr, 2fr);
   @include epic-table-grid('divine', $divine-grid-template);
 
-  $innate-grid-template: getResponsiveGridWidths(6fr, $notes-popover-width, 1fr, 2fr, 2fr, 2fr, 3fr, 2fr, 32px);
+  $innate-grid-template: getResponsiveGridWidths(
+    40px, // Sphere?
+    6fr, // Name
+    $notes-popover-width, // Note Popover
+    32px, //EP
+    2fr, // Cast Time
+    2fr, // Touch/Ray/Missle
+    2fr, // Range
+    3fr, // Target
+    2fr, // Damage/Duration
+    32px, // CP
+  );
   @include epic-table-grid('innate', $innate-grid-template);
+
+  .innatesphere-hidden[value|="S"]{
+    ~.skillname-grid {
+      // If the row is a sphere, style it
+      font-weight: bold;
+      text-align: center;
+    }
+    ~:not(.skillname-grid) {
+      opacity: 0;
+      cursor: default;
+      pointer-events: none;
+    }
+  }
 
   @include grid-table-tp-cp-columns();
 

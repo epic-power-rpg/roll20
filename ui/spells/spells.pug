@@ -127,6 +127,7 @@
     input(name='attr_innate_total_CP' type='hidden' value='0')
     input(name='attr_innate_total_single_CP' type='hidden' value='0')
     .innate.epic-table-header-grid
+      .skill-innatesphere-grid Sphere?
       .skillname-grid Name
       .spellhasnote-grid N
       .spellEP-grid EP
@@ -137,8 +138,11 @@
       .spellduration-grid Damage/ Duration
       .skillCP-grid CP
     fieldset.repeating_innate
+      select.skill-innatesphere-grid(name='attr_skillinnatesphere')
+        option(value=' ')
+        option(value='S') S
       // The next input allows targeting in CSS
-      input.skillname-hidden(name='attr_skillname' type='hidden')
+      input.innatesphere-hidden(name='attr_skillinnatesphere' type='hidden')
       input.skillname-grid(name='attr_skillname' type='text')
       include ./spellsNotesPopover.pug
       input.spellEP-grid(name='attr_spellEP' type='text')
