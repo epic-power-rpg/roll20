@@ -593,7 +593,7 @@ radio > span.checked {
 }
 .top-section .defense-block .epic-table-header-grid.defenses {
   display: grid;
-  grid-template-columns: minmax(0, 50px) minmax(0, 50px) minmax(0, 50px);
+  grid-template-columns: minmax(0, 50px) minmax(0, 80px);
   column-gap: 2px;
   background: #b56632;
   color: #fff;
@@ -609,7 +609,7 @@ radio > span.checked {
 .top-section .defense-block div[data-groupname=repeating_defenses] > div,
 .top-section .defense-block div[data-epic-table-name=defenses] {
   display: grid;
-  grid-template-columns: minmax(0, 50px) minmax(0, 50px) minmax(0, 50px);
+  grid-template-columns: minmax(0, 50px) minmax(0, 80px);
   row-gap: 0;
   column-gap: 2px;
   background: transparent;
@@ -648,7 +648,7 @@ radio > span.checked {
 .top-section .defense-block div[data-epic-table-name=defenses] .epic-table-row.conditional-one {
   display: grid;
   grid-column-start: 1;
-  grid-column-end: 4;
+  grid-column-end: 3;
 }
 .top-section .defense-block div[data-groupname=repeating_defenses] > div input, .top-section .defense-block div[data-groupname=repeating_defenses] > div select, .top-section .defense-block div[data-groupname=repeating_defenses] > div textarea,
 .top-section .defense-block div[data-epic-table-name=defenses] input,
@@ -667,7 +667,7 @@ radio > span.checked {
   font-weight: bold;
 }
 .top-section .defense-block input[type=number] {
-  text-align: right;
+  text-align: center;
 }
 
 /* ------ generic conditional appearance ------ */

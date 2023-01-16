@@ -1036,35 +1036,32 @@ on('remove:repeating_skill',
 
 // -------------- Equipment -------------
 const updateArmorValue = function () {
-  const armor = 'armor_defense';
-  const shield = 'shield_defense';
-  const melee = 'melee_boost';
-  const ranged = 'ranged_boost';
-  const defend = 'defend';
-  const reaction = 'reaction_penalty';
-  getAttrs([armor, shield, melee, ranged, defend, reaction],
+  const armorName = 'armor_defense';
+  const shieldName = 'shield_defense';
+  const defenseBoostName = 'defense_boost';
+  const defendName = 'defend';
+  const reactionPenaltyName = 'reaction_penalty';
+  getAttrs([armorName, shieldName, defenseBoostName, defendName, reactionPenaltyName],
     function(values) {
-      const cur_armor = Number(values[armor]);
-      const cur_shield = Number(values[shield]);
-      // const cur_reaction = Number(values[reaction]);
-      const cur_defend = Number(values['defend']) + cur_armor;
-      let update = {};
+      const cur_armor = Number(values[armorName]);
+      const cur_shield = Number(values[shieldName]);
+      const cur_defend = Number(values[defendName]);
+      const update = {};
       for (let defense of ['dodge', 'block']) {
         let base = (
           cur_defend
           + (defense === 'block' ? cur_shield : 0)
-          - Math.abs(Number(values[reaction]))
+          - Math.abs(Number(values[reactionPenaltyName]))
         );
-        for (let attack of ['melee', 'ranged']) {
-          let total = base + Number(values[attack + '_boost']);
-          update['current_' + defense + '_' + attack] = String(total);
-        }
+        let total = base + Number(values['defense_boost']);
+        update[`current_${defense}_base`] = String(total);
+        update[`current_${defense}_with_armor`] = String(total + cur_armor);
       }
       setAttrs(update);
     });
 };
 on('change:armor_defense change:shield_defense change:defend' +
-    ' change:melee_boost change:ranged_boost change:reaction_penalty',
+    ' change:defense_boost change:reaction_penalty sheet:opened',
 updateArmorValue);
 
 const updateSpeed = function () {
