@@ -19,7 +19,9 @@
   display: block;
 }
 
+$notes-popover-width: 16px;
 .spell-tabs {
+
   border-bottom: solid black 1px;
   margin-bottom: 6px;
   display: flex;
@@ -37,24 +39,27 @@
 /* Avoid space between items in the row */
 .spells {
   .spell-header-action-area {
+    display: flex;
+    gap: 8px;
     label, .label {
       color: black;
     }
   }
+  @import './spellsNotesPopover.scss';
 
   $arcane-grid-template: getResponsiveGridWidths(
     40px, // Discipline?
     4fr, // Name
     32px, // Ability
-    1fr, // Mod
+    40px, // Mod
     0.5fr, // (Dice)
     40px, // EP
     1fr, // Cast Time
-    88px, // Touch/ Ray/ Missile
-    40px, // Range
-    40px, // Target
+    80px, // Touch/ Ray/ Missile - 80px for two rows not three
+    1.5fr, // Range
+    2fr, // Target
     1.5fr, // Damage/ Duration
-    24px, // N(otes)
+    $notes-popover-width, // N(otes)
     24px, // TP
     24px, // CP
     40px, // Exper.
@@ -83,11 +88,35 @@
     white-space: nowrap;
   }
 
-  $divine-grid-template: getResponsiveGridWidths(6fr, 1fr, 1fr, 2fr, 1fr, 1fr, 2fr, 0.5fr);
+  $divine-grid-template: getResponsiveGridWidths(6fr, $notes-popover-width, 1fr, 1fr, 2fr, 1fr, 1fr, 2fr);
   @include epic-table-grid('divine', $divine-grid-template);
 
-  $innate-grid-template: getResponsiveGridWidths(6fr, 1fr, 2fr, 3fr, 2fr, 3fr, 2fr, 0.5fr, 1fr);
+  $innate-grid-template: getResponsiveGridWidths(
+    40px, // Sphere?
+    6fr, // Name
+    $notes-popover-width, // Note Popover
+    32px, //EP
+    2fr, // Cast Time
+    2fr, // Touch/Ray/Missle
+    2fr, // Range
+    3fr, // Target
+    2fr, // Damage/Duration
+    32px, // CP
+  );
   @include epic-table-grid('innate', $innate-grid-template);
+
+  .innatesphere-hidden[value|="S"]{
+    ~.skillname-grid {
+      // If the row is a sphere, style it
+      font-weight: bold;
+      text-align: center;
+    }
+    ~:not(.skillname-grid) {
+      opacity: 0;
+      cursor: default;
+      pointer-events: none;
+    }
+  }
 
   @include grid-table-tp-cp-columns();
 

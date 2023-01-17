@@ -2,6 +2,11 @@
 
 /* -------- Equipment --------- */
 .equipment-tab {
+  .cash-and-equipment-summary {
+    display: flex;
+    gap: 16px;
+  }
+
   $armor-grid-template: getResponsiveGridWidths(5fr, 1fr, 1fr, 1fr, 5fr);
   @include epic-table-grid('armor', $armor-grid-template);
 

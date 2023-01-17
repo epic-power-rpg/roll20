@@ -6,6 +6,10 @@
   border-bottom: solid black 1px;
   margin-bottom: 6px;
   background: linear-gradient(to top, $paper-gradient-color 0%, transparent 100%);
+  .attribute-row {
+    display: flex;
+    align-items: center;
+  }
 }
 
 @include popover-control('weightPenalties');

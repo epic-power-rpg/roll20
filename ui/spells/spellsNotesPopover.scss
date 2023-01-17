@@ -1,0 +1,30 @@
+.spellNotesPopover {
+  button.popoverButton {
+    // See https://wiki.roll20.net/Roll20_UI_Icons
+    font-family: Pictos;
+    font-size: 12px;
+    line-height: 18px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    border-radius: 100%;
+    padding: 0 !important;
+    color: $paper-color;
+    background-color: $primary-highlight-background-color;
+  }
+  .spellnote-hidden[value]{
+    ~button.popoverButton::after {
+      // See https://wiki.roll20.net/Roll20_UI_Icons
+      content: 's'; // Magnifying glass
+      color: #80ffff;
+    }
+  }
+  .spellnote-hidden:not([value]), .spellnote-hidden[value=""]{ 
+    ~button.popoverButton::after {
+      // See https://wiki.roll20.net/Roll20_UI_Icons
+      content: '&'; // Plus sign
+      color: #efcb83;
+    }
+  }
+}

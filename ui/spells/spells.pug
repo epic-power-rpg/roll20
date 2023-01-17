@@ -1,5 +1,5 @@
 // Spells section 
-.spells.section.horizontal-flex
+.spells.section
   //
     This input's value names the currently selected tab.
     its value is used for css selection of the tab content.
@@ -22,13 +22,13 @@
     .spell-header-action-area
       .label.wide.larger Spell Touch
       input(name='attr_spell_touch' type='hidden')
-      span.center.narrowish.bold.larger.middle(name='attr_spell_touch')
+      span.center.bold.larger.middle(name='attr_spell_touch')
       button(type='roll' value='!EPRoll @{spell_touch} Touches with Spell: @{spell_touch}')
       = '\n'
       | &emsp;
       .label.wide.larger Aim Spell
       input(name='attr_aim_spell' type='hidden')
-      span.center.narrowish.bold.larger.middle(name='attr_aim_spell')
+      span.center.bold.larger.middle(name='attr_aim_spell')
       button(type='roll' value='!EPRoll @{aim_spell} Aims Spell: @{aim_spell}')
   // Arcane spells 
   .arcane.section
@@ -103,15 +103,16 @@
     input(name='attr_divine_total_single_CP' type='hidden' value='0')
     .divine.epic-table-header-grid
       .skillname-grid Name
+      .spellhasnote-grid N
       .spellEP-grid EP
       .spellcasttime-grid Cast Time
       .spelltype-grid Touch/ Ray/ Missile
       .spellrange-grid Range
       .spelltarget-grid Target
       .spellduration-grid Damage/ Duration
-      .spellhasnote-grid N
     fieldset.repeating_divine
       input.skillname-grid(name='attr_skillname' type='text')
+      include ./spellsNotesPopover.pug
       input.spellEP-grid(name='attr_spellEP' type='number')
       input.spellcasttime-grid(name='attr_spellcasttime' type='text')
       select.spelltype-grid(name='attr_spelltype' type='text')
@@ -122,22 +123,29 @@
       input.spellrange-grid(name='attr_spellrange' type='text')
       input.spelltarget-grid(name='attr_spelltarget' type='text')
       input.spellduration-grid(name='attr_spellduration' type='text')
-      include ./spellsNotesPopover.pug
   .innate.section.innate-spells-grid
     input(name='attr_innate_total_CP' type='hidden' value='0')
     input(name='attr_innate_total_single_CP' type='hidden' value='0')
     .innate.epic-table-header-grid
+      .skill-innatesphere-grid.epic-tooltip Sph
+        span.epic-tooltip-text Spell Sphere
       .skillname-grid Name
+      .spellhasnote-grid N
       .spellEP-grid EP
       .spellcasttime-grid Cast Time
       .spelltype-grid Touch/ Ray/ Missile
       .spellrange-grid Range
       .spelltarget-grid Target
-      .spellduration-grid Duration
-      .spellhasnote-grid N
+      .spellduration-grid Damage/ Duration
       .skillCP-grid CP
     fieldset.repeating_innate
+      select.skill-innatesphere-grid(name='attr_skillinnatesphere')
+        option(value=' ')
+        option(value='S') S
+      // The next input allows targeting in CSS
+      input.innatesphere-hidden(name='attr_skillinnatesphere' type='hidden')
       input.skillname-grid(name='attr_skillname' type='text')
+      include ./spellsNotesPopover.pug
       input.spellEP-grid(name='attr_spellEP' type='text')
       input.spellcasttime-grid(name='attr_spellcasttime' type='text')
       select.spelltype-grid(name='attr_spelltype' type='text')
@@ -148,5 +156,4 @@
       input.spellrange-grid(name='attr_spellrange' type='text')
       input.spelltarget-grid(name='attr_spelltarget' type='text')
       input.spellduration-grid(name='attr_spellduration' type='text')
-      include ./spellsNotesPopover.pug
       input.skillCP-grid(name='attr_skillCP' type='number')
