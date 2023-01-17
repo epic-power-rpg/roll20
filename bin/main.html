@@ -248,13 +248,13 @@
       <div class="table-label larger">Dodge</div>
       <input name="attr_dodge" type="hidden" />
       <span class="center bold larger" name="attr_current_dodge_with_armor" value="0"></span>
-      <span class="center bold larger" name="attr_current_dodge_base" value="0"></span>
+      <span class="center bold larger" name="attr_current_dodge_without_armor" value="0"></span>
     </div>
     <div class="defenses-table-row" data-epic-table-name="defenses">
       <div class="table-label larger">Block</div>
       <input name="attr_block" type="hidden" />
       <span class="center bold larger" name="attr_current_block_with_armor" value="0"></span>
-      <span class="center bold larger" name="attr_current_block_base" value="0"></span>
+      <span class="center bold larger" name="attr_current_block_without_armor" value="0"></span>
     </div>
     <div class="defenses-table-row parry-row" data-epic-table-name="defenses">
       <div class="table-label larger">Parry</div>
@@ -2133,7 +2133,7 @@ const updateArmorValue = function () {
           - Math.abs(Number(values[reactionPenaltyName]))
         );
         let total = base + Number(values['defense_boost']);
-        update[`current_${defense}_base`] = String(total);
+        update[`current_${defense}_without_armor`] = String(total);
         update[`current_${defense}_with_armor`] = String(total + cur_armor);
       }
       setAttrs(update);

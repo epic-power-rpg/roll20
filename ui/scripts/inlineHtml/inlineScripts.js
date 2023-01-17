@@ -1054,7 +1054,7 @@ const updateArmorValue = function () {
           - Math.abs(Number(values[reactionPenaltyName]))
         );
         let total = base + Number(values['defense_boost']);
-        update[`current_${defense}_base`] = String(total);
+        update[`current_${defense}_without_armor`] = String(total);
         update[`current_${defense}_with_armor`] = String(total + cur_armor);
       }
       setAttrs(update);
