@@ -9,7 +9,8 @@ $grid-column-gap: 2px;
   column-gap: $grid-column-gap;
   background: $primary-highlight-background-color;
   color: $primary-highlight-color;
-  padding: $grid-padding;
+  padding: 0 $grid-padding;
+  margin-bottom: $grid-padding;
   word-break: break-word;
   > div {
     text-align: center;
@@ -57,9 +58,25 @@ $grid-column-gap: 2px;
     @include epic-table-header($grid-template);
   }
 
+  // TODO Deprecate the `repeating_` selector in favor of the second explicit row selector
   div[data-groupname="repeating_#{$epic-table-type}"] > div,
   div[data-epic-table-name="#{$epic-table-type}"] {
     @include epic-table-rows($grid-template);
+  }
+}
+
+@mixin epic-table-grid-row-border($epic-table-type) {
+  // TODO Deprecate the `repeating_` selector in favor of the second explicit row selector
+  div[data-groupname="repeating_#{$epic-table-type}"] > div,
+  div[data-epic-table-name="#{$epic-table-type}"] {
+    input, select, textarea {
+      border: unset;
+    }
+  }
+  // TODO Deprecate the `repeating_` selector in favor of the second explicit row selector
+  div[data-groupname="repeating_#{$epic-table-type}"] > div + div,
+  div[data-epic-table-name="#{$epic-table-type}"] + div[data-epic-table-name="#{$epic-table-type}"] {
+    border-top: 1px solid $table-row-underline-color;
   }
 }
 

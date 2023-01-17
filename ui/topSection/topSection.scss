@@ -10,6 +10,9 @@
     display: flex;
     align-items: center;
   }
+  .tab-holder {
+    margin-top: 4px;
+  }
+  @include popover-control('weightPenalties');
+  @import './components/defenseBlock.scss';
 }
-
-@include popover-control('weightPenalties');

@@ -15,6 +15,7 @@
     40px // Base
   );
   @include epic-table-grid('skill', $skill-grid-template);
+  @include epic-table-grid-row-border('skill');
 
   .isdiscipline-grid[value="1"] {
     ~.skillability-grid, ~.skillattribute-grid, ~.skillbase-grid {

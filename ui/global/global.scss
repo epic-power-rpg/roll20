@@ -106,7 +106,7 @@
 }
 
 .children-separated> :not(:first-child) {
-  border: solid $border-underline-color;
+  border: solid $table-row-underline-color;
   border-width: 1px 0px 0px 0px;
 }
 
