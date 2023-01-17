@@ -2,12 +2,12 @@
 .defense-block
   .defenses.epic-table-header-grid
     div Def.
-    div Armor
-    div Base
-  .defenses-table(data-epic-table-name="defenses")
+    div Ability
+    div.armor-header.epic-tooltip Armor
+      span.epic-tooltip-text.right Ability without Armor
+  .defenses-table-row.bonus-row(data-epic-table-name="defenses")
     .table-label +bonus
     input.center.bold.larger(name='attr_defense_boost' type='number' value='0')
-    span.center.bold.larger --
   .defenses-table-row(data-epic-table-name="defenses")
     .table-label.larger Dodge
     input(name='attr_dodge' type='hidden')
@@ -18,7 +18,6 @@
     input(name='attr_block' type='hidden')
     span.center.bold.larger(name='attr_current_block_with_armor' value='0')
     span.center.bold.larger(name='attr_current_block_base' value='0')
-  .defenses-table-row(data-epic-table-name="defenses")
+  .defenses-table-row.parry-row(data-epic-table-name="defenses")
     .table-label.larger Parry
     input.center.bold.larger(name='attr_current_parry' type='number' value='0')
-    span.center.bold.larger --

@@ -1,9 +1,17 @@
 @import '../../components/gridTable/gridTable.scss';
 
 .defense-block {
+  .armor-header {
+    text-decoration: line-through;
+  }
+  $defenses-grid-template-with-spanning-input: getResponsiveGridWidths(50px, 100px);
+  @include epic-table-grid('defenses-with-spanning-input', $defenses-grid-template-with-spanning-input);
   $defenses-grid-template: getResponsiveGridWidths(50px, 50px, 50px);
   @include epic-table-grid('defenses', $defenses-grid-template);
   @include epic-table-grid-row-border('defenses');
+  div.bonus-row, div.parry-row {
+    grid-template-columns: $defenses-grid-template-with-spanning-input;
+  }
 
   .table-label {
     text-align: right;
@@ -13,6 +21,6 @@
   }
 
   input[type=number] {
-    text-align: right;
+    text-align: center;
   }
 }
