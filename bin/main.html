@@ -235,31 +235,30 @@
   <!-- Defense -->
   <div class="defense-block">
     <div class="defenses epic-table-header-grid">
-      <div></div>
-      <div>Melee</div>
-      <div>Range</div>
+      <div>Def.</div>
+      <div>Ability</div>
+      <div class="armor-header epic-tooltip">Armor<span class="epic-tooltip-text right">Ability without Armor</span>
+      </div>
     </div>
-    <div class="defenses-table" data-epic-table-name="defenses">
+    <div class="defenses-table-row bonus-row" data-epic-table-name="defenses">
       <div class="table-label">+bonus</div>
-      <input class="center bold larger" name="attr_melee_boost" type="number" value="0" />
-      <input class="center bold larger" name="attr_ranged_boost" type="number" value="0" />
+      <input class="center bold larger" name="attr_defense_boost" type="number" value="0" />
     </div>
     <div class="defenses-table-row" data-epic-table-name="defenses">
       <div class="table-label larger">Dodge</div>
       <input name="attr_dodge" type="hidden" />
-      <span class="center bold larger" name="attr_current_dodge_melee" value="0"></span>
-      <span class="center bold larger" name="attr_current_dodge_ranged" value="0"></span>
-    </div>
-    <div class="defenses-table-row" data-epic-table-name="defenses">
-      <div class="table-label larger">Parry</div>
-      <input class="center bold larger" name="attr_current_parry_melee" type="number" value="0" />
-      <span class="center bold larger">--</span>
+      <span class="center bold larger" name="attr_current_dodge_with_armor" value="0"></span>
+      <span class="center bold larger" name="attr_current_dodge_without_armor" value="0"></span>
     </div>
     <div class="defenses-table-row" data-epic-table-name="defenses">
       <div class="table-label larger">Block</div>
       <input name="attr_block" type="hidden" />
-      <span class="center bold larger" name="attr_current_block_melee" value="0"></span>
-      <span class="center bold larger" name="attr_current_block_ranged" value="0"></span>
+      <span class="center bold larger" name="attr_current_block_with_armor" value="0"></span>
+      <span class="center bold larger" name="attr_current_block_without_armor" value="0"></span>
+    </div>
+    <div class="defenses-table-row parry-row" data-epic-table-name="defenses">
+      <div class="table-label larger">Parry</div>
+      <input class="center bold larger" name="attr_current_parry" type="number" value="0" />
     </div>
   </div>
 
@@ -2116,35 +2115,39 @@ on('remove:repeating_skill',
 
 // -------------- Equipment -------------
 const updateArmorValue = function () {
-  const armor = 'armor_defense';
-  const shield = 'shield_defense';
-  const melee = 'melee_boost';
-  const ranged = 'ranged_boost';
-  const defend = 'defend';
-  const reaction = 'reaction_penalty';
-  getAttrs([armor, shield, melee, ranged, defend, reaction],
+  const armorName = 'armor_defense';
+  const shieldName = 'shield_defense';
+  const defenseBoostName = 'defense_boost';
+  const defendName = 'defend';
+  const reactionPenaltyName = 'reaction_penalty';
+  getAttrs([armorName, shieldName, defenseBoostName, defendName, reactionPenaltyName],
     function(values) {
-      const cur_armor = Number(values[armor]);
-      const cur_shield = Number(values[shield]);
-      // const cur_reaction = Number(values[reaction]);
-      const cur_defend = Number(values['defend']) + cur_armor;
-      let update = {};
+      const cur_armor = Number(values[armorName]);
+      const cur_shield = Number(values[shieldName]);
+      const cur_defend = Number(values[defendName]);
+      const update = {};
       for (let defense of ['dodge', 'block']) {
-        let base = (
+        const defenseIsArmor = defense === 'dodge';
+        const defenseIsBlock = defense === 'block';
+        const base = (
           cur_defend
-          + (defense === 'block' ? cur_shield : 0)
-          - Math.abs(Number(values[reaction]))
+          + (defenseIsBlock ? cur_shield : 0)
+          - Math.abs(Number(values[reactionPenaltyName]))
         );
-        for (let attack of ['melee', 'ranged']) {
-          let total = base + Number(values[attack + '_boost']);
-          update['current_' + defense + '_' + attack] = String(total);
-        }
+        const total = base + Number(values['defense_boost']);
+        /**
+         * Block is only valid if there is a shield value.
+         */
+        const blockIsValid = defenseIsBlock && cur_shield && !Number.isNaN(cur_shield);
+        const defenseIsValid = defenseIsArmor || blockIsValid;
+        update[`current_${defense}_without_armor`] = defenseIsValid ? String(total) : '--';
+        update[`current_${defense}_with_armor`] = defenseIsValid ? String(total + cur_armor) : '--';
       }
       setAttrs(update);
     });
 };
 on('change:armor_defense change:shield_defense change:defend' +
-    ' change:melee_boost change:ranged_boost change:reaction_penalty',
+    ' change:defense_boost change:reaction_penalty sheet:opened',
 updateArmorValue);
 
 const updateSpeed = function () {

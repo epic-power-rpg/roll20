@@ -91,6 +91,10 @@ div.popoverContainer > .fixedPlacementPopover {
   top: 105%;
   left: 0;
 }
+.epic-tooltip .epic-tooltip-text.right {
+  top: -8px;
+  left: 110%;
+}
 .epic-tooltip:hover .epic-tooltip-text {
   visibility: visible;
 }
@@ -591,6 +595,68 @@ radio > span.checked {
 .top-section input.popoverController[value="1"] ~ div.popoverContainer.weightPenalties .popover {
   display: block;
 }
+.top-section .defense-block .armor-header {
+  text-decoration: line-through;
+}
+.top-section .defense-block .epic-table-header-grid.defenses-with-spanning-input {
+  display: grid;
+  grid-template-columns: minmax(0, 50px) minmax(0, 100px);
+  column-gap: 2px;
+  background: #b56632;
+  color: #fff;
+  padding: 0 2px;
+  margin-bottom: 2px;
+  word-break: break-word;
+}
+.top-section .defense-block .epic-table-header-grid.defenses-with-spanning-input > div {
+  text-align: center;
+  margin: auto;
+  font-weight: bold;
+}
+.top-section .defense-block div[data-groupname=repeating_defenses-with-spanning-input] > div,
+.top-section .defense-block div[data-epic-table-name=defenses-with-spanning-input] {
+  display: grid;
+  grid-template-columns: minmax(0, 50px) minmax(0, 100px);
+  row-gap: 0;
+  column-gap: 2px;
+  background: transparent;
+  word-break: break-word;
+}
+.top-section .defense-block div[data-groupname=repeating_defenses-with-spanning-input] > div input, .top-section .defense-block div[data-groupname=repeating_defenses-with-spanning-input] > div input[type=number], .top-section .defense-block div[data-groupname=repeating_defenses-with-spanning-input] > div textarea, .top-section .defense-block div[data-groupname=repeating_defenses-with-spanning-input] > div select,
+.top-section .defense-block div[data-epic-table-name=defenses-with-spanning-input] input,
+.top-section .defense-block div[data-epic-table-name=defenses-with-spanning-input] input[type=number],
+.top-section .defense-block div[data-epic-table-name=defenses-with-spanning-input] textarea,
+.top-section .defense-block div[data-epic-table-name=defenses-with-spanning-input] select {
+  width: 100% !important;
+  margin-left: unset;
+  height: auto;
+  background-color: #faf2ec;
+}
+.top-section .defense-block div[data-groupname=repeating_defenses-with-spanning-input] > div input[type=text],
+.top-section .defense-block div[data-epic-table-name=defenses-with-spanning-input] input[type=text] {
+  text-align: left;
+}
+.top-section .defense-block div[data-groupname=repeating_defenses-with-spanning-input] > div input, .top-section .defense-block div[data-groupname=repeating_defenses-with-spanning-input] > div select,
+.top-section .defense-block div[data-epic-table-name=defenses-with-spanning-input] input,
+.top-section .defense-block div[data-epic-table-name=defenses-with-spanning-input] select {
+  white-space: nowrap;
+}
+.top-section .defense-block div[data-groupname=repeating_defenses-with-spanning-input] > div span,
+.top-section .defense-block div[data-epic-table-name=defenses-with-spanning-input] span {
+  text-align: center;
+  margin: auto 0;
+}
+.top-section .defense-block div[data-groupname=repeating_defenses-with-spanning-input] > div button, .top-section .defense-block div[data-groupname=repeating_defenses-with-spanning-input] > div button[type=roll],
+.top-section .defense-block div[data-epic-table-name=defenses-with-spanning-input] button,
+.top-section .defense-block div[data-epic-table-name=defenses-with-spanning-input] button[type=roll] {
+  margin: 0;
+}
+.top-section .defense-block div[data-groupname=repeating_defenses-with-spanning-input] > div .epic-table-row.conditional-one,
+.top-section .defense-block div[data-epic-table-name=defenses-with-spanning-input] .epic-table-row.conditional-one {
+  display: grid;
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
 .top-section .defense-block .epic-table-header-grid.defenses {
   display: grid;
   grid-template-columns: minmax(0, 50px) minmax(0, 50px) minmax(0, 50px);
@@ -660,6 +726,9 @@ radio > span.checked {
 .top-section .defense-block div[data-epic-table-name=defenses] + div[data-epic-table-name=defenses] {
   border-top: 1px solid rgba(181, 102, 50, 0.7);
 }
+.top-section .defense-block div.bonus-row, .top-section .defense-block div.parry-row {
+  grid-template-columns: minmax(0, 50px) minmax(0, 100px);
+}
 .top-section .defense-block .table-label {
   text-align: right;
   margin: auto;
@@ -667,7 +736,7 @@ radio > span.checked {
   font-weight: bold;
 }
 .top-section .defense-block input[type=number] {
-  text-align: right;
+  text-align: center;
 }
 
 /* ------ generic conditional appearance ------ */

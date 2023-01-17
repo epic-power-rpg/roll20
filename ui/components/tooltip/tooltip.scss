@@ -16,6 +16,10 @@
     z-index: 1;
     top: 105%;
     left: 0;
+    &.right {
+      top: -8px;
+      left: 110%;
+    }
   }
 
   &:hover .epic-tooltip-text {
