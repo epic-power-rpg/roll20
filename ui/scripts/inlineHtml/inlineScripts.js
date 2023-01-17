@@ -1048,14 +1048,21 @@ const updateArmorValue = function () {
       const cur_defend = Number(values[defendName]);
       const update = {};
       for (let defense of ['dodge', 'block']) {
-        let base = (
+        const defenseIsArmor = defense === 'dodge';
+        const defenseIsBlock = defense === 'block';
+        const base = (
           cur_defend
-          + (defense === 'block' ? cur_shield : 0)
+          + (defenseIsBlock ? cur_shield : 0)
           - Math.abs(Number(values[reactionPenaltyName]))
         );
-        let total = base + Number(values['defense_boost']);
-        update[`current_${defense}_without_armor`] = String(total);
-        update[`current_${defense}_with_armor`] = String(total + cur_armor);
+        const total = base + Number(values['defense_boost']);
+        /**
+         * Block is only valid if there is a shield value.
+         */
+        const blockIsValid = defenseIsBlock && cur_shield && !Number.isNaN(cur_shield);
+        const defenseIsValid = defenseIsArmor || blockIsValid;
+        update[`current_${defense}_without_armor`] = defenseIsValid ? String(total) : '--';
+        update[`current_${defense}_with_armor`] = defenseIsValid ? String(total + cur_armor) : '--';
       }
       setAttrs(update);
     });
