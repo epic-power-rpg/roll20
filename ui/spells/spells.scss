@@ -45,6 +45,7 @@ $notes-popover-width: 16px;
       color: black;
     }
   }
+  @import './spellsNotesPopover.scss';
 
   $arcane-grid-template: getResponsiveGridWidths(
     40px, // Discipline?

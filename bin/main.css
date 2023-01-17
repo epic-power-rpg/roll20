@@ -1836,6 +1836,27 @@ input.popoverController[value="1"] ~ div.popoverContainer.weightPenalties .popov
 .spells .spell-header-action-area label, .spells .spell-header-action-area .label {
   color: black;
 }
+.spells .spellNotesPopover button.popoverButton {
+  font-family: Pictos;
+  font-size: 12px;
+  line-height: 18px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  border-radius: 100%;
+  padding: 0 !important;
+  color: #c4bdaf;
+  background-color: #b56632;
+}
+.spells .spellNotesPopover .spellnote-hidden[value] ~ button.popoverButton::after {
+  content: "s";
+  color: #80ffff;
+}
+.spells .spellNotesPopover .spellnote-hidden:not([value]) ~ button.popoverButton::after, .spells .spellNotesPopover .spellnote-hidden[value=""] ~ button.popoverButton::after {
+  content: "&";
+  color: #efcb83;
+}
 .spells .epic-table-header-grid.arcane {
   display: grid;
   grid-template-columns: minmax(0, 40px) minmax(0, 4fr) minmax(0, 32px) minmax(0, 40px) minmax(0, 0.5fr) minmax(0, 40px) minmax(0, 1fr) minmax(0, 80px) minmax(0, 1.5fr) minmax(0, 2fr) minmax(0, 1.5fr) minmax(0, 16px) minmax(0, 24px) minmax(0, 24px) minmax(0, 40px) minmax(0, auto) minmax(0, 40px);
