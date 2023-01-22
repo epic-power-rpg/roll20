@@ -78,6 +78,7 @@ div.popoverContainer > .fixedPlacementPopover {
 }
 .epic-tooltip .epic-tooltip-text {
   visibility: hidden;
+  min-width: 100px;
   max-width: 300px;
   word-break: normal;
   background-color: black;
@@ -1193,7 +1194,7 @@ radio > span.checked {
 }
 .overview-tab .weapons-overview .epic-table-header-grid.weapons-table {
   display: grid;
-  grid-template-columns: minmax(0, 128px) minmax(0, 48px) minmax(0, 60px) minmax(0, 56px);
+  grid-template-columns: minmax(0, 128px) minmax(0, 48px) minmax(0, 60px) minmax(0, 56px) minmax(0, 48px);
   column-gap: 2px;
   background: #b56632;
   color: #fff;
@@ -1209,7 +1210,7 @@ radio > span.checked {
 .overview-tab .weapons-overview div[data-groupname=repeating_weapons-table] > div,
 .overview-tab .weapons-overview div[data-epic-table-name=weapons-table] {
   display: grid;
-  grid-template-columns: minmax(0, 128px) minmax(0, 48px) minmax(0, 60px) minmax(0, 56px);
+  grid-template-columns: minmax(0, 128px) minmax(0, 48px) minmax(0, 60px) minmax(0, 56px) minmax(0, 48px);
   row-gap: 0;
   column-gap: 2px;
   background: transparent;
@@ -1248,7 +1249,7 @@ radio > span.checked {
 .overview-tab .weapons-overview div[data-epic-table-name=weapons-table] .epic-table-row.conditional-one {
   display: grid;
   grid-column-start: 1;
-  grid-column-end: 5;
+  grid-column-end: 6;
 }
 .overview-tab .weapons-overview .epic-table-header-grid.weapons-equipmentnotes-table {
   display: grid;
@@ -1914,7 +1915,7 @@ radio > span.checked {
 }
 .equipment-tab .epic-table-header-grid.weapon {
   display: grid;
-  grid-template-columns: minmax(0, 5fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 5fr);
+  grid-template-columns: minmax(0, 5fr) minmax(0, 56px) minmax(0, 56px) minmax(0, 64px) minmax(0, 72px) minmax(0, 56px) minmax(0, 48px) minmax(0, 5fr);
   column-gap: 2px;
   background: #b56632;
   color: #fff;
@@ -1930,7 +1931,7 @@ radio > span.checked {
 .equipment-tab div[data-groupname=repeating_weapon] > div,
 .equipment-tab div[data-epic-table-name=weapon] {
   display: grid;
-  grid-template-columns: minmax(0, 5fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 5fr);
+  grid-template-columns: minmax(0, 5fr) minmax(0, 56px) minmax(0, 56px) minmax(0, 64px) minmax(0, 72px) minmax(0, 56px) minmax(0, 48px) minmax(0, 5fr);
   row-gap: 0;
   column-gap: 2px;
   background: transparent;
@@ -1969,7 +1970,7 @@ radio > span.checked {
 .equipment-tab div[data-epic-table-name=weapon] .epic-table-row.conditional-one {
   display: grid;
   grid-column-start: 1;
-  grid-column-end: 8;
+  grid-column-end: 9;
 }
 .equipment-tab div[data-groupname=repeating_weapon] > div input, .equipment-tab div[data-groupname=repeating_weapon] > div select, .equipment-tab div[data-groupname=repeating_weapon] > div textarea,
 .equipment-tab div[data-epic-table-name=weapon] input,

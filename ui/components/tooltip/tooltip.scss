@@ -4,6 +4,7 @@
 
   .epic-tooltip-text {
     visibility: hidden;
+    min-width: 100px;
     max-width: 300px;
     word-break: normal;
     background-color: black;

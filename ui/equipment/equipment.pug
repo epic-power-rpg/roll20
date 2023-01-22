@@ -16,7 +16,9 @@
     .armor-shield-weapons-tables
       .epic-table-header-grid.armor
         .equipmentname-grid Armor
-        .armordefense-grid Def.
+        .armordefense-grid
+          span.epic-tooltip Def.
+            .epic-tooltip-text.right Amount added to all defenses
         .equipmentweight-grid Weight
         .equipmentvalue-grid Value
         .equipmentnotes-grid Notes
@@ -31,7 +33,9 @@
     .shield-table
       .epic-table-header-grid.shield
         .equipmentname-grid Shield
-        .armordefense-grid Def.
+        .armordefense-grid
+          span.epic-tooltip Def.
+            .epic-tooltip-text.right Amount added to Block defense
         .armordefense-grid Str.
         .equipmentweight-grid Weight
         .equipmentvalue-grid Value
@@ -54,6 +58,9 @@
         .equipmentvalue-grid Value Each
         .equipmentdamage-grid Damage
         .equipmentrange-grid Range
+        .equipmentrange-grid
+          span.epic-tooltip Def.
+            .epic-tooltip-text.right Amount added to Parry defense
         .equipmentnotes-grid Notes
       fieldset.repeating_weapon
         input.equipmentname-grid(name='attr_weaponname' type='text')
@@ -62,6 +69,7 @@
         input.equipmentvalue-grid(name='attr_weaponvalue' type='text')
         input.equipmentdamage-grid(name='attr_weapondamage' type='text')
         input.equipmentrange-grid(name='attr_weaponrange' type='number')
+        input.equipmentdefemse-grid(name='attr_weapondefemse' type='number')
         input.equipmentnotes-grid(name='attr_weaponnotes' type='text')
     .spacer
     .items-table
