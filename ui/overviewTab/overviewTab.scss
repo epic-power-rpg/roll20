@@ -112,7 +112,7 @@
   /* ------------ Weapons Overview -------------- */
   .weapons-overview {
     width: 50%;
-    $weapons-table-grid-template: getResponsiveGridWidths(128px, 48px, 60px, 56px);
+    $weapons-table-grid-template: getResponsiveGridWidths(128px, 48px, 60px, 56px, 48px);
     @include epic-table-grid('weapons-table', $weapons-table-grid-template);
     $weapons-equipmentnotes-table-grid-template: getResponsiveGridWidths(1fr);
     @include epic-table-grid('weapons-equipmentnotes-table', $weapons-equipmentnotes-table-grid-template);

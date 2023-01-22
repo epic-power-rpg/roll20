@@ -15,7 +15,16 @@
   @include epic-table-grid('shield', $shield-grid-template);
   @include epic-table-grid-row-border('shield');
 
-  $weapon-grid-template: getResponsiveGridWidths(5fr, 1fr, 1fr, 1fr, 1fr, 1fr, 5fr);
+  $weapon-grid-template: getResponsiveGridWidths(
+    5fr, // Weapon Name
+    72px, // Damage
+    56px, // Range
+    48px, // Defense
+    56px, // Count
+    56px, // Weight
+    64px, // Value
+    5fr, // Notes
+  );
   @include epic-table-grid('weapon', $weapon-grid-template);
   @include epic-table-grid-row-border('weapon');
 
