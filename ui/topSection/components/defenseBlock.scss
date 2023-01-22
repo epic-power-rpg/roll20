@@ -9,7 +9,7 @@
   $defenses-grid-template: getResponsiveGridWidths(50px, 50px, 50px);
   @include epic-table-grid('defenses', $defenses-grid-template);
   @include epic-table-grid-row-border('defenses');
-  div.bonus-row, div.parry-row {
+  div.bonus-row {
     grid-template-columns: $defenses-grid-template-with-spanning-input;
   }
 

@@ -1035,40 +1035,69 @@ on('remove:repeating_skill',
   });
 
 // -------------- Equipment -------------
+function getLargestWeaponDefense(callback) {
+  getSectionIDs('weapon', function (ids) {
+    const defenseFields = ids.map(
+      id => `repeating_weapon_${id}_weapondefense`);
+    const countFields = ids.map(
+      id => `repeating_weapon_${id}_weaponcount`);
+    getAttrs([...defenseFields, ...countFields], function (values) {
+      const largestWeaponDefense = defenseFields.reduce((memo, defenseFieldName, i) => {
+        const defense = Number(values[defenseFieldName]);
+        const count = Number(values[countFields[i]]);
+        if (defense > 0 && count > 0) {
+          return Math.max(memo, defense);
+        }
+        return memo;
+      }, 0);
+      callback(largestWeaponDefense);
+      console.log(`Largest Weapon Defense: ${largestWeaponDefense}`);
+    });
+  });
+
+}
+
 const updateArmorValue = function () {
   const armorName = 'armor_defense';
   const shieldName = 'shield_defense';
   const defenseBoostName = 'defense_boost';
   const defendName = 'defend';
   const reactionPenaltyName = 'reaction_penalty';
-  getAttrs([armorName, shieldName, defenseBoostName, defendName, reactionPenaltyName],
-    function(values) {
-      const cur_armor = Number(values[armorName]);
-      const cur_shield = Number(values[shieldName]);
-      const cur_defend = Number(values[defendName]);
-      const update = {};
-      for (let defense of ['dodge', 'block']) {
-        const defenseIsArmor = defense === 'dodge';
-        const defenseIsBlock = defense === 'block';
-        const base = (
-          cur_defend
-          + (defenseIsBlock ? cur_shield : 0)
-          - Math.abs(Number(values[reactionPenaltyName]))
-        );
-        const total = base + Number(values['defense_boost']);
-        /**
-         * Block is only valid if there is a shield value.
-         */
-        const blockIsValid = defenseIsBlock && cur_shield && !Number.isNaN(cur_shield);
-        const defenseIsValid = defenseIsArmor || blockIsValid;
-        update[`current_${defense}_without_armor`] = defenseIsValid ? String(total) : '--';
-        update[`current_${defense}_with_armor`] = defenseIsValid ? String(total + cur_armor) : '--';
-      }
-      setAttrs(update);
-    });
+  getLargestWeaponDefense((largestWeaponDefense) => {
+    getAttrs([armorName, shieldName, defenseBoostName, defendName, reactionPenaltyName],
+      function(values) {
+        const cur_armor = Number(values[armorName]);
+        const cur_shield = Number(values[shieldName]);
+        const cur_defend = Number(values[defendName]);
+        const update = {};
+        for (let defense of ['dodge', 'block', 'parry']) {
+          const defenseIsArmor = defense === 'dodge';
+          const defenseIsBlock = defense === 'block';
+          const defenseIsParry = defense === 'parry';
+          const base = (
+            cur_defend
+            + (defenseIsBlock ? cur_shield : 0)
+            + (defenseIsParry ? largestWeaponDefense : 0)
+            - Math.abs(Number(values[reactionPenaltyName]))
+          );
+          const total = base + Number(values['defense_boost']);
+          /**
+           * Block is only valid if there is a shield value.
+           */
+          const blockIsValid = defenseIsBlock && cur_shield && !Number.isNaN(cur_shield);
+          const parryIsValid = defenseIsParry && largestWeaponDefense && !Number.isNaN(largestWeaponDefense);
+          const defenseIsValid = defenseIsArmor || blockIsValid || parryIsValid;
+          update[`current_${defense}_without_armor`] = defenseIsValid ? String(total) : '--';
+          update[`current_${defense}_with_armor`] = defenseIsValid ? String(total + cur_armor) : '--';
+        }
+        setAttrs(update);
+      });
+  });
 };
 on('change:armor_defense change:shield_defense change:defend' +
-    ' change:defense_boost change:reaction_penalty sheet:opened',
+  ' change:repeating_weapon:weaponcount' + 
+  ' change:repeating_weapon:weapondefense remove:repeating_weapon' +
+  ' change:defense_boost change:reaction_penalty sheet:opened',
 updateArmorValue);
 
 const updateSpeed = function () {
