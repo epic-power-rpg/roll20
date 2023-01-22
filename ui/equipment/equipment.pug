@@ -53,23 +53,23 @@
       input(name='attr_weapon_total_value' type='hidden' value='0')
       .epic-table-header-grid.weapon
         .equipmentname-grid Weapon
+        .equipmentdamage-grid Damage
+        .equipmentrange-grid Range
+        .equipmentdefense-grid
+          span.epic-tooltip Def.
+            .epic-tooltip-text.right Amount added to Parry defense
         .equipmentcount-grid Count
         .equipmentweight-grid Weight Each
         .equipmentvalue-grid Value Each
-        .equipmentdamage-grid Damage
-        .equipmentrange-grid Range
-        .equipmentrange-grid
-          span.epic-tooltip Def.
-            .epic-tooltip-text.right Amount added to Parry defense
         .equipmentnotes-grid Notes
       fieldset.repeating_weapon
         input.equipmentname-grid(name='attr_weaponname' type='text')
-        input.equipmentcount-grid(name='attr_weaponcount' type='number' value='1')
-        input.equipmentweight-grid(name='attr_weaponweight' type='text')
-        input.equipmentvalue-grid(name='attr_weaponvalue' type='text')
         input.equipmentdamage-grid(name='attr_weapondamage' type='text')
         input.equipmentrange-grid(name='attr_weaponrange' type='number')
         input.equipmentdefemse-grid(name='attr_weapondefemse' type='number')
+        input.equipmentcount-grid(name='attr_weaponcount' type='number' value='1')
+        input.equipmentweight-grid(name='attr_weaponweight' type='text')
+        input.equipmentvalue-grid(name='attr_weaponvalue' type='text')
         input.equipmentnotes-grid(name='attr_weaponnotes' type='text')
     .spacer
     .items-table

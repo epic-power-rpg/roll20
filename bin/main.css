@@ -1915,7 +1915,7 @@ radio > span.checked {
 }
 .equipment-tab .epic-table-header-grid.weapon {
   display: grid;
-  grid-template-columns: minmax(0, 5fr) minmax(0, 56px) minmax(0, 56px) minmax(0, 64px) minmax(0, 72px) minmax(0, 56px) minmax(0, 48px) minmax(0, 5fr);
+  grid-template-columns: minmax(0, 5fr) minmax(0, 72px) minmax(0, 56px) minmax(0, 48px) minmax(0, 56px) minmax(0, 56px) minmax(0, 64px) minmax(0, 5fr);
   column-gap: 2px;
   background: #b56632;
   color: #fff;
@@ -1931,7 +1931,7 @@ radio > span.checked {
 .equipment-tab div[data-groupname=repeating_weapon] > div,
 .equipment-tab div[data-epic-table-name=weapon] {
   display: grid;
-  grid-template-columns: minmax(0, 5fr) minmax(0, 56px) minmax(0, 56px) minmax(0, 64px) minmax(0, 72px) minmax(0, 56px) minmax(0, 48px) minmax(0, 5fr);
+  grid-template-columns: minmax(0, 5fr) minmax(0, 72px) minmax(0, 56px) minmax(0, 48px) minmax(0, 56px) minmax(0, 56px) minmax(0, 64px) minmax(0, 5fr);
   row-gap: 0;
   column-gap: 2px;
   background: transparent;
