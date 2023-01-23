@@ -1051,7 +1051,6 @@ function getLargestWeaponDefense(callback) {
         return memo;
       }, 0);
       callback(largestWeaponDefense);
-      console.log(`Largest Weapon Defense: ${largestWeaponDefense}`);
     });
   });
 
