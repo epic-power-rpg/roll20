@@ -359,7 +359,7 @@ const EP_ROLL_OPTIONS = [{
   attributes: ['initiative', 'initiativemodifier', 'character_id'],
   getChatMessage: (values) => {
     const { initiative, initiativemodifier, character_id } = values;
-    return `!EPRoll ${initiative}+${initiativemodifier} Rolls initiative ${initiative} + ${initiativemodifier} SEND_TO_TRACKER ${character_id}"`;
+    return `!EPRoll ${initiative}+${initiativemodifier} Rolls initiative ${initiative} + ${initiativemodifier} SEND_TO_TRACKER ${character_id}`;
   },
 }, {
   actionId: 'epRoll_IQmodifier',
