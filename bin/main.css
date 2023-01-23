@@ -727,7 +727,7 @@ radio > span.checked {
 .top-section .defense-block div[data-epic-table-name=defenses] + div[data-epic-table-name=defenses] {
   border-top: 1px solid rgba(181, 102, 50, 0.7);
 }
-.top-section .defense-block div.bonus-row, .top-section .defense-block div.parry-row {
+.top-section .defense-block div.bonus-row {
   grid-template-columns: minmax(0, 50px) minmax(0, 100px);
 }
 .top-section .defense-block .table-label {
