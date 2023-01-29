@@ -241,7 +241,7 @@ const makeUpdate = function(current, deltas) {
   let EP_delta = modifiersToTotal(deltas['EPS']);
   const current_EP_t = Number(current['EP_t']);
   const EP_t_max = Number(current['EP_t_max']);
-  const new_EP_t = Math.max(0, Math.min(EP_t_max, current_EP_t + EP_delta));
+  const new_EP_t = Math.max(0, Math.min(EP_t_max * 2, current_EP_t + EP_delta));
   // log("EP_delta " + EP_delta + "  current_EP_t " + current_EP_t);
   // log("EP_t_max " + EP_t_max + "  new_EP_t" + new_EP_t);
   return {'EP_t': new_EP_t,
