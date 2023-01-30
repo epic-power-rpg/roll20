@@ -3,37 +3,35 @@
 .top-section
   // Left top section 
   .flex-stack.space-between
-    // Power, CP, TP 
-    .top-left-section
-      input.cpcontrol(name='attr_chosentab' type='hidden' value='basic')
-      .power.larger.inline.bold.right.middle Power Depth
-      // Power is editable in basic tab only 
-      span.power.larger.left.bold.middle.not-basic-tab(name='attr_power')  
-      input.power.medium.bold.middle.basic-tab-only(name='attr_power' type='number' value='0')
-      .CP.larger.inline.bold.right.middle CP
-      input(name='attr_distributed_CP' type='hidden' value='0')
-      .inline.middle
-        input.CP.bold.larger.right.narrow(name='attr_CPU' value='@{CP} + (@{distributed_CP})\
-        -(@{attribute_CP})\
-        -(@{advantage_total_CP})\
-        -(@{feat_total_CP})\
-        -(@{skill_total_CP})\
-        -(@{arcane_total_CP})\
-        -(@{innate_total_CP})' disabled='true')
-      .inline /
-      // CP is editable in basic tab only 
-      span.CP.bold.larger.middle.not-basic-tab(name='attr_CP')  
-      input.CP.bold.larger.medium.middle.basic-tab-only(name='attr_CP' type='number' value='25')
-      = '\n'
-      | &emsp;
-      .TP.larger.inline.bold.right.middle TP
-      .inline.middle
-        input.TP.bold.larger.right.narrow(name='attr_TPU' value='@{TP}\
+    .power-depth-cp-tp-section
+      .power-depth
+        input.cpcontrol(name='attr_chosentab' type='hidden' value='basic')
+        .power.larger.inline.bold.right.middle Power Depth
+        // Power is editable in basic tab only 
+        span.power.larger.left.bold.middle.not-basic-tab(name='attr_power')
+        input.power.medium.bold.middle.basic-tab-only(name='attr_power' type='number' value='0')
+      .cp-section
+        input.cpcontrol(name='attr_chosentab' type='hidden' value='basic')
+        input(name='attr_distributed_CP' type='hidden' value='0')
+        .CP.larger.inline.bold.right.middle CP
+        input.CP.bold.larger.center.narrow(name='attr_CPU' value='@{CP} + (@{distributed_CP})\
+          -(@{attribute_CP})\
+          -(@{advantage_total_CP})\
+          -(@{feat_total_CP})\
+          -(@{skill_total_CP})\
+          -(@{arcane_total_CP})\
+          -(@{innate_total_CP})' disabled='true')
+        span /&nbsp;
+        // CP is editable in basic tab only 
+        span.CP.bold.larger.middle.not-basic-tab(name='attr_CP')
+        input.CP.bold.larger.medium.middle.basic-tab-only(name='attr_CP' type='number' value='25')
+      .tp-section
+        .TP.larger.inline.bold.right.middle TP
+        input.TP.bold.larger.center.narrow(name='attr_TPU' value='@{TP}\
         - (@{skill_total_TP})\
         - (@{arcane_total_TP})' disabled='true')
-      .inline.big.middle /
-      .inline.middle
-        span.TP.bold.larger.middle(name='attr_TP' value='2')
+        span /&nbsp;
+        span.TP.bold.larger.middle.center(name='attr_TP' value='2')
     = '\n'
     // IQ, DX, BR 
     //

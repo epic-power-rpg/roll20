@@ -115,7 +115,7 @@ $notes-popover-width: 16px;
       font-weight: bold;
       text-align: center;
     }
-    ~:not(.skillname-grid) {
+    ~:not(.skillname-grid, .skillCP-grid) {
       opacity: 0;
       cursor: default;
       pointer-events: none;
