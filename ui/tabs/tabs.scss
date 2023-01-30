@@ -1,22 +1,5 @@
 /* ----------- Tabs and what they control  ------------- */
 
-/* Attributes */
-
-.attributecontrol[value="basic"]~span.attribute-value,
-.attributecontrol[value="basic"]~button.reset-total,
-.attributecontrol[value="basic"]~.attribute-roll,
-.attributecontrol[value="basic"]~.not-basic-tab,
-.cpcontrol[value="basic"]~.not-basic-tab {
-  display: none;
-}
-
-.attributecontrol:not([value="basic"])~input.attribute-value,
-.attributecontrol:not([value="basic"])~button.reset-total .attributecontrol:not([value="basic"])~.CP,
-.attributecontrol:not([value="basic"])~.basic-tab-only,
-.cpcontrol:not([value="basic"])~.basic-tab-only {
-  display: none;
-}
-
 /* Tabs */
 .characterviewer .nav-tabs>li:not(.active) {
   background: $unselected-tab-color;

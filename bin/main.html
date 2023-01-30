@@ -77,30 +77,29 @@
 <div class="top-section">
   <!-- Left top section -->
   <div class="flex-stack space-between">
-    <!-- Power, CP, TP -->
-    <div class="top-left-section">
-      <input class="cpcontrol" name="attr_chosentab" type="hidden" value="basic" />
-      <div class="power larger inline bold right middle">Power Depth</div>
-      <!-- Power is editable in basic tab only -->
-      <span class="power larger left bold middle not-basic-tab" name="attr_power"> </span>
-      <input class="power medium bold middle basic-tab-only" name="attr_power" type="number" value="0" />
-      <div class="CP larger inline bold right middle">CP</div>
-      <input name="attr_distributed_CP" type="hidden" value="0" />
-      <div class="inline middle">
-        <input class="CP bold larger right narrow" name="attr_CPU" value="@{CP} + (@{distributed_CP})        -(@{attribute_CP})        -(@{advantage_total_CP})        -(@{feat_total_CP})        -(@{skill_total_CP})        -(@{arcane_total_CP})        -(@{innate_total_CP})" disabled="true" />
+    <div class="power-depth-cp-tp-section">
+      <div class="power-depth">
+        <input class="cpcontrol" name="attr_chosentab" type="hidden" value="basic" />
+        <div class="power larger inline bold right middle">Power Depth</div>
+        <!-- Power is editable in basic tab only -->
+        <span class="power larger left bold middle not-basic-tab" name="attr_power"></span>
+        <input class="power medium bold middle basic-tab-only" name="attr_power" type="number" value="0" />
       </div>
-      <div class="inline">/</div>
-      <!-- CP is editable in basic tab only -->
-      <span class="CP bold larger middle not-basic-tab" name="attr_CP"> </span>
-      <input class="CP bold larger medium middle basic-tab-only" name="attr_CP" type="number" value="25" />
-      &emsp;
-      <div class="TP larger inline bold right middle">TP</div>
-      <div class="inline middle">
-        <input class="TP bold larger right narrow" name="attr_TPU" value="@{TP}        - (@{skill_total_TP})        - (@{arcane_total_TP})" disabled="true" />
+      <div class="cp-section">
+        <input class="cpcontrol" name="attr_chosentab" type="hidden" value="basic" />
+        <input name="attr_distributed_CP" type="hidden" value="0" />
+        <div class="CP larger inline bold right middle">CP</div>
+        <input class="CP bold larger center narrow" name="attr_CPU" value="@{CP} + (@{distributed_CP})          -(@{attribute_CP})          -(@{advantage_total_CP})          -(@{feat_total_CP})          -(@{skill_total_CP})          -(@{arcane_total_CP})          -(@{innate_total_CP})" disabled="true" />
+        <span>/&nbsp;</span>
+        <!-- CP is editable in basic tab only -->
+        <span class="CP bold larger middle not-basic-tab" name="attr_CP"></span>
+        <input class="CP bold larger medium middle basic-tab-only" name="attr_CP" type="number" value="25" />
       </div>
-      <div class="inline big middle">/</div>
-      <div class="inline middle">
-        <span class="TP bold larger middle" name="attr_TP" value="2"></span>
+      <div class="tp-section">
+        <div class="TP larger inline bold right middle">TP</div>
+        <input class="TP bold larger center narrow" name="attr_TPU" value="@{TP}        - (@{skill_total_TP})        - (@{arcane_total_TP})" disabled="true" />
+        <span>/&nbsp;</span>
+        <span class="TP bold larger middle center" name="attr_TP" value="2"></span>
       </div>
     </div>
 

@@ -581,6 +581,27 @@ radio > span.checked {
   margin-bottom: 6px;
   background: linear-gradient(to top, rgba(194, 148, 91, 0.5019607843) 0%, transparent 100%);
 }
+.top-section .power-depth-cp-tp-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.top-section .power-depth-cp-tp-section input.TP {
+  width: 2ch;
+}
+.top-section .attributecontrol[value=basic] ~ span.attribute-value,
+.top-section .attributecontrol[value=basic] ~ button.reset-total,
+.top-section .attributecontrol[value=basic] ~ .attribute-roll,
+.top-section .attributecontrol[value=basic] ~ .not-basic-tab,
+.top-section .cpcontrol[value=basic] ~ .not-basic-tab {
+  display: none;
+}
+.top-section .attributecontrol:not([value=basic]) ~ input.attribute-value,
+.top-section .attributecontrol:not([value=basic]) ~ button.reset-total .attributecontrol:not([value=basic]) ~ .CP,
+.top-section .attributecontrol:not([value=basic]) ~ .basic-tab-only,
+.top-section .cpcontrol:not([value=basic]) ~ .basic-tab-only {
+  display: none;
+}
 .top-section .attribute-row {
   display: flex;
   align-items: center;
@@ -762,22 +783,6 @@ radio > span.checked {
 }
 
 /* ----------- Tabs and what they control  ------------- */
-/* Attributes */
-.attributecontrol[value=basic] ~ span.attribute-value,
-.attributecontrol[value=basic] ~ button.reset-total,
-.attributecontrol[value=basic] ~ .attribute-roll,
-.attributecontrol[value=basic] ~ .not-basic-tab,
-.cpcontrol[value=basic] ~ .not-basic-tab {
-  display: none;
-}
-
-.attributecontrol:not([value=basic]) ~ input.attribute-value,
-.attributecontrol:not([value=basic]) ~ button.reset-total .attributecontrol:not([value=basic]) ~ .CP,
-.attributecontrol:not([value=basic]) ~ .basic-tab-only,
-.cpcontrol:not([value=basic]) ~ .basic-tab-only {
-  display: none;
-}
-
 /* Tabs */
 .characterviewer .nav-tabs > li:not(.active) {
   background: #faf2ec;
