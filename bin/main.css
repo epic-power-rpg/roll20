@@ -2343,7 +2343,7 @@ radio > span.checked {
   font-weight: bold;
   text-align: center;
 }
-.spells .innatesphere-hidden[value|=S] ~ :not(.skillname-grid) {
+.spells .innatesphere-hidden[value|=S] ~ :not(.skillname-grid, .skillCP-grid) {
   opacity: 0;
   cursor: default;
   pointer-events: none;
