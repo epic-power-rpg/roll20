@@ -543,7 +543,8 @@ const updateAttributeCost = function() {
 on('change:iq change:dx change:br', updateAttributeCost);
 
 // ----- Advantage and disadvantage costs -----
-const advantageCosts = {healthy: 6,
+const advantageCosts = {
+  healthy: 6,
   packmule: 4,
   strongarms: 6,
   brute: 4,
@@ -551,8 +552,10 @@ const advantageCosts = {healthy: 6,
   athlete: 4,
   alert: 4,
   wary: 4,
+  attractive: 4,
   mage: 6,
-  devout: 6};
+  devout: 6,
+};
 // const advantageNameTranslations = {
 //   packmule: 'Pack Mule',
 //   strongarms: 'Strong Arms',

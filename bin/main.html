@@ -397,6 +397,16 @@ its value is used for css selection of its siblings.
       <div class="advantage-table" data-epic-table-name="advantage">
         <div class="conditional-something">
           <!-- This input is used by CSS to hide advantage-row-->
+          <input class="advantageField" name="attr_advantage_attractive_count" type="hidden" />
+          <div class="advantage-row">
+            <div class="advantage-name">Attractive</div>
+            <span class="advantage-value" name="attr_advantage_attractive_count"></span>
+          </div>
+        </div>
+      </div>
+      <div class="advantage-table" data-epic-table-name="advantage">
+        <div class="conditional-something">
+          <!-- This input is used by CSS to hide advantage-row-->
           <input class="advantageField" name="attr_advantage_mage_count" type="hidden" />
           <div class="advantage-row">
             <div class="advantage-name">Mage</div>
@@ -606,6 +616,17 @@ its value is used for css selection of its siblings.
           <option value="3">3</option>
         </select>
         <span class="CP-grid" name="attr_advantage_wary_CPdescription"></span>
+      </div>
+      <div class="advantage-table" data-epic-table-name="advantage">
+        <div class="advantage-grid">Attractive</div>
+        <select class="skillexpertise-grid" name="attr_advantage_attractive_count">
+          <option value=" "></option>
+          <option value="-1">-1</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+        </select>
+        <span class="CP-grid" name="attr_advantage_attractive_CPdescription"></span>
       </div>
       <div class="advantage-table" data-epic-table-name="advantage">
         <div class="advantage-grid">Mage</div>
@@ -1638,7 +1659,8 @@ const updateAttributeCost = function() {
 on('change:iq change:dx change:br', updateAttributeCost);
 
 // ----- Advantage and disadvantage costs -----
-const advantageCosts = {healthy: 6,
+const advantageCosts = {
+  healthy: 6,
   packmule: 4,
   strongarms: 6,
   brute: 4,
@@ -1646,8 +1668,10 @@ const advantageCosts = {healthy: 6,
   athlete: 4,
   alert: 4,
   wary: 4,
+  attractive: 4,
   mage: 6,
-  devout: 6};
+  devout: 6,
+};
 // const advantageNameTranslations = {
 //   packmule: 'Pack Mule',
 //   strongarms: 'Strong Arms',
