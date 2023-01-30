@@ -848,7 +848,6 @@ const updateCopiedAbilities = function () {
         update[skill.replace(' ', '_')] = ability;
       }
       setAttrs(update, () => {
-        log('updateArmorValue');
         updateArmorValue();
       });
     });
