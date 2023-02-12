@@ -778,6 +778,9 @@ on('change:repeating_feat:featname', function(event) {
   }
 });
 
+function isValueDefined(value) {
+  return value !== null && value !== undefined;
+}
 // -------- Skills ---------
 
 // Update the abilities that are copied elsewhere on the character sheet
@@ -829,17 +832,17 @@ const updateCopiedAbilities = function () {
             Math.max(min_expertises['defense'],
               min_expertises['defend'])- 3);
         let skill_index = skill_map[skill];
-        if (skill_index && values[disciplineinfos[skill_index]] === 'D') {
+        if (isValueDefined(skill_index) && values[disciplineinfos[skill_index]] === 'D') {
           skill_index = null;
         }
         // Check for the user using "defense" as a skill
-        if (!skill_index & skill === 'defend') {
+        if (!isValueDefined(skill_index) && skill === 'defend') {
           skill_index = skill_map['defense'];
-          if (skill_index && values[disciplineinfos[skill_index]] === 'D') {
+          if (isValueDefined(skill_index) && values[disciplineinfos[skill_index]] === 'D') {
             skill_index = null;
           }
         }
-        if (skill_index) {
+        if (isValueDefined(skill_index)) {
           ability = Number(values[abilities[skill_index]]);
         }
         if (skill === 'defend') {
