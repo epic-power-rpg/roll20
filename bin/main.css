@@ -619,7 +619,7 @@ radio > span.checked {
 }
 .top-section .defense-block .armor-header {
   text-decoration: line-through;
-  font-weight: normal;
+  font-weight: normal !important;
 }
 .top-section .defense-block .epic-table-header-grid.defenses-with-spanning-input {
   display: grid;
