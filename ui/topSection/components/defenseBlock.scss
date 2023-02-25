@@ -3,6 +3,7 @@
 .defense-block {
   .armor-header {
     text-decoration: line-through;
+    font-weight: normal !important;
   }
   $defenses-grid-template-with-spanning-input: getResponsiveGridWidths(50px, 100px);
   @include epic-table-grid('defenses-with-spanning-input', $defenses-grid-template-with-spanning-input);
