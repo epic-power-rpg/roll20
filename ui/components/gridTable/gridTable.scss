@@ -69,7 +69,7 @@ $grid-column-gap: 2px;
   // TODO Deprecate the `repeating_` selector in favor of the second explicit row selector
   div[data-groupname="repeating_#{$epic-table-type}"] > div,
   div[data-epic-table-name="#{$epic-table-type}"] {
-    input, select, textarea {
+    > input, > select, > textarea {
       border: unset;
     }
   }

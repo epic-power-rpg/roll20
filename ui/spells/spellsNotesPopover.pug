@@ -16,6 +16,21 @@
       .small-spacer
       label Name
       input.skillname-grid(name='attr_skillname' type='text')
+      .small-spacer
       label Spell Notes
       textarea.spell-note(name='attr_spellnote' rows='6')
+      .extra-spell-attributes
+        .attribute-section
+          label EP
+          input.spellEP-grid(name='attr_spellEP' type='number')
+        .attribute-section
+          label Range
+          input.spellrange-grid(name='attr_spellrange' type='text')
+        .attribute-section
+          label Target
+          input.spelltarget-grid(name='attr_spelltarget' type='text')
+        .attribute-section
+          label Damage/Duration
+          input.spellduration-grid(name='attr_spellduration' type='text')
+      .small-spacer
       button(name='act_closepopoverspellnotes' type='action') Close

@@ -739,10 +739,10 @@ radio > span.checked {
   grid-column-start: 1;
   grid-column-end: 4;
 }
-.top-section .defense-block div[data-groupname=repeating_defenses] > div input, .top-section .defense-block div[data-groupname=repeating_defenses] > div select, .top-section .defense-block div[data-groupname=repeating_defenses] > div textarea,
-.top-section .defense-block div[data-epic-table-name=defenses] input,
-.top-section .defense-block div[data-epic-table-name=defenses] select,
-.top-section .defense-block div[data-epic-table-name=defenses] textarea {
+.top-section .defense-block div[data-groupname=repeating_defenses] > div > input, .top-section .defense-block div[data-groupname=repeating_defenses] > div > select, .top-section .defense-block div[data-groupname=repeating_defenses] > div > textarea,
+.top-section .defense-block div[data-epic-table-name=defenses] > input,
+.top-section .defense-block div[data-epic-table-name=defenses] > select,
+.top-section .defense-block div[data-epic-table-name=defenses] > textarea {
   border: unset;
 }
 .top-section .defense-block div[data-groupname=repeating_defenses] > div + div,
@@ -1410,10 +1410,10 @@ radio > span.checked {
   grid-column-start: 1;
   grid-column-end: 3;
 }
-.basic-tab .character-attributes div[data-groupname=repeating_character-attributes] > div input, .basic-tab .character-attributes div[data-groupname=repeating_character-attributes] > div select, .basic-tab .character-attributes div[data-groupname=repeating_character-attributes] > div textarea,
-.basic-tab .character-attributes div[data-epic-table-name=character-attributes] input,
-.basic-tab .character-attributes div[data-epic-table-name=character-attributes] select,
-.basic-tab .character-attributes div[data-epic-table-name=character-attributes] textarea {
+.basic-tab .character-attributes div[data-groupname=repeating_character-attributes] > div > input, .basic-tab .character-attributes div[data-groupname=repeating_character-attributes] > div > select, .basic-tab .character-attributes div[data-groupname=repeating_character-attributes] > div > textarea,
+.basic-tab .character-attributes div[data-epic-table-name=character-attributes] > input,
+.basic-tab .character-attributes div[data-epic-table-name=character-attributes] > select,
+.basic-tab .character-attributes div[data-epic-table-name=character-attributes] > textarea {
   border: unset;
 }
 .basic-tab .character-attributes div[data-groupname=repeating_character-attributes] > div + div,
@@ -1487,10 +1487,10 @@ radio > span.checked {
   grid-column-start: 1;
   grid-column-end: 4;
 }
-.basic-tab .advantages div[data-groupname=repeating_advantage] > div input, .basic-tab .advantages div[data-groupname=repeating_advantage] > div select, .basic-tab .advantages div[data-groupname=repeating_advantage] > div textarea,
-.basic-tab .advantages div[data-epic-table-name=advantage] input,
-.basic-tab .advantages div[data-epic-table-name=advantage] select,
-.basic-tab .advantages div[data-epic-table-name=advantage] textarea {
+.basic-tab .advantages div[data-groupname=repeating_advantage] > div > input, .basic-tab .advantages div[data-groupname=repeating_advantage] > div > select, .basic-tab .advantages div[data-groupname=repeating_advantage] > div > textarea,
+.basic-tab .advantages div[data-epic-table-name=advantage] > input,
+.basic-tab .advantages div[data-epic-table-name=advantage] > select,
+.basic-tab .advantages div[data-epic-table-name=advantage] > textarea {
   border: unset;
 }
 .basic-tab .advantages div[data-groupname=repeating_advantage] > div + div,
@@ -1556,10 +1556,10 @@ radio > span.checked {
   grid-column-start: 1;
   grid-column-end: 4;
 }
-.basic-tab .advantages div[data-groupname=repeating_extraadvantage] > div input, .basic-tab .advantages div[data-groupname=repeating_extraadvantage] > div select, .basic-tab .advantages div[data-groupname=repeating_extraadvantage] > div textarea,
-.basic-tab .advantages div[data-epic-table-name=extraadvantage] input,
-.basic-tab .advantages div[data-epic-table-name=extraadvantage] select,
-.basic-tab .advantages div[data-epic-table-name=extraadvantage] textarea {
+.basic-tab .advantages div[data-groupname=repeating_extraadvantage] > div > input, .basic-tab .advantages div[data-groupname=repeating_extraadvantage] > div > select, .basic-tab .advantages div[data-groupname=repeating_extraadvantage] > div > textarea,
+.basic-tab .advantages div[data-epic-table-name=extraadvantage] > input,
+.basic-tab .advantages div[data-epic-table-name=extraadvantage] > select,
+.basic-tab .advantages div[data-epic-table-name=extraadvantage] > textarea {
   border: unset;
 }
 .basic-tab .advantages div[data-groupname=repeating_extraadvantage] > div + div,
@@ -1648,10 +1648,10 @@ radio > span.checked {
   grid-column-start: 1;
   grid-column-end: 4;
 }
-.basic-tab .feats div[data-groupname=repeating_feat] > div input, .basic-tab .feats div[data-groupname=repeating_feat] > div select, .basic-tab .feats div[data-groupname=repeating_feat] > div textarea,
-.basic-tab .feats div[data-epic-table-name=feat] input,
-.basic-tab .feats div[data-epic-table-name=feat] select,
-.basic-tab .feats div[data-epic-table-name=feat] textarea {
+.basic-tab .feats div[data-groupname=repeating_feat] > div > input, .basic-tab .feats div[data-groupname=repeating_feat] > div > select, .basic-tab .feats div[data-groupname=repeating_feat] > div > textarea,
+.basic-tab .feats div[data-epic-table-name=feat] > input,
+.basic-tab .feats div[data-epic-table-name=feat] > select,
+.basic-tab .feats div[data-epic-table-name=feat] > textarea {
   border: unset;
 }
 .basic-tab .feats div[data-groupname=repeating_feat] > div + div,
@@ -1739,10 +1739,10 @@ radio > span.checked {
   grid-column-start: 1;
   grid-column-end: 9;
 }
-.epic-skills-tab div[data-groupname=repeating_skill] > div input, .epic-skills-tab div[data-groupname=repeating_skill] > div select, .epic-skills-tab div[data-groupname=repeating_skill] > div textarea,
-.epic-skills-tab div[data-epic-table-name=skill] input,
-.epic-skills-tab div[data-epic-table-name=skill] select,
-.epic-skills-tab div[data-epic-table-name=skill] textarea {
+.epic-skills-tab div[data-groupname=repeating_skill] > div > input, .epic-skills-tab div[data-groupname=repeating_skill] > div > select, .epic-skills-tab div[data-groupname=repeating_skill] > div > textarea,
+.epic-skills-tab div[data-epic-table-name=skill] > input,
+.epic-skills-tab div[data-epic-table-name=skill] > select,
+.epic-skills-tab div[data-epic-table-name=skill] > textarea {
   border: unset;
 }
 .epic-skills-tab div[data-groupname=repeating_skill] > div + div,
@@ -1840,10 +1840,10 @@ radio > span.checked {
   grid-column-start: 1;
   grid-column-end: 6;
 }
-.equipment-tab div[data-groupname=repeating_armor] > div input, .equipment-tab div[data-groupname=repeating_armor] > div select, .equipment-tab div[data-groupname=repeating_armor] > div textarea,
-.equipment-tab div[data-epic-table-name=armor] input,
-.equipment-tab div[data-epic-table-name=armor] select,
-.equipment-tab div[data-epic-table-name=armor] textarea {
+.equipment-tab div[data-groupname=repeating_armor] > div > input, .equipment-tab div[data-groupname=repeating_armor] > div > select, .equipment-tab div[data-groupname=repeating_armor] > div > textarea,
+.equipment-tab div[data-epic-table-name=armor] > input,
+.equipment-tab div[data-epic-table-name=armor] > select,
+.equipment-tab div[data-epic-table-name=armor] > textarea {
   border: unset;
 }
 .equipment-tab div[data-groupname=repeating_armor] > div + div,
@@ -1909,10 +1909,10 @@ radio > span.checked {
   grid-column-start: 1;
   grid-column-end: 7;
 }
-.equipment-tab div[data-groupname=repeating_shield] > div input, .equipment-tab div[data-groupname=repeating_shield] > div select, .equipment-tab div[data-groupname=repeating_shield] > div textarea,
-.equipment-tab div[data-epic-table-name=shield] input,
-.equipment-tab div[data-epic-table-name=shield] select,
-.equipment-tab div[data-epic-table-name=shield] textarea {
+.equipment-tab div[data-groupname=repeating_shield] > div > input, .equipment-tab div[data-groupname=repeating_shield] > div > select, .equipment-tab div[data-groupname=repeating_shield] > div > textarea,
+.equipment-tab div[data-epic-table-name=shield] > input,
+.equipment-tab div[data-epic-table-name=shield] > select,
+.equipment-tab div[data-epic-table-name=shield] > textarea {
   border: unset;
 }
 .equipment-tab div[data-groupname=repeating_shield] > div + div,
@@ -1978,10 +1978,10 @@ radio > span.checked {
   grid-column-start: 1;
   grid-column-end: 9;
 }
-.equipment-tab div[data-groupname=repeating_weapon] > div input, .equipment-tab div[data-groupname=repeating_weapon] > div select, .equipment-tab div[data-groupname=repeating_weapon] > div textarea,
-.equipment-tab div[data-epic-table-name=weapon] input,
-.equipment-tab div[data-epic-table-name=weapon] select,
-.equipment-tab div[data-epic-table-name=weapon] textarea {
+.equipment-tab div[data-groupname=repeating_weapon] > div > input, .equipment-tab div[data-groupname=repeating_weapon] > div > select, .equipment-tab div[data-groupname=repeating_weapon] > div > textarea,
+.equipment-tab div[data-epic-table-name=weapon] > input,
+.equipment-tab div[data-epic-table-name=weapon] > select,
+.equipment-tab div[data-epic-table-name=weapon] > textarea {
   border: unset;
 }
 .equipment-tab div[data-groupname=repeating_weapon] > div + div,
@@ -2047,10 +2047,10 @@ radio > span.checked {
   grid-column-start: 1;
   grid-column-end: 6;
 }
-.equipment-tab div[data-groupname=repeating_item] > div input, .equipment-tab div[data-groupname=repeating_item] > div select, .equipment-tab div[data-groupname=repeating_item] > div textarea,
-.equipment-tab div[data-epic-table-name=item] input,
-.equipment-tab div[data-epic-table-name=item] select,
-.equipment-tab div[data-epic-table-name=item] textarea {
+.equipment-tab div[data-groupname=repeating_item] > div > input, .equipment-tab div[data-groupname=repeating_item] > div > select, .equipment-tab div[data-groupname=repeating_item] > div > textarea,
+.equipment-tab div[data-epic-table-name=item] > input,
+.equipment-tab div[data-epic-table-name=item] > select,
+.equipment-tab div[data-epic-table-name=item] > textarea {
   border: unset;
 }
 .equipment-tab div[data-groupname=repeating_item] > div + div,
@@ -2118,6 +2118,13 @@ radio > span.checked {
   content: "&";
   color: #efcb83;
 }
+.spells .spellNotesPopover .extra-spell-attributes {
+  display: flex;
+  gap: 8px;
+}
+.spells .spellNotesPopover .extra-spell-attributes .attribute-section input {
+  width: 100%;
+}
 .spells .epic-table-header-grid.arcane {
   display: grid;
   grid-template-columns: minmax(0, 40px) minmax(0, 4fr) minmax(0, 32px) minmax(0, 40px) minmax(0, 0.5fr) minmax(0, 40px) minmax(0, 1fr) minmax(0, 80px) minmax(0, 1.5fr) minmax(0, 2fr) minmax(0, 1.5fr) minmax(0, 16px) minmax(0, 24px) minmax(0, 24px) minmax(0, 40px) minmax(0, auto) minmax(0, 40px);
@@ -2177,10 +2184,10 @@ radio > span.checked {
   grid-column-start: 1;
   grid-column-end: 18;
 }
-.spells div[data-groupname=repeating_arcane] > div input, .spells div[data-groupname=repeating_arcane] > div select, .spells div[data-groupname=repeating_arcane] > div textarea,
-.spells div[data-epic-table-name=arcane] input,
-.spells div[data-epic-table-name=arcane] select,
-.spells div[data-epic-table-name=arcane] textarea {
+.spells div[data-groupname=repeating_arcane] > div > input, .spells div[data-groupname=repeating_arcane] > div > select, .spells div[data-groupname=repeating_arcane] > div > textarea,
+.spells div[data-epic-table-name=arcane] > input,
+.spells div[data-epic-table-name=arcane] > select,
+.spells div[data-epic-table-name=arcane] > textarea {
   border: unset;
 }
 .spells div[data-groupname=repeating_arcane] > div + div,
@@ -2261,10 +2268,10 @@ radio > span.checked {
   grid-column-start: 1;
   grid-column-end: 9;
 }
-.spells div[data-groupname=repeating_divine] > div input, .spells div[data-groupname=repeating_divine] > div select, .spells div[data-groupname=repeating_divine] > div textarea,
-.spells div[data-epic-table-name=divine] input,
-.spells div[data-epic-table-name=divine] select,
-.spells div[data-epic-table-name=divine] textarea {
+.spells div[data-groupname=repeating_divine] > div > input, .spells div[data-groupname=repeating_divine] > div > select, .spells div[data-groupname=repeating_divine] > div > textarea,
+.spells div[data-epic-table-name=divine] > input,
+.spells div[data-epic-table-name=divine] > select,
+.spells div[data-epic-table-name=divine] > textarea {
   border: unset;
 }
 .spells div[data-groupname=repeating_divine] > div + div,
@@ -2330,10 +2337,10 @@ radio > span.checked {
   grid-column-start: 1;
   grid-column-end: 11;
 }
-.spells div[data-groupname=repeating_innate] > div input, .spells div[data-groupname=repeating_innate] > div select, .spells div[data-groupname=repeating_innate] > div textarea,
-.spells div[data-epic-table-name=innate] input,
-.spells div[data-epic-table-name=innate] select,
-.spells div[data-epic-table-name=innate] textarea {
+.spells div[data-groupname=repeating_innate] > div > input, .spells div[data-groupname=repeating_innate] > div > select, .spells div[data-groupname=repeating_innate] > div > textarea,
+.spells div[data-epic-table-name=innate] > input,
+.spells div[data-epic-table-name=innate] > select,
+.spells div[data-epic-table-name=innate] > textarea {
   border: unset;
 }
 .spells div[data-groupname=repeating_innate] > div + div,
