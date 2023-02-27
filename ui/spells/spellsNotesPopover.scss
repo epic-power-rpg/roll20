@@ -27,4 +27,13 @@
       color: #efcb83;
     }
   }
+  .extra-spell-attributes {
+    display: flex;
+    gap: 8px;
+    .attribute-section {
+      input {
+        width: 100%;
+      }
+    }
+  }
 }
