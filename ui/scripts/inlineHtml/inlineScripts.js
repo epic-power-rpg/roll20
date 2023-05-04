@@ -37,15 +37,15 @@ const isEmptyValue = function (value) {
   return value === undefined || value.trim() === '';
 };
 
-// Add up the total cost for repeating_<section>:<name>TP
-// and put it in <section>_total_TP
-const updateTotalTP = function (section, name) {
+// Add up the total cost for repeating_<section>:<name>FP
+// and put it in <section>_total_FP
+const updateTotalFP = function (section, name) {
   if (name === undefined) { name = section; }
   getSectionIDs(section, function (ids) {
-    let TP_fields = ids.map(id => `repeating_${section}_${id}_${name}TP`);
-    getAttrs(TP_fields, function (tps) {
+    let FP_fields = ids.map(id => `repeating_${section}_${id}_${name}FP`);
+    getAttrs(FP_fields, function (fps) {
       let update = {};
-      update[section + '_total_TP'] = sumValues(tps);
+      update[section + '_total_FP'] = sumValues(fps);
       setAttrs(update);
     });
   });
@@ -58,8 +58,8 @@ const updateDistributedCP = function () {
   const skill = 'skill_total_single_CP';
   const arcane = 'arcane_total_single_CP';
   const innate = 'innate_total_single_CP';
-  const tp = 'TP';
-  getAttrs([feat, skill, arcane, innate, tp], 
+  const fp = 'FP';
+  getAttrs([feat, skill, arcane, innate, fp], 
     function(singles) {
       const total = (
         Number(singles[feat]) +
@@ -71,14 +71,14 @@ const updateDistributedCP = function () {
       //                + "' '" + singles[skill]
       //                + "' '" + singles[arcane]
       //                + "' '" + singles[innate] + "'");
-      // log("Distributed: " + Math.min(total, Math.min(singles[tp], 6)
+      // log("Distributed: " + Math.min(total, Math.min(singles[fp], 6)
       //     + "  " + total);
-      setAttrs({ 'distributed_CP': Math.min(total, Math.min(singles[tp], 6)) });
+      setAttrs({ 'distributed_CP': Math.min(total, Math.min(singles[fp], 6)) });
     });
 };
 
 on(
-  'change:tp ' +
+  'change:fp ' +
   'change:feat_total_single_CP ' +
   'change:skill_total_single_CP ' +
   'change:arcane_total_single_CP ' +
@@ -528,15 +528,15 @@ function setupSpellNotes(spellDomain) {
 ['arcane', 'divine', 'innate'].forEach(setupSpellNotes);
 
 // ----- Discipline points -----
-const updateTP = function () {
+const updateFP = function () {
   const CP = 'CP';
-  // const TP = 'TP';
+  // const FP = 'FP';
   getAttrs([CP], function (values) {
-    const TP_v = Math.floor(Number(values[CP]) / 10);
-    setAttrs({ 'TP': TP_v });
+    const FP_v = Math.floor(Number(values[CP]) / 10);
+    setAttrs({ 'FP': FP_v });
   });
 };
-on('change:cp sheet:opened', updateTP);
+on('change:cp sheet:opened', updateFP);
 
 // ----- Attribute costs -----
 const updateAttributeCost = function () {
@@ -943,7 +943,7 @@ const updateSkillDerivedForId = function (section, row_id) {
     `repeating_${section}_${row_id}_skilldisciplineexpertise`);
   const attribute = `repeating_${section}_${row_id}_skillattribute`;
   const base = `repeating_${section}_${row_id}_skillbase`;
-  const tp = `repeating_${section}_${row_id}_skillTP`;
+  const fp = `repeating_${section}_${row_id}_skillFP`;
   const cp = `repeating_${section}_${row_id}_skillCP`;
   const ability = `repeating_${section}_${row_id}_skillability`;
   const mage = 'advantage_mage_count';
@@ -951,7 +951,7 @@ const updateSkillDerivedForId = function (section, row_id) {
   getAttrs([name, disciplineinfo, expertise, disciplineexpertise,
     attribute, base, 'IQ', 'DX', mage, devout],
   function (values) {
-    // Update TP and CP costs
+    // Update FP and CP costs
     let update = {};
     if (values[disciplineinfo] === 'D') {
       const cost = ({
@@ -959,28 +959,6 @@ const updateSkillDerivedForId = function (section, row_id) {
         'ST': 0,
         '-1': 0,
         '0': 0,
-        '1': 1,
-        '2': 3,
-        '3': 6,
-        '4': 10,
-        '5': 15,
-        '6': 21,
-        '7': 28,
-        '8': 36,
-        '9': 45
-      }[values[expertise]]);
-      update[tp] = cost === 0 ? ' ' : cost;
-      update[cp] = ' ';
-      // Fix illegal values for expertise of discipline.
-      if ({ 'ST': true, '-1': true, '0': true }[values[expertise]]) {
-        update[expertise] = '--';
-      }
-    } else {
-      const cost = ({
-        '--': 0,
-        'ST': 0,
-        '-1': 1,
-        '0': 2,
         '1': 4,
         '2': 8,
         '3': 15,
@@ -991,8 +969,31 @@ const updateSkillDerivedForId = function (section, row_id) {
         '8': 95,
         '9': 120
       }[values[expertise]]);
-      update[tp] = ' ';
       update[cp] = cost === 0 ? ' ' : cost;
+      update[fp] = ' ';
+      // Fix illegal values for expertise of discipline.
+      if ({ 'ST': true, '-1': true, '0': true }[values[expertise]]) {
+        update[expertise] = '--';
+      }
+    } else {
+      // Negative values indicate CP cost. Positive indicate FP cost.
+      const cost = ({
+        '--': 0,
+        'ST': 0,
+        '-1': -1,
+        '0': -2,
+        '1': 1,
+        '2': 3,
+        '3': 6,
+        '4': 10,
+        '5': 15,
+        '6': 21,
+        '7': 28,
+        '8': 36,
+        '9': 45
+      }[values[expertise]]);
+      update[cp] = cost >= 0 ? ' ' : -cost;
+      update[fp] = cost <= 0 ? ' ' : cost;
       // Clear base if it is 0.
       if (values[base] === '0') {
         update[base] = ' ';
@@ -1031,7 +1032,7 @@ const updateSkillDerivedForId = function (section, row_id) {
 const updateSkillDerived = function (section, event) {
   const row_id = event.sourceAttribute.split('_')[2];
   updateSkillDerivedForId(section, row_id);
-  updateTotalTP(section, 'skill');
+  updateTotalFP(section, 'skill');
   updateTotalCP(section, 'skill');
 };
 
@@ -1040,7 +1041,7 @@ const updateAllSkillsDerived = function (section) {
     for (let i = 0; i < ids.length; ++i) {
       updateSkillDerivedForId(section, ids[i]);
     }
-    updateTotalTP(section, 'skill');
+    updateTotalFP(section, 'skill');
     updateTotalCP(section, 'skill');
   });
 };
@@ -1065,7 +1066,7 @@ function () { updateAllSkillsDerived('skill'); });
 
 on('remove:repeating_skill',
   function () {
-    updateTotalTP('skill');
+    updateTotalFP('skill');
     updateTotalCP('skill');
   });
 
@@ -1299,7 +1300,7 @@ on('change:IQ change:advantage_mage_count',
 
 on('remove:repeating_arcane',
   function () {
-    updateTotalTP('arcane', 'skill');
+    updateTotalFP('arcane', 'skill');
     updateTotalCP('arcane', 'skill');
   });
 
