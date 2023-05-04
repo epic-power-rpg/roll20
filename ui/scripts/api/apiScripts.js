@@ -1,5 +1,5 @@
 // eslint-disable-next-line no-unused-vars
-const prevEPRoll = function() {
+const prevEPRoll = function () {
   let total = 0;
   let text = '';
   let any_positive = false;
@@ -26,7 +26,7 @@ const prevEPRoll = function() {
         if (roll < 0) {
           any_negative = true;
           roll = '<span style="color:red";>' + roll + '</span>';
-        } else if (roll >  0) {
+        } else if (roll > 0) {
           any_positive = true;
           roll = '<span style="color:blue";>+' + roll + '</span>';
         }
@@ -38,13 +38,15 @@ const prevEPRoll = function() {
       }
     }
   }
-  return {total: total,
-    text: text};
+  return {
+    total: total,
+    text: text
+  };
 };
 
 // Roll a single die, and return its value and text string.
 // If required_sign is present, flip any signed values so they agree with it.
-const RollDie = function(required_sign) {
+const RollDie = function (required_sign) {
   const die = Math.ceil(6 * Math.random());
   let value;
   let text;
@@ -54,14 +56,14 @@ const RollDie = function(required_sign) {
   } else {
     value = die - 3;
     if (required_sign) {
-      if (required_sign != Math.sign(value)) {
+      if (required_sign !== Math.sign(value)) {
         value = -value;
       }
     }
     text = value.toString();
     if (value < 0) {
       text = '<span style="color:red";>' + text + '</span>';
-    } else if (value >  0) {
+    } else if (value > 0) {
       text = '<span style="color:blue";>+' + text + '</span>';
     }
   }
@@ -69,7 +71,7 @@ const RollDie = function(required_sign) {
 };
 
 // Do the EP roll.
-const EPRoll = function() {
+const EPRoll = function () {
   let total = 0;
   let description = '';
   let required_sign = null;
@@ -79,11 +81,11 @@ const EPRoll = function() {
   while (rolls_needed > rolls_done) {
     let [value, text] = RollDie(required_sign);
     rolls_done = rolls_done + 1;
-    if (value == 'two_dice') {
+    if (value === 'two_dice') {
       rolls_needed = rolls_needed + 2;
     }
     // If we are rolling extra dice, the 0s get rerolled.
-    else if (value == 0 && rolls_done > 2) {
+    else if (value === 0 && rolls_done > 2) {
       rolls_needed = rolls_needed + 1;
     } else {
       total = total + value;
@@ -95,15 +97,15 @@ const EPRoll = function() {
     }
     // After we have rolled the first 2 dice,
     // if we got any two_dice rolls, we have to do some special stuff.
-    if (rolls_done == 2 && rolls_needed > 2) {
+    if (rolls_done === 2 && rolls_needed > 2) {
       // If one of the dice was a 0, we have to reroll it.
-      if (total == 0) {
+      if (total === 0) {
         // If one of the dice was a 0, we have to reroll it.
-        if (rolls_needed == 4) {
+        if (rolls_needed === 4) {
           rolls_needed = rolls_needed + 1;
         }
         value = 0;
-        while (value == 0 || value == 'two_dice') {
+        while (value === 0 || value === 'two_dice') {
           [value, text] = RollDie(null);
         }
         total = value;
@@ -112,8 +114,10 @@ const EPRoll = function() {
       required_sign = Math.sign(total);
     }
   }
-  return {total: total,
-    text: description};
+  return {
+    total: total,
+    text: description
+  };
 };
 
 // This script is for rolling success rolls in the Epic Power RPG system.
@@ -122,10 +126,10 @@ const EPRoll = function() {
 // The modifier after !EPRoll can be a sum of terms, like @{X}+@{Y}.
 // If there is additional text after the modifier, it is displayed
 // before the roll.
-on('chat:message', function(event) {
+on('chat:message', function (event) {
   let cmdName = '!EPRoll';
   let msgtxt = event.content;
-  if(event.type == 'api' && msgtxt.indexOf(cmdName) !== -1) {
+  if (event.type === 'api' && msgtxt.indexOf(cmdName) !== -1) {
     let message = msgtxt.slice(cmdName.length + 1).trim();
     let parts = message.split(' ');
     let mod = 0;
@@ -175,23 +179,26 @@ on('chat:message', function(event) {
       // requires a selected token, and there is no selected token
       // when API scripts run.
       const pageid = Campaign().get('playerpageid');
-      const tokens = findObjs({_pageid: pageid,
-        _type: 'graphic'});
+      const tokens = findObjs({
+        _pageid: pageid,
+        _type: 'graphic'
+      });
       const right_tokens = tokens.filter((token) =>
-        token.get('represents') == character_id);
+        token.get('represents') === character_id);
       if (right_tokens.length > 0) {
         token_id = right_tokens[0].id;
-        let turnorder = JSON.parse(Campaign().get('turnorder')||'[]');
+        let turnorder = JSON.parse(Campaign().get('turnorder') || '[]');
         let already_there = false;
         for (let i = 0; i < turnorder.length; i++) {
-          if (turnorder[i].id == token_id) {
+          if (turnorder[i].id === token_id) {
             already_there = true;
             turnorder[i].pr = grand_total;
             break;
           }
         }
         if (!already_there) {
-          turnorder.push({id: token_id,
+          turnorder.push({
+            id: token_id,
             pr: grand_total,
             custom: '',
             _pageid: pageid,
@@ -203,16 +210,16 @@ on('chat:message', function(event) {
   }
 });
 
-on('change:attribute', function(
+on('change:attribute', function (
   attribute,
   // eslint-disable-next-line no-unused-vars
   prev
 ) {
-  if(attribute.get('name') == 'pendingchat') {
+  if (attribute.get('name') === 'pendingchat') {
     let charid = attribute.get('_characterid');
     let message = attribute.get('current');
-    if (message != '') {
-      sendChat('character|'+charid, message);
+    if (message !== '') {
+      sendChat('character|' + charid, message);
       attribute.set('current', '');
     }
   }
