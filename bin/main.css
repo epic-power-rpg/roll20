@@ -373,7 +373,7 @@ button.convert-button:hover {
   color: blue;
 }
 
-.TP.TP.TP.TP {
+.FP.FP.FP.FP {
   color: #267200;
 }
 
@@ -581,12 +581,12 @@ radio > span.checked {
   margin-bottom: 6px;
   background: linear-gradient(to top, rgba(194, 148, 91, 0.5019607843) 0%, transparent 100%);
 }
-.top-section .power-depth-cp-tp-section {
+.top-section .power-depth-cp-fp-section {
   display: flex;
   align-items: center;
   gap: 12px;
 }
-.top-section .power-depth-cp-tp-section input.TP {
+.top-section .power-depth-cp-fp-section input.FP {
   width: 2ch;
 }
 .top-section .attributecontrol[value=basic] ~ span.attribute-value,
@@ -1575,7 +1575,7 @@ radio > span.checked {
   height: 100%;
   width: 100%;
 }
-.basic-tab .advantages .skillTP-grid, .basic-tab .advantages .TP-grid {
+.basic-tab .advantages .skillFP-grid, .basic-tab .advantages .FP-grid {
   color: #267200;
   font-weight: bold;
 }
@@ -1583,7 +1583,7 @@ radio > span.checked {
   color: blue;
   font-weight: bold;
 }
-.basic-tab .advantages .epic-table-header-grid .skillTP-grid, .basic-tab .advantages .epic-table-header-grid .TP-grid {
+.basic-tab .advantages .epic-table-header-grid .skillFP-grid, .basic-tab .advantages .epic-table-header-grid .FP-grid {
   color: #51f200;
 }
 .basic-tab .advantages .epic-table-header-grid .skillCP-grid, .basic-tab .advantages .epic-table-header-grid .CP-grid {
@@ -1661,7 +1661,7 @@ radio > span.checked {
 .basic-tab .feats input.featname-grid {
   text-align: right !important;
 }
-.basic-tab .feats .skillTP-grid, .basic-tab .feats .TP-grid {
+.basic-tab .feats .skillFP-grid, .basic-tab .feats .FP-grid {
   color: #267200;
   font-weight: bold;
 }
@@ -1669,7 +1669,7 @@ radio > span.checked {
   color: blue;
   font-weight: bold;
 }
-.basic-tab .feats .epic-table-header-grid .skillTP-grid, .basic-tab .feats .epic-table-header-grid .TP-grid {
+.basic-tab .feats .epic-table-header-grid .skillFP-grid, .basic-tab .feats .epic-table-header-grid .FP-grid {
   color: #51f200;
 }
 .basic-tab .feats .epic-table-header-grid .skillCP-grid, .basic-tab .feats .epic-table-header-grid .CP-grid {
@@ -1761,7 +1761,7 @@ radio > span.checked {
 .epic-skills-tab .isdiscipline-grid:not([value="1"]) ~ .skillname-grid {
   text-align: right;
 }
-.epic-skills-tab .skillTP-grid, .epic-skills-tab .TP-grid {
+.epic-skills-tab .skillFP-grid, .epic-skills-tab .FP-grid {
   color: #267200;
   font-weight: bold;
 }
@@ -1769,7 +1769,7 @@ radio > span.checked {
   color: blue;
   font-weight: bold;
 }
-.epic-skills-tab .epic-table-header-grid .skillTP-grid, .epic-skills-tab .epic-table-header-grid .TP-grid {
+.epic-skills-tab .epic-table-header-grid .skillFP-grid, .epic-skills-tab .epic-table-header-grid .FP-grid {
   color: #51f200;
 }
 .epic-skills-tab .epic-table-header-grid .skillCP-grid, .epic-skills-tab .epic-table-header-grid .CP-grid {
@@ -2194,7 +2194,7 @@ radio > span.checked {
 .spells div[data-epic-table-name=arcane] + div[data-epic-table-name=arcane] {
   border-top: 1px solid rgba(181, 102, 50, 0.7);
 }
-.spells .isdiscipline-grid[value="1"] ~ :not(.skillname-grid, .skillTP-grid, .skillexpertise-grid) {
+.spells .isdiscipline-grid[value="1"] ~ :not(.skillname-grid, .skillFP-grid, .skillexpertise-grid) {
   opacity: 0;
   cursor: default;
   pointer-events: none;
@@ -2356,7 +2356,7 @@ radio > span.checked {
   cursor: default;
   pointer-events: none;
 }
-.spells .skillTP-grid, .spells .TP-grid {
+.spells .skillFP-grid, .spells .FP-grid {
   color: #267200;
   font-weight: bold;
 }
@@ -2364,7 +2364,7 @@ radio > span.checked {
   color: blue;
   font-weight: bold;
 }
-.spells .epic-table-header-grid .skillTP-grid, .spells .epic-table-header-grid .TP-grid {
+.spells .epic-table-header-grid .skillFP-grid, .spells .epic-table-header-grid .FP-grid {
   color: #51f200;
 }
 .spells .epic-table-header-grid .skillCP-grid, .spells .epic-table-header-grid .CP-grid {
