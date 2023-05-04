@@ -59,12 +59,13 @@ const updateDistributedCP = function () {
   const arcane = 'arcane_total_single_CP';
   const innate = 'innate_total_single_CP';
   const tp = 'TP';
-  getAttrs([feat, skill, arcane, innate, tp],
-    function (singles) {
-      const total = (Number(singles[feat])
-        + Number(singles[skill])
-        + Number(singles[arcane])
-        + Number(singles[innate]));
+  getAttrs([feat, skill, arcane, innate, tp], 
+    function(singles) {
+      const total = (
+        Number(singles[feat]) +
+        Number(singles[skill]) +
+        Number(singles[arcane]) +
+        Number(singles[innate]));
       // log("inputs: " + "'" + singles[advantage] 
       //                + "' '" + singles[feat]
       //                + "' '" + singles[skill]
@@ -76,11 +77,12 @@ const updateDistributedCP = function () {
     });
 };
 
-on('change:tp' +
-  ' change:feat_total_single_CP' +
-  ' change:skill_total_single_CP' +
-  ' change:arcane_total_single_CP' +
-  ' change:innate_total_single_CP',
+on(
+  'change:tp ' +
+  'change:feat_total_single_CP ' +
+  'change:skill_total_single_CP ' +
+  'change:arcane_total_single_CP ' +
+  'change:innate_total_single_CP',
 updateDistributedCP);
 
 // Add up the total cost for repeating_<section>:<name>CP
@@ -426,12 +428,13 @@ const updateTopActEnables = function () {
   });
 };
 
-on('change:ep_t' +
-  ' change:sp' +
-  ' change:action_feats' +
-  ' change:action_ep' +
-  ' change:action_sp' +
-  ' change:roll_advance_boost',
+on(
+  'change:ep_t ' +
+  'change:sp ' +
+  'change:action_feats ' +
+  'change:action_ep ' +
+  'change:action_sp ' +
+  'change:roll_advance_boost',
 updateTopActEnables);
 
 // ----- EP_t, and SP ----
@@ -697,24 +700,25 @@ on(Object.keys(advantageCosts).map(
 ).join(' '),
 updateAdvantagesCosts);
 
-on(('change:repeating_extraadvantage:extraadvantageCP'
-  + ' remove:repeating_extraadvantage'),
+on((
+  'change:repeating_extraadvantage:extraadvantageCP ' +
+  'remove:repeating_extraadvantage'),
 updateAdvantagesCosts);
 
 const updateHPMax = function () {
   const BR = 'BR';
   const healthy = 'advantage_healthy_count';
-  getAttrs([BR, healthy], function (values) {
-    const effective_BR = (Number(values[BR])
-      + Number(values[healthy]));
+  getAttrs([BR, healthy], function(values) {
+    const effective_BR = (
+      Number(values[BR]) +
+      Number(values[healthy]));
     const max_hp = (effective_BR <= -3 ?
       8 + effective_BR :
       12 + effective_BR * (effective_BR + 7) / 2);
     setAttrs({ 'HP_max': max_hp });
   });
 };
-on('change:br change:advantage_healthy_count' +
-  ' sheet:opened',
+on('change:br change:advantage_healthy_count sheet:opened',
 updateHPMax);
 
 const reset_EP_t = function () {
@@ -877,12 +881,13 @@ const updateCopiedAbilities = function () {
     });
   });
 };
-on('change:repeating_skill:skilldisciplineinfo' +
-  ' change:repeating_skill:skillexpertise' +
-  ' change:repeating_skill:skillability' +
-  ' change:repeating_skill:skillname' +
-  ' change:DX change:weight_penalty remove:repeating_skill' +
-  ' sheet:opened',
+on(
+  'change:repeating_skill:skilldisciplineinfo ' +
+  'change:repeating_skill:skillexpertise ' +
+  'change:repeating_skill:skillability ' +
+  'change:repeating_skill:skillname ' +
+  'change:DX change:weight_penalty remove:repeating_skill ' +
+  'sheet:opened',
 updateCopiedAbilities);
 
 // skilldisciplineexpertise holds the expertise of the discipline that
