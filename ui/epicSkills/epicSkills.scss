@@ -8,7 +8,7 @@
     40px, // Discipline?
     4fr, // Name
     40px, // Ability
-    24px, // TP
+    24px, // FP
     24px, // CP
     1fr, // Exper
     72px, // Attribute
@@ -31,5 +31,5 @@
   .isdiscipline-grid:not([value="1"])~.skillname-grid {
     text-align: right;
   }
-  @include grid-table-tp-cp-columns();
+  @include grid-table-fp-cp-columns();
 }
