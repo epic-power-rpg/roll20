@@ -6,11 +6,11 @@
   border-bottom: solid black 1px;
   margin-bottom: 6px;
   background: linear-gradient(to top, $paper-gradient-color 0%, transparent 100%);
-  .power-depth-cp-tp-section {
+  .power-depth-cp-fp-section {
     display: flex;
     align-items: center;
     gap: 12px;
-    input.TP {
+    input.FP {
       width: 2ch;
     }
   }
