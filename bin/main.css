@@ -2194,7 +2194,7 @@ radio > span.checked {
 .spells div[data-epic-table-name=arcane] + div[data-epic-table-name=arcane] {
   border-top: 1px solid rgba(181, 102, 50, 0.7);
 }
-.spells .isdiscipline-grid[value="1"] ~ :not(.skillname-grid, .skillFP-grid, .skillexpertise-grid) {
+.spells .isdiscipline-grid[value="1"] ~ :not(.skillname-grid, .skillCP-grid, .skillexpertise-grid) {
   opacity: 0;
   cursor: default;
   pointer-events: none;
