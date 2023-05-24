@@ -87,9 +87,8 @@
       </div>
       <div class="cp-section">
         <input class="cpcontrol" name="attr_chosentab" type="hidden" value="basic" />
-        <input name="attr_distributed_CP" type="hidden" value="0" />
         <div class="CP larger inline bold right middle">CP</div>
-        <input class="CP bold larger center narrow" name="attr_CPU" value="@{CP} + (@{distributed_CP})          -(@{attribute_CP})          -(@{advantage_total_CP})          -(@{feat_total_CP})          -(@{skill_total_CP})          -(@{arcane_total_CP})          -(@{innate_total_CP})" disabled="true" />
+        <input class="CP bold larger center narrow" name="attr_CPU" value="@{CP}          -(@{attribute_CP})          -(@{advantage_total_CP})          -(@{feat_total_CP})          -(@{skill_total_CP})          -(@{arcane_total_CP})          -(@{innate_total_CP})" disabled="true" />
         <span>/&nbsp;</span>
         <!-- CP is editable in basic tab only -->
         <span class="CP bold larger middle not-basic-tab" name="attr_CP"></span>
