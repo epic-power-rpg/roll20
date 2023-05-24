@@ -51,40 +51,6 @@ const updateTotalFP = function (section, name) {
   });
 };
 
-// We record the number of CP costs of 1. This adds them all up,
-// and subtracts as many of them from the total as breadth allows.
-const updateDistributedCP = function () {
-  const feat = 'feat_total_single_CP';
-  const skill = 'skill_total_single_CP';
-  const arcane = 'arcane_total_single_CP';
-  const innate = 'innate_total_single_CP';
-  const fp = 'FP';
-  getAttrs([feat, skill, arcane, innate, fp], 
-    function(singles) {
-      const total = (
-        Number(singles[feat]) +
-        Number(singles[skill]) +
-        Number(singles[arcane]) +
-        Number(singles[innate]));
-      // log("inputs: " + "'" + singles[advantage] 
-      //                + "' '" + singles[feat]
-      //                + "' '" + singles[skill]
-      //                + "' '" + singles[arcane]
-      //                + "' '" + singles[innate] + "'");
-      // log("Distributed: " + Math.min(total, Math.min(singles[fp], 6)
-      //     + "  " + total);
-      setAttrs({ 'distributed_CP': Math.min(total, Math.min(singles[fp], 6)) });
-    });
-};
-
-on(
-  'change:fp ' +
-  'change:feat_total_single_CP ' +
-  'change:skill_total_single_CP ' +
-  'change:arcane_total_single_CP ' +
-  'change:innate_total_single_CP',
-updateDistributedCP);
-
 // Add up the total cost for repeating_<section>:<name>CP
 // and put it in <section>_total_CP
 const updateTotalCP = function (section, name) {
@@ -957,6 +923,7 @@ const updateSkillDerivedForId = function (section, row_id) {
       const cost = ({
         '--': 0,
         'ST': 0,
+        'B': 0,
         '-1': 0,
         '0': 0,
         '1': 4,
@@ -980,6 +947,7 @@ const updateSkillDerivedForId = function (section, row_id) {
       const cost = ({
         '--': 0,
         'ST': 0,
+        'B': 0,
         '-1': -1,
         '0': -2,
         '1': 1,
