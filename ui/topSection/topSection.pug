@@ -12,9 +12,8 @@
         input.power.medium.bold.middle.basic-tab-only(name='attr_power' type='number' value='0')
       .cp-section
         input.cpcontrol(name='attr_chosentab' type='hidden' value='basic')
-        input(name='attr_distributed_CP' type='hidden' value='0')
         .CP.larger.inline.bold.right.middle CP
-        input.CP.bold.larger.center.narrow(name='attr_CPU' value='@{CP} + (@{distributed_CP})\
+        input.CP.bold.larger.center.narrow(name='attr_CPU' value='@{CP}\
           -(@{attribute_CP})\
           -(@{advantage_total_CP})\
           -(@{feat_total_CP})\
