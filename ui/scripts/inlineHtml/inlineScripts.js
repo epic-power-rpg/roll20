@@ -814,21 +814,22 @@ const updateCopiedAbilities = function () {
       }
       // Try to find an ability for each skill.
       let update = {};
-      for (let skill of ['defend', 'aim spell', 'spell touch']) {
+      for (let skill of ['dodge', 'block', 'parry', 'aim spell', 'spell touch']) {
         // First, get the ability assuming there is no training
         let ability = DX_n + (skill === 'aim spell' ?
           min_expertises['attack'] + 3 :
           skill === 'spell touch' ?
             min_expertises['attack'] + 4 :
-            Math.max(min_expertises['defense'],
+            Math.max(
+              min_expertises['defense'],
               min_expertises['defend']) - 3);
         let skill_index = skill_map[skill];
         if (isValueDefined(skill_index) && values[disciplineinfos[skill_index]] === 'D') {
           skill_index = null;
         }
-        // Check for the user using "defense" as a skill
-        if (!isValueDefined(skill_index) && skill === 'defend') {
-          skill_index = skill_map['defense'];
+        // Check for the user using "shield" as an alternative for "block"
+        if (!isValueDefined(skill_index) && skill === 'block') {
+          skill_index = skill_map['shield'];
           if (isValueDefined(skill_index) && values[disciplineinfos[skill_index]] === 'D') {
             skill_index = null;
           }
@@ -836,7 +837,7 @@ const updateCopiedAbilities = function () {
         if (isValueDefined(skill_index)) {
           ability = Number(values[abilities[skill_index]]);
         }
-        if (skill === 'defend') {
+        if (skill === 'dodge' || skill === 'block' || skill === 'parry') {
           ability = ability + weight_penalty_n;
         }
         update[skill.replace(' ', '_')] = ability;
@@ -1073,21 +1074,26 @@ const updateArmorValue = function () {
   const armorName = 'armor_defense';
   const shieldName = 'shield_defense';
   const defenseBoostName = 'defense_boost';
-  const defendName = 'defend';
+  const dodgeName = 'dodge';
+  const blockName = 'block';
+  const parryName = 'parry';
   const reactionPenaltyName = 'reaction_penalty';
   getLargestWeaponDefense((largestWeaponDefense) => {
-    getAttrs([armorName, shieldName, defenseBoostName, defendName, reactionPenaltyName],
+    getAttrs([armorName, shieldName, defenseBoostName, dodgeName, blockName, parryName, reactionPenaltyName],
       function (values) {
         const cur_armor = getValidNumber(values[armorName]);
         const cur_shield = getValidNumber(values[shieldName]);
-        const cur_defend = getValidNumber(values[defendName]);
+        const cur_dodge = getValidNumber(values[dodgeName]);
+        const cur_block = getValidNumber(values[dodgeName]);
+        const cur_parry = getValidNumber(values[dodgeName]);
         const update = {};
         for (let defense of ['dodge', 'block', 'parry']) {
-          const defenseIsArmor = defense === 'dodge';
+          const defenseIsDodge = defense === 'dodge';
           const defenseIsBlock = defense === 'block';
           const defenseIsParry = defense === 'parry';
+          const cur_defense = defenseIsDodge ? cur_dodge : defenseIsBlock ? cur_block : cur_parry;
           const base = (
-            cur_defend
+            cur_defense
             + (defenseIsBlock ? cur_shield : 0)
             + (defenseIsParry ? largestWeaponDefense : 0)
             - Math.abs(getValidNumber(values[reactionPenaltyName]))
@@ -1098,7 +1104,7 @@ const updateArmorValue = function () {
            */
           const blockIsValid = defenseIsBlock && cur_shield;
           const parryIsValid = defenseIsParry && largestWeaponDefense;
-          const defenseIsValid = defenseIsArmor || blockIsValid || parryIsValid;
+          const defenseIsValid = defenseIsDodge || blockIsValid || parryIsValid;
           update[`current_${defense}_without_armor`] = defenseIsValid ? String(total) : '--';
           update[`current_${defense}_with_armor`] = defenseIsValid ? String(total + cur_armor) : '--';
         }
