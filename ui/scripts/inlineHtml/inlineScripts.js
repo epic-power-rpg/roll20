@@ -990,6 +990,7 @@ const updateSkillDerivedForId = function (section, row_id) {
             Number(values[base]) +
             disciplineexpertise_n +
             (expertise_v === 'ST' ? -1 :
+              expertise_v === 'B' ? -1 :
               expertise_v !== '--' ? Number(expertise_v) :
                 disciplineexpertise_n === 0 ? -5 : -2));
       }
