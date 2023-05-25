@@ -2260,15 +2260,13 @@ const updateArmorValue = function () {
       function (values) {
         const cur_armor = getValidNumber(values[armorName]);
         const cur_shield = getValidNumber(values[shieldName]);
-        const cur_dodge = getValidNumber(values[dodgeName]);
-        const cur_block = getValidNumber(values[dodgeName]);
-        const cur_parry = getValidNumber(values[dodgeName]);
         const update = {};
         for (let defense of ['dodge', 'block', 'parry']) {
           const defenseIsDodge = defense === 'dodge';
           const defenseIsBlock = defense === 'block';
           const defenseIsParry = defense === 'parry';
-          const cur_defense = defenseIsDodge ? cur_dodge : defenseIsBlock ? cur_block : cur_parry;
+          const curDefenseName = defenseIsDodge ? dodgeName : defenseIsBlock ? blockName : parryName;
+          const cur_defense = getValidNumber(values[curDefenseName]);
           const base = (
             cur_defense
             + (defenseIsBlock ? cur_shield : 0)
@@ -2277,7 +2275,7 @@ const updateArmorValue = function () {
           );
           const total = base + getValidNumber(values['defense_boost']);
           /**
-           * Block is only valid if there is a shield value.
+           * Block is only valid if there is a shield value and Parry is only valid if there is a weapon.
            */
           const blockIsValid = defenseIsBlock && cur_shield;
           const parryIsValid = defenseIsParry && largestWeaponDefense;
