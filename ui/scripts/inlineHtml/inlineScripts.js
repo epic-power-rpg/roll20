@@ -940,7 +940,7 @@ const updateSkillDerivedForId = function (section, row_id) {
       update[cp] = cost === 0 ? ' ' : cost;
       update[fp] = ' ';
       // Fix illegal values for expertise of discipline.
-      if ({ 'ST': true, '-1': true, '0': true }[values[expertise]]) {
+      if ({ 'ST': true, 'B': true, '-1': true, '0': true }[values[expertise]]) {
         update[expertise] = '--';
       }
     } else {
