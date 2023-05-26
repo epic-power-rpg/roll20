@@ -3,14 +3,14 @@
   div
     .bold Disciplines &amp; Skills
   .epic-skill-table
-    input(name='attr_skill_total_TP' type='hidden' value='0')
+    input(name='attr_skill_total_FP' type='hidden' value='0')
     input(name='attr_skill_total_CP' type='hidden' value='0')
     input(name='attr_skill_total_single_CP' type='hidden' value='0')
     .epic-table-header-grid.skill
       .skilldisciplineinfo-grid Discipline?
       .skillname-grid Name
       .skillability-grid Ability
-      .skillTP-grid TP
+      .skillFP-grid FP
       .skillCP-grid CP
       .skillexpertise-grid Exper.
       .skillattribute-grid Attribute
@@ -26,7 +26,7 @@
       input.isdiscipline-grid(name='attr_skillisdiscipline' type='hidden')
       input.skillname-grid(name='attr_skillname' type='text')
       span.skillability-grid(name='attr_skillability')
-      span.skillTP-grid.center(name='attr_skillTP')
+      span.skillFP-grid.center(name='attr_skillFP')
       span.skillCP-grid.center(name='attr_skillCP')
       select.skillexpertise-grid(name='attr_skillexpertise')
         option(value='--') --
@@ -49,3 +49,4 @@
         option(value='DX') DX
         option(value='IQ+DX') IQ+DX
       input.skillbase-grid(name='attr_skillbase' type='number' value='')
+      

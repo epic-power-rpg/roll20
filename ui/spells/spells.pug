@@ -32,7 +32,7 @@
       button(type='roll' value='!EPRoll @{aim_spell} Aims Spell: @{aim_spell}')
   // Arcane spells 
   .arcane.section
-    input(name='attr_arcane_total_TP' type='hidden' value='0')
+    input(name='attr_arcane_total_FP' type='hidden' value='0')
     input(name='attr_arcane_total_CP' type='hidden' value='0')
     input(name='attr_arcane_total_single_CP' type='hidden' value='0')
     .arcane.epic-table-header-grid
@@ -48,7 +48,7 @@
       .spelltarget-grid Target
       .spellduration-grid Damage/ Duration
       .spellhasnote-grid N
-      .skillTP-grid TP
+      .skillFP-grid FP
       .skillCP-grid CP
       .skillexpertise-grid Exper.
       .skillattribute-grid.arcane-iq-plus-minus-attribute IQ &pm;
@@ -79,7 +79,7 @@
       input.spelltarget-grid(name='attr_spelltarget' type='text')
       input.spellduration-grid(name='attr_spellduration' type='text')
       include ./spellsNotesPopover.pug
-      span.skillTP-grid.center(name='attr_skillTP')
+      span.skillFP-grid.center(name='attr_skillFP')
       span.skillCP-grid.center(name='attr_skillCP')
       select.skillexpertise-grid(name='attr_skillexpertise')
         option(value='--') --

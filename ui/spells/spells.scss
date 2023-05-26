@@ -60,7 +60,7 @@ $notes-popover-width: 16px;
     2fr, // Target
     1.5fr, // Damage/ Duration
     $notes-popover-width, // N(otes)
-    24px, // TP
+    24px, // FP
     24px, // CP
     40px, // Exper.
     auto, // IQ ±
@@ -71,7 +71,7 @@ $notes-popover-width: 16px;
   @include epic-table-grid-row-border('arcane');
 
   .isdiscipline-grid[value="1"] {
-    ~:not(.skillname-grid, .skillTP-grid, .skillexpertise-grid) {
+    ~:not(.skillname-grid, .skillCP-grid, .skillexpertise-grid) {
       opacity: 0;
       cursor: default;
       pointer-events: none;
@@ -122,7 +122,7 @@ $notes-popover-width: 16px;
     }
   }
 
-  @include grid-table-tp-cp-columns();
+  @include grid-table-fp-cp-columns();
 
   .spell-note {
     margin-bottom: 1px;

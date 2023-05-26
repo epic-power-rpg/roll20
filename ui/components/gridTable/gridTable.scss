@@ -88,9 +88,9 @@ $grid-column-gap: 2px;
   @return $result;
 }
 
-@mixin grid-table-tp-cp-columns {
-  .skillTP-grid, .TP-grid {
-    color: $tp-color;
+@mixin grid-table-fp-cp-columns {
+  .skillFP-grid, .FP-grid {
+    color: $fp-color;
     font-weight: bold;
   }
 
@@ -100,8 +100,8 @@ $grid-column-gap: 2px;
   }
 
   .epic-table-header-grid {
-    .skillTP-grid, .TP-grid {
-      color: lighten($tp-color, 25%);
+    .skillFP-grid, .FP-grid {
+      color: lighten($fp-color, 25%);
     }
     .skillCP-grid, .CP-grid {
       color: darken($cp-color, 20%);
