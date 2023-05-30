@@ -971,8 +971,8 @@ const updateSkillDerivedForId = function (section, row_id) {
       const expertise_v = values[expertise];
       const attribute_v = values[attribute];
       const disciplineexpertise_v = values[disciplineexpertise];
-      const disciplineexpertise_n = (disciplineexpertise_v === '--' ? 0 :
-        Number(disciplineexpertise_v));
+      const disciplineexpertise_n = (
+        disciplineexpertise_v === '--' ? 0 : Number(disciplineexpertise_v));
       const IQ_n = Number(values['IQ']);
       const DX_n = Number(values['DX']);
       if (attribute_v === '') {
@@ -987,14 +987,14 @@ const updateSkillDerivedForId = function (section, row_id) {
           expertise_v === 'B' ? -1 :
           expertise_v === '--' ? (disciplineexpertise_n === 0 ? -5 : -2) :
           Number(expertise_v));
-        var ability = disciplineexpertise_n + focus + attribute_value + Number(values[base])
+        var ability_v = disciplineexpertise_n + focus + attribute_value + Number(values[base])
         if (section === 'arcane') {
-          ability += Number(values[mage]) * 2;
+          ability_v += Number(values[mage]) * 2;
         }
         if (values[name].toLowerCase().trim().startsWith('pray')) {
-          ability += Number(values[devout]) * 2;
+          ability_v += Number(values[devout]) * 2;
         }
-        update[ability] = (ability);
+        update[ability] = ability_v;
       }
     }
     setAttrs(update);
