@@ -51,40 +51,6 @@ const updateTotalFP = function (section, name) {
   });
 };
 
-// We record the number of CP costs of 1. This adds them all up,
-// and subtracts as many of them from the total as breadth allows.
-const updateDistributedCP = function () {
-  const feat = 'feat_total_single_CP';
-  const skill = 'skill_total_single_CP';
-  const arcane = 'arcane_total_single_CP';
-  const innate = 'innate_total_single_CP';
-  const fp = 'FP';
-  getAttrs([feat, skill, arcane, innate, fp], 
-    function(singles) {
-      const total = (
-        Number(singles[feat]) +
-        Number(singles[skill]) +
-        Number(singles[arcane]) +
-        Number(singles[innate]));
-      // log("inputs: " + "'" + singles[advantage] 
-      //                + "' '" + singles[feat]
-      //                + "' '" + singles[skill]
-      //                + "' '" + singles[arcane]
-      //                + "' '" + singles[innate] + "'");
-      // log("Distributed: " + Math.min(total, Math.min(singles[fp], 6)
-      //     + "  " + total);
-      setAttrs({ 'distributed_CP': Math.min(total, Math.min(singles[fp], 6)) });
-    });
-};
-
-on(
-  'change:fp ' +
-  'change:feat_total_single_CP ' +
-  'change:skill_total_single_CP ' +
-  'change:arcane_total_single_CP ' +
-  'change:innate_total_single_CP',
-updateDistributedCP);
-
 // Add up the total cost for repeating_<section>:<name>CP
 // and put it in <section>_total_CP
 const updateTotalCP = function (section, name) {
@@ -848,21 +814,22 @@ const updateCopiedAbilities = function () {
       }
       // Try to find an ability for each skill.
       let update = {};
-      for (let skill of ['defend', 'aim spell', 'spell touch']) {
+      for (let skill of ['dodge', 'block', 'parry', 'aim spell', 'spell touch']) {
         // First, get the ability assuming there is no training
         let ability = DX_n + (skill === 'aim spell' ?
           min_expertises['attack'] + 3 :
           skill === 'spell touch' ?
             min_expertises['attack'] + 4 :
-            Math.max(min_expertises['defense'],
+            Math.max(
+              min_expertises['defense'],
               min_expertises['defend']) - 3);
         let skill_index = skill_map[skill];
         if (isValueDefined(skill_index) && values[disciplineinfos[skill_index]] === 'D') {
           skill_index = null;
         }
-        // Check for the user using "defense" as a skill
-        if (!isValueDefined(skill_index) && skill === 'defend') {
-          skill_index = skill_map['defense'];
+        // Check for the user using "shield" as an alternative for "block"
+        if (!isValueDefined(skill_index) && skill === 'block') {
+          skill_index = skill_map['shield'];
           if (isValueDefined(skill_index) && values[disciplineinfos[skill_index]] === 'D') {
             skill_index = null;
           }
@@ -870,7 +837,7 @@ const updateCopiedAbilities = function () {
         if (isValueDefined(skill_index)) {
           ability = Number(values[abilities[skill_index]]);
         }
-        if (skill === 'defend') {
+        if (skill === 'dodge' || skill === 'block' || skill === 'parry') {
           ability = ability + weight_penalty_n;
         }
         update[skill.replace(' ', '_')] = ability;
@@ -957,6 +924,7 @@ const updateSkillDerivedForId = function (section, row_id) {
       const cost = ({
         '--': 0,
         'ST': 0,
+        'B': 0,
         '-1': 0,
         '0': 0,
         '1': 4,
@@ -972,7 +940,7 @@ const updateSkillDerivedForId = function (section, row_id) {
       update[cp] = cost === 0 ? ' ' : cost;
       update[fp] = ' ';
       // Fix illegal values for expertise of discipline.
-      if ({ 'ST': true, '-1': true, '0': true }[values[expertise]]) {
+      if ({ 'ST': true, 'B': true, '-1': true, '0': true }[values[expertise]]) {
         update[expertise] = '--';
       }
     } else {
@@ -980,6 +948,7 @@ const updateSkillDerivedForId = function (section, row_id) {
       const cost = ({
         '--': 0,
         'ST': 0,
+        'B': 0,
         '-1': -1,
         '0': -2,
         '1': 1,
@@ -1002,27 +971,30 @@ const updateSkillDerivedForId = function (section, row_id) {
       const expertise_v = values[expertise];
       const attribute_v = values[attribute];
       const disciplineexpertise_v = values[disciplineexpertise];
-      const disciplineexpertise_n = (disciplineexpertise_v === '--' ? 0 :
-        Number(disciplineexpertise_v));
+      const disciplineexpertise_n = (
+        disciplineexpertise_v === '--' ? 0 : Number(disciplineexpertise_v));
       const IQ_n = Number(values['IQ']);
       const DX_n = Number(values['DX']);
       if (attribute_v === '') {
         update[ability] = '??';
       } else {
-        update[ability] = (
-          (attribute_v === 'IQ' ? IQ_n :
-            attribute_v === 'DX' ? DX_n :
-              IQ_n + DX_n) +
-            (section === 'arcane' ?
-              Number(values[mage]) * 2 :
-              values[name].toLowerCase().trim().startsWith('pray') ?
-                Number(values[devout]) * 2 :
-                0) +
-            Number(values[base]) +
-            disciplineexpertise_n +
-            (expertise_v === 'ST' ? -1 :
-              expertise_v !== '--' ? Number(expertise_v) :
-                disciplineexpertise_n === 0 ? -5 : -2));
+        const attribute_value = (
+          attribute_v === 'IQ' ? IQ_n :
+          attribute_v === 'DX' ? DX_n :
+          IQ_n + DX_n);
+        const focus = (
+          expertise_v === 'ST' ? -1 :
+          expertise_v === 'B' ? -1 :
+          expertise_v === '--' ? (disciplineexpertise_n === 0 ? -5 : -2) :
+          Number(expertise_v));
+        var ability_v = disciplineexpertise_n + focus + attribute_value + Number(values[base])
+        if (section === 'arcane') {
+          ability_v += Number(values[mage]) * 2;
+        }
+        if (values[name].toLowerCase().trim().startsWith('pray')) {
+          ability_v += Number(values[devout]) * 2;
+        }
+        update[ability] = ability_v;
       }
     }
     setAttrs(update);
@@ -1105,32 +1077,35 @@ const updateArmorValue = function () {
   const armorName = 'armor_defense';
   const shieldName = 'shield_defense';
   const defenseBoostName = 'defense_boost';
-  const defendName = 'defend';
+  const dodgeName = 'dodge';
+  const blockName = 'block';
+  const parryName = 'parry';
   const reactionPenaltyName = 'reaction_penalty';
   getLargestWeaponDefense((largestWeaponDefense) => {
-    getAttrs([armorName, shieldName, defenseBoostName, defendName, reactionPenaltyName],
+    getAttrs([armorName, shieldName, defenseBoostName, dodgeName, blockName, parryName, reactionPenaltyName],
       function (values) {
         const cur_armor = getValidNumber(values[armorName]);
         const cur_shield = getValidNumber(values[shieldName]);
-        const cur_defend = getValidNumber(values[defendName]);
         const update = {};
         for (let defense of ['dodge', 'block', 'parry']) {
-          const defenseIsArmor = defense === 'dodge';
+          const defenseIsDodge = defense === 'dodge';
           const defenseIsBlock = defense === 'block';
           const defenseIsParry = defense === 'parry';
+          const curDefenseName = defenseIsDodge ? dodgeName : defenseIsBlock ? blockName : parryName;
+          const cur_defense = getValidNumber(values[curDefenseName]);
           const base = (
-            cur_defend
+            cur_defense
             + (defenseIsBlock ? cur_shield : 0)
             + (defenseIsParry ? largestWeaponDefense : 0)
             - Math.abs(getValidNumber(values[reactionPenaltyName]))
           );
           const total = base + getValidNumber(values['defense_boost']);
           /**
-           * Block is only valid if there is a shield value.
+           * Block is only valid if there is a shield value and Parry is only valid if there is a weapon.
            */
           const blockIsValid = defenseIsBlock && cur_shield;
           const parryIsValid = defenseIsParry && largestWeaponDefense;
-          const defenseIsValid = defenseIsArmor || blockIsValid || parryIsValid;
+          const defenseIsValid = defenseIsDodge || blockIsValid || parryIsValid;
           update[`current_${defense}_without_armor`] = defenseIsValid ? String(total) : '--';
           update[`current_${defense}_with_armor`] = defenseIsValid ? String(total + cur_armor) : '--';
         }
