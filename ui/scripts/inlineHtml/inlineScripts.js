@@ -401,7 +401,7 @@ on(
   'change:action_ep ' +
   'change:action_sp ' +
   'change:roll_advance_boost',
-updateTopActEnables);
+  updateTopActEnables);
 
 // ----- EP_t, and SP ----
 const updateEP = function () {
@@ -685,7 +685,7 @@ const updateHPMax = function () {
   });
 };
 on('change:br change:advantage_healthy_count sheet:opened',
-updateHPMax);
+  updateHPMax);
 
 const reset_EP_t = function () {
   const EP_t = 'EP_t';
@@ -855,7 +855,7 @@ on(
   'change:repeating_skill:skillname ' +
   'change:DX change:weight_penalty remove:repeating_skill ' +
   'sheet:opened',
-updateCopiedAbilities);
+  updateCopiedAbilities);
 
 // skilldisciplineexpertise holds the expertise of the discipline that
 // applies to the skill. We walk through all the items, in order,
@@ -978,6 +978,7 @@ const updateSkillDerivedForId = function (section, row_id) {
       if (attribute_v === '') {
         update[ability] = '??';
       } else {
+        /* eslint-disable indent */
         const attribute_value = (
           attribute_v === 'IQ' ? IQ_n :
           attribute_v === 'DX' ? DX_n :
@@ -987,7 +988,8 @@ const updateSkillDerivedForId = function (section, row_id) {
           expertise_v === 'B' ? -1 :
           expertise_v === '--' ? (disciplineexpertise_n === 0 ? -5 : -2) :
           Number(expertise_v));
-        var ability_v = disciplineexpertise_n + focus + attribute_value + Number(values[base])
+        /* eslint-enable indent */
+        let ability_v = disciplineexpertise_n + focus + attribute_value + Number(values[base]);
         if (section === 'arcane') {
           ability_v += Number(values[mage]) * 2;
         }

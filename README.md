@@ -19,7 +19,7 @@ Ideally, the linter will auto-format, but manually, you may need to set your edi
 
 ### Autolint JavaScript Files
 
-1. Run `yarn lint:all` or `yarn lint:all-fix`
+1. Run `yarn lint:all` or `yarn lint:fix-all`
 
 ## Generate files for Roll20
 
@@ -30,15 +30,19 @@ it is easier to copy just one script to Roll20.
 In order to simplify this process, use the following to generate `./bin/roll20.js` script
 that is a combination of all scripts.
 
-Any of the following will merge scripts:
+#### Pug
 
-* `yarn mergeScripts`
-* `./mergeScripts.sh`
-* `git commit` runs the above script as a pre-commit hook
+[pug](https://pugjs.org/api/getting-started.html) is a tool that provides the ability to template and
+compile HTML from individual `pug` files.
 
-The output is in `./bin/roll20.js`
+To generate html:
 
-### CSS
+* In development, `yarn pug:watch`
+* In build systems: `yarn pug`
+
+The output is in `./bin/main.html`
+
+#### CSS
 
 [Sass](https://sass-lang.com/guide) is a tool that provides the ability to compile CSS from individual
 SCSS files.
@@ -51,3 +55,19 @@ To generate CSS:
 * In build systems: `yarn sass`
 
 The output is in `./bin/main.css`
+
+#### Build HTML and CSS
+
+* Run `yarn build:all` to build html and css.
+
+### Roll 20 admin scripts
+
+This project has scripts for handling custom rolling code.
+
+Any of the following will merge scripts:
+
+* `yarn mergeScripts`
+* `./mergeScripts.sh`
+* `git commit` runs the above script as a pre-commit hook
+
+The output is in `./bin/roll20.js`
