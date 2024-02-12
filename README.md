@@ -19,7 +19,7 @@ Ideally, the linter will auto-format, but manually, you may need to set your edi
 
 ### Autolint JavaScript Files
 
-1. Run `yarn lint:all` or `yarn lint:all-fix`
+1. Run `yarn lint:all` or `yarn lint:fix-all`
 
 ## Generate files for Roll20
 
