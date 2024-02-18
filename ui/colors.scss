@@ -1,16 +1,85 @@
 @use "sass:color";
+@use "sass:map";
 
-$cp-color: blue;
-$fp-color: #267200;
-$paper-color: #c4bdaf;
-$paper-gradient-color: #c2945b80;
-$button-roll-color-1: rgb(245, 201, 162);
-$button-roll-color-2: #c2815b;
-$button-undo-roll-color-1: #c2945b;
-$button-undo-roll-color-2: rgb(138, 103, 103);
-$primary-highlight-background-color: #b56632;
-$primary-highlight-color: #fff;
-$primary-background-color: lighten($primary-highlight-background-color, 50%);
-$selected-tab-color: $primary-highlight-background-color;
-$unselected-tab-color: $primary-background-color;
-$table-row-underline-color: color.scale($primary-highlight-background-color, $alpha: -30%);
+
+$themes: (
+  light: (
+    cp-color: blue,
+    fp-color: #267200,
+    paper-color: #c4bdaf,
+    paper-gradient-color: linear-gradient(to top, #c2945b80 0%, transparent 100%),
+    button-roll-left-right-gradient: linear-gradient(90deg, rgb(245, 201, 162), #c2815b),
+    button-roll-top-bottom-gradient: linear-gradient(180deg, rgb(245, 201, 162), #c2815b),
+    button-undo-roll-left-right-gradient: linear-gradient(90deg, #c2945b, rgb(138, 103, 103)),
+    button-roll-hover-color: #c2815b,
+    primary-highlight-background-color: #b56632,
+    primary-highlight-color: #fff,
+    primary-color: #111,
+    primary-background-color: #faf2ec,
+    field-background-color: darken(#faf2ec, 10%),
+    selected-tab-color: #fff,
+    selected-tab-background-color: #b56632,
+    unselected-tab-color: #111,
+    unselected-tab-background-color: #eee,
+    table-row-underline-color: color.scale(#b56632, $alpha: -30%),
+  ),
+  dark: (
+    cp-color: rgb(145, 145, 246),
+    fp-color: #c4fda8,
+    paper-color: #c4bdaf,
+    paper-gradient-color: linear-gradient(to top, #c2945b80 0%, transparent 100%),
+    button-roll-left-right-gradient: linear-gradient(90deg, rgb(245, 201, 162), #c2815b),
+    button-roll-top-bottom-gradient: linear-gradient(180deg, rgb(245, 201, 162), #c2815b),
+    button-undo-roll-left-right-gradient: linear-gradient(90deg, #c2945b, rgb(138, 103, 103)),
+    button-roll-hover-color: #c2815b,
+    primary-highlight-background-color: #b56632,
+    primary-highlight-color: #fff,
+    primary-color: #fff,
+    primary-background-color: #333,
+    field-background-color: #222,
+    selected-tab-color: #fff,
+    selected-tab-background-color: #b56632,
+    unselected-tab-color: #eee,
+    unselected-tab-background-color: #666,
+    table-row-underline-color: color.scale(#b56632, $alpha: -30%),
+  ),
+);
+
+// Based on https://berbaquero.com/posts/2023/03/sass-dark-mode/
+@mixin theme-mode {
+  body.sheet-darkmode & {
+    @content;
+  }
+}
+
+@function epic-theme($mode, $color-name) {
+  @return map-get(map-get($themes, $mode), $color-name);
+}
+
+@mixin theme-color($color-name) {
+  color: epic-theme(light, $color-name);
+  @include theme-mode {
+    color: epic-theme(dark, $color-name);
+  }
+}
+
+@mixin theme-background($color-name) {
+  background: epic-theme(light, $color-name);
+  @include theme-mode {
+    background: epic-theme(dark, $color-name);
+  }
+}
+
+@mixin theme-background-color($color-name) {
+  background-color: epic-theme(light, $color-name);
+  @include theme-mode {
+    background-color: epic-theme(dark, $color-name);
+  }
+}
+
+@mixin theme-border-color($color-name) {
+  border-color: epic-theme(light, $color-name);
+  @include theme-mode {
+    border-color: epic-theme(dark, $color-name);
+  }
+}

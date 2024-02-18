@@ -7,8 +7,8 @@
 .tabcontrol[value="innate"]~.tab[name="act_innate"] {
   font-weight: bold;
   text-decoration: none;
-  background-color: $selected-tab-color;
-  color: $primary-background-color;
+  @include theme-color(selected-tab-color);
+  @include theme-background-color(selected-tab-background-color);
   margin-bottom: -1px;
   border-bottom: 1px solid transparent;
 }

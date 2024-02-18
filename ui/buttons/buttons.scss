@@ -12,17 +12,17 @@ button.actionRollButton {
   border-radius: 4px;
 }
 
-@mixin hovered-button($background-color: $button-roll-color-2) {
+@mixin hovered-button() {
   &:hover {
     // Remove Roll20 default styles
     background-image: unset;
-    background-color: $background-color;
+    @include theme-background(button-roll-hover-color);
   }
 }
 
 @mixin roll-action-button {
   @include action-button;
-  background-image: linear-gradient(90deg, $button-roll-color-1, $button-roll-color-2);
+  @include theme-background(button-roll-left-right-gradient);
   @include hovered-button();
 }
 
@@ -90,10 +90,10 @@ button.undo::before {
 
 @mixin undo-action-button {
   @include action-button;
-  background-image: linear-gradient(90deg, $button-undo-roll-color-1, $button-undo-roll-color-2);
+  @include theme-background(button-undo-roll-left-right-gradient);
   line-height: 1;
   padding: 1px 1px;
-  @include hovered-button($button-undo-roll-color-2);
+  @include hovered-button();
 }
 
 button.undo {
@@ -102,7 +102,7 @@ button.undo {
 
 button.reset-total {
   @include action-button;
-  background-image: linear-gradient(90deg, $button-roll-color-1, $button-roll-color-2);
+  @include theme-background(button-roll-left-right-gradient);
   line-height: 1;
   padding: 2px;
   vertical-align: middle;
@@ -111,7 +111,7 @@ button.reset-total {
 
 button.convert-button {
   @include action-button;
-  background-image: linear-gradient(180deg, $button-roll-color-1, $button-roll-color-2);
+  @include theme-background(button-roll-top-bottom-gradient);
   padding: 0px 2px 4px 2px;
   vertical-align: middle;
   font-size: 200%;

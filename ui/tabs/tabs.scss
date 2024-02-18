@@ -2,7 +2,8 @@
 
 /* Tabs */
 .characterviewer .nav-tabs>li:not(.active) {
-  background: $unselected-tab-color;
+  @include theme-color(unselected-tab-color);
+  @include theme-background-color(unselected-tab-background-color);
   color: black;
   text-decoration: none;
   cursor: pointer;
@@ -19,8 +20,8 @@
 .characterviewer .nav-tabs>.active>a {
   font-weight: bold;
   text-decoration: none;
-  background-color: $selected-tab-color;
-  color: $primary-background-color;
+  @include theme-color(selected-tab-color);
+  @include theme-background-color(selected-tab-background-color);
 }
 
 .tab-holder {
@@ -29,7 +30,8 @@
 
 .tab {
   border: 1px solid #999;
-  background: $unselected-tab-color;
+  @include theme-color(unselected-tab-color);
+  @include theme-background-color(unselected-tab-background-color);
   padding: 4px 4px;
   border-radius: 4px 4px 0 0;
   font-size: 110%
@@ -43,7 +45,7 @@
 .tabcontrol[value="notes"]~.tab[name="act_notes"] {
   font-weight: bold;
   text-decoration: none;
-  background-color: $selected-tab-color;
-  color: $primary-background-color;
+  @include theme-color(selected-tab-color);
+  @include theme-background-color(selected-tab-background-color);
   border-bottom: 1px solid transparent;
 }
