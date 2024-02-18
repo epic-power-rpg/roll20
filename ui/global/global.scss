@@ -27,7 +27,7 @@ button, input, optgroup, select, textarea {
 .ui-dialog {
   @include theme-background-color(paper-color);
   background-size: cover;
-  background-image: url(https://raw.githubusercontent.com/epic-power-rpg/roll20/main/ui/images/background.png);
+  background-image: url(https://raw.githubusercontent.com/epic-power-rpg/roll20/main/ui/images/epic-power-game-image-overlay.png);
   .dialog, .largedialog {
     padding: 0 16px;
     padding-bottom: 16px;
