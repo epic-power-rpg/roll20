@@ -1,7 +1,6 @@
 @use "sass:color";
 @use "sass:map";
 
-
 $themes: (
   light: (
     cp-color: blue,
@@ -28,9 +27,9 @@ $themes: (
     fp-color: #c4fda8,
     paper-color: #c4bdaf,
     paper-gradient-color: linear-gradient(to top, #c2945b80 0%, transparent 100%),
-    button-roll-left-right-gradient: linear-gradient(90deg, rgb(245, 201, 162), #c2815b),
-    button-roll-top-bottom-gradient: linear-gradient(180deg, rgb(245, 201, 162), #c2815b),
-    button-undo-roll-left-right-gradient: linear-gradient(90deg, #c2945b, rgb(138, 103, 103)),
+    button-roll-left-right-gradient: linear-gradient(90deg, #944d10, #c2815b),
+    button-roll-top-bottom-gradient: linear-gradient(180deg, #944d10, #c2815b),
+    button-undo-roll-left-right-gradient: linear-gradient(90deg, #c07519, rgb(138, 103, 103)),
     button-roll-hover-color: #c2815b,
     primary-highlight-background-color: #b56632,
     primary-highlight-color: #fff,
