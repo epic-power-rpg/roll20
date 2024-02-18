@@ -331,10 +331,20 @@ body.sheet-darkmode button, body.sheet-darkmode input, body.sheet-darkmode optgr
 }
 
 .charsheet, .attributesabilities > * > *, .bioinfo > * > * {
+  color: #111;
   background-color: #faf2ec;
 }
 body.sheet-darkmode .charsheet, body.sheet-darkmode .attributesabilities > * > *, body.sheet-darkmode .bioinfo > * > * {
+  color: #fff;
+}
+body.sheet-darkmode .charsheet, body.sheet-darkmode .attributesabilities > * > *, body.sheet-darkmode .bioinfo > * > * {
   background-color: #333;
+}
+.charsheet h1, .charsheet h2, .charsheet h3, .charsheet h4, .charsheet h5, .charsheet h6, .attributesabilities > * > * h1, .attributesabilities > * > * h2, .attributesabilities > * > * h3, .attributesabilities > * > * h4, .attributesabilities > * > * h5, .attributesabilities > * > * h6, .bioinfo > * > * h1, .bioinfo > * > * h2, .bioinfo > * > * h3, .bioinfo > * > * h4, .bioinfo > * > * h5, .bioinfo > * > * h6 {
+  color: #111;
+}
+body.sheet-darkmode .charsheet h1, body.sheet-darkmode .charsheet h2, body.sheet-darkmode .charsheet h3, body.sheet-darkmode .charsheet h4, body.sheet-darkmode .charsheet h5, body.sheet-darkmode .charsheet h6, body.sheet-darkmode .attributesabilities > * > * h1, body.sheet-darkmode .attributesabilities > * > * h2, body.sheet-darkmode .attributesabilities > * > * h3, body.sheet-darkmode .attributesabilities > * > * h4, body.sheet-darkmode .attributesabilities > * > * h5, body.sheet-darkmode .attributesabilities > * > * h6, body.sheet-darkmode .bioinfo > * > * h1, body.sheet-darkmode .bioinfo > * > * h2, body.sheet-darkmode .bioinfo > * > * h3, body.sheet-darkmode .bioinfo > * > * h4, body.sheet-darkmode .bioinfo > * > * h5, body.sheet-darkmode .bioinfo > * > * h6 {
+  color: #fff;
 }
 
 body.sheet-darkmode .btn, body.sheet-darkmode .btn.btn-default {
@@ -603,7 +613,7 @@ input.saved-roll {
 .roll-chosen[value="5"] ~ .save-radio-row > button.roll-5,
 .roll-chosen[value="6"] ~ .save-radio-row > button.roll-6 {
   background-color: #faf2ec;
-  border-color: black;
+  border-color: #111;
 }
 body.sheet-darkmode .roll-chosen[value="1"] ~ .save-radio-row > button.roll-1,
 body.sheet-darkmode .roll-chosen[value="2"] ~ .save-radio-row > button.roll-2,
@@ -612,6 +622,14 @@ body.sheet-darkmode .roll-chosen[value="4"] ~ .save-radio-row > button.roll-4,
 body.sheet-darkmode .roll-chosen[value="5"] ~ .save-radio-row > button.roll-5,
 body.sheet-darkmode .roll-chosen[value="6"] ~ .save-radio-row > button.roll-6 {
   background-color: #333;
+}
+body.sheet-darkmode .roll-chosen[value="1"] ~ .save-radio-row > button.roll-1,
+body.sheet-darkmode .roll-chosen[value="2"] ~ .save-radio-row > button.roll-2,
+body.sheet-darkmode .roll-chosen[value="3"] ~ .save-radio-row > button.roll-3,
+body.sheet-darkmode .roll-chosen[value="4"] ~ .save-radio-row > button.roll-4,
+body.sheet-darkmode .roll-chosen[value="5"] ~ .save-radio-row > button.roll-5,
+body.sheet-darkmode .roll-chosen[value="6"] ~ .save-radio-row > button.roll-6 {
+  border-color: #fff;
 }
 
 /* Configure the radio button styling. */
@@ -894,38 +912,52 @@ body.sheet-darkmode .top-section .defense-block div[data-epic-table-name=defense
 
 /* ----------- Tabs and what they control  ------------- */
 /* Tabs */
-.characterviewer .nav-tabs > li:not(.active) {
+.dialog.characterviewer .nav-tabs > li:not(.active) > a {
   color: #111;
   background-color: #eee;
-  color: black;
   text-decoration: none;
   cursor: pointer;
 }
-body.sheet-darkmode .characterviewer .nav-tabs > li:not(.active) {
+body.sheet-darkmode .dialog.characterviewer .nav-tabs > li:not(.active) > a {
   color: #eee;
 }
-body.sheet-darkmode .characterviewer .nav-tabs > li:not(.active) {
+body.sheet-darkmode .dialog.characterviewer .nav-tabs > li:not(.active) > a {
   background-color: #666;
 }
 
-.characterviewer .nav-tabs > li:not(.active) > a:hover,
-.characterviewer .nav-tabs > li:not(.active) > a:focus {
-  color: black;
+.dialog.characterviewer .nav-tabs > li:not(.active) > a:hover,
+.dialog.characterviewer .nav-tabs > li:not(.active) > a:focus {
+  color: #111;
+  background-color: #eee;
   font-weight: bold;
   text-decoration: none;
   cursor: pointer;
 }
+body.sheet-darkmode .dialog.characterviewer .nav-tabs > li:not(.active) > a:hover,
+body.sheet-darkmode .dialog.characterviewer .nav-tabs > li:not(.active) > a:focus {
+  color: #fff;
+}
+body.sheet-darkmode .dialog.characterviewer .nav-tabs > li:not(.active) > a:hover,
+body.sheet-darkmode .dialog.characterviewer .nav-tabs > li:not(.active) > a:focus {
+  background-color: #666;
+}
 
-.characterviewer .nav-tabs > .active > a {
+.dialog.characterviewer .nav-tabs > .active > a {
   font-weight: bold;
   text-decoration: none;
   color: #fff;
   background-color: #b56632;
 }
-body.sheet-darkmode .characterviewer .nav-tabs > .active > a {
+body.sheet-darkmode .dialog.characterviewer .nav-tabs > .active > a {
   color: #fff;
 }
-body.sheet-darkmode .characterviewer .nav-tabs > .active > a {
+body.sheet-darkmode .dialog.characterviewer .nav-tabs > .active > a {
+  background-color: #b56632;
+}
+.dialog.characterviewer .nav-tabs > .active > a:hover {
+  background-color: #b56632;
+}
+body.sheet-darkmode .dialog.characterviewer .nav-tabs > .active > a:hover {
   background-color: #b56632;
 }
 
@@ -2412,10 +2444,14 @@ body.sheet-darkmode .tabcontrol[value=innate] ~ .tab[name=act_innate] {
 }
 
 .spell-tabs {
-  border-bottom: solid black 1px;
+  border-bottom: solid 1px;
+  border-color: #111;
   margin-bottom: 6px;
   display: flex;
   align-items: center;
+}
+body.sheet-darkmode .spell-tabs {
+  border-color: #fff;
 }
 .spell-tabs > button[type=action] {
   border-bottom: 0px;
@@ -2430,7 +2466,10 @@ body.sheet-darkmode .tabcontrol[value=innate] ~ .tab[name=act_innate] {
   gap: 8px;
 }
 .spells .spell-header-action-area label, .spells .spell-header-action-area .label {
-  color: black;
+  color: #111;
+}
+body.sheet-darkmode .spells .spell-header-action-area label, body.sheet-darkmode .spells .spell-header-action-area .label {
+  color: #fff;
 }
 .spells .spellNotesPopover button.popoverButton {
   font-family: Pictos;

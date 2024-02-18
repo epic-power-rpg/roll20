@@ -6,7 +6,11 @@ button, input, optgroup, select, textarea {
   @include theme-background-color(field-background-color);
 }
 .charsheet, .attributesabilities > * > *, .bioinfo > * > * {
+  @include theme-color(primary-color);
   @include theme-background-color(primary-background-color);
+  h1, h2, h3, h4, h5, h6 {
+    @include theme-color(primary-color);
+  }
 }
 
 .btn, .btn.btn-default {

@@ -1,27 +1,30 @@
 /* ----------- Tabs and what they control  ------------- */
 
 /* Tabs */
-.characterviewer .nav-tabs>li:not(.active) {
+.dialog.characterviewer .nav-tabs>li:not(.active)>a {
   @include theme-color(unselected-tab-color);
   @include theme-background-color(unselected-tab-background-color);
-  color: black;
   text-decoration: none;
   cursor: pointer;
 }
 
-.characterviewer .nav-tabs>li:not(.active)>a:hover,
-.characterviewer .nav-tabs>li:not(.active)>a:focus {
-  color: black;
+.dialog.characterviewer .nav-tabs>li:not(.active)>a:hover,
+.dialog.characterviewer .nav-tabs>li:not(.active)>a:focus {
+  @include theme-color(primary-color);
+  @include theme-background-color(unselected-tab-background-color);
   font-weight: bold;
   text-decoration: none;
   cursor: pointer;
 }
 
-.characterviewer .nav-tabs>.active>a {
+.dialog.characterviewer .nav-tabs>.active>a {
   font-weight: bold;
   text-decoration: none;
   @include theme-color(selected-tab-color);
   @include theme-background-color(selected-tab-background-color);
+  &:hover {
+    @include theme-background-color(selected-tab-background-color);
+  }
 }
 
 .tab-holder {

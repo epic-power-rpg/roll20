@@ -47,7 +47,7 @@ input.saved-roll {
 .roll-chosen[value="5"]~.save-radio-row>button.roll-5,
 .roll-chosen[value="6"]~.save-radio-row>button.roll-6 {
   @include theme-background-color(primary-background-color);
-  border-color: black;
+  @include theme-border-color(primary-color);
 }
 
 /* Configure the radio button styling. */
