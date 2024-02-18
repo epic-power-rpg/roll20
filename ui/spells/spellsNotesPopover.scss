@@ -10,8 +10,8 @@
     width: 100%;
     border-radius: 100%;
     padding: 0 !important;
-    color: $paper-color;
-    background-color: $primary-highlight-background-color;
+    @include theme-color(paper-color);
+    @include theme-background-color(primary-highlight-background-color);
   }
   .spellnote-hidden[value]{
     ~button.popoverButton::after {

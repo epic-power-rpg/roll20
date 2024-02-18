@@ -1,10 +1,33 @@
 /* Generic styles */
 @import '../colors.scss';
 
+button, input, optgroup, select, textarea {
+  @include theme-color(primary-color);
+  @include theme-background-color(field-background-color);
+}
+.charsheet, .attributesabilities > * > *, .bioinfo > * > * {
+  @include theme-color(primary-color);
+  @include theme-background-color(primary-background-color);
+  h1, h2, h3, h4, h5, h6 {
+    @include theme-color(primary-color);
+  }
+}
+
+.btn, .btn.btn-default {
+  @include theme-mode {
+    color: #c8c3bc;
+    text-shadow: rgba(24,26,27,.75) 0px 1px 1px;
+    background-color: #1e2021;
+    background-image: linear-gradient(#181a1b, #26292b);
+    border-color: #3e4446 #3e4446 #43494c;
+    box-shadow: rgba(24,26,27,.2) 0px 1px 0px inset,rgba(0,0,0,.05) 0px 1px 2px
+  }
+}
+
 .ui-dialog {
-  background-color: $paper-color;
+  @include theme-background-color(paper-color);
   background-size: cover;
-  background-image: url(https://raw.githubusercontent.com/epic-power-rpg/roll20/main/ui/images/background.png);
+  background-image: url(https://raw.githubusercontent.com/epic-power-rpg/roll20/main/ui/images/epic-power-game-image-overlay.png);
   .dialog, .largedialog {
     padding: 0 16px;
     padding-bottom: 16px;
@@ -94,11 +117,11 @@
 }
 
 .CP.CP.CP.CP {
-  color: $cp-color;
+  @include theme-color(cp-color);
 }
 
 .FP.FP.FP.FP {
-  color: $fp-color;
+  @include theme-color(fp-color);
 }
 
 .bold {
@@ -106,7 +129,8 @@
 }
 
 .children-separated> :not(:first-child) {
-  border: solid $table-row-underline-color;
+  border: solid;
+  @include theme-border-color(table-row-underline-color);
   border-width: 1px 0px 0px 0px;
 }
 
@@ -145,10 +169,6 @@ span.attribute-value {
   /* Make the height work for span. */
   display: inline-block;
   border-color: transparent;
-}
-
-input, textarea, select {
-  background-color: $primary-background-color;
 }
 
 input[disabled],
@@ -192,4 +212,8 @@ input[readonly] {
   height: 48px;
   overflow-y: auto;
   text-align: left;
+}
+
+.nav {
+  margin-bottom: 0;
 }

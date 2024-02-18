@@ -52,11 +52,14 @@ div.popoverContainer > .popover {
   top: 24px;
   left: -40px;
   max-width: unset;
-  background: #faf2ec;
+  background-color: #faf2ec;
   padding: 16px;
   border: 1px solid black;
   border-radius: 6px;
   z-index: 100;
+}
+body.sheet-darkmode div.popoverContainer > .popover {
+  background-color: #333;
 }
 div.popoverContainer > .popover .closePopoverButton {
   position: absolute;
@@ -112,8 +115,7 @@ div.popoverContainer > .fixedPlacementPopover {
 }
 
 .characterviewer .charsheet {
-  padding: 0;
-  padding-top: 10px;
+  padding: 8px;
 }
 
 input[type=text] {
@@ -155,12 +157,20 @@ button.actionRollButton {
   outline: 1px solid #666;
   border: none;
   border-radius: 4px;
-  background-image: linear-gradient(90deg, rgb(245, 201, 162), #c2815b);
+  background: linear-gradient(90deg, rgb(245, 201, 162), #c2815b);
+}
+body.sheet-darkmode button.btn.ui-draggable[type=roll],
+body.sheet-darkmode button.actionRollButton {
+  background: linear-gradient(90deg, #944d10, #c2815b);
 }
 button.btn.ui-draggable[type=roll]:hover,
 button.actionRollButton:hover {
   background-image: unset;
-  background-color: #c2815b;
+  background: #c2815b;
+}
+body.sheet-darkmode button.btn.ui-draggable[type=roll]:hover,
+body.sheet-darkmode button.actionRollButton:hover {
+  background: #c2815b;
 }
 
 button.btn.ui-draggable[type=roll]::before,
@@ -191,12 +201,20 @@ button.do-and-roll {
   outline: 1px solid #666;
   border: none;
   border-radius: 4px;
-  background-image: linear-gradient(90deg, rgb(245, 201, 162), #c2815b);
+  background: linear-gradient(90deg, rgb(245, 201, 162), #c2815b);
+}
+body.sheet-darkmode button.do,
+body.sheet-darkmode button.do-and-roll {
+  background: linear-gradient(90deg, #944d10, #c2815b);
 }
 button.do:hover,
 button.do-and-roll:hover {
   background-image: unset;
-  background-color: #c2815b;
+  background: #c2815b;
+}
+body.sheet-darkmode button.do:hover,
+body.sheet-darkmode button.do-and-roll:hover {
+  background: #c2815b;
 }
 
 button.do {
@@ -213,7 +231,10 @@ button.big-control.do-and-roll {
 }
 .disable-do[value="1"] ~ .do:hover {
   background-image: unset;
-  background-color: #c2815b;
+  background: #c2815b;
+}
+body.sheet-darkmode .disable-do[value="1"] ~ .do:hover {
+  background: #c2815b;
 }
 
 .disable-do-and-roll[value="1"] ~ .do-and-roll {
@@ -222,7 +243,10 @@ button.big-control.do-and-roll {
 }
 .disable-do-and-roll[value="1"] ~ .do-and-roll:hover {
   background-image: unset;
-  background-color: #c2815b;
+  background: #c2815b;
+}
+body.sheet-darkmode .disable-do-and-roll[value="1"] ~ .do-and-roll:hover {
+  background: #c2815b;
 }
 
 /* Change the character for undo buttons to be
@@ -237,13 +261,19 @@ button.undo {
   outline: 1px solid #666;
   border: none;
   border-radius: 4px;
-  background-image: linear-gradient(90deg, #c2945b, rgb(138, 103, 103));
+  background: linear-gradient(90deg, #c2945b, rgb(138, 103, 103));
   line-height: 1;
   padding: 1px 1px;
 }
+body.sheet-darkmode button.undo {
+  background: linear-gradient(90deg, #c07519, rgb(138, 103, 103));
+}
 button.undo:hover {
   background-image: unset;
-  background-color: rgb(138, 103, 103);
+  background: #c2815b;
+}
+body.sheet-darkmode button.undo:hover {
+  background: #c2815b;
 }
 
 button.reset-total {
@@ -251,14 +281,20 @@ button.reset-total {
   outline: 1px solid #666;
   border: none;
   border-radius: 4px;
-  background-image: linear-gradient(90deg, rgb(245, 201, 162), #c2815b);
+  background: linear-gradient(90deg, rgb(245, 201, 162), #c2815b);
   line-height: 1;
   padding: 2px;
   vertical-align: middle;
 }
+body.sheet-darkmode button.reset-total {
+  background: linear-gradient(90deg, #944d10, #c2815b);
+}
 button.reset-total:hover {
   background-image: unset;
-  background-color: #c2815b;
+  background: #c2815b;
+}
+body.sheet-darkmode button.reset-total:hover {
+  background: #c2815b;
 }
 
 button.convert-button {
@@ -266,21 +302,67 @@ button.convert-button {
   outline: 1px solid #666;
   border: none;
   border-radius: 4px;
-  background-image: linear-gradient(180deg, rgb(245, 201, 162), #c2815b);
+  background: linear-gradient(180deg, rgb(245, 201, 162), #c2815b);
   padding: 0px 2px 4px 2px;
   vertical-align: middle;
   font-size: 200%;
 }
+body.sheet-darkmode button.convert-button {
+  background: linear-gradient(180deg, #944d10, #c2815b);
+}
 button.convert-button:hover {
   background-image: unset;
-  background-color: #c2815b;
+  background: #c2815b;
+}
+body.sheet-darkmode button.convert-button:hover {
+  background: #c2815b;
 }
 
 /* Generic styles */
+button, input, optgroup, select, textarea {
+  color: #111;
+  background-color: #efd6c4;
+}
+body.sheet-darkmode button, body.sheet-darkmode input, body.sheet-darkmode optgroup, body.sheet-darkmode select, body.sheet-darkmode textarea {
+  color: #fff;
+}
+body.sheet-darkmode button, body.sheet-darkmode input, body.sheet-darkmode optgroup, body.sheet-darkmode select, body.sheet-darkmode textarea {
+  background-color: #222;
+}
+
+.charsheet, .attributesabilities > * > *, .bioinfo > * > * {
+  color: #111;
+  background-color: #faf2ec;
+}
+body.sheet-darkmode .charsheet, body.sheet-darkmode .attributesabilities > * > *, body.sheet-darkmode .bioinfo > * > * {
+  color: #fff;
+}
+body.sheet-darkmode .charsheet, body.sheet-darkmode .attributesabilities > * > *, body.sheet-darkmode .bioinfo > * > * {
+  background-color: #333;
+}
+.charsheet h1, .charsheet h2, .charsheet h3, .charsheet h4, .charsheet h5, .charsheet h6, .attributesabilities > * > * h1, .attributesabilities > * > * h2, .attributesabilities > * > * h3, .attributesabilities > * > * h4, .attributesabilities > * > * h5, .attributesabilities > * > * h6, .bioinfo > * > * h1, .bioinfo > * > * h2, .bioinfo > * > * h3, .bioinfo > * > * h4, .bioinfo > * > * h5, .bioinfo > * > * h6 {
+  color: #111;
+}
+body.sheet-darkmode .charsheet h1, body.sheet-darkmode .charsheet h2, body.sheet-darkmode .charsheet h3, body.sheet-darkmode .charsheet h4, body.sheet-darkmode .charsheet h5, body.sheet-darkmode .charsheet h6, body.sheet-darkmode .attributesabilities > * > * h1, body.sheet-darkmode .attributesabilities > * > * h2, body.sheet-darkmode .attributesabilities > * > * h3, body.sheet-darkmode .attributesabilities > * > * h4, body.sheet-darkmode .attributesabilities > * > * h5, body.sheet-darkmode .attributesabilities > * > * h6, body.sheet-darkmode .bioinfo > * > * h1, body.sheet-darkmode .bioinfo > * > * h2, body.sheet-darkmode .bioinfo > * > * h3, body.sheet-darkmode .bioinfo > * > * h4, body.sheet-darkmode .bioinfo > * > * h5, body.sheet-darkmode .bioinfo > * > * h6 {
+  color: #fff;
+}
+
+body.sheet-darkmode .btn, body.sheet-darkmode .btn.btn-default {
+  color: #c8c3bc;
+  text-shadow: rgba(24, 26, 27, 0.75) 0px 1px 1px;
+  background-color: #1e2021;
+  background-image: linear-gradient(#181a1b, #26292b);
+  border-color: #3e4446 #3e4446 #43494c;
+  box-shadow: rgba(24, 26, 27, 0.2) 0px 1px 0px inset, rgba(0, 0, 0, 0.05) 0px 1px 2px;
+}
+
 .ui-dialog {
   background-color: #c4bdaf;
   background-size: cover;
-  background-image: url(https://raw.githubusercontent.com/epic-power-rpg/roll20/main/ui/images/background.png);
+  background-image: url(https://raw.githubusercontent.com/epic-power-rpg/roll20/main/ui/images/epic-power-game-image-overlay.png);
+}
+body.sheet-darkmode .ui-dialog {
+  background-color: #c4bdaf;
 }
 .ui-dialog .dialog, .ui-dialog .largedialog {
   padding: 0 16px;
@@ -372,9 +454,15 @@ button.convert-button:hover {
 .CP.CP.CP.CP {
   color: blue;
 }
+body.sheet-darkmode .CP.CP.CP.CP {
+  color: rgb(145, 145, 246);
+}
 
 .FP.FP.FP.FP {
   color: #267200;
+}
+body.sheet-darkmode .FP.FP.FP.FP {
+  color: #c4fda8;
 }
 
 .bold {
@@ -382,8 +470,12 @@ button.convert-button:hover {
 }
 
 .children-separated > :not(:first-child) {
-  border: solid rgba(181, 102, 50, 0.7);
+  border: solid;
+  border-color: rgba(181, 102, 50, 0.7);
   border-width: 1px 0px 0px 0px;
+}
+body.sheet-darkmode .children-separated > :not(:first-child) {
+  border-color: rgba(181, 102, 50, 0.7);
 }
 
 .label {
@@ -421,10 +513,6 @@ span.attribute-value {
   /* Make the height work for span. */
   display: inline-block;
   border-color: transparent;
-}
-
-input, textarea, select {
-  background-color: #faf2ec;
 }
 
 input[disabled],
@@ -470,11 +558,13 @@ input[readonly] {
   text-align: left;
 }
 
+.nav {
+  margin-bottom: 0;
+}
+
 /* ---------- Roll section ------------- */
 .roll-section {
   display: flex;
-  /* Get rid of the space the sheet puts above us. */
-  margin-top: -26px;
 }
 
 .roll-select-section {
@@ -491,6 +581,9 @@ input[readonly] {
   border-width: 1px;
   border-radius: 3px;
   background-color: #faf2ec;
+}
+body.sheet-darkmode .save-roll {
+  background-color: #333;
 }
 
 input.saved-roll {
@@ -520,7 +613,23 @@ input.saved-roll {
 .roll-chosen[value="5"] ~ .save-radio-row > button.roll-5,
 .roll-chosen[value="6"] ~ .save-radio-row > button.roll-6 {
   background-color: #faf2ec;
-  border-color: black;
+  border-color: #111;
+}
+body.sheet-darkmode .roll-chosen[value="1"] ~ .save-radio-row > button.roll-1,
+body.sheet-darkmode .roll-chosen[value="2"] ~ .save-radio-row > button.roll-2,
+body.sheet-darkmode .roll-chosen[value="3"] ~ .save-radio-row > button.roll-3,
+body.sheet-darkmode .roll-chosen[value="4"] ~ .save-radio-row > button.roll-4,
+body.sheet-darkmode .roll-chosen[value="5"] ~ .save-radio-row > button.roll-5,
+body.sheet-darkmode .roll-chosen[value="6"] ~ .save-radio-row > button.roll-6 {
+  background-color: #333;
+}
+body.sheet-darkmode .roll-chosen[value="1"] ~ .save-radio-row > button.roll-1,
+body.sheet-darkmode .roll-chosen[value="2"] ~ .save-radio-row > button.roll-2,
+body.sheet-darkmode .roll-chosen[value="3"] ~ .save-radio-row > button.roll-3,
+body.sheet-darkmode .roll-chosen[value="4"] ~ .save-radio-row > button.roll-4,
+body.sheet-darkmode .roll-chosen[value="5"] ~ .save-radio-row > button.roll-5,
+body.sheet-darkmode .roll-chosen[value="6"] ~ .save-radio-row > button.roll-6 {
+  border-color: #fff;
 }
 
 /* Configure the radio button styling. */
@@ -581,6 +690,9 @@ radio > span.checked {
   margin-bottom: 6px;
   background: linear-gradient(to top, rgba(194, 148, 91, 0.5019607843) 0%, transparent 100%);
 }
+body.sheet-darkmode .top-section {
+  background: linear-gradient(to top, rgba(194, 148, 91, 0.5019607843) 0%, transparent 100%);
+}
 .top-section .power-depth-cp-fp-section {
   display: flex;
   align-items: center;
@@ -625,11 +737,17 @@ radio > span.checked {
   display: grid;
   grid-template-columns: minmax(0, 50px) minmax(0, 100px);
   column-gap: 2px;
-  background: #b56632;
   color: #fff;
+  background-color: #b56632;
   padding: 0 2px;
   margin-bottom: 2px;
   word-break: break-word;
+}
+body.sheet-darkmode .top-section .defense-block .epic-table-header-grid.defenses-with-spanning-input {
+  color: #fff;
+}
+body.sheet-darkmode .top-section .defense-block .epic-table-header-grid.defenses-with-spanning-input {
+  background-color: #b56632;
 }
 .top-section .defense-block .epic-table-header-grid.defenses-with-spanning-input > div {
   text-align: center;
@@ -653,7 +771,6 @@ radio > span.checked {
   width: 100% !important;
   margin-left: unset;
   height: auto;
-  background-color: #faf2ec;
 }
 .top-section .defense-block div[data-groupname=repeating_defenses-with-spanning-input] > div input[type=text],
 .top-section .defense-block div[data-epic-table-name=defenses-with-spanning-input] input[type=text] {
@@ -684,11 +801,17 @@ radio > span.checked {
   display: grid;
   grid-template-columns: minmax(0, 50px) minmax(0, 50px) minmax(0, 50px);
   column-gap: 2px;
-  background: #b56632;
   color: #fff;
+  background-color: #b56632;
   padding: 0 2px;
   margin-bottom: 2px;
   word-break: break-word;
+}
+body.sheet-darkmode .top-section .defense-block .epic-table-header-grid.defenses {
+  color: #fff;
+}
+body.sheet-darkmode .top-section .defense-block .epic-table-header-grid.defenses {
+  background-color: #b56632;
 }
 .top-section .defense-block .epic-table-header-grid.defenses > div {
   text-align: center;
@@ -712,7 +835,6 @@ radio > span.checked {
   width: 100% !important;
   margin-left: unset;
   height: auto;
-  background-color: #faf2ec;
 }
 .top-section .defense-block div[data-groupname=repeating_defenses] > div input[type=text],
 .top-section .defense-block div[data-epic-table-name=defenses] input[type=text] {
@@ -747,7 +869,12 @@ radio > span.checked {
 }
 .top-section .defense-block div[data-groupname=repeating_defenses] > div + div,
 .top-section .defense-block div[data-epic-table-name=defenses] + div[data-epic-table-name=defenses] {
-  border-top: 1px solid rgba(181, 102, 50, 0.7);
+  border-top: 1px solid;
+  border-color: rgba(181, 102, 50, 0.7);
+}
+body.sheet-darkmode .top-section .defense-block div[data-groupname=repeating_defenses] > div + div,
+body.sheet-darkmode .top-section .defense-block div[data-epic-table-name=defenses] + div[data-epic-table-name=defenses] {
+  border-color: rgba(181, 102, 50, 0.7);
 }
 .top-section .defense-block div.bonus-row {
   grid-template-columns: minmax(0, 50px) minmax(0, 100px);
@@ -785,26 +912,53 @@ radio > span.checked {
 
 /* ----------- Tabs and what they control  ------------- */
 /* Tabs */
-.characterviewer .nav-tabs > li:not(.active) {
-  background: #faf2ec;
-  color: black;
+.dialog.characterviewer .nav-tabs > li:not(.active) > a {
+  color: #111;
+  background-color: #eee;
   text-decoration: none;
   cursor: pointer;
 }
+body.sheet-darkmode .dialog.characterviewer .nav-tabs > li:not(.active) > a {
+  color: #eee;
+}
+body.sheet-darkmode .dialog.characterviewer .nav-tabs > li:not(.active) > a {
+  background-color: #666;
+}
 
-.characterviewer .nav-tabs > li:not(.active) > a:hover,
-.characterviewer .nav-tabs > li:not(.active) > a:focus {
-  color: black;
+.dialog.characterviewer .nav-tabs > li:not(.active) > a:hover,
+.dialog.characterviewer .nav-tabs > li:not(.active) > a:focus {
+  color: #111;
+  background-color: #eee;
   font-weight: bold;
   text-decoration: none;
   cursor: pointer;
 }
+body.sheet-darkmode .dialog.characterviewer .nav-tabs > li:not(.active) > a:hover,
+body.sheet-darkmode .dialog.characterviewer .nav-tabs > li:not(.active) > a:focus {
+  color: #fff;
+}
+body.sheet-darkmode .dialog.characterviewer .nav-tabs > li:not(.active) > a:hover,
+body.sheet-darkmode .dialog.characterviewer .nav-tabs > li:not(.active) > a:focus {
+  background-color: #666;
+}
 
-.characterviewer .nav-tabs > .active > a {
+.dialog.characterviewer .nav-tabs > .active > a {
   font-weight: bold;
   text-decoration: none;
+  color: #fff;
   background-color: #b56632;
-  color: #faf2ec;
+}
+body.sheet-darkmode .dialog.characterviewer .nav-tabs > .active > a {
+  color: #fff;
+}
+body.sheet-darkmode .dialog.characterviewer .nav-tabs > .active > a {
+  background-color: #b56632;
+}
+.dialog.characterviewer .nav-tabs > .active > a:hover {
+  background-color: #b56632;
+}
+body.sheet-darkmode .dialog.characterviewer .nav-tabs > .active > a:hover {
+  background-color: #b56632;
 }
 
 .tab-holder {
@@ -813,10 +967,17 @@ radio > span.checked {
 
 .tab {
   border: 1px solid #999;
-  background: #faf2ec;
+  color: #111;
+  background-color: #eee;
   padding: 4px 4px;
   border-radius: 4px 4px 0 0;
   font-size: 110%;
+}
+body.sheet-darkmode .tab {
+  color: #eee;
+}
+body.sheet-darkmode .tab {
+  background-color: #666;
 }
 
 .tabcontrol[value=overview] ~ .tab[name=act_overview],
@@ -827,9 +988,25 @@ radio > span.checked {
 .tabcontrol[value=notes] ~ .tab[name=act_notes] {
   font-weight: bold;
   text-decoration: none;
+  color: #fff;
   background-color: #b56632;
-  color: #faf2ec;
   border-bottom: 1px solid transparent;
+}
+body.sheet-darkmode .tabcontrol[value=overview] ~ .tab[name=act_overview],
+body.sheet-darkmode .tabcontrol[value=basic] ~ .tab[name=act_basic],
+body.sheet-darkmode .tabcontrol[value=equipment] ~ .tab[name=act_equipment],
+body.sheet-darkmode .tabcontrol[value=skills] ~ .tab[name=act_skills],
+body.sheet-darkmode .tabcontrol[value=spells] ~ .tab[name=act_spells],
+body.sheet-darkmode .tabcontrol[value=notes] ~ .tab[name=act_notes] {
+  color: #fff;
+}
+body.sheet-darkmode .tabcontrol[value=overview] ~ .tab[name=act_overview],
+body.sheet-darkmode .tabcontrol[value=basic] ~ .tab[name=act_basic],
+body.sheet-darkmode .tabcontrol[value=equipment] ~ .tab[name=act_equipment],
+body.sheet-darkmode .tabcontrol[value=skills] ~ .tab[name=act_skills],
+body.sheet-darkmode .tabcontrol[value=spells] ~ .tab[name=act_spells],
+body.sheet-darkmode .tabcontrol[value=notes] ~ .tab[name=act_notes] {
+  background-color: #b56632;
 }
 
 /* Sections */
@@ -859,7 +1036,11 @@ radio > span.checked {
 }
 
 .weight-penalty-table > div:not(:last-child):not(.table-header) {
-  border-bottom: solid rgba(181, 102, 50, 0.7) 1px;
+  border-bottom: solid 1px;
+  border-color: rgba(181, 102, 50, 0.7);
+}
+body.sheet-darkmode .weight-penalty-table > div:not(:last-child):not(.table-header) {
+  border-color: rgba(181, 102, 50, 0.7);
 }
 
 .weight-penalty-table > div > :nth-child(2) {
@@ -891,11 +1072,17 @@ radio > span.checked {
   display: grid;
   grid-template-columns: minmax(0, 128px);
   column-gap: 2px;
-  background: #b56632;
   color: #fff;
+  background-color: #b56632;
   padding: 0 2px;
   margin-bottom: 2px;
   word-break: break-word;
+}
+body.sheet-darkmode .overview-tab .advantage-overview .epic-table-header-grid.advantage {
+  color: #fff;
+}
+body.sheet-darkmode .overview-tab .advantage-overview .epic-table-header-grid.advantage {
+  background-color: #b56632;
 }
 .overview-tab .advantage-overview .epic-table-header-grid.advantage > div {
   text-align: center;
@@ -919,7 +1106,6 @@ radio > span.checked {
   width: 100% !important;
   margin-left: unset;
   height: auto;
-  background-color: #faf2ec;
 }
 .overview-tab .advantage-overview div[data-groupname=repeating_advantage] > div input[type=text],
 .overview-tab .advantage-overview div[data-epic-table-name=advantage] input[type=text] {
@@ -950,11 +1136,17 @@ radio > span.checked {
   display: grid;
   grid-template-columns: minmax(0, 128px);
   column-gap: 2px;
-  background: #b56632;
   color: #fff;
+  background-color: #b56632;
   padding: 0 2px;
   margin-bottom: 2px;
   word-break: break-word;
+}
+body.sheet-darkmode .overview-tab .advantage-overview .epic-table-header-grid.extraadvantage {
+  color: #fff;
+}
+body.sheet-darkmode .overview-tab .advantage-overview .epic-table-header-grid.extraadvantage {
+  background-color: #b56632;
 }
 .overview-tab .advantage-overview .epic-table-header-grid.extraadvantage > div {
   text-align: center;
@@ -978,7 +1170,6 @@ radio > span.checked {
   width: 100% !important;
   margin-left: unset;
   height: auto;
-  background-color: #faf2ec;
 }
 .overview-tab .advantage-overview div[data-groupname=repeating_extraadvantage] > div input[type=text],
 .overview-tab .advantage-overview div[data-epic-table-name=extraadvantage] input[type=text] {
@@ -1014,24 +1205,32 @@ radio > span.checked {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  border: solid rgba(181, 102, 50, 0.7);
+  border: solid;
+  border-color: rgba(181, 102, 50, 0.7);
   border-width: 0px 0px 1px 0px;
   padding-top: 2px;
   padding-bottom: 2px;
   /* If the name wraps, make the lines close. */
   line-height: 1;
+}
+body.sheet-darkmode .overview-tab .advantage-overview .advantage-row {
+  border-color: rgba(181, 102, 50, 0.7);
 }
 .overview-tab .advantage-overview .advantage-row div, .overview-tab .advantage-overview .advantage-row span {
   text-align: left !important;
 }
 .overview-tab .advantage-overview .extraadvantage-row {
-  border: solid rgba(181, 102, 50, 0.7);
+  border: solid;
+  border-color: rgba(181, 102, 50, 0.7);
   border-width: 0px 0px 1px 0px;
   padding-top: 2px;
   padding-bottom: 2px;
   /* If the name wraps, make the lines close. */
   line-height: 1;
   text-align: left !important;
+}
+body.sheet-darkmode .overview-tab .advantage-overview .extraadvantage-row {
+  border-color: rgba(181, 102, 50, 0.7);
 }
 .overview-tab .advantage-overview > .conditional-something > :first-child[value="-1"] ~ * {
   color: red;
@@ -1040,11 +1239,17 @@ radio > span.checked {
   display: grid;
   grid-template-columns: minmax(0, 32px) minmax(0, 96px);
   column-gap: 2px;
-  background: #b56632;
   color: #fff;
+  background-color: #b56632;
   padding: 0 2px;
   margin-bottom: 2px;
   word-break: break-word;
+}
+body.sheet-darkmode .overview-tab .feat-overview .epic-table-header-grid.feat {
+  color: #fff;
+}
+body.sheet-darkmode .overview-tab .feat-overview .epic-table-header-grid.feat {
+  background-color: #b56632;
 }
 .overview-tab .feat-overview .epic-table-header-grid.feat > div {
   text-align: center;
@@ -1068,7 +1273,6 @@ radio > span.checked {
   width: 100% !important;
   margin-left: unset;
   height: auto;
-  background-color: #faf2ec;
 }
 .overview-tab .feat-overview div[data-groupname=repeating_feat] > div input[type=text],
 .overview-tab .feat-overview div[data-epic-table-name=feat] input[type=text] {
@@ -1096,10 +1300,14 @@ radio > span.checked {
   grid-column-end: 3;
 }
 .overview-tab .feat-overview > div[data-groupname] > div {
-  border: solid rgba(181, 102, 50, 0.7);
+  border: solid;
+  border-color: rgba(181, 102, 50, 0.7);
   border-width: 0px 0px 1px 0px;
   padding-top: 2px;
   padding-bottom: 2px;
+}
+body.sheet-darkmode .overview-tab .feat-overview > div[data-groupname] > div {
+  border-color: rgba(181, 102, 50, 0.7);
 }
 .overview-tab .feat-overview > div[data-groupname] .feat-row.featextraordinaryletter {
   text-align: center;
@@ -1115,11 +1323,17 @@ radio > span.checked {
   display: grid;
   grid-template-columns: minmax(0, 96px) minmax(0, 36px) minmax(0, 36px) minmax(0, 24px);
   column-gap: 2px;
-  background: #b56632;
   color: #fff;
+  background-color: #b56632;
   padding: 0 2px;
   margin-bottom: 2px;
   word-break: break-word;
+}
+body.sheet-darkmode .overview-tab .skills-overview .epic-table-header-grid.skills-table {
+  color: #fff;
+}
+body.sheet-darkmode .overview-tab .skills-overview .epic-table-header-grid.skills-table {
+  background-color: #b56632;
 }
 .overview-tab .skills-overview .epic-table-header-grid.skills-table > div {
   text-align: center;
@@ -1143,7 +1357,6 @@ radio > span.checked {
   width: 100% !important;
   margin-left: unset;
   height: auto;
-  background-color: #faf2ec;
 }
 .overview-tab .skills-overview div[data-groupname=repeating_skills-table] > div input[type=text],
 .overview-tab .skills-overview div[data-epic-table-name=skills-table] input[type=text] {
@@ -1174,11 +1387,15 @@ radio > span.checked {
   font-weight: normal !important;
 }
 .overview-tab .skills-overview > div[data-groupname] .skill-overview-row-container {
-  border: solid rgba(181, 102, 50, 0.7);
+  border: solid;
+  border-color: rgba(181, 102, 50, 0.7);
   border-width: 0px 0px 1px 0px;
   padding-top: 2px;
   padding-bottom: 2px;
   margin: 2px 0;
+}
+body.sheet-darkmode .overview-tab .skills-overview > div[data-groupname] .skill-overview-row-container {
+  border-color: rgba(181, 102, 50, 0.7);
 }
 .overview-tab .skills-overview > div[data-groupname] .skill-overview-row-container .skillname {
   text-align: right;
@@ -1202,11 +1419,17 @@ radio > span.checked {
   display: grid;
   grid-template-columns: minmax(0, 128px) minmax(0, 48px) minmax(0, 60px) minmax(0, 56px) minmax(0, 48px);
   column-gap: 2px;
-  background: #b56632;
   color: #fff;
+  background-color: #b56632;
   padding: 0 2px;
   margin-bottom: 2px;
   word-break: break-word;
+}
+body.sheet-darkmode .overview-tab .weapons-overview .epic-table-header-grid.weapons-table {
+  color: #fff;
+}
+body.sheet-darkmode .overview-tab .weapons-overview .epic-table-header-grid.weapons-table {
+  background-color: #b56632;
 }
 .overview-tab .weapons-overview .epic-table-header-grid.weapons-table > div {
   text-align: center;
@@ -1230,7 +1453,6 @@ radio > span.checked {
   width: 100% !important;
   margin-left: unset;
   height: auto;
-  background-color: #faf2ec;
 }
 .overview-tab .weapons-overview div[data-groupname=repeating_weapons-table] > div input[type=text],
 .overview-tab .weapons-overview div[data-epic-table-name=weapons-table] input[type=text] {
@@ -1261,11 +1483,17 @@ radio > span.checked {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   column-gap: 2px;
-  background: #b56632;
   color: #fff;
+  background-color: #b56632;
   padding: 0 2px;
   margin-bottom: 2px;
   word-break: break-word;
+}
+body.sheet-darkmode .overview-tab .weapons-overview .epic-table-header-grid.weapons-equipmentnotes-table {
+  color: #fff;
+}
+body.sheet-darkmode .overview-tab .weapons-overview .epic-table-header-grid.weapons-equipmentnotes-table {
+  background-color: #b56632;
 }
 .overview-tab .weapons-overview .epic-table-header-grid.weapons-equipmentnotes-table > div {
   text-align: center;
@@ -1289,7 +1517,6 @@ radio > span.checked {
   width: 100% !important;
   margin-left: unset;
   height: auto;
-  background-color: #faf2ec;
 }
 .overview-tab .weapons-overview div[data-groupname=repeating_weapons-equipmentnotes-table] > div input[type=text],
 .overview-tab .weapons-overview div[data-epic-table-name=weapons-equipmentnotes-table] input[type=text] {
@@ -1320,11 +1547,15 @@ radio > span.checked {
   display: none;
 }
 .overview-tab .weapons-overview > div[data-groupname] .weapons-table-row {
-  border: solid rgba(181, 102, 50, 0.7);
+  border: solid;
+  border-color: rgba(181, 102, 50, 0.7);
   border-width: 0px 0px 1px 0px;
   padding-top: 2px;
   padding-bottom: 2px;
   margin: 2px 0;
+}
+body.sheet-darkmode .overview-tab .weapons-overview > div[data-groupname] .weapons-table-row {
+  border-color: rgba(181, 102, 50, 0.7);
 }
 .overview-tab .weapons-overview > div[data-groupname] .weapons-table-row .equipmentname {
   text-align: right;
@@ -1355,11 +1586,17 @@ radio > span.checked {
   display: grid;
   grid-template-columns: minmax(0, 64px) minmax(0, 96px);
   column-gap: 2px;
-  background: #b56632;
   color: #fff;
+  background-color: #b56632;
   padding: 0 2px;
   margin-bottom: 2px;
   word-break: break-word;
+}
+body.sheet-darkmode .basic-tab .character-attributes .epic-table-header-grid.character-attributes {
+  color: #fff;
+}
+body.sheet-darkmode .basic-tab .character-attributes .epic-table-header-grid.character-attributes {
+  background-color: #b56632;
 }
 .basic-tab .character-attributes .epic-table-header-grid.character-attributes > div {
   text-align: center;
@@ -1383,7 +1620,6 @@ radio > span.checked {
   width: 100% !important;
   margin-left: unset;
   height: auto;
-  background-color: #faf2ec;
 }
 .basic-tab .character-attributes div[data-groupname=repeating_character-attributes] > div input[type=text],
 .basic-tab .character-attributes div[data-epic-table-name=character-attributes] input[type=text] {
@@ -1418,7 +1654,12 @@ radio > span.checked {
 }
 .basic-tab .character-attributes div[data-groupname=repeating_character-attributes] > div + div,
 .basic-tab .character-attributes div[data-epic-table-name=character-attributes] + div[data-epic-table-name=character-attributes] {
-  border-top: 1px solid rgba(181, 102, 50, 0.7);
+  border-top: 1px solid;
+  border-color: rgba(181, 102, 50, 0.7);
+}
+body.sheet-darkmode .basic-tab .character-attributes div[data-groupname=repeating_character-attributes] > div + div,
+body.sheet-darkmode .basic-tab .character-attributes div[data-epic-table-name=character-attributes] + div[data-epic-table-name=character-attributes] {
+  border-color: rgba(181, 102, 50, 0.7);
 }
 .basic-tab .character-attributes .character-attributes-table .character-attributes-name-grid {
   text-align: right;
@@ -1432,11 +1673,17 @@ radio > span.checked {
   display: grid;
   grid-template-columns: minmax(0, 160px) minmax(0, 48px) minmax(0, 32px);
   column-gap: 2px;
-  background: #b56632;
   color: #fff;
+  background-color: #b56632;
   padding: 0 2px;
   margin-bottom: 2px;
   word-break: break-word;
+}
+body.sheet-darkmode .basic-tab .advantages .epic-table-header-grid.advantage {
+  color: #fff;
+}
+body.sheet-darkmode .basic-tab .advantages .epic-table-header-grid.advantage {
+  background-color: #b56632;
 }
 .basic-tab .advantages .epic-table-header-grid.advantage > div {
   text-align: center;
@@ -1460,7 +1707,6 @@ radio > span.checked {
   width: 100% !important;
   margin-left: unset;
   height: auto;
-  background-color: #faf2ec;
 }
 .basic-tab .advantages div[data-groupname=repeating_advantage] > div input[type=text],
 .basic-tab .advantages div[data-epic-table-name=advantage] input[type=text] {
@@ -1495,17 +1741,28 @@ radio > span.checked {
 }
 .basic-tab .advantages div[data-groupname=repeating_advantage] > div + div,
 .basic-tab .advantages div[data-epic-table-name=advantage] + div[data-epic-table-name=advantage] {
-  border-top: 1px solid rgba(181, 102, 50, 0.7);
+  border-top: 1px solid;
+  border-color: rgba(181, 102, 50, 0.7);
+}
+body.sheet-darkmode .basic-tab .advantages div[data-groupname=repeating_advantage] > div + div,
+body.sheet-darkmode .basic-tab .advantages div[data-epic-table-name=advantage] + div[data-epic-table-name=advantage] {
+  border-color: rgba(181, 102, 50, 0.7);
 }
 .basic-tab .advantages .epic-table-header-grid.extraadvantage {
   display: grid;
   grid-template-columns: minmax(0, 160px) minmax(0, 48px) minmax(0, 32px);
   column-gap: 2px;
-  background: #b56632;
   color: #fff;
+  background-color: #b56632;
   padding: 0 2px;
   margin-bottom: 2px;
   word-break: break-word;
+}
+body.sheet-darkmode .basic-tab .advantages .epic-table-header-grid.extraadvantage {
+  color: #fff;
+}
+body.sheet-darkmode .basic-tab .advantages .epic-table-header-grid.extraadvantage {
+  background-color: #b56632;
 }
 .basic-tab .advantages .epic-table-header-grid.extraadvantage > div {
   text-align: center;
@@ -1529,7 +1786,6 @@ radio > span.checked {
   width: 100% !important;
   margin-left: unset;
   height: auto;
-  background-color: #faf2ec;
 }
 .basic-tab .advantages div[data-groupname=repeating_extraadvantage] > div input[type=text],
 .basic-tab .advantages div[data-epic-table-name=extraadvantage] input[type=text] {
@@ -1564,7 +1820,12 @@ radio > span.checked {
 }
 .basic-tab .advantages div[data-groupname=repeating_extraadvantage] > div + div,
 .basic-tab .advantages div[data-epic-table-name=extraadvantage] + div[data-epic-table-name=extraadvantage] {
-  border-top: 1px solid rgba(181, 102, 50, 0.7);
+  border-top: 1px solid;
+  border-color: rgba(181, 102, 50, 0.7);
+}
+body.sheet-darkmode .basic-tab .advantages div[data-groupname=repeating_extraadvantage] > div + div,
+body.sheet-darkmode .basic-tab .advantages div[data-epic-table-name=extraadvantage] + div[data-epic-table-name=extraadvantage] {
+  border-color: rgba(181, 102, 50, 0.7);
 }
 .basic-tab .advantages .advantage-grid, .basic-tab .advantages .extraadvantagename-grid {
   text-align: right !important;
@@ -1579,25 +1840,43 @@ radio > span.checked {
   color: #267200;
   font-weight: bold;
 }
+body.sheet-darkmode .basic-tab .advantages .skillFP-grid, body.sheet-darkmode .basic-tab .advantages .FP-grid {
+  color: #c4fda8;
+}
 .basic-tab .advantages .skillCP-grid, .basic-tab .advantages .CP-grid {
   color: blue;
   font-weight: bold;
 }
+body.sheet-darkmode .basic-tab .advantages .skillCP-grid, body.sheet-darkmode .basic-tab .advantages .CP-grid {
+  color: rgb(145, 145, 246);
+}
 .basic-tab .advantages .epic-table-header-grid .skillFP-grid, .basic-tab .advantages .epic-table-header-grid .FP-grid {
-  color: #51f200;
+  color: #267200;
+}
+body.sheet-darkmode .basic-tab .advantages .epic-table-header-grid .skillFP-grid, body.sheet-darkmode .basic-tab .advantages .epic-table-header-grid .FP-grid {
+  color: #c4fda8;
 }
 .basic-tab .advantages .epic-table-header-grid .skillCP-grid, .basic-tab .advantages .epic-table-header-grid .CP-grid {
-  color: #000099;
+  color: blue;
+}
+body.sheet-darkmode .basic-tab .advantages .epic-table-header-grid .skillCP-grid, body.sheet-darkmode .basic-tab .advantages .epic-table-header-grid .CP-grid {
+  color: rgb(145, 145, 246);
 }
 .basic-tab .feats .epic-table-header-grid.feat {
   display: grid;
   grid-template-columns: minmax(0, 32px) minmax(0, 160px) minmax(0, 48px);
   column-gap: 2px;
-  background: #b56632;
   color: #fff;
+  background-color: #b56632;
   padding: 0 2px;
   margin-bottom: 2px;
   word-break: break-word;
+}
+body.sheet-darkmode .basic-tab .feats .epic-table-header-grid.feat {
+  color: #fff;
+}
+body.sheet-darkmode .basic-tab .feats .epic-table-header-grid.feat {
+  background-color: #b56632;
 }
 .basic-tab .feats .epic-table-header-grid.feat > div {
   text-align: center;
@@ -1621,7 +1900,6 @@ radio > span.checked {
   width: 100% !important;
   margin-left: unset;
   height: auto;
-  background-color: #faf2ec;
 }
 .basic-tab .feats div[data-groupname=repeating_feat] > div input[type=text],
 .basic-tab .feats div[data-epic-table-name=feat] input[type=text] {
@@ -1656,7 +1934,12 @@ radio > span.checked {
 }
 .basic-tab .feats div[data-groupname=repeating_feat] > div + div,
 .basic-tab .feats div[data-epic-table-name=feat] + div[data-epic-table-name=feat] {
-  border-top: 1px solid rgba(181, 102, 50, 0.7);
+  border-top: 1px solid;
+  border-color: rgba(181, 102, 50, 0.7);
+}
+body.sheet-darkmode .basic-tab .feats div[data-groupname=repeating_feat] > div + div,
+body.sheet-darkmode .basic-tab .feats div[data-epic-table-name=feat] + div[data-epic-table-name=feat] {
+  border-color: rgba(181, 102, 50, 0.7);
 }
 .basic-tab .feats input.featname-grid {
   text-align: right !important;
@@ -1665,15 +1948,27 @@ radio > span.checked {
   color: #267200;
   font-weight: bold;
 }
+body.sheet-darkmode .basic-tab .feats .skillFP-grid, body.sheet-darkmode .basic-tab .feats .FP-grid {
+  color: #c4fda8;
+}
 .basic-tab .feats .skillCP-grid, .basic-tab .feats .CP-grid {
   color: blue;
   font-weight: bold;
 }
+body.sheet-darkmode .basic-tab .feats .skillCP-grid, body.sheet-darkmode .basic-tab .feats .CP-grid {
+  color: rgb(145, 145, 246);
+}
 .basic-tab .feats .epic-table-header-grid .skillFP-grid, .basic-tab .feats .epic-table-header-grid .FP-grid {
-  color: #51f200;
+  color: #267200;
+}
+body.sheet-darkmode .basic-tab .feats .epic-table-header-grid .skillFP-grid, body.sheet-darkmode .basic-tab .feats .epic-table-header-grid .FP-grid {
+  color: #c4fda8;
 }
 .basic-tab .feats .epic-table-header-grid .skillCP-grid, .basic-tab .feats .epic-table-header-grid .CP-grid {
-  color: #000099;
+  color: blue;
+}
+body.sheet-darkmode .basic-tab .feats .epic-table-header-grid .skillCP-grid, body.sheet-darkmode .basic-tab .feats .epic-table-header-grid .CP-grid {
+  color: rgb(145, 145, 246);
 }
 
 /* -------- Skills --------- */
@@ -1684,11 +1979,17 @@ radio > span.checked {
   display: grid;
   grid-template-columns: minmax(0, 40px) minmax(0, 4fr) minmax(0, 40px) minmax(0, 24px) minmax(0, 24px) minmax(0, 1fr) minmax(0, 72px) minmax(0, 40px);
   column-gap: 2px;
-  background: #b56632;
   color: #fff;
+  background-color: #b56632;
   padding: 0 2px;
   margin-bottom: 2px;
   word-break: break-word;
+}
+body.sheet-darkmode .epic-skills-tab .epic-table-header-grid.skill {
+  color: #fff;
+}
+body.sheet-darkmode .epic-skills-tab .epic-table-header-grid.skill {
+  background-color: #b56632;
 }
 .epic-skills-tab .epic-table-header-grid.skill > div {
   text-align: center;
@@ -1712,7 +2013,6 @@ radio > span.checked {
   width: 100% !important;
   margin-left: unset;
   height: auto;
-  background-color: #faf2ec;
 }
 .epic-skills-tab div[data-groupname=repeating_skill] > div input[type=text],
 .epic-skills-tab div[data-epic-table-name=skill] input[type=text] {
@@ -1747,7 +2047,12 @@ radio > span.checked {
 }
 .epic-skills-tab div[data-groupname=repeating_skill] > div + div,
 .epic-skills-tab div[data-epic-table-name=skill] + div[data-epic-table-name=skill] {
-  border-top: 1px solid rgba(181, 102, 50, 0.7);
+  border-top: 1px solid;
+  border-color: rgba(181, 102, 50, 0.7);
+}
+body.sheet-darkmode .epic-skills-tab div[data-groupname=repeating_skill] > div + div,
+body.sheet-darkmode .epic-skills-tab div[data-epic-table-name=skill] + div[data-epic-table-name=skill] {
+  border-color: rgba(181, 102, 50, 0.7);
 }
 .epic-skills-tab .isdiscipline-grid[value="1"] ~ .skillability-grid, .epic-skills-tab .isdiscipline-grid[value="1"] ~ .skillattribute-grid, .epic-skills-tab .isdiscipline-grid[value="1"] ~ .skillbase-grid {
   opacity: 0;
@@ -1765,15 +2070,27 @@ radio > span.checked {
   color: #267200;
   font-weight: bold;
 }
+body.sheet-darkmode .epic-skills-tab .skillFP-grid, body.sheet-darkmode .epic-skills-tab .FP-grid {
+  color: #c4fda8;
+}
 .epic-skills-tab .skillCP-grid, .epic-skills-tab .CP-grid {
   color: blue;
   font-weight: bold;
 }
+body.sheet-darkmode .epic-skills-tab .skillCP-grid, body.sheet-darkmode .epic-skills-tab .CP-grid {
+  color: rgb(145, 145, 246);
+}
 .epic-skills-tab .epic-table-header-grid .skillFP-grid, .epic-skills-tab .epic-table-header-grid .FP-grid {
-  color: #51f200;
+  color: #267200;
+}
+body.sheet-darkmode .epic-skills-tab .epic-table-header-grid .skillFP-grid, body.sheet-darkmode .epic-skills-tab .epic-table-header-grid .FP-grid {
+  color: #c4fda8;
 }
 .epic-skills-tab .epic-table-header-grid .skillCP-grid, .epic-skills-tab .epic-table-header-grid .CP-grid {
-  color: #000099;
+  color: blue;
+}
+body.sheet-darkmode .epic-skills-tab .epic-table-header-grid .skillCP-grid, body.sheet-darkmode .epic-skills-tab .epic-table-header-grid .CP-grid {
+  color: rgb(145, 145, 246);
 }
 
 /* -------- Equipment --------- */
@@ -1785,11 +2102,17 @@ radio > span.checked {
   display: grid;
   grid-template-columns: minmax(0, 5fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 5fr);
   column-gap: 2px;
-  background: #b56632;
   color: #fff;
+  background-color: #b56632;
   padding: 0 2px;
   margin-bottom: 2px;
   word-break: break-word;
+}
+body.sheet-darkmode .equipment-tab .epic-table-header-grid.armor {
+  color: #fff;
+}
+body.sheet-darkmode .equipment-tab .epic-table-header-grid.armor {
+  background-color: #b56632;
 }
 .equipment-tab .epic-table-header-grid.armor > div {
   text-align: center;
@@ -1813,7 +2136,6 @@ radio > span.checked {
   width: 100% !important;
   margin-left: unset;
   height: auto;
-  background-color: #faf2ec;
 }
 .equipment-tab div[data-groupname=repeating_armor] > div input[type=text],
 .equipment-tab div[data-epic-table-name=armor] input[type=text] {
@@ -1848,17 +2170,28 @@ radio > span.checked {
 }
 .equipment-tab div[data-groupname=repeating_armor] > div + div,
 .equipment-tab div[data-epic-table-name=armor] + div[data-epic-table-name=armor] {
-  border-top: 1px solid rgba(181, 102, 50, 0.7);
+  border-top: 1px solid;
+  border-color: rgba(181, 102, 50, 0.7);
+}
+body.sheet-darkmode .equipment-tab div[data-groupname=repeating_armor] > div + div,
+body.sheet-darkmode .equipment-tab div[data-epic-table-name=armor] + div[data-epic-table-name=armor] {
+  border-color: rgba(181, 102, 50, 0.7);
 }
 .equipment-tab .epic-table-header-grid.shield {
   display: grid;
   grid-template-columns: minmax(0, 5fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 5fr);
   column-gap: 2px;
-  background: #b56632;
   color: #fff;
+  background-color: #b56632;
   padding: 0 2px;
   margin-bottom: 2px;
   word-break: break-word;
+}
+body.sheet-darkmode .equipment-tab .epic-table-header-grid.shield {
+  color: #fff;
+}
+body.sheet-darkmode .equipment-tab .epic-table-header-grid.shield {
+  background-color: #b56632;
 }
 .equipment-tab .epic-table-header-grid.shield > div {
   text-align: center;
@@ -1882,7 +2215,6 @@ radio > span.checked {
   width: 100% !important;
   margin-left: unset;
   height: auto;
-  background-color: #faf2ec;
 }
 .equipment-tab div[data-groupname=repeating_shield] > div input[type=text],
 .equipment-tab div[data-epic-table-name=shield] input[type=text] {
@@ -1917,17 +2249,28 @@ radio > span.checked {
 }
 .equipment-tab div[data-groupname=repeating_shield] > div + div,
 .equipment-tab div[data-epic-table-name=shield] + div[data-epic-table-name=shield] {
-  border-top: 1px solid rgba(181, 102, 50, 0.7);
+  border-top: 1px solid;
+  border-color: rgba(181, 102, 50, 0.7);
+}
+body.sheet-darkmode .equipment-tab div[data-groupname=repeating_shield] > div + div,
+body.sheet-darkmode .equipment-tab div[data-epic-table-name=shield] + div[data-epic-table-name=shield] {
+  border-color: rgba(181, 102, 50, 0.7);
 }
 .equipment-tab .epic-table-header-grid.weapon {
   display: grid;
   grid-template-columns: minmax(0, 5fr) minmax(0, 72px) minmax(0, 56px) minmax(0, 48px) minmax(0, 56px) minmax(0, 56px) minmax(0, 64px) minmax(0, 5fr);
   column-gap: 2px;
-  background: #b56632;
   color: #fff;
+  background-color: #b56632;
   padding: 0 2px;
   margin-bottom: 2px;
   word-break: break-word;
+}
+body.sheet-darkmode .equipment-tab .epic-table-header-grid.weapon {
+  color: #fff;
+}
+body.sheet-darkmode .equipment-tab .epic-table-header-grid.weapon {
+  background-color: #b56632;
 }
 .equipment-tab .epic-table-header-grid.weapon > div {
   text-align: center;
@@ -1951,7 +2294,6 @@ radio > span.checked {
   width: 100% !important;
   margin-left: unset;
   height: auto;
-  background-color: #faf2ec;
 }
 .equipment-tab div[data-groupname=repeating_weapon] > div input[type=text],
 .equipment-tab div[data-epic-table-name=weapon] input[type=text] {
@@ -1986,17 +2328,28 @@ radio > span.checked {
 }
 .equipment-tab div[data-groupname=repeating_weapon] > div + div,
 .equipment-tab div[data-epic-table-name=weapon] + div[data-epic-table-name=weapon] {
-  border-top: 1px solid rgba(181, 102, 50, 0.7);
+  border-top: 1px solid;
+  border-color: rgba(181, 102, 50, 0.7);
+}
+body.sheet-darkmode .equipment-tab div[data-groupname=repeating_weapon] > div + div,
+body.sheet-darkmode .equipment-tab div[data-epic-table-name=weapon] + div[data-epic-table-name=weapon] {
+  border-color: rgba(181, 102, 50, 0.7);
 }
 .equipment-tab .epic-table-header-grid.item {
   display: grid;
   grid-template-columns: minmax(0, 5fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 5fr);
   column-gap: 2px;
-  background: #b56632;
   color: #fff;
+  background-color: #b56632;
   padding: 0 2px;
   margin-bottom: 2px;
   word-break: break-word;
+}
+body.sheet-darkmode .equipment-tab .epic-table-header-grid.item {
+  color: #fff;
+}
+body.sheet-darkmode .equipment-tab .epic-table-header-grid.item {
+  background-color: #b56632;
 }
 .equipment-tab .epic-table-header-grid.item > div {
   text-align: center;
@@ -2020,7 +2373,6 @@ radio > span.checked {
   width: 100% !important;
   margin-left: unset;
   height: auto;
-  background-color: #faf2ec;
 }
 .equipment-tab div[data-groupname=repeating_item] > div input[type=text],
 .equipment-tab div[data-epic-table-name=item] input[type=text] {
@@ -2055,7 +2407,12 @@ radio > span.checked {
 }
 .equipment-tab div[data-groupname=repeating_item] > div + div,
 .equipment-tab div[data-epic-table-name=item] + div[data-epic-table-name=item] {
-  border-top: 1px solid rgba(181, 102, 50, 0.7);
+  border-top: 1px solid;
+  border-color: rgba(181, 102, 50, 0.7);
+}
+body.sheet-darkmode .equipment-tab div[data-groupname=repeating_item] > div + div,
+body.sheet-darkmode .equipment-tab div[data-epic-table-name=item] + div[data-epic-table-name=item] {
+  border-color: rgba(181, 102, 50, 0.7);
 }
 
 /* ------------- Spells ------------*/
@@ -2064,10 +2421,20 @@ radio > span.checked {
 .tabcontrol[value=innate] ~ .tab[name=act_innate] {
   font-weight: bold;
   text-decoration: none;
+  color: #fff;
   background-color: #b56632;
-  color: #faf2ec;
   margin-bottom: -1px;
   border-bottom: 1px solid transparent;
+}
+body.sheet-darkmode .tabcontrol[value=arcane] ~ .tab[name=act_arcane],
+body.sheet-darkmode .tabcontrol[value=divine] ~ .tab[name=act_divine],
+body.sheet-darkmode .tabcontrol[value=innate] ~ .tab[name=act_innate] {
+  color: #fff;
+}
+body.sheet-darkmode .tabcontrol[value=arcane] ~ .tab[name=act_arcane],
+body.sheet-darkmode .tabcontrol[value=divine] ~ .tab[name=act_divine],
+body.sheet-darkmode .tabcontrol[value=innate] ~ .tab[name=act_innate] {
+  background-color: #b56632;
 }
 
 .sectioncontrol[value=arcane] ~ div.arcane,
@@ -2077,10 +2444,14 @@ radio > span.checked {
 }
 
 .spell-tabs {
-  border-bottom: solid black 1px;
+  border-bottom: solid 1px;
+  border-color: #111;
   margin-bottom: 6px;
   display: flex;
   align-items: center;
+}
+body.sheet-darkmode .spell-tabs {
+  border-color: #fff;
 }
 .spell-tabs > button[type=action] {
   border-bottom: 0px;
@@ -2095,7 +2466,10 @@ radio > span.checked {
   gap: 8px;
 }
 .spells .spell-header-action-area label, .spells .spell-header-action-area .label {
-  color: black;
+  color: #111;
+}
+body.sheet-darkmode .spells .spell-header-action-area label, body.sheet-darkmode .spells .spell-header-action-area .label {
+  color: #fff;
 }
 .spells .spellNotesPopover button.popoverButton {
   font-family: Pictos;
@@ -2108,6 +2482,12 @@ radio > span.checked {
   border-radius: 100%;
   padding: 0 !important;
   color: #c4bdaf;
+  background-color: #b56632;
+}
+body.sheet-darkmode .spells .spellNotesPopover button.popoverButton {
+  color: #c4bdaf;
+}
+body.sheet-darkmode .spells .spellNotesPopover button.popoverButton {
   background-color: #b56632;
 }
 .spells .spellNotesPopover .spellnote-hidden[value] ~ button.popoverButton::after {
@@ -2129,11 +2509,17 @@ radio > span.checked {
   display: grid;
   grid-template-columns: minmax(0, 40px) minmax(0, 4fr) minmax(0, 32px) minmax(0, 40px) minmax(0, 0.5fr) minmax(0, 40px) minmax(0, 1fr) minmax(0, 80px) minmax(0, 1.5fr) minmax(0, 2fr) minmax(0, 1.5fr) minmax(0, 16px) minmax(0, 24px) minmax(0, 24px) minmax(0, 40px) minmax(0, auto) minmax(0, 40px);
   column-gap: 2px;
-  background: #b56632;
   color: #fff;
+  background-color: #b56632;
   padding: 0 2px;
   margin-bottom: 2px;
   word-break: break-word;
+}
+body.sheet-darkmode .spells .epic-table-header-grid.arcane {
+  color: #fff;
+}
+body.sheet-darkmode .spells .epic-table-header-grid.arcane {
+  background-color: #b56632;
 }
 .spells .epic-table-header-grid.arcane > div {
   text-align: center;
@@ -2157,7 +2543,6 @@ radio > span.checked {
   width: 100% !important;
   margin-left: unset;
   height: auto;
-  background-color: #faf2ec;
 }
 .spells div[data-groupname=repeating_arcane] > div input[type=text],
 .spells div[data-epic-table-name=arcane] input[type=text] {
@@ -2192,7 +2577,12 @@ radio > span.checked {
 }
 .spells div[data-groupname=repeating_arcane] > div + div,
 .spells div[data-epic-table-name=arcane] + div[data-epic-table-name=arcane] {
-  border-top: 1px solid rgba(181, 102, 50, 0.7);
+  border-top: 1px solid;
+  border-color: rgba(181, 102, 50, 0.7);
+}
+body.sheet-darkmode .spells div[data-groupname=repeating_arcane] > div + div,
+body.sheet-darkmode .spells div[data-epic-table-name=arcane] + div[data-epic-table-name=arcane] {
+  border-color: rgba(181, 102, 50, 0.7);
 }
 .spells .isdiscipline-grid[value="1"] ~ :not(.skillname-grid, .skillCP-grid, .skillexpertise-grid) {
   opacity: 0;
@@ -2213,11 +2603,17 @@ radio > span.checked {
   display: grid;
   grid-template-columns: minmax(0, 6fr) minmax(0, 16px) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr);
   column-gap: 2px;
-  background: #b56632;
   color: #fff;
+  background-color: #b56632;
   padding: 0 2px;
   margin-bottom: 2px;
   word-break: break-word;
+}
+body.sheet-darkmode .spells .epic-table-header-grid.divine {
+  color: #fff;
+}
+body.sheet-darkmode .spells .epic-table-header-grid.divine {
+  background-color: #b56632;
 }
 .spells .epic-table-header-grid.divine > div {
   text-align: center;
@@ -2241,7 +2637,6 @@ radio > span.checked {
   width: 100% !important;
   margin-left: unset;
   height: auto;
-  background-color: #faf2ec;
 }
 .spells div[data-groupname=repeating_divine] > div input[type=text],
 .spells div[data-epic-table-name=divine] input[type=text] {
@@ -2276,17 +2671,28 @@ radio > span.checked {
 }
 .spells div[data-groupname=repeating_divine] > div + div,
 .spells div[data-epic-table-name=divine] + div[data-epic-table-name=divine] {
-  border-top: 1px solid rgba(181, 102, 50, 0.7);
+  border-top: 1px solid;
+  border-color: rgba(181, 102, 50, 0.7);
+}
+body.sheet-darkmode .spells div[data-groupname=repeating_divine] > div + div,
+body.sheet-darkmode .spells div[data-epic-table-name=divine] + div[data-epic-table-name=divine] {
+  border-color: rgba(181, 102, 50, 0.7);
 }
 .spells .epic-table-header-grid.innate {
   display: grid;
   grid-template-columns: minmax(0, 40px) minmax(0, 6fr) minmax(0, 16px) minmax(0, 32px) minmax(0, 2fr) minmax(0, 2fr) minmax(0, 2fr) minmax(0, 3fr) minmax(0, 2fr) minmax(0, 32px);
   column-gap: 2px;
-  background: #b56632;
   color: #fff;
+  background-color: #b56632;
   padding: 0 2px;
   margin-bottom: 2px;
   word-break: break-word;
+}
+body.sheet-darkmode .spells .epic-table-header-grid.innate {
+  color: #fff;
+}
+body.sheet-darkmode .spells .epic-table-header-grid.innate {
+  background-color: #b56632;
 }
 .spells .epic-table-header-grid.innate > div {
   text-align: center;
@@ -2310,7 +2716,6 @@ radio > span.checked {
   width: 100% !important;
   margin-left: unset;
   height: auto;
-  background-color: #faf2ec;
 }
 .spells div[data-groupname=repeating_innate] > div input[type=text],
 .spells div[data-epic-table-name=innate] input[type=text] {
@@ -2345,7 +2750,12 @@ radio > span.checked {
 }
 .spells div[data-groupname=repeating_innate] > div + div,
 .spells div[data-epic-table-name=innate] + div[data-epic-table-name=innate] {
-  border-top: 1px solid rgba(181, 102, 50, 0.7);
+  border-top: 1px solid;
+  border-color: rgba(181, 102, 50, 0.7);
+}
+body.sheet-darkmode .spells div[data-groupname=repeating_innate] > div + div,
+body.sheet-darkmode .spells div[data-epic-table-name=innate] + div[data-epic-table-name=innate] {
+  border-color: rgba(181, 102, 50, 0.7);
 }
 .spells .innatesphere-hidden[value|=S] ~ .skillname-grid {
   font-weight: bold;
@@ -2360,15 +2770,27 @@ radio > span.checked {
   color: #267200;
   font-weight: bold;
 }
+body.sheet-darkmode .spells .skillFP-grid, body.sheet-darkmode .spells .FP-grid {
+  color: #c4fda8;
+}
 .spells .skillCP-grid, .spells .CP-grid {
   color: blue;
   font-weight: bold;
 }
+body.sheet-darkmode .spells .skillCP-grid, body.sheet-darkmode .spells .CP-grid {
+  color: rgb(145, 145, 246);
+}
 .spells .epic-table-header-grid .skillFP-grid, .spells .epic-table-header-grid .FP-grid {
-  color: #51f200;
+  color: #267200;
+}
+body.sheet-darkmode .spells .epic-table-header-grid .skillFP-grid, body.sheet-darkmode .spells .epic-table-header-grid .FP-grid {
+  color: #c4fda8;
 }
 .spells .epic-table-header-grid .skillCP-grid, .spells .epic-table-header-grid .CP-grid {
-  color: #000099;
+  color: blue;
+}
+body.sheet-darkmode .spells .epic-table-header-grid .skillCP-grid, body.sheet-darkmode .spells .epic-table-header-grid .CP-grid {
+  color: rgb(145, 145, 246);
 }
 .spells .spell-note {
   margin-bottom: 1px;

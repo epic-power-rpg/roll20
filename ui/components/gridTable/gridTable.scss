@@ -7,8 +7,8 @@ $grid-column-gap: 2px;
   display: grid;
   grid-template-columns: $grid-template;
   column-gap: $grid-column-gap;
-  background: $primary-highlight-background-color;
-  color: $primary-highlight-color;
+  @include theme-color(primary-highlight-color);
+  @include theme-background-color(primary-highlight-background-color);
   padding: 0 $grid-padding;
   margin-bottom: $grid-padding;
   word-break: break-word;
@@ -30,7 +30,6 @@ $grid-column-gap: 2px;
     width: 100% !important;
     margin-left: unset;
     height: auto;
-    background-color: $primary-background-color;
   }
   input[type=text] {
     text-align: left;
@@ -76,7 +75,8 @@ $grid-column-gap: 2px;
   // TODO Deprecate the `repeating_` selector in favor of the second explicit row selector
   div[data-groupname="repeating_#{$epic-table-type}"] > div + div,
   div[data-epic-table-name="#{$epic-table-type}"] + div[data-epic-table-name="#{$epic-table-type}"] {
-    border-top: 1px solid $table-row-underline-color;
+    border-top: 1px solid;
+    @include theme-border-color(table-row-underline-color);
   }
 }
 
@@ -90,21 +90,21 @@ $grid-column-gap: 2px;
 
 @mixin grid-table-fp-cp-columns {
   .skillFP-grid, .FP-grid {
-    color: $fp-color;
+    @include theme-color(fp-color);
     font-weight: bold;
   }
 
   .skillCP-grid, .CP-grid {
-    color: $cp-color;
+    @include theme-color(cp-color);
     font-weight: bold;
   }
 
   .epic-table-header-grid {
     .skillFP-grid, .FP-grid {
-      color: lighten($fp-color, 25%);
+      @include theme-color(fp-color);
     }
     .skillCP-grid, .CP-grid {
-      color: darken($cp-color, 20%);
+      @include theme-color(cp-color);
     }
   }
 }

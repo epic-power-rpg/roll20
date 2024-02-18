@@ -2,8 +2,6 @@
 
 .roll-section {
   display: flex;
-  /* Get rid of the space the sheet puts above us. */
-  margin-top: -26px;
 }
 
 .roll-select-section {
@@ -19,7 +17,7 @@
   padding: 1px 2px;
   border-width: 1px;
   border-radius: 3px;
-  background-color: $primary-background-color;
+  @include theme-background-color(primary-background-color);
 }
 
 input.saved-roll {
@@ -48,8 +46,8 @@ input.saved-roll {
 .roll-chosen[value="4"]~.save-radio-row>button.roll-4,
 .roll-chosen[value="5"]~.save-radio-row>button.roll-5,
 .roll-chosen[value="6"]~.save-radio-row>button.roll-6 {
-  background-color: $primary-background-color;
-  border-color: black;
+  @include theme-background-color(primary-background-color);
+  @include theme-border-color(primary-color);
 }
 
 /* Configure the radio button styling. */

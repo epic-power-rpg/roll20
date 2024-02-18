@@ -52,7 +52,7 @@ div.popoverContainer {
     top: 24px;
     left: -40px;
     max-width: unset;
-    background: $primary-background-color;
+    @include theme-background-color(primary-background-color);
     padding: 16px;
     border: 1px solid black;
     border-radius: 6px;

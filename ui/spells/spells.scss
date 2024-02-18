@@ -7,8 +7,8 @@
 .tabcontrol[value="innate"]~.tab[name="act_innate"] {
   font-weight: bold;
   text-decoration: none;
-  background-color: $selected-tab-color;
-  color: $primary-background-color;
+  @include theme-color(selected-tab-color);
+  @include theme-background-color(selected-tab-background-color);
   margin-bottom: -1px;
   border-bottom: 1px solid transparent;
 }
@@ -22,7 +22,8 @@
 $notes-popover-width: 16px;
 .spell-tabs {
 
-  border-bottom: solid black 1px;
+  border-bottom: solid 1px;
+  @include theme-border-color(primary-color);
   margin-bottom: 6px;
   display: flex;
   align-items: center;
@@ -42,7 +43,7 @@ $notes-popover-width: 16px;
     display: flex;
     gap: 8px;
     label, .label {
-      color: black;
+      @include theme-color(primary-color);
     }
   }
   @import './spellsNotesPopover.scss';
