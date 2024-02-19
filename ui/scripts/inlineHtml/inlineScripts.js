@@ -1,4 +1,7 @@
 'use strict';
+/**
+ * See also: https://wiki.roll20.net/Sheet_Worker_Scripts#setAttrs.28values.2Coptions.2Ccallback.29
+ */
 // ----- Utilities -----
 const removeNonNumeric = function (s) {
   return String(s).trim().replace(/[^\d.-]/g, '');
@@ -1044,6 +1047,41 @@ on('remove:repeating_skill',
     updateTotalCP('skill');
   });
 
+on('clicked:addbaseskills', () => {
+  const section = 'skill';
+  const newAttributes = {};
+  function addNewAttributeRow(attributesBySuffix) {
+    const rowId = generateRowID();
+    Object.keys(attributesBySuffix).forEach((attributeName) => {
+      newAttributes[`repeating_${section}_${rowId}_${attributeName}`] = attributesBySuffix[attributeName];
+    });
+  }
+  function addNewDiscipline(skillname, props) {
+    addNewAttributeRow({
+      skilldisciplineinfo: 'D',
+      skillname,
+      ...props,
+    });
+  }
+  function addNewSkill(skillname, props) {
+    addNewAttributeRow({
+      skilldisciplineinfo: '⇡',
+      skillname,
+      ...props,
+    });
+  }
+  addNewDiscipline('People');
+  addNewSkill('Language(Common)', { skillattribute: 'IQ', skillexpertise: 'ST' });
+  addNewSkill('Persuade', { skillattribute: 'IQ', skillexpertise: 'ST' });
+  addNewSkill('People Insight', { skillattribute: 'IQ', skillexpertise: 'ST' });
+  addNewDiscipline('Defense', { skillexpertise: 1 });
+  addNewSkill('Dodge', { skillattribute: 'IQ+DX', skillexpertise: '1', skillbase: -3 });
+  addNewDiscipline('Attack', { skillexpertise: 1 });
+  addNewSkill('Your Weapon', { skillattribute: 'DX', skillexpertise: '1', skillbase: -1 });
+  setAttrs(newAttributes, () => {
+    console.log('Added attributes. The sheet auto-calculates after this.');
+  });
+});
 // -------------- Equipment -------------
 
 function getValidNumber(stringValue) {
