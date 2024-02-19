@@ -103,6 +103,15 @@ div.popoverContainer > .fixedPlacementPopover {
   visibility: visible;
 }
 
+.character-avatars {
+  margin-top: 16px;
+  display: flex;
+  gap: 16px;
+}
+.character-avatars img {
+  max-width: 48px;
+}
+
 /* Styles that apply everywhere */
 .characterviewer label,
 .characterviewer .label {
