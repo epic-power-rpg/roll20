@@ -50,6 +50,18 @@
         option(value='DX') DX
         option(value='IQ+DX') IQ+DX
       input.skillbase-grid(name='attr_skillbase' type='number' value='')
-  div
-    button(name='act_addbaseskills' type='action') Add Base Skills
+  .add-base-skills-section
+    button(name='act_popover_addBaseSkills' type='action')
+      | Add Base Skills
+    input.sectioncontrol(name='attr_chosenPopover' type='hidden' value='false')
+    .section.addBaseSkills.popoverContainer
+      .popoverBackdrop
+        button(name='act_popover_addBaseSkills' type='action') Close popover
+      .popover.fixedPlacementPopover
+        button.closePopoverButton(name='act_popover_addBaseSkills' type='action') X
+        h2 Add Base Skills
+        p This will add skills to your skills tab.
+        p Are you sure you want to fill in skills? (You can always delete them)
+        button(name='act_addbaseskills' type='action') Yes, Please Add Base Skills
+
 

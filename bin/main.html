@@ -737,8 +737,21 @@ its value is used for css selection of its siblings.
       <input class="skillbase-grid" name="attr_skillbase" type="number" value="" />
     </fieldset>
   </div>
-  <div>
-    <button name="act_addbaseskills" type="action">Add Base Skills</button>
+  <div class="add-base-skills-section">
+    <button name="act_popover_addBaseSkills" type="action">Add Base Skills</button>
+    <input class="sectioncontrol" name="attr_chosenPopover" type="hidden" value="false" />
+    <div class="section addBaseSkills popoverContainer">
+      <div class="popoverBackdrop">
+        <button name="act_popover_addBaseSkills" type="action">Close popover</button>
+      </div>
+      <div class="popover fixedPlacementPopover">
+        <button class="closePopoverButton" name="act_popover_addBaseSkills" type="action">X</button>
+        <h2>Add Base Skills</h2>
+        <p>This will add skills to your skills tab.</p>
+        <p>Are you sure you want to fill in skills? (You can always delete them)</p>
+        <button name="act_addbaseskills" type="action">Yes, Please Add Base Skills</button>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -1649,8 +1662,11 @@ on('sheet:opened', fixPower);
 
 // ----- Popovers -----
 // Close all popovers on page load
-on('sheet:opened', () => setAttrs({ chosenPopover: 'false' }));
-['weightPenalties'].forEach(
+function closePopovers() {
+  setAttrs({ chosenPopover: 'false' });
+}
+on('sheet:opened', closePopovers);
+['weightPenalties', 'addBaseSkills'].forEach(
   popoverToToggle => {
     on(`clicked:popover_${popoverToToggle}`, function () {
       getAttrs(['chosenPopover'], (attributes) => {
@@ -2268,6 +2284,7 @@ on('clicked:addbaseskills', () => {
   addNewSkill('Your Weapon', { skillattribute: 'DX', skillexpertise: '1', skillbase: -1 });
   setAttrs(newAttributes, () => {
     console.log('Added attributes. The sheet auto-calculates after this.');
+    closePopovers();
   });
 });
 // -------------- Equipment -------------

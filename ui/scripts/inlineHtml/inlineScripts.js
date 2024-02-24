@@ -461,8 +461,11 @@ on('sheet:opened', fixPower);
 
 // ----- Popovers -----
 // Close all popovers on page load
-on('sheet:opened', () => setAttrs({ chosenPopover: 'false' }));
-['weightPenalties'].forEach(
+function closePopovers() {
+  setAttrs({ chosenPopover: 'false' });
+}
+on('sheet:opened', closePopovers);
+['weightPenalties', 'addBaseSkills'].forEach(
   popoverToToggle => {
     on(`clicked:popover_${popoverToToggle}`, function () {
       getAttrs(['chosenPopover'], (attributes) => {
@@ -1080,6 +1083,7 @@ on('clicked:addbaseskills', () => {
   addNewSkill('Your Weapon', { skillattribute: 'DX', skillexpertise: '1', skillbase: -1 });
   setAttrs(newAttributes, () => {
     console.log('Added attributes. The sheet auto-calculates after this.');
+    closePopovers();
   });
 });
 // -------------- Equipment -------------
