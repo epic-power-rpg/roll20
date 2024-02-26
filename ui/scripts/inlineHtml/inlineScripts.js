@@ -1080,7 +1080,7 @@ on('clicked:addbaseskills', () => {
   addNewDiscipline('Defense', { skillexpertise: 1 });
   addNewSkill('Dodge', { skillattribute: 'IQ+DX', skillexpertise: '1', skillbase: -3 });
   addNewDiscipline('Attack', { skillexpertise: 1 });
-  addNewSkill('Your Weapon', { skillattribute: 'DX', skillexpertise: '1', skillbase: -1 });
+  addNewSkill('Your Weapon', { skillattribute: 'DX', skillexpertise: '1', skillbase: 0 });
   setAttrs(newAttributes, () => {
     console.log('Added attributes. The sheet auto-calculates after this.');
     closePopovers();
