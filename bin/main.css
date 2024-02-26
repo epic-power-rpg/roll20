@@ -123,10 +123,6 @@ div.popoverContainer > .fixedPlacementPopover {
   font-weight: normal;
 }
 
-.characterviewer .charsheet {
-  padding: 8px;
-}
-
 input[type=text] {
   padding: 1px 4px 1px 4px;
   height: 22px;
@@ -354,6 +350,13 @@ body.sheet-darkmode .charsheet, body.sheet-darkmode .attributesabilities > * > *
 }
 body.sheet-darkmode .charsheet h1, body.sheet-darkmode .charsheet h2, body.sheet-darkmode .charsheet h3, body.sheet-darkmode .charsheet h4, body.sheet-darkmode .charsheet h5, body.sheet-darkmode .charsheet h6, body.sheet-darkmode .attributesabilities > * > * h1, body.sheet-darkmode .attributesabilities > * > * h2, body.sheet-darkmode .attributesabilities > * > * h3, body.sheet-darkmode .attributesabilities > * > * h4, body.sheet-darkmode .attributesabilities > * > * h5, body.sheet-darkmode .attributesabilities > * > * h6, body.sheet-darkmode .bioinfo > * > * h1, body.sheet-darkmode .bioinfo > * > * h2, body.sheet-darkmode .bioinfo > * > * h3, body.sheet-darkmode .bioinfo > * > * h4, body.sheet-darkmode .bioinfo > * > * h5, body.sheet-darkmode .bioinfo > * > * h6 {
   color: #fff;
+}
+
+.characterviewer .charsheet {
+  padding: 0;
+}
+.characterviewer .charsheet .character-sheet-page {
+  padding: 8px;
 }
 
 body.sheet-darkmode .btn, body.sheet-darkmode .btn.btn-default {
@@ -2841,4 +2844,11 @@ body.sheet-darkmode .spells .epic-table-header-grid .skillCP-grid, body.sheet-da
 .notes div[data-groupname] > div {
   /* and make rows overlap */
   margin-top: -1px;
+}
+
+.main-content .new-user-creator, .main-content .existing-user {
+  display: none;
+}
+.main-content input.new-user-control[value=""] ~ div.new-user-creator, .main-content input.new-user-control:not([value=""]) ~ div.existing-user {
+  display: block;
 }

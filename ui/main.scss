@@ -18,3 +18,14 @@
 @import './spells/spells.scss';
 @import './notes/notes.scss';
 
+.main-content {
+  .new-user-creator, .existing-user {
+    display: none;
+  }
+  input.new-user-control {
+    &[value=""] ~ div.new-user-creator,
+    &:not([value=""]) ~ div.existing-user {
+      display: block;
+    }
+  }
+}

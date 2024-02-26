@@ -1,16 +1,22 @@
-include rollSection/rollSection.pug
-= '\n'
-include topSection/topSection.pug
-include tabs/tabs.pug
-include overviewTab/overviewTab.pug
-include basicTab/basicTab.pug
-= '\n'
-include epicSkills/epicSkills.pug
-= '\n'
-include equipment/equipment.pug
-= '\n'
-include spells/spells.pug
-include notesTab/notesTab.pug
+.main-content
+  input.new-user-control(name='attr_race' type='hidden' value="")
+  .new-user-creator.character-sheet-page
+    include newUser/welcomePage.pug
+  .existing-user.character-sheet-page
+    include rollSection/rollSection.pug
+    = '\n'
+    include topSection/topSection.pug
+    include tabs/tabs.pug
+    include overviewTab/overviewTab.pug
+    include basicTab/basicTab.pug
+    = '\n'
+    include epicSkills/epicSkills.pug
+    = '\n'
+    include equipment/equipment.pug
+    = '\n'
+    include spells/spells.pug
+    include notesTab/notesTab.pug
+
 // Scripts 
 = '\n'
 script(type="text/worker")

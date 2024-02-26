@@ -13,6 +13,13 @@ button, input, optgroup, select, textarea {
   }
 }
 
+.characterviewer .charsheet {
+  padding: 0;
+  .character-sheet-page {
+    padding: 8px;
+  }
+}
+
 .btn, .btn.btn-default {
   @include theme-mode {
     color: #c8c3bc;
