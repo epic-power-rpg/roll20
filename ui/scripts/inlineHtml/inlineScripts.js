@@ -1,4 +1,7 @@
 'use strict';
+/**
+ * See also: https://wiki.roll20.net/Sheet_Worker_Scripts#setAttrs.28values.2Coptions.2Ccallback.29
+ */
 // ----- Utilities -----
 const removeNonNumeric = function (s) {
   return String(s).trim().replace(/[^\d.-]/g, '');
@@ -458,8 +461,11 @@ on('sheet:opened', fixPower);
 
 // ----- Popovers -----
 // Close all popovers on page load
-on('sheet:opened', () => setAttrs({ chosenPopover: 'false' }));
-['weightPenalties'].forEach(
+function closePopovers() {
+  setAttrs({ chosenPopover: 'false' });
+}
+on('sheet:opened', closePopovers);
+['weightPenalties', 'addBaseSkills'].forEach(
   popoverToToggle => {
     on(`clicked:popover_${popoverToToggle}`, function () {
       getAttrs(['chosenPopover'], (attributes) => {
@@ -1044,6 +1050,42 @@ on('remove:repeating_skill',
     updateTotalCP('skill');
   });
 
+on('clicked:addbaseskills', () => {
+  const section = 'skill';
+  const newAttributes = {};
+  function addNewAttributeRow(attributesBySuffix) {
+    const rowId = generateRowID();
+    Object.keys(attributesBySuffix).forEach((attributeName) => {
+      newAttributes[`repeating_${section}_${rowId}_${attributeName}`] = attributesBySuffix[attributeName];
+    });
+  }
+  function addNewDiscipline(skillname, props) {
+    addNewAttributeRow({
+      skilldisciplineinfo: 'D',
+      skillname,
+      ...props,
+    });
+  }
+  function addNewSkill(skillname, props) {
+    addNewAttributeRow({
+      skilldisciplineinfo: '⇡',
+      skillname,
+      ...props,
+    });
+  }
+  addNewDiscipline('People');
+  addNewSkill('Language(Common)', { skillattribute: 'IQ', skillexpertise: 'ST' });
+  addNewSkill('Persuade', { skillattribute: 'IQ', skillexpertise: 'ST' });
+  addNewSkill('People Insight', { skillattribute: 'IQ', skillexpertise: 'ST' });
+  addNewDiscipline('Defense', { skillexpertise: 1 });
+  addNewSkill('Dodge', { skillattribute: 'IQ+DX', skillexpertise: '1', skillbase: -3 });
+  addNewDiscipline('Attack', { skillexpertise: 1 });
+  addNewSkill('Your Weapon', { skillattribute: 'DX', skillexpertise: '1', skillbase: 0 });
+  setAttrs(newAttributes, () => {
+    console.log('Added attributes. The sheet auto-calculates after this.');
+    closePopovers();
+  });
+});
 // -------------- Equipment -------------
 
 function getValidNumber(stringValue) {

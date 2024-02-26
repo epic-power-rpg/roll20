@@ -2101,6 +2101,17 @@ body.sheet-darkmode .epic-skills-tab .epic-table-header-grid .skillFP-grid, body
 body.sheet-darkmode .epic-skills-tab .epic-table-header-grid .skillCP-grid, body.sheet-darkmode .epic-skills-tab .epic-table-header-grid .CP-grid {
   color: rgb(145, 145, 246);
 }
+.epic-skills-tab .add-base-skills-section {
+  margin-top: 8px;
+}
+.epic-skills-tab .add-base-skills-section .sectioncontrol[value=addBaseSkills] ~ div.popoverContainer.addBaseSkills,
+.epic-skills-tab .add-base-skills-section input.popoverController[value="1"] ~ div.popoverContainer.addBaseSkills {
+  display: inline;
+}
+.epic-skills-tab .add-base-skills-section .sectioncontrol[value=addBaseSkills] ~ div.popoverContainer.addBaseSkills .popover,
+.epic-skills-tab .add-base-skills-section input.popoverController[value="1"] ~ div.popoverContainer.addBaseSkills .popover {
+  display: block;
+}
 
 /* -------- Equipment --------- */
 .equipment-tab .cash-and-equipment-summary {

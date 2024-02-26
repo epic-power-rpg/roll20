@@ -32,4 +32,9 @@
     text-align: right;
   }
   @include grid-table-fp-cp-columns();
+
+  .add-base-skills-section {
+    margin-top: 8px;
+    @include popover-control('addBaseSkills');
+  }
 }
