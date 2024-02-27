@@ -1326,4 +1326,13 @@ on('remove:repeating_arcane',
 on('remove:repeating_innate change:repeating_innate:skillCP',
   function () { updateTotalCP('innate', 'skill'); });
 
+// -------- Create New User --------
+['human', 'elf', 'dwarf', 'gnome', 'orc', 'minotaur', 'owlin', 'dryad', 'custom'].forEach(function (newUser) {
+  on(`clicked:act_create_user_pick_${newUser}_option`, () => {
+    setAttrs({
+      selected_user_option: newUser,
+    });
+  });
+});
+
 log('!!! SCRIPT LOADED !!!');

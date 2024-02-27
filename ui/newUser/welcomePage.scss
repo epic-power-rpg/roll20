@@ -1,0 +1,37 @@
+/* ---------- New User Welcome Page ------------- */
+
+.character-sheet-page {
+  .character-chooser {
+    .button-grid {
+      display: grid;
+      align-items: center;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      button {
+        min-width: 128px;
+        min-height: 64px;
+      }
+    }
+
+    .race-picker-buttons {
+      button {
+        display: flex;
+        font-size: 2.5rem;
+        justify-content: space-around;
+        align-items: center;
+        margin: 8px;
+        padding: 8px;
+        img {
+          + img {
+            margin-left: 4px;
+          }
+          + span {
+            margin-left: 8px;
+          }
+        }
+        img {
+          height: 48px;
+        }
+      }
+    }
+  }
+}

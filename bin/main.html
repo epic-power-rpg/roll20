@@ -4,6 +4,57 @@
     <div class="character-sheet-page">
       <h1>Welcome to Epic Power</h1>
       <p>Who do you want to be today?</p>
+      <div class="character-chooser">
+        <input class="new-user-control" name="attr_selected_user_option" type="hidden" value="" />
+        <div class="race-picker-buttons button-grid">
+          <button class="new-race-option" name="act_create_user_pick_human_option" type="action">
+            <img src="https://raw.githubusercontent.com/epic-power-rpg/roll20/jazeee-new-users/ui/newUser/images/human-female.jpg" alt="Human Female" />
+            <img src="https://raw.githubusercontent.com/epic-power-rpg/roll20/jazeee-new-users/ui/newUser/images/human-male.jpg" alt="Human Male" />
+            <span>Human</span>
+          </button>
+          <button class="new-race-option" name="act_create_user_pick_elf_option" type="action">
+            <img src="https://raw.githubusercontent.com/epic-power-rpg/roll20/jazeee-new-users/ui/newUser/images/elf-male.jpg" alt="Elf Male" />
+            <img src="https://raw.githubusercontent.com/epic-power-rpg/roll20/jazeee-new-users/ui/newUser/images/elf-female-2.jpg" alt="Elf Female" />
+            <span>Elf</span>
+          </button>
+          <button class="new-race-option" name="act_create_user_pick_dwarf_option" type="action">
+            <img src="https://raw.githubusercontent.com/epic-power-rpg/roll20/jazeee-new-users/ui/newUser/images/dwarf-male.jpg" alt="Dwarf Male" />
+            <img src="https://raw.githubusercontent.com/epic-power-rpg/roll20/jazeee-new-users/ui/newUser/images/dwarf-female.jpg" alt="Dwarf Female" />
+            <span>Dwarf</span>
+          </button>
+          <button class="new-race-option" name="act_create_user_pick_gnome_option" type="action">
+            <img src="https://raw.githubusercontent.com/epic-power-rpg/roll20/jazeee-new-users/ui/newUser/images/gnome-male.jpg" alt="Gnome Male" />
+            <img src="https://raw.githubusercontent.com/epic-power-rpg/roll20/jazeee-new-users/ui/newUser/images/gnome-female.jpg" alt="Gnome Female" />
+            <span>Gnome</span>
+          </button>
+          <button class="new-race-option" name="act_create_user_pick_orc_option" type="action">
+            <img src="https://raw.githubusercontent.com/epic-power-rpg/roll20/jazeee-new-users/ui/newUser/images/orc-female.jpg" alt="Orc Female" />
+            <img src="https://raw.githubusercontent.com/epic-power-rpg/roll20/jazeee-new-users/ui/newUser/images/orc-male-2.jpg" alt="Orc Male" />
+            <span>Orc</span>
+          </button>
+          <button class="new-race-option" name="act_create_user_pick_minotaur_option" type="action">
+            <img src="https://raw.githubusercontent.com/epic-power-rpg/roll20/jazeee-new-users/ui/newUser/images/minotaur-female.jpg" alt="Minotaur Female" />
+            <img src="https://raw.githubusercontent.com/epic-power-rpg/roll20/jazeee-new-users/ui/newUser/images/minotaur-male.jpg" alt="Minotaur Male" />
+            <span>Minotaur</span>
+          </button>
+          <button class="new-race-option" name="act_create_user_pick_owlin_option" type="action">
+            <img src="https://raw.githubusercontent.com/epic-power-rpg/roll20/jazeee-new-users/ui/newUser/images/owlin-male.jpg" alt="Owlin Male" />
+            <img src="https://raw.githubusercontent.com/epic-power-rpg/roll20/jazeee-new-users/ui/newUser/images/owlin-female.jpg" alt="Owlin Female" />
+            <span>Owlin</span>
+          </button>
+          <button class="new-race-option" name="act_create_user_pick_dryad_option" type="action">
+            <img src="https://raw.githubusercontent.com/epic-power-rpg/roll20/jazeee-new-users/ui/newUser/images/dryad-female.jpg" alt="Dryad Female" />
+            <img src="https://raw.githubusercontent.com/epic-power-rpg/roll20/jazeee-new-users/ui/newUser/images/dryad-male-2.jpg" alt="Dryad Male" />
+            <span>Dryad</span>
+          </button>
+          <button class="new-race-option" name="act_create_user_pick_custom_option" type="action">
+            <span>Custom</span>
+          </button>
+        </div>
+        <div class="specialization-buttons button-grid">
+          <button class="new-specialization-option tank">The Tank</button>
+        </div>
+      </div>
     </div>
   </div>
   <div class="existing-user character-sheet-page">
@@ -2537,6 +2588,15 @@ on('remove:repeating_arcane',
 
 on('remove:repeating_innate change:repeating_innate:skillCP',
   function () { updateTotalCP('innate', 'skill'); });
+
+// -------- Create New User --------
+['human', 'elf', 'dwarf', 'gnome', 'orc', 'minotaur', 'owlin', 'dryad', 'custom'].forEach(function (newUser) {
+  on(`clicked:create_user_pick_${newUser}_option`, () => {
+    setAttrs({
+      selected_user_option: newUser,
+    });
+  });
+});
 
 log('!!! SCRIPT LOADED !!!');
 

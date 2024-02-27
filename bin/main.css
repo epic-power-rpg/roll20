@@ -2846,6 +2846,34 @@ body.sheet-darkmode .spells .epic-table-header-grid .skillCP-grid, body.sheet-da
   margin-top: -1px;
 }
 
+/* ---------- New User Welcome Page ------------- */
+.character-sheet-page .character-chooser .button-grid {
+  display: grid;
+  align-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+.character-sheet-page .character-chooser .button-grid button {
+  min-width: 128px;
+  min-height: 64px;
+}
+.character-sheet-page .character-chooser .race-picker-buttons button {
+  display: flex;
+  font-size: 2.5rem;
+  justify-content: space-around;
+  align-items: center;
+  margin: 8px;
+  padding: 8px;
+}
+.character-sheet-page .character-chooser .race-picker-buttons button img + img {
+  margin-left: 4px;
+}
+.character-sheet-page .character-chooser .race-picker-buttons button img + span {
+  margin-left: 8px;
+}
+.character-sheet-page .character-chooser .race-picker-buttons button img {
+  height: 48px;
+}
+
 .main-content .new-user-creator, .main-content .existing-user {
   display: none;
 }
