@@ -1,5 +1,7 @@
 /* ---------- New User Welcome Page ------------- */
 
+$characterRaces: human, elf, dwarf, gnome, orc, minotaur, owlin, dryad, custom;
+
 .character-sheet-page {
   .character-chooser {
     .button-grid {
@@ -31,6 +33,32 @@
         img {
           height: 48px;
         }
+      }
+    }
+  }
+
+  .create-user-section {
+    display: none;
+  }
+  input.new-user-control {
+    // Show selected race option
+    @each $characterRace in $characterRaces {
+      &[value=#{$characterRace}] ~ .race-picker-buttons {
+        button[name=act_create_user_pick_#{$characterRace}_option] {
+          @include theme-background-color(primary-highlight-background-color);
+        }
+      }
+    }
+    // Once race is selected, Show Create User Button
+    &:not([value=""]) ~ .create-user-section {
+      display: grid;
+      align-items: center;
+      grid-template-columns: 1fr;
+      button {
+        font-size: 2.5rem;
+        margin: 8px;
+        min-height: 48px;
+        @include theme-background-color(primary-highlight-background-color);
       }
     }
   }

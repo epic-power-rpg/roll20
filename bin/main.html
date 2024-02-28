@@ -3,9 +3,9 @@
   <div class="new-user-creator character-sheet-page">
     <div class="character-sheet-page">
       <h1>Welcome to Epic Power</h1>
-      <p>Who do you want to be today?</p>
+      <h2>Who do you want to be today?</h2>
       <div class="character-chooser">
-        <input class="new-user-control" name="attr_selected_user_option" type="hidden" value="" />
+        <input class="new-user-control" name="attr_selected_user_race_option" type="hidden" value="" />
         <div class="race-picker-buttons button-grid">
           <button class="new-race-option" name="act_create_user_pick_human_option" type="action">
             <img src="https://raw.githubusercontent.com/epic-power-rpg/roll20/jazeee-new-users/ui/newUser/images/human-female.jpg" alt="Human Female" />
@@ -51,8 +51,9 @@
             <span>Custom</span>
           </button>
         </div>
-        <div class="specialization-buttons button-grid">
-          <button class="new-specialization-option tank">The Tank</button>
+        <div class="create-user-section">
+          <button class="create-new-user-action" name="act_confirm_create_new_user" type="action">Create Character:&nbsp;<span name="attr_selected_user_race_option"></span>
+          </button>
         </div>
       </div>
     </div>
@@ -1261,6 +1262,17 @@
 <!-- Scripts -->
 
 <script type="text/worker">
+  const uniqueIds = new Set();
+
+// eslint-disable-next-line no-unused-vars
+function generateTrulyUniqueRowId() {
+  let newId = generateRowID();
+  while(uniqueIds.has(newId)) {
+    newId = generateRowID();
+  }
+  uniqueIds.add(newId);
+  return newId;
+}
   'use strict';
 /**
  * See also: https://wiki.roll20.net/Sheet_Worker_Scripts#setAttrs.28values.2Coptions.2Ccallback.29
@@ -2313,11 +2325,11 @@ on('remove:repeating_skill',
     updateTotalCP('skill');
   });
 
-on('clicked:addbaseskills', () => {
+function createBaseSkillsAttributes() {
   const section = 'skill';
   const newAttributes = {};
   function addNewAttributeRow(attributesBySuffix) {
-    const rowId = generateRowID();
+    const rowId = generateTrulyUniqueRowId();
     Object.keys(attributesBySuffix).forEach((attributeName) => {
       newAttributes[`repeating_${section}_${rowId}_${attributeName}`] = attributesBySuffix[attributeName];
     });
@@ -2344,7 +2356,11 @@ on('clicked:addbaseskills', () => {
   addNewSkill('Dodge', { skillattribute: 'IQ+DX', skillexpertise: '1', skillbase: -3 });
   addNewDiscipline('Attack', { skillexpertise: 1 });
   addNewSkill('Your Weapon', { skillattribute: 'DX', skillexpertise: '1', skillbase: 0 });
-  setAttrs(newAttributes, () => {
+  return newAttributes;
+}
+
+on('clicked:addbaseskills', () => {
+  setAttrs(createBaseSkillsAttributes(), () => {
     console.log('Added attributes. The sheet auto-calculates after this.');
     closePopovers();
   });
@@ -2589,15 +2605,77 @@ on('remove:repeating_arcane',
 on('remove:repeating_innate change:repeating_innate:skillCP',
   function () { updateTotalCP('innate', 'skill'); });
 
-// -------- Create New User --------
+
+log('!!! SCRIPT LOADED !!!');
+  // -------- Create New User --------
 ['human', 'elf', 'dwarf', 'gnome', 'orc', 'minotaur', 'owlin', 'dryad', 'custom'].forEach(function (newUser) {
   on(`clicked:create_user_pick_${newUser}_option`, () => {
     setAttrs({
-      selected_user_option: newUser,
+      selected_user_race_option: newUser,
     });
   });
 });
 
-log('!!! SCRIPT LOADED !!!');
+function createBaseFeatAttributes({ featName, cpValue}) {
+  const section = 'feat';
+  const newAttributes = {};
+  function addNewAttributeRow(attributesBySuffix) {
+    const rowId = generateTrulyUniqueRowId();
+    Object.keys(attributesBySuffix).forEach((attributeName) => {
+      newAttributes[`repeating_${section}_${rowId}_${attributeName}`] = attributesBySuffix[attributeName];
+    });
+  }
+  addNewAttributeRow({
+    featname: featName,
+    featCP: cpValue,
+  });
+  return newAttributes;
+}
+const newUserAttributesByRace = {
+  human: {},
+  elf: {
+    ...createBaseFeatAttributes({ featName: 'Low Light Vision', cpValue: 2 }),
+    ...createBaseFeatAttributes({ featName: 'Ease of Movement', cpValue: 2 }),
+  },
+  dwarf: {
+    ...createBaseFeatAttributes({ featName: 'Infravision', cpValue: 2 }),
+  },
+  gnome: {
+    ...createBaseFeatAttributes({ featName: 'Infravision', cpValue: 2 }),
+  },
+  orc: {
+    ...createBaseFeatAttributes({ featName: 'Infravision', cpValue: 2 }),
+  },
+  minotaur: {},
+  owlin: {
+    ...createBaseFeatAttributes({ featName: 'Low Light Vision', cpValue: 2 }),
+    ...createBaseFeatAttributes({ featName: 'Natural Armor', cpValue: 2 }),
+    ...createBaseFeatAttributes({ featName: 'Glide', cpValue: 2 }),
+  },
+  dryad: {
+    ...createBaseFeatAttributes({ featName: 'Low Light Vision', cpValue: 2 }),
+    ...createBaseFeatAttributes({ featName: 'Natural Armor', cpValue: 6 }),
+  },
+  custom: {},
+};
+
+on('clicked:confirm_create_new_user', () => {
+  getAttrs(['selected_user_race_option'], (values) => {
+    const { selected_user_race_option: selectedRace } = values;
+    const newUserAttributes = newUserAttributesByRace[selectedRace];
+    if (!newUserAttributes) {
+      log(`Something went wrong for selectedUserOption: ${selectedRace}`);
+      return;
+    }
+    setAttrs({
+      ...(createBaseSkillsAttributes()),
+      ...newUserAttributes,
+      race: `${selectedRace.charAt(0).toUpperCase()}${selectedRace.slice(1)}`,
+      chosentab: 'basic',
+    });
+  });
+});
+
+log('!!! newUser SCRIPT LOADED !!!');
 
 </script>

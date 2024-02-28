@@ -1050,11 +1050,11 @@ on('remove:repeating_skill',
     updateTotalCP('skill');
   });
 
-on('clicked:addbaseskills', () => {
+function createBaseSkillsAttributes() {
   const section = 'skill';
   const newAttributes = {};
   function addNewAttributeRow(attributesBySuffix) {
-    const rowId = generateRowID();
+    const rowId = generateTrulyUniqueRowId();
     Object.keys(attributesBySuffix).forEach((attributeName) => {
       newAttributes[`repeating_${section}_${rowId}_${attributeName}`] = attributesBySuffix[attributeName];
     });
@@ -1081,7 +1081,11 @@ on('clicked:addbaseskills', () => {
   addNewSkill('Dodge', { skillattribute: 'IQ+DX', skillexpertise: '1', skillbase: -3 });
   addNewDiscipline('Attack', { skillexpertise: 1 });
   addNewSkill('Your Weapon', { skillattribute: 'DX', skillexpertise: '1', skillbase: 0 });
-  setAttrs(newAttributes, () => {
+  return newAttributes;
+}
+
+on('clicked:addbaseskills', () => {
+  setAttrs(createBaseSkillsAttributes(), () => {
     console.log('Added attributes. The sheet auto-calculates after this.');
     closePopovers();
   });
@@ -1326,13 +1330,5 @@ on('remove:repeating_arcane',
 on('remove:repeating_innate change:repeating_innate:skillCP',
   function () { updateTotalCP('innate', 'skill'); });
 
-// -------- Create New User --------
-['human', 'elf', 'dwarf', 'gnome', 'orc', 'minotaur', 'owlin', 'dryad', 'custom'].forEach(function (newUser) {
-  on(`clicked:act_create_user_pick_${newUser}_option`, () => {
-    setAttrs({
-      selected_user_option: newUser,
-    });
-  });
-});
 
 log('!!! SCRIPT LOADED !!!');
