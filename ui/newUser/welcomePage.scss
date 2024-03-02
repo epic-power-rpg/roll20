@@ -3,6 +3,9 @@
 $characterRaces: human, elf, dwarf, gnome, orc, minotaur, owlin, dryad, custom;
 
 .character-sheet-page {
+  .title-section {
+    text-align: center;
+  }
   .character-chooser {
     .button-grid {
       display: grid;
@@ -45,6 +48,7 @@ $characterRaces: human, elf, dwarf, gnome, orc, minotaur, owlin, dryad, custom;
     @each $characterRace in $characterRaces {
       &[value=#{$characterRace}] ~ .race-picker-buttons {
         button[name=act_create_user_pick_#{$characterRace}_option] {
+          @include theme-color(primary-highlight-color);
           @include theme-background-color(primary-highlight-background-color);
         }
       }
@@ -58,6 +62,7 @@ $characterRaces: human, elf, dwarf, gnome, orc, minotaur, owlin, dryad, custom;
         font-size: 2.5rem;
         margin: 8px;
         min-height: 48px;
+        @include theme-color(primary-highlight-color);
         @include theme-background-color(primary-highlight-background-color);
       }
     }

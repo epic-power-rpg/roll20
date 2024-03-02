@@ -2847,6 +2847,9 @@ body.sheet-darkmode .spells .epic-table-header-grid .skillCP-grid, body.sheet-da
 }
 
 /* ---------- New User Welcome Page ------------- */
+.character-sheet-page .title-section {
+  text-align: center;
+}
 .character-sheet-page .character-chooser .button-grid {
   display: grid;
   align-items: center;
@@ -2877,55 +2880,91 @@ body.sheet-darkmode .spells .epic-table-header-grid .skillCP-grid, body.sheet-da
   display: none;
 }
 .character-sheet-page input.new-user-control[value=human] ~ .race-picker-buttons button[name=act_create_user_pick_human_option] {
+  color: #fff;
   background-color: #b56632;
+}
+body.sheet-darkmode .character-sheet-page input.new-user-control[value=human] ~ .race-picker-buttons button[name=act_create_user_pick_human_option] {
+  color: #fff;
 }
 body.sheet-darkmode .character-sheet-page input.new-user-control[value=human] ~ .race-picker-buttons button[name=act_create_user_pick_human_option] {
   background-color: #b56632;
 }
 .character-sheet-page input.new-user-control[value=elf] ~ .race-picker-buttons button[name=act_create_user_pick_elf_option] {
+  color: #fff;
   background-color: #b56632;
+}
+body.sheet-darkmode .character-sheet-page input.new-user-control[value=elf] ~ .race-picker-buttons button[name=act_create_user_pick_elf_option] {
+  color: #fff;
 }
 body.sheet-darkmode .character-sheet-page input.new-user-control[value=elf] ~ .race-picker-buttons button[name=act_create_user_pick_elf_option] {
   background-color: #b56632;
 }
 .character-sheet-page input.new-user-control[value=dwarf] ~ .race-picker-buttons button[name=act_create_user_pick_dwarf_option] {
+  color: #fff;
   background-color: #b56632;
+}
+body.sheet-darkmode .character-sheet-page input.new-user-control[value=dwarf] ~ .race-picker-buttons button[name=act_create_user_pick_dwarf_option] {
+  color: #fff;
 }
 body.sheet-darkmode .character-sheet-page input.new-user-control[value=dwarf] ~ .race-picker-buttons button[name=act_create_user_pick_dwarf_option] {
   background-color: #b56632;
 }
 .character-sheet-page input.new-user-control[value=gnome] ~ .race-picker-buttons button[name=act_create_user_pick_gnome_option] {
+  color: #fff;
   background-color: #b56632;
+}
+body.sheet-darkmode .character-sheet-page input.new-user-control[value=gnome] ~ .race-picker-buttons button[name=act_create_user_pick_gnome_option] {
+  color: #fff;
 }
 body.sheet-darkmode .character-sheet-page input.new-user-control[value=gnome] ~ .race-picker-buttons button[name=act_create_user_pick_gnome_option] {
   background-color: #b56632;
 }
 .character-sheet-page input.new-user-control[value=orc] ~ .race-picker-buttons button[name=act_create_user_pick_orc_option] {
+  color: #fff;
   background-color: #b56632;
+}
+body.sheet-darkmode .character-sheet-page input.new-user-control[value=orc] ~ .race-picker-buttons button[name=act_create_user_pick_orc_option] {
+  color: #fff;
 }
 body.sheet-darkmode .character-sheet-page input.new-user-control[value=orc] ~ .race-picker-buttons button[name=act_create_user_pick_orc_option] {
   background-color: #b56632;
 }
 .character-sheet-page input.new-user-control[value=minotaur] ~ .race-picker-buttons button[name=act_create_user_pick_minotaur_option] {
+  color: #fff;
   background-color: #b56632;
+}
+body.sheet-darkmode .character-sheet-page input.new-user-control[value=minotaur] ~ .race-picker-buttons button[name=act_create_user_pick_minotaur_option] {
+  color: #fff;
 }
 body.sheet-darkmode .character-sheet-page input.new-user-control[value=minotaur] ~ .race-picker-buttons button[name=act_create_user_pick_minotaur_option] {
   background-color: #b56632;
 }
 .character-sheet-page input.new-user-control[value=owlin] ~ .race-picker-buttons button[name=act_create_user_pick_owlin_option] {
+  color: #fff;
   background-color: #b56632;
+}
+body.sheet-darkmode .character-sheet-page input.new-user-control[value=owlin] ~ .race-picker-buttons button[name=act_create_user_pick_owlin_option] {
+  color: #fff;
 }
 body.sheet-darkmode .character-sheet-page input.new-user-control[value=owlin] ~ .race-picker-buttons button[name=act_create_user_pick_owlin_option] {
   background-color: #b56632;
 }
 .character-sheet-page input.new-user-control[value=dryad] ~ .race-picker-buttons button[name=act_create_user_pick_dryad_option] {
+  color: #fff;
   background-color: #b56632;
+}
+body.sheet-darkmode .character-sheet-page input.new-user-control[value=dryad] ~ .race-picker-buttons button[name=act_create_user_pick_dryad_option] {
+  color: #fff;
 }
 body.sheet-darkmode .character-sheet-page input.new-user-control[value=dryad] ~ .race-picker-buttons button[name=act_create_user_pick_dryad_option] {
   background-color: #b56632;
 }
 .character-sheet-page input.new-user-control[value=custom] ~ .race-picker-buttons button[name=act_create_user_pick_custom_option] {
+  color: #fff;
   background-color: #b56632;
+}
+body.sheet-darkmode .character-sheet-page input.new-user-control[value=custom] ~ .race-picker-buttons button[name=act_create_user_pick_custom_option] {
+  color: #fff;
 }
 body.sheet-darkmode .character-sheet-page input.new-user-control[value=custom] ~ .race-picker-buttons button[name=act_create_user_pick_custom_option] {
   background-color: #b56632;
@@ -2939,7 +2978,11 @@ body.sheet-darkmode .character-sheet-page input.new-user-control[value=custom] ~
   font-size: 2.5rem;
   margin: 8px;
   min-height: 48px;
+  color: #fff;
   background-color: #b56632;
+}
+body.sheet-darkmode .character-sheet-page input.new-user-control:not([value=""]) ~ .create-user-section button {
+  color: #fff;
 }
 body.sheet-darkmode .character-sheet-page input.new-user-control:not([value=""]) ~ .create-user-section button {
   background-color: #b56632;
