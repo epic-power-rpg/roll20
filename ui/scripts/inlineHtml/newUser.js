@@ -11,7 +11,10 @@ function createBaseAttributes({ section, attributes }) {
   const newAttributes = {};
   const rowId = generateTrulyUniqueRowId();
   Object.keys(attributes).forEach((attributeName) => {
-    newAttributes[`repeating_${section}_${rowId}_${attributeName}`] = attributes[attributeName];
+    const attributeValue = attributes[attributeName];
+    if (attributeValue !== undefined) {
+      newAttributes[`repeating_${section}_${rowId}_${attributeName}`] = attributeValue;
+    }
   });
   return newAttributes;
 }
@@ -36,6 +39,24 @@ function createExtraAdvantageAttributes({ name, cpValue }) {
   });
 }
 
+
+function createInnateSpellAttributes(props) {
+  const { isSphereAttribute, name, castTime, spellType, range, target, duration, epValue, cpValue } = props;
+  return createBaseAttributes({
+    section: 'innate',
+    attributes: {
+      skillinnatesphere: isSphereAttribute ? 'S' : '',
+      skillname: name,
+      skillEP: epValue,
+      spellcasttime: castTime,
+      spelltype: spellType,
+      spellrange: range,
+      spelltarget: target,
+      spellduration: duration,
+      skillCP: cpValue,
+    },
+  });
+}
 
 const newUserAttributesByRace = {
   human: {},
@@ -70,6 +91,9 @@ const newUserAttributesByRace = {
     ...createFeatAttributes({ featName: 'Natural Armor', cpValue: 6 }),
     ...createExtraAdvantageAttributes({ name: 'Arboreal Connection', cpValue: 0 }),
     ...createExtraAdvantageAttributes({ name: 'Avoid Metal', cpValue: -4 }),
+    chosenspelltype: 'innate',
+    ...createInnateSpellAttributes({ isSphereAttribute: true, name: 'Nature', cpValue: 4 }),
+    ...createInnateSpellAttributes({ name: 'Meld with Tree', target: 'Self', duration: '1 minute', epValue: 2, cpValue: 3 }),
   },
   custom: {},
 };
