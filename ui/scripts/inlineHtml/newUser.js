@@ -7,45 +7,69 @@
   });
 });
 
-function createBaseFeatAttributes({ featName, cpValue}) {
-  const section = 'feat';
+function createBaseAttributes({ section, attributes }) {
   const newAttributes = {};
-  function addNewAttributeRow(attributesBySuffix) {
-    const rowId = generateTrulyUniqueRowId();
-    Object.keys(attributesBySuffix).forEach((attributeName) => {
-      newAttributes[`repeating_${section}_${rowId}_${attributeName}`] = attributesBySuffix[attributeName];
-    });
-  }
-  addNewAttributeRow({
-    featname: featName,
-    featCP: cpValue,
+  const rowId = generateTrulyUniqueRowId();
+  Object.keys(attributes).forEach((attributeName) => {
+    newAttributes[`repeating_${section}_${rowId}_${attributeName}`] = attributes[attributeName];
   });
   return newAttributes;
 }
+
+function createFeatAttributes({ featName, cpValue }) {
+  return createBaseAttributes({
+    section: 'feat',
+    attributes: {
+      featname: featName,
+      featCP: cpValue,
+    },
+  });
+}
+
+function createExtraAdvantageAttributes({ name, cpValue }) {
+  return createBaseAttributes({
+    section: 'extraadvantage',
+    attributes: {
+      extraadvantagename: name,
+      extraadvantageCP: cpValue,
+    },
+  });
+}
+
+
 const newUserAttributesByRace = {
   human: {},
   elf: {
-    ...createBaseFeatAttributes({ featName: 'Low Light Vision', cpValue: 2 }),
-    ...createBaseFeatAttributes({ featName: 'Ease of Movement', cpValue: 2 }),
+    ...createFeatAttributes({ featName: 'Low Light Vision', cpValue: 2 }),
+    ...createFeatAttributes({ featName: 'Ease of Movement', cpValue: 2 }),
   },
   dwarf: {
-    ...createBaseFeatAttributes({ featName: 'Infravision', cpValue: 2 }),
+    ...createFeatAttributes({ featName: 'Infravision', cpValue: 2 }),
   },
   gnome: {
-    ...createBaseFeatAttributes({ featName: 'Infravision', cpValue: 2 }),
+    ...createFeatAttributes({ featName: 'Infravision', cpValue: 2 }),
   },
   orc: {
-    ...createBaseFeatAttributes({ featName: 'Infravision', cpValue: 2 }),
+    ...createFeatAttributes({ featName: 'Infravision', cpValue: 2 }),
+    ...createExtraAdvantageAttributes({ name: 'Not Attractive', cpValue: -2 }),
   },
-  minotaur: {},
+  minotaur: {
+    height: 6.5,
+    weight: 200,
+    ...createFeatAttributes({ featName: 'Natural Attack', cpValue: 6 }),
+  },
   owlin: {
-    ...createBaseFeatAttributes({ featName: 'Low Light Vision', cpValue: 2 }),
-    ...createBaseFeatAttributes({ featName: 'Natural Armor', cpValue: 2 }),
-    ...createBaseFeatAttributes({ featName: 'Glide', cpValue: 2 }),
+    weight: 100,
+    DX: 2,
+    ...createFeatAttributes({ featName: 'Low Light Vision', cpValue: 2 }),
+    ...createFeatAttributes({ featName: 'Natural Armor', cpValue: 2 }),
+    ...createFeatAttributes({ featName: 'Glide', cpValue: 2 }),
   },
   dryad: {
-    ...createBaseFeatAttributes({ featName: 'Low Light Vision', cpValue: 2 }),
-    ...createBaseFeatAttributes({ featName: 'Natural Armor', cpValue: 6 }),
+    ...createFeatAttributes({ featName: 'Low Light Vision', cpValue: 2 }),
+    ...createFeatAttributes({ featName: 'Natural Armor', cpValue: 6 }),
+    ...createExtraAdvantageAttributes({ name: 'Arboreal Connection', cpValue: 0 }),
+    ...createExtraAdvantageAttributes({ name: 'Avoid Metal', cpValue: -4 }),
   },
   custom: {},
 };
