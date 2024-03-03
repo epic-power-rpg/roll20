@@ -4,7 +4,21 @@ $characterRaces: human, elf, dwarf, gnome, orc, minotaur, owlin, dryad, custom;
 
 .character-sheet-page {
   .title-section {
+    display: flex;
+    justify-content: center;
     text-align: center;
+    align-items: center;
+    gap: 32px;
+    .dragon-logo {
+      display: inline-block;
+      width: 64px;
+      height: 64px;
+      background-size: cover;
+      background-image: url(https://raw.githubusercontent.com/epic-power-rpg/roll20/jazeee-new-users/ui/images/dragon-logo-cutout-64px.png);
+    }
+    .first-dragon-logo {
+      transform: scaleX(-1);
+    }
   }
   .character-chooser {
     .button-grid {

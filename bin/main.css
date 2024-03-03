@@ -2848,7 +2848,21 @@ body.sheet-darkmode .spells .epic-table-header-grid .skillCP-grid, body.sheet-da
 
 /* ---------- New User Welcome Page ------------- */
 .character-sheet-page .title-section {
+  display: flex;
+  justify-content: center;
   text-align: center;
+  align-items: center;
+  gap: 32px;
+}
+.character-sheet-page .title-section .dragon-logo {
+  display: inline-block;
+  width: 64px;
+  height: 64px;
+  background-size: cover;
+  background-image: url(https://raw.githubusercontent.com/epic-power-rpg/roll20/jazeee-new-users/ui/images/dragon-logo-cutout-64px.png);
+}
+.character-sheet-page .title-section .first-dragon-logo {
+  transform: scaleX(-1);
 }
 .character-sheet-page .character-chooser .button-grid {
   display: grid;
