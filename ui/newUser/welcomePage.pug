@@ -1,0 +1,14 @@
+.character-sheet-page
+  .title-section
+    span.dragon-logo.first-dragon-logo
+    .header-content
+      h1 Welcome to Epic Power
+      h2 Who do you want to be today?
+    span.dragon-logo.second-dragon-logo
+  .character-chooser
+    input.new-user-control(name='attr_selected_user_race_option' type='hidden' value="")
+    .race-picker-buttons.button-grid
+      include ./racePickerButtons.pug
+    .create-user-section
+      button.create-new-user-action(name='act_confirm_create_new_user' type='action')
+        | Create Character

@@ -17,4 +17,16 @@
 @import './equipment/equipment.scss';
 @import './spells/spells.scss';
 @import './notes/notes.scss';
+@import './newUser/welcomePage.scss';
 
+.main-content {
+  .new-user-creator, .existing-user {
+    display: none;
+  }
+  input.new-user-control {
+    &[value=""] ~ div.new-user-creator,
+    &:not([value=""]) ~ div.existing-user {
+      display: block;
+    }
+  }
+}

@@ -123,10 +123,6 @@ div.popoverContainer > .fixedPlacementPopover {
   font-weight: normal;
 }
 
-.characterviewer .charsheet {
-  padding: 8px;
-}
-
 input[type=text] {
   padding: 1px 4px 1px 4px;
   height: 22px;
@@ -354,6 +350,13 @@ body.sheet-darkmode .charsheet, body.sheet-darkmode .attributesabilities > * > *
 }
 body.sheet-darkmode .charsheet h1, body.sheet-darkmode .charsheet h2, body.sheet-darkmode .charsheet h3, body.sheet-darkmode .charsheet h4, body.sheet-darkmode .charsheet h5, body.sheet-darkmode .charsheet h6, body.sheet-darkmode .attributesabilities > * > * h1, body.sheet-darkmode .attributesabilities > * > * h2, body.sheet-darkmode .attributesabilities > * > * h3, body.sheet-darkmode .attributesabilities > * > * h4, body.sheet-darkmode .attributesabilities > * > * h5, body.sheet-darkmode .attributesabilities > * > * h6, body.sheet-darkmode .bioinfo > * > * h1, body.sheet-darkmode .bioinfo > * > * h2, body.sheet-darkmode .bioinfo > * > * h3, body.sheet-darkmode .bioinfo > * > * h4, body.sheet-darkmode .bioinfo > * > * h5, body.sheet-darkmode .bioinfo > * > * h6 {
   color: #fff;
+}
+
+.characterviewer .charsheet {
+  padding: 0;
+}
+.characterviewer .charsheet .character-sheet-page {
+  padding: 8px;
 }
 
 body.sheet-darkmode .btn, body.sheet-darkmode .btn.btn-default {
@@ -2841,4 +2844,167 @@ body.sheet-darkmode .spells .epic-table-header-grid .skillCP-grid, body.sheet-da
 .notes div[data-groupname] > div {
   /* and make rows overlap */
   margin-top: -1px;
+}
+
+/* ---------- New User Welcome Page ------------- */
+.character-sheet-page .title-section {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  gap: 32px;
+}
+.character-sheet-page .title-section .dragon-logo {
+  display: inline-block;
+  width: 64px;
+  height: 64px;
+  background-size: cover;
+  background-image: url(https://raw.githubusercontent.com/epic-power-rpg/roll20/jazeee-new-users/ui/images/dragon-logo-cutout-64px.png);
+}
+.character-sheet-page .title-section .first-dragon-logo {
+  transform: scaleX(-1);
+}
+.character-sheet-page .character-chooser .button-grid {
+  display: grid;
+  align-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+.character-sheet-page .character-chooser .button-grid button {
+  min-width: 128px;
+  min-height: 64px;
+}
+.character-sheet-page .character-chooser .race-picker-buttons button {
+  display: flex;
+  font-size: 2.5rem;
+  justify-content: space-around;
+  align-items: center;
+  margin: 8px;
+  padding: 8px;
+}
+.character-sheet-page .character-chooser .race-picker-buttons button img + img {
+  margin-left: 4px;
+}
+.character-sheet-page .character-chooser .race-picker-buttons button img + span {
+  margin-left: 8px;
+}
+.character-sheet-page .character-chooser .race-picker-buttons button img {
+  height: 48px;
+}
+.character-sheet-page .create-user-section {
+  display: none;
+}
+.character-sheet-page input.new-user-control[value=human] ~ .race-picker-buttons button[name=act_create_user_pick_human_option] {
+  color: #fff;
+  background-color: #b56632;
+}
+body.sheet-darkmode .character-sheet-page input.new-user-control[value=human] ~ .race-picker-buttons button[name=act_create_user_pick_human_option] {
+  color: #fff;
+}
+body.sheet-darkmode .character-sheet-page input.new-user-control[value=human] ~ .race-picker-buttons button[name=act_create_user_pick_human_option] {
+  background-color: #b56632;
+}
+.character-sheet-page input.new-user-control[value=elf] ~ .race-picker-buttons button[name=act_create_user_pick_elf_option] {
+  color: #fff;
+  background-color: #b56632;
+}
+body.sheet-darkmode .character-sheet-page input.new-user-control[value=elf] ~ .race-picker-buttons button[name=act_create_user_pick_elf_option] {
+  color: #fff;
+}
+body.sheet-darkmode .character-sheet-page input.new-user-control[value=elf] ~ .race-picker-buttons button[name=act_create_user_pick_elf_option] {
+  background-color: #b56632;
+}
+.character-sheet-page input.new-user-control[value=dwarf] ~ .race-picker-buttons button[name=act_create_user_pick_dwarf_option] {
+  color: #fff;
+  background-color: #b56632;
+}
+body.sheet-darkmode .character-sheet-page input.new-user-control[value=dwarf] ~ .race-picker-buttons button[name=act_create_user_pick_dwarf_option] {
+  color: #fff;
+}
+body.sheet-darkmode .character-sheet-page input.new-user-control[value=dwarf] ~ .race-picker-buttons button[name=act_create_user_pick_dwarf_option] {
+  background-color: #b56632;
+}
+.character-sheet-page input.new-user-control[value=gnome] ~ .race-picker-buttons button[name=act_create_user_pick_gnome_option] {
+  color: #fff;
+  background-color: #b56632;
+}
+body.sheet-darkmode .character-sheet-page input.new-user-control[value=gnome] ~ .race-picker-buttons button[name=act_create_user_pick_gnome_option] {
+  color: #fff;
+}
+body.sheet-darkmode .character-sheet-page input.new-user-control[value=gnome] ~ .race-picker-buttons button[name=act_create_user_pick_gnome_option] {
+  background-color: #b56632;
+}
+.character-sheet-page input.new-user-control[value=orc] ~ .race-picker-buttons button[name=act_create_user_pick_orc_option] {
+  color: #fff;
+  background-color: #b56632;
+}
+body.sheet-darkmode .character-sheet-page input.new-user-control[value=orc] ~ .race-picker-buttons button[name=act_create_user_pick_orc_option] {
+  color: #fff;
+}
+body.sheet-darkmode .character-sheet-page input.new-user-control[value=orc] ~ .race-picker-buttons button[name=act_create_user_pick_orc_option] {
+  background-color: #b56632;
+}
+.character-sheet-page input.new-user-control[value=minotaur] ~ .race-picker-buttons button[name=act_create_user_pick_minotaur_option] {
+  color: #fff;
+  background-color: #b56632;
+}
+body.sheet-darkmode .character-sheet-page input.new-user-control[value=minotaur] ~ .race-picker-buttons button[name=act_create_user_pick_minotaur_option] {
+  color: #fff;
+}
+body.sheet-darkmode .character-sheet-page input.new-user-control[value=minotaur] ~ .race-picker-buttons button[name=act_create_user_pick_minotaur_option] {
+  background-color: #b56632;
+}
+.character-sheet-page input.new-user-control[value=owlin] ~ .race-picker-buttons button[name=act_create_user_pick_owlin_option] {
+  color: #fff;
+  background-color: #b56632;
+}
+body.sheet-darkmode .character-sheet-page input.new-user-control[value=owlin] ~ .race-picker-buttons button[name=act_create_user_pick_owlin_option] {
+  color: #fff;
+}
+body.sheet-darkmode .character-sheet-page input.new-user-control[value=owlin] ~ .race-picker-buttons button[name=act_create_user_pick_owlin_option] {
+  background-color: #b56632;
+}
+.character-sheet-page input.new-user-control[value=dryad] ~ .race-picker-buttons button[name=act_create_user_pick_dryad_option] {
+  color: #fff;
+  background-color: #b56632;
+}
+body.sheet-darkmode .character-sheet-page input.new-user-control[value=dryad] ~ .race-picker-buttons button[name=act_create_user_pick_dryad_option] {
+  color: #fff;
+}
+body.sheet-darkmode .character-sheet-page input.new-user-control[value=dryad] ~ .race-picker-buttons button[name=act_create_user_pick_dryad_option] {
+  background-color: #b56632;
+}
+.character-sheet-page input.new-user-control[value=custom] ~ .race-picker-buttons button[name=act_create_user_pick_custom_option] {
+  color: #fff;
+  background-color: #b56632;
+}
+body.sheet-darkmode .character-sheet-page input.new-user-control[value=custom] ~ .race-picker-buttons button[name=act_create_user_pick_custom_option] {
+  color: #fff;
+}
+body.sheet-darkmode .character-sheet-page input.new-user-control[value=custom] ~ .race-picker-buttons button[name=act_create_user_pick_custom_option] {
+  background-color: #b56632;
+}
+.character-sheet-page input.new-user-control:not([value=""]) ~ .create-user-section {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr;
+}
+.character-sheet-page input.new-user-control:not([value=""]) ~ .create-user-section button {
+  font-size: 2.5rem;
+  margin: 8px;
+  min-height: 48px;
+  color: #fff;
+  background-color: #b56632;
+}
+body.sheet-darkmode .character-sheet-page input.new-user-control:not([value=""]) ~ .create-user-section button {
+  color: #fff;
+}
+body.sheet-darkmode .character-sheet-page input.new-user-control:not([value=""]) ~ .create-user-section button {
+  background-color: #b56632;
+}
+
+.main-content .new-user-creator, .main-content .existing-user {
+  display: none;
+}
+.main-content input.new-user-control[value=""] ~ div.new-user-creator, .main-content input.new-user-control:not([value=""]) ~ div.existing-user {
+  display: block;
 }

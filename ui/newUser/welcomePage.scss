@@ -1,0 +1,84 @@
+/* ---------- New User Welcome Page ------------- */
+
+$characterRaces: human, elf, dwarf, gnome, orc, minotaur, owlin, dryad, custom;
+
+.character-sheet-page {
+  .title-section {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    gap: 32px;
+    .dragon-logo {
+      display: inline-block;
+      width: 64px;
+      height: 64px;
+      background-size: cover;
+      background-image: url(https://raw.githubusercontent.com/epic-power-rpg/roll20/jazeee-new-users/ui/images/dragon-logo-cutout-64px.png);
+    }
+    .first-dragon-logo {
+      transform: scaleX(-1);
+    }
+  }
+  .character-chooser {
+    .button-grid {
+      display: grid;
+      align-items: center;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      button {
+        min-width: 128px;
+        min-height: 64px;
+      }
+    }
+
+    .race-picker-buttons {
+      button {
+        display: flex;
+        font-size: 2.5rem;
+        justify-content: space-around;
+        align-items: center;
+        margin: 8px;
+        padding: 8px;
+        img {
+          + img {
+            margin-left: 4px;
+          }
+          + span {
+            margin-left: 8px;
+          }
+        }
+        img {
+          height: 48px;
+        }
+      }
+    }
+  }
+
+  .create-user-section {
+    display: none;
+  }
+  input.new-user-control {
+    // Show selected race option
+    @each $characterRace in $characterRaces {
+      &[value=#{$characterRace}] ~ .race-picker-buttons {
+        button[name=act_create_user_pick_#{$characterRace}_option] {
+          @include theme-color(primary-highlight-color);
+          @include theme-background-color(primary-highlight-background-color);
+        }
+      }
+    }
+    // Once race is selected, Show Create User Button
+    &:not([value=""]) ~ .create-user-section {
+      display: grid;
+      align-items: center;
+      grid-template-columns: 1fr;
+      button {
+        font-size: 2.5rem;
+        margin: 8px;
+        min-height: 48px;
+        @include theme-color(primary-highlight-color);
+        @include theme-background-color(primary-highlight-background-color);
+      }
+    }
+  }
+}
