@@ -2859,7 +2859,7 @@ body.sheet-darkmode .spells .epic-table-header-grid .skillCP-grid, body.sheet-da
   width: 64px;
   height: 64px;
   background-size: cover;
-  background-image: url(https://raw.githubusercontent.com/epic-power-rpg/roll20/jazeee-new-users/ui/images/dragon-logo-cutout-64px.png);
+  background-image: url(https://raw.githubusercontent.com/epic-power-rpg/roll20/main/ui/images/dragon-logo-cutout-64px.png);
 }
 .character-sheet-page .title-section .first-dragon-logo {
   transform: scaleX(-1);
