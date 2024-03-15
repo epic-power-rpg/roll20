@@ -38,8 +38,8 @@ $themes: (
     field-background-color: #222,
     selected-tab-color: #fff,
     selected-tab-background-color: #b56632,
-    unselected-tab-color: #eee,
-    unselected-tab-background-color: #666,
+    unselected-tab-color: #222,
+    unselected-tab-background-color: color.scale(#b56632, $saturation: -80%, $lightness: 50%),
     table-row-underline-color: color.scale(#b56632, $alpha: -30%),
   ),
 );

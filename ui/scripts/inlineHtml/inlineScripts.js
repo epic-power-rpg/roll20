@@ -780,6 +780,21 @@ function isValueDefined(value) {
 }
 // -------- Skills ---------
 
+function updateUserStatistics() {
+  getAttrs(['race'], (attrs) => {
+    const { race } = attrs;
+    getSectionIDs('skill', (ids) => {
+      const skillCount = ids.length;
+      setAttrs({
+        skillCount,
+        isNewUser: skillCount === 0 && !race,
+      });
+    });
+  });
+}
+
+on('change:race', updateUserStatistics);
+
 // Update the abilities that are copied elsewhere on the character sheet
 const updateCopiedAbilities = function () {
   const DX = 'DX';
@@ -849,7 +864,7 @@ const updateCopiedAbilities = function () {
         update[skill.replace(' ', '_')] = ability;
       }
       setAttrs(update, () => {
-        updateArmorValue();
+        updateArmorValue(updateUserStatistics);
       });
     });
   });
@@ -1121,7 +1136,7 @@ function getLargestWeaponDefense(callback) {
 
 }
 
-const updateArmorValue = function () {
+const updateArmorValue = function (callback) {
   const armorName = 'armor_defense';
   const shieldName = 'shield_defense';
   const defenseBoostName = 'defense_boost';
@@ -1157,7 +1172,7 @@ const updateArmorValue = function () {
           update[`current_${defense}_without_armor`] = defenseIsValid ? String(total) : '--';
           update[`current_${defense}_with_armor`] = defenseIsValid ? String(total + cur_armor) : '--';
         }
-        setAttrs(update);
+        setAttrs(update, callback);
       });
   });
 };
