@@ -33,6 +33,23 @@
   }
   @include grid-table-fp-cp-columns();
 
+  button.add-base-skills-button {
+    min-width: 128px;
+    min-height: 32px;
+  }
+  button.add-base-skills-button, button.approve-add-base-skills-button {
+    font-size: 1.5rem;
+    @include theme-color(primary-highlight-color);
+    @include theme-background-color(primary-highlight-background-color);
+  }
+  button.add-base-skills-button {
+    display: none;
+  }
+  input.skill-count-control {
+    &[value="0"] ~ button.add-base-skills-button {
+      display: block;
+    }
+  }
   .add-base-skills-section {
     margin-top: 8px;
     @include popover-control('addBaseSkills');

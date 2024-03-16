@@ -1,5 +1,7 @@
 // -------- Create New User --------
-['human', 'elf', 'dwarf', 'gnome', 'orc', 'minotaur', 'owlin', 'dryad', 'custom'].forEach(function (newUser) {
+const OTHER_RACE = 'other';
+
+['human', 'elf', 'dwarf', 'gnome', 'orc', 'minotaur', 'owlin', 'dryad', OTHER_RACE].forEach(function (newUser) {
   on(`clicked:create_user_pick_${newUser}_option`, () => {
     setAttrs({
       selected_user_race_option: newUser,
@@ -95,7 +97,7 @@ const newUserAttributesByRace = {
     ...createInnateSpellAttributes({ isSphereAttribute: true, name: 'Nature', cpValue: 4 }),
     ...createInnateSpellAttributes({ name: 'Meld with Tree', target: 'Self', duration: '1 minute', epValue: 2, cpValue: 3 }),
   },
-  custom: {},
+  [OTHER_RACE]: {},
 };
 
 on('clicked:confirm_create_new_user', () => {
@@ -106,8 +108,9 @@ on('clicked:confirm_create_new_user', () => {
       log(`Something went wrong for selectedUserOption: ${selectedRace}`);
       return;
     }
+    const isRacePicked = selectedRace !== OTHER_RACE;
     setAttrs({
-      ...(createBaseSkillsAttributes()),
+      ...(isRacePicked ? createBaseSkillsAttributes() : {}),
       ...newUserAttributes,
       race: `${selectedRace.charAt(0).toUpperCase()}${selectedRace.slice(1)}`,
       chosentab: 'basic',

@@ -24,8 +24,8 @@
     display: none;
   }
   input.new-user-control {
-    &[value=""] ~ div.new-user-creator,
-    &:not([value=""]) ~ div.existing-user {
+    &[value="true"] ~ div.new-user-creator,
+    &:not([value="true"]) ~ div.existing-user {
       display: block;
     }
   }

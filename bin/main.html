@@ -1,5 +1,5 @@
 <div class="main-content">
-  <input class="new-user-control" name="attr_race" type="hidden" value="" />
+  <input class="new-user-control" name="attr_isNewUser" type="hidden" value="" />
   <div class="new-user-creator character-sheet-page">
     <div class="character-sheet-page">
       <div class="title-section">
@@ -53,8 +53,8 @@
             <img src="https://raw.githubusercontent.com/epic-power-rpg/roll20/main/ui/newUser/images/dryad-male-2.jpg" alt="Dryad Male" />
             <span>Dryad</span>
           </button>
-          <button class="new-race-option" name="act_create_user_pick_custom_option" type="action">
-            <span>Custom</span>
+          <button class="new-race-option" name="act_create_user_pick_other_option" type="action">
+            <span>Other</span>
           </button>
         </div>
         <div class="create-user-section">
@@ -493,7 +493,6 @@
             <span class="extraadvantagename extraadvantage-row" name="attr_extraadvantagename"></span>
           </fieldset>
           <div class="character-avatars">
-            <img name="attr_character_avatar" />
             <img name="attr_character_token" />
           </div>
         </div>
@@ -590,7 +589,6 @@
             <input class="character-attributes-value-grid" name="attr_age" type="number" />
           </div>
           <div class="character-avatars">
-            <img name="attr_character_avatar" />
             <img name="attr_character_token" />
           </div>
         </div>
@@ -804,7 +802,8 @@
         </fieldset>
       </div>
       <div class="add-base-skills-section">
-        <button name="act_popover_addBaseSkills" type="action">Add Base Skills</button>
+        <input class="skill-count-control" name="attr_skillCount" type="hidden" value="" />
+        <button class="add-base-skills-button" name="act_popover_addBaseSkills" type="action">Add Base Skills</button>
         <input class="sectioncontrol" name="attr_chosenPopover" type="hidden" value="false" />
         <div class="section addBaseSkills popoverContainer">
           <div class="popoverBackdrop">
@@ -815,7 +814,7 @@
             <h2>Add Base Skills</h2>
             <p>This will add skills to your skills tab.</p>
             <p>Are you sure you want to fill in skills? (You can always delete them)</p>
-            <button name="act_addbaseskills" type="action">Yes, Please Add Base Skills</button>
+            <button class="approve-add-base-skills-button" name="act_addbaseskills" type="action">Yes, Please Add Base Skills</button>
           </div>
         </div>
       </div>
@@ -2065,6 +2064,21 @@ function isValueDefined(value) {
 }
 // -------- Skills ---------
 
+function updateUserStatistics() {
+  getAttrs(['race'], (attrs) => {
+    const { race } = attrs;
+    getSectionIDs('skill', (ids) => {
+      const skillCount = ids.length;
+      setAttrs({
+        skillCount,
+        isNewUser: skillCount === 0 && !race,
+      });
+    });
+  });
+}
+
+on('change:race', updateUserStatistics);
+
 // Update the abilities that are copied elsewhere on the character sheet
 const updateCopiedAbilities = function () {
   const DX = 'DX';
@@ -2134,7 +2148,7 @@ const updateCopiedAbilities = function () {
         update[skill.replace(' ', '_')] = ability;
       }
       setAttrs(update, () => {
-        updateArmorValue();
+        updateArmorValue(updateUserStatistics);
       });
     });
   });
@@ -2406,7 +2420,7 @@ function getLargestWeaponDefense(callback) {
 
 }
 
-const updateArmorValue = function () {
+const updateArmorValue = function (callback) {
   const armorName = 'armor_defense';
   const shieldName = 'shield_defense';
   const defenseBoostName = 'defense_boost';
@@ -2442,7 +2456,7 @@ const updateArmorValue = function () {
           update[`current_${defense}_without_armor`] = defenseIsValid ? String(total) : '--';
           update[`current_${defense}_with_armor`] = defenseIsValid ? String(total + cur_armor) : '--';
         }
-        setAttrs(update);
+        setAttrs(update, callback);
       });
   });
 };
@@ -2618,7 +2632,9 @@ on('remove:repeating_innate change:repeating_innate:skillCP',
 
 log('!!! SCRIPT LOADED !!!');
   // -------- Create New User --------
-['human', 'elf', 'dwarf', 'gnome', 'orc', 'minotaur', 'owlin', 'dryad', 'custom'].forEach(function (newUser) {
+const OTHER_RACE = 'other';
+
+['human', 'elf', 'dwarf', 'gnome', 'orc', 'minotaur', 'owlin', 'dryad', OTHER_RACE].forEach(function (newUser) {
   on(`clicked:create_user_pick_${newUser}_option`, () => {
     setAttrs({
       selected_user_race_option: newUser,
@@ -2714,7 +2730,7 @@ const newUserAttributesByRace = {
     ...createInnateSpellAttributes({ isSphereAttribute: true, name: 'Nature', cpValue: 4 }),
     ...createInnateSpellAttributes({ name: 'Meld with Tree', target: 'Self', duration: '1 minute', epValue: 2, cpValue: 3 }),
   },
-  custom: {},
+  [OTHER_RACE]: {},
 };
 
 on('clicked:confirm_create_new_user', () => {
@@ -2725,8 +2741,9 @@ on('clicked:confirm_create_new_user', () => {
       log(`Something went wrong for selectedUserOption: ${selectedRace}`);
       return;
     }
+    const isRacePicked = selectedRace !== OTHER_RACE;
     setAttrs({
-      ...(createBaseSkillsAttributes()),
+      ...(isRacePicked ? createBaseSkillsAttributes() : {}),
       ...newUserAttributes,
       race: `${selectedRace.charAt(0).toUpperCase()}${selectedRace.slice(1)}`,
       chosentab: 'basic',

@@ -109,7 +109,8 @@ div.popoverContainer > .fixedPlacementPopover {
   gap: 16px;
 }
 .character-avatars img {
-  max-width: 48px;
+  max-width: 96px;
+  aspect-ratio: 1;
 }
 
 /* Styles that apply everywhere */
@@ -931,10 +932,10 @@ body.sheet-darkmode .top-section .defense-block div[data-epic-table-name=defense
   cursor: pointer;
 }
 body.sheet-darkmode .dialog.characterviewer .nav-tabs > li:not(.active) > a {
-  color: #eee;
+  color: #222;
 }
 body.sheet-darkmode .dialog.characterviewer .nav-tabs > li:not(.active) > a {
-  background-color: #666;
+  background-color: #c1b8b1;
 }
 
 .dialog.characterviewer .nav-tabs > li:not(.active) > a:hover,
@@ -951,7 +952,7 @@ body.sheet-darkmode .dialog.characterviewer .nav-tabs > li:not(.active) > a:focu
 }
 body.sheet-darkmode .dialog.characterviewer .nav-tabs > li:not(.active) > a:hover,
 body.sheet-darkmode .dialog.characterviewer .nav-tabs > li:not(.active) > a:focus {
-  background-color: #666;
+  background-color: #c1b8b1;
 }
 
 .dialog.characterviewer .nav-tabs > .active > a {
@@ -986,10 +987,10 @@ body.sheet-darkmode .dialog.characterviewer .nav-tabs > .active > a:hover {
   font-size: 110%;
 }
 body.sheet-darkmode .tab {
-  color: #eee;
+  color: #222;
 }
 body.sheet-darkmode .tab {
-  background-color: #666;
+  background-color: #c1b8b1;
 }
 
 .tabcontrol[value=overview] ~ .tab[name=act_overview],
@@ -2104,6 +2105,27 @@ body.sheet-darkmode .epic-skills-tab .epic-table-header-grid .skillFP-grid, body
 body.sheet-darkmode .epic-skills-tab .epic-table-header-grid .skillCP-grid, body.sheet-darkmode .epic-skills-tab .epic-table-header-grid .CP-grid {
   color: rgb(145, 145, 246);
 }
+.epic-skills-tab button.add-base-skills-button {
+  min-width: 128px;
+  min-height: 32px;
+}
+.epic-skills-tab button.add-base-skills-button, .epic-skills-tab button.approve-add-base-skills-button {
+  font-size: 1.5rem;
+  color: #fff;
+  background-color: #b56632;
+}
+body.sheet-darkmode .epic-skills-tab button.add-base-skills-button, body.sheet-darkmode .epic-skills-tab button.approve-add-base-skills-button {
+  color: #fff;
+}
+body.sheet-darkmode .epic-skills-tab button.add-base-skills-button, body.sheet-darkmode .epic-skills-tab button.approve-add-base-skills-button {
+  background-color: #b56632;
+}
+.epic-skills-tab button.add-base-skills-button {
+  display: none;
+}
+.epic-skills-tab input.skill-count-control[value="0"] ~ button.add-base-skills-button {
+  display: block;
+}
 .epic-skills-tab .add-base-skills-section {
   margin-top: 8px;
 }
@@ -2973,14 +2995,14 @@ body.sheet-darkmode .character-sheet-page input.new-user-control[value=dryad] ~ 
 body.sheet-darkmode .character-sheet-page input.new-user-control[value=dryad] ~ .race-picker-buttons button[name=act_create_user_pick_dryad_option] {
   background-color: #b56632;
 }
-.character-sheet-page input.new-user-control[value=custom] ~ .race-picker-buttons button[name=act_create_user_pick_custom_option] {
+.character-sheet-page input.new-user-control[value=other] ~ .race-picker-buttons button[name=act_create_user_pick_other_option] {
   color: #fff;
   background-color: #b56632;
 }
-body.sheet-darkmode .character-sheet-page input.new-user-control[value=custom] ~ .race-picker-buttons button[name=act_create_user_pick_custom_option] {
+body.sheet-darkmode .character-sheet-page input.new-user-control[value=other] ~ .race-picker-buttons button[name=act_create_user_pick_other_option] {
   color: #fff;
 }
-body.sheet-darkmode .character-sheet-page input.new-user-control[value=custom] ~ .race-picker-buttons button[name=act_create_user_pick_custom_option] {
+body.sheet-darkmode .character-sheet-page input.new-user-control[value=other] ~ .race-picker-buttons button[name=act_create_user_pick_other_option] {
   background-color: #b56632;
 }
 .character-sheet-page input.new-user-control:not([value=""]) ~ .create-user-section {
@@ -3005,6 +3027,6 @@ body.sheet-darkmode .character-sheet-page input.new-user-control:not([value=""])
 .main-content .new-user-creator, .main-content .existing-user {
   display: none;
 }
-.main-content input.new-user-control[value=""] ~ div.new-user-creator, .main-content input.new-user-control:not([value=""]) ~ div.existing-user {
+.main-content input.new-user-control[value=true] ~ div.new-user-creator, .main-content input.new-user-control:not([value=true]) ~ div.existing-user {
   display: block;
 }
