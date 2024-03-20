@@ -1093,7 +1093,7 @@ function createBaseSkillsAttributes() {
   addNewSkill('Persuade', { skillattribute: 'IQ', skillexpertise: 'ST' });
   addNewSkill('People Insight', { skillattribute: 'IQ', skillexpertise: 'ST' });
   addNewDiscipline('Defense', { skillexpertise: 1 });
-  addNewSkill('Dodge', { skillattribute: 'IQ+DX', skillexpertise: '1', skillbase: -3 });
+  addNewSkill('Dodge', { skillattribute: 'DX', skillexpertise: '1', skillbase: -3 });
   addNewDiscipline('Attack', { skillexpertise: 1 });
   addNewSkill('Your Weapon', { skillattribute: 'DX', skillexpertise: '1', skillbase: 0 });
   return newAttributes;
