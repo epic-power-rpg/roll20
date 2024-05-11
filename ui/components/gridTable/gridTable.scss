@@ -11,11 +11,12 @@ $grid-column-gap: 2px;
   @include theme-background-color(primary-highlight-background-color);
   padding: 0 $grid-padding;
   margin-bottom: $grid-padding;
-  word-break: break-word;
   > div {
     text-align: center;
     margin: auto;
     font-weight: bold;
+    width: 100%;
+    overflow: hidden;
   }
 }
 

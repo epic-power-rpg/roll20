@@ -19,7 +19,7 @@
   display: block;
 }
 
-$notes-popover-width: 16px;
+$notes-popover-width: 20px;
 .spell-tabs {
 
   border-bottom: solid 1px;
@@ -49,11 +49,11 @@ $notes-popover-width: 16px;
   @import './spellsNotesPopover.scss';
 
   $arcane-grid-template: getResponsiveGridWidths(
-    40px, // Discipline?
+    1fr, // Discipline?
     4fr, // Name
-    32px, // Ability
+    1fr, // Ability
     40px, // Mod
-    0.5fr, // (Dice)
+    20px, // (Dice)
     40px, // EP
     1fr, // Cast Time
     80px, // Touch/ Ray/ Missile - 80px for two rows not three
