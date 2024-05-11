@@ -1779,7 +1779,7 @@ function setupSpellNotes(spellDomain) {
     });
   });
 
-  on('clicked:closepopoverspellnotes', closeAllSpellNotes);
+  on(`clicked:repeating_${spellDomain}:closepopoverspellnotes`, closeAllSpellNotes);
 }
 ['arcane', 'divine', 'innate'].forEach(setupSpellNotes);
 
