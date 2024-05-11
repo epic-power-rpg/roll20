@@ -754,6 +754,7 @@ body.sheet-darkmode .top-section {
   background-color: #b56632;
   padding: 0 2px;
   margin-bottom: 2px;
+  word-break: break-word;
 }
 body.sheet-darkmode .top-section .defense-block .epic-table-header-grid.defenses-with-spanning-input {
   color: #fff;
@@ -765,8 +766,6 @@ body.sheet-darkmode .top-section .defense-block .epic-table-header-grid.defenses
   text-align: center;
   margin: auto;
   font-weight: bold;
-  width: 100%;
-  overflow: hidden;
 }
 .top-section .defense-block div[data-groupname=repeating_defenses-with-spanning-input] > div,
 .top-section .defense-block div[data-epic-table-name=defenses-with-spanning-input] {
@@ -819,6 +818,7 @@ body.sheet-darkmode .top-section .defense-block .epic-table-header-grid.defenses
   background-color: #b56632;
   padding: 0 2px;
   margin-bottom: 2px;
+  word-break: break-word;
 }
 body.sheet-darkmode .top-section .defense-block .epic-table-header-grid.defenses {
   color: #fff;
@@ -830,8 +830,6 @@ body.sheet-darkmode .top-section .defense-block .epic-table-header-grid.defenses
   text-align: center;
   margin: auto;
   font-weight: bold;
-  width: 100%;
-  overflow: hidden;
 }
 .top-section .defense-block div[data-groupname=repeating_defenses] > div,
 .top-section .defense-block div[data-epic-table-name=defenses] {
@@ -1091,6 +1089,7 @@ body.sheet-darkmode .weight-penalty-table > div:not(:last-child):not(.table-head
   background-color: #b56632;
   padding: 0 2px;
   margin-bottom: 2px;
+  word-break: break-word;
 }
 body.sheet-darkmode .overview-tab .advantage-overview .epic-table-header-grid.advantage {
   color: #fff;
@@ -1102,8 +1101,6 @@ body.sheet-darkmode .overview-tab .advantage-overview .epic-table-header-grid.ad
   text-align: center;
   margin: auto;
   font-weight: bold;
-  width: 100%;
-  overflow: hidden;
 }
 .overview-tab .advantage-overview div[data-groupname=repeating_advantage] > div,
 .overview-tab .advantage-overview div[data-epic-table-name=advantage] {
@@ -1156,6 +1153,7 @@ body.sheet-darkmode .overview-tab .advantage-overview .epic-table-header-grid.ad
   background-color: #b56632;
   padding: 0 2px;
   margin-bottom: 2px;
+  word-break: break-word;
 }
 body.sheet-darkmode .overview-tab .advantage-overview .epic-table-header-grid.extraadvantage {
   color: #fff;
@@ -1167,8 +1165,6 @@ body.sheet-darkmode .overview-tab .advantage-overview .epic-table-header-grid.ex
   text-align: center;
   margin: auto;
   font-weight: bold;
-  width: 100%;
-  overflow: hidden;
 }
 .overview-tab .advantage-overview div[data-groupname=repeating_extraadvantage] > div,
 .overview-tab .advantage-overview div[data-epic-table-name=extraadvantage] {
@@ -1260,6 +1256,7 @@ body.sheet-darkmode .overview-tab .advantage-overview .extraadvantage-row {
   background-color: #b56632;
   padding: 0 2px;
   margin-bottom: 2px;
+  word-break: break-word;
 }
 body.sheet-darkmode .overview-tab .feat-overview .epic-table-header-grid.feat {
   color: #fff;
@@ -1271,8 +1268,6 @@ body.sheet-darkmode .overview-tab .feat-overview .epic-table-header-grid.feat {
   text-align: center;
   margin: auto;
   font-weight: bold;
-  width: 100%;
-  overflow: hidden;
 }
 .overview-tab .feat-overview div[data-groupname=repeating_feat] > div,
 .overview-tab .feat-overview div[data-epic-table-name=feat] {
@@ -1345,6 +1340,7 @@ body.sheet-darkmode .overview-tab .feat-overview > div[data-groupname] > div {
   background-color: #b56632;
   padding: 0 2px;
   margin-bottom: 2px;
+  word-break: break-word;
 }
 body.sheet-darkmode .overview-tab .skills-overview .epic-table-header-grid.skills-table {
   color: #fff;
@@ -1356,8 +1352,6 @@ body.sheet-darkmode .overview-tab .skills-overview .epic-table-header-grid.skill
   text-align: center;
   margin: auto;
   font-weight: bold;
-  width: 100%;
-  overflow: hidden;
 }
 .overview-tab .skills-overview div[data-groupname=repeating_skills-table] > div,
 .overview-tab .skills-overview div[data-epic-table-name=skills-table] {
@@ -1442,6 +1436,7 @@ body.sheet-darkmode .overview-tab .skills-overview > div[data-groupname] .skill-
   background-color: #b56632;
   padding: 0 2px;
   margin-bottom: 2px;
+  word-break: break-word;
 }
 body.sheet-darkmode .overview-tab .weapons-overview .epic-table-header-grid.weapons-table {
   color: #fff;
@@ -1453,8 +1448,6 @@ body.sheet-darkmode .overview-tab .weapons-overview .epic-table-header-grid.weap
   text-align: center;
   margin: auto;
   font-weight: bold;
-  width: 100%;
-  overflow: hidden;
 }
 .overview-tab .weapons-overview div[data-groupname=repeating_weapons-table] > div,
 .overview-tab .weapons-overview div[data-epic-table-name=weapons-table] {
@@ -1507,6 +1500,7 @@ body.sheet-darkmode .overview-tab .weapons-overview .epic-table-header-grid.weap
   background-color: #b56632;
   padding: 0 2px;
   margin-bottom: 2px;
+  word-break: break-word;
 }
 body.sheet-darkmode .overview-tab .weapons-overview .epic-table-header-grid.weapons-equipmentnotes-table {
   color: #fff;
@@ -1518,8 +1512,6 @@ body.sheet-darkmode .overview-tab .weapons-overview .epic-table-header-grid.weap
   text-align: center;
   margin: auto;
   font-weight: bold;
-  width: 100%;
-  overflow: hidden;
 }
 .overview-tab .weapons-overview div[data-groupname=repeating_weapons-equipmentnotes-table] > div,
 .overview-tab .weapons-overview div[data-epic-table-name=weapons-equipmentnotes-table] {
@@ -1611,6 +1603,7 @@ body.sheet-darkmode .overview-tab .weapons-overview > div[data-groupname] .weapo
   background-color: #b56632;
   padding: 0 2px;
   margin-bottom: 2px;
+  word-break: break-word;
 }
 body.sheet-darkmode .basic-tab .character-attributes .epic-table-header-grid.character-attributes {
   color: #fff;
@@ -1622,8 +1615,6 @@ body.sheet-darkmode .basic-tab .character-attributes .epic-table-header-grid.cha
   text-align: center;
   margin: auto;
   font-weight: bold;
-  width: 100%;
-  overflow: hidden;
 }
 .basic-tab .character-attributes div[data-groupname=repeating_character-attributes] > div,
 .basic-tab .character-attributes div[data-epic-table-name=character-attributes] {
@@ -1699,6 +1690,7 @@ body.sheet-darkmode .basic-tab .character-attributes div[data-epic-table-name=ch
   background-color: #b56632;
   padding: 0 2px;
   margin-bottom: 2px;
+  word-break: break-word;
 }
 body.sheet-darkmode .basic-tab .advantages .epic-table-header-grid.advantage {
   color: #fff;
@@ -1710,8 +1702,6 @@ body.sheet-darkmode .basic-tab .advantages .epic-table-header-grid.advantage {
   text-align: center;
   margin: auto;
   font-weight: bold;
-  width: 100%;
-  overflow: hidden;
 }
 .basic-tab .advantages div[data-groupname=repeating_advantage] > div,
 .basic-tab .advantages div[data-epic-table-name=advantage] {
@@ -1779,6 +1769,7 @@ body.sheet-darkmode .basic-tab .advantages div[data-epic-table-name=advantage] +
   background-color: #b56632;
   padding: 0 2px;
   margin-bottom: 2px;
+  word-break: break-word;
 }
 body.sheet-darkmode .basic-tab .advantages .epic-table-header-grid.extraadvantage {
   color: #fff;
@@ -1790,8 +1781,6 @@ body.sheet-darkmode .basic-tab .advantages .epic-table-header-grid.extraadvantag
   text-align: center;
   margin: auto;
   font-weight: bold;
-  width: 100%;
-  overflow: hidden;
 }
 .basic-tab .advantages div[data-groupname=repeating_extraadvantage] > div,
 .basic-tab .advantages div[data-epic-table-name=extraadvantage] {
@@ -1894,6 +1883,7 @@ body.sheet-darkmode .basic-tab .advantages .epic-table-header-grid .skillCP-grid
   background-color: #b56632;
   padding: 0 2px;
   margin-bottom: 2px;
+  word-break: break-word;
 }
 body.sheet-darkmode .basic-tab .feats .epic-table-header-grid.feat {
   color: #fff;
@@ -1905,8 +1895,6 @@ body.sheet-darkmode .basic-tab .feats .epic-table-header-grid.feat {
   text-align: center;
   margin: auto;
   font-weight: bold;
-  width: 100%;
-  overflow: hidden;
 }
 .basic-tab .feats div[data-groupname=repeating_feat] > div,
 .basic-tab .feats div[data-epic-table-name=feat] {
@@ -2008,6 +1996,7 @@ body.sheet-darkmode .basic-tab .feats .epic-table-header-grid .skillCP-grid, bod
   background-color: #b56632;
   padding: 0 2px;
   margin-bottom: 2px;
+  word-break: break-word;
 }
 body.sheet-darkmode .epic-skills-tab .epic-table-header-grid.skill {
   color: #fff;
@@ -2019,8 +2008,6 @@ body.sheet-darkmode .epic-skills-tab .epic-table-header-grid.skill {
   text-align: center;
   margin: auto;
   font-weight: bold;
-  width: 100%;
-  overflow: hidden;
 }
 .epic-skills-tab div[data-groupname=repeating_skill] > div,
 .epic-skills-tab div[data-epic-table-name=skill] {
@@ -2164,6 +2151,7 @@ body.sheet-darkmode .epic-skills-tab button.add-base-skills-button, body.sheet-d
   background-color: #b56632;
   padding: 0 2px;
   margin-bottom: 2px;
+  word-break: break-word;
 }
 body.sheet-darkmode .equipment-tab .epic-table-header-grid.armor {
   color: #fff;
@@ -2175,8 +2163,6 @@ body.sheet-darkmode .equipment-tab .epic-table-header-grid.armor {
   text-align: center;
   margin: auto;
   font-weight: bold;
-  width: 100%;
-  overflow: hidden;
 }
 .equipment-tab div[data-groupname=repeating_armor] > div,
 .equipment-tab div[data-epic-table-name=armor] {
@@ -2244,6 +2230,7 @@ body.sheet-darkmode .equipment-tab div[data-epic-table-name=armor] + div[data-ep
   background-color: #b56632;
   padding: 0 2px;
   margin-bottom: 2px;
+  word-break: break-word;
 }
 body.sheet-darkmode .equipment-tab .epic-table-header-grid.shield {
   color: #fff;
@@ -2255,8 +2242,6 @@ body.sheet-darkmode .equipment-tab .epic-table-header-grid.shield {
   text-align: center;
   margin: auto;
   font-weight: bold;
-  width: 100%;
-  overflow: hidden;
 }
 .equipment-tab div[data-groupname=repeating_shield] > div,
 .equipment-tab div[data-epic-table-name=shield] {
@@ -2324,6 +2309,7 @@ body.sheet-darkmode .equipment-tab div[data-epic-table-name=shield] + div[data-e
   background-color: #b56632;
   padding: 0 2px;
   margin-bottom: 2px;
+  word-break: break-word;
 }
 body.sheet-darkmode .equipment-tab .epic-table-header-grid.weapon {
   color: #fff;
@@ -2335,8 +2321,6 @@ body.sheet-darkmode .equipment-tab .epic-table-header-grid.weapon {
   text-align: center;
   margin: auto;
   font-weight: bold;
-  width: 100%;
-  overflow: hidden;
 }
 .equipment-tab div[data-groupname=repeating_weapon] > div,
 .equipment-tab div[data-epic-table-name=weapon] {
@@ -2404,6 +2388,7 @@ body.sheet-darkmode .equipment-tab div[data-epic-table-name=weapon] + div[data-e
   background-color: #b56632;
   padding: 0 2px;
   margin-bottom: 2px;
+  word-break: break-word;
 }
 body.sheet-darkmode .equipment-tab .epic-table-header-grid.item {
   color: #fff;
@@ -2415,8 +2400,6 @@ body.sheet-darkmode .equipment-tab .epic-table-header-grid.item {
   text-align: center;
   margin: auto;
   font-weight: bold;
-  width: 100%;
-  overflow: hidden;
 }
 .equipment-tab div[data-groupname=repeating_item] > div,
 .equipment-tab div[data-epic-table-name=item] {
@@ -2569,12 +2552,13 @@ body.sheet-darkmode .spells .spellNotesPopover button.popoverButton {
 }
 .spells .epic-table-header-grid.arcane {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 4fr) minmax(0, 1fr) minmax(0, 40px) minmax(0, 20px) minmax(0, 40px) minmax(0, 1fr) minmax(0, 80px) minmax(0, 1.5fr) minmax(0, 2fr) minmax(0, 1.5fr) minmax(0, 20px) minmax(0, 24px) minmax(0, 24px) minmax(0, 40px) minmax(0, auto) minmax(0, 40px);
+  grid-template-columns: minmax(0, 40px) minmax(0, 4fr) minmax(0, 32px) minmax(0, 40px) minmax(0, 0.5fr) minmax(0, 40px) minmax(0, 1fr) minmax(0, 80px) minmax(0, 1.5fr) minmax(0, 2fr) minmax(0, 1.5fr) minmax(0, 16px) minmax(0, 24px) minmax(0, 24px) minmax(0, 40px) minmax(0, auto) minmax(0, 40px);
   column-gap: 2px;
   color: #fff;
   background-color: #b56632;
   padding: 0 2px;
   margin-bottom: 2px;
+  word-break: break-word;
 }
 body.sheet-darkmode .spells .epic-table-header-grid.arcane {
   color: #fff;
@@ -2586,13 +2570,11 @@ body.sheet-darkmode .spells .epic-table-header-grid.arcane {
   text-align: center;
   margin: auto;
   font-weight: bold;
-  width: 100%;
-  overflow: hidden;
 }
 .spells div[data-groupname=repeating_arcane] > div,
 .spells div[data-epic-table-name=arcane] {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 4fr) minmax(0, 1fr) minmax(0, 40px) minmax(0, 20px) minmax(0, 40px) minmax(0, 1fr) minmax(0, 80px) minmax(0, 1.5fr) minmax(0, 2fr) minmax(0, 1.5fr) minmax(0, 20px) minmax(0, 24px) minmax(0, 24px) minmax(0, 40px) minmax(0, auto) minmax(0, 40px);
+  grid-template-columns: minmax(0, 40px) minmax(0, 4fr) minmax(0, 32px) minmax(0, 40px) minmax(0, 0.5fr) minmax(0, 40px) minmax(0, 1fr) minmax(0, 80px) minmax(0, 1.5fr) minmax(0, 2fr) minmax(0, 1.5fr) minmax(0, 16px) minmax(0, 24px) minmax(0, 24px) minmax(0, 40px) minmax(0, auto) minmax(0, 40px);
   row-gap: 0;
   column-gap: 2px;
   background: transparent;
@@ -2664,12 +2646,13 @@ body.sheet-darkmode .spells div[data-epic-table-name=arcane] + div[data-epic-tab
 }
 .spells .epic-table-header-grid.divine {
   display: grid;
-  grid-template-columns: minmax(0, 6fr) minmax(0, 20px) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr);
+  grid-template-columns: minmax(0, 6fr) minmax(0, 16px) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr);
   column-gap: 2px;
   color: #fff;
   background-color: #b56632;
   padding: 0 2px;
   margin-bottom: 2px;
+  word-break: break-word;
 }
 body.sheet-darkmode .spells .epic-table-header-grid.divine {
   color: #fff;
@@ -2681,13 +2664,11 @@ body.sheet-darkmode .spells .epic-table-header-grid.divine {
   text-align: center;
   margin: auto;
   font-weight: bold;
-  width: 100%;
-  overflow: hidden;
 }
 .spells div[data-groupname=repeating_divine] > div,
 .spells div[data-epic-table-name=divine] {
   display: grid;
-  grid-template-columns: minmax(0, 6fr) minmax(0, 20px) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr);
+  grid-template-columns: minmax(0, 6fr) minmax(0, 16px) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr);
   row-gap: 0;
   column-gap: 2px;
   background: transparent;
@@ -2744,12 +2725,13 @@ body.sheet-darkmode .spells div[data-epic-table-name=divine] + div[data-epic-tab
 }
 .spells .epic-table-header-grid.innate {
   display: grid;
-  grid-template-columns: minmax(0, 40px) minmax(0, 6fr) minmax(0, 20px) minmax(0, 32px) minmax(0, 2fr) minmax(0, 2fr) minmax(0, 2fr) minmax(0, 3fr) minmax(0, 2fr) minmax(0, 32px);
+  grid-template-columns: minmax(0, 40px) minmax(0, 6fr) minmax(0, 16px) minmax(0, 32px) minmax(0, 2fr) minmax(0, 2fr) minmax(0, 2fr) minmax(0, 3fr) minmax(0, 2fr) minmax(0, 32px);
   column-gap: 2px;
   color: #fff;
   background-color: #b56632;
   padding: 0 2px;
   margin-bottom: 2px;
+  word-break: break-word;
 }
 body.sheet-darkmode .spells .epic-table-header-grid.innate {
   color: #fff;
@@ -2761,13 +2743,11 @@ body.sheet-darkmode .spells .epic-table-header-grid.innate {
   text-align: center;
   margin: auto;
   font-weight: bold;
-  width: 100%;
-  overflow: hidden;
 }
 .spells div[data-groupname=repeating_innate] > div,
 .spells div[data-epic-table-name=innate] {
   display: grid;
-  grid-template-columns: minmax(0, 40px) minmax(0, 6fr) minmax(0, 20px) minmax(0, 32px) minmax(0, 2fr) minmax(0, 2fr) minmax(0, 2fr) minmax(0, 3fr) minmax(0, 2fr) minmax(0, 32px);
+  grid-template-columns: minmax(0, 40px) minmax(0, 6fr) minmax(0, 16px) minmax(0, 32px) minmax(0, 2fr) minmax(0, 2fr) minmax(0, 2fr) minmax(0, 3fr) minmax(0, 2fr) minmax(0, 32px);
   row-gap: 0;
   column-gap: 2px;
   background: transparent;
