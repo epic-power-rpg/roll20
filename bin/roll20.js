@@ -1,82 +1,121 @@
 // eslint-disable-next-line no-unused-vars
-
-// Roll a single special die, and return its value and text string.
-const RollSpecialDie = function () {
-  const die = Math.ceil(6 * Math.random());
-  let value;
-  let text;
-  if (die === 6) {
-    value = 0;
-    extra = 1;
-    text = '&#127922;'; // game die character
-  } else {
-    value = die - 3;
-    extra = 0;
-    color = value < 0 ? 'red' : (value > 0 ? 'DodgerBlue': 'silver');
-    digit = value.toString();
-      text = '<span style="color:' + color + '";>' + digit + '</span>';
-  }
-  return [value, extra, text];
-};
-
-// Roll a single extra die, and return its value and text string.
-const RollExtraDie = function () {
-  const die = Math.ceil(6 * Math.random());
-  let value;
-  let extra;
-  let text;
-  if (die === 6) {
-    value = 4;
-    extra = 1;
-    text = '<span style="color:silver";>4/</span>&#127922;'; // gamedie char.
-  } else {
-    value = die;
-    extra = 0;
-    digit = value.toString();
-    text = '<span style="color:silver";>' + digit + '</span>';
-  }
-  return [value, extra, text];
-};
-
-// Roll three special dice.
-const RollSpecialDice = function() {
-  let total_value = 0;
-  let total_extra = 0;
-  let description = '';
-  for (let i = 0; i < 3; i++) {
-    let [value, extra, text] = RollSpecialDie();
-    total_value = total_value + value;
-    total_extra = total_extra + extra;
-    if (description === '') {
-      description = text;
-    } else {
-    description = description + ', ' + text;
+const prevEPRoll = function () {
+  let total = 0;
+  let text = '';
+  let any_positive = false;
+  let any_negative = false;
+  let must_roll = true;
+  while (must_roll) {
+    must_roll = false;
+    const only_positive = any_positive && !any_negative;
+    const only_negative = !any_positive && any_negative;
+    for (let i = 0; i < 3; i++) {
+      const die = randomInteger(6);
+      let roll;
+      if (die === 6) {
+        must_roll = true;
+        roll = '\u29C9'; // two joined squares character
+      } else {
+        roll = die - 3;
+        if (only_positive) {
+          roll = Math.abs(roll);
+        } else if (only_negative) {
+          roll = -Math.abs(roll);
+        }
+        total = total + roll;
+        if (roll < 0) {
+          any_negative = true;
+          roll = '<span style="color:red";>' + roll + '</span>';
+        } else if (roll > 0) {
+          any_positive = true;
+          roll = '<span style="color:blue";>+' + roll + '</span>';
+        }
+      }
+      if (text === '') {
+        text = String(roll);
+      } else {
+        text = `${text}, ${roll}`;
+      }
     }
   }
-  return [total_value, total_extra, description];
+  return {
+    total: total,
+    text: text
+  };
+};
+
+// Roll a single die, and return its value and text string.
+// If required_sign is present, flip any signed values so they agree with it.
+const RollDie = function (required_sign) {
+  const die = Math.ceil(6 * Math.random());
+  let value;
+  let text;
+  if (die === 6) {
+    value = 'two_dice';
+    text = '\u29C9'; // two joined squares character
+  } else {
+    value = die - 3;
+    if (required_sign) {
+      if (required_sign !== Math.sign(value)) {
+        value = -value;
+      }
+    }
+    text = value.toString();
+    if (value < 0) {
+      text = '<span style="color:red";>' + text + '</span>';
+    } else if (value > 0) {
+      text = '<span style="color:blue";>+' + text + '</span>';
+    }
+  }
+  return [value, text];
 };
 
 // Do the EP roll.
 const EPRoll = function () {
-  let good_initial = false;
-  let total_value;
-  let total_extra;
-  let description;
-  while (! good_initial) {
-    [total_value, total_extra, description] = RollSpecialDice();
-    good_initial = (total_value !== 0) || (total_extra === 0)
-  }
-  while (total_extra > 0) {
-    let [value, extra, text] = RollExtraDie(null);
-    if (total_value < 0) {
-      value = -value;
+  let total = 0;
+  let description = '';
+  let required_sign = null;
+  // We start with 2 dice.
+  let rolls_needed = 2;
+  let rolls_done = 0;
+  while (rolls_needed > rolls_done) {
+    let [value, text] = RollDie(required_sign);
+    rolls_done = rolls_done + 1;
+    if (value === 'two_dice') {
+      rolls_needed = rolls_needed + 2;
     }
-    total_value = total_value + value;
-    total_extra = total_extra - 1 + extra;
-    description = description + ', ' + text;
+    // If we are rolling extra dice, the 0s get rerolled.
+    else if (value === 0 && rolls_done > 2) {
+      rolls_needed = rolls_needed + 1;
+    } else {
+      total = total + value;
+    }
+    if (description === '') {
+      description = text;
+    } else {
+      description = description + ', ' + text;
+    }
+    // After we have rolled the first 2 dice,
+    // if we got any two_dice rolls, we have to do some special stuff.
+    if (rolls_done === 2 && rolls_needed > 2) {
+      // If one of the dice was a 0, we have to reroll it.
+      if (total === 0) {
+        // If one of the dice was a 0, we have to reroll it.
+        if (rolls_needed === 4) {
+          rolls_needed = rolls_needed + 1;
+        }
+        value = 0;
+        while (value === 0 || value === 'two_dice') {
+          [value, text] = RollDie(null);
+        }
+        total = value;
+        description = description + ', ' + text;
+      }
+      required_sign = Math.sign(total);
+    }
   }
   return {
-    total: total_value,
+    total: total,
     text: description
   };
 };
