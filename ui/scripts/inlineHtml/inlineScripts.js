@@ -937,7 +937,7 @@ const updateSkillDerivedForId = function (section, row_id) {
   const mage = 'advantage_mage_count';
   const devout = 'advantage_devout_count';
   getAttrs([name, disciplineinfo, expertise, disciplineexpertise,
-    attribute, base, 'IQ', 'DX', mage, devout],
+    attribute, base, 'IQ', 'DX', 'BR', mage, devout],
   function (values) {
     // Update FP and CP costs
     let update = {};
@@ -996,6 +996,7 @@ const updateSkillDerivedForId = function (section, row_id) {
         disciplineexpertise_v === '--' ? 0 : Number(disciplineexpertise_v));
       const IQ_n = Number(values['IQ']);
       const DX_n = Number(values['DX']);
+      const BR_n = Number(values['BR']);
       if (attribute_v === '') {
         update[ability] = '??';
       } else {
@@ -1003,6 +1004,7 @@ const updateSkillDerivedForId = function (section, row_id) {
         const attribute_value = (
           attribute_v === 'IQ' ? IQ_n :
           attribute_v === 'DX' ? DX_n :
+          attribute_v === 'BR' ? BR_n :
           IQ_n + DX_n);
         const focus = (
           expertise_v === 'ST' ? -1 :
@@ -1094,6 +1096,8 @@ function createBaseSkillsAttributes() {
   addNewSkill('People Insight', { skillattribute: 'IQ', skillexpertise: 'ST' });
   addNewDiscipline('Defense', { skillexpertise: 1 });
   addNewSkill('Dodge', { skillattribute: 'DX', skillexpertise: '1', skillbase: -3 });
+  addNewSkill('Resolve', { skillattribute: 'IQ', skillexpertise: 'ST', skillbase: 0 });
+  addNewSkill('Fortitude', { skillattribute: 'BR', skillexpertise: 'ST', skillbase: 0 });
   addNewDiscipline('Attack', { skillexpertise: 1 });
   addNewSkill('Your Weapon', { skillattribute: 'DX', skillexpertise: '1', skillbase: 0 });
   return newAttributes;
