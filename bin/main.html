@@ -158,7 +158,7 @@
             <span>/&nbsp;</span>
             <!-- CP is editable in basic tab only -->
             <span class="CP bold larger middle not-basic-tab" name="attr_CP"></span>
-            <input class="CP bold larger medium middle basic-tab-only" name="attr_CP" type="number" value="25" />
+            <input class="CP bold larger medium middle basic-tab-only" name="attr_CP" type="number" value="10" />
           </div>
           <div class="fp-section">
             <div class="FP larger inline bold right middle">FP</div>
@@ -779,7 +779,6 @@
             <option value="--">--</option>
             <option value="B">b</option>
             <option value="ST">st</option>
-            <option value="-1">-1</option>
             <option value="0">0</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -1070,7 +1069,6 @@
           <select class="skillexpertise-grid" name="attr_skillexpertise">
             <option value="--">--</option>
             <option value="B">b</option>
-            <option value="-1">-1</option>
             <option value="0">0</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -1789,7 +1787,7 @@ const updateFP = function () {
   const CP = 'CP';
   // const FP = 'FP';
   getAttrs([CP], function (values) {
-    const FP_v = Math.floor(Number(values[CP]) / 10);
+    const FP_v = Math.floor(Number(values[CP]) / 5);
     setAttrs({ 'FP': FP_v });
   });
 };
@@ -1806,11 +1804,11 @@ const updateAttributeCost = function () {
     let cost = '??';
     if (total === 3) {
       if (total_squares === 3) {
-        cost = -5;
+        cost = -2;
       } else if (total_squares === 5) {
         cost = 0;
       } else if (total_squares <= 9) {
-        cost = 10;
+        cost = 4;
       }
     }
     setAttrs({
@@ -1823,17 +1821,17 @@ on('change:iq change:dx change:br', updateAttributeCost);
 
 // ----- Advantage and disadvantage costs -----
 const advantageCosts = {
-  healthy: 4,
-  packmule: 4,
-  strongarms: 6,
-  brute: 2,
-  fast: 4,
-  athlete: 2,
-  alert: 2,
-  wary: 2,
-  attractive: 2,
-  mage: 6,
-  devout: 6,
+  healthy: 2,
+  packmule: 2,
+  strongarms: 3,
+  brute: 1,
+  fast: 2,
+  athlete: 1,
+  alert: 1,
+  wary: 1,
+  attractive: 1,
+  mage: 3,
+  devout: 3,
 };
 // const advantageNameTranslations = {
 //   packmule: 'Pack Mule',
@@ -1887,7 +1885,7 @@ const calculateAdvantageCosts = function (advantages) {
     const base_cost = Number(advantage.base_cost);
     const count = advantage.count;
     if (count < 0) {
-      total_cost += -Math.floor(base_cost / 2);
+      total_cost += -(base_cost / 2);
       advantage.cost_description = '-' + String(base_cost) + '/2';
     } else if (count > 0) {
       if (base_cost <= 0) {
@@ -1908,6 +1906,7 @@ const calculateAdvantageCosts = function (advantages) {
       advantage.cost_description = ' ';
     }
   }
+  total_cost = Math.ceil(total_cost); // If any fractional disadvantages were left over, truncate the benefit.
   log('Total cost ' + String(total_cost));
   log('Advantages ' + JSON.stringify(advantages));
   return total_cost;
@@ -2053,7 +2052,7 @@ on('change:repeating_feat:featname', function (event) {
       const prev_CP_cost = values[CP_field];
       if (isEmptyValue(prev_CP_cost) === isEmptyValue(prev_name)) {
         let default_value = {};
-        default_value[CP_field] = isEmptyValue(new_name) ? '0' : '4';
+        default_value[CP_field] = isEmptyValue(new_name) ? '0' : '1';
         setAttrs(default_value);
       }
     });
@@ -2231,22 +2230,22 @@ const updateSkillDerivedForId = function (section, row_id) {
         '--': 0,
         'ST': 0,
         'B': 0,
-        '-1': 0,
-        '0': 0,
-        '1': 4,
-        '2': 8,
-        '3': 15,
-        '4': 25,
-        '5': 38,
-        '6': 54,
-        '7': 73,
-        '8': 95,
-        '9': 120
+        '-1': 0, // This shouldn't appear any more. But it might be left over from old characters.
+        '0': 1,
+        '1': 2,
+        '2': 4,
+        '3': 7,
+        '4': 11,
+        '5': 16,
+        '6': 22,
+        '7': 29,
+        '8': 37,
+        '9': 46
       }[values[expertise]]);
       update[cp] = cost === 0 ? ' ' : cost;
       update[fp] = ' ';
       // Fix illegal values for expertise of discipline.
-      if ({ 'ST': true, 'B': true, '-1': true, '0': true }[values[expertise]]) {
+      if ({ 'ST': true, 'B': true, '-1': true}[values[expertise]]) {
         update[expertise] = '--';
       }
     } else {
@@ -2255,8 +2254,8 @@ const updateSkillDerivedForId = function (section, row_id) {
         '--': 0,
         'ST': 0,
         'B': 0,
-        '-1': -1,
-        '0': -2,
+        '-1': 0, // This shouldn't appear any more. But it might be left over from old characters.
+        '0': -1,
         '1': 1,
         '2': 3,
         '3': 6,
@@ -2269,6 +2268,10 @@ const updateSkillDerivedForId = function (section, row_id) {
       }[values[expertise]]);
       update[cp] = cost >= 0 ? ' ' : -cost;
       update[fp] = cost <= 0 ? ' ' : cost;
+      // Get rid of any old -1s, which are no longer an option.
+      if ({ '-1': true }[values[expertise]]) {
+        update[expertise] = '--';
+      }
       // Clear base if it is 0.
       if (values[base] === '0') {
         update[base] = ' ';
