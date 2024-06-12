@@ -521,11 +521,11 @@ const updateAttributeCost = function () {
     let cost = '??';
     if (total === 3) {
       if (total_squares === 3) {
-        cost = -5;
+        cost = -2;
       } else if (total_squares === 5) {
         cost = 0;
       } else if (total_squares <= 9) {
-        cost = 10;
+        cost = 4;
       }
     }
     setAttrs({
