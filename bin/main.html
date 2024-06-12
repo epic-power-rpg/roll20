@@ -1787,7 +1787,7 @@ const updateFP = function () {
   const CP = 'CP';
   // const FP = 'FP';
   getAttrs([CP], function (values) {
-    const FP_v = Math.floor(Number(values[CP]) / 10);
+    const FP_v = Math.floor(Number(values[CP]) / 5);
     setAttrs({ 'FP': FP_v });
   });
 };
