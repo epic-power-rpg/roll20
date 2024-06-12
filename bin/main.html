@@ -2231,22 +2231,22 @@ const updateSkillDerivedForId = function (section, row_id) {
         '--': 0,
         'ST': 0,
         'B': 0,
-        '-1': 0,
-        '0': 0,
-        '1': 4,
-        '2': 8,
-        '3': 15,
-        '4': 25,
-        '5': 38,
-        '6': 54,
-        '7': 73,
-        '8': 95,
-        '9': 120
+        '-1': 0, // This shouldn't appear any more. But it might be left over from old characters.
+        '0': 1,
+        '1': 2,
+        '2': 4,
+        '3': 7,
+        '4': 11,
+        '5': 16,
+        '6': 22,
+        '7': 29,
+        '8': 37,
+        '9': 46
       }[values[expertise]]);
       update[cp] = cost === 0 ? ' ' : cost;
       update[fp] = ' ';
       // Fix illegal values for expertise of discipline.
-      if ({ 'ST': true, 'B': true, '-1': true, '0': true }[values[expertise]]) {
+      if ({ 'ST': true, 'B': true, '-1': true}[values[expertise]]) {
         update[expertise] = '--';
       }
     } else {
@@ -2255,8 +2255,8 @@ const updateSkillDerivedForId = function (section, row_id) {
         '--': 0,
         'ST': 0,
         'B': 0,
-        '-1': -1,
-        '0': -2,
+        '-1': 0, // This shouldn't appear any more. But it might be left over from old characters.
+        '0': -1,
         '1': 1,
         '2': 3,
         '3': 6,
@@ -2269,6 +2269,10 @@ const updateSkillDerivedForId = function (section, row_id) {
       }[values[expertise]]);
       update[cp] = cost >= 0 ? ' ' : -cost;
       update[fp] = cost <= 0 ? ' ' : cost;
+      // Get rid of any old -1s, which are no longer an option.
+      if ({ '-1': true }[values[expertise]]) {
+        update[expertise] = '--';
+      }
       // Clear base if it is 0.
       if (values[base] === '0') {
         update[base] = ' ';
