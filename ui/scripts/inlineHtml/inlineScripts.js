@@ -538,17 +538,17 @@ on('change:iq change:dx change:br', updateAttributeCost);
 
 // ----- Advantage and disadvantage costs -----
 const advantageCosts = {
-  healthy: 4,
-  packmule: 4,
-  strongarms: 6,
-  brute: 2,
-  fast: 4,
-  athlete: 2,
-  alert: 2,
-  wary: 2,
-  attractive: 2,
-  mage: 6,
-  devout: 6,
+  healthy: 2,
+  packmule: 2,
+  strongarms: 3,
+  brute: 1,
+  fast: 2,
+  athlete: 1,
+  alert: 1,
+  wary: 1,
+  attractive: 1,
+  mage: 3,
+  devout: 3,
 };
 // const advantageNameTranslations = {
 //   packmule: 'Pack Mule',
@@ -602,7 +602,7 @@ const calculateAdvantageCosts = function (advantages) {
     const base_cost = Number(advantage.base_cost);
     const count = advantage.count;
     if (count < 0) {
-      total_cost += -Math.floor(base_cost / 2);
+      total_cost += -(base_cost / 2);
       advantage.cost_description = '-' + String(base_cost) + '/2';
     } else if (count > 0) {
       if (base_cost <= 0) {
@@ -623,6 +623,7 @@ const calculateAdvantageCosts = function (advantages) {
       advantage.cost_description = ' ';
     }
   }
+  total_cost = Math.ceil(total_cost); // If any fractional disadvantages were left over, truncate the benefit.
   log('Total cost ' + String(total_cost));
   log('Advantages ' + JSON.stringify(advantages));
   return total_cost;
