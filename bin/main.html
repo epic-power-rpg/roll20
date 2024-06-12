@@ -2052,7 +2052,7 @@ on('change:repeating_feat:featname', function (event) {
       const prev_CP_cost = values[CP_field];
       if (isEmptyValue(prev_CP_cost) === isEmptyValue(prev_name)) {
         let default_value = {};
-        default_value[CP_field] = isEmptyValue(new_name) ? '0' : '4';
+        default_value[CP_field] = isEmptyValue(new_name) ? '0' : '1';
         setAttrs(default_value);
       }
     });
