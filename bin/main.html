@@ -2103,7 +2103,7 @@ const updateCopiedAbilities = function () {
       let under_attack_discipline = false;
       for (let i = 0; i < ids.length; ++i) {
         if (values[disciplineinfo_names[i]] === 'D') {
-          under_attack_discipline = values[names_names[i].toLowerCase().trim() === 'attack';
+          under_attack_discipline = values[names_names[i]].toLowerCase().trim() === 'attack';
         } else {
           if (values[disciplineinfo_names[i]] === '⇡') {
             // We have a skill under the attack discipline.
