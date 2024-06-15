@@ -2105,7 +2105,7 @@ const updateCopiedAbilities = function () {
         if (values[disciplineinfo_names[i]] === 'D') {
           under_attack_discipline = values[name_names[i]].toLowerCase().trim() === 'attack';
         } else {
-          if (values[disciplineinfo_names[i]] === '⇡') {
+          if (values[disciplineinfo_names[i]] === '⇡' && under_attack_discipline) {
             // We have a skill under the attack discipline.
             best_attack = Math.max(best_attack, values[ability_names[i]]);
           }
