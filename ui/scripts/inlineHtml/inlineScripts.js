@@ -30,12 +30,6 @@ const sumValues = function (value_map) {
     (accum, b) => accum + convertToFloat(b), 0);
 };
 
-const sumSingleValues = function (value_map) {
-  return Object.values(value_map).reduce(
-    (accum, b) => accum + (convertToFloat(b) === 1 ? 1 : 0),
-    0);
-};
-
 const isEmptyValue = function (value) {
   return value === undefined || value.trim() === '';
 };
@@ -63,7 +57,6 @@ const updateTotalCP = function (section, name) {
     getAttrs(CP_fields, function (cps) {
       let update = {};
       update[section + '_total_CP'] = sumValues(cps);
-      update[section + '_total_single_CP'] = sumSingleValues(cps);
       setAttrs(update);
     });
   });
