@@ -2090,10 +2090,10 @@ const updateCopiedAbilities = function () {
       id => `repeating_skill_${id}_skillexpertise`);
     const ability_names = ids.map(
       id => `repeating_skill_${id}_skillability`);
-    const names_names = ids.map(
+    const name_names = ids.map(
       id => `repeating_skill_${id}_skillname`);
     getAttrs(disciplineinfo_names.concat(expertise_names)
-      .concat(ability_names).concat(names_names)
+      .concat(ability_names).concat(name_names)
       .concat([DX, weight_penalty]), function (values) {
       const DX_n = Number(values[DX]);
       const weight_penalty_n = Number(values[weight_penalty]);
@@ -2103,7 +2103,7 @@ const updateCopiedAbilities = function () {
       let under_attack_discipline = false;
       for (let i = 0; i < ids.length; ++i) {
         if (values[disciplineinfo_names[i]] === 'D') {
-          under_attack_discipline = values[names_names[i]].toLowerCase().trim() === 'attack';
+          under_attack_discipline = values[name_names[i]].toLowerCase().trim() === 'attack';
         } else {
           if (values[disciplineinfo_names[i]] === '⇡') {
             // We have a skill under the attack discipline.
@@ -2112,10 +2112,10 @@ const updateCopiedAbilities = function () {
         }
       }
       console.log('Best attack: ' + best_attack.toString());
-      let update = {'best_attack: best_attack};
+      let update = {'best_attack': best_attack};
       // Make a map from skill names to their index.
       let skill_map = _.object(
-        names_names.map(name => values[name].toLowerCase().trim()),
+        name_names.map(name => values[name].toLowerCase().trim()),
         _.range(ids.length));
       let min_expertises = {};
       for (let discipline of ['defense', 'defend', // Try both ways.
