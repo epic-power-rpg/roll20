@@ -3,8 +3,13 @@
 .top-section
   // Left top section 
   .flex-stack.space-between
-    .power-depth-cp-fp-section
-      .power-depth
+    .effectiveness-power-depth-cp-fp-section
+    .effectiveness
+      .effectiveness.larger.inline.bold.right.middle Effectiveness
+        // Power is editable in basic tab only 
+        span.power.larger.left.bold.middle(name='attr_effectiveness')
+        input.power.medium.bold.middle.basic-tab-only(name='attr_power' type='number' value='0')
+    .power-depth
         input.cpcontrol(name='attr_chosentab' type='hidden' value='basic')
         .power.larger.inline.bold.right.middle Power Depth
         // Power is editable in basic tab only 
