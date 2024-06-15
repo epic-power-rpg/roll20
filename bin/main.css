@@ -715,7 +715,7 @@ body.sheet-darkmode .top-section {
   width: 2ch;
 }
 .top-section .effectiveness-power-depth-cp-fp-section .effectiveness {
-  color: #FFE0FF;
+  color: #FFD0FF;
 }
 .top-section .attributecontrol[value=basic] ~ span.attribute-value,
 .top-section .attributecontrol[value=basic] ~ button.reset-total,
