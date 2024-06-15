@@ -2076,27 +2076,46 @@ function updateUserStatistics() {
 
 on('change:race', updateUserStatistics);
 
-// Update the abilities that are copied elsewhere on the character sheet
+// Calculate these ability values from the skills, modify them for the weight
+// penalty if appropriate, and set attributes to record the result:
+//    dodge, block, parry, touch_spell, aim_spell, best_attack
+// Then update everything that depends on those quantities.
 const updateCopiedAbilities = function () {
   const DX = 'DX';
   const weight_penalty = 'weight_penalty';
   getSectionIDsOrdered('skill', function (ids) {
-    const disciplineinfos = ids.map(
+    const disciplineinfo_names = ids.map(
       id => `repeating_skill_${id}_skilldisciplineinfo`);
-    const expertises = ids.map(
+    const expertise_names = ids.map(
       id => `repeating_skill_${id}_skillexpertise`);
-    const abilities = ids.map(
+    const ability_names = ids.map(
       id => `repeating_skill_${id}_skillability`);
-    const names = ids.map(
+    const names_names = ids.map(
       id => `repeating_skill_${id}_skillname`);
-    getAttrs(disciplineinfos.concat(expertises)
-      .concat(abilities).concat(names)
+    getAttrs(disciplineinfo_names.concat(expertise_names)
+      .concat(ability_names).concat(names_names)
       .concat([DX, weight_penalty]), function (values) {
       const DX_n = Number(values[DX]);
       const weight_penalty_n = Number(values[weight_penalty]);
+      // Find the ability of the best attack: the highest skill under the attack
+      // discipline.
+      let best_attack = -5;
+      let under_attack_discipline = false;
+      for (let i = 0; i < ids.length; ++i) {
+        if (values[disciplineinfo_names[i]] === 'D') {
+          under_attack_discipline = values[names_names[i].toLowerCase().trim() === 'attack';
+        } else {
+          if (values[disciplineinfo_names[i]] === '⇡') {
+            // We have a skill under the attack discipline.
+            best_attack = Math.max(best_attack, values[ability_names[i]]);
+          }
+        }
+      }
+      console.log('Best attack: ' + best_attack.toString());
+      let update = {'best_attack: best_attack};
       // Make a map from skill names to their index.
       let skill_map = _.object(
-        names.map(name => values[name].toLowerCase().trim()),
+        names_names.map(name => values[name].toLowerCase().trim()),
         _.range(ids.length));
       let min_expertises = {};
       for (let discipline of ['defense', 'defend', // Try both ways.
@@ -2106,8 +2125,8 @@ const updateCopiedAbilities = function () {
         // a better minimum expertise.
         if (discipline in skill_map) {
           const discipline_index = skill_map[discipline];
-          const expertise_v = values[expertises[discipline_index]];
-          if (values[disciplineinfos[discipline_index]] === 'D'
+          const expertise_v = values[expertise_names[discipline_index]];
+          if (values[disciplineinfo_names[discipline_index]] === 'D'
               && expertise_v !== '--') {
             min_expertise = -2 + Number(expertise_v);
           }
@@ -2115,29 +2134,28 @@ const updateCopiedAbilities = function () {
         min_expertises[discipline] = min_expertise;
       }
       // Try to find an ability for each skill.
-      let update = {};
       for (let skill of ['dodge', 'block', 'parry', 'aim spell', 'spell touch']) {
         // First, get the ability assuming there is no training
         let ability = DX_n + (skill === 'aim spell' ?
-          min_expertises['attack'] + 3 :
+          min_expertises['attack'] + 4 :
           skill === 'spell touch' ?
-            min_expertises['attack'] + 4 :
+            min_expertises['attack'] + 5 :
             Math.max(
               min_expertises['defense'],
               min_expertises['defend']) - 3);
         let skill_index = skill_map[skill];
-        if (isValueDefined(skill_index) && values[disciplineinfos[skill_index]] === 'D') {
+        if (isValueDefined(skill_index) && values[disciplineinfo_names[skill_index]] === 'D') {
           skill_index = null;
         }
         // Check for the user using "shield" as an alternative for "block"
         if (!isValueDefined(skill_index) && skill === 'block') {
           skill_index = skill_map['shield'];
-          if (isValueDefined(skill_index) && values[disciplineinfos[skill_index]] === 'D') {
+          if (isValueDefined(skill_index) && values[disciplineinfo_names[skill_index]] === 'D') {
             skill_index = null;
           }
         }
         if (isValueDefined(skill_index)) {
-          ability = Number(values[abilities[skill_index]]);
+          ability = Number(values[ability_names[skill_index]]);
         }
         if (skill === 'dodge' || skill === 'block' || skill === 'parry') {
           ability = ability + weight_penalty_n;
@@ -2161,39 +2179,40 @@ on(
 
 // skilldisciplineexpertise holds the expertise of the discipline that
 // applies to the skill. We walk through all the items, in order,
-// note which are disciplines, and set the discipline expertise of
+// note which are disciplines (which is used by the CSS),
+// and set the discipline expertise of
 // all skills to that of the most recent discipline we encountered.
 const updateSkillDisciplineExpertises = function (section) {
   getSectionIDsOrdered(section, function (ids) {
-    const disciplineinfos = ids.map(
+    const disciplineinfo_names = ids.map(
       id => `repeating_${section}_${id}_skilldisciplineinfo`);
-    const isdisciplines = ids.map(
+    const isdiscipline_names = ids.map(
       id => `repeating_${section}_${id}_skillisdiscipline`);
-    const expertises = ids.map(
+    const expertise_names = ids.map(
       id => `repeating_${section}_${id}_skillexpertise`);
-    const disciplineexpertises = ids.map(
+    const disciplineexpertise_names = ids.map(
       id => `repeating_${section}_${id}_skilldisciplineexpertise`);
-    getAttrs(disciplineinfos.concat(isdisciplines).concat(expertises)
-      .concat(disciplineexpertises),
+    getAttrs(disciplineinfo_names.concat(isdiscipline_names).concat(expertise_names)
+      .concat(disciplineexpertise_names),
     function (attributes) {
       let discipline_expertise = 0;
       let update = {};
       for (let i = 0; i < ids.length; ++i) {
-        if (attributes[disciplineinfos[i]] === 'D') {
-          discipline_expertise = attributes[expertises[i]];
-          if (attributes[isdisciplines[i]] !== '1') {
-            update[isdisciplines[i]] = '1';
+        if (attributes[disciplineinfo_names[i]] === 'D') {
+          discipline_expertise = attributes[expertise_names[i]];
+          if (attributes[isdiscipline_names[i]] !== '1') {
+            update[isdiscipline_names[i]] = '1';
           }
         } else {
-          if (attributes[isdisciplines[i]] !== '0') {
-            update[isdisciplines[i]] = '0';
+          if (attributes[isdiscipline_names[i]] !== '0') {
+            update[isdiscipline_names[i]] = '0';
           }
           let this_discipline_expertise = 0;
-          if (attributes[disciplineinfos[i]] === '⇡') {
+          if (attributes[disciplineinfo_names[i]] === '⇡') {
             this_discipline_expertise = discipline_expertise;
           }
-          if (this_discipline_expertise !== attributes[disciplineexpertises[i]]) {
-            update[disciplineexpertises[i]] = this_discipline_expertise;
+          if (this_discipline_expertise !== attributes[disciplineexpertise_names[i]]) {
+            update[disciplineexpertise_names[i]] = this_discipline_expertise;
           }
         }
       }
@@ -2422,7 +2441,6 @@ function getLargestWeaponDefense(callback) {
       callback(largestWeaponDefense);
     });
   });
-
 }
 
 const updateArmorValue = function (callback) {
