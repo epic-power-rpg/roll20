@@ -786,8 +786,8 @@ function updateUserStatistics() {
     });
   });
 }
-
-on('change:race', updateUserStatistics);
+// The change:repeating_skill:skillname catches new skills.
+on('change:race change:repeating_skill:skillname remove:repeating_skill ', updateUserStatistics);
 
 // Calculate these ability values from the skills, modify them for the weight
 // penalty if appropriate, and set attributes to record the result:
@@ -875,9 +875,7 @@ const updateCopiedAbilities = function () {
         }
         update[skill.replace(' ', '_')] = ability;
       }
-      setAttrs(update, () => {
-        updateDefenseValues(updateUserStatistics);
-      });
+      setAttrs(update);
     });
   });
 };
@@ -1136,6 +1134,13 @@ function getValidNumber(stringValue) {
   return value;
 }
 
+// Given the contents of a weapon damage field, return the base damage.
+// That is the whole field, if it is a number, otherwise, it's the part before the '+'.
+const baseDamage = function(representation) {
+  as_number = getValidNumber(representation);
+  return as_number ? as_number : getValidNumber(representation.split('+')[0]);
+}
+
 // Update the derived properties: highest_weapon_defense and highest_weapon_damage.
 const updateCopiedWeaponInfo = function () {
   getSectionIDs('weapon', function (ids) {
@@ -1156,7 +1161,7 @@ const updateCopiedWeaponInfo = function () {
         return memo;
       }, 0);
       update['highest_weapon_damage'] = _.range(ids.length).reduce((memo, i) => {
-        const damage = getValidNumber(values[damageFields[i]]);
+        const damage = baseDamage(values[damageFields[i]]);
         const count = getValidNumber(values[countFields[i]]);
         if (damage > 0 && count > 0) {
           return Math.max(memo, damage);
@@ -1165,7 +1170,7 @@ const updateCopiedWeaponInfo = function () {
       }, -5);
       console.log('highest weapon defense: ' + update['highest_weapon_defense'].toString() +
         ' highest weapon damage: ' + update['highest_weapon_damage'].toString());
-      setAttrs(update, () => { updateDefenseValues(updateUserStatistics); });
+      setAttrs(update);
     });
   });
 }
@@ -1214,9 +1219,10 @@ const updateDefenseValues = function (callback) {
       setAttrs(update, callback);
     });
 }
-on('change:armor_defense change:shield_defense change:defend' +
-  ' change:defense_boost change:reaction_penalty sheet:opened',
-function () { updateDefenseValues(updateUserStatistics); });
+on('change:armor_defense change:shield_defense change:highest_weapon_defense' +
+   ' change:dodge change:block change:parry' +
+   ' change:defense_boost change:reaction_penalty sheet:opened',
+updateDefenseValues);
 
 const updateSpeed = function () {
   const DX = 'DX';
