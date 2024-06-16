@@ -815,6 +815,9 @@ function updateEffectiveness() {
                                        getNumberIfValid(attrs['aim_spell']),
                                        getNumberIfValid(attrs['engulf_with_spell']));
     const attack_is_spell = attack === best_spell_attack;
+    console.log('spell_touch: ' + getNumberIfValid(attrs['spell_touch']).toString() +
+                '  aim_spell: ' + getNumberIfValid(attrs['aim_spell']).toString() +
+                '  engulf_with_spell: ' + getNumberIfValid(attrs['engulf_with_spell']).toString());
     console.log('best_spell_attack: ' + best_spell_attack.toString() +
                 '  attack is spell: ' + attack_is_spell.toString() +
                 '  best weapon damage: ' + getNumberIfValid(attrs['best_weapon_damage']).toString());
