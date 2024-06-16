@@ -1168,7 +1168,7 @@ const updateCopiedWeaponInfo = function () {
         'highest_weapon_damage': highest_weapon_damage},
           () => {
           updateDefenseValues(updateUserStatistics));
-        };)
+        });
     });
   });
 }
