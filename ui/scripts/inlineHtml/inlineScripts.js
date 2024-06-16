@@ -802,8 +802,20 @@ function updateEffectiveness() {
     const damage_per_attack = getValidNumber(attrs['highest_weapon_damage']) + 2;
     const enemy_health = 16;
     const damage_per_incoming_attack = 8;
+    console.log('EP: ' + EP.toString() +
+                '  SP: ' + SP.toString() +
+                '  HP: ' + HP.toString() +
+                '  damage_per_attack: ' + damage_per_attack.toString() +
+                '  attack: ' + attack.toString() +
+                '  defense: ' + defense.toString());
     // The amount of the character's damage the is probably wasted on the attack that takes an enemy down.
     const damage_overshoot = damage_per_attack * (enemy_health + damage_per_attack) / (2*enemy_health + damage_per_attack);
+    console.log('overshoot: ' + damage_overshoot.toString());
+    console.log('exp term: ' + (2**((attack + defense + 1.2*EP) * 0.315)).toString());
+    console.log('attack term: ' + (damage_per_attack / (enemy_health + damage_overshoot)).toString());
+    console.log('defense term: ' + (HP / damage_per_incoming_attack +
+       damage_per_incoming_attack / (damage_per_incoming_attack + HP) +
+       SP).toString());
     effectiveness = Math.sqrt(
       2**((attack + defense + 1.2*EP) * 0.315) *
       // Kills per attack
