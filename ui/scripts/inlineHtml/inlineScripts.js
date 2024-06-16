@@ -5,7 +5,7 @@
 // ----- Utilities -----
 const removeNonNumeric = function (s) {
   return String(s).trim().replace(/[^\d.-]/g, '');
-};
+}t
 
 const convertToFloat = function (s) {
   let str = removeNonNumeric(s);
@@ -807,10 +807,11 @@ function updateEffectiveness() {
     effectiveness = Math.sqrt(
       2**((attack + defense + 1.2*EP) * 0.315) *
       // Kills per attack
-      damage_per_attack / (enemy_health + damage_overshoot)
+      damage_per_attack / (enemy_health + damage_overshoot) *
       // Attacks to get killed
       (HP / damage_per_incoming_attack +
-      damage_per_incoming_attack / (damage_per_incoming_attack + HP) + SP));
+       damage_per_incoming_attack / (damage_per_incoming_attack + HP) +
+       SP));
     setAttrs({'effectiveness': roundToTwoPlaces(effectiveness)});
   });
 }
