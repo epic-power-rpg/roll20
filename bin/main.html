@@ -2453,7 +2453,9 @@ const updateCopiedWeaponInfo = function () {
         'highest weapon damage: ', highestWeaponDamage.toString());
       setAttrs({'highest_weapon_defense': highest_weapon_defense,
         'highest_weapon_damage': highest_weapon_damage},
-          () => { updateDefenseValues(updateUserStatistics); });
+          () => {
+          (updateUserStatistics);
+        });
     });
   });
 }
@@ -2461,7 +2463,7 @@ on('change:repeating_weapon:weaponcount change:repeating_weapon:weapondefense' +
    ' change:repeating_weapon:weapondamage remove:repeating_weapon',
 updateCopiedWeaponInfo);
 
-const updateDefenseValues = function (callback) {
+const  = function (callback) {
   const armorName = 'armor_defense';
   const shieldName = 'shield_defense';
   const defenseBoostName = 'defense_boost';
