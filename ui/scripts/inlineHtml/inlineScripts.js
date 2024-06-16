@@ -1146,7 +1146,8 @@ const updateCopiedWeaponInfo = function () {
     const countFields = ids.map(
       id => `repeating_weapon_${id}_weaponcount`);
     getAttrs([...defenseFields, ...damageFields, ...countFields], function (values) {
-      const highestWeaponDefense = _.range(ids.length).reduce((memo, i) => {
+      let update = {};
+      update['highest_weapon_defense'] = _.range(ids.length).reduce((memo, i) => {
         const defense = getValidNumber(values[defenseFields[i]]);
         const count = getValidNumber(values[countFields[i]]);
         if (defense > 0 && count > 0) {
@@ -1154,7 +1155,7 @@ const updateCopiedWeaponInfo = function () {
         }
         return memo;
       }, 0);
-      const highestWeaponDamage = _.range(ids.length).reduce((memo, i) => {
+      update['highest_weapon_damage'] = _.range(ids.length).reduce((memo, i) => {
         const damage = getValidNumber(values[damageFields[i]]);
         const count = getValidNumber(values[countFields[i]]);
         if (damage > 0 && count > 0) {
@@ -1162,13 +1163,9 @@ const updateCopiedWeaponInfo = function () {
         }
         return memo;
       }, -5);
-      console.log('highest weapon defense: ', highestWeaponDefense.toString(),
-        'highest weapon damage: ', highestWeaponDamage.toString());
-      setAttrs({'highest_weapon_defense': highest_weapon_defense,
-        'highest_weapon_damage': highest_weapon_damage},
-          () => {
-          (updateUserStatistics);
-        });
+      console.log('highest weapon defense: ' + update['highest_weapon_defense'].toString() +
+        ' highest weapon damage: ' + update['highest_weapon_damage'].toString());
+      setAttrs(update, () => { updateDefenseValues(updateUserStatistics); });
     });
   });
 }
