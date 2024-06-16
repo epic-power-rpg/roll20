@@ -2088,7 +2088,7 @@ function updateUserStatistics() {
 on('change:race change:repeating_skill:skillname remove:repeating_skill ', updateUserStatistics);
 
 function updateEffectiveness() {
-  getAttrs(['EP_t_max', 'SP_max', 'HP_max', 'best_weapon_damage', 'best_attack', 'best_attack_is_spell'
+  getAttrs(['EP_t_max', 'SP_max', 'HP_max', 'best_weapon_damage', 'best_attack', 'best_attack_is_spell',
             'current_dodge_with_armor', 'current_parry_with_armor', 'current_block_with_armor'], (attrs) => {
     const attack = getNumberIfValid(attrs['best_attack']);
     const defense = Math.max(getNumberIfValid(attrs['current_dodge_with_armor']),
@@ -2176,8 +2176,8 @@ const updateCopiedAbilities = function () {
       //  Because the base is so high. But we only consider skills that are actualy listed on the sheet,
       //  on the theory those are the ones that the character will actualy be using.) 
       let best_attack = -5;
-      const spell_attacks = {'spell touch', 'aim spell', 'engulf with spell', 'engulf',
-                             'mental assault', 'mental', 'affliction assault', 'affliction'}
+      const spell_attacks = Set(['spell touch', 'aim spell', 'engulf with spell', 'engulf',
+                                 'mental assault', 'mental', 'affliction assault', 'affliction']);
       let best_attack_is_spell = 0;
       let under_attack_discipline = false;
       for (let i = 0; i < ids.length; ++i) {
