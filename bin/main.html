@@ -2444,8 +2444,8 @@ const updateCopiedWeaponInfo = function () {
       const highestWeaponDamage = _.range(ids.length).reduce((memo, i) => {
         const damage = getValidNumber(values[damageFields[i]]);
         const count = getValidNumber(values[countFields[i]]);
-        if (damage >= 0 && count > 0) {
-          return Math.max(memo, defense);
+        if (damage > 0 && count > 0) {
+          return Math.max(memo, damage);
         }
         return memo;
       }, -5);
