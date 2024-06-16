@@ -797,16 +797,16 @@ const updateCopiedAbilities = function () {
   const DX = 'DX';
   const weight_penalty = 'weight_penalty';
   getSectionIDsOrdered('skill', function (ids) {
-    const disciplineinfo_names = ids.map(
+    const disciplineinfoFields = ids.map(
       id => `repeating_skill_${id}_skilldisciplineinfo`);
-    const expertise_names = ids.map(
+    const expertiseFields = ids.map(
       id => `repeating_skill_${id}_skillexpertise`);
-    const ability_names = ids.map(
+    const abilityFields = ids.map(
       id => `repeating_skill_${id}_skillability`);
-    const name_names = ids.map(
+    const nameFields = ids.map(
       id => `repeating_skill_${id}_skillname`);
-    getAttrs(disciplineinfo_names.concat(expertise_names)
-      .concat(ability_names).concat(name_names)
+    getAttrs(disciplineinfoFields.concat(expertiseFields)
+      .concat(abilityFields).concat(nameFields)
       .concat([DX, weight_penalty]), function (values) {
       const DX_n = Number(values[DX]);
       const weight_penalty_n = Number(values[weight_penalty]);
@@ -815,12 +815,12 @@ const updateCopiedAbilities = function () {
       let best_attack = -5;
       let under_attack_discipline = false;
       for (let i = 0; i < ids.length; ++i) {
-        if (values[disciplineinfo_names[i]] === 'D') {
-          under_attack_discipline = values[name_names[i]].toLowerCase().trim() === 'attack';
+        if (values[disciplineinfoFields[i]] === 'D') {
+          under_attack_discipline = values[nameFields[i]].toLowerCase().trim() === 'attack';
         } else {
-          if (values[disciplineinfo_names[i]] === '⇡' && under_attack_discipline) {
+          if (values[disciplineinfoFields[i]] === '⇡' && under_attack_discipline) {
             // We have a skill under the attack discipline.
-            best_attack = Math.max(best_attack, values[ability_names[i]]);
+            best_attack = Math.max(best_attack, values[abilityFields[i]]);
           }
         }
       }
@@ -828,7 +828,7 @@ const updateCopiedAbilities = function () {
       let update = {'best_attack': best_attack};
       // Make a map from skill names to their index.
       let skill_map = _.object(
-        name_names.map(name => values[name].toLowerCase().trim()),
+        nameFields.map(name => values[name].toLowerCase().trim()),
         _.range(ids.length));
       let min_expertises = {};
       for (let discipline of ['defense', 'defend', // Try both ways.
@@ -838,8 +838,8 @@ const updateCopiedAbilities = function () {
         // a better minimum expertise.
         if (discipline in skill_map) {
           const discipline_index = skill_map[discipline];
-          const expertise_v = values[expertise_names[discipline_index]];
-          if (values[disciplineinfo_names[discipline_index]] === 'D'
+          const expertise_v = values[expertiseFields[discipline_index]];
+          if (values[disciplineinfoFields[discipline_index]] === 'D'
               && expertise_v !== '--') {
             min_expertise = -2 + Number(expertise_v);
           }
@@ -857,18 +857,18 @@ const updateCopiedAbilities = function () {
               min_expertises['defense'],
               min_expertises['defend']) - 3);
         let skill_index = skill_map[skill];
-        if (isValueDefined(skill_index) && values[disciplineinfo_names[skill_index]] === 'D') {
+        if (isValueDefined(skill_index) && values[disciplineinfoFields[skill_index]] === 'D') {
           skill_index = null;
         }
         // Check for the user using "shield" as an alternative for "block"
         if (!isValueDefined(skill_index) && skill === 'block') {
           skill_index = skill_map['shield'];
-          if (isValueDefined(skill_index) && values[disciplineinfo_names[skill_index]] === 'D') {
+          if (isValueDefined(skill_index) && values[disciplineinfoFields[skill_index]] === 'D') {
             skill_index = null;
           }
         }
         if (isValueDefined(skill_index)) {
-          ability = Number(values[ability_names[skill_index]]);
+          ability = Number(values[abilityFields[skill_index]]);
         }
         if (skill === 'dodge' || skill === 'block' || skill === 'parry') {
           ability = ability + weight_penalty_n;
@@ -876,7 +876,7 @@ const updateCopiedAbilities = function () {
         update[skill.replace(' ', '_')] = ability;
       }
       setAttrs(update, () => {
-        updateArmorValue(updateUserStatistics);
+        updateDefenseValues(updateUserStatistics);
       });
     });
   });
@@ -897,35 +897,35 @@ on(
 // all skills to that of the most recent discipline we encountered.
 const updateSkillDisciplineExpertises = function (section) {
   getSectionIDsOrdered(section, function (ids) {
-    const disciplineinfo_names = ids.map(
+    const disciplineinfoFields = ids.map(
       id => `repeating_${section}_${id}_skilldisciplineinfo`);
-    const isdiscipline_names = ids.map(
+    const isdisciplineFields = ids.map(
       id => `repeating_${section}_${id}_skillisdiscipline`);
-    const expertise_names = ids.map(
+    const expertiseFields = ids.map(
       id => `repeating_${section}_${id}_skillexpertise`);
-    const disciplineexpertise_names = ids.map(
+    const disciplineexpertiseFields = ids.map(
       id => `repeating_${section}_${id}_skilldisciplineexpertise`);
-    getAttrs(disciplineinfo_names.concat(isdiscipline_names).concat(expertise_names)
-      .concat(disciplineexpertise_names),
+    getAttrs(disciplineinfoFields.concat(isdisciplineFields).concat(expertiseFields)
+      .concat(disciplineexpertiseFields),
     function (attributes) {
       let discipline_expertise = 0;
       let update = {};
       for (let i = 0; i < ids.length; ++i) {
-        if (attributes[disciplineinfo_names[i]] === 'D') {
-          discipline_expertise = attributes[expertise_names[i]];
-          if (attributes[isdiscipline_names[i]] !== '1') {
-            update[isdiscipline_names[i]] = '1';
+        if (attributes[disciplineinfoFields[i]] === 'D') {
+          discipline_expertise = attributes[expertiseFields[i]];
+          if (attributes[isdisciplineFields[i]] !== '1') {
+            update[isdisciplineFields[i]] = '1';
           }
         } else {
-          if (attributes[isdiscipline_names[i]] !== '0') {
-            update[isdiscipline_names[i]] = '0';
+          if (attributes[isdisciplineFields[i]] !== '0') {
+            update[isdisciplineFields[i]] = '0';
           }
           let this_discipline_expertise = 0;
-          if (attributes[disciplineinfo_names[i]] === '⇡') {
+          if (attributes[disciplineinfoFields[i]] === '⇡') {
             this_discipline_expertise = discipline_expertise;
           }
-          if (this_discipline_expertise !== attributes[disciplineexpertise_names[i]]) {
-            update[disciplineexpertise_names[i]] = this_discipline_expertise;
+          if (this_discipline_expertise !== attributes[disciplineexpertiseFields[i]]) {
+            update[disciplineexpertiseFields[i]] = this_discipline_expertise;
           }
         }
       }
@@ -1136,71 +1136,90 @@ function getValidNumber(stringValue) {
   return value;
 }
 
-function getLargestWeaponDefense(callback) {
+// Update the derived properties: highest_weapon_defense and highest_weapon_damage.
+const updateCopiedWeaponInfo = function () {
   getSectionIDs('weapon', function (ids) {
     const defenseFields = ids.map(
       id => `repeating_weapon_${id}_weapondefense`);
+    const damageFields = ids.map(
+      id => `repeating_weapon_${id}_weapondamage`);
     const countFields = ids.map(
       id => `repeating_weapon_${id}_weaponcount`);
-    getAttrs([...defenseFields, ...countFields], function (values) {
-      const largestWeaponDefense = defenseFields.reduce((memo, defenseFieldName, i) => {
-        const defense = getValidNumber(values[defenseFieldName]);
+    getAttrs([...defenseFields, ...damageFields, ...countFields], function (values) {
+      const highestWeaponDefense = _.range(ids.length).reduce((memo, i) => {
+        const defense = getValidNumber(values[defenseFields[i]]);
         const count = getValidNumber(values[countFields[i]]);
         if (defense > 0 && count > 0) {
           return Math.max(memo, defense);
         }
         return memo;
       }, 0);
-      callback(largestWeaponDefense);
+      const highestWeaponDamage = _.range(ids.length).reduce((memo, i) => {
+        const damage = getValidNumber(values[damageFields[i]]);
+        const count = getValidNumber(values[countFields[i]]);
+        if (damage >= 0 && count > 0) {
+          return Math.max(memo, defense);
+        }
+        return memo;
+      }, -5);
+      console.log('highest weapon defense: ', highestWeaponDefense.toString(),
+        'highest weapon damage: ', highestWeaponDamage.toString());
+      setAttrs({'highest_weapon_defense': highest_weapon_defense,
+        'highest_weapon_damage': highest_weapon_damage},
+          () => {
+          updateDefenseValues(updateUserStatistics));
+        };)
     });
   });
 }
+on('change:repeating_weapon:weaponcount change:repeating_weapon:weapondefense' +
+   ' change:repeating_weapon:weapondamage remove:repeating_weapon',
+updateCopiedWeaponInfo);
 
-const updateArmorValue = function (callback) {
+const updateDefenseValues = function (callback) {
   const armorName = 'armor_defense';
   const shieldName = 'shield_defense';
   const defenseBoostName = 'defense_boost';
+  const highestWeaponDefenseName = 'highest_weapon_defense'
   const dodgeName = 'dodge';
   const blockName = 'block';
   const parryName = 'parry';
   const reactionPenaltyName = 'reaction_penalty';
-  getLargestWeaponDefense((largestWeaponDefense) => {
-    getAttrs([armorName, shieldName, defenseBoostName, dodgeName, blockName, parryName, reactionPenaltyName],
-      function (values) {
-        const cur_armor = getValidNumber(values[armorName]);
-        const cur_shield = getValidNumber(values[shieldName]);
-        const update = {};
-        for (let defense of ['dodge', 'block', 'parry']) {
-          const defenseIsDodge = defense === 'dodge';
-          const defenseIsBlock = defense === 'block';
-          const defenseIsParry = defense === 'parry';
-          const curDefenseName = defenseIsDodge ? dodgeName : defenseIsBlock ? blockName : parryName;
-          const cur_defense = getValidNumber(values[curDefenseName]);
-          const base = (
-            cur_defense
-            + (defenseIsBlock ? cur_shield : 0)
-            + (defenseIsParry ? largestWeaponDefense : 0)
-            - Math.abs(getValidNumber(values[reactionPenaltyName]))
-          );
-          const total = base + getValidNumber(values['defense_boost']);
-          /**
-           * Block is only valid if there is a shield value and Parry is only valid if there is a weapon.
-           */
-          const blockIsValid = defenseIsBlock && cur_shield;
-          const parryIsValid = defenseIsParry && largestWeaponDefense;
-          const defenseIsValid = defenseIsDodge || blockIsValid || parryIsValid;
-          update[`current_${defense}_without_armor`] = defenseIsValid ? String(total) : '--';
-          update[`current_${defense}_with_armor`] = defenseIsValid ? String(total + cur_armor) : '--';
-        }
-        setAttrs(update, callback);
-      });
-  });
-};
+  getAttrs([armorName, shieldName, defenseBoostName, highestWeaponDefenseName,
+            dodgeName, blockName, parryName, reactionPenaltyName],
+    function (values) {
+      const cur_armor = getValidNumber(values[armorName]);
+      const cur_shield = getValidNumber(values[shieldName]);
+      const highestWeaponDefense = getValidNumber(values[highestWeaponDefenseName]);
+      const update = {};
+      for (let defense of ['dodge', 'block', 'parry']) {
+        const defenseIsDodge = defense === 'dodge';
+        const defenseIsBlock = defense === 'block';
+        const defenseIsParry = defense === 'parry';
+        const curDefenseName = defenseIsDodge ? dodgeName : defenseIsBlock ? blockName : parryName;
+        const cur_defense = getValidNumber(values[curDefenseName]);
+        const base = (
+          cur_defense
+          + (defenseIsBlock ? cur_shield : 0)
+          + (defenseIsParry ? highestWeaponDefense : 0)
+          - Math.abs(getValidNumber(values[reactionPenaltyName]))
+        );
+        const total = base + getValidNumber(values['defense_boost']);
+        /**
+          * Block is only valid if there is a shield value and Parry is only valid if there is a weapon.
+          */
+        const blockIsValid = defenseIsBlock && cur_shield;
+        const parryIsValid = defenseIsParry && highestWeaponDefense;
+        const defenseIsValid = defenseIsDodge || blockIsValid || parryIsValid;
+        update[`current_${defense}_without_armor`] = defenseIsValid ? String(total) : '--';
+        update[`current_${defense}_with_armor`] = defenseIsValid ? String(total + cur_armor) : '--';
+      }
+      setAttrs(update, callback);
+    });
+}
 on('change:armor_defense change:shield_defense change:defend' +
-  ' change:repeating_weapon:weaponcount' +
-  ' change:repeating_weapon:weapondefense remove:repeating_weapon' +
   ' change:defense_boost change:reaction_penalty sheet:opened',
-updateArmorValue);
+updateDefenseValues);
 
 const updateSpeed = function () {
   const DX = 'DX';
