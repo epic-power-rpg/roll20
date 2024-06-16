@@ -2076,6 +2076,36 @@ function updateUserStatistics() {
 // The change:repeating_skill:skillname catches new skills.
 on('change:race change:repeating_skill:skillname remove:repeating_skill ', updateUserStatistics);
 
+function updateEffectiveness() {
+  getAttrs(['EP', 'SP', 'HP', 'highest_weapon_damage', 'highest_attack',
+            'current_dodge_with_armor', 'current_parry_with_armor', 'current_block_with_armor'], (attrs) => {
+    const attack = getValidNumber(attrs['highest_attack']);
+    const defense = Math.max(getValidNumber(attrs['current_dodge_with_armor']),
+                             getValidNumber(attrs['current_parry_with_armor']),
+                             getValidNumber(attrs['current_block_with_armor']));
+    const EP = getValidNumber(attrs['EP']);
+    const SP = getValidNumber(attrs['SP']);
+    const HP = getValidNumber(attrs['HP']);
+    const damage_per_attack = getValidNumber(attrs['highest_weapon_damage']) + 2;
+    const enemy_health = 16;
+    const damage_per_incoming_attack = 8;
+    // The amount of the character's damage the is probably wasted on the attack that takes an enemy down.
+    const damage_overshoot = damage_per_attack * (enemy_health + damage_per_attack) / (2*enemy_health + damage_per_attack);
+    effectiveness = Math.sqrt(
+      2**((attack + defense + 1.2*EP) * 0.315) *
+      // Kills per attack
+      damage_per_attack / (enemy_health + damage_overshoot)
+      // Attacks to get killed
+      (HP / damage_per_incoming_attack +
+      damage_per_incoming_attack / (damage_per_incoming_attack + HP) + SP));
+    setAttrs({'effectiveness': roundToTwoPlaces(effectiveness)});
+  });
+}
+on('change:EP change:SP change:HP change:highest_weapon_damage change:highest_attack' +
+   ' change:current_dodge_with_armor change:current_parry_with_armor change:current_block_with_armor' +
+   ' sheet:opened',
+   updateEffectiveness)
+
 // Calculate these ability values from the skills, modify them for the weight
 // penalty if appropriate, and set attributes to record the result:
 //    dodge, block, parry, touch_spell, aim_spell, best_attack
