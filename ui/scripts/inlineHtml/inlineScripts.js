@@ -1176,7 +1176,7 @@ on('change:repeating_weapon:weaponcount change:repeating_weapon:weapondefense' +
    ' change:repeating_weapon:weapondamage remove:repeating_weapon',
 updateCopiedWeaponInfo);
 
-const  = function (callback) {
+const updateDefenseValues = function (callback) {
   const armorName = 'armor_defense';
   const shieldName = 'shield_defense';
   const defenseBoostName = 'defense_boost';
