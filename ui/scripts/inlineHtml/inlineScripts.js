@@ -889,8 +889,8 @@ const updateCopiedAbilities = function () {
       //  Because the base is so high. But we only consider skills that are actualy listed on the sheet,
       //  on the theory those are the ones that the character will actualy be using.) 
       let best_attack = -5;
-      const spell_attacks = Set(['spell touch', 'aim spell', 'engulf with spell', 'engulf',
-                                 'mental assault', 'mental', 'affliction assault', 'affliction']);
+      const spell_attacks = new Set(['spell touch', 'aim spell', 'engulf with spell', 'engulf',
+                                     'mental assault', 'mental', 'affliction assault', 'affliction']);
       let best_attack_is_spell = 0;
       let under_attack_discipline = false;
       for (let i = 0; i < ids.length; ++i) {
