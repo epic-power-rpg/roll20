@@ -801,8 +801,7 @@ function updateUserStatistics() {
 on('change:race change:repeating_skill:skillname remove:repeating_skill ', updateUserStatistics);
 
 function updateEffectiveness() {
-  getAttrs(['EP_t_max', 'SP_max', 'HP_max', 'best_weapon_damage', 'best_attack',
-            'spell_touch', 'aim_spell', 'engulf_with_spell',
+  getAttrs(['EP_t_max', 'SP_max', 'HP_max', 'best_weapon_damage', 'best_attack', 'best_attack_is_spell'
             'current_dodge_with_armor', 'current_parry_with_armor', 'current_block_with_armor'], (attrs) => {
     const attack = getNumberIfValid(attrs['best_attack']);
     const defense = Math.max(getNumberIfValid(attrs['current_dodge_with_armor']),
@@ -811,15 +810,8 @@ function updateEffectiveness() {
     const EP = getNumberIfValid(attrs['EP_t_max']);
     const SP = getNumberIfValid(attrs['SP_max']);
     const HP = getNumberIfValid(attrs['HP_max']);
-    const best_spell_attack = Math.max(getNumberIfValid(attrs['spell_touch']),
-                                       getNumberIfValid(attrs['aim_spell']),
-                                       getNumberIfValid(attrs['engulf_with_spell']));
-    const attack_is_spell = attack === best_spell_attack;
-    console.log('spell_touch: ' + getNumberIfValid(attrs['spell_touch']).toString() +
-                '  aim_spell: ' + getNumberIfValid(attrs['aim_spell']).toString() +
-                '  engulf_with_spell: ' + getNumberIfValid(attrs['engulf_with_spell']).toString());
-    console.log('best_spell_attack: ' + best_spell_attack.toString() +
-                '  attack is spell: ' + attack_is_spell.toString() +
+    const attack_is_spell = getNumberIfValid(attrs[best_attack_is_spell]);
+    console.log('attack is spell: ' + attack_is_spell.toString() +
                 '  best weapon damage: ' + getNumberIfValid(attrs['best_weapon_damage']).toString());
     const damage_per_attack = (attack_is_spell ?
                                8 :
@@ -864,15 +856,15 @@ function updateEffectiveness() {
     setAttrs({'effectiveness': roundToTwoPlaces(effectiveness)});
   });
 }
-on('change:EP change:SP change:HP change:best_weapon_damage change:best_attack' +
-   ' change:spell_touch change:aim_spell change:engulf_with_spell' +
+on('change:EP change:SP change:HP change:best_weapon_damage change:best_attack change:best_attack_is_spell' +
    ' change:current_dodge_with_armor change:current_parry_with_armor change:current_block_with_armor' +
    ' sheet:opened',
    updateEffectiveness)
 
 // Calculate these ability values from the skills, modify them for the weight
 // penalty if appropriate, and set attributes to record the result:
-//    dodge, block, parry, spell_touch, aim_spell, engulf_with_spell, best_attack
+//    dodge, block, parry, spell_touch, aim_spell, engulf_with_spell,
+//    best_attack, best_attack_is_spell
 // Then update everything that depends on those quantities.
 const updateCopiedAbilities = function () {
   const DX = 'DX';
@@ -891,9 +883,15 @@ const updateCopiedAbilities = function () {
       .concat([DX, weight_penalty]), function (values) {
       const DX_n = Number(values[DX]);
       const weight_penalty_n = Number(values[weight_penalty]);
-      // Find the ability of the best attack: the highest skill under the attack
-      // discipline.
+      // Find the ability of the character's best attack: the highest skill under the attack
+      // discipline, and note whether it is a spell attack.
+      // (Note: a spell attack can easily be a character's best attack, even if they have no focus on it,
+      //  Because the base is so high. But we only consider skills that are actualy listed on the sheet,
+      //  on the theory those are the ones that the character will actualy be using.) 
       let best_attack = -5;
+      const spell_attacks = {'spell touch', 'aim spell', 'engulf with spell', 'engulf',
+                             'mental assault', 'mental', 'affliction assault', 'affliction'}
+      let best_attack_is_spell = 0;
       let under_attack_discipline = false;
       for (let i = 0; i < ids.length; ++i) {
         if (values[disciplineinfoFields[i]] === 'D') {
@@ -901,12 +899,17 @@ const updateCopiedAbilities = function () {
         } else {
           if (values[disciplineinfoFields[i]] === '⇡' && under_attack_discipline) {
             // We have a skill under the attack discipline.
-            best_attack = Math.max(best_attack, values[abilityFields[i]]);
+            const ability =  values[abilityFields[i]];
+            if (ability > best_attack) {
+              best_attack = ability;
+              best_attack_is_spell = spell_attacks.has(values[nameFields[i]].toLowerCase().trim()) ? 1 : 0;
+            }
           }
         }
       }
       console.log('Best attack: ' + best_attack.toString());
-      let update = {'best_attack': best_attack};
+      let update = {'best_attack': best_attack,
+                   'best_attack_is_spell': best_attack_is_spell};
       // Make a map from skill names to their index.
       let skill_map = _.object(
         nameFields.map(name => values[name].toLowerCase().trim()),
@@ -963,7 +966,7 @@ const updateCopiedAbilities = function () {
         if (skill === 'dodge' || skill === 'block' || skill === 'parry') {
           ability = ability + weight_penalty_n;
         }
-        update[skill.replace(' ', '_')] = ability;
+        update[skill.replaceAll(' ', '_')] = ability;
       }
       setAttrs(update);
     });
