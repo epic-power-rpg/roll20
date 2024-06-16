@@ -2077,15 +2077,15 @@ function updateUserStatistics() {
 on('change:race change:repeating_skill:skillname remove:repeating_skill ', updateUserStatistics);
 
 function updateEffectiveness() {
-  getAttrs(['EP', 'SP', 'HP', 'highest_weapon_damage', 'highest_attack',
+  getAttrs(['EP_t_max', 'SP_max', 'HP_max', 'highest_weapon_damage', 'highest_attack',
             'current_dodge_with_armor', 'current_parry_with_armor', 'current_block_with_armor'], (attrs) => {
     const attack = getValidNumber(attrs['highest_attack']);
     const defense = Math.max(getValidNumber(attrs['current_dodge_with_armor']),
                              getValidNumber(attrs['current_parry_with_armor']),
                              getValidNumber(attrs['current_block_with_armor']));
-    const EP = getValidNumber(attrs['EP']);
-    const SP = getValidNumber(attrs['SP']);
-    const HP = getValidNumber(attrs['HP']);
+    const EP = getValidNumber(attrs['EP_t_max']);
+    const SP = getValidNumber(attrs['SP_max']);
+    const HP = getValidNumber(attrs['HP_max']);
     const damage_per_attack = getValidNumber(attrs['highest_weapon_damage']) + 2;
     const enemy_health = 16;
     const damage_per_incoming_attack = 8;
