@@ -5,7 +5,7 @@
 // ----- Utilities -----
 const removeNonNumeric = function (s) {
   return String(s).trim().replace(/[^\d.-]/g, '');
-}t
+}
 
 const convertToFloat = function (s) {
   let str = removeNonNumeric(s);
