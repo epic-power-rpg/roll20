@@ -2097,7 +2097,7 @@ function updateEffectiveness() {
     const EP = getNumberIfValid(attrs['EP_t_max']);
     const SP = getNumberIfValid(attrs['SP_max']);
     const HP = getNumberIfValid(attrs['HP_max']);
-    const attack_is_spell = getNumberIfValid(attrs[best_attack_is_spell]);
+    const attack_is_spell = getNumberIfValid(attrs['best_attack_is_spell']);
     console.log('attack is spell: ' + attack_is_spell.toString() +
                 '  best weapon damage: ' + getNumberIfValid(attrs['best_weapon_damage']).toString());
     const damage_per_attack = (attack_is_spell ?
