@@ -1294,7 +1294,9 @@ const removeNonNumeric = function (s) {
   return String(s).trim().replace(/[^\d.-]/g, '');
 }
 
-const convertToFloat = function (s) {
+// Strip out any non-numeric stuff, then interpret the string as a float.
+// For example, this will turn '5+S' into 5.
+const getNumberPart = function (s) {
   let str = removeNonNumeric(s);
   if (!str) {
     return 0;
@@ -1308,13 +1310,22 @@ const convertToFloat = function (s) {
   }
 };
 
+// If the string represents a number, return its value. Otherwise return 0. 
+function getNumberIfValid(stringValue) {
+  const value = Number(stringValue);
+  if (Number.isNaN(value)) {
+    return 0;
+  }
+  return value;
+}
+
 const roundToTwoPlaces = function (s) {
   return Math.floor(s * 100) / 100;
 };
 
 const sumValues = function (value_map) {
   return Object.values(value_map).reduce(
-    (accum, b) => accum + convertToFloat(b), 0);
+    (accum, b) => accum + getNumberPart(b), 0);
 };
 
 const isEmptyValue = function (value) {
@@ -2077,16 +2088,22 @@ function updateUserStatistics() {
 on('change:race change:repeating_skill:skillname remove:repeating_skill ', updateUserStatistics);
 
 function updateEffectiveness() {
-  getAttrs(['EP_t_max', 'SP_max', 'HP_max', 'highest_weapon_damage', 'highest_attack',
+  getAttrs(['EP_t_max', 'SP_max', 'HP_max', 'best_weapon_damage', 'best_attack',
+            'spell_touch', 'aim_spell', 'engulf_with_spell',
             'current_dodge_with_armor', 'current_parry_with_armor', 'current_block_with_armor'], (attrs) => {
-    const attack = getValidNumber(attrs['highest_attack']);
-    const defense = Math.max(getValidNumber(attrs['current_dodge_with_armor']),
-                             getValidNumber(attrs['current_parry_with_armor']),
-                             getValidNumber(attrs['current_block_with_armor']));
-    const EP = getValidNumber(attrs['EP_t_max']);
-    const SP = getValidNumber(attrs['SP_max']);
-    const HP = getValidNumber(attrs['HP_max']);
-    const damage_per_attack = getValidNumber(attrs['highest_weapon_damage']) + 2;
+    const attack = getNumberIfValid(attrs['best_attack']);
+    const defense = Math.max(getNumberIfValid(attrs['current_dodge_with_armor']),
+                             getNumberIfValid(attrs['current_parry_with_armor']),
+                             getNumberIfValid(attrs['current_block_with_armor']));
+    const EP = getNumberIfValid(attrs['EP_t_max']);
+    const SP = getNumberIfValid(attrs['SP_max']);
+    const HP = getNumberIfValid(attrs['HP_max']);
+    const attack_is_spell = attack === Math.max(getNumberIfValid(attrs['spell_touch']),
+                                                getNumberIfValid(attrs['aim_spell']),
+                                                getNumberIfValid(attrs['engulf_with_spell']));
+    const damage_per_attack = (attack_is_spell ?
+                               8 :
+                               getNumberIfValid(attrs['best_weapon_damage']) + 2);
     const enemy_health = 16;
     const damage_per_incoming_attack = 8;
     const normalizing_factor = 0.3
@@ -2096,7 +2113,10 @@ function updateEffectiveness() {
                 '  damage_per_attack: ' + damage_per_attack.toString() +
                 '  attack: ' + attack.toString() +
                 '  defense: ' + defense.toString());
-    // The amount of the character's damage the is probably wasted on the attack that takes an enemy down.
+    // Most of the damage from a huge attack is wasted on overkill. Even for a modest attack, you expect
+    // half the damage of the attack that takes an enemy down to be wasted.
+    // This formula estimates that. For small attacks, it gives half the damage, while for huge attacks, it
+    // gives everything beyond what is needed to kill.
     const damage_overshoot = damage_per_attack * (enemy_health + damage_per_attack) / (2*enemy_health + damage_per_attack);
     console.log('overshoot: ' + damage_overshoot.toString());
     console.log('exp term: ' + (2**((attack + defense + 1.2*EP) * 0.315)).toString());
@@ -2105,24 +2125,34 @@ function updateEffectiveness() {
        damage_per_incoming_attack / (damage_per_incoming_attack + HP) +
        SP).toString());
     effectiveness = Math.sqrt(
+      // Rate the character hits times how good they are at avoiding hits. Simulations show that the 0.315 factor does
+      // a very good job at accounting for both the likelihood of hitting and the extra effectiveness of good hits.
+      // The 1.2 factor weights EP a bit more, on the theory that the player can deploy it to wherever it will
+      // be most effective.
       2**((attack + defense + 1.2*EP) * 0.315) *
-      // Kills per attack
+      // Kills per hits by the character
       damage_per_attack / (enemy_health + damage_overshoot) *
-      // Attacks to get killed
+      // Number of hits on the character needed to kill them.
+      // The second term is because even a character with only 1 HP takes a full attack to kill.
+      // For tiny HP, the term is enough to bring the hits that the first term gives up to 1,
+      // while for large HP the term becomes insignificant.
+      // The SP term assumes that each SP lets the character avoid one more hit.
       (HP / damage_per_incoming_attack +
        damage_per_incoming_attack / (damage_per_incoming_attack + HP) +
-       SP)) * normalizing_factor;
+       SP)) * 
+      normalizing_factor;
     setAttrs({'effectiveness': roundToTwoPlaces(effectiveness)});
   });
 }
-on('change:EP change:SP change:HP change:highest_weapon_damage change:highest_attack' +
+on('change:EP change:SP change:HP change:best_weapon_damage change:best_attack' +
+   ' change:spell_touch change:aim_spell change:engulf_with_spell' +
    ' change:current_dodge_with_armor change:current_parry_with_armor change:current_block_with_armor' +
    ' sheet:opened',
    updateEffectiveness)
 
 // Calculate these ability values from the skills, modify them for the weight
 // penalty if appropriate, and set attributes to record the result:
-//    dodge, block, parry, touch_spell, aim_spell, best_attack
+//    dodge, block, parry, spell_touch, aim_spell, engulf_with_spell, best_attack
 // Then update everything that depends on those quantities.
 const updateCopiedAbilities = function () {
   const DX = 'DX';
@@ -2178,15 +2208,17 @@ const updateCopiedAbilities = function () {
         min_expertises[discipline] = min_expertise;
       }
       // Try to find an ability for each skill.
-      for (let skill of ['dodge', 'block', 'parry', 'aim spell', 'spell touch']) {
+      for (let skill of ['dodge', 'block', 'parry', 'aim spell', 'spell touch', 'engulf with spell']) {
         // First, get the ability assuming there is no training
         let ability = DX_n + (skill === 'aim spell' ?
           min_expertises['attack'] + 4 :
           skill === 'spell touch' ?
-            min_expertises['attack'] + 5 :
-            Math.max(
-              min_expertises['defense'],
-              min_expertises['defend']) - 3);
+          min_expertises['attack'] + 5 :
+          skill === 'engulf with spell' ?
+          min_expertises['attack'] + 3 :
+          Math.max(
+            min_expertises['defense'],
+            min_expertises['defend']) - 3);
         let skill_index = skill_map[skill];
         if (isValueDefined(skill_index) && values[disciplineinfoFields[skill_index]] === 'D') {
           skill_index = null;
@@ -2194,6 +2226,13 @@ const updateCopiedAbilities = function () {
         // Check for the user using "shield" as an alternative for "block"
         if (!isValueDefined(skill_index) && skill === 'block') {
           skill_index = skill_map['shield'];
+          if (isValueDefined(skill_index) && values[disciplineinfoFields[skill_index]] === 'D') {
+            skill_index = null;
+          }
+        }
+        // Check for the user using 'engulf' as an alternative for 'engulf with spell'
+        if (!isValueDefined(skill_index) && skill === 'engulf with spell') {
+          skill_index = skill_map['engulf'];
           if (isValueDefined(skill_index) && values[disciplineinfoFields[skill_index]] === 'D') {
             skill_index = null;
           }
@@ -2457,22 +2496,7 @@ on('clicked:addbaseskills', () => {
 });
 // -------------- Equipment -------------
 
-function getValidNumber(stringValue) {
-  const value = Number(stringValue);
-  if (Number.isNaN(value)) {
-    return 0;
-  }
-  return value;
-}
-
-// Given the contents of a weapon damage field, return the base damage.
-// That is the whole field, if it is a number, otherwise, it's the part before the '+'.
-const baseDamage = function(representation) {
-  as_number = getValidNumber(representation);
-  return as_number ? as_number : getValidNumber(representation.split('+')[0]);
-}
-
-// Update the derived properties: highest_weapon_defense and highest_weapon_damage.
+// Update the derived properties: best_weapon_defense and best_weapon_damage.
 const updateCopiedWeaponInfo = function () {
   getSectionIDs('weapon', function (ids) {
     const defenseFields = ids.map(
@@ -2483,37 +2507,37 @@ const updateCopiedWeaponInfo = function () {
       id => `repeating_weapon_${id}_weaponcount`);
     getAttrs([...defenseFields, ...damageFields, ...countFields], function (values) {
       let update = {};
-      update['highest_weapon_defense'] = _.range(ids.length).reduce((memo, i) => {
-        const defense = getValidNumber(values[defenseFields[i]]);
-        const count = getValidNumber(values[countFields[i]]);
+      update['best_weapon_defense'] = _.range(ids.length).reduce((memo, i) => {
+        const defense = getNumberIfValid(values[defenseFields[i]]);
+        const count = getNumberIfValid(values[countFields[i]]);
         if (defense > 0 && count > 0) {
           return Math.max(memo, defense);
         }
         return memo;
       }, 0);
-      update['highest_weapon_damage'] = _.range(ids.length).reduce((memo, i) => {
-        const damage = baseDamage(values[damageFields[i]]);
-        const count = getValidNumber(values[countFields[i]]);
+      update['best_weapon_damage'] = _.range(ids.length).reduce((memo, i) => {
+        const damage = getNumberPart(values[damageFields[i]]);
+        const count = getNumberIfValid(values[countFields[i]]);
         if (damage > 0 && count > 0) {
           return Math.max(memo, damage);
         }
         return memo;
       }, -5);
-      console.log('highest weapon defense: ' + update['highest_weapon_defense'].toString() +
-        ' highest weapon damage: ' + update['highest_weapon_damage'].toString());
+      console.log('highest weapon defense: ' + update['best_weapon_defense'].toString() +
+        ' highest weapon damage: ' + update['best_weapon_damage'].toString());
       setAttrs(update);
     });
   });
 }
 on('change:repeating_weapon:weaponcount change:repeating_weapon:weapondefense' +
-   ' change:repeating_weapon:weapondamage remove:repeating_weapon',
+   ' change:repeating_weapon:weapondamage remove:repeating_weapon sheet:opened',
 updateCopiedWeaponInfo);
 
 const updateDefenseValues = function () {
   const armorName = 'armor_defense';
   const shieldName = 'shield_defense';
   const defenseBoostName = 'defense_boost';
-  const highestWeaponDefenseName = 'highest_weapon_defense'
+  const highestWeaponDefenseName = 'best_weapon_defense'
   const dodgeName = 'dodge';
   const blockName = 'block';
   const parryName = 'parry';
@@ -2521,23 +2545,23 @@ const updateDefenseValues = function () {
   getAttrs([armorName, shieldName, defenseBoostName, highestWeaponDefenseName,
             dodgeName, blockName, parryName, reactionPenaltyName],
     function (values) {
-      const cur_armor = getValidNumber(values[armorName]);
-      const cur_shield = getValidNumber(values[shieldName]);
-      const highestWeaponDefense = getValidNumber(values[highestWeaponDefenseName]);
+      const cur_armor = getNumberIfValid(values[armorName]);
+      const cur_shield = getNumberIfValid(values[shieldName]);
+      const highestWeaponDefense = getNumberIfValid(values[highestWeaponDefenseName]);
       const update = {};
       for (let defense of ['dodge', 'block', 'parry']) {
         const defenseIsDodge = defense === 'dodge';
         const defenseIsBlock = defense === 'block';
         const defenseIsParry = defense === 'parry';
         const curDefenseName = defenseIsDodge ? dodgeName : defenseIsBlock ? blockName : parryName;
-        const cur_defense = getValidNumber(values[curDefenseName]);
+        const cur_defense = getNumberIfValid(values[curDefenseName]);
         const base = (
           cur_defense
           + (defenseIsBlock ? cur_shield : 0)
           + (defenseIsParry ? highestWeaponDefense : 0)
-          - Math.abs(getValidNumber(values[reactionPenaltyName]))
+          - Math.abs(getNumberIfValid(values[reactionPenaltyName]))
         );
-        const total = base + getValidNumber(values['defense_boost']);
+        const total = base + getNumberIfValid(values['defense_boost']);
         /**
           * Block is only valid if there is a shield value and Parry is only valid if there is a weapon.
           */
@@ -2550,7 +2574,7 @@ const updateDefenseValues = function () {
       setAttrs(update);
     });
 }
-on('change:armor_defense change:shield_defense change:highest_weapon_defense' +
+on('change:armor_defense change:shield_defense change:best_weapon_defense' +
    ' change:dodge change:block change:parry' +
    ' change:defense_boost change:reaction_penalty sheet:opened',
 updateDefenseValues);
@@ -2596,7 +2620,7 @@ const updateWeightPenalties = function () {
     return `highlight_weight_penalty_${penalty}`;
   };
   getAttrs([weight, BR, packmule], function (values) {
-    const weight_n = convertToFloat(values[weight]);
+    const weight_n = getNumberPart(values[weight]);
     const effective_BR = (Number(values[BR])
       + Number(values[packmule]));
     let current_level = 0;
@@ -2634,8 +2658,8 @@ const updateTotalX = function (x) {
   getAttrs([armor, shield, weapons, items], function (values) {
     let update = {};
     update[`equipment_total_${x}`] = roundToTwoPlaces(
-      convertToFloat(values[armor]) + convertToFloat(values[shield]) +
-      convertToFloat(values[weapons]) + convertToFloat(values[items]));
+      getNumberPart(values[armor]) + getNumberPart(values[shield]) +
+      getNumberPart(values[weapons]) + getNumberPart(values[items]));
     setAttrs(update);
   });
 };
@@ -2658,8 +2682,8 @@ const updateTotalRepeatingX = function (section, x) {
     getAttrs(x_fields.concat(count_fields), function (values) {
       let total = 0;
       for (let i = 0; i < ids.length; ++i) {
-        total += (convertToFloat(values[x_fields[i]])
-          * convertToFloat(values[count_fields[i]]));
+        total += (getNumberPart(values[x_fields[i]])
+          * getNumberPart(values[count_fields[i]]));
       }
       let update = {};
       update[`${section}_total_${x}`] = total;
