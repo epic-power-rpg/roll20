@@ -1178,7 +1178,7 @@ on('change:repeating_weapon:weaponcount change:repeating_weapon:weapondefense' +
    ' change:repeating_weapon:weapondamage remove:repeating_weapon',
 updateCopiedWeaponInfo);
 
-const updateDefenseValues = function (callback) {
+const updateDefenseValues = function () {
   const armorName = 'armor_defense';
   const shieldName = 'shield_defense';
   const defenseBoostName = 'defense_boost';
@@ -1216,7 +1216,7 @@ const updateDefenseValues = function (callback) {
         update[`current_${defense}_without_armor`] = defenseIsValid ? String(total) : '--';
         update[`current_${defense}_with_armor`] = defenseIsValid ? String(total + cur_armor) : '--';
       }
-      setAttrs(update, callback);
+      setAttrs(update);
     });
 }
 on('change:armor_defense change:shield_defense change:highest_weapon_defense' +
