@@ -802,6 +802,7 @@ function updateEffectiveness() {
     const damage_per_attack = getValidNumber(attrs['highest_weapon_damage']) + 2;
     const enemy_health = 16;
     const damage_per_incoming_attack = 8;
+    const normalizing_factor = 0.3
     console.log('EP: ' + EP.toString() +
                 '  SP: ' + SP.toString() +
                 '  HP: ' + HP.toString() +
@@ -823,7 +824,7 @@ function updateEffectiveness() {
       // Attacks to get killed
       (HP / damage_per_incoming_attack +
        damage_per_incoming_attack / (damage_per_incoming_attack + HP) +
-       SP));
+       SP)) * normalizing_factor;
     setAttrs({'effectiveness': roundToTwoPlaces(effectiveness)});
   });
 }
