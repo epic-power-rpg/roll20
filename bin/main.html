@@ -2098,12 +2098,16 @@ function updateEffectiveness() {
     const EP = getNumberIfValid(attrs['EP_t_max']);
     const SP = getNumberIfValid(attrs['SP_max']);
     const HP = getNumberIfValid(attrs['HP_max']);
-    const attack_is_spell = attack === Math.max(getNumberIfValid(attrs['spell_touch']),
-                                                getNumberIfValid(attrs['aim_spell']),
-                                                getNumberIfValid(attrs['engulf_with_spell']));
+    const best_spell_attack = Math.max(getNumberIfValid(attrs['spell_touch']),
+                                       getNumberIfValid(attrs['aim_spell']),
+                                       getNumberIfValid(attrs['engulf_with_spell']));
+    const attack_is_spell = attack === best_spell_attack;
+    console.log('best_spell_attack: ' + best_spell_attack.toString() +
+                '  attack is spell: ' + attack_is_spell.toString() +
+                '  best weapon damage: ' + getNumberIfValid(attrs['best_weapon_damage']).toString());
     const damage_per_attack = (attack_is_spell ?
                                8 :
-                               getNumberIfValid(attrs['best_weapon_damage']) + 2);
+                               (getNumberIfValid(attrs['best_weapon_damage']) + 2));
     const enemy_health = 16;
     const damage_per_incoming_attack = 8;
     const normalizing_factor = 0.3
