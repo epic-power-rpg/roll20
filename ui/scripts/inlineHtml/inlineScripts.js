@@ -798,7 +798,8 @@ function updateUserStatistics() {
   });
 }
 // The change:repeating_skill:skillname catches new skills.
-on('change:race change:repeating_skill:skillname remove:repeating_skill ', updateUserStatistics);
+on('sheet:opened change:race change:repeating_skill:skillname remove:repeating_skill', 
+   updateUserStatistics);
 
 function updateEffectiveness() {
   getAttrs(['EP_t_max', 'SP_max', 'HP_max', 'best_weapon_damage', 'best_attack', 'best_attack_is_spell',
@@ -1175,7 +1176,7 @@ on('remove:repeating_skill',
     updateTotalCP('skill');
   });
 
-function createBaseSkillsAttributes() {
+function createBaseSkillsAttributes(skip_personal = false) {
   const section = 'skill';
   const newAttributes = {};
   function addNewAttributeRow(attributesBySuffix) {
@@ -1198,10 +1199,12 @@ function createBaseSkillsAttributes() {
       ...props,
     });
   }
-  addNewDiscipline('People');
-  addNewSkill('Language(Common)', { skillattribute: 'IQ', skillexpertise: 'ST' });
-  addNewSkill('Persuade', { skillattribute: 'IQ', skillexpertise: 'ST' });
-  addNewSkill('People Insight', { skillattribute: 'IQ', skillexpertise: 'ST' });
+  if (! skip_personal) {
+    addNewDiscipline('People');
+    addNewSkill('Language(Common)', { skillattribute: 'IQ', skillexpertise: 'ST' });
+    addNewSkill('Persuade', { skillattribute: 'IQ', skillexpertise: 'ST' });
+    addNewSkill('People Insight', { skillattribute: 'IQ', skillexpertise: 'ST' });
+  }
   addNewDiscipline('Defense', { skillexpertise: 1 });
   addNewSkill('Dodge', { skillattribute: 'DX', skillexpertise: '1', skillbase: -3 });
   addNewSkill('Resolve', { skillattribute: 'IQ', skillexpertise: 'ST', skillbase: 0 });
