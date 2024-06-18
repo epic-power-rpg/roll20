@@ -2462,7 +2462,7 @@ on('remove:repeating_skill',
     updateTotalCP('skill');
   });
 
-function createBaseSkillsAttributes() {
+function createBaseSkillsAttributes(skip_personal = false) {
   const section = 'skill';
   const newAttributes = {};
   function addNewAttributeRow(attributesBySuffix) {
@@ -2485,10 +2485,12 @@ function createBaseSkillsAttributes() {
       ...props,
     });
   }
-  addNewDiscipline('People');
-  addNewSkill('Language(Common)', { skillattribute: 'IQ', skillexpertise: 'ST' });
-  addNewSkill('Persuade', { skillattribute: 'IQ', skillexpertise: 'ST' });
-  addNewSkill('People Insight', { skillattribute: 'IQ', skillexpertise: 'ST' });
+  if (! skip_personal) {
+    addNewDiscipline('People');
+    addNewSkill('Language(Common)', { skillattribute: 'IQ', skillexpertise: 'ST' });
+    addNewSkill('Persuade', { skillattribute: 'IQ', skillexpertise: 'ST' });
+    addNewSkill('People Insight', { skillattribute: 'IQ', skillexpertise: 'ST' });
+  }
   addNewDiscipline('Defense', { skillexpertise: 1 });
   addNewSkill('Dodge', { skillattribute: 'DX', skillexpertise: '1', skillbase: -3 });
   addNewSkill('Resolve', { skillattribute: 'IQ', skillexpertise: 'ST', skillbase: 0 });
