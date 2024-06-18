@@ -110,7 +110,7 @@ on('clicked:confirm_create_new_user', () => {
     }
     const isRacePicked = selectedRace !== OTHER_RACE;
     setAttrs({
-      ...(isRacePicked ? createBaseSkillsAttributes() : {}),
+      ...(createBaseSkillsAttributes(skip_personal = ! isRacePicked) : {}),
       ...newUserAttributes,
       race: `${selectedRace.charAt(0).toUpperCase()}${selectedRace.slice(1)}`,
       chosentab: 'basic',
