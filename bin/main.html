@@ -145,31 +145,31 @@
       <div class="flex-stack space-between">
         <div class="effectiveness-power-depth-cp-fp-section">
           <div class="effectiveness">
-            <div class="effectiveness larger inline bold right middle">Eff</div>
+            <div class="effectiveness inline bold right middle">Eff</div>
             <input class="power medium bold middle" name="attr_effectiveness" type="hidden" value="0" />
-            <span class="power larger left bold middle" name="attr_effectiveness"></span>
+            <span class="power left bold middle" name="attr_effectiveness"></span>
           </div>
           <div class="power-depth">
             <input class="cpcontrol" name="attr_chosentab" type="hidden" value="basic" />
-            <div class="power larger inline bold right middle">Power Depth</div>
+            <div class="power inline bold right middle">Power Depth</div>
             <!-- Power is editable in basic tab only -->
-            <span class="power larger left bold middle not-basic-tab" name="attr_power"></span>
+            <span class="power left bold middle not-basic-tab" name="attr_power"></span>
             <input class="power medium bold middle basic-tab-only" name="attr_power" type="number" value="0" />
           </div>
           <div class="cp-section">
             <input class="cpcontrol" name="attr_chosentab" type="hidden" value="basic" />
-            <div class="CP larger inline bold right middle">CP</div>
-            <input class="CP bold larger center narrow" name="attr_CPU" value="@{CP}          -(@{attribute_CP})          -(@{advantage_total_CP})          -(@{feat_total_CP})          -(@{skill_total_CP})          -(@{arcane_total_CP})          -(@{innate_total_CP})" disabled="true" />
+            <div class="CP inline bold right middle">CP</div>
+            <input class="CP bold center narrow" name="attr_CPU" value="@{CP}          -(@{attribute_CP})          -(@{advantage_total_CP})          -(@{feat_total_CP})          -(@{skill_total_CP})          -(@{arcane_total_CP})          -(@{innate_total_CP})" disabled="true" />
             <span>/&nbsp;</span>
             <!-- CP is editable in basic tab only -->
-            <span class="CP bold larger middle not-basic-tab" name="attr_CP"></span>
-            <input class="CP bold larger medium middle basic-tab-only" name="attr_CP" type="number" value="10" />
+            <span class="CP bold middle not-basic-tab" name="attr_CP"></span>
+            <input class="CP bold medium middle basic-tab-only" name="attr_CP" type="number" value="10" />
           </div>
           <div class="fp-section">
-            <div class="FP larger inline bold right middle">FP</div>
-            <input class="FP bold larger center narrow" name="attr_FPU" value="@{FP}        - (@{skill_total_FP})        - (@{arcane_total_FP})" disabled="true" />
+            <div class="FP inline bold right middle">FP</div>
+            <input class="FP bold center narrow" name="attr_FPU" value="@{FP}        - (@{skill_total_FP})        - (@{arcane_total_FP})" disabled="true" />
             <span>/&nbsp;</span>
-            <span class="FP bold larger middle center" name="attr_FP" value="2"></span>
+            <span class="FP bold middle center" name="attr_FP" value="2"></span>
           </div>
         </div>
 
