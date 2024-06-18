@@ -5,19 +5,19 @@
   .flex-stack.space-between
     .effectiveness-power-depth-cp-fp-section
       .effectiveness
-        .effectiveness.larger.inline.bold.right.middle Eff
+        .effectiveness.inline.bold.right.middle Eff
         input.power.medium.bold.middle(name='attr_effectiveness' type='hidden' value='0')
-        span.power.larger.left.bold.middle(name='attr_effectiveness')
+        span.power.left.bold.middle(name='attr_effectiveness')
       .power-depth
         input.cpcontrol(name='attr_chosentab' type='hidden' value='basic')
-        .power.larger.inline.bold.right.middle Power Depth
+        .power.inline.bold.right.middle Power Depth
         // Power is editable in basic tab only 
-        span.power.larger.left.bold.middle.not-basic-tab(name='attr_power')
+        span.power.left.bold.middle.not-basic-tab(name='attr_power')
         input.power.medium.bold.middle.basic-tab-only(name='attr_power' type='number' value='0')
       .cp-section
         input.cpcontrol(name='attr_chosentab' type='hidden' value='basic')
-        .CP.larger.inline.bold.right.middle CP
-        input.CP.bold.larger.center.narrow(name='attr_CPU' value='@{CP}\
+        .CP.inline.bold.right.middle CP
+        input.CP.bold.center.narrow(name='attr_CPU' value='@{CP}\
           -(@{attribute_CP})\
           -(@{advantage_total_CP})\
           -(@{feat_total_CP})\
@@ -26,15 +26,15 @@
           -(@{innate_total_CP})' disabled='true')
         span /&nbsp;
         // CP is editable in basic tab only 
-        span.CP.bold.larger.middle.not-basic-tab(name='attr_CP')
-        input.CP.bold.larger.medium.middle.basic-tab-only(name='attr_CP' type='number' value='10')
+        span.CP.bold.middle.not-basic-tab(name='attr_CP')
+        input.CP.bold.medium.middle.basic-tab-only(name='attr_CP' type='number' value='10')
       .fp-section
-        .FP.larger.inline.bold.right.middle FP
-        input.FP.bold.larger.center.narrow(name='attr_FPU' value='@{FP}\
+        .FP.inline.bold.right.middle FP
+        input.FP.bold.center.narrow(name='attr_FPU' value='@{FP}\
         - (@{skill_total_FP})\
         - (@{arcane_total_FP})' disabled='true')
         span /&nbsp;
-        span.FP.bold.larger.middle.center(name='attr_FP' value='2')
+        span.FP.bold.middle.center(name='attr_FP' value='2')
     = '\n'
     // IQ, DX, BR 
     //
