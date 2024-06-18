@@ -798,7 +798,8 @@ function updateUserStatistics() {
   });
 }
 // The change:repeating_skill:skillname catches new skills.
-on('change:race change:repeating_skill:skillname remove:repeating_skill ', updateUserStatistics);
+on('sheet:opened change:race change:repeating_skill:skillname remove:repeating_skill', 
+   updateUserStatistics);
 
 function updateEffectiveness() {
   getAttrs(['EP_t_max', 'SP_max', 'HP_max', 'best_weapon_damage', 'best_attack', 'best_attack_is_spell',
