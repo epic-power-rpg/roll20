@@ -108,9 +108,9 @@ on('clicked:confirm_create_new_user', () => {
       log(`Something went wrong for selectedUserOption: ${selectedRace}`);
       return;
     }
-    const isRacePicked = selectedRace !== OTHER_RACE;
+    const noRacePicked = selectedRace === OTHER_RACE;
     setAttrs({
-      ...createBaseSkillsAttributes(skip_personal = ! isRacePicked),
+      ...createBaseSkillsAttributes(noRacePicked),
       ...newUserAttributes,
       race: `${selectedRace.charAt(0).toUpperCase()}${selectedRace.slice(1)}`,
       chosentab: 'basic',
