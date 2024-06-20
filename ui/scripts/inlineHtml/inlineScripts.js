@@ -1206,7 +1206,7 @@ function createBaseSkillsAttributes(includePersonal) {
     addNewSkill('People Insight', { skillattribute: 'IQ', skillexpertise: 'ST' });
   }
   addNewDiscipline('Defense', { skillexpertise: 1 });
-  addNewSkill('Dodge', { skillattribute: 'DX', skillexpertise: '1', skillbase: -3 });
+  addNewSkill('Dodge', { skillattribute: 'DX', skillexpertise: 'ST', skillbase: -3 });
   addNewSkill('Resolve', { skillattribute: 'IQ', skillexpertise: 'ST', skillbase: 0 });
   addNewSkill('Fortitude', { skillattribute: 'BR', skillexpertise: 'ST', skillbase: 0 });
   addNewDiscipline('Attack', { skillexpertise: 1 });
