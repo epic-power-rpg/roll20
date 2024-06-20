@@ -811,31 +811,31 @@ function updateEffectiveness() {
     const EP = getNumberIfValid(attrs['EP_t_max']);
     const SP = getNumberIfValid(attrs['SP_max']);
     const HP = getNumberIfValid(attrs['HP_max']);
-    const attack_is_spell = getNumberIfValid(attrs['best_attack_is_spell']);
-    console.log('attack is spell: ' + attack_is_spell.toString() +
+    const attackIsSpell = getNumberIfValid(attrs['best_attack_is_spell']);
+    console.log('attack is spell: ' + attackIsSpell.toString() +
                 '  best weapon damage: ' + getNumberIfValid(attrs['best_weapon_damage']).toString());
-    const damage_per_attack = (attack_is_spell ?
-                               8 :
-                               (getNumberIfValid(attrs['best_weapon_damage']) + 2));
-    const enemy_health = 16;
-    const damage_per_incoming_attack = 8;
-    const normalizing_factor = 0.3
+    const damagePerAttack = (attackIsSpell ?
+                             8 :
+                             (getNumberIfValid(attrs['best_weapon_damage']) + 2));
+    const enemyHealth = 16;
+    const damagePerIncomingAttack = 8;
+    const normalizingFactor = 0.3
     console.log('EP: ' + EP.toString() +
                 '  SP: ' + SP.toString() +
                 '  HP: ' + HP.toString() +
-                '  damage_per_attack: ' + damage_per_attack.toString() +
+                '  damagePerAttack: ' + damagePerAttack.toString() +
                 '  attack: ' + attack.toString() +
                 '  defense: ' + defense.toString());
     // Most of the damage from a huge attack is wasted on overkill. Even for a modest attack, you expect
     // half the damage of the attack that takes an enemy down to be wasted.
     // This formula estimates that. For small attacks, it gives half the damage, while for huge attacks, it
     // gives everything beyond what is needed to kill.
-    const damage_overshoot = damage_per_attack * (enemy_health + damage_per_attack) / (2*enemy_health + damage_per_attack);
+    const damage_overshoot = damagePerAttack * (enemyHealth + damagePerAttack) / (2*enemyHealth + damagePerAttack);
     console.log('overshoot: ' + damage_overshoot.toString());
     console.log('exp term: ' + (2**((attack + defense + 1.2*EP) * 0.315)).toString());
-    console.log('attack term: ' + (damage_per_attack / (enemy_health + damage_overshoot)).toString());
-    console.log('defense term: ' + (HP / damage_per_incoming_attack +
-       damage_per_incoming_attack / (damage_per_incoming_attack + HP) +
+    console.log('attack term: ' + (damagePerAttack / (enemyHealth + damage_overshoot)).toString());
+    console.log('defense term: ' + (HP / damagePerIncomingAttack +
+       damagePerIncomingAttack / (damagePerIncomingAttack + HP) +
        SP).toString());
     effectiveness = Math.sqrt(
       // Rate the character hits times how good they are at avoiding hits. Simulations show that the 0.315 factor does
@@ -844,16 +844,16 @@ function updateEffectiveness() {
       // be most effective.
       2**((attack + defense + 1.2*EP) * 0.315) *
       // Kills per hits by the character
-      damage_per_attack / (enemy_health + damage_overshoot) *
+      damagePerAttack / (enemyHealth + damage_overshoot) *
       // Number of hits on the character needed to kill them.
       // The second term is because even a character with only 1 HP takes a full attack to kill.
       // For tiny HP, the term is enough to bring the hits that the first term gives up to 1,
       // while for large HP the term becomes insignificant.
       // The SP term assumes that each SP lets the character avoid one more hit.
-      (HP / damage_per_incoming_attack +
-       damage_per_incoming_attack / (damage_per_incoming_attack + HP) +
+      (HP / damagePerIncomingAttack +
+       damagePerIncomingAttack / (damagePerIncomingAttack + HP) +
        SP)) * 
-      normalizing_factor;
+      normalizingFactor;
     setAttrs({'effectiveness': roundToTwoPlaces(effectiveness)});
   });
 }
@@ -889,10 +889,10 @@ const updateCopiedAbilities = function () {
       // (Note: a spell attack can easily be a character's best attack, even if they have no focus on it,
       //  Because the base is so high. But we only consider skills that are actualy listed on the sheet,
       //  on the theory those are the ones that the character will actualy be using.) 
-      let best_attack = -5;
+      let bestAttack = -5;
       const spell_attacks = new Set(['spell touch', 'aim spell', 'engulf with spell', 'engulf',
                                      'mental assault', 'mental', 'affliction assault', 'affliction']);
-      let best_attack_is_spell = 0;
+      let bestAttackIsSpell = 0;
       let under_attack_discipline = false;
       for (let i = 0; i < ids.length; ++i) {
         if (values[disciplineinfoFields[i]] === 'D') {
@@ -901,16 +901,16 @@ const updateCopiedAbilities = function () {
           if (values[disciplineinfoFields[i]] === '⇡' && under_attack_discipline) {
             // We have a skill under the attack discipline.
             const ability =  values[abilityFields[i]];
-            if (ability > best_attack) {
-              best_attack = ability;
-              best_attack_is_spell = spell_attacks.has(values[nameFields[i]].toLowerCase().trim()) ? 1 : 0;
+            if (ability > bestAttack) {
+              bestAttack = ability;
+              bestAttackIsSpell = spell_attacks.has(values[nameFields[i]].toLowerCase().trim()) ? 1 : 0;
             }
           }
         }
       }
-      console.log('Best attack: ' + best_attack.toString());
-      let update = {'best_attack': best_attack,
-                   'best_attack_is_spell': best_attack_is_spell};
+      console.log('Best attack: ' + bestAttack.toString());
+      let update = {'best_attack': bestAttack,
+                   'best_attack_is_spell': bestAttackIsSpell};
       // Make a map from skill names to their index.
       let skill_map = _.object(
         nameFields.map(name => values[name].toLowerCase().trim()),
@@ -1176,7 +1176,7 @@ on('remove:repeating_skill',
     updateTotalCP('skill');
   });
 
-function createBaseSkillsAttributes(skip_personal = false) {
+function createBaseSkillsAttributes(includePersonal) {
   const section = 'skill';
   const newAttributes = {};
   function addNewAttributeRow(attributesBySuffix) {
@@ -1199,7 +1199,7 @@ function createBaseSkillsAttributes(skip_personal = false) {
       ...props,
     });
   }
-  if (! skip_personal) {
+  if (includePersonal) {
     addNewDiscipline('People');
     addNewSkill('Language(Common)', { skillattribute: 'IQ', skillexpertise: 'ST' });
     addNewSkill('Persuade', { skillattribute: 'IQ', skillexpertise: 'ST' });
