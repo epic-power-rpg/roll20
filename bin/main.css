@@ -706,13 +706,16 @@ radio > span.checked {
 body.sheet-darkmode .top-section {
   background: linear-gradient(to top, rgba(194, 148, 91, 0.5019607843) 0%, transparent 100%);
 }
-.top-section .power-depth-cp-fp-section {
+.top-section .effectiveness-power-depth-cp-fp-section {
   display: flex;
   align-items: center;
   gap: 12px;
 }
-.top-section .power-depth-cp-fp-section input.FP {
+.top-section .effectiveness-power-depth-cp-fp-section input.FP {
   width: 2ch;
+}
+.top-section .effectiveness-power-depth-cp-fp-section .effectiveness {
+  color: #FFD0FF;
 }
 .top-section .attributecontrol[value=basic] ~ span.attribute-value,
 .top-section .attributecontrol[value=basic] ~ button.reset-total,
