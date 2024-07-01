@@ -890,8 +890,9 @@ const updateCopiedAbilities = function () {
       //  Because the base is so high. But we only consider skills that are actualy listed on the sheet,
       //  on the theory those are the ones that the character will actualy be using.) 
       let bestAttack = -5;
-      const spell_attacks = new Set(['spell touch', 'aim spell', 'engulf with spell', 'engulf',
-                                     'mental assault', 'mental', 'affliction assault', 'affliction']);
+      const nonPhysicalAttacks = new Set(['mental attack', 'mental', 'affliction attack', 'affliction']);
+      const spellAttacks = nonPhysicalAttacks.union(new Set(['spell touch', 'aim spell',
+                                                             'engulf with spell', 'engulf']));
       let bestAttackIsSpell = 0;
       let under_attack_discipline = false;
       for (let i = 0; i < ids.length; ++i) {
@@ -900,10 +901,16 @@ const updateCopiedAbilities = function () {
         } else {
           if (values[disciplineinfoFields[i]] === '⇡' && under_attack_discipline) {
             // We have a skill under the attack discipline.
-            const ability =  values[abilityFields[i]];
+            let ability =  values[abilityFields[i]];
+            const normalizedName = values[nameFields[i]].toLowerCase().trim();
+            if (nonPhysicalAttacks.has(normalizedName)) {
+              // We give a bonus of 1 to non-physical attacks,
+              // since the defenses against them are typically worse.
+              ability += 1;
+            }
             if (ability > bestAttack) {
               bestAttack = ability;
-              bestAttackIsSpell = spell_attacks.has(values[nameFields[i]].toLowerCase().trim()) ? 1 : 0;
+              bestAttackIsSpell = spellAttacks.has(normalizedName) ? 1 : 0;
             }
           }
         }

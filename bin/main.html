@@ -2177,8 +2177,9 @@ const updateCopiedAbilities = function () {
       //  Because the base is so high. But we only consider skills that are actualy listed on the sheet,
       //  on the theory those are the ones that the character will actualy be using.) 
       let bestAttack = -5;
-      const spell_attacks = new Set(['spell touch', 'aim spell', 'engulf with spell', 'engulf',
-                                     'mental assault', 'mental', 'affliction assault', 'affliction']);
+      const nonPhysicalAttacks = new Set(['mental attack', 'mental', 'affliction attack', 'affliction']);
+      const spellAttacks = nonPhysicalAttacks.union(new Set(['spell touch', 'aim spell',
+                                                             'engulf with spell', 'engulf']));
       let bestAttackIsSpell = 0;
       let under_attack_discipline = false;
       for (let i = 0; i < ids.length; ++i) {
@@ -2187,10 +2188,16 @@ const updateCopiedAbilities = function () {
         } else {
           if (values[disciplineinfoFields[i]] === '⇡' && under_attack_discipline) {
             // We have a skill under the attack discipline.
-            const ability =  values[abilityFields[i]];
+            let ability =  values[abilityFields[i]];
+            const normalizedName = values[nameFields[i]].toLowerCase().trim();
+            if (nonPhysicalAttacks.has(normalizedName)) {
+              // We give a bonus of 1 to non-physical attacks,
+              // since the defenses against them are typically worse.
+              ability += 1;
+            }
             if (ability > bestAttack) {
               bestAttack = ability;
-              bestAttackIsSpell = spell_attacks.has(values[nameFields[i]].toLowerCase().trim()) ? 1 : 0;
+              bestAttackIsSpell = spellAttacks.has(normalizedName) ? 1 : 0;
             }
           }
         }
@@ -2822,39 +2829,39 @@ function createInnateSpellAttributes(props) {
 const newUserAttributesByRace = {
   human: {},
   elf: {
-    ...createFeatAttributes({ featName: 'Low Light Vision', cpValue: 2 }),
-    ...createFeatAttributes({ featName: 'Ease of Movement', cpValue: 2 }),
+    ...createFeatAttributes({ featName: 'Low Light Vision', cpValue: 1 }),
+    ...createFeatAttributes({ featName: 'Ease of Movement', cpValue: 1 }),
   },
   dwarf: {
-    ...createFeatAttributes({ featName: 'Infravision', cpValue: 2 }),
+    ...createFeatAttributes({ featName: 'Infravision', cpValue: 1 }),
   },
   gnome: {
-    ...createFeatAttributes({ featName: 'Infravision', cpValue: 2 }),
+    ...createFeatAttributes({ featName: 'Infravision', cpValue: 1 }),
   },
   orc: {
-    ...createFeatAttributes({ featName: 'Infravision', cpValue: 2 }),
-    ...createExtraAdvantageAttributes({ name: 'Not Attractive', cpValue: -2 }),
+    ...createFeatAttributes({ featName: 'Infravision', cpValue: 1 }),
+    ...createExtraAdvantageAttributes({ name: 'Not Attractive', cpValue: -1 }),
   },
   minotaur: {
     height: 6.5,
     weight: 200,
-    ...createFeatAttributes({ featName: 'Natural Attack', cpValue: 6 }),
+    ...createFeatAttributes({ featName: 'Natural Attack', cpValue: 3 }),
   },
   owlin: {
     weight: 100,
     DX: 2,
-    ...createFeatAttributes({ featName: 'Low Light Vision', cpValue: 2 }),
-    ...createFeatAttributes({ featName: 'Natural Armor', cpValue: 2 }),
-    ...createFeatAttributes({ featName: 'Glide', cpValue: 2 }),
+    ...createFeatAttributes({ featName: 'Low Light Vision', cpValue: 1 }),
+    ...createFeatAttributes({ featName: 'Natural Armor', cpValue: 1 }),
+    ...createFeatAttributes({ featName: 'Glide', cpValue: 1 }),
   },
   dryad: {
-    ...createFeatAttributes({ featName: 'Low Light Vision', cpValue: 2 }),
-    ...createFeatAttributes({ featName: 'Natural Armor', cpValue: 6 }),
+    ...createFeatAttributes({ featName: 'Low Light Vision', cpValue: 1 }),
+    ...createFeatAttributes({ featName: 'Natural Armor', cpValue: 3 }),
     ...createExtraAdvantageAttributes({ name: 'Arboreal Connection', cpValue: 0 }),
-    ...createExtraAdvantageAttributes({ name: 'Avoid Metal', cpValue: -4 }),
+    ...createExtraAdvantageAttributes({ name: 'Avoid Metal', cpValue: -2 }),
     chosenspelltype: 'innate',
-    ...createInnateSpellAttributes({ isSphereAttribute: true, name: 'Nature', cpValue: 4 }),
-    ...createInnateSpellAttributes({ name: 'Meld with Tree', target: 'Self', duration: '1 minute', epValue: 2, cpValue: 3 }),
+    ...createInnateSpellAttributes({ isSphereAttribute: true, name: 'Nature', cpValue: 2 }),
+    ...createInnateSpellAttributes({ name: 'Meld with Tree', target: 'Self', duration: '1 minute', epValue: 2, cpValue: 1 }),
   },
   [OTHER_RACE]: {},
 };
