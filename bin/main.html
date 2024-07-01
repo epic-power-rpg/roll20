@@ -2190,15 +2190,15 @@ const updateCopiedAbilities = function () {
           if (values[disciplineinfoFields[i]] === '⇡' && under_attack_discipline) {
             // We have a skill under the attack discipline.
             let ability =  values[abilityFields[i]];
-            const normalizedName = values[nameFields[i]].toLowerCase().trim()
-            if (nonPhysicalAttacks.has(normalizedName) {
+            const normalizedName = values[nameFields[i]].toLowerCase().trim();
+            if (nonPhysicalAttacks.has(normalizedName)) {
               // We give a bonus of 1 to non-physical attacks,
               // since the defenses against them are typically worse.
               ability += 1;
             }
             if (ability > bestAttack) {
               bestAttack = ability;
-              bestAttackIsSpell = spellAttacks.has(vnormalizedName) ? 1 : 0;
+              bestAttackIsSpell = spellAttacks.has(normalizedName) ? 1 : 0;
             }
           }
         }
