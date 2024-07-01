@@ -894,7 +894,6 @@ const updateCopiedAbilities = function () {
       const spellAttacks = nonPhysicalAttacks.union(new Set(['spell touch', 'aim spell',
                                                              'engulf with spell', 'engulf']));
       let bestAttackIsSpell = 0;
-      let bestAttackIsPhysical = 0;
       let under_attack_discipline = false;
       for (let i = 0; i < ids.length; ++i) {
         if (values[disciplineinfoFields[i]] === 'D') {
