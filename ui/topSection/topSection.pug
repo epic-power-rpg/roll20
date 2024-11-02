@@ -161,10 +161,10 @@
       span.narrowish.center.bold.larger.value(name='attr_speed')
   include ./components/defenseBlock.pug
   = '\n'
-  // HP, EP, SP 
+  // HP, PWR, ER 
   .children-separated.no-shrink
     div
-      .attribute-name.biggish EP
+      .attribute-name.biggish PWR
       input.attribute-value.biggish.medium.center(name='attr_EP_t' type='number')
       input.attributecontrol(name='attr_chosentab' type='hidden' value='basic')
       .inline.biggish.middle.basic-tab-only /
@@ -178,7 +178,7 @@
       button.convert-button(name='act_convert_sp' type='action')
         | &#x21EF;
     div
-      .attribute-name.biggish SP
+      .attribute-name.biggish ER
       input.attribute-value.biggish.medium.center(name='attr_SP' type='number')
       span
         input.attributecontrol(name='attr_chosentab' type='hidden' value='basic')
