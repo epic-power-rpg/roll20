@@ -361,7 +361,7 @@ const EP_ROLL_OPTIONS = [{
     try {
       await consumePower(roll_modifier);
     } catch (error) {
-      return error;
+      return String(error);
     }
     return `!EPRoll ${roll_modifier}`;
   },
@@ -373,7 +373,7 @@ const EP_ROLL_OPTIONS = [{
     try {
       await consumePower(initiativemodifier);
     } catch (error) {
-      return error;
+      return String(error);
     }
     return `!EPRoll ${initiative}+${initiativemodifier} Rolls initiative ${initiative} + ${initiativemodifier} SEND_TO_TRACKER ${character_id}`;
   },
@@ -385,7 +385,7 @@ const EP_ROLL_OPTIONS = [{
     try {
       await consumePower(IQmodifier);
     } catch (error) {
-      return error;
+      return String(error);
     }
     return `!EPRoll ${IQ}+${IQmodifier} Tries to be smart: ${IQ} + ${IQmodifier}`;
   },
@@ -397,7 +397,7 @@ const EP_ROLL_OPTIONS = [{
     try {
       await consumePower(DXmodifier);
     } catch (error) {
-      return error;
+      return String(error);
     }
     return `!EPRoll ${DX}+${DXmodifier} Tries to be nimble: ${DX} + ${DXmodifier}`;
   },
@@ -409,7 +409,7 @@ const EP_ROLL_OPTIONS = [{
     try {
       await consumePower(BRmodifier);
     } catch (error) {
-      return error;
+      return String(error);
     }
     return `!EPRoll ${BR}+${BRmodifier} Tries to be strong: ${BR} + ${BRmodifier}`;
   },
