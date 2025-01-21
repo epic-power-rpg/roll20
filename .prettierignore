@@ -1,0 +1,4 @@
+# We should use prettier to clean up our code, but we don't want to format these files for now.
+
+ui/scripts/api/apiScripts.js
+ui/scripts/inlineHtml/inlineScripts.js

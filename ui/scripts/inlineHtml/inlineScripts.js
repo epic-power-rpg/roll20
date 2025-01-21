@@ -1208,9 +1208,9 @@ function createBaseSkillsAttributes(includePersonal) {
   }
   if (includePersonal) {
     addNewDiscipline('People');
-    addNewSkill('Language(Common)', { skillattribute: 'IQ', skillexpertise: 'ST' });
+    addNewSkill('Language (Common)', { skillattribute: 'IQ', skillexpertise: 'ST' });
     addNewSkill('Persuade', { skillattribute: 'IQ', skillexpertise: 'ST' });
-    addNewSkill('People Insight', { skillattribute: 'IQ', skillexpertise: 'ST' });
+    addNewSkill('People Insight', { skillattribute: 'IQ', skillexpertise: 'ST', skillBase: 1 });
   }
   addNewDiscipline('Defense', { skillexpertise: 1 });
   addNewSkill('Dodge', { skillattribute: 'DX', skillexpertise: 'ST', skillbase: -3 });
