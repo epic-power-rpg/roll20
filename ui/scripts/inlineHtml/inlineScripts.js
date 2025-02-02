@@ -1121,7 +1121,8 @@ const updateSkillDerivedForId = function (section, row_id) {
           attribute_v === 'IQ' ? IQ_n :
           attribute_v === 'DX' ? DX_n :
           attribute_v === 'BR' ? BR_n :
-          IQ_n + DX_n);
+          attribute_v === 'IQ+DX' ? IQ_n + DX_n :
+          BR_n + DX_n);
         const focus = (
           expertise_v === 'ST' ? -1 :
           expertise_v === 'B' ? -1 :
@@ -1173,8 +1174,8 @@ on('change:repeating_skill:skilldisciplineinfo' +
   ' change:repeating_skill:skillbase',
 function (event) { updateSkillDerived('skill', event); });
 
-on('change:IQ change:DX change:advantage_mage_count'
-  + ' change:advantage_devout_count',
+on('change:IQ change:DX change:BR'
+  + ' change:advantage_mage_count change:advantage_devout_count',
 function () { updateAllSkillsDerived('skill'); });
 
 on('remove:repeating_skill',
@@ -1206,18 +1207,27 @@ function createBaseSkillsAttributes(includePersonal) {
       ...props,
     });
   }
+  function addNewSkillWithNoDiscipline(skillname, props) {
+    addNewAttributeRow({
+      skilldisciplineinfo: '',
+      skillname,
+      ...props,
+    });
+  }
   if (includePersonal) {
+    addNewSkillWithNoDiscipline('Language (Common)', { skillattribute: 'IQ', skillexpertise: 'ST', skillBase: 2});
     addNewDiscipline('People');
-    addNewSkill('Language (Common)', { skillattribute: 'IQ', skillexpertise: 'ST' });
+    addNewSkill('Manners (Common)', { skillattribute: 'IQ', skillexpertise: 'ST', skillBase: 2});
     addNewSkill('Persuade', { skillattribute: 'IQ', skillexpertise: 'ST' });
     addNewSkill('People Insight', { skillattribute: 'IQ', skillexpertise: 'ST', skillBase: 1 });
   }
   addNewDiscipline('Defense', { skillexpertise: 1 });
   addNewSkill('Dodge', { skillattribute: 'DX', skillexpertise: 'ST', skillbase: -3 });
   addNewSkill('Resolve', { skillattribute: 'IQ', skillexpertise: 'ST', skillbase: 0 });
-  addNewSkill('Fortitude', { skillattribute: 'BR', skillexpertise: 'ST', skillbase: 0 });
+  addNewSkill('Robustness', { skillattribute: 'BR', skillexpertise: 'ST', skillbase: 0 });
   addNewDiscipline('Attack', { skillexpertise: 1 });
   addNewSkill('Your Weapon', { skillattribute: 'DX', skillexpertise: '1', skillbase: 0 });
+  addNewSkill('Unarmed', { skillattribute: 'BR+DX', skillexpertise: 'ST', skillbase: -1 });
   return newAttributes;
 }
 
