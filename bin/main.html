@@ -2462,8 +2462,8 @@ on('change:repeating_skill:skilldisciplineinfo' +
   ' change:repeating_skill:skillbase',
 function (event) { updateSkillDerived('skill', event); });
 
-on('change:IQ change:DX change:advantage_mage_count'
-  + ' change:advantage_devout_count',
+on('change:IQ change:DX change:BR'
+  + ' change:advantage_mage_count change:advantage_devout_count',
 function () { updateAllSkillsDerived('skill'); });
 
 on('remove:repeating_skill',
