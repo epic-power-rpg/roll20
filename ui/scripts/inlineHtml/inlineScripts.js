@@ -1227,7 +1227,7 @@ function createBaseSkillsAttributes(includePersonal) {
   addNewSkill('Robustness', { skillattribute: 'BR', skillexpertise: 'ST', skillbase: 0 });
   addNewDiscipline('Attack', { skillexpertise: 1 });
   addNewSkill('Your Weapon', { skillattribute: 'DX', skillexpertise: '1', skillbase: 0 });
-  addNewSkill('Unarmed', { skillattribute: 'BR+DX', skillexpertise: 'ST', skillbase: 0 });
+  addNewSkill('Unarmed', { skillattribute: 'BR+DX', skillexpertise: 'ST', skillbase: -1 });
   return newAttributes;
 }
 
