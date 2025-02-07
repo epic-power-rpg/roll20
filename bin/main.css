@@ -2671,7 +2671,7 @@ body.sheet-darkmode .spells div[data-epic-table-name=arcane] + div[data-epic-tab
 }
 .spells .epic-table-header-grid.divine {
   display: grid;
-  grid-template-columns: minmax(0, 6fr) minmax(0, 20px) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr);
+  grid-template-columns: minmax(0, 4fr) minmax(0, 20px) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr);
   column-gap: 2px;
   color: #fff;
   background-color: #b56632;
@@ -2694,7 +2694,7 @@ body.sheet-darkmode .spells .epic-table-header-grid.divine {
 .spells div[data-groupname=repeating_divine] > div,
 .spells div[data-epic-table-name=divine] {
   display: grid;
-  grid-template-columns: minmax(0, 6fr) minmax(0, 20px) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr);
+  grid-template-columns: minmax(0, 4fr) minmax(0, 20px) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr);
   row-gap: 0;
   column-gap: 2px;
   background: transparent;
