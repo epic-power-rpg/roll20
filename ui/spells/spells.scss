@@ -91,7 +91,7 @@ $notes-popover-width: 20px;
     white-space: nowrap;
   }
 
-  $divine-grid-template: getResponsiveGridWidths(6fr, $notes-popover-width, 1fr, 1fr, 2fr, 1fr, 1fr, 2fr);
+  $divine-grid-template: getResponsiveGridWidths(4fr, $notes-popover-width, 1fr, 1fr, 2fr, 1fr, 1fr, 2fr);
   @include epic-table-grid('divine', $divine-grid-template);
   @include epic-table-grid-row-border('divine');
 
