@@ -305,8 +305,8 @@
       <div class="defense-block">
         <div class="defenses epic-table-header-grid">
           <div>Def.</div>
-          <div>Ability</div>
-          <div class="armor-header epic-tooltip">Armor<span class="epic-tooltip-text right">Ability without Armor</span>
+          <div>Armor</div>
+          <div class="armor-header epic-tooltip">None<span class="epic-tooltip-text right">Ability without Armor</span>
           </div>
         </div>
         <div class="defenses-table-row bonus-row" data-epic-table-name="defenses">
@@ -976,7 +976,7 @@
         <input name="attr_arcane_total_CP" type="hidden" value="0" />
         <input name="attr_arcane_total_single_CP" type="hidden" value="0" />
         <div class="arcane epic-table-header-grid">
-          <div class="skilldisciplineinfo-grid">Discipline?</div>
+          <div class="skilldisciplineinfo-grid narrow-table-heading">Discipline?</div>
           <div class="skillname-grid">Name</div>
           <div class="skillability-grid">Ability</div>
           <div class="skillbase-grid">Mod</div>
@@ -1170,7 +1170,7 @@
         <input name="attr_innate_total_CP" type="hidden" value="0" />
         <input name="attr_innate_total_single_CP" type="hidden" value="0" />
         <div class="innate epic-table-header-grid">
-          <div class="skill-innatesphere-grid epic-tooltip">Sphere<span class="epic-tooltip-text">Spell Sphere</span>
+          <div class="skill-innatesphere-grid epic-tooltip narrow-table-heading">Sphere<span class="epic-tooltip-text">Spell Sphere</span>
           </div>
           <div class="skillname-grid">Name</div>
           <div class="spellhasnote-grid">Notes</div>
@@ -2568,7 +2568,7 @@ const updateDefenseValues = function () {
   const armorName = 'armor_defense';
   const shieldName = 'shield_defense';
   const defenseBoostName = 'defense_boost';
-  const highestWeaponDefenseName = 'best_weapon_defense'
+  const highestWeaponDefenseName = 'best_weapon_defense';
   const dodgeName = 'dodge';
   const blockName = 'block';
   const parryName = 'parry';
@@ -2586,13 +2586,16 @@ const updateDefenseValues = function () {
         const defenseIsParry = defense === 'parry';
         const curDefenseName = defenseIsDodge ? dodgeName : defenseIsBlock ? blockName : parryName;
         const cur_defense = getNumberIfValid(values[curDefenseName]);
-        const base = (
+        /**
+         * FIXME - Deprecate `reaction_penalty` since it is redundant with `defense_boost` as a follow up.
+         */
+        const total = (
           cur_defense
           + (defenseIsBlock ? cur_shield : 0)
           + (defenseIsParry ? highestWeaponDefense : 0)
           - Math.abs(getNumberIfValid(values[reactionPenaltyName]))
+          + getNumberIfValid(values[defenseBoostName])
         );
-        const total = base + getNumberIfValid(values['defense_boost']);
         /**
           * Block is only valid if there is a shield value and Parry is only valid if there is a weapon.
           */

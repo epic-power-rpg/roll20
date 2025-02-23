@@ -2540,16 +2540,23 @@ body.sheet-darkmode .spell-tabs {
 body.sheet-darkmode .spells .spell-header-action-area label, body.sheet-darkmode .spells .spell-header-action-area .label {
   color: #fff;
 }
+.spells .spellNotesPopover {
+  background-color: #efd6c4;
+}
+body.sheet-darkmode .spells .spellNotesPopover {
+  background-color: #222;
+}
 .spells .spellNotesPopover button.popoverButton {
   font-family: Pictos;
-  font-size: 12px;
+  font-size: 14px;
   line-height: 18px;
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 20px;
   border-radius: 100%;
   padding: 0 !important;
+  margin: 0 4px;
   color: #c4bdaf;
   background-color: #b56632;
 }
@@ -2576,7 +2583,7 @@ body.sheet-darkmode .spells .spellNotesPopover button.popoverButton {
 }
 .spells .epic-table-header-grid.arcane {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 4fr) minmax(0, 1fr) minmax(0, 40px) minmax(0, 20px) minmax(0, 40px) minmax(0, 1fr) minmax(0, 80px) minmax(0, 1.5fr) minmax(0, 2fr) minmax(0, 1.5fr) minmax(0, 20px) minmax(0, 24px) minmax(0, 24px) minmax(0, 40px) minmax(0, auto) minmax(0, 40px);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 4fr) minmax(0, 1fr) minmax(0, 40px) minmax(0, 20px) minmax(0, 40px) minmax(0, 1fr) minmax(0, 80px) minmax(0, 1.5fr) minmax(0, 2fr) minmax(0, 1.5fr) minmax(0, 30px) minmax(0, 24px) minmax(0, 24px) minmax(0, 40px) minmax(0, auto) minmax(0, 40px);
   column-gap: 2px;
   color: #fff;
   background-color: #b56632;
@@ -2599,7 +2606,7 @@ body.sheet-darkmode .spells .epic-table-header-grid.arcane {
 .spells div[data-groupname=repeating_arcane] > div,
 .spells div[data-epic-table-name=arcane] {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 4fr) minmax(0, 1fr) minmax(0, 40px) minmax(0, 20px) minmax(0, 40px) minmax(0, 1fr) minmax(0, 80px) minmax(0, 1.5fr) minmax(0, 2fr) minmax(0, 1.5fr) minmax(0, 20px) minmax(0, 24px) minmax(0, 24px) minmax(0, 40px) minmax(0, auto) minmax(0, 40px);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 4fr) minmax(0, 1fr) minmax(0, 40px) minmax(0, 20px) minmax(0, 40px) minmax(0, 1fr) minmax(0, 80px) minmax(0, 1.5fr) minmax(0, 2fr) minmax(0, 1.5fr) minmax(0, 30px) minmax(0, 24px) minmax(0, 24px) minmax(0, 40px) minmax(0, auto) minmax(0, 40px);
   row-gap: 0;
   column-gap: 2px;
   background: transparent;
@@ -2654,6 +2661,10 @@ body.sheet-darkmode .spells div[data-groupname=repeating_arcane] > div + div,
 body.sheet-darkmode .spells div[data-epic-table-name=arcane] + div[data-epic-table-name=arcane] {
   border-color: rgba(181, 102, 50, 0.7);
 }
+.spells .narrow-table-heading {
+  font-size: 12px;
+  font-weight: normal !important;
+}
 .spells .isdiscipline-grid[value="1"] ~ :not(.skillname-grid, .skillCP-grid, .skillexpertise-grid) {
   opacity: 0;
   cursor: default;
@@ -2671,7 +2682,7 @@ body.sheet-darkmode .spells div[data-epic-table-name=arcane] + div[data-epic-tab
 }
 .spells .epic-table-header-grid.divine {
   display: grid;
-  grid-template-columns: minmax(0, 4fr) minmax(0, 20px) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr);
+  grid-template-columns: minmax(0, 2fr) minmax(0, 30px) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr);
   column-gap: 2px;
   color: #fff;
   background-color: #b56632;
@@ -2694,7 +2705,7 @@ body.sheet-darkmode .spells .epic-table-header-grid.divine {
 .spells div[data-groupname=repeating_divine] > div,
 .spells div[data-epic-table-name=divine] {
   display: grid;
-  grid-template-columns: minmax(0, 4fr) minmax(0, 20px) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr);
+  grid-template-columns: minmax(0, 2fr) minmax(0, 30px) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr);
   row-gap: 0;
   column-gap: 2px;
   background: transparent;
@@ -2751,7 +2762,7 @@ body.sheet-darkmode .spells div[data-epic-table-name=divine] + div[data-epic-tab
 }
 .spells .epic-table-header-grid.innate {
   display: grid;
-  grid-template-columns: minmax(0, 40px) minmax(0, 6fr) minmax(0, 20px) minmax(0, 32px) minmax(0, 2fr) minmax(0, 2fr) minmax(0, 2fr) minmax(0, 3fr) minmax(0, 2fr) minmax(0, 32px);
+  grid-template-columns: minmax(0, 40px) minmax(0, 4fr) minmax(0, 30px) minmax(0, 32px) minmax(0, 2fr) minmax(0, 2fr) minmax(0, 2fr) minmax(0, 3fr) minmax(0, 2fr) minmax(0, 32px);
   column-gap: 2px;
   color: #fff;
   background-color: #b56632;
@@ -2774,7 +2785,7 @@ body.sheet-darkmode .spells .epic-table-header-grid.innate {
 .spells div[data-groupname=repeating_innate] > div,
 .spells div[data-epic-table-name=innate] {
   display: grid;
-  grid-template-columns: minmax(0, 40px) minmax(0, 6fr) minmax(0, 20px) minmax(0, 32px) minmax(0, 2fr) minmax(0, 2fr) minmax(0, 2fr) minmax(0, 3fr) minmax(0, 2fr) minmax(0, 32px);
+  grid-template-columns: minmax(0, 40px) minmax(0, 4fr) minmax(0, 30px) minmax(0, 32px) minmax(0, 2fr) minmax(0, 2fr) minmax(0, 2fr) minmax(0, 3fr) minmax(0, 2fr) minmax(0, 32px);
   row-gap: 0;
   column-gap: 2px;
   background: transparent;
