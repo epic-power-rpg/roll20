@@ -1,15 +1,19 @@
+@import '../colors.scss';
+
 .spellNotesPopover {
+  @include theme-background-color(field-background-color);
   button.popoverButton {
     // See https://wiki.roll20.net/Roll20_UI_Icons
     font-family: Pictos;
-    font-size: 12px;
+    font-size: 14px;
     line-height: 18px;
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: 20px;
     border-radius: 100%;
     padding: 0 !important;
+    margin: 0 4px;
     @include theme-color(paper-color);
     @include theme-background-color(primary-highlight-background-color);
   }

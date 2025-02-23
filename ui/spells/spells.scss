@@ -19,7 +19,7 @@
   display: block;
 }
 
-$notes-popover-width: 20px;
+$notes-popover-width: 30px;
 .spell-tabs {
 
   border-bottom: solid 1px;
@@ -70,6 +70,10 @@ $notes-popover-width: 20px;
 
   @include epic-table-grid('arcane', $arcane-grid-template);
   @include epic-table-grid-row-border('arcane');
+  .narrow-table-heading {
+    font-size: 12px;
+    font-weight: normal !important;
+  }
 
   .isdiscipline-grid[value="1"] {
     ~:not(.skillname-grid, .skillCP-grid, .skillexpertise-grid) {
@@ -91,13 +95,13 @@ $notes-popover-width: 20px;
     white-space: nowrap;
   }
 
-  $divine-grid-template: getResponsiveGridWidths(6fr, $notes-popover-width, 1fr, 1fr, 2fr, 1fr, 1fr, 2fr);
+  $divine-grid-template: getResponsiveGridWidths(2fr, $notes-popover-width, 1fr, 1fr, 2fr, 1fr, 1fr, 2fr);
   @include epic-table-grid('divine', $divine-grid-template);
   @include epic-table-grid-row-border('divine');
 
   $innate-grid-template: getResponsiveGridWidths(
     40px, // Sphere?
-    6fr, // Name
+    4fr, // Name
     $notes-popover-width, // Note Popover
     32px, //EP
     2fr, // Cast Time
