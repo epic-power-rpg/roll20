@@ -1280,7 +1280,7 @@ const updateDefenseValues = function () {
   const armorName = 'armor_defense';
   const shieldName = 'shield_defense';
   const defenseBoostName = 'defense_boost';
-  const highestWeaponDefenseName = 'best_weapon_defense'
+  const highestWeaponDefenseName = 'best_weapon_defense';
   const dodgeName = 'dodge';
   const blockName = 'block';
   const parryName = 'parry';
@@ -1298,13 +1298,16 @@ const updateDefenseValues = function () {
         const defenseIsParry = defense === 'parry';
         const curDefenseName = defenseIsDodge ? dodgeName : defenseIsBlock ? blockName : parryName;
         const cur_defense = getNumberIfValid(values[curDefenseName]);
-        const base = (
+        /**
+         * FIXME - Deprecate `reaction_penalty` since it is redundant with `defense_boost` as a follow up.
+         */
+        const total = (
           cur_defense
           + (defenseIsBlock ? cur_shield : 0)
           + (defenseIsParry ? highestWeaponDefense : 0)
           - Math.abs(getNumberIfValid(values[reactionPenaltyName]))
+          + getNumberIfValid(values[defenseBoostName])
         );
-        const total = base + getNumberIfValid(values['defense_boost']);
         /**
           * Block is only valid if there is a shield value and Parry is only valid if there is a weapon.
           */
