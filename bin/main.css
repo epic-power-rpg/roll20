@@ -2627,14 +2627,20 @@ body.sheet-darkmode .spell-tabs {
 }
 
 /* Avoid space between items in the row */
-.spells .spell-header-action-area {
+.spells .spells-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+.spells .spells-header .spell-header-action-area {
   display: flex;
   gap: 8px;
 }
-.spells .spell-header-action-area label, .spells .spell-header-action-area .label {
+.spells .spells-header .spell-header-action-area label, .spells .spells-header .spell-header-action-area .label {
   color: #111;
 }
-body.sheet-darkmode .spells .spell-header-action-area label, body.sheet-darkmode .spells .spell-header-action-area .label {
+body.sheet-darkmode .spells .spells-header .spell-header-action-area label, body.sheet-darkmode .spells .spells-header .spell-header-action-area .label {
   color: #fff;
 }
 .spells .spellNotesPopover {
