@@ -560,34 +560,68 @@
         </div>
       </div>
     </div>
-    <!-- Basic section -->
+    <!-- Basic section-->
     <div class="basic section basic-tab">
       <div class="advantages-and-feats">
-        <!-- Character Attributes -->
-        <div class="character-attributes">
-          <div class="character-attributes epic-table-header-grid">
-            <div class="character-attributes-name-grid">Attr.</div>
-            <div class="character-attributes-value-grid">Value</div>
+        <div class="character-attributes-and-stats">
+          <div class="character-attributes">
+            <div class="character-attributes epic-table-header-grid">
+              <div class="character-attributes-name-grid">Attr.</div>
+              <div class="character-attributes-value-grid">Value</div>
+            </div>
+            <div class="character-attributes-table" data-epic-table-name="character-attributes">
+              <div class="character-attributes-name-grid">Race</div>
+              <input class="character-attributes-value-grid" name="attr_race" type="text" />
+            </div>
+            <div class="character-attributes-table" data-epic-table-name="character-attributes">
+              <div class="character-attributes-name-grid">Gender</div>
+              <input class="character-attributes-value-grid" name="attr_gender" type="text" />
+            </div>
+            <div class="character-attributes-table" data-epic-table-name="character-attributes">
+              <div class="character-attributes-name-grid">Height</div>
+              <input class="character-attributes-value-grid" name="attr_height" type="text" />
+            </div>
+            <div class="character-attributes-table" data-epic-table-name="character-attributes">
+              <div class="character-attributes-name-grid">Weight</div>
+              <input class="character-attributes-value-grid" name="attr_weight" type="number" />
+            </div>
+            <div class="character-attributes-table" data-epic-table-name="character-attributes">
+              <div class="character-attributes-name-grid">Age</div>
+              <input class="character-attributes-value-grid" name="attr_age" type="number" />
+            </div>
           </div>
-          <div class="character-attributes-table" data-epic-table-name="character-attributes">
-            <div class="character-attributes-name-grid">Race</div>
-            <input class="character-attributes-value-grid" name="attr_race" type="text" />
-          </div>
-          <div class="character-attributes-table" data-epic-table-name="character-attributes">
-            <div class="character-attributes-name-grid">Gender</div>
-            <input class="character-attributes-value-grid" name="attr_gender" type="text" />
-          </div>
-          <div class="character-attributes-table" data-epic-table-name="character-attributes">
-            <div class="character-attributes-name-grid">Height</div>
-            <input class="character-attributes-value-grid" name="attr_height" type="text" />
-          </div>
-          <div class="character-attributes-table" data-epic-table-name="character-attributes">
-            <div class="character-attributes-name-grid">Weight</div>
-            <input class="character-attributes-value-grid" name="attr_weight" type="number" />
-          </div>
-          <div class="character-attributes-table" data-epic-table-name="character-attributes">
-            <div class="character-attributes-name-grid">Age</div>
-            <input class="character-attributes-value-grid" name="attr_age" type="number" />
+          <div class="editable-epic-power-stats-table">
+            <div class="epic-power-stats">
+              <div class="epic-power-stats epic-table-header-grid">
+                <div class="epic-power-stats-name-grid">Attr.</div>
+                <div class="epic-power-stats-value-grid">Available</div>
+                <div class="epic-power-stats-value-grid">Total</div>
+              </div>
+              <div class="epic-power-stats-table effectiveness" data-epic-table-name="epic-power-stats">
+                <div class="epic-power-stats-name-grid">Eff.</div>
+                <span>&nbsp;</span>
+                <input class="epic-power-stats-value-grid" name="attr_effectiveness" type="hidden" value="0" />
+                <span class="epic-power-stats-value-grid" name="attr_effectiveness"></span>
+              </div>
+              <div class="epic-power-stats-table" data-epic-table-name="epic-power-stats">
+                <div class="epic-power-stats-name-grid">EPN</div>
+                <span>&nbsp;</span>
+                <input class="epic-power-stats-value-grid" name="attr_power" type="number" value="0" />
+              </div>
+              <div class="epic-power-stats-table" data-epic-table-name="epic-power-stats">
+                <div class="epic-power-stats-name-grid CP bold">CP</div>
+                <input class="epic-power-stats-value-grid" name="attr_remaining_cp" type="hidden" value="0" />
+                <span class="CP center" name="attr_remaining_cp"></span>
+                <input class="epic-power-stats-value-grid CP" name="attr_CP" type="number" value="10" />
+              </div>
+              <div class="epic-power-stats-table" data-epic-table-name="epic-power-stats">
+                <div class="epic-power-stats-name-grid FP bold">FP</div>
+                <input class="epic-power-stats-value-grid" name="attr_remaining_fp" type="hidden" value="0" />
+                <span class="FP center" name="attr_remaining_fp"></span>
+                <input class="epic-power-stats grid" name="attr_FP" type="hidden" value="2" />
+                <span class="epic-power-stats-value-grid center FP" name="attr_FP" type="number" value="2"></span>
+              </div>
+            </div>
           </div>
           <div class="character-avatars">
             <img name="attr_character_token" />
@@ -1841,6 +1875,46 @@ const updateAttributeCost = function () {
   });
 };
 on('change:iq change:dx change:br', updateAttributeCost);
+
+function updateRemainingCp() {
+  const attributeNames = [
+    'attribute_CP',
+    'advantage_total_CP',
+    'feat_total_CP',
+    'skill_total_CP',
+    'arcane_total_CP',
+    'innate_total_CP',
+  ];
+  getAttrs(['CP', ...attributeNames], function (values) {
+    const CP = Number(values.CP);
+    const usedCp = attributeNames.reduce((memo, name) => memo + Number(values[name]), 0);
+    setAttrs({ remaining_cp: CP - usedCp });
+  });
+}
+on('change:CP' +
+  ' change:attribute_CP ' +
+  ' change:advantage_total_CP' +
+  ' change:feat_total_CP' +
+  ' change:skill_total_CP' +
+  ' change:arcane_total_CP' +
+  ' change:innate_total_CP' +
+  ' sheet:opened', updateRemainingCp);
+
+function updateRemainingFp() {
+  const attributeNames = [
+    'skill_total_FP',
+    'arcane_total_FP',
+  ];
+  getAttrs(['FP', ...attributeNames], function (values) {
+    const FP = Number(values.FP);
+    const usedFp = attributeNames.reduce((memo, name) => memo + Number(values[name]), 0);
+    setAttrs({ remaining_fp: FP - usedFp });
+  });
+}
+on('change:FP' + 
+  ' change:skill_total_FP' + 
+  ' change:arcane_total_FP' + 
+  ' sheet:opened', updateRemainingFp);
 
 // ----- Advantage and disadvantage costs -----
 const advantageCosts = {

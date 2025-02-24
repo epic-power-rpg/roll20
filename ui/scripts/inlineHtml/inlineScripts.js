@@ -551,6 +551,46 @@ const updateAttributeCost = function () {
 };
 on('change:iq change:dx change:br', updateAttributeCost);
 
+function updateRemainingCp() {
+  const attributeNames = [
+    'attribute_CP',
+    'advantage_total_CP',
+    'feat_total_CP',
+    'skill_total_CP',
+    'arcane_total_CP',
+    'innate_total_CP',
+  ];
+  getAttrs(['CP', ...attributeNames], function (values) {
+    const CP = Number(values.CP);
+    const usedCp = attributeNames.reduce((memo, name) => memo + Number(values[name]), 0);
+    setAttrs({ remaining_cp: CP - usedCp });
+  });
+}
+on('change:CP' +
+  ' change:attribute_CP ' +
+  ' change:advantage_total_CP' +
+  ' change:feat_total_CP' +
+  ' change:skill_total_CP' +
+  ' change:arcane_total_CP' +
+  ' change:innate_total_CP' +
+  ' sheet:opened', updateRemainingCp);
+
+function updateRemainingFp() {
+  const attributeNames = [
+    'skill_total_FP',
+    'arcane_total_FP',
+  ];
+  getAttrs(['FP', ...attributeNames], function (values) {
+    const FP = Number(values.FP);
+    const usedFp = attributeNames.reduce((memo, name) => memo + Number(values[name]), 0);
+    setAttrs({ remaining_fp: FP - usedFp });
+  });
+}
+on('change:FP' + 
+  ' change:skill_total_FP' + 
+  ' change:arcane_total_FP' + 
+  ' sheet:opened', updateRemainingFp);
+
 // ----- Advantage and disadvantage costs -----
 const advantageCosts = {
   healthy: 2,
