@@ -1284,9 +1284,8 @@ const updateDefenseValues = function () {
   const dodgeName = 'dodge';
   const blockName = 'block';
   const parryName = 'parry';
-  const reactionPenaltyName = 'reaction_penalty';
   getAttrs([armorName, shieldName, defenseBoostName, highestWeaponDefenseName,
-            dodgeName, blockName, parryName, reactionPenaltyName],
+            dodgeName, blockName, parryName],
     function (values) {
       const cur_armor = getNumberIfValid(values[armorName]);
       const cur_shield = getNumberIfValid(values[shieldName]);
@@ -1298,14 +1297,10 @@ const updateDefenseValues = function () {
         const defenseIsParry = defense === 'parry';
         const curDefenseName = defenseIsDodge ? dodgeName : defenseIsBlock ? blockName : parryName;
         const cur_defense = getNumberIfValid(values[curDefenseName]);
-        /**
-         * FIXME - Deprecate `reaction_penalty` since it is redundant with `defense_boost` as a follow up.
-         */
         const total = (
           cur_defense
           + (defenseIsBlock ? cur_shield : 0)
           + (defenseIsParry ? highestWeaponDefense : 0)
-          - Math.abs(getNumberIfValid(values[reactionPenaltyName]))
           + getNumberIfValid(values[defenseBoostName])
         );
         /**
@@ -1322,7 +1317,7 @@ const updateDefenseValues = function () {
 }
 on('change:armor_defense change:shield_defense change:best_weapon_defense' +
    ' change:dodge change:block change:parry' +
-   ' change:defense_boost change:reaction_penalty sheet:opened',
+   ' change:defense_boost sheet:opened',
 updateDefenseValues);
 
 const updateSpeed = function () {
