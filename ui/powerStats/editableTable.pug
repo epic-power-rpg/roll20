@@ -1,0 +1,26 @@
+.editable-epic-power-stats-table
+  .epic-power-stats
+    .epic-power-stats.epic-table-header-grid
+      .epic-power-stats-name-grid Attr.
+      .epic-power-stats-value-grid Available
+      .epic-power-stats-value-grid Total
+    .epic-power-stats-table.effectiveness(data-epic-table-name="epic-power-stats")
+      .epic-power-stats-name-grid Eff.
+      span &nbsp;
+      input.epic-power-stats-value-grid(name='attr_effectiveness' type='hidden' value='0')
+      span.epic-power-stats-value-grid(name='attr_effectiveness')
+    .epic-power-stats-table(data-epic-table-name="epic-power-stats")
+      .epic-power-stats-name-grid EPN
+      span &nbsp;
+      input.epic-power-stats-value-grid(name='attr_power' type='number' value='0')
+    .epic-power-stats-table(data-epic-table-name="epic-power-stats")
+      .epic-power-stats-name-grid.CP.bold CP
+      input.epic-power-stats-value-grid(name='attr_remaining_cp' type='hidden' value='0')
+      span.CP.center(name='attr_remaining_cp')
+      input.epic-power-stats-value-grid.CP(name='attr_CP' type='number' value='10')
+    .epic-power-stats-table(data-epic-table-name="epic-power-stats")
+      .epic-power-stats-name-grid.FP.bold FP
+      input.epic-power-stats-value-grid(name='attr_remaining_fp' type='hidden' value='0')
+      span.FP.center(name='attr_remaining_fp')
+      input.epic-power-stats.grid(name='attr_FP' type='hidden' value='2')
+      span.epic-power-stats-value-grid.center.FP(name='attr_FP' type='number' value='2')
