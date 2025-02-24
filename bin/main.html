@@ -779,7 +779,20 @@
     <!-- skill section -->
     <div class="skills section epic-skills-tab">
       <div>
-        <div class="bold">Disciplines &amp; Skills</div>
+        <span class="bold">
+          <span>Disciplines &amp; Skills</span>
+          <span>&nbsp;</span>
+          <span class="epic-fp-and-cp bold">
+            <span>Available:</span>
+            <span class="FP bold">FP</span>
+            <input name="attr_remaining_fp" type="hidden" value="0" />
+            <span class="FP" name="attr_remaining_fp"></span>
+            <span>&nbsp;</span>
+            <span class="CP bold">CP</span>
+            <input name="attr_remaining_cp" type="hidden" value="0" />
+            <span class="CP" name="attr_remaining_cp"></span>
+          </span>
+        </span>
       </div>
       <div class="epic-skill-table">
         <input name="attr_skill_total_FP" type="hidden" value="0" />
@@ -988,16 +1001,30 @@
         <button class="tab" name="act_innate" type="action">Innate</button>
 
         &emsp; &emsp;
-        <div class="spell-header-action-area">
-          <div class="label wide larger">Spell Touch</div>
-          <input name="attr_spell_touch" type="hidden" />
-          <span class="center bold larger middle" name="attr_spell_touch"></span>
-          <button type="roll" value="!EPRoll @{spell_touch} Touches with Spell: @{spell_touch}"></button>
-          &emsp;
-          <div class="label wide larger">Aim Spell</div>
-          <input name="attr_aim_spell" type="hidden" />
-          <span class="center bold larger middle" name="attr_aim_spell"></span>
-          <button type="roll" value="!EPRoll @{aim_spell} Aims Spell: @{aim_spell}"></button>
+        <div class="spells-header">
+          <div class="spell-header-action-area">
+            <div class="label larger">Spell Touch</div>
+            <input name="attr_spell_touch" type="hidden" />
+            <span class="center bold larger middle" name="attr_spell_touch"></span>
+            <button type="roll" value="!EPRoll @{spell_touch} Touches with Spell: @{spell_touch}"></button>
+            &emsp;
+            <div class="label larger">Aim Spell</div>
+            <input name="attr_aim_spell" type="hidden" />
+            <span class="center bold larger middle" name="attr_aim_spell"></span>
+            <button type="roll" value="!EPRoll @{aim_spell} Aims Spell: @{aim_spell}"></button>
+          </div>
+          <div class="power-stats">
+            <span class="epic-fp-and-cp bold">
+              <span>Available:</span>
+              <span class="FP bold">FP</span>
+              <input name="attr_remaining_fp" type="hidden" value="0" />
+              <span class="FP" name="attr_remaining_fp"></span>
+              <span>&nbsp;</span>
+              <span class="CP bold">CP</span>
+              <input name="attr_remaining_cp" type="hidden" value="0" />
+              <span class="CP" name="attr_remaining_cp"></span>
+            </span>
+          </div>
         </div>
       </div>
       <!-- Arcane spells -->

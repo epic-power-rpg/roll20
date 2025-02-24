@@ -19,17 +19,20 @@
     = '\n'
     = '\n'
     | &emsp; &emsp;
-    .spell-header-action-area
-      .label.wide.larger Spell Touch
-      input(name='attr_spell_touch' type='hidden')
-      span.center.bold.larger.middle(name='attr_spell_touch')
-      button(type='roll' value='!EPRoll @{spell_touch} Touches with Spell: @{spell_touch}')
-      = '\n'
-      | &emsp;
-      .label.wide.larger Aim Spell
-      input(name='attr_aim_spell' type='hidden')
-      span.center.bold.larger.middle(name='attr_aim_spell')
-      button(type='roll' value='!EPRoll @{aim_spell} Aims Spell: @{aim_spell}')
+    .spells-header
+      .spell-header-action-area
+        .label.larger Spell Touch
+        input(name='attr_spell_touch' type='hidden')
+        span.center.bold.larger.middle(name='attr_spell_touch')
+        button(type='roll' value='!EPRoll @{spell_touch} Touches with Spell: @{spell_touch}')
+        = '\n'
+        | &emsp;
+        .label.larger Aim Spell
+        input(name='attr_aim_spell' type='hidden')
+        span.center.bold.larger.middle(name='attr_aim_spell')
+        button(type='roll' value='!EPRoll @{aim_spell} Aims Spell: @{aim_spell}')
+      .power-stats
+        include ../powerStats/cpAndFpText.pug
   // Arcane spells 
   .arcane.section
     input(name='attr_arcane_total_FP' type='hidden' value='0')
