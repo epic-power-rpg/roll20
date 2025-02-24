@@ -1,7 +1,10 @@
 // skill section 
 .skills.section.epic-skills-tab
   div
-    .bold Disciplines &amp; Skills
+    span.bold
+      span Disciplines &amp; Skills
+      span &nbsp;
+      include ../powerStats/cpAndFpText.pug
   .epic-skill-table
     input(name='attr_skill_total_FP' type='hidden' value='0')
     input(name='attr_skill_total_CP' type='hidden' value='0')
