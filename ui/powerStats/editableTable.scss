@@ -1,0 +1,17 @@
+@import '../components/gridTable/gridTable.scss';
+
+.editable-epic-power-stats-table {
+  .epic-power-stats {
+    $epic-power-stats: getResponsiveGridWidths(40px, 56px, 64px);
+    @include epic-table-grid('epic-power-stats', $epic-power-stats);
+    @include epic-table-grid-row-border('epic-power-stats');
+    .epic-power-stats-name-grid {
+      text-align: right;
+      font-weight: bold;
+      margin-right: 8px;
+    }
+    .effectiveness {
+      color: #FFD0FF;
+    }
+  }
+}

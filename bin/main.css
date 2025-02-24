@@ -335,6 +335,9 @@ body.sheet-darkmode button, body.sheet-darkmode input, body.sheet-darkmode optgr
 body.sheet-darkmode button, body.sheet-darkmode input, body.sheet-darkmode optgroup, body.sheet-darkmode select, body.sheet-darkmode textarea {
   background-color: #222;
 }
+button[disabled], input[disabled], optgroup[disabled], select[disabled], textarea[disabled] {
+  background-color: transparent !important;
+}
 
 .charsheet, .attributesabilities > * > *, .bioinfo > * > * {
   color: #111;
@@ -1605,10 +1608,104 @@ body.sheet-darkmode .overview-tab .weapons-overview > div[data-groupname] .weapo
   font-style: italic;
 }
 
+.editable-epic-power-stats-table .epic-power-stats .epic-table-header-grid.epic-power-stats {
+  display: grid;
+  grid-template-columns: minmax(0, 40px) minmax(0, 56px) minmax(0, 64px);
+  column-gap: 2px;
+  color: #fff;
+  background-color: #b56632;
+  padding: 0 2px;
+  margin-bottom: 2px;
+}
+body.sheet-darkmode .editable-epic-power-stats-table .epic-power-stats .epic-table-header-grid.epic-power-stats {
+  color: #fff;
+}
+body.sheet-darkmode .editable-epic-power-stats-table .epic-power-stats .epic-table-header-grid.epic-power-stats {
+  background-color: #b56632;
+}
+.editable-epic-power-stats-table .epic-power-stats .epic-table-header-grid.epic-power-stats > div {
+  text-align: center;
+  margin: auto;
+  font-weight: bold;
+  width: 100%;
+  overflow: hidden;
+}
+.editable-epic-power-stats-table .epic-power-stats div[data-groupname=repeating_epic-power-stats] > div,
+.editable-epic-power-stats-table .epic-power-stats div[data-epic-table-name=epic-power-stats] {
+  display: grid;
+  grid-template-columns: minmax(0, 40px) minmax(0, 56px) minmax(0, 64px);
+  row-gap: 0;
+  column-gap: 2px;
+  background: transparent;
+  word-break: break-word;
+}
+.editable-epic-power-stats-table .epic-power-stats div[data-groupname=repeating_epic-power-stats] > div input, .editable-epic-power-stats-table .epic-power-stats div[data-groupname=repeating_epic-power-stats] > div input[type=number], .editable-epic-power-stats-table .epic-power-stats div[data-groupname=repeating_epic-power-stats] > div textarea, .editable-epic-power-stats-table .epic-power-stats div[data-groupname=repeating_epic-power-stats] > div select,
+.editable-epic-power-stats-table .epic-power-stats div[data-epic-table-name=epic-power-stats] input,
+.editable-epic-power-stats-table .epic-power-stats div[data-epic-table-name=epic-power-stats] input[type=number],
+.editable-epic-power-stats-table .epic-power-stats div[data-epic-table-name=epic-power-stats] textarea,
+.editable-epic-power-stats-table .epic-power-stats div[data-epic-table-name=epic-power-stats] select {
+  width: 100% !important;
+  margin-left: unset;
+  height: auto;
+}
+.editable-epic-power-stats-table .epic-power-stats div[data-groupname=repeating_epic-power-stats] > div input[type=text],
+.editable-epic-power-stats-table .epic-power-stats div[data-epic-table-name=epic-power-stats] input[type=text] {
+  text-align: left;
+}
+.editable-epic-power-stats-table .epic-power-stats div[data-groupname=repeating_epic-power-stats] > div input, .editable-epic-power-stats-table .epic-power-stats div[data-groupname=repeating_epic-power-stats] > div select,
+.editable-epic-power-stats-table .epic-power-stats div[data-epic-table-name=epic-power-stats] input,
+.editable-epic-power-stats-table .epic-power-stats div[data-epic-table-name=epic-power-stats] select {
+  white-space: nowrap;
+}
+.editable-epic-power-stats-table .epic-power-stats div[data-groupname=repeating_epic-power-stats] > div span,
+.editable-epic-power-stats-table .epic-power-stats div[data-epic-table-name=epic-power-stats] span {
+  text-align: center;
+  margin: auto 0;
+}
+.editable-epic-power-stats-table .epic-power-stats div[data-groupname=repeating_epic-power-stats] > div button, .editable-epic-power-stats-table .epic-power-stats div[data-groupname=repeating_epic-power-stats] > div button[type=roll],
+.editable-epic-power-stats-table .epic-power-stats div[data-epic-table-name=epic-power-stats] button,
+.editable-epic-power-stats-table .epic-power-stats div[data-epic-table-name=epic-power-stats] button[type=roll] {
+  margin: 0;
+}
+.editable-epic-power-stats-table .epic-power-stats div[data-groupname=repeating_epic-power-stats] > div .epic-table-row.conditional-one,
+.editable-epic-power-stats-table .epic-power-stats div[data-epic-table-name=epic-power-stats] .epic-table-row.conditional-one {
+  display: grid;
+  grid-column-start: 1;
+  grid-column-end: 4;
+}
+.editable-epic-power-stats-table .epic-power-stats div[data-groupname=repeating_epic-power-stats] > div > input, .editable-epic-power-stats-table .epic-power-stats div[data-groupname=repeating_epic-power-stats] > div > select, .editable-epic-power-stats-table .epic-power-stats div[data-groupname=repeating_epic-power-stats] > div > textarea,
+.editable-epic-power-stats-table .epic-power-stats div[data-epic-table-name=epic-power-stats] > input,
+.editable-epic-power-stats-table .epic-power-stats div[data-epic-table-name=epic-power-stats] > select,
+.editable-epic-power-stats-table .epic-power-stats div[data-epic-table-name=epic-power-stats] > textarea {
+  border: unset;
+}
+.editable-epic-power-stats-table .epic-power-stats div[data-groupname=repeating_epic-power-stats] > div + div,
+.editable-epic-power-stats-table .epic-power-stats div[data-epic-table-name=epic-power-stats] + div[data-epic-table-name=epic-power-stats] {
+  border-top: 1px solid;
+  border-color: rgba(181, 102, 50, 0.7);
+}
+body.sheet-darkmode .editable-epic-power-stats-table .epic-power-stats div[data-groupname=repeating_epic-power-stats] > div + div,
+body.sheet-darkmode .editable-epic-power-stats-table .epic-power-stats div[data-epic-table-name=epic-power-stats] + div[data-epic-table-name=epic-power-stats] {
+  border-color: rgba(181, 102, 50, 0.7);
+}
+.editable-epic-power-stats-table .epic-power-stats .epic-power-stats-name-grid {
+  text-align: right;
+  font-weight: bold;
+  margin-right: 8px;
+}
+.editable-epic-power-stats-table .epic-power-stats .effectiveness {
+  color: #FFD0FF;
+}
+
 /* --------- Basic Tab ------------ */
 .basic-tab .advantages-and-feats {
   display: flex;
   gap: 16px;
+}
+.basic-tab .character-attributes-and-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 .basic-tab .character-attributes .epic-table-header-grid.character-attributes {
   display: grid;
