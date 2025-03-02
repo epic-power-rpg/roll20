@@ -20,16 +20,24 @@
     = '\n'
     | &emsp; &emsp;
     .spell-header-action-area
-      .label.wide.larger Spell Touch
-      input(name='attr_spell_touch' type='hidden')
-      span.center.bold.larger.middle(name='attr_spell_touch')
-      button(type='roll' value='!EPRoll @{spell_touch} Touches with Spell: @{spell_touch}')
+      .label.wide.larger Spell Hit
+      input(name='attr_spell_hit' type='hidden')
+      span.center.bold.larger.middle(name='attr_spell_hit')
+      input.skillbase(name='attr_spell_hit_modifier' type='number')
+      button(type='roll' value='!EPRoll @{spell_hit}+@{spell_hit_modifier} Hits with Spell: @{spell_hit} + @{spell_hit_modifier}')
       = '\n'
       | &emsp;
-      .label.wide.larger Aim Spell
-      input(name='attr_aim_spell' type='hidden')
-      span.center.bold.larger.middle(name='attr_aim_spell')
-      button(type='roll' value='!EPRoll @{aim_spell} Aims Spell: @{aim_spell}')
+      .label.wide.larger Affliction
+      input(name='attr_affliction' type='hidden')
+      span.center.bold.larger.middle(name='attr_affliction')
+      input.skillbase(name='attr_affliction_modifier' type='number')
+      button(type='roll' value='!EPRoll @{affliction}+@{affliction_modifier} Affliction Attack: @{affliction} + @{affliction_modifier}')
+      | &emsp;
+      .label.wide.larger Mental
+      input(name='attr_mental' type='hidden')
+      span.center.bold.larger.middle(name='attr_mental')
+      input.skillbase(name='attr_mental_modifier' type='number')
+      button(type='roll' value='!EPRoll @{mental}+@{mental_modifier} Mental Attack: @{mental} + @{mental_modifier}')
   // Arcane spells 
   .arcane.section
     input(name='attr_arcane_total_FP' type='hidden' value='0')

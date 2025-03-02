@@ -864,11 +864,13 @@ on('change:EP change:SP change:HP change:best_weapon_damage change:best_attack c
 
 // Calculate these ability values from the skills, modify them for the weight
 // penalty if appropriate, and set attributes to record the result:
-//    dodge, block, parry, spell_touch, aim_spell, engulf_with_spell,
+//    guard, spell hit, affliction, mental,
 //    best_attack, best_attack_is_spell
 // Then update everything that depends on those quantities.
 const updateCopiedAbilities = function () {
   const DX = 'DX';
+  const IQ = 'IQ';
+  const BR = 'BR';
   const weight_penalty = 'weight_penalty';
   getSectionIDsOrdered('skill', function (ids) {
     const disciplineinfoFields = ids.map(
@@ -881,8 +883,10 @@ const updateCopiedAbilities = function () {
       id => `repeating_skill_${id}_skillname`);
     getAttrs(disciplineinfoFields.concat(expertiseFields)
       .concat(abilityFields).concat(nameFields)
-      .concat([DX, weight_penalty]), function (values) {
+      .concat([DX, IQ, BR, weight_penalty]), function (values) {
       const DX_n = Number(values[DX]);
+      const IQ_n = Number(values[IQ]);
+      const BR_n = Number(values[BR]);
       const weight_penalty_n = Number(values[weight_penalty]);
       // Find the ability of the character's best attack: the highest skill under the attack
       // discipline, and note whether it is a spell attack.
@@ -891,7 +895,8 @@ const updateCopiedAbilities = function () {
       //  on the theory those are the ones that the character will actualy be using.) 
       let bestAttack = -5;
       const nonPhysicalAttacks = new Set(['mental attack', 'mental', 'affliction attack', 'affliction']);
-      const spellAttacks = nonPhysicalAttacks.union(new Set(['spell touch', 'aim spell',
+      const spellAttacks = nonPhysicalAttacks.union(new Set(['spell hit', // Include obsolete spell attacks
+                                                             'spell touch', 'aim spell',
                                                              'engulf with spell', 'engulf']));
       let bestAttackIsSpell = 0;
       let under_attack_discipline = false;
@@ -922,56 +927,50 @@ const updateCopiedAbilities = function () {
       let skill_map = _.object(
         nameFields.map(name => values[name].toLowerCase().trim()),
         _.range(ids.length));
-      let min_expertises = {};
+      let min_focus_plus_expertises = {};
       for (let discipline of ['defense', 'defend', // Try both ways.
         'attack']) {
-        let min_expertise = -5;
+        let min_focus_plus_expertise = -5;
         // If the character has the discipline, that gives them
-        // a better minimum expertise.
+        // a better minimum focus.
         if (discipline in skill_map) {
           const discipline_index = skill_map[discipline];
           const expertise_v = values[expertiseFields[discipline_index]];
           if (values[disciplineinfoFields[discipline_index]] === 'D'
               && expertise_v !== '--') {
-            min_expertise = -2 + Number(expertise_v);
+            min_focus_plus_expertise = -2 + Number(expertise_v);
           }
         }
-        min_expertises[discipline] = min_expertise;
+        min_focus_plus_expertises[discipline] = min_focus_plus_expertise;
       }
       // Try to find an ability for each skill.
-      for (let skill of ['dodge', 'block', 'parry', 'aim spell', 'spell touch', 'engulf with spell']) {
+      for (let skill of ['guard', 'spell hit', 'affliction', 'mental']) {
         // First, get the ability assuming there is no training
-        let ability = DX_n + (skill === 'aim spell' ?
-          min_expertises['attack'] + 4 :
-          skill === 'spell touch' ?
-          min_expertises['attack'] + 5 :
-          skill === 'engulf with spell' ?
-          min_expertises['attack'] + 3 :
-          Math.max(
-            min_expertises['defense'],
-            min_expertises['defend']) - 3);
-        let skill_index = skill_map[skill];
-        if (isValueDefined(skill_index) && values[disciplineinfoFields[skill_index]] === 'D') {
-          skill_index = null;
-        }
-        // Check for the user using "shield" as an alternative for "block"
-        if (!isValueDefined(skill_index) && skill === 'block') {
-          skill_index = skill_map['shield'];
-          if (isValueDefined(skill_index) && values[disciplineinfoFields[skill_index]] === 'D') {
-            skill_index = null;
+        let base = (skill === 'guard' ? DX_n - 3 :
+                    skill === 'spell hit' ? DX_n + 4 :
+                    skill === 'affliction' ? BR_n + 1 :
+                    IQ_n + 1)
+        let ability = base + (skill === 'guard' ?
+                              Math.max(min_focus_plus_expertises['defense'],
+                                       min_focus_plus_expertises['defend']):
+                              min_focus_plus_expertises['attack']);
+        // Check for both alternative names for the skill and obsolete names.
+        let possible_names = (skill === 'guard' ? ['guard', 'dodge', 'block', 'shield', 'parry'] :
+                              skill === 'spell hit' ? ['spell hit', 'engulf', 'engulf with spell',
+                                                       'aim spell', 'spell touch'] :
+                              skill === 'affliction' ? ['affliction', 'afflict', 'affliction attack'] :
+                              ['mental', 'mental attack']);
+        for (let name of possible_names) {
+          let skill_index = skill_map[name];
+          if (isValueDefined(skill_index) && values[disciplineinfoFields[skill_index]] !== 'D') {
+            possible_ability = Number(values[abilityFields[skill_index]]);
+            if (name === 'spell touch') {
+              possible_ability = possible_ability - 1; // Convert DX+5 to DX+4
+            }
+            ability = Math.max(ability, possible_ability);
           }
         }
-        // Check for the user using 'engulf' as an alternative for 'engulf with spell'
-        if (!isValueDefined(skill_index) && skill === 'engulf with spell') {
-          skill_index = skill_map['engulf'];
-          if (isValueDefined(skill_index) && values[disciplineinfoFields[skill_index]] === 'D') {
-            skill_index = null;
-          }
-        }
-        if (isValueDefined(skill_index)) {
-          ability = Number(values[abilityFields[skill_index]]);
-        }
-        if (skill === 'dodge' || skill === 'block' || skill === 'parry') {
+        if (skill === 'guard') {
           ability = ability + weight_penalty_n;
         }
         update[skill.replaceAll(' ', '_')] = ability;
@@ -1222,7 +1221,7 @@ function createBaseSkillsAttributes(includePersonal) {
     addNewSkill('People Insight', { skillattribute: 'IQ', skillexpertise: 'ST', skillBase: 1 });
   }
   addNewDiscipline('Defense', { skillexpertise: 1 });
-  addNewSkill('Dodge', { skillattribute: 'DX', skillexpertise: 'ST', skillbase: -3 });
+  addNewSkill('Guard', { skillattribute: 'DX', skillexpertise: 'ST', skillbase: -3 });
   addNewSkill('Resolve', { skillattribute: 'IQ', skillexpertise: 'ST', skillbase: 0 });
   addNewSkill('Robustness', { skillattribute: 'BR', skillexpertise: 'ST', skillbase: 0 });
   addNewDiscipline('Attack', { skillexpertise: 1 });
@@ -1281,28 +1280,25 @@ const updateDefenseValues = function () {
   const shieldName = 'shield_defense';
   const defenseBoostName = 'defense_boost';
   const highestWeaponDefenseName = 'best_weapon_defense';
-  const dodgeName = 'dodge';
-  const blockName = 'block';
-  const parryName = 'parry';
+  const guardName = 'guard';
   const reactionPenaltyName = 'reaction_penalty';
   getAttrs([armorName, shieldName, defenseBoostName, highestWeaponDefenseName,
-            dodgeName, blockName, parryName, reactionPenaltyName],
+            guardName, reactionPenaltyName],
     function (values) {
       const cur_armor = getNumberIfValid(values[armorName]);
       const cur_shield = getNumberIfValid(values[shieldName]);
       const highestWeaponDefense = getNumberIfValid(values[highestWeaponDefenseName]);
       const update = {};
+      const guard_n = getNumberIfValid(values[guardName]);
       for (let defense of ['dodge', 'block', 'parry']) {
         const defenseIsDodge = defense === 'dodge';
         const defenseIsBlock = defense === 'block';
         const defenseIsParry = defense === 'parry';
-        const curDefenseName = defenseIsDodge ? dodgeName : defenseIsBlock ? blockName : parryName;
-        const cur_defense = getNumberIfValid(values[curDefenseName]);
         /**
          * FIXME - Deprecate `reaction_penalty` since it is redundant with `defense_boost` as a follow up.
          */
         const total = (
-          cur_defense
+          guard_n
           + (defenseIsBlock ? cur_shield : 0)
           + (defenseIsParry ? highestWeaponDefense : 0)
           - Math.abs(getNumberIfValid(values[reactionPenaltyName]))
@@ -1321,7 +1317,7 @@ const updateDefenseValues = function () {
     });
 }
 on('change:armor_defense change:shield_defense change:best_weapon_defense' +
-   ' change:dodge change:block change:parry' +
+   ' change:guard' +
    ' change:defense_boost change:reaction_penalty sheet:opened',
 updateDefenseValues);
 
