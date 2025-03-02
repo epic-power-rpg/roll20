@@ -961,17 +961,20 @@
         <div class="spell-header-action-area">
           <div class="label wide larger">Spell Hit</div>
           <input name="attr_spell_hit" type="hidden" />
-          <span class="center bold larger middle" name="attr_spell_touch"></span>
-          <button type="roll" value="!EPRoll @{spell_hit} Hits with Spell: @{spell_hit}"></button>
+          <span class="center bold larger middle" name="attr_spell_hit"></span>
+          <input class="skillbase" name="attr_spell_hit_modifier" type="number" />
+          <button type="roll" value="!EPRoll @{spell_hit}+@{spell_hit_modifier} Hits with Spell: @{spell_hit} + @{spell_hit_modifier}"></button>
           &emsp;
           <div class="label wide larger">Affliction</div>
           <input name="attr_affliction" type="hidden" />
           <span class="center bold larger middle" name="attr_affliction"></span>
-          <button type="roll" value="!EPRoll @{affliction} Affliction Attack: @{affliction}"></button>&emsp;
+          <input class="skillbase" name="attr_affliction_modifier" type="number" />
+          <button type="roll" value="!EPRoll @{affliction}+@{affliction_modifier} Affliction Attack: @{affliction} + @{affliction_modifier}"></button>&emsp;
           <div class="label wide larger">Mental</div>
           <input name="attr_mental" type="hidden" />
           <span class="center bold larger middle" name="attr_mental"></span>
-          <button type="roll" value="!EPRoll @{mental} Mental Attack: @{mental}"></button>
+          <input class="skillbase" name="attr_mental_modifier" type="number" />
+          <button type="roll" value="!EPRoll @{mental}+@{mental_modifier} Mental Attack: @{mental} + @{mental_modifier}"></button>
         </div>
       </div>
       <!-- Arcane spells -->
