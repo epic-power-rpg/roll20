@@ -970,7 +970,7 @@ const updateCopiedAbilities = function () {
             ability = Math.max(ability, possible_abililty);
           }
         }
-        if (skill === 'guard' {
+        if (skill === 'guard') {
           ability = ability + weight_penalty_n;
         }
         update[skill.replaceAll(' ', '_')] = ability;
