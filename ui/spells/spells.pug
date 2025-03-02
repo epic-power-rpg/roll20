@@ -20,16 +20,21 @@
     = '\n'
     | &emsp; &emsp;
     .spell-header-action-area
-      .label.wide.larger Spell Touch
-      input(name='attr_spell_touch' type='hidden')
+      .label.wide.larger Spell Hit
+      input(name='attr_spell_hit' type='hidden')
       span.center.bold.larger.middle(name='attr_spell_touch')
-      button(type='roll' value='!EPRoll @{spell_touch} Touches with Spell: @{spell_touch}')
+      button(type='roll' value='!EPRoll @{spell_hit} Hits with Spell: @{spell_hit}')
       = '\n'
       | &emsp;
-      .label.wide.larger Aim Spell
-      input(name='attr_aim_spell' type='hidden')
-      span.center.bold.larger.middle(name='attr_aim_spell')
-      button(type='roll' value='!EPRoll @{aim_spell} Aims Spell: @{aim_spell}')
+      .label.wide.larger Afflict
+      input(name='attr_afflict' type='hidden')
+      span.center.bold.larger.middle(name='attr_afflict')
+      button(type='roll' value='!EPRoll @{afflict} Affliction Attack: @{afflict}')
+      | &emsp;
+      .label.wide.larger Mental
+      input(name='attr_mental' type='hidden')
+      span.center.bold.larger.middle(name='attr_mental')
+      button(type='roll' value='!EPRoll @{mental} Mental Attack: @{mental}')
   // Arcane spells 
   .arcane.section
     input(name='attr_arcane_total_FP' type='hidden' value='0')
