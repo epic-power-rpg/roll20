@@ -948,7 +948,7 @@ const updateCopiedAbilities = function () {
         // First, get the ability assuming there is no training
         let base = (skill === 'guard' ? DX_n - 3 :
                     skill === 'spell hit' ? DX_n + 4 :
-                    skill == 'affliction' ? BR_n + 1 :
+                    skill === 'affliction' ? BR_n + 1 :
                     IQ_n + 1)
         let ability = base + (skill === 'guard' ?
                               Math.max(min_focus_plus_expertises['defense'],
