@@ -1289,7 +1289,7 @@ const updateDefenseValues = function () {
       const cur_shield = getNumberIfValid(values[shieldName]);
       const highestWeaponDefense = getNumberIfValid(values[highestWeaponDefenseName]);
       const update = {};
-      const guard_n = getNumberIfValid(values[guard]);
+      const guard_n = getNumberIfValid(values[guardName]);
       for (let defense of ['dodge', 'block', 'parry']) {
         const defenseIsDodge = defense === 'dodge';
         const defenseIsBlock = defense === 'block';
