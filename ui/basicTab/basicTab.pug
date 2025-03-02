@@ -4,6 +4,7 @@ include ../global/advantages.pug
 .basic.section.basic-tab
   .advantages-and-feats
     .character-attributes-and-stats
+      include ../powerStats/editableTable.pug
       .character-attributes
         .character-attributes.epic-table-header-grid
           .character-attributes-name-grid Attr.
@@ -23,7 +24,19 @@ include ../global/advantages.pug
         .character-attributes-table(data-epic-table-name="character-attributes")
           .character-attributes-name-grid Age
           input.character-attributes-value-grid(name='attr_age' type='number')
-      include ../powerStats/editableTable.pug
+        .character-attributes-table(data-epic-table-name="character-attributes")
+          .character-attributes-name-grid IQ
+          input.character-attributes-value-grid(name='attr_IQ' type='number' value='1')
+        .character-attributes-table(data-epic-table-name="character-attributes")
+          .character-attributes-name-grid DX
+          input.character-attributes-value-grid(name='attr_DX' type='number' value='1')
+        .character-attributes-table(data-epic-table-name="character-attributes")
+          .character-attributes-name-grid BR
+          input.character-attributes-value-grid(name='attr_BR' type='number' value='1')
+        .character-attributes-table(data-epic-table-name="character-attributes")
+          .character-attributes-name-grid CP Cost
+          input(name='attr_displayed_attribute_CP' type='hidden' value='-5')
+          span.character-attributes-value-grid.CP(name='attr_displayed_attribute_CP')
       include ../avatars/avatars.pug
     // Advantages and Disadvantages 
     .advantages
