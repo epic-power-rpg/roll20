@@ -148,13 +148,6 @@ select {
   text-align-last: center;
 }
 
-button.actionRollButton {
-  padding: 2px 3px;
-  font-size: 1.3em;
-  margin: 0 3px;
-  border-width: 1px;
-}
-
 /* Change the character for dice roll buttons to be
    the two joined squares character and add styles */
 button.btn.ui-draggable[type=roll],
@@ -409,10 +402,6 @@ body.sheet-darkmode .ui-dialog {
   width: 25px;
 }
 
-.modifier-width.modifier-width.modifier-width {
-  width: 35px;
-}
-
 .narrowish.narrowish.narrowish {
   width: 40px;
 }
@@ -513,26 +502,6 @@ body.sheet-darkmode .children-separated > :not(:first-child) {
   display: inline-block;
   vertical-align: middle;
   text-align: right;
-}
-
-.attribute-value {
-  font-size: 150%;
-  vertical-align: middle;
-  margin: 1px;
-  border-width: 1px;
-  padding: 0px;
-  box-sizing: border-box;
-}
-
-/* Make the height override the box's usual height */
-input.attribute-value.attribute-value.attribute-value {
-  height: 24px;
-}
-
-span.attribute-value {
-  /* Make the height work for span. */
-  display: inline-block;
-  border-color: transparent;
 }
 
 input[disabled],
@@ -724,22 +693,41 @@ body.sheet-darkmode .top-section {
 .top-section .effectiveness-power-depth-cp-fp-section .effectiveness {
   color: #FFD0FF;
 }
-.top-section .attributecontrol[value=basic] ~ span.attribute-value,
 .top-section .attributecontrol[value=basic] ~ button.reset-total,
-.top-section .attributecontrol[value=basic] ~ .attribute-roll,
 .top-section .attributecontrol[value=basic] ~ .not-basic-tab,
 .top-section .cpcontrol[value=basic] ~ .not-basic-tab {
   display: none;
 }
-.top-section .attributecontrol:not([value=basic]) ~ input.attribute-value,
 .top-section .attributecontrol:not([value=basic]) ~ button.reset-total .attributecontrol:not([value=basic]) ~ .CP,
 .top-section .attributecontrol:not([value=basic]) ~ .basic-tab-only,
 .top-section .cpcontrol:not([value=basic]) ~ .basic-tab-only {
   display: none;
 }
-.top-section .attribute-row {
-  display: flex;
+.top-section .diceRollSection {
+  margin-left: 4px;
+}
+.top-section .diceRollSection .attributeRollSection {
+  display: grid;
+  width: fit-content;
+  grid-template-columns: [name] auto [field] 1fr [roll-button] auto;
   align-items: center;
+  row-gap: 4px;
+}
+.top-section .diceRollSection .attributeRollSection .attributeName {
+  grid-column: name;
+  font-weight: bold;
+  text-align: right;
+  margin-right: 8px;
+}
+.top-section .diceRollSection .attributeRollSection .attributeField {
+  grid-column: field;
+}
+.top-section .diceRollSection .attributeRollSection .actionRollButton {
+  grid-column: roll-button;
+  padding: 2px 3px;
+  font-size: 1.3em;
+  margin: 0 3px;
+  border-width: 1px;
 }
 .top-section .tab-holder {
   margin-top: 4px;
@@ -1412,8 +1400,96 @@ body.sheet-darkmode .overview-tab .skills-overview .epic-table-header-grid.skill
   grid-column-start: 1;
   grid-column-end: 5;
 }
+.overview-tab .skills-overview .epic-table-header-grid.general-dice-rolls {
+  display: grid;
+  grid-template-columns: minmax(0, 96px) minmax(0, 36px) minmax(0, 36px) minmax(0, 24px);
+  column-gap: 2px;
+  color: #fff;
+  background-color: #b56632;
+  padding: 0 2px;
+  margin-bottom: 2px;
+}
+body.sheet-darkmode .overview-tab .skills-overview .epic-table-header-grid.general-dice-rolls {
+  color: #fff;
+}
+body.sheet-darkmode .overview-tab .skills-overview .epic-table-header-grid.general-dice-rolls {
+  background-color: #b56632;
+}
+.overview-tab .skills-overview .epic-table-header-grid.general-dice-rolls > div {
+  text-align: center;
+  margin: auto;
+  font-weight: bold;
+  width: 100%;
+  overflow: hidden;
+}
+.overview-tab .skills-overview div[data-groupname=repeating_general-dice-rolls] > div,
+.overview-tab .skills-overview div[data-epic-table-name=general-dice-rolls] {
+  display: grid;
+  grid-template-columns: minmax(0, 96px) minmax(0, 36px) minmax(0, 36px) minmax(0, 24px);
+  row-gap: 0;
+  column-gap: 2px;
+  background: transparent;
+  word-break: break-word;
+}
+.overview-tab .skills-overview div[data-groupname=repeating_general-dice-rolls] > div input, .overview-tab .skills-overview div[data-groupname=repeating_general-dice-rolls] > div input[type=number], .overview-tab .skills-overview div[data-groupname=repeating_general-dice-rolls] > div textarea, .overview-tab .skills-overview div[data-groupname=repeating_general-dice-rolls] > div select,
+.overview-tab .skills-overview div[data-epic-table-name=general-dice-rolls] input,
+.overview-tab .skills-overview div[data-epic-table-name=general-dice-rolls] input[type=number],
+.overview-tab .skills-overview div[data-epic-table-name=general-dice-rolls] textarea,
+.overview-tab .skills-overview div[data-epic-table-name=general-dice-rolls] select {
+  width: 100% !important;
+  margin-left: unset;
+  height: auto;
+}
+.overview-tab .skills-overview div[data-groupname=repeating_general-dice-rolls] > div input[type=text],
+.overview-tab .skills-overview div[data-epic-table-name=general-dice-rolls] input[type=text] {
+  text-align: left;
+}
+.overview-tab .skills-overview div[data-groupname=repeating_general-dice-rolls] > div input, .overview-tab .skills-overview div[data-groupname=repeating_general-dice-rolls] > div select,
+.overview-tab .skills-overview div[data-epic-table-name=general-dice-rolls] input,
+.overview-tab .skills-overview div[data-epic-table-name=general-dice-rolls] select {
+  white-space: nowrap;
+}
+.overview-tab .skills-overview div[data-groupname=repeating_general-dice-rolls] > div span,
+.overview-tab .skills-overview div[data-epic-table-name=general-dice-rolls] span {
+  text-align: center;
+  margin: auto 0;
+}
+.overview-tab .skills-overview div[data-groupname=repeating_general-dice-rolls] > div button, .overview-tab .skills-overview div[data-groupname=repeating_general-dice-rolls] > div button[type=roll],
+.overview-tab .skills-overview div[data-epic-table-name=general-dice-rolls] button,
+.overview-tab .skills-overview div[data-epic-table-name=general-dice-rolls] button[type=roll] {
+  margin: 0;
+}
+.overview-tab .skills-overview div[data-groupname=repeating_general-dice-rolls] > div .epic-table-row.conditional-one,
+.overview-tab .skills-overview div[data-epic-table-name=general-dice-rolls] .epic-table-row.conditional-one {
+  display: grid;
+  grid-column-start: 1;
+  grid-column-end: 5;
+}
 .overview-tab .skills-overview .epic-table-header-grid .skillability {
   font-weight: normal !important;
+}
+.overview-tab .skills-overview .general-dice-rolls {
+  border: solid;
+  border-color: rgba(181, 102, 50, 0.7);
+  border-width: 0px 0px 1px 0px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+body.sheet-darkmode .overview-tab .skills-overview .general-dice-rolls {
+  border-color: rgba(181, 102, 50, 0.7);
+}
+.overview-tab .skills-overview .general-dice-rolls .diceRollName {
+  text-align: right;
+  margin-right: 4px;
+  line-height: 1;
+}
+.overview-tab .skills-overview .general-dice-rolls button.actionRollButton {
+  padding: 0px 2px;
+  box-sizing: border-box;
+  margin: auto 2px;
+  height: 20px;
+  font-size: 1.3em;
+  font-weight: normal;
 }
 .overview-tab .skills-overview > div[data-groupname] .skill-overview-row-container {
   border: solid;

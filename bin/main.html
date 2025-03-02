@@ -141,40 +141,38 @@
     <!-- Top section -->
 
     <div class="top-section">
-      <!-- Left top section -->
       <div class="flex-stack space-between">
-        <!-- IQ, DX, BR -->
-        <div class="attribute-row">
-          <div class="attribute-name big">IQ</div>
-          &ensp;
-          <span class="attribute-value center" name="attr_IQ"></span>
-          <div class="inline">+ </div>
-          <input class="modifier-width" name="attr_IQmodifier" type="number" value="0" />
-          <button class="actionRollButton epRoll_IQmodifier" name="act_epRoll_IQmodifier" type="action"></button>
-          <div class="attribute-name big">DX</div>
-          &ensp;
-          <span class="attribute-value center" name="attr_DX"></span>
-          <div class="inline"> + </div>
-          <input class="modifier-width" name="attr_DXmodifier" type="number" value="0" />
-          <button class="actionRollButton epRoll_DXmodifier" name="act_epRoll_DXmodifier" type="action"></button>
-          &emsp;
-          <div class="attribute-name big">BR</div>
-          &ensp;
-          <span class="attribute-value center" name="attr_BR"></span>
-          <div class="inline"> + </div>
-          <input class="modifier-width" name="attr_BRmodifier" type="number" value="0" />
-          <button class="actionRollButton epRoll_BRmodifier" name="act_epRoll_BRmodifier" type="action"></button>
-        </div>
-        <!-- Rolling -->
-        <div display="inline-block">
-          <button class="actionRollButton epRoll" name="act_epRoll" type="action"></button>
-          &emsp;
-          <button class="actionRollButton epRoll_roll_modifier" name="act_epRoll_roll_modifier" type="action"></button> +
-          <input class="narrowish" name="attr_roll_modifier" type="number" value="0" />
-          <div class="attribute-name wideish larger">Initiative</div>
-          <span class="narrow center bold larger value" name="attr_initiative"></span> +
-          <input class="narrowish" name="attr_initiativemodifier" type="number" value="0" />
-          <button class="actionRollButton epRoll_initiative" name="act_epRoll_initiative" type="action"></button>
+        <div class="diceRollSection">
+          <div class="attributeRollSection">
+            <div class="attributeName">IQ</div>
+            <div class="attributeField">
+              <span name="attr_IQ"></span>
+              <span>+ </span>
+              <input name="attr_IQmodifier" type="number" value="0" />
+            </div>
+            <button class="actionRollButton epRoll_IQmodifier" name="act_epRoll_IQmodifier" type="action"></button>
+            <div class="attributeName">DX</div>
+            <div class="attributeField">
+              <span name="attr_DX"></span>
+              <span> + </span>
+              <input name="attr_DXmodifier" type="number" value="0" />
+            </div>
+            <button class="actionRollButton epRoll_DXmodifier" name="act_epRoll_DXmodifier" type="action"></button>
+            <div class="attributeName">BR</div>
+            <div class="attributeField">
+              <span class="center" name="attr_BR"></span>
+              <span> + </span>
+              <input name="attr_BRmodifier" type="number" value="0" />
+            </div>
+            <button class="actionRollButton epRoll_BRmodifier" name="act_epRoll_BRmodifier" type="action"></button>
+            <div class="attributeName">Init</div>
+            <div class="attributeField">
+              <span name="attr_initiative"></span>
+              <span> + </span>
+              <input name="attr_initiativemodifier" type="number" value="0" />
+            </div>
+            <button class="actionRollButton epRoll_initiative" name="act_epRoll_initiative" type="action"></button>
+          </div>
         </div>
         <!-- tab buttons -->
         <div class="tab-holder">
@@ -290,12 +288,12 @@
       <div class="children-separated no-shrink">
         <div>
           <div class="attribute-name biggish">PWR</div>
-          <input class="attribute-value biggish narrower medium center" name="attr_EP_t" type="number" />
+          <input class="biggish narrower medium center" name="attr_EP_t" type="number" />
           <input class="attributecontrol" name="attr_chosentab" type="hidden" value="basic" />
           <div class="inline biggish middle basic-tab-only">/</div>
           <button class="reset-total" name="act_reset_ep_t" type="action">&#x21E6;</button>
-          <span class="attribute-value biggish narrow" name="attr_EP_t_max"></span>
-          <input class="attribute-value biggish narrower medium center" name="attr_EP_t_max" type="number" value="0" />
+          <span class="biggish narrow" name="attr_EP_t_max"></span>
+          <input class="biggish narrower medium center" name="attr_EP_t_max" type="number" value="0" />
         </div>
         <div>
           &emsp;&emsp;&emsp;
@@ -303,20 +301,20 @@
         </div>
         <div>
           <div class="attribute-name biggish">&ensp;&ensp;&ensp;ER</div>
-          <input class="attribute-value biggish narrower medium center" name="attr_SP" type="number" />
+          <input class="biggish narrower medium center" name="attr_SP" type="number" />
           <span>
             <button class="reset-total" name="act_reset_sp" type="action">&#x21E6;</button>
           </span>
-          <span class="attribute-value biggish narrow" name="attr_SP_max" value="0"></span>
+          <span class="biggish narrow" name="attr_SP_max" value="0"></span>
         </div>
         <div>
           <div class="attribute-name biggish">HP</div>
           <!-- TODO: Move this to sheet worker, who can do it right. -->
-          <input class="attribute-value biggish medium center" name="attr_HP" type="number" />
+          <input class="biggish medium center" name="attr_HP" type="number" />
           <span>
             <button class="reset-total" name="act_reset_hp" type="action">&#x21E6;</button>
           </span>
-          <span class="attribute-value biggish narrow" name="attr_HP_max" value="16"></span>
+          <span class="biggish narrow" name="attr_HP_max" value="16"></span>
         </div>
       </div>
     </div>
@@ -468,6 +466,20 @@
             <div class="skillname">Skill</div>
             <div class="skillability">Ability</div>
             <div class="skillbase">Mod</div>
+          </div>
+          <div class="general-dice-rolls" data-epic-table-name="general-dice-rolls">
+            <span class="diceRollName">Roll</span>
+            <span class="ability">&nbsp;</span>
+            <span class="mod">&nbsp;</span>
+            <button class="actionRollButton epRoll" name="act_epRoll" type="action"></button>
+          </div>
+          <div class="general-dice-rolls" data-epic-table-name="general-dice-rolls">
+            <span class="diceRollName">Roll + Mod</span>
+            <span class="ability">&nbsp;</span>
+            <span class="mod">
+              <input name="attr_roll_modifier" type="number" value="0" />
+            </span>
+            <button class="actionRollButton epRoll_roll_modifier" name="act_epRoll_roll_modifier" type="action"></button>
           </div>
           <fieldset class="repeating_skill">
             <!-- This input is used by CSS to hide disciplines-->

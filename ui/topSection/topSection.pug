@@ -1,49 +1,33 @@
 // Top section 
 = '\n'
 .top-section
-  // Left top section 
   .flex-stack.space-between
-    // IQ, DX, BR 
-    .attribute-row
-      .attribute-name.big IQ
-      = '\n'
-      | &ensp;
-      = '\n'
-      span.attribute-value.center(name='attr_IQ')
-      .inline + 
-      input.modifier-width(name='attr_IQmodifier' type='number' value='0')
-      button.actionRollButton.epRoll_IQmodifier(name='act_epRoll_IQmodifier' type='action')
-      .attribute-name.big DX
-      = '\n'
-      | &ensp;
-      = '\n'
-      span.attribute-value.center(name='attr_DX')
-      .inline  + 
-      input.modifier-width(name='attr_DXmodifier' type='number' value='0')
-      button.actionRollButton.epRoll_DXmodifier(name='act_epRoll_DXmodifier' type='action')
-      = '\n'
-      | &emsp;
-      .attribute-name.big BR
-      = '\n'
-      | &ensp;
-      = '\n'
-      span.attribute-value.center(name='attr_BR')
-      .inline  + 
-      input.modifier-width(name='attr_BRmodifier' type='number' value='0')
-      button.actionRollButton.epRoll_BRmodifier(name='act_epRoll_BRmodifier' type='action')
-    // Rolling 
-    div(display='inline-block')
-      button.actionRollButton.epRoll(name='act_epRoll' type='action')
-      = '\n'
-      | &emsp;
-      button.actionRollButton.epRoll_roll_modifier(name='act_epRoll_roll_modifier' type='action')
-      |       +
-      input.narrowish(name='attr_roll_modifier' type='number' value='0')
-      .attribute-name.wideish.larger Initiative
-      span.narrow.center.bold.larger.value(name='attr_initiative')
-      |       +
-      input.narrowish(name='attr_initiativemodifier' type='number' value='0')
-      button.actionRollButton.epRoll_initiative(name='act_epRoll_initiative' type='action')
+    .diceRollSection
+      .attributeRollSection
+        .attributeName IQ
+        .attributeField
+          span(name='attr_IQ')
+          span + 
+          input(name='attr_IQmodifier' type='number' value='0')
+        button.actionRollButton.epRoll_IQmodifier(name='act_epRoll_IQmodifier' type='action')
+        .attributeName DX
+        .attributeField
+          span(name='attr_DX')
+          span  + 
+          input(name='attr_DXmodifier' type='number' value='0')
+        button.actionRollButton.epRoll_DXmodifier(name='act_epRoll_DXmodifier' type='action')
+        .attributeName BR
+        .attributeField
+          span.center(name='attr_BR')
+          span  + 
+          input(name='attr_BRmodifier' type='number' value='0')
+        button.actionRollButton.epRoll_BRmodifier(name='act_epRoll_BRmodifier' type='action')
+        .attributeName Init
+        .attributeField
+          span(name='attr_initiative')
+          span  + 
+          input(name='attr_initiativemodifier' type='number' value='0')
+        button.actionRollButton.epRoll_initiative(name='act_epRoll_initiative' type='action')
     // tab buttons 
     .tab-holder
       //
@@ -118,13 +102,13 @@
   .children-separated.no-shrink
     div
       .attribute-name.biggish PWR
-      input.attribute-value.biggish.narrower.medium.center(name='attr_EP_t' type='number')
+      input.biggish.narrower.medium.center(name='attr_EP_t' type='number')
       input.attributecontrol(name='attr_chosentab' type='hidden' value='basic')
       .inline.biggish.middle.basic-tab-only /
       button.reset-total(name='act_reset_ep_t' type='action')
         | &#x21E6;
-      span.attribute-value.biggish.narrow(name='attr_EP_t_max')
-      input.attribute-value.biggish.narrower.medium.center(name='attr_EP_t_max' type='number' value='0')
+      span.biggish.narrow(name='attr_EP_t_max')
+      input.biggish.narrower.medium.center(name='attr_EP_t_max' type='number' value='0')
     div
       = '\n'
       | &emsp;&emsp;&emsp;
@@ -132,16 +116,16 @@
         | &nbsp;&#x21EF;
     div
       .attribute-name.biggish &ensp;&ensp;&ensp;ER
-      input.attribute-value.biggish.narrower.medium.center(name='attr_SP' type='number')
+      input.biggish.narrower.medium.center(name='attr_SP' type='number')
       span
         button.reset-total(name='act_reset_sp' type='action')
           | &#x21E6;
-      span.attribute-value.biggish.narrow(name='attr_SP_max' value='0')
+      span.biggish.narrow(name='attr_SP_max' value='0')
     div
       .attribute-name.biggish HP
       // TODO: Move this to sheet worker, who can do it right. 
-      input.attribute-value.biggish.medium.center(name='attr_HP' type='number')
+      input.biggish.medium.center(name='attr_HP' type='number')
       span
         button.reset-total(name='act_reset_hp' type='action')
           | &#x21E6;
-      span.attribute-value.biggish.narrow(name='attr_HP_max' value='16')
+      span.biggish.narrow(name='attr_HP_max' value='16')

@@ -18,24 +18,43 @@
     }
   }
 
-  .attributecontrol[value="basic"]~span.attribute-value,
   .attributecontrol[value="basic"]~button.reset-total,
-  .attributecontrol[value="basic"]~.attribute-roll,
   .attributecontrol[value="basic"]~.not-basic-tab,
   .cpcontrol[value="basic"]~.not-basic-tab {
     display: none;
   }
 
-  .attributecontrol:not([value="basic"])~input.attribute-value,
   .attributecontrol:not([value="basic"])~button.reset-total .attributecontrol:not([value="basic"])~.CP,
   .attributecontrol:not([value="basic"])~.basic-tab-only,
   .cpcontrol:not([value="basic"])~.basic-tab-only {
     display: none;
   }
 
-  .attribute-row {
-    display: flex;
-    align-items: center;
+  .diceRollSection {
+    margin-left: 4px;
+    .attributeRollSection {
+      display: grid;
+      width: fit-content;
+      grid-template-columns: [name] auto [field] 1fr [roll-button] auto;
+      align-items: center;
+      row-gap: 4px;
+      .attributeName {
+        grid-column: name;
+        font-weight: bold;
+        text-align: right;
+        margin-right: 8px;
+      }
+      .attributeField {
+        grid-column: field;
+      }
+      .actionRollButton {
+        grid-column: roll-button;
+        padding: 2px 3px;
+        font-size: 1.3em;
+        margin: 0 3px;
+        border-width: 1px;
+      }
+    }
   }
   .tab-holder {
     margin-top: 4px;
