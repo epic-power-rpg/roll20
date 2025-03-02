@@ -2243,11 +2243,11 @@ const updateCopiedAbilities = function () {
                                        min_focus_plus_expertises['defend']):
                               min_focus_plus_expertises['attack']);
         // Check for both alternative names for the skill and obsolete names.
-        let possible_names (skill === 'guard' ? ['guard', 'dodge', 'block', 'shield', 'parry'] :
-                            skill === 'spell hit' ? ['spell hit', 'engulf', 'engulf with spell',
-                                                     'aim spell', 'spell touch'] :
-                            skill === 'affliction' ? ['affliction', 'afflict', 'affliction attack'] :
-                            ['mental', 'mental attack']);
+        let possible_names = (skill === 'guard' ? ['guard', 'dodge', 'block', 'shield', 'parry'] :
+                              skill === 'spell hit' ? ['spell hit', 'engulf', 'engulf with spell',
+                                                       'aim spell', 'spell touch'] :
+                              skill === 'affliction' ? ['affliction', 'afflict', 'affliction attack'] :
+                              ['mental', 'mental attack']);
         for (let name of possible_names) {
           let skill_index = skill_map[name];
           if (isValueDefined(skill_index) && values[disciplineinfoFields[skill_index]] !== 'D') {
