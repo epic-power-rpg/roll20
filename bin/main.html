@@ -141,82 +141,38 @@
     <!-- Top section -->
 
     <div class="top-section">
-      <!-- Left top section -->
       <div class="flex-stack space-between">
-        <div class="effectiveness-power-depth-cp-fp-section">
-          <div class="effectiveness">
-            <div class="effectiveness inline bold right middle">Eff</div>
-            <input class="power medium bold middle" name="attr_effectiveness" type="hidden" value="0" />
-            <span class="power left bold middle" name="attr_effectiveness"></span>
+        <div class="diceRollSection">
+          <div class="attributeRollSection">
+            <div class="attributeName">IQ</div>
+            <div class="attributeField">
+              <span name="attr_IQ"></span>
+              <span>+ </span>
+              <input name="attr_IQmodifier" type="number" value="0" />
+            </div>
+            <button class="actionRollButton epRoll_IQmodifier" name="act_epRoll_IQmodifier" type="action"></button>
+            <div class="attributeName">DX</div>
+            <div class="attributeField">
+              <span name="attr_DX"></span>
+              <span> + </span>
+              <input name="attr_DXmodifier" type="number" value="0" />
+            </div>
+            <button class="actionRollButton epRoll_DXmodifier" name="act_epRoll_DXmodifier" type="action"></button>
+            <div class="attributeName">BR</div>
+            <div class="attributeField">
+              <span class="center" name="attr_BR"></span>
+              <span> + </span>
+              <input name="attr_BRmodifier" type="number" value="0" />
+            </div>
+            <button class="actionRollButton epRoll_BRmodifier" name="act_epRoll_BRmodifier" type="action"></button>
+            <div class="attributeName">Init</div>
+            <div class="attributeField">
+              <span name="attr_initiative"></span>
+              <span> + </span>
+              <input name="attr_initiativemodifier" type="number" value="0" />
+            </div>
+            <button class="actionRollButton epRoll_initiative" name="act_epRoll_initiative" type="action"></button>
           </div>
-          <div class="power-depth">
-            <input class="cpcontrol" name="attr_chosentab" type="hidden" value="basic" />
-            <div class="power inline bold right middle">EPN</div>
-            <!-- Power is editable in basic tab only -->
-            <span class="power left bold middle not-basic-tab" name="attr_power"></span>
-            <input class="power medium bold middle basic-tab-only" name="attr_power" type="number" value="0" />
-          </div>
-          <div class="cp-section">
-            <input class="cpcontrol" name="attr_chosentab" type="hidden" value="basic" />
-            <div class="CP inline bold right middle">CP</div>
-            <input class="CP bold center narrow" name="attr_CPU" value="@{CP}          -(@{attribute_CP})          -(@{advantage_total_CP})          -(@{feat_total_CP})          -(@{skill_total_CP})          -(@{arcane_total_CP})          -(@{innate_total_CP})" disabled="true" />
-            <span>/&nbsp;</span>
-            <!-- CP is editable in basic tab only -->
-            <span class="CP bold middle not-basic-tab" name="attr_CP"></span>
-            <input class="CP bold medium middle basic-tab-only" name="attr_CP" type="number" value="10" />
-          </div>
-          <div class="fp-section">
-            <div class="FP inline bold right middle">FP</div>
-            <input class="FP bold center narrow" name="attr_FPU" value="@{FP}        - (@{skill_total_FP})        - (@{arcane_total_FP})" disabled="true" />
-            <span>/&nbsp;</span>
-            <span class="FP bold middle center" name="attr_FP" value="2"></span>
-          </div>
-        </div>
-
-        <!-- IQ, DX, BR -->
-        <!--
-        These are read only, except in the basic tab,
-        where they can be changed, and their CP cost is shown
-        -->
-        <div class="attribute-row">
-          <input class="attributecontrol cpcontrol" name="attr_chosentab" type="hidden" value="basic" />
-          <div class="attribute-name big">IQ</div>
-          &ensp;
-          <span class="attribute-value center not-basic-tab" name="attr_IQ"></span>
-          <div class="inline not-basic-tab"> + </div>
-          <input class="modifier-width not-basic-tab" name="attr_IQmodifier" type="number" value="0" />
-          <button class="actionRollButton epRoll_IQmodifier not-basic-tab" name="act_epRoll_IQmodifier" type="action"></button>
-          <input class="attribute-value narrowish center basic-tab-only" name="attr_IQ" type="number" value="1" />
-          <div class="attribute-name big">DX</div>
-          &ensp;
-          <span class="attribute-value center" name="attr_DX"></span>
-          <div class="inline not-basic-tab"> + </div>
-          <input class="modifier-width not-basic-tab" name="attr_DXmodifier" type="number" value="0" />
-          <button class="actionRollButton epRoll_DXmodifier not-basic-tab" name="act_epRoll_DXmodifier" type="action"></button>
-          <input class="attribute-value narrowish center" name="attr_DX" type="number" value="1" />
-          &emsp;
-          <div class="attribute-name big">BR</div>
-          &ensp;
-          <span class="attribute-value center" name="attr_BR"></span>
-          <div class="inline not-basic-tab"> + </div>
-          <input class="modifier-width not-basic-tab" name="attr_BRmodifier" type="number" value="0" />
-          <button class="actionRollButton epRoll_BRmodifier not-basic-tab" name="act_epRoll_BRmodifier" type="action"></button>
-          <input class="attribute-value narrowish center basic-tab-only" name="attr_BR" type="number" value="1" />
-          <input name="attr_attribute_CP" type="hidden" value="-5" />
-          <input name="attr_displayed_attribute_CP" type="hidden" value="-5" />
-          <input class="narrow right CP basic-tab-only" name="attr_show_displayed_attribute_CP" value="@{displayed_attribute_CP}" disabled="true" />
-          <input class="narrow right CP basic-tab-only" name="attr_never_used" value="CP" disabled="true" />
-        </div>
-        <!-- Rolling -->
-        <div display="inline-block">
-          <button class="actionRollButton epRoll" name="act_epRoll" type="action"></button>
-          &emsp;
-          <button class="actionRollButton epRoll_roll_modifier" name="act_epRoll_roll_modifier" type="action"></button> +
-          <input class="narrowish" name="attr_roll_modifier" type="number" value="0" />
-          <div class="attribute-name wideish larger">Initiative</div>
-          <span class="narrow center bold larger value" name="attr_initiative"></span> +
-          <input class="narrowish" name="attr_initiativemodifier" type="number" value="0" />
-          <button class="actionRollButton epRoll_initiative" name="act_epRoll_initiative" type="action"></button>
         </div>
         <!-- tab buttons -->
         <div class="tab-holder">
@@ -235,10 +191,6 @@
       </div>
       <!-- Movement & DR -->
       <div class="children-separated no-shrink">
-        <div class="center">
-          <label class="wideish larger narrow-spacing" for="attr_reaction_penalty">Defense Penalty</label>
-          <input class="attribute-value narrowish center" id="attr_reaction_penalty" name="attr_reaction_penalty" type="number" value="0" />
-        </div>
         <div>
           <div class="attribute-name wide larger">
             <button class="popoverButton circledButton" name="act_popover_weightPenalties" type="action">?</button>
@@ -336,12 +288,12 @@
       <div class="children-separated no-shrink">
         <div>
           <div class="attribute-name biggish">PWR</div>
-          <input class="attribute-value biggish narrower medium center" name="attr_EP_t" type="number" />
+          <input class="biggish narrower medium center" name="attr_EP_t" type="number" />
           <input class="attributecontrol" name="attr_chosentab" type="hidden" value="basic" />
           <div class="inline biggish middle basic-tab-only">/</div>
           <button class="reset-total" name="act_reset_ep_t" type="action">&#x21E6;</button>
-          <span class="attribute-value biggish narrow" name="attr_EP_t_max"></span>
-          <input class="attribute-value biggish narrower medium center" name="attr_EP_t_max" type="number" value="0" />
+          <span class="biggish narrow" name="attr_EP_t_max"></span>
+          <input class="biggish narrower medium center" name="attr_EP_t_max" type="number" value="0" />
         </div>
         <div>
           &emsp;&emsp;&emsp;
@@ -349,24 +301,20 @@
         </div>
         <div>
           <div class="attribute-name biggish">&ensp;&ensp;&ensp;ER</div>
-          <input class="attribute-value biggish narrower medium center" name="attr_SP" type="number" />
+          <input class="biggish narrower medium center" name="attr_SP" type="number" />
           <span>
-            <input class="attributecontrol" name="attr_chosentab" type="hidden" value="basic" />
-            <div class="inline biggish middle basic-tab-only">/</div>
             <button class="reset-total" name="act_reset_sp" type="action">&#x21E6;</button>
           </span>
-          <span class="attribute-value biggish narrow" name="attr_SP_max" value="0"></span>
+          <span class="biggish narrow" name="attr_SP_max" value="0"></span>
         </div>
         <div>
           <div class="attribute-name biggish">HP</div>
           <!-- TODO: Move this to sheet worker, who can do it right. -->
-          <input class="attribute-value biggish medium center" name="attr_HP" type="number" />
+          <input class="biggish medium center" name="attr_HP" type="number" />
           <span>
-            <input class="attributecontrol" name="attr_chosentab" type="hidden" value="basic" />
-            <div class="inline biggish middle basic-tab-only">/</div>
             <button class="reset-total" name="act_reset_hp" type="action">&#x21E6;</button>
           </span>
-          <span class="attribute-value biggish narrow" name="attr_HP_max" value="16"></span>
+          <span class="biggish narrow" name="attr_HP_max" value="16"></span>
         </div>
       </div>
     </div>
@@ -519,6 +467,20 @@
             <div class="skillability">Ability</div>
             <div class="skillbase">Mod</div>
           </div>
+          <div class="general-dice-rolls" data-epic-table-name="general-dice-rolls">
+            <span class="diceRollName">Roll</span>
+            <span class="ability">&nbsp;</span>
+            <span class="mod">&nbsp;</span>
+            <button class="actionRollButton epRoll" name="act_epRoll" type="action"></button>
+          </div>
+          <div class="general-dice-rolls" data-epic-table-name="general-dice-rolls">
+            <span class="diceRollName">Roll + Mod</span>
+            <span class="ability">&nbsp;</span>
+            <span class="mod">
+              <input name="attr_roll_modifier" type="number" value="0" />
+            </span>
+            <button class="actionRollButton epRoll_roll_modifier" name="act_epRoll_roll_modifier" type="action"></button>
+          </div>
           <fieldset class="repeating_skill">
             <!-- This input is used by CSS to hide disciplines-->
             <input class="isdiscipline" name="attr_skillisdiscipline" type="hidden" />
@@ -564,34 +526,85 @@
         </div>
       </div>
     </div>
-    <!-- Basic section -->
+    <!-- Basic section-->
     <div class="basic section basic-tab">
       <div class="advantages-and-feats">
-        <!-- Character Attributes -->
-        <div class="character-attributes">
-          <div class="character-attributes epic-table-header-grid">
-            <div class="character-attributes-name-grid">Attr.</div>
-            <div class="character-attributes-value-grid">Value</div>
+        <div class="character-attributes-and-stats">
+          <div class="editable-epic-power-stats-table">
+            <div class="epic-power-stats">
+              <div class="epic-power-stats epic-table-header-grid">
+                <div class="epic-power-stats-name-grid">Attr.</div>
+                <div class="epic-power-stats-value-grid">Available</div>
+                <div class="epic-power-stats-value-grid">Total</div>
+              </div>
+              <div class="epic-power-stats-table effectiveness" data-epic-table-name="epic-power-stats">
+                <div class="epic-power-stats-name-grid">Eff.</div>
+                <span>&nbsp;</span>
+                <input class="epic-power-stats-value-grid" name="attr_effectiveness" type="hidden" value="0" />
+                <span class="epic-power-stats-value-grid" name="attr_effectiveness"></span>
+              </div>
+              <div class="epic-power-stats-table" data-epic-table-name="epic-power-stats">
+                <div class="epic-power-stats-name-grid">EPN</div>
+                <span>&nbsp;</span>
+                <input class="epic-power-stats-value-grid" name="attr_power" type="number" value="0" />
+              </div>
+              <div class="epic-power-stats-table" data-epic-table-name="epic-power-stats">
+                <div class="epic-power-stats-name-grid CP bold">CP</div>
+                <input class="epic-power-stats-value-grid" name="attr_remaining_cp" type="hidden" value="0" />
+                <span class="CP center" name="attr_remaining_cp"></span>
+                <input class="epic-power-stats-value-grid CP" name="attr_CP" type="number" value="10" />
+              </div>
+              <div class="epic-power-stats-table" data-epic-table-name="epic-power-stats">
+                <div class="epic-power-stats-name-grid FP bold">FP</div>
+                <input class="epic-power-stats-value-grid" name="attr_remaining_fp" type="hidden" value="0" />
+                <span class="FP center" name="attr_remaining_fp"></span>
+                <input class="epic-power-stats grid" name="attr_FP" type="hidden" value="2" />
+                <span class="epic-power-stats-value-grid center FP" name="attr_FP" type="number" value="2"></span>
+              </div>
+            </div>
           </div>
-          <div class="character-attributes-table" data-epic-table-name="character-attributes">
-            <div class="character-attributes-name-grid">Race</div>
-            <input class="character-attributes-value-grid" name="attr_race" type="text" />
-          </div>
-          <div class="character-attributes-table" data-epic-table-name="character-attributes">
-            <div class="character-attributes-name-grid">Gender</div>
-            <input class="character-attributes-value-grid" name="attr_gender" type="text" />
-          </div>
-          <div class="character-attributes-table" data-epic-table-name="character-attributes">
-            <div class="character-attributes-name-grid">Height</div>
-            <input class="character-attributes-value-grid" name="attr_height" type="text" />
-          </div>
-          <div class="character-attributes-table" data-epic-table-name="character-attributes">
-            <div class="character-attributes-name-grid">Weight</div>
-            <input class="character-attributes-value-grid" name="attr_weight" type="number" />
-          </div>
-          <div class="character-attributes-table" data-epic-table-name="character-attributes">
-            <div class="character-attributes-name-grid">Age</div>
-            <input class="character-attributes-value-grid" name="attr_age" type="number" />
+          <div class="character-attributes">
+            <div class="character-attributes epic-table-header-grid">
+              <div class="character-attributes-name-grid">Attr.</div>
+              <div class="character-attributes-value-grid">Value</div>
+            </div>
+            <div class="character-attributes-table" data-epic-table-name="character-attributes">
+              <div class="character-attributes-name-grid">Race</div>
+              <input class="character-attributes-value-grid" name="attr_race" type="text" />
+            </div>
+            <div class="character-attributes-table" data-epic-table-name="character-attributes">
+              <div class="character-attributes-name-grid">Gender</div>
+              <input class="character-attributes-value-grid" name="attr_gender" type="text" />
+            </div>
+            <div class="character-attributes-table" data-epic-table-name="character-attributes">
+              <div class="character-attributes-name-grid">Height</div>
+              <input class="character-attributes-value-grid" name="attr_height" type="text" />
+            </div>
+            <div class="character-attributes-table" data-epic-table-name="character-attributes">
+              <div class="character-attributes-name-grid">Weight</div>
+              <input class="character-attributes-value-grid" name="attr_weight" type="number" />
+            </div>
+            <div class="character-attributes-table" data-epic-table-name="character-attributes">
+              <div class="character-attributes-name-grid">Age</div>
+              <input class="character-attributes-value-grid" name="attr_age" type="number" />
+            </div>
+            <div class="character-attributes-table" data-epic-table-name="character-attributes">
+              <div class="character-attributes-name-grid">IQ</div>
+              <input class="character-attributes-value-grid" name="attr_IQ" type="number" value="1" />
+            </div>
+            <div class="character-attributes-table" data-epic-table-name="character-attributes">
+              <div class="character-attributes-name-grid">DX</div>
+              <input class="character-attributes-value-grid" name="attr_DX" type="number" value="1" />
+            </div>
+            <div class="character-attributes-table" data-epic-table-name="character-attributes">
+              <div class="character-attributes-name-grid">BR</div>
+              <input class="character-attributes-value-grid" name="attr_BR" type="number" value="1" />
+            </div>
+            <div class="character-attributes-table" data-epic-table-name="character-attributes">
+              <div class="character-attributes-name-grid">CP Cost</div>
+              <input name="attr_displayed_attribute_CP" type="hidden" value="-5" />
+              <span class="character-attributes-value-grid CP" name="attr_displayed_attribute_CP"></span>
+            </div>
           </div>
           <div class="character-avatars">
             <img name="attr_character_token" />
@@ -749,7 +762,20 @@
     <!-- skill section -->
     <div class="skills section epic-skills-tab">
       <div>
-        <div class="bold">Disciplines &amp; Skills</div>
+        <span class="bold">
+          <span>Disciplines &amp; Skills</span>
+          <span>&nbsp;</span>
+          <span class="epic-fp-and-cp bold">
+            <span>Available:</span>
+            <span class="FP bold">FP</span>
+            <input name="attr_remaining_fp" type="hidden" value="0" />
+            <span class="FP" name="attr_remaining_fp"></span>
+            <span>&nbsp;</span>
+            <span class="CP bold">CP</span>
+            <input name="attr_remaining_cp" type="hidden" value="0" />
+            <span class="CP" name="attr_remaining_cp"></span>
+          </span>
+        </span>
       </div>
       <div class="epic-skill-table">
         <input name="attr_skill_total_FP" type="hidden" value="0" />
@@ -975,6 +1001,18 @@
           <span class="center bold larger middle" name="attr_mental"></span>
           <input class="skillbase" name="attr_mental_modifier" type="number" />
           <button type="roll" value="!EPRoll @{mental}+@{mental_modifier} Mental Attack: @{mental} + @{mental_modifier}"></button>
+          <div class="power-stats">
+            <span class="epic-fp-and-cp bold">
+              <span>Available:</span>
+              <span class="FP bold">FP</span>
+              <input name="attr_remaining_fp" type="hidden" value="0" />
+              <span class="FP" name="attr_remaining_fp"></span>
+              <span>&nbsp;</span>
+              <span class="CP bold">CP</span>
+              <input name="attr_remaining_cp" type="hidden" value="0" />
+              <span class="CP" name="attr_remaining_cp"></span>
+            </span>
+          </div>
         </div>
       </div>
       <!-- Arcane spells -->
@@ -1835,6 +1873,46 @@ const updateAttributeCost = function () {
 };
 on('change:iq change:dx change:br', updateAttributeCost);
 
+function updateRemainingCp() {
+  const attributeNames = [
+    'attribute_CP',
+    'advantage_total_CP',
+    'feat_total_CP',
+    'skill_total_CP',
+    'arcane_total_CP',
+    'innate_total_CP',
+  ];
+  getAttrs(['CP', ...attributeNames], function (values) {
+    const CP = Number(values.CP);
+    const usedCp = attributeNames.reduce((memo, name) => memo + Number(values[name]), 0);
+    setAttrs({ remaining_cp: CP - usedCp });
+  });
+}
+on('change:CP' +
+  ' change:attribute_CP ' +
+  ' change:advantage_total_CP' +
+  ' change:feat_total_CP' +
+  ' change:skill_total_CP' +
+  ' change:arcane_total_CP' +
+  ' change:innate_total_CP' +
+  ' sheet:opened', updateRemainingCp);
+
+function updateRemainingFp() {
+  const attributeNames = [
+    'skill_total_FP',
+    'arcane_total_FP',
+  ];
+  getAttrs(['FP', ...attributeNames], function (values) {
+    const FP = Number(values.FP);
+    const usedFp = attributeNames.reduce((memo, name) => memo + Number(values[name]), 0);
+    setAttrs({ remaining_fp: FP - usedFp });
+  });
+}
+on('change:FP' + 
+  ' change:skill_total_FP' + 
+  ' change:arcane_total_FP' + 
+  ' sheet:opened', updateRemainingFp);
+
 // ----- Advantage and disadvantage costs -----
 const advantageCosts = {
   healthy: 2,
@@ -2576,9 +2654,8 @@ const updateDefenseValues = function () {
   const defenseBoostName = 'defense_boost';
   const highestWeaponDefenseName = 'best_weapon_defense';
   const guardName = 'guard';
-  const reactionPenaltyName = 'reaction_penalty';
   getAttrs([armorName, shieldName, defenseBoostName, highestWeaponDefenseName,
-            guardName, reactionPenaltyName],
+            guardName],
     function (values) {
       const cur_armor = getNumberIfValid(values[armorName]);
       const cur_shield = getNumberIfValid(values[shieldName]);
@@ -2589,14 +2666,10 @@ const updateDefenseValues = function () {
         const defenseIsDodge = defense === 'dodge';
         const defenseIsBlock = defense === 'block';
         const defenseIsParry = defense === 'parry';
-        /**
-         * FIXME - Deprecate `reaction_penalty` since it is redundant with `defense_boost` as a follow up.
-         */
         const total = (
           guard_n
           + (defenseIsBlock ? cur_shield : 0)
           + (defenseIsParry ? highestWeaponDefense : 0)
-          - Math.abs(getNumberIfValid(values[reactionPenaltyName]))
           + getNumberIfValid(values[defenseBoostName])
         );
         /**
@@ -2613,7 +2686,7 @@ const updateDefenseValues = function () {
 }
 on('change:armor_defense change:shield_defense change:best_weapon_defense' +
    ' change:guard' +
-   ' change:defense_boost change:reaction_penalty sheet:opened',
+   ' change:defense_boost sheet:opened',
 updateDefenseValues);
 
 const updateSpeed = function () {

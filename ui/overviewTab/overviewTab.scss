@@ -82,9 +82,26 @@
 
     $skills-table-grid-template: getResponsiveGridWidths(96px, 36px, 36px, 24px);
     @include epic-table-grid('skills-table', $skills-table-grid-template);
+    @include epic-table-grid('general-dice-rolls', $skills-table-grid-template);
     .epic-table-header-grid {
       .skillability {
         font-weight: normal !important;
+      }
+    }
+    .general-dice-rolls {
+      @include underline-row();
+      .diceRollName {
+          text-align: right;
+          margin-right: 4px;
+          line-height: 1;
+      }
+      button.actionRollButton {
+        padding: 0px 2px;
+        box-sizing: border-box;
+        margin: auto 2px;
+        height: 20px;
+        font-size: 1.3em;
+        font-weight: normal;
       }
     }
     >div[data-groupname] {

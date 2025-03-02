@@ -39,11 +39,17 @@ $notes-popover-width: 30px;
 
 /* Avoid space between items in the row */
 .spells {
-  .spell-header-action-area {
+  .spells-header {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
     gap: 8px;
-    label, .label {
-      @include theme-color(primary-color);
+    .spell-header-action-area {
+      display: flex;
+      gap: 8px;
+      label, .label {
+        @include theme-color(primary-color);
+      }
     }
   }
   @import './spellsNotesPopover.scss';

@@ -540,6 +540,46 @@ const updateAttributeCost = function () {
 };
 on('change:iq change:dx change:br', updateAttributeCost);
 
+function updateRemainingCp() {
+  const attributeNames = [
+    'attribute_CP',
+    'advantage_total_CP',
+    'feat_total_CP',
+    'skill_total_CP',
+    'arcane_total_CP',
+    'innate_total_CP',
+  ];
+  getAttrs(['CP', ...attributeNames], function (values) {
+    const CP = Number(values.CP);
+    const usedCp = attributeNames.reduce((memo, name) => memo + Number(values[name]), 0);
+    setAttrs({ remaining_cp: CP - usedCp });
+  });
+}
+on('change:CP' +
+  ' change:attribute_CP ' +
+  ' change:advantage_total_CP' +
+  ' change:feat_total_CP' +
+  ' change:skill_total_CP' +
+  ' change:arcane_total_CP' +
+  ' change:innate_total_CP' +
+  ' sheet:opened', updateRemainingCp);
+
+function updateRemainingFp() {
+  const attributeNames = [
+    'skill_total_FP',
+    'arcane_total_FP',
+  ];
+  getAttrs(['FP', ...attributeNames], function (values) {
+    const FP = Number(values.FP);
+    const usedFp = attributeNames.reduce((memo, name) => memo + Number(values[name]), 0);
+    setAttrs({ remaining_fp: FP - usedFp });
+  });
+}
+on('change:FP' + 
+  ' change:skill_total_FP' + 
+  ' change:arcane_total_FP' + 
+  ' sheet:opened', updateRemainingFp);
+
 // ----- Advantage and disadvantage costs -----
 const advantageCosts = {
   healthy: 2,
@@ -1281,9 +1321,8 @@ const updateDefenseValues = function () {
   const defenseBoostName = 'defense_boost';
   const highestWeaponDefenseName = 'best_weapon_defense';
   const guardName = 'guard';
-  const reactionPenaltyName = 'reaction_penalty';
   getAttrs([armorName, shieldName, defenseBoostName, highestWeaponDefenseName,
-            guardName, reactionPenaltyName],
+            guardName],
     function (values) {
       const cur_armor = getNumberIfValid(values[armorName]);
       const cur_shield = getNumberIfValid(values[shieldName]);
@@ -1294,14 +1333,10 @@ const updateDefenseValues = function () {
         const defenseIsDodge = defense === 'dodge';
         const defenseIsBlock = defense === 'block';
         const defenseIsParry = defense === 'parry';
-        /**
-         * FIXME - Deprecate `reaction_penalty` since it is redundant with `defense_boost` as a follow up.
-         */
         const total = (
           guard_n
           + (defenseIsBlock ? cur_shield : 0)
           + (defenseIsParry ? highestWeaponDefense : 0)
-          - Math.abs(getNumberIfValid(values[reactionPenaltyName]))
           + getNumberIfValid(values[defenseBoostName])
         );
         /**
@@ -1318,7 +1353,7 @@ const updateDefenseValues = function () {
 }
 on('change:armor_defense change:shield_defense change:best_weapon_defense' +
    ' change:guard' +
-   ' change:defense_boost change:reaction_penalty sheet:opened',
+   ' change:defense_boost sheet:opened',
 updateDefenseValues);
 
 const updateSpeed = function () {
