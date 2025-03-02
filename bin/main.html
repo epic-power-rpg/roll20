@@ -144,38 +144,26 @@
       <!-- Left top section -->
       <div class="flex-stack space-between">
         <!-- IQ, DX, BR -->
-        <!--
-        These are read only, except in the basic tab,
-        where they can be changed, and their CP cost is shown
-        -->
         <div class="attribute-row">
-          <input class="attributecontrol cpcontrol" name="attr_chosentab" type="hidden" value="basic" />
           <div class="attribute-name big">IQ</div>
           &ensp;
-          <span class="attribute-value center not-basic-tab" name="attr_IQ"></span>
-          <div class="inline not-basic-tab"> + </div>
-          <input class="modifier-width not-basic-tab" name="attr_IQmodifier" type="number" value="0" />
-          <button class="actionRollButton epRoll_IQmodifier not-basic-tab" name="act_epRoll_IQmodifier" type="action"></button>
-          <input class="attribute-value narrowish center basic-tab-only" name="attr_IQ" type="number" value="1" />
+          <span class="attribute-value center" name="attr_IQ"></span>
+          <div class="inline">+ </div>
+          <input class="modifier-width" name="attr_IQmodifier" type="number" value="0" />
+          <button class="actionRollButton epRoll_IQmodifier" name="act_epRoll_IQmodifier" type="action"></button>
           <div class="attribute-name big">DX</div>
           &ensp;
           <span class="attribute-value center" name="attr_DX"></span>
-          <div class="inline not-basic-tab"> + </div>
-          <input class="modifier-width not-basic-tab" name="attr_DXmodifier" type="number" value="0" />
-          <button class="actionRollButton epRoll_DXmodifier not-basic-tab" name="act_epRoll_DXmodifier" type="action"></button>
-          <input class="attribute-value narrowish center" name="attr_DX" type="number" value="1" />
+          <div class="inline"> + </div>
+          <input class="modifier-width" name="attr_DXmodifier" type="number" value="0" />
+          <button class="actionRollButton epRoll_DXmodifier" name="act_epRoll_DXmodifier" type="action"></button>
           &emsp;
           <div class="attribute-name big">BR</div>
           &ensp;
           <span class="attribute-value center" name="attr_BR"></span>
-          <div class="inline not-basic-tab"> + </div>
-          <input class="modifier-width not-basic-tab" name="attr_BRmodifier" type="number" value="0" />
-          <button class="actionRollButton epRoll_BRmodifier not-basic-tab" name="act_epRoll_BRmodifier" type="action"></button>
-          <input class="attribute-value narrowish center basic-tab-only" name="attr_BR" type="number" value="1" />
-          <input name="attr_attribute_CP" type="hidden" value="-5" />
-          <input name="attr_displayed_attribute_CP" type="hidden" value="-5" />
-          <input class="narrow right CP basic-tab-only" name="attr_show_displayed_attribute_CP" value="@{displayed_attribute_CP}" disabled="true" />
-          <input class="narrow right CP basic-tab-only" name="attr_never_used" value="CP" disabled="true" />
+          <div class="inline"> + </div>
+          <input class="modifier-width" name="attr_BRmodifier" type="number" value="0" />
+          <button class="actionRollButton epRoll_BRmodifier" name="act_epRoll_BRmodifier" type="action"></button>
         </div>
         <!-- Rolling -->
         <div display="inline-block">
@@ -317,8 +305,6 @@
           <div class="attribute-name biggish">&ensp;&ensp;&ensp;ER</div>
           <input class="attribute-value biggish narrower medium center" name="attr_SP" type="number" />
           <span>
-            <input class="attributecontrol" name="attr_chosentab" type="hidden" value="basic" />
-            <div class="inline biggish middle basic-tab-only">/</div>
             <button class="reset-total" name="act_reset_sp" type="action">&#x21E6;</button>
           </span>
           <span class="attribute-value biggish narrow" name="attr_SP_max" value="0"></span>
@@ -328,8 +314,6 @@
           <!-- TODO: Move this to sheet worker, who can do it right. -->
           <input class="attribute-value biggish medium center" name="attr_HP" type="number" />
           <span>
-            <input class="attributecontrol" name="attr_chosentab" type="hidden" value="basic" />
-            <div class="inline biggish middle basic-tab-only">/</div>
             <button class="reset-total" name="act_reset_hp" type="action">&#x21E6;</button>
           </span>
           <span class="attribute-value biggish narrow" name="attr_HP_max" value="16"></span>
@@ -534,32 +518,6 @@
     <div class="basic section basic-tab">
       <div class="advantages-and-feats">
         <div class="character-attributes-and-stats">
-          <div class="character-attributes">
-            <div class="character-attributes epic-table-header-grid">
-              <div class="character-attributes-name-grid">Attr.</div>
-              <div class="character-attributes-value-grid">Value</div>
-            </div>
-            <div class="character-attributes-table" data-epic-table-name="character-attributes">
-              <div class="character-attributes-name-grid">Race</div>
-              <input class="character-attributes-value-grid" name="attr_race" type="text" />
-            </div>
-            <div class="character-attributes-table" data-epic-table-name="character-attributes">
-              <div class="character-attributes-name-grid">Gender</div>
-              <input class="character-attributes-value-grid" name="attr_gender" type="text" />
-            </div>
-            <div class="character-attributes-table" data-epic-table-name="character-attributes">
-              <div class="character-attributes-name-grid">Height</div>
-              <input class="character-attributes-value-grid" name="attr_height" type="text" />
-            </div>
-            <div class="character-attributes-table" data-epic-table-name="character-attributes">
-              <div class="character-attributes-name-grid">Weight</div>
-              <input class="character-attributes-value-grid" name="attr_weight" type="number" />
-            </div>
-            <div class="character-attributes-table" data-epic-table-name="character-attributes">
-              <div class="character-attributes-name-grid">Age</div>
-              <input class="character-attributes-value-grid" name="attr_age" type="number" />
-            </div>
-          </div>
           <div class="editable-epic-power-stats-table">
             <div class="epic-power-stats">
               <div class="epic-power-stats epic-table-header-grid">
@@ -591,6 +549,49 @@
                 <input class="epic-power-stats grid" name="attr_FP" type="hidden" value="2" />
                 <span class="epic-power-stats-value-grid center FP" name="attr_FP" type="number" value="2"></span>
               </div>
+            </div>
+          </div>
+          <div class="character-attributes">
+            <div class="character-attributes epic-table-header-grid">
+              <div class="character-attributes-name-grid">Attr.</div>
+              <div class="character-attributes-value-grid">Value</div>
+            </div>
+            <div class="character-attributes-table" data-epic-table-name="character-attributes">
+              <div class="character-attributes-name-grid">Race</div>
+              <input class="character-attributes-value-grid" name="attr_race" type="text" />
+            </div>
+            <div class="character-attributes-table" data-epic-table-name="character-attributes">
+              <div class="character-attributes-name-grid">Gender</div>
+              <input class="character-attributes-value-grid" name="attr_gender" type="text" />
+            </div>
+            <div class="character-attributes-table" data-epic-table-name="character-attributes">
+              <div class="character-attributes-name-grid">Height</div>
+              <input class="character-attributes-value-grid" name="attr_height" type="text" />
+            </div>
+            <div class="character-attributes-table" data-epic-table-name="character-attributes">
+              <div class="character-attributes-name-grid">Weight</div>
+              <input class="character-attributes-value-grid" name="attr_weight" type="number" />
+            </div>
+            <div class="character-attributes-table" data-epic-table-name="character-attributes">
+              <div class="character-attributes-name-grid">Age</div>
+              <input class="character-attributes-value-grid" name="attr_age" type="number" />
+            </div>
+            <div class="character-attributes-table" data-epic-table-name="character-attributes">
+              <div class="character-attributes-name-grid">IQ</div>
+              <input class="character-attributes-value-grid" name="attr_IQ" type="number" value="1" />
+            </div>
+            <div class="character-attributes-table" data-epic-table-name="character-attributes">
+              <div class="character-attributes-name-grid">DX</div>
+              <input class="character-attributes-value-grid" name="attr_DX" type="number" value="1" />
+            </div>
+            <div class="character-attributes-table" data-epic-table-name="character-attributes">
+              <div class="character-attributes-name-grid">BR</div>
+              <input class="character-attributes-value-grid" name="attr_BR" type="number" value="1" />
+            </div>
+            <div class="character-attributes-table" data-epic-table-name="character-attributes">
+              <div class="character-attributes-name-grid">CP Cost</div>
+              <input name="attr_displayed_attribute_CP" type="hidden" value="-5" />
+              <span class="character-attributes-value-grid CP" name="attr_displayed_attribute_CP"></span>
             </div>
           </div>
           <div class="character-avatars">

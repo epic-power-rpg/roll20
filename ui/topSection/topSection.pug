@@ -4,29 +4,23 @@
   // Left top section 
   .flex-stack.space-between
     // IQ, DX, BR 
-    //
-      These are read only, except in the basic tab,
-      where they can be changed, and their CP cost is shown
     .attribute-row
-      input.attributecontrol.cpcontrol(name='attr_chosentab' type='hidden' value='basic')
       .attribute-name.big IQ
       = '\n'
       | &ensp;
       = '\n'
-      span.attribute-value.center.not-basic-tab(name='attr_IQ')
-      .inline.not-basic-tab  + 
-      input.modifier-width.not-basic-tab(name='attr_IQmodifier' type='number' value='0')
-      button.actionRollButton.epRoll_IQmodifier.not-basic-tab(name='act_epRoll_IQmodifier' type='action')
-      input.attribute-value.narrowish.center.basic-tab-only(name='attr_IQ' type='number' value='1')
+      span.attribute-value.center(name='attr_IQ')
+      .inline + 
+      input.modifier-width(name='attr_IQmodifier' type='number' value='0')
+      button.actionRollButton.epRoll_IQmodifier(name='act_epRoll_IQmodifier' type='action')
       .attribute-name.big DX
       = '\n'
       | &ensp;
       = '\n'
       span.attribute-value.center(name='attr_DX')
-      .inline.not-basic-tab  + 
-      input.modifier-width.not-basic-tab(name='attr_DXmodifier' type='number' value='0')
-      button.actionRollButton.epRoll_DXmodifier.not-basic-tab(name='act_epRoll_DXmodifier' type='action')
-      input.attribute-value.narrowish.center(name='attr_DX' type='number' value='1')
+      .inline  + 
+      input.modifier-width(name='attr_DXmodifier' type='number' value='0')
+      button.actionRollButton.epRoll_DXmodifier(name='act_epRoll_DXmodifier' type='action')
       = '\n'
       | &emsp;
       .attribute-name.big BR
@@ -34,14 +28,9 @@
       | &ensp;
       = '\n'
       span.attribute-value.center(name='attr_BR')
-      .inline.not-basic-tab  + 
-      input.modifier-width.not-basic-tab(name='attr_BRmodifier' type='number' value='0')
-      button.actionRollButton.epRoll_BRmodifier.not-basic-tab(name='act_epRoll_BRmodifier' type='action')
-      input.attribute-value.narrowish.center.basic-tab-only(name='attr_BR' type='number' value='1')
-      input(name='attr_attribute_CP' type='hidden' value='-5')
-      input(name='attr_displayed_attribute_CP' type='hidden' value='-5')
-      input.narrow.right.CP.basic-tab-only(name='attr_show_displayed_attribute_CP' value='@{displayed_attribute_CP}' disabled='true')
-      input.narrow.right.CP.basic-tab-only(name='attr_never_used' value='CP' disabled='true')
+      .inline  + 
+      input.modifier-width(name='attr_BRmodifier' type='number' value='0')
+      button.actionRollButton.epRoll_BRmodifier(name='act_epRoll_BRmodifier' type='action')
     // Rolling 
     div(display='inline-block')
       button.actionRollButton.epRoll(name='act_epRoll' type='action')
@@ -145,8 +134,6 @@
       .attribute-name.biggish &ensp;&ensp;&ensp;ER
       input.attribute-value.biggish.narrower.medium.center(name='attr_SP' type='number')
       span
-        input.attributecontrol(name='attr_chosentab' type='hidden' value='basic')
-        .inline.biggish.middle.basic-tab-only /
         button.reset-total(name='act_reset_sp' type='action')
           | &#x21E6;
       span.attribute-value.biggish.narrow(name='attr_SP_max' value='0')
@@ -155,9 +142,6 @@
       // TODO: Move this to sheet worker, who can do it right. 
       input.attribute-value.biggish.medium.center(name='attr_HP' type='number')
       span
-        input.attributecontrol(name='attr_chosentab' type='hidden' value='basic')
-        .inline.biggish.middle.basic-tab-only /
         button.reset-total(name='act_reset_hp' type='action')
           | &#x21E6;
       span.attribute-value.biggish.narrow(name='attr_HP_max' value='16')
-      
