@@ -1073,7 +1073,6 @@ body.sheet-darkmode .weight-penalty-table > div:not(:last-child):not(.table-head
 
 /* ---------- Overview tab ------------- */
 .overview-tab {
-  /* ------------ Feat Overview -------------- */
   /* ------------ Skills Overview -------------- */
   /* ------------ Weapons Overview -------------- */
 }
@@ -1081,7 +1080,13 @@ body.sheet-darkmode .weight-penalty-table > div:not(:last-child):not(.table-head
   display: flex;
   gap: 16px;
 }
-.overview-tab .advantage-overview .epic-table-header-grid.advantage {
+.overview-tab .advantages-and-feats {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  /* ------------ Feat Overview -------------- */
+}
+.overview-tab .advantages-and-feats .advantage-overview .epic-table-header-grid.advantage {
   display: grid;
   grid-template-columns: minmax(0, 128px);
   column-gap: 2px;
@@ -1090,21 +1095,21 @@ body.sheet-darkmode .weight-penalty-table > div:not(:last-child):not(.table-head
   padding: 0 2px;
   margin-bottom: 2px;
 }
-body.sheet-darkmode .overview-tab .advantage-overview .epic-table-header-grid.advantage {
+body.sheet-darkmode .overview-tab .advantages-and-feats .advantage-overview .epic-table-header-grid.advantage {
   color: #fff;
 }
-body.sheet-darkmode .overview-tab .advantage-overview .epic-table-header-grid.advantage {
+body.sheet-darkmode .overview-tab .advantages-and-feats .advantage-overview .epic-table-header-grid.advantage {
   background-color: #b56632;
 }
-.overview-tab .advantage-overview .epic-table-header-grid.advantage > div {
+.overview-tab .advantages-and-feats .advantage-overview .epic-table-header-grid.advantage > div {
   text-align: center;
   margin: auto;
   font-weight: bold;
   width: 100%;
   overflow: hidden;
 }
-.overview-tab .advantage-overview div[data-groupname=repeating_advantage] > div,
-.overview-tab .advantage-overview div[data-epic-table-name=advantage] {
+.overview-tab .advantages-and-feats .advantage-overview div[data-groupname=repeating_advantage] > div,
+.overview-tab .advantages-and-feats .advantage-overview div[data-epic-table-name=advantage] {
   display: grid;
   grid-template-columns: minmax(0, 128px);
   row-gap: 0;
@@ -1112,41 +1117,41 @@ body.sheet-darkmode .overview-tab .advantage-overview .epic-table-header-grid.ad
   background: transparent;
   word-break: break-word;
 }
-.overview-tab .advantage-overview div[data-groupname=repeating_advantage] > div input, .overview-tab .advantage-overview div[data-groupname=repeating_advantage] > div input[type=number], .overview-tab .advantage-overview div[data-groupname=repeating_advantage] > div textarea, .overview-tab .advantage-overview div[data-groupname=repeating_advantage] > div select,
-.overview-tab .advantage-overview div[data-epic-table-name=advantage] input,
-.overview-tab .advantage-overview div[data-epic-table-name=advantage] input[type=number],
-.overview-tab .advantage-overview div[data-epic-table-name=advantage] textarea,
-.overview-tab .advantage-overview div[data-epic-table-name=advantage] select {
+.overview-tab .advantages-and-feats .advantage-overview div[data-groupname=repeating_advantage] > div input, .overview-tab .advantages-and-feats .advantage-overview div[data-groupname=repeating_advantage] > div input[type=number], .overview-tab .advantages-and-feats .advantage-overview div[data-groupname=repeating_advantage] > div textarea, .overview-tab .advantages-and-feats .advantage-overview div[data-groupname=repeating_advantage] > div select,
+.overview-tab .advantages-and-feats .advantage-overview div[data-epic-table-name=advantage] input,
+.overview-tab .advantages-and-feats .advantage-overview div[data-epic-table-name=advantage] input[type=number],
+.overview-tab .advantages-and-feats .advantage-overview div[data-epic-table-name=advantage] textarea,
+.overview-tab .advantages-and-feats .advantage-overview div[data-epic-table-name=advantage] select {
   width: 100% !important;
   margin-left: unset;
   height: auto;
 }
-.overview-tab .advantage-overview div[data-groupname=repeating_advantage] > div input[type=text],
-.overview-tab .advantage-overview div[data-epic-table-name=advantage] input[type=text] {
+.overview-tab .advantages-and-feats .advantage-overview div[data-groupname=repeating_advantage] > div input[type=text],
+.overview-tab .advantages-and-feats .advantage-overview div[data-epic-table-name=advantage] input[type=text] {
   text-align: left;
 }
-.overview-tab .advantage-overview div[data-groupname=repeating_advantage] > div input, .overview-tab .advantage-overview div[data-groupname=repeating_advantage] > div select,
-.overview-tab .advantage-overview div[data-epic-table-name=advantage] input,
-.overview-tab .advantage-overview div[data-epic-table-name=advantage] select {
+.overview-tab .advantages-and-feats .advantage-overview div[data-groupname=repeating_advantage] > div input, .overview-tab .advantages-and-feats .advantage-overview div[data-groupname=repeating_advantage] > div select,
+.overview-tab .advantages-and-feats .advantage-overview div[data-epic-table-name=advantage] input,
+.overview-tab .advantages-and-feats .advantage-overview div[data-epic-table-name=advantage] select {
   white-space: nowrap;
 }
-.overview-tab .advantage-overview div[data-groupname=repeating_advantage] > div span,
-.overview-tab .advantage-overview div[data-epic-table-name=advantage] span {
+.overview-tab .advantages-and-feats .advantage-overview div[data-groupname=repeating_advantage] > div span,
+.overview-tab .advantages-and-feats .advantage-overview div[data-epic-table-name=advantage] span {
   text-align: center;
   margin: auto 0;
 }
-.overview-tab .advantage-overview div[data-groupname=repeating_advantage] > div button, .overview-tab .advantage-overview div[data-groupname=repeating_advantage] > div button[type=roll],
-.overview-tab .advantage-overview div[data-epic-table-name=advantage] button,
-.overview-tab .advantage-overview div[data-epic-table-name=advantage] button[type=roll] {
+.overview-tab .advantages-and-feats .advantage-overview div[data-groupname=repeating_advantage] > div button, .overview-tab .advantages-and-feats .advantage-overview div[data-groupname=repeating_advantage] > div button[type=roll],
+.overview-tab .advantages-and-feats .advantage-overview div[data-epic-table-name=advantage] button,
+.overview-tab .advantages-and-feats .advantage-overview div[data-epic-table-name=advantage] button[type=roll] {
   margin: 0;
 }
-.overview-tab .advantage-overview div[data-groupname=repeating_advantage] > div .epic-table-row.conditional-one,
-.overview-tab .advantage-overview div[data-epic-table-name=advantage] .epic-table-row.conditional-one {
+.overview-tab .advantages-and-feats .advantage-overview div[data-groupname=repeating_advantage] > div .epic-table-row.conditional-one,
+.overview-tab .advantages-and-feats .advantage-overview div[data-epic-table-name=advantage] .epic-table-row.conditional-one {
   display: grid;
   grid-column-start: 1;
   grid-column-end: 2;
 }
-.overview-tab .advantage-overview .epic-table-header-grid.extraadvantage {
+.overview-tab .advantages-and-feats .advantage-overview .epic-table-header-grid.extraadvantage {
   display: grid;
   grid-template-columns: minmax(0, 128px);
   column-gap: 2px;
@@ -1155,21 +1160,21 @@ body.sheet-darkmode .overview-tab .advantage-overview .epic-table-header-grid.ad
   padding: 0 2px;
   margin-bottom: 2px;
 }
-body.sheet-darkmode .overview-tab .advantage-overview .epic-table-header-grid.extraadvantage {
+body.sheet-darkmode .overview-tab .advantages-and-feats .advantage-overview .epic-table-header-grid.extraadvantage {
   color: #fff;
 }
-body.sheet-darkmode .overview-tab .advantage-overview .epic-table-header-grid.extraadvantage {
+body.sheet-darkmode .overview-tab .advantages-and-feats .advantage-overview .epic-table-header-grid.extraadvantage {
   background-color: #b56632;
 }
-.overview-tab .advantage-overview .epic-table-header-grid.extraadvantage > div {
+.overview-tab .advantages-and-feats .advantage-overview .epic-table-header-grid.extraadvantage > div {
   text-align: center;
   margin: auto;
   font-weight: bold;
   width: 100%;
   overflow: hidden;
 }
-.overview-tab .advantage-overview div[data-groupname=repeating_extraadvantage] > div,
-.overview-tab .advantage-overview div[data-epic-table-name=extraadvantage] {
+.overview-tab .advantages-and-feats .advantage-overview div[data-groupname=repeating_extraadvantage] > div,
+.overview-tab .advantages-and-feats .advantage-overview div[data-epic-table-name=extraadvantage] {
   display: grid;
   grid-template-columns: minmax(0, 128px);
   row-gap: 0;
@@ -1177,46 +1182,46 @@ body.sheet-darkmode .overview-tab .advantage-overview .epic-table-header-grid.ex
   background: transparent;
   word-break: break-word;
 }
-.overview-tab .advantage-overview div[data-groupname=repeating_extraadvantage] > div input, .overview-tab .advantage-overview div[data-groupname=repeating_extraadvantage] > div input[type=number], .overview-tab .advantage-overview div[data-groupname=repeating_extraadvantage] > div textarea, .overview-tab .advantage-overview div[data-groupname=repeating_extraadvantage] > div select,
-.overview-tab .advantage-overview div[data-epic-table-name=extraadvantage] input,
-.overview-tab .advantage-overview div[data-epic-table-name=extraadvantage] input[type=number],
-.overview-tab .advantage-overview div[data-epic-table-name=extraadvantage] textarea,
-.overview-tab .advantage-overview div[data-epic-table-name=extraadvantage] select {
+.overview-tab .advantages-and-feats .advantage-overview div[data-groupname=repeating_extraadvantage] > div input, .overview-tab .advantages-and-feats .advantage-overview div[data-groupname=repeating_extraadvantage] > div input[type=number], .overview-tab .advantages-and-feats .advantage-overview div[data-groupname=repeating_extraadvantage] > div textarea, .overview-tab .advantages-and-feats .advantage-overview div[data-groupname=repeating_extraadvantage] > div select,
+.overview-tab .advantages-and-feats .advantage-overview div[data-epic-table-name=extraadvantage] input,
+.overview-tab .advantages-and-feats .advantage-overview div[data-epic-table-name=extraadvantage] input[type=number],
+.overview-tab .advantages-and-feats .advantage-overview div[data-epic-table-name=extraadvantage] textarea,
+.overview-tab .advantages-and-feats .advantage-overview div[data-epic-table-name=extraadvantage] select {
   width: 100% !important;
   margin-left: unset;
   height: auto;
 }
-.overview-tab .advantage-overview div[data-groupname=repeating_extraadvantage] > div input[type=text],
-.overview-tab .advantage-overview div[data-epic-table-name=extraadvantage] input[type=text] {
+.overview-tab .advantages-and-feats .advantage-overview div[data-groupname=repeating_extraadvantage] > div input[type=text],
+.overview-tab .advantages-and-feats .advantage-overview div[data-epic-table-name=extraadvantage] input[type=text] {
   text-align: left;
 }
-.overview-tab .advantage-overview div[data-groupname=repeating_extraadvantage] > div input, .overview-tab .advantage-overview div[data-groupname=repeating_extraadvantage] > div select,
-.overview-tab .advantage-overview div[data-epic-table-name=extraadvantage] input,
-.overview-tab .advantage-overview div[data-epic-table-name=extraadvantage] select {
+.overview-tab .advantages-and-feats .advantage-overview div[data-groupname=repeating_extraadvantage] > div input, .overview-tab .advantages-and-feats .advantage-overview div[data-groupname=repeating_extraadvantage] > div select,
+.overview-tab .advantages-and-feats .advantage-overview div[data-epic-table-name=extraadvantage] input,
+.overview-tab .advantages-and-feats .advantage-overview div[data-epic-table-name=extraadvantage] select {
   white-space: nowrap;
 }
-.overview-tab .advantage-overview div[data-groupname=repeating_extraadvantage] > div span,
-.overview-tab .advantage-overview div[data-epic-table-name=extraadvantage] span {
+.overview-tab .advantages-and-feats .advantage-overview div[data-groupname=repeating_extraadvantage] > div span,
+.overview-tab .advantages-and-feats .advantage-overview div[data-epic-table-name=extraadvantage] span {
   text-align: center;
   margin: auto 0;
 }
-.overview-tab .advantage-overview div[data-groupname=repeating_extraadvantage] > div button, .overview-tab .advantage-overview div[data-groupname=repeating_extraadvantage] > div button[type=roll],
-.overview-tab .advantage-overview div[data-epic-table-name=extraadvantage] button,
-.overview-tab .advantage-overview div[data-epic-table-name=extraadvantage] button[type=roll] {
+.overview-tab .advantages-and-feats .advantage-overview div[data-groupname=repeating_extraadvantage] > div button, .overview-tab .advantages-and-feats .advantage-overview div[data-groupname=repeating_extraadvantage] > div button[type=roll],
+.overview-tab .advantages-and-feats .advantage-overview div[data-epic-table-name=extraadvantage] button,
+.overview-tab .advantages-and-feats .advantage-overview div[data-epic-table-name=extraadvantage] button[type=roll] {
   margin: 0;
 }
-.overview-tab .advantage-overview div[data-groupname=repeating_extraadvantage] > div .epic-table-row.conditional-one,
-.overview-tab .advantage-overview div[data-epic-table-name=extraadvantage] .epic-table-row.conditional-one {
+.overview-tab .advantages-and-feats .advantage-overview div[data-groupname=repeating_extraadvantage] > div .epic-table-row.conditional-one,
+.overview-tab .advantages-and-feats .advantage-overview div[data-epic-table-name=extraadvantage] .epic-table-row.conditional-one {
   display: grid;
   grid-column-start: 1;
   grid-column-end: 2;
 }
-.overview-tab .advantage-overview input.advantageField:not([value]) ~ .advantage-row,
-.overview-tab .advantage-overview input.advantageField[value=""] ~ .advantage-row,
-.overview-tab .advantage-overview input.advantageField[value=" "] ~ .advantage-row {
+.overview-tab .advantages-and-feats .advantage-overview input.advantageField:not([value]) ~ .advantage-row,
+.overview-tab .advantages-and-feats .advantage-overview input.advantageField[value=""] ~ .advantage-row,
+.overview-tab .advantages-and-feats .advantage-overview input.advantageField[value=" "] ~ .advantage-row {
   display: none;
 }
-.overview-tab .advantage-overview .advantage-row {
+.overview-tab .advantages-and-feats .advantage-overview .advantage-row {
   display: flex;
   justify-content: space-between;
   width: 100%;
@@ -1228,13 +1233,13 @@ body.sheet-darkmode .overview-tab .advantage-overview .epic-table-header-grid.ex
   /* If the name wraps, make the lines close. */
   line-height: 1;
 }
-body.sheet-darkmode .overview-tab .advantage-overview .advantage-row {
+body.sheet-darkmode .overview-tab .advantages-and-feats .advantage-overview .advantage-row {
   border-color: rgba(181, 102, 50, 0.7);
 }
-.overview-tab .advantage-overview .advantage-row div, .overview-tab .advantage-overview .advantage-row span {
+.overview-tab .advantages-and-feats .advantage-overview .advantage-row div, .overview-tab .advantages-and-feats .advantage-overview .advantage-row span {
   text-align: left !important;
 }
-.overview-tab .advantage-overview .extraadvantage-row {
+.overview-tab .advantages-and-feats .advantage-overview .extraadvantage-row {
   border: solid;
   border-color: rgba(181, 102, 50, 0.7);
   border-width: 0px 0px 1px 0px;
@@ -1244,13 +1249,13 @@ body.sheet-darkmode .overview-tab .advantage-overview .advantage-row {
   line-height: 1;
   text-align: left !important;
 }
-body.sheet-darkmode .overview-tab .advantage-overview .extraadvantage-row {
+body.sheet-darkmode .overview-tab .advantages-and-feats .advantage-overview .extraadvantage-row {
   border-color: rgba(181, 102, 50, 0.7);
 }
-.overview-tab .advantage-overview > .conditional-something > :first-child[value="-1"] ~ * {
+.overview-tab .advantages-and-feats .advantage-overview > .conditional-something > :first-child[value="-1"] ~ * {
   color: red;
 }
-.overview-tab .feat-overview .epic-table-header-grid.feat {
+.overview-tab .advantages-and-feats .feat-overview .epic-table-header-grid.feat {
   display: grid;
   grid-template-columns: minmax(0, 32px) minmax(0, 96px);
   column-gap: 2px;
@@ -1259,21 +1264,21 @@ body.sheet-darkmode .overview-tab .advantage-overview .extraadvantage-row {
   padding: 0 2px;
   margin-bottom: 2px;
 }
-body.sheet-darkmode .overview-tab .feat-overview .epic-table-header-grid.feat {
+body.sheet-darkmode .overview-tab .advantages-and-feats .feat-overview .epic-table-header-grid.feat {
   color: #fff;
 }
-body.sheet-darkmode .overview-tab .feat-overview .epic-table-header-grid.feat {
+body.sheet-darkmode .overview-tab .advantages-and-feats .feat-overview .epic-table-header-grid.feat {
   background-color: #b56632;
 }
-.overview-tab .feat-overview .epic-table-header-grid.feat > div {
+.overview-tab .advantages-and-feats .feat-overview .epic-table-header-grid.feat > div {
   text-align: center;
   margin: auto;
   font-weight: bold;
   width: 100%;
   overflow: hidden;
 }
-.overview-tab .feat-overview div[data-groupname=repeating_feat] > div,
-.overview-tab .feat-overview div[data-epic-table-name=feat] {
+.overview-tab .advantages-and-feats .feat-overview div[data-groupname=repeating_feat] > div,
+.overview-tab .advantages-and-feats .feat-overview div[data-epic-table-name=feat] {
   display: grid;
   grid-template-columns: minmax(0, 32px) minmax(0, 96px);
   row-gap: 0;
@@ -1281,63 +1286,67 @@ body.sheet-darkmode .overview-tab .feat-overview .epic-table-header-grid.feat {
   background: transparent;
   word-break: break-word;
 }
-.overview-tab .feat-overview div[data-groupname=repeating_feat] > div input, .overview-tab .feat-overview div[data-groupname=repeating_feat] > div input[type=number], .overview-tab .feat-overview div[data-groupname=repeating_feat] > div textarea, .overview-tab .feat-overview div[data-groupname=repeating_feat] > div select,
-.overview-tab .feat-overview div[data-epic-table-name=feat] input,
-.overview-tab .feat-overview div[data-epic-table-name=feat] input[type=number],
-.overview-tab .feat-overview div[data-epic-table-name=feat] textarea,
-.overview-tab .feat-overview div[data-epic-table-name=feat] select {
+.overview-tab .advantages-and-feats .feat-overview div[data-groupname=repeating_feat] > div input, .overview-tab .advantages-and-feats .feat-overview div[data-groupname=repeating_feat] > div input[type=number], .overview-tab .advantages-and-feats .feat-overview div[data-groupname=repeating_feat] > div textarea, .overview-tab .advantages-and-feats .feat-overview div[data-groupname=repeating_feat] > div select,
+.overview-tab .advantages-and-feats .feat-overview div[data-epic-table-name=feat] input,
+.overview-tab .advantages-and-feats .feat-overview div[data-epic-table-name=feat] input[type=number],
+.overview-tab .advantages-and-feats .feat-overview div[data-epic-table-name=feat] textarea,
+.overview-tab .advantages-and-feats .feat-overview div[data-epic-table-name=feat] select {
   width: 100% !important;
   margin-left: unset;
   height: auto;
 }
-.overview-tab .feat-overview div[data-groupname=repeating_feat] > div input[type=text],
-.overview-tab .feat-overview div[data-epic-table-name=feat] input[type=text] {
+.overview-tab .advantages-and-feats .feat-overview div[data-groupname=repeating_feat] > div input[type=text],
+.overview-tab .advantages-and-feats .feat-overview div[data-epic-table-name=feat] input[type=text] {
   text-align: left;
 }
-.overview-tab .feat-overview div[data-groupname=repeating_feat] > div input, .overview-tab .feat-overview div[data-groupname=repeating_feat] > div select,
-.overview-tab .feat-overview div[data-epic-table-name=feat] input,
-.overview-tab .feat-overview div[data-epic-table-name=feat] select {
+.overview-tab .advantages-and-feats .feat-overview div[data-groupname=repeating_feat] > div input, .overview-tab .advantages-and-feats .feat-overview div[data-groupname=repeating_feat] > div select,
+.overview-tab .advantages-and-feats .feat-overview div[data-epic-table-name=feat] input,
+.overview-tab .advantages-and-feats .feat-overview div[data-epic-table-name=feat] select {
   white-space: nowrap;
 }
-.overview-tab .feat-overview div[data-groupname=repeating_feat] > div span,
-.overview-tab .feat-overview div[data-epic-table-name=feat] span {
+.overview-tab .advantages-and-feats .feat-overview div[data-groupname=repeating_feat] > div span,
+.overview-tab .advantages-and-feats .feat-overview div[data-epic-table-name=feat] span {
   text-align: center;
   margin: auto 0;
 }
-.overview-tab .feat-overview div[data-groupname=repeating_feat] > div button, .overview-tab .feat-overview div[data-groupname=repeating_feat] > div button[type=roll],
-.overview-tab .feat-overview div[data-epic-table-name=feat] button,
-.overview-tab .feat-overview div[data-epic-table-name=feat] button[type=roll] {
+.overview-tab .advantages-and-feats .feat-overview div[data-groupname=repeating_feat] > div button, .overview-tab .advantages-and-feats .feat-overview div[data-groupname=repeating_feat] > div button[type=roll],
+.overview-tab .advantages-and-feats .feat-overview div[data-epic-table-name=feat] button,
+.overview-tab .advantages-and-feats .feat-overview div[data-epic-table-name=feat] button[type=roll] {
   margin: 0;
 }
-.overview-tab .feat-overview div[data-groupname=repeating_feat] > div .epic-table-row.conditional-one,
-.overview-tab .feat-overview div[data-epic-table-name=feat] .epic-table-row.conditional-one {
+.overview-tab .advantages-and-feats .feat-overview div[data-groupname=repeating_feat] > div .epic-table-row.conditional-one,
+.overview-tab .advantages-and-feats .feat-overview div[data-epic-table-name=feat] .epic-table-row.conditional-one {
   display: grid;
   grid-column-start: 1;
   grid-column-end: 3;
 }
-.overview-tab .feat-overview > div[data-groupname] > div {
+.overview-tab .advantages-and-feats .feat-overview > div[data-groupname] > div {
   border: solid;
   border-color: rgba(181, 102, 50, 0.7);
   border-width: 0px 0px 1px 0px;
   padding-top: 2px;
   padding-bottom: 2px;
 }
-body.sheet-darkmode .overview-tab .feat-overview > div[data-groupname] > div {
+body.sheet-darkmode .overview-tab .advantages-and-feats .feat-overview > div[data-groupname] > div {
   border-color: rgba(181, 102, 50, 0.7);
 }
-.overview-tab .feat-overview > div[data-groupname] .feat-row.featextraordinaryletter {
+.overview-tab .advantages-and-feats .feat-overview > div[data-groupname] .feat-row.featextraordinaryletter {
   text-align: center;
 }
-.overview-tab .feat-overview > div[data-groupname] .feat-row.featname {
-  text-align: left;
+.overview-tab .advantages-and-feats .feat-overview > div[data-groupname] .feat-row.featname {
+  text-align: center;
   line-height: 1;
+}
+.overview-tab .skills-overview {
+  flex: 2;
+  max-width: 320px;
 }
 .overview-tab .skills-overview .isdiscipline[value="1"] ~ * {
   display: none;
 }
 .overview-tab .skills-overview .epic-table-header-grid.skills-table {
   display: grid;
-  grid-template-columns: minmax(0, 96px) minmax(0, 36px) minmax(0, 36px) minmax(0, 24px);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 36px) minmax(0, 36px) minmax(0, 24px);
   column-gap: 2px;
   color: #fff;
   background-color: #b56632;
@@ -1360,7 +1369,7 @@ body.sheet-darkmode .overview-tab .skills-overview .epic-table-header-grid.skill
 .overview-tab .skills-overview div[data-groupname=repeating_skills-table] > div,
 .overview-tab .skills-overview div[data-epic-table-name=skills-table] {
   display: grid;
-  grid-template-columns: minmax(0, 96px) minmax(0, 36px) minmax(0, 36px) minmax(0, 24px);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 36px) minmax(0, 36px) minmax(0, 24px);
   row-gap: 0;
   column-gap: 2px;
   background: transparent;
@@ -1402,7 +1411,7 @@ body.sheet-darkmode .overview-tab .skills-overview .epic-table-header-grid.skill
 }
 .overview-tab .skills-overview .epic-table-header-grid.general-dice-rolls {
   display: grid;
-  grid-template-columns: minmax(0, 96px) minmax(0, 36px) minmax(0, 36px) minmax(0, 24px);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 36px) minmax(0, 36px) minmax(0, 24px);
   column-gap: 2px;
   color: #fff;
   background-color: #b56632;
@@ -1425,7 +1434,7 @@ body.sheet-darkmode .overview-tab .skills-overview .epic-table-header-grid.gener
 .overview-tab .skills-overview div[data-groupname=repeating_general-dice-rolls] > div,
 .overview-tab .skills-overview div[data-epic-table-name=general-dice-rolls] {
   display: grid;
-  grid-template-columns: minmax(0, 96px) minmax(0, 36px) minmax(0, 36px) minmax(0, 24px);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 36px) minmax(0, 36px) minmax(0, 24px);
   row-gap: 0;
   column-gap: 2px;
   background: transparent;
@@ -1518,11 +1527,12 @@ body.sheet-darkmode .overview-tab .skills-overview > div[data-groupname] .skill-
   height: 20px;
 }
 .overview-tab .weapons-overview {
-  width: 50%;
+  flex: 2;
+  max-width: 400px;
 }
 .overview-tab .weapons-overview .epic-table-header-grid.weapons-table {
   display: grid;
-  grid-template-columns: minmax(0, 128px) minmax(0, 48px) minmax(0, 60px) minmax(0, 56px) minmax(0, 48px);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 48px) minmax(0, 60px) minmax(0, 40px);
   column-gap: 2px;
   color: #fff;
   background-color: #b56632;
@@ -1545,7 +1555,7 @@ body.sheet-darkmode .overview-tab .weapons-overview .epic-table-header-grid.weap
 .overview-tab .weapons-overview div[data-groupname=repeating_weapons-table] > div,
 .overview-tab .weapons-overview div[data-epic-table-name=weapons-table] {
   display: grid;
-  grid-template-columns: minmax(0, 128px) minmax(0, 48px) minmax(0, 60px) minmax(0, 56px) minmax(0, 48px);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 48px) minmax(0, 60px) minmax(0, 40px);
   row-gap: 0;
   column-gap: 2px;
   background: transparent;
@@ -1583,7 +1593,7 @@ body.sheet-darkmode .overview-tab .weapons-overview .epic-table-header-grid.weap
 .overview-tab .weapons-overview div[data-epic-table-name=weapons-table] .epic-table-row.conditional-one {
   display: grid;
   grid-column-start: 1;
-  grid-column-end: 6;
+  grid-column-end: 5;
 }
 .overview-tab .weapons-overview .epic-table-header-grid.weapons-equipmentnotes-table {
   display: grid;
@@ -1678,8 +1688,7 @@ body.sheet-darkmode .overview-tab .weapons-overview > div[data-groupname] .weapo
 }
 .overview-tab .weapons-overview > div[data-groupname] .weapons-table-row .equipmentnotes {
   line-height: 1;
-  text-align: left;
-  margin-left: 40px;
+  text-align: right;
   margin-top: 4px;
   font-style: italic;
 }
