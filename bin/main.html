@@ -107,11 +107,6 @@
           <input class="narrowish" id="attr_action_EP" name="attr_action_EP" type="number" value="0" />
           <label for="attr_action_SP">ER</label>
           <input class="narrowish" id="attr_action_SP" name="attr_action_SP" type="number" value="0" />
-          <span class="inlne-spacer"></span>
-          <input class="disable-do" id="attr_disable_do" name="attr_disable_do" type="hidden" value="0" />
-          <button class="do" name="act_topaction" type="action"></button>
-          &ensp;
-          <button class="undo" name="act_undotopaction" type="action"></button>
         </div>
         <div class="roll-description-line">
           <label for="attr_roll_skill">Skill</label>
@@ -1591,35 +1586,6 @@ const deltasDescription = function (deltas) {
   return description;
 };
 
-const doTopAction = function () {
-  getAttrs(['EP_t', 'EP_t_max', 'SP',
-    'action_description', 'action_feats',
-    'action_EP', 'action_SP'],
-  function (values) {
-    let deltas = topActionDeltas(values);
-    let update = makeUpdate(values, deltas);
-    update['pendingchat'] = (values['action_description']
-        + deltasDescription(deltas));
-    setAttrs(update);
-  });
-};
-on('clicked:topaction', doTopAction);
-
-const undoTopAction = function () {
-  getAttrs(['EP_t', 'EP_t_max', 'SP',
-    'action_feats', 'action_EP', 'action_SP'],
-  function (values) {
-    let deltas = multiplyDeltas(topActionDeltas(values), -1);
-    let update = makeUpdate(values, deltas);
-    let restored = deltasDescription(deltas);
-    if (restored !== '') {
-      update['pendingchat'] = 'Undo restoring' + restored;
-    }
-    setAttrs(update);
-  });
-};
-on('clicked:undotopaction', undoTopAction);
-
 const topRollCommand = function (values) {
   let ability = Number(values['roll_ability']);
   let modifiers = [Number(values['roll_mod1']),
@@ -1734,8 +1700,6 @@ const updateTopActEnables = function () {
     log(values);
     log(top_action_deltas);
     let update = {
-      'disable_do':
-          isLegalUpdate(values, top_action_deltas) ? '0' : '1',
       'disable_do_and_roll':
           isLegalUpdate(values, top_roll_deltas) ? '0' : '1'
     };

@@ -186,14 +186,6 @@ button.do-and-roll::before {
   font-weight: bold;
 }
 
-/* Change the character for do buttons to be
-   the play forward character */
-button.do::before {
-  font-family: sans-serif;
-  content: "▶";
-}
-
-button.do,
 button.do-and-roll {
   font-weight: bold;
   outline: 1px solid #666;
@@ -201,38 +193,19 @@ button.do-and-roll {
   border-radius: 4px;
   background: linear-gradient(90deg, rgb(245, 201, 162), #c2815b);
 }
-body.sheet-darkmode button.do,
 body.sheet-darkmode button.do-and-roll {
   background: linear-gradient(90deg, #944d10, #c2815b);
 }
-button.do:hover,
 button.do-and-roll:hover {
   background-image: unset;
   background: #c2815b;
 }
-body.sheet-darkmode button.do:hover,
 body.sheet-darkmode button.do-and-roll:hover {
   background: #c2815b;
 }
 
-button.do {
-  width: 18px;
-}
-
 button.big-control.do-and-roll {
   width: 20px;
-}
-
-.disable-do[value="1"] ~ .do {
-  background-image: linear-gradient(90deg, #ddd, #ddd);
-  pointer-events: none;
-}
-.disable-do[value="1"] ~ .do:hover {
-  background-image: unset;
-  background: #c2815b;
-}
-body.sheet-darkmode .disable-do[value="1"] ~ .do:hover {
-  background: #c2815b;
 }
 
 .disable-do-and-roll[value="1"] ~ .do-and-roll {
@@ -427,10 +400,6 @@ body.sheet-darkmode .ui-dialog {
 
 .small-spacer {
   height: 8px;
-}
-
-.inlne-spacer {
-  width: 8px;
 }
 
 .flexing {

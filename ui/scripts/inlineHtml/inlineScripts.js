@@ -248,35 +248,6 @@ const deltasDescription = function (deltas) {
   return description;
 };
 
-const doTopAction = function () {
-  getAttrs(['EP_t', 'EP_t_max', 'SP',
-    'action_description', 'action_feats',
-    'action_EP', 'action_SP'],
-  function (values) {
-    let deltas = topActionDeltas(values);
-    let update = makeUpdate(values, deltas);
-    update['pendingchat'] = (values['action_description']
-        + deltasDescription(deltas));
-    setAttrs(update);
-  });
-};
-on('clicked:topaction', doTopAction);
-
-const undoTopAction = function () {
-  getAttrs(['EP_t', 'EP_t_max', 'SP',
-    'action_feats', 'action_EP', 'action_SP'],
-  function (values) {
-    let deltas = multiplyDeltas(topActionDeltas(values), -1);
-    let update = makeUpdate(values, deltas);
-    let restored = deltasDescription(deltas);
-    if (restored !== '') {
-      update['pendingchat'] = 'Undo restoring' + restored;
-    }
-    setAttrs(update);
-  });
-};
-on('clicked:undotopaction', undoTopAction);
-
 const topRollCommand = function (values) {
   let ability = Number(values['roll_ability']);
   let modifiers = [Number(values['roll_mod1']),
@@ -391,8 +362,6 @@ const updateTopActEnables = function () {
     log(values);
     log(top_action_deltas);
     let update = {
-      'disable_do':
-          isLegalUpdate(values, top_action_deltas) ? '0' : '1',
       'disable_do_and_roll':
           isLegalUpdate(values, top_roll_deltas) ? '0' : '1'
     };
