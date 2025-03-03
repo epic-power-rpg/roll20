@@ -289,11 +289,9 @@
         <div>
           <div class="attribute-name biggish">PWR</div>
           <input class="biggish narrower medium center" name="attr_EP_t" type="number" />
-          <input class="attributecontrol" name="attr_chosentab" type="hidden" value="basic" />
-          <div class="inline biggish middle basic-tab-only">/</div>
+          <div class="inline biggish middle">/</div>
           <button class="reset-total" name="act_reset_ep_t" type="action">&#x21E6;</button>
           <span class="biggish narrow" name="attr_EP_t_max"></span>
-          <input class="biggish narrower medium center" name="attr_EP_t_max" type="number" value="0" />
         </div>
         <div>
           &emsp;&emsp;&emsp;
@@ -526,7 +524,7 @@
     <!-- Basic section-->
     <div class="basic section basic-tab">
       <div class="advantages-and-feats">
-        <div class="character-attributes-and-stats">
+        <div class="power-stats-and-avatars">
           <div class="editable-epic-power-stats-table">
             <div class="epic-power-stats">
               <div class="epic-power-stats epic-table-header-grid">
@@ -546,6 +544,18 @@
                 <input class="epic-power-stats-value-grid" name="attr_power" type="number" value="0" />
               </div>
               <div class="epic-power-stats-table" data-epic-table-name="epic-power-stats">
+                <div class="epic-power-stats-name-grid">PWR</div>
+                <span class="CP center" name="attr_EP_t"></span>
+                <input class="epic-power-stats-value-grid" name="attr_EP_t_max" type="number" value="0" />
+              </div>
+              <div class="epic-power-stats-table" data-epic-table-name="epic-power-stats">
+                <div class="epic-power-stats-name-grid bold">ER</div>
+                <input class="epic-power-stats-value-grid" name="attr_SP" type="hidden" value="0" />
+                <span class="ER center" name="attr_SP"></span>
+                <input class="epic-power-stats grid" name="attr_SP_max" type="hidden" value="2" />
+                <span class="epic-power-stats-value-grid center" name="attr_SP_max" type="number" value="0"></span>
+              </div>
+              <div class="epic-power-stats-table" data-epic-table-name="epic-power-stats">
                 <div class="epic-power-stats-name-grid CP bold">CP</div>
                 <input class="epic-power-stats-value-grid" name="attr_remaining_cp" type="hidden" value="0" />
                 <span class="CP center" name="attr_remaining_cp"></span>
@@ -560,6 +570,11 @@
               </div>
             </div>
           </div>
+          <div class="character-avatars">
+            <img name="attr_character_token" />
+          </div>
+        </div>
+        <div class="character-attributes-and-stats">
           <div class="character-attributes">
             <div class="character-attributes epic-table-header-grid">
               <div class="character-attributes-name-grid">Attr.</div>
@@ -599,12 +614,9 @@
             </div>
             <div class="character-attributes-table" data-epic-table-name="character-attributes">
               <div class="character-attributes-name-grid">CP Cost</div>
-              <input name="attr_displayed_attribute_CP" type="hidden" value="-5" />
+              <input name="attr_displayed_attribute_CP" type="hidden" value="-2" />
               <span class="character-attributes-value-grid CP" name="attr_displayed_attribute_CP"></span>
             </div>
-          </div>
-          <div class="character-avatars">
-            <img name="attr_character_token" />
           </div>
         </div>
         <!-- Advantages and Disadvantages -->
