@@ -33,17 +33,6 @@ include ../global/advantages.pug
         .skillability Ability
         .skillbase Mod
       .general-dice-rolls(data-epic-table-name="general-dice-rolls")
-        span.diceRollName Roll
-        span.ability &nbsp;
-        span.mod &nbsp;
-        button.actionRollButton.epRoll(name='act_epRoll' type='action')
-      .general-dice-rolls(data-epic-table-name="general-dice-rolls")
-        span.diceRollName Roll + Mod
-        span.ability &nbsp;
-        span.mod
-          input(name='attr_roll_modifier' type='number' value='0')
-        button.actionRollButton.epRoll_roll_modifier(name='act_epRoll_roll_modifier' type='action')
-      .general-dice-rolls(data-epic-table-name="general-dice-rolls")
         span.diceRollName IQ
         span.ability(name='attr_IQ')
         span.mod
@@ -61,6 +50,17 @@ include ../global/advantages.pug
         span.mod
           input(name='attr_BRmodifier' type='number' value='0')
         button.actionRollButton.epRoll_roll_modifier(name='act_epRoll_BRmodifier' type='action')
+      .general-dice-rolls(data-epic-table-name="general-dice-rolls")
+        span.diceRollName Roll
+        span.ability &nbsp;
+        span.mod &nbsp;
+        button.actionRollButton.epRoll(name='act_epRoll' type='action')
+      .general-dice-rolls(data-epic-table-name="general-dice-rolls")
+        span.diceRollName Roll + Mod
+        span.ability &nbsp;
+        span.mod
+          input(name='attr_roll_modifier' type='number' value='0')
+        button.actionRollButton.epRoll_roll_modifier(name='act_epRoll_roll_modifier' type='action')
       fieldset.repeating_skill
         // This input is used by CSS to hide disciplines
         input.isdiscipline(name='attr_skillisdiscipline' type='hidden')
