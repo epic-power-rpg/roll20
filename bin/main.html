@@ -144,27 +144,6 @@
       <div class="flex-stack space-between">
         <div class="diceRollSection">
           <div class="attributeRollSection">
-            <div class="attributeName">IQ</div>
-            <div class="attributeField">
-              <span name="attr_IQ"></span>
-              <span>+ </span>
-              <input name="attr_IQmodifier" type="number" value="0" />
-            </div>
-            <button class="actionRollButton epRoll_IQmodifier" name="act_epRoll_IQmodifier" type="action"></button>
-            <div class="attributeName">DX</div>
-            <div class="attributeField">
-              <span name="attr_DX"></span>
-              <span> + </span>
-              <input name="attr_DXmodifier" type="number" value="0" />
-            </div>
-            <button class="actionRollButton epRoll_DXmodifier" name="act_epRoll_DXmodifier" type="action"></button>
-            <div class="attributeName">BR</div>
-            <div class="attributeField">
-              <span class="center" name="attr_BR"></span>
-              <span> + </span>
-              <input name="attr_BRmodifier" type="number" value="0" />
-            </div>
-            <button class="actionRollButton epRoll_BRmodifier" name="act_epRoll_BRmodifier" type="action"></button>
             <div class="attributeName">Init</div>
             <div class="attributeField">
               <span name="attr_initiative"></span>
@@ -477,6 +456,30 @@
               <input name="attr_roll_modifier" type="number" value="0" />
             </span>
             <button class="actionRollButton epRoll_roll_modifier" name="act_epRoll_roll_modifier" type="action"></button>
+          </div>
+          <div class="general-dice-rolls" data-epic-table-name="general-dice-rolls">
+            <span class="diceRollName">IQ</span>
+            <span class="ability" name="attr_IQ"></span>
+            <span class="mod">
+              <input name="attr_IQModifier" type="number" value="0" />
+            </span>
+            <button class="actionRollButton epRoll_roll_modifier" name="act_epRoll_IQmodifier" type="action"></button>
+          </div>
+          <div class="general-dice-rolls" data-epic-table-name="general-dice-rolls">
+            <span class="diceRollName">DX</span>
+            <span class="ability" name="attr_DX"></span>
+            <span class="mod">
+              <input name="attr_DXmodifier" type="number" value="0" />
+            </span>
+            <button class="actionRollButton epRoll_roll_modifier" name="act_epRoll_DXmodifier" type="action"></button>
+          </div>
+          <div class="general-dice-rolls" data-epic-table-name="general-dice-rolls">
+            <span class="diceRollName">BR</span>
+            <span class="ability" name="attr_BR"></span>
+            <span class="mod">
+              <input name="attr_BRmodifier" type="number" value="0" />
+            </span>
+            <button class="actionRollButton epRoll_roll_modifier" name="act_epRoll_BRmodifier" type="action"></button>
           </div>
           <fieldset class="repeating_skill">
             <!-- This input is used by CSS to hide disciplines-->
