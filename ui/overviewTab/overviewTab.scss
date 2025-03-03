@@ -15,59 +15,65 @@
     gap: 16px;
   }
 
-  .advantage-overview {
-    $advantage-grid-template: getResponsiveGridWidths(128px);
-    @include epic-table-grid('advantage', $advantage-grid-template);
-    @include epic-table-grid('extraadvantage', $advantage-grid-template);
+  .advantages-and-feats {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
 
-    input.advantageField:not([value])~.advantage-row,
-    input.advantageField[value=""]~.advantage-row,
-    input.advantageField[value=" "]~.advantage-row {
-      // Hide the .advantage-row
-      display: none;
-    }
+    .advantage-overview {
+      $advantage-grid-template: getResponsiveGridWidths(128px);
+      @include epic-table-grid('advantage', $advantage-grid-template);
+      @include epic-table-grid('extraadvantage', $advantage-grid-template);
 
-    .advantage-row {
-      display: flex;
-      justify-content: space-between;
-      width: 100%;
-      @include underline-row();
-      /* If the name wraps, make the lines close. */
-      line-height: 1;
-      div, span {
+      input.advantageField:not([value])~.advantage-row,
+      input.advantageField[value=""]~.advantage-row,
+      input.advantageField[value=" "]~.advantage-row {
+        // Hide the .advantage-row
+        display: none;
+      }
+
+      .advantage-row {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        @include underline-row();
+        /* If the name wraps, make the lines close. */
+        line-height: 1;
+        div, span {
+          text-align: left !important;
+        }
+      }
+
+      .extraadvantage-row {
+        @include underline-row();
+        /* If the name wraps, make the lines close. */
+        line-height: 1;
         text-align: left !important;
       }
-    }
 
-    .extraadvantage-row {
-      @include underline-row();
-      /* If the name wraps, make the lines close. */
-      line-height: 1;
-      text-align: left !important;
-    }
-
-    >.conditional-something> :first-child[value="-1"]~* {
-      color: red;
-    }
-  }
-
-
-  /* ------------ Feat Overview -------------- */
-  .feat-overview {
-    $feat-grid-template: getResponsiveGridWidths(32px, 96px);
-    @include epic-table-grid('feat', $feat-grid-template);
-
-    >div[data-groupname] {
-      >div {
-        @include underline-row();
+      >.conditional-something> :first-child[value="-1"]~* {
+        color: red;
       }
-      .feat-row {
-        &.featextraordinaryletter {
-          text-align: center;
+    }
+
+
+    /* ------------ Feat Overview -------------- */
+    .feat-overview {
+      $feat-grid-template: getResponsiveGridWidths(32px, 96px);
+      @include epic-table-grid('feat', $feat-grid-template);
+
+      >div[data-groupname] {
+        >div {
+          @include underline-row();
         }
-        &.featname {
-          text-align: left;
-          line-height: 1;
+        .feat-row {
+          &.featextraordinaryletter {
+            text-align: center;
+          }
+          &.featname {
+            text-align: center;
+            line-height: 1;
+          }
         }
       }
     }
@@ -75,12 +81,14 @@
 
   /* ------------ Skills Overview -------------- */
   .skills-overview {
+    flex: 2;
+    max-width: 320px;
     .isdiscipline[value="1"]~* {
       // Hide all siblings to `isdiscipline` class names.
       display: none;
     }
 
-    $skills-table-grid-template: getResponsiveGridWidths(96px, 36px, 36px, 24px);
+    $skills-table-grid-template: getResponsiveGridWidths(1fr, 36px, 36px, 24px);
     @include epic-table-grid('skills-table', $skills-table-grid-template);
     @include epic-table-grid('general-dice-rolls', $skills-table-grid-template);
     .epic-table-header-grid {
@@ -129,8 +137,9 @@
 
   /* ------------ Weapons Overview -------------- */
   .weapons-overview {
-    width: 50%;
-    $weapons-table-grid-template: getResponsiveGridWidths(128px, 48px, 60px, 56px, 48px);
+    flex: 2;
+    max-width: 400px;
+    $weapons-table-grid-template: getResponsiveGridWidths(1fr, 48px, 60px, 40px);
     @include epic-table-grid('weapons-table', $weapons-table-grid-template);
     $weapons-equipmentnotes-table-grid-template: getResponsiveGridWidths(1fr);
     @include epic-table-grid('weapons-equipmentnotes-table', $weapons-equipmentnotes-table-grid-template);
@@ -157,8 +166,7 @@
         }
         .equipmentnotes {
           line-height: 1;
-          text-align: left;
-          margin-left: 40px;
+          text-align: right;
           margin-top: 4px;
           font-style: italic;
         }
