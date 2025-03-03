@@ -41,30 +41,12 @@ button.do-and-roll::before {
   font-weight: bold;
 }
 
-/* Change the character for do buttons to be
-   the play forward character */
-button.do::before {
-  font-family: sans-serif;
-  content: "▶";
-}
-
-button.do,
 button.do-and-roll {
   @include roll-action-button;
 }
 
-button.do {
-  width: 18px;
-}
-
 button.big-control.do-and-roll {
   width: 20px;
-}
-
-.disable-do[value="1"]~.do {
-  background-image: linear-gradient(90deg, #ddd, #ddd);
-  pointer-events: none;
-  @include hovered-button();
 }
 
 .disable-do-and-roll[value="1"]~.do-and-roll {
