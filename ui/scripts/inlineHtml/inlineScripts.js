@@ -98,11 +98,21 @@ const toggleSavePending = function () {
 };
 on('clicked:saveroll', toggleSavePending);
 
-const roll_keys = ['action_description', 'action_feats',
-  'action_EP', 'action_SP',
-  'roll_skill', 'roll_ability',
-  'roll_mod1', 'roll_mod2', 'roll_mod3',
-  'roll_advance_boost'];
+const numericRollKeys = [
+  'action_feats',
+  'action_EP',
+  'action_SP',
+  'roll_ability',
+  'roll_mod1',
+  'roll_mod2',
+  'roll_mod3',
+  'roll_advance_boost',
+];
+const roll_keys = [
+  'action_description',
+  'roll_skill',
+  ...numericRollKeys,
+];
 
 const saveRollState = function (key, roll_chosen) {
   getAttrs(roll_keys,
@@ -162,6 +172,31 @@ const doChooseRoll = function (number) {
 const roll_choices = ['1', '2', '3', '4', '5', '6'];
 roll_choices.forEach(function (value) {
   on(`clicked:choose_roll_${value}`, function () { doChooseRoll(value); });
+});
+
+function updateRollSectionContent({ skillName, abilityValue }) {
+  const baseNumericContent = {}
+  numericRollKeys.forEach((key) => {
+    baseNumericContent[key] = 0;
+  });
+
+  const rollContent = {
+    ...baseNumericContent,
+    'roll_description': '',
+    'roll_skill': skillName,
+    'roll_ability': abilityValue,
+  };
+  setAttrs(rollContent);
+}
+
+on('clicked:repeating_skill:updaterollsectioncontent', function () {
+  console.log('clicked:repeating_skill:updaterollsectioncontent');
+  getAttrs(['repeating_skill_skillname', 'repeating_skill_skillability'], (attributes) => {
+    const { ['repeating_skill_skillname']: skillName } = attributes;
+    const skillAbility = Number(attributes['repeating_skill_skillability'] ?? 0);
+    console.log({skillName, skillAbility});
+    updateRollSectionContent({ skillName, abilityValue: skillAbility });
+  });
 });
 
 const topActionDeltas = function (values) {
