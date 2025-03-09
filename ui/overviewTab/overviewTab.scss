@@ -125,11 +125,15 @@
           margin: auto 0;
           height: 22px;
         }
-        .skill-roll {
+        .skill-roll, button.updateRollSectionContent {
           padding: 0px 2px;
           box-sizing: border-box;
           margin: auto 2px;
           height: 20px;
+          &.updateRollSectionContent {
+            @include roll-action-button();
+            font-size: 1.3em;
+          }
         }
       }
     }
