@@ -185,7 +185,7 @@ function updateRollSectionContent({ skillName, abilityValue, skillModifier1 }) {
     'action_description': '',
     'roll_skill': skillName,
     'roll_ability': abilityValue,
-    'roll_mod1': skillModifier1,
+    'roll_advance_boost': skillModifier1,
   };
   setAttrs(rollContent);
 }
