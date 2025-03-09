@@ -887,7 +887,7 @@ body.sheet-darkmode .top-section .defense-block div[data-epic-table-name=defense
   display: none;
 }
 
-.no-add-or-modify-buttons [data-groupname] button:not([type=roll]) {
+.no-add-or-modify-buttons [data-groupname].repcontrol button:not([type=roll]) {
   display: none;
 }
 
