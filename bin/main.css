@@ -1056,7 +1056,7 @@ body.sheet-darkmode .weight-penalty-table > div:not(:last-child):not(.table-head
 }
 .overview-tab .advantages-and-feats .advantage-overview .epic-table-header-grid.advantage {
   display: grid;
-  grid-template-columns: minmax(0, 128px);
+  grid-template-columns: minmax(0, 152px);
   column-gap: 2px;
   color: #fff;
   background-color: #b56632;
@@ -1079,7 +1079,7 @@ body.sheet-darkmode .overview-tab .advantages-and-feats .advantage-overview .epi
 .overview-tab .advantages-and-feats .advantage-overview div[data-groupname=repeating_advantage] > div,
 .overview-tab .advantages-and-feats .advantage-overview div[data-epic-table-name=advantage] {
   display: grid;
-  grid-template-columns: minmax(0, 128px);
+  grid-template-columns: minmax(0, 152px);
   row-gap: 0;
   column-gap: 2px;
   background: transparent;
@@ -1121,7 +1121,7 @@ body.sheet-darkmode .overview-tab .advantages-and-feats .advantage-overview .epi
 }
 .overview-tab .advantages-and-feats .advantage-overview .epic-table-header-grid.extraadvantage {
   display: grid;
-  grid-template-columns: minmax(0, 128px);
+  grid-template-columns: minmax(0, 152px);
   column-gap: 2px;
   color: #fff;
   background-color: #b56632;
@@ -1144,7 +1144,7 @@ body.sheet-darkmode .overview-tab .advantages-and-feats .advantage-overview .epi
 .overview-tab .advantages-and-feats .advantage-overview div[data-groupname=repeating_extraadvantage] > div,
 .overview-tab .advantages-and-feats .advantage-overview div[data-epic-table-name=extraadvantage] {
   display: grid;
-  grid-template-columns: minmax(0, 128px);
+  grid-template-columns: minmax(0, 152px);
   row-gap: 0;
   column-gap: 2px;
   background: transparent;
@@ -1225,7 +1225,7 @@ body.sheet-darkmode .overview-tab .advantages-and-feats .advantage-overview .ext
 }
 .overview-tab .advantages-and-feats .feat-overview .epic-table-header-grid.feat {
   display: grid;
-  grid-template-columns: minmax(0, 32px) minmax(0, 96px);
+  grid-template-columns: minmax(0, 32px) minmax(0, 96px) minmax(0, 24px);
   column-gap: 2px;
   color: #fff;
   background-color: #b56632;
@@ -1248,7 +1248,7 @@ body.sheet-darkmode .overview-tab .advantages-and-feats .feat-overview .epic-tab
 .overview-tab .advantages-and-feats .feat-overview div[data-groupname=repeating_feat] > div,
 .overview-tab .advantages-and-feats .feat-overview div[data-epic-table-name=feat] {
   display: grid;
-  grid-template-columns: minmax(0, 32px) minmax(0, 96px);
+  grid-template-columns: minmax(0, 32px) minmax(0, 96px) minmax(0, 24px);
   row-gap: 0;
   column-gap: 2px;
   background: transparent;
@@ -1286,7 +1286,7 @@ body.sheet-darkmode .overview-tab .advantages-and-feats .feat-overview .epic-tab
 .overview-tab .advantages-and-feats .feat-overview div[data-epic-table-name=feat] .epic-table-row.conditional-one {
   display: grid;
   grid-column-start: 1;
-  grid-column-end: 3;
+  grid-column-end: 4;
 }
 .overview-tab .advantages-and-feats .feat-overview > div[data-groupname] > div {
   border: solid;
@@ -1304,6 +1304,28 @@ body.sheet-darkmode .overview-tab .advantages-and-feats .feat-overview > div[dat
 .overview-tab .advantages-and-feats .feat-overview > div[data-groupname] .feat-row.featname {
   text-align: center;
   line-height: 1;
+}
+.overview-tab .advantages-and-feats .feat-overview > div[data-groupname] button.addRollSectionFeat {
+  padding: 0px 2px;
+  box-sizing: border-box;
+  margin: auto 2px;
+  height: 20px;
+  font-size: 1.3em;
+  font-weight: bold;
+  outline: 1px solid #666;
+  border: none;
+  border-radius: 4px;
+  background: linear-gradient(90deg, rgb(245, 201, 162), #c2815b);
+}
+body.sheet-darkmode .overview-tab .advantages-and-feats .feat-overview > div[data-groupname] button.addRollSectionFeat {
+  background: linear-gradient(90deg, #944d10, #c2815b);
+}
+.overview-tab .advantages-and-feats .feat-overview > div[data-groupname] button.addRollSectionFeat:hover {
+  background-image: unset;
+  background: #c2815b;
+}
+body.sheet-darkmode .overview-tab .advantages-and-feats .feat-overview > div[data-groupname] button.addRollSectionFeat:hover {
+  background: #c2815b;
 }
 .overview-tab .skills-overview {
   flex: 2;
@@ -1488,28 +1510,32 @@ body.sheet-darkmode .overview-tab .skills-overview > div[data-groupname] .skill-
   margin: auto 0;
   height: 22px;
 }
-.overview-tab .skills-overview > div[data-groupname] .skill-overview-row-container .skill-roll, .overview-tab .skills-overview > div[data-groupname] .skill-overview-row-container button.updateRollSectionContent {
+.overview-tab .skills-overview > div[data-groupname] .skill-overview-row-container .skill-roll {
   padding: 0px 2px;
   box-sizing: border-box;
   margin: auto 2px;
   height: 20px;
 }
-.overview-tab .skills-overview > div[data-groupname] .skill-overview-row-container .skill-roll.updateRollSectionContent, .overview-tab .skills-overview > div[data-groupname] .skill-overview-row-container button.updateRollSectionContent.updateRollSectionContent {
+.overview-tab .skills-overview > div[data-groupname] .skill-overview-row-container button.updateRollSectionContent {
+  padding: 0px 2px;
+  box-sizing: border-box;
+  margin: auto 2px;
+  height: 20px;
+  font-size: 1.3em;
   font-weight: bold;
   outline: 1px solid #666;
   border: none;
   border-radius: 4px;
   background: linear-gradient(90deg, rgb(245, 201, 162), #c2815b);
-  font-size: 1.3em;
 }
-body.sheet-darkmode .overview-tab .skills-overview > div[data-groupname] .skill-overview-row-container .skill-roll.updateRollSectionContent, body.sheet-darkmode .overview-tab .skills-overview > div[data-groupname] .skill-overview-row-container button.updateRollSectionContent.updateRollSectionContent {
+body.sheet-darkmode .overview-tab .skills-overview > div[data-groupname] .skill-overview-row-container button.updateRollSectionContent {
   background: linear-gradient(90deg, #944d10, #c2815b);
 }
-.overview-tab .skills-overview > div[data-groupname] .skill-overview-row-container .skill-roll.updateRollSectionContent:hover, .overview-tab .skills-overview > div[data-groupname] .skill-overview-row-container button.updateRollSectionContent.updateRollSectionContent:hover {
+.overview-tab .skills-overview > div[data-groupname] .skill-overview-row-container button.updateRollSectionContent:hover {
   background-image: unset;
   background: #c2815b;
 }
-body.sheet-darkmode .overview-tab .skills-overview > div[data-groupname] .skill-overview-row-container .skill-roll.updateRollSectionContent:hover, body.sheet-darkmode .overview-tab .skills-overview > div[data-groupname] .skill-overview-row-container button.updateRollSectionContent.updateRollSectionContent:hover {
+body.sheet-darkmode .overview-tab .skills-overview > div[data-groupname] .skill-overview-row-container button.updateRollSectionContent:hover {
   background: #c2815b;
 }
 .overview-tab .weapons-overview {

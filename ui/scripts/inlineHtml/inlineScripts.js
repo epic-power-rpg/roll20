@@ -5,7 +5,7 @@
 // ----- Utilities -----
 const removeNonNumeric = function (s) {
   return String(s).trim().replace(/[^\d.-]/g, '');
-}
+};
 
 // Strip out any non-numeric stuff, then interpret the string as a float.
 // For example, this will turn '5+S' into 5.
@@ -175,14 +175,14 @@ roll_choices.forEach(function (value) {
 });
 
 function updateRollSectionContent({ skillName, abilityValue, skillModifier1 }) {
-  const baseNumericContent = {}
+  const baseNumericContent = {};
   numericRollKeys.forEach((key) => {
     baseNumericContent[key] = 0;
   });
 
   const rollContent = {
     ...baseNumericContent,
-    'roll_description': '',
+    'action_description': '',
     'roll_skill': skillName,
     'roll_ability': abilityValue,
     'roll_mod1': skillModifier1,
@@ -198,6 +198,29 @@ on('clicked:repeating_skill:updaterollsectioncontent', function () {
     const skillModifier1 = Number(attributes['repeating_skill_skillmodifier'] ?? 0);
     console.log({skillName, skillAbility, skillModifier1});
     updateRollSectionContent({ skillName, abilityValue: skillAbility, skillModifier1 });
+  });
+});
+
+on('clicked:repeating_feat:addrollsectionfeat', function () {
+  console.log('clicked:repeating_feat:addrollsectionfeat');
+  getAttrs(['repeating_feat_featextraordinary', 'repeating_feat_featname', 'action_description', 'action_feats'], (attributes) => {
+    const {
+      ['repeating_feat_featextraordinary']: extraordniaryFeat,
+      ['repeating_feat_featname']: featName,
+      ['action_description']: actionDescription,
+      ['action_feats']: actionFeats,
+    } = attributes;
+    console.log({extraordniaryFeat, featName, actionDescription, actionFeats});
+    const featCost = extraordniaryFeat === '1' ? 2 : 1;
+    const currentFeatDescriptions = new Set(actionDescription.split(/, ?/).map((value) => value.trim()).filter(Boolean));
+    if (currentFeatDescriptions.has(featName)) {
+      return;
+    }
+    currentFeatDescriptions.add(featName);
+    setAttrs({
+      'action_description': [...currentFeatDescriptions].join(', '),
+      'action_feats': Number(actionFeats) + featCost,
+    });
   });
 });
 
