@@ -481,13 +481,7 @@
               <span class="skillname" name="attr_skillname"></span>
               <span class="skillability" name="attr_skillability"></span>
               <input class="skillbase" name="attr_skillmodifier" type="number" />
-              <!--
-              These hidden inputs are necessary for the roll to find
-              skillability and skillname
-              -->
-              <input name="attr_skillability" type="hidden" />
-              <input name="attr_skillname" type="hidden" />
-              <button class="skill-roll" name="roll_skillroll" type="roll" value="!EPRoll @{skillability}+@{skillmodifier} Tries @{skillname}: @{skillability} + @{skillmodifier}"></button>
+              <button class="skill-roll updateRollSectionContent" name="act_updaterollsectioncontent" type="action">&#8679;</button>
             </div>
           </fieldset>
         </div>
@@ -1512,7 +1506,7 @@ roll_choices.forEach(function (value) {
   on(`clicked:choose_roll_${value}`, function () { doChooseRoll(value); });
 });
 
-function updateRollSectionContent({ skillName, abilityValue }) {
+function updateRollSectionContent({ skillName, abilityValue, skillModifier1 }) {
   const baseNumericContent = {}
   numericRollKeys.forEach((key) => {
     baseNumericContent[key] = 0;
@@ -1523,17 +1517,19 @@ function updateRollSectionContent({ skillName, abilityValue }) {
     'roll_description': '',
     'roll_skill': skillName,
     'roll_ability': abilityValue,
+    'roll_mod1': skillModifier1,
   };
   setAttrs(rollContent);
 }
 
 on('clicked:repeating_skill:updaterollsectioncontent', function () {
   console.log('clicked:repeating_skill:updaterollsectioncontent');
-  getAttrs(['repeating_skill_skillname', 'repeating_skill_skillability'], (attributes) => {
+  getAttrs(['repeating_skill_skillname', 'repeating_skill_skillability', 'repeating_skill_skillmodifier'], (attributes) => {
     const { ['repeating_skill_skillname']: skillName } = attributes;
     const skillAbility = Number(attributes['repeating_skill_skillability'] ?? 0);
-    console.log({skillName, skillAbility});
-    updateRollSectionContent({ skillName, abilityValue: skillAbility });
+    const skillModifier1 = Number(attributes['repeating_skill_skillmodifier'] ?? 0);
+    console.log({skillName, skillAbility, skillModifier1});
+    updateRollSectionContent({ skillName, abilityValue: skillAbility, skillModifier1 });
   });
 });
 

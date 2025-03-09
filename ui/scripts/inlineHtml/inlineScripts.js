@@ -174,7 +174,7 @@ roll_choices.forEach(function (value) {
   on(`clicked:choose_roll_${value}`, function () { doChooseRoll(value); });
 });
 
-function updateRollSectionContent({ skillName, abilityValue }) {
+function updateRollSectionContent({ skillName, abilityValue, skillModifier1 }) {
   const baseNumericContent = {}
   numericRollKeys.forEach((key) => {
     baseNumericContent[key] = 0;
@@ -185,17 +185,19 @@ function updateRollSectionContent({ skillName, abilityValue }) {
     'roll_description': '',
     'roll_skill': skillName,
     'roll_ability': abilityValue,
+    'roll_mod1': skillModifier1,
   };
   setAttrs(rollContent);
 }
 
 on('clicked:repeating_skill:updaterollsectioncontent', function () {
   console.log('clicked:repeating_skill:updaterollsectioncontent');
-  getAttrs(['repeating_skill_skillname', 'repeating_skill_skillability'], (attributes) => {
+  getAttrs(['repeating_skill_skillname', 'repeating_skill_skillability', 'repeating_skill_skillmodifier'], (attributes) => {
     const { ['repeating_skill_skillname']: skillName } = attributes;
     const skillAbility = Number(attributes['repeating_skill_skillability'] ?? 0);
-    console.log({skillName, skillAbility});
-    updateRollSectionContent({ skillName, abilityValue: skillAbility });
+    const skillModifier1 = Number(attributes['repeating_skill_skillmodifier'] ?? 0);
+    console.log({skillName, skillAbility, skillModifier1});
+    updateRollSectionContent({ skillName, abilityValue: skillAbility, skillModifier1 });
   });
 });
 

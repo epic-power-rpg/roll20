@@ -68,12 +68,7 @@ include ../global/advantages.pug
           span.skillname(name='attr_skillname')
           span.skillability(name='attr_skillability')
           input.skillbase(name='attr_skillmodifier' type='number')
-          //
-            These hidden inputs are necessary for the roll to find
-            skillability and skillname
-          input(name='attr_skillability' type='hidden')
-          input(name='attr_skillname' type='hidden')
-          button.skill-roll(name='roll_skillroll' type='roll' value='!EPRoll @{skillability}+@{skillmodifier} Tries @{skillname}: @{skillability} + @{skillmodifier}')
+          button.skill-roll.updateRollSectionContent(name='act_updaterollsectioncontent' type='action') &#8679;
     // Weapons 
     .weapons-overview.no-add-or-modify-buttons
       .weapons-table.epic-table-header-grid
