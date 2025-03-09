@@ -32,6 +32,15 @@ button.actionRollButton::before {
   content: "⧉";
 }
 
+@mixin updateRollSectionButton {
+  padding: 0px 2px;
+  box-sizing: border-box;
+  margin: auto 2px;
+  height: 20px;
+  font-size: 1.3em;
+  @include roll-action-button();
+}
+
 /* Change the character for the do and roll dice button to be
    a big heavy two joined squares character */
 button.do-and-roll::before {

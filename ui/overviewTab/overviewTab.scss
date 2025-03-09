@@ -21,7 +21,7 @@
     gap: 16px;
 
     .advantage-overview {
-      $advantage-grid-template: getResponsiveGridWidths(128px);
+      $advantage-grid-template: getResponsiveGridWidths(152px);
       @include epic-table-grid('advantage', $advantage-grid-template);
       @include epic-table-grid('extraadvantage', $advantage-grid-template);
 
@@ -59,7 +59,7 @@
 
     /* ------------ Feat Overview -------------- */
     .feat-overview {
-      $feat-grid-template: getResponsiveGridWidths(32px, 96px);
+      $feat-grid-template: getResponsiveGridWidths(32px, 96px, 24px);
       @include epic-table-grid('feat', $feat-grid-template);
 
       >div[data-groupname] {
@@ -74,6 +74,9 @@
             text-align: center;
             line-height: 1;
           }
+        }
+        button.addRollSectionFeat {
+          @include updateRollSectionButton();
         }
       }
     }
@@ -125,15 +128,14 @@
           margin: auto 0;
           height: 22px;
         }
-        .skill-roll, button.updateRollSectionContent {
+        .skill-roll {
           padding: 0px 2px;
           box-sizing: border-box;
           margin: auto 2px;
           height: 20px;
-          &.updateRollSectionContent {
-            @include roll-action-button();
-            font-size: 1.3em;
-          }
+        }
+        button.updateRollSectionContent {
+          @include updateRollSectionButton();
         }
       }
     }
