@@ -106,13 +106,8 @@
           margin-right: 4px;
           line-height: 1;
       }
-      button.actionRollButton {
-        padding: 0px 2px;
-        box-sizing: border-box;
-        margin: auto 2px;
-        height: 20px;
-        font-size: 1.3em;
-        font-weight: normal;
+      button.generalDiceRoll {
+        @include updateRollSectionButton();
       }
     }
     >div[data-groupname] {
