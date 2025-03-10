@@ -1056,7 +1056,7 @@
           <!-- Make the button able to access the ability -->
           <input name="attr_skillability" hidden="true" />
           <input class="skillbase-grid" name="attr_skillmodifier" type="number" />
-          <button class="skill-grid-roll" name="roll_spellroll" type="roll" value="!EPRoll @{skillability}+@{skillmodifier} Tries @{skillname}: @{skillability} + @{skillmodifier}"></button>
+          <button class="skill-grid-roll updateRollSectionContent" name="act_updaterollsectioncontent" type="action">&#8679;</button>
           <input class="spellEP-grid" name="attr_spellEP" type="text" />
           <input class="spellcasttime-grid" name="attr_spellcasttime" type="text" />
           <select class="spelltype-grid" name="attr_spelltype" type="text">
@@ -1532,15 +1532,16 @@ function updateRollSectionContent({ skillName, abilityValue, advanceBoost }) {
   };
   setAttrs(rollContent);
 }
-
-on('clicked:repeating_skill:updateRollSectionContent', function () {
-  console.log('clicked:repeating_skill:updateRollSectionContent');
-  getAttrs(['repeating_skill_skillname', 'repeating_skill_skillability', 'repeating_skill_skillmodifier'], (attributes) => {
-    const { ['repeating_skill_skillname']: skillName } = attributes;
-    const skillAbility = Number(attributes['repeating_skill_skillability'] ?? 0);
-    const advanceBoost = Number(attributes['repeating_skill_skillmodifier'] ?? 0);
-    console.log({skillName, skillAbility, advanceBoost});
-    updateRollSectionContent({ skillName, abilityValue: skillAbility, advanceBoost });
+['repeating_skill', 'repeating_arcane'].forEach((sectionName) => {
+  on(`clicked:${sectionName}:updateRollSectionContent`, function () {
+    console.log('clicked:repeating_skill:updateRollSectionContent');
+    getAttrs(['repeating_skill_skillname', 'repeating_skill_skillability', 'repeating_skill_skillmodifier'], (attributes) => {
+      const { ['repeating_skill_skillname']: skillName } = attributes;
+      const skillAbility = Number(attributes['repeating_skill_skillability'] ?? 0);
+      const advanceBoost = Number(attributes['repeating_skill_skillmodifier'] ?? 0);
+      console.log({skillName, skillAbility, advanceBoost});
+      updateRollSectionContent({ skillName, abilityValue: skillAbility, advanceBoost });
+    });
   });
 });
 

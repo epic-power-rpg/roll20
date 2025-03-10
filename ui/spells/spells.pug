@@ -74,7 +74,7 @@
       // Make the button able to access the ability 
       input(name='attr_skillability' hidden='true')
       input.skillbase-grid(name='attr_skillmodifier' type='number')
-      button.skill-grid-roll(name='roll_spellroll' type='roll' value='!EPRoll @{skillability}+@{skillmodifier} Tries @{skillname}: @{skillability} + @{skillmodifier}')
+      button.skill-grid-roll.updateRollSectionContent(name='act_updaterollsectioncontent' type='action') &#8679;
       input.spellEP-grid(name='attr_spellEP' type='text')
       input.spellcasttime-grid(name='attr_spellcasttime' type='text')
       select.spelltype-grid(name='attr_spelltype' type='text')
