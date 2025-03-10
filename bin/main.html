@@ -1517,7 +1517,7 @@ roll_choices.forEach(function (value) {
   on(`clicked:choose_roll_${value}`, function () { doChooseRoll(value); });
 });
 
-function updateRollSectionContent({ skillName, abilityValue, advanceBoost }) {
+function updateRollSectionContent({ skillName, abilityValue, advanceBoost, power }) {
   const baseNumericContent = {};
   numericRollKeys.forEach((key) => {
     baseNumericContent[key] = 0;
@@ -1530,17 +1530,28 @@ function updateRollSectionContent({ skillName, abilityValue, advanceBoost }) {
     'roll_ability': abilityValue,
     'roll_advance_boost': advanceBoost,
   };
+  if (isValueDefined(power)) {
+    rollContent['action_EP'] = power;
+  }
   setAttrs(rollContent);
 }
 ['repeating_skill', 'repeating_arcane'].forEach((sectionName) => {
   on(`clicked:${sectionName}:updateRollSectionContent`, function () {
     console.log('clicked:repeating_skill:updateRollSectionContent');
-    getAttrs(['repeating_skill_skillname', 'repeating_skill_skillability', 'repeating_skill_skillmodifier'], (attributes) => {
+    getAttrs([
+      'repeating_skill_skillname',
+      'repeating_skill_skillability',
+      'repeating_skill_skillmodifier',
+      'repeating_spell_spellEP'
+    ], (attributes) => {
       const { ['repeating_skill_skillname']: skillName } = attributes;
       const skillAbility = Number(attributes['repeating_skill_skillability'] ?? 0);
       const advanceBoost = Number(attributes['repeating_skill_skillmodifier'] ?? 0);
+      const spellPwr = isValueDefined(attributes['repeating_spell_spellEP']) ?
+        Number(attributes['repeating_spell_spellEP'] ?? 0) :
+        undefined;
       console.log({skillName, skillAbility, advanceBoost});
-      updateRollSectionContent({ skillName, abilityValue: skillAbility, advanceBoost });
+      updateRollSectionContent({ skillName, abilityValue: skillAbility, advanceBoost, power: spellPwr });
     });
   });
 });
