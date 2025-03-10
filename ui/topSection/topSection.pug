@@ -2,14 +2,58 @@
 = '\n'
 .top-section
   .flex-stack.space-between
-    .diceRollSection
-      .attributeRollSection
-        .attributeName Init
-        .attributeField
-          span(name='attr_initiative')
-          span  + 
-          input(name='attr_initiativemodifier' type='number' value='0')
-        button.actionRollButton.epRoll_initiative(name='act_epRoll_initiative' type='action')
+    .leftTopSection
+      .diceRollSection
+        .attributeRollSection
+          .attributeName Init
+          .attributeField
+            span(name='attr_initiative')
+            span  + 
+            input(name='attr_initiativemodifier' type='number' value='0')
+          button.actionRollButton.epRoll_initiative(name='act_epRoll_initiative' type='action')
+      .weightSection
+        div
+          | Speed
+          span.narrowish.center.bold.larger.value(name='attr_speed')
+          span
+            button.popoverButton.circledButton(name='act_popover_weightPenalties' type='action')
+              | ?
+            input.sectioncontrol(name='attr_chosenPopover' type='hidden' value='false')
+            .section.weightPenalties.popoverContainer
+              .popoverBackdrop
+                button(name='act_popover_weightPenalties' type='action') Close popover
+              .popover
+                button.closePopoverButton(name='act_popover_weightPenalties' type='action') X
+                .center.wideish.bold Weight Penalties
+                .weight-penalty-table.flex-stack
+                  .table-header
+                    div
+                    div Pen.
+                    div Wt.
+                  div
+                    input(name='attr_highlight_weight_penalty_1' type='hidden')
+                    div -1
+                    span(name='attr_penalty_weight_1')
+                  div
+                    input(name='attr_highlight_weight_penalty_2' type='hidden')
+                    div -2
+                    span(name='attr_penalty_weight_2')
+                  div
+                    input(name='attr_highlight_weight_penalty_3' type='hidden')
+                    div -3
+                    span(name='attr_penalty_weight_3')
+                  div
+                    input(name='attr_highlight_weight_penalty_4' type='hidden')
+                    div -4
+                    span(name='attr_penalty_weight_4')
+                  div
+                    input(name='attr_highlight_weight_penalty_5' type='hidden')
+                    div -5
+                    span(name='attr_penalty_weight_5')
+                  div
+                    input(name='attr_highlight_weight_penalty_6' type='hidden')
+                    div -&infin;
+                    span(name='attr_penalty_weight_6')
     // tab buttons 
     .tab-holder
       //
@@ -30,54 +74,6 @@
         | Notes
   // Movement & DR 
   .children-separated.no-shrink
-    div
-      .attribute-name.wide.larger
-        button.popoverButton.circledButton(name='act_popover_weightPenalties' type='action')
-          | ?
-        input.sectioncontrol(name='attr_chosenPopover' type='hidden' value='false')
-        .section.weightPenalties.popoverContainer
-          .popoverBackdrop
-            button(name='act_popover_weightPenalties' type='action') Close popover
-          .popover
-            button.closePopoverButton(name='act_popover_weightPenalties' type='action') X
-            .center.wideish.bold Weight Penalties
-            .weight-penalty-table.flex-stack
-              .table-header
-                div
-                div Pen.
-                div Wt.
-              div
-                input(name='attr_highlight_weight_penalty_1' type='hidden')
-                div -1
-                span(name='attr_penalty_weight_1')
-              div
-                input(name='attr_highlight_weight_penalty_2' type='hidden')
-                div -2
-                span(name='attr_penalty_weight_2')
-              div
-                input(name='attr_highlight_weight_penalty_3' type='hidden')
-                div -3
-                span(name='attr_penalty_weight_3')
-              div
-                input(name='attr_highlight_weight_penalty_4' type='hidden')
-                div -4
-                span(name='attr_penalty_weight_4')
-              div
-                input(name='attr_highlight_weight_penalty_5' type='hidden')
-                div -5
-                span(name='attr_penalty_weight_5')
-              div
-                input(name='attr_highlight_weight_penalty_6' type='hidden')
-                div -&infin;
-                span(name='attr_penalty_weight_6')
-        |         Wt. Load
-      span.narrowish.center.bold.larger.value(name='attr_equipment_total_weight')
-    div
-      .attribute-name.wide.larger Wt. Pen.
-      span.narrowish.center.bold.larger.value(name='attr_displayed_weight_penalty')
-    div
-      .attribute-name.wide.larger Speed
-      span.narrowish.center.bold.larger.value(name='attr_speed')
   include ./components/defenseBlock.pug
   = '\n'
   // HP, PWR, ER 
