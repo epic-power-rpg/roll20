@@ -190,8 +190,8 @@ function updateRollSectionContent({ skillName, abilityValue, advanceBoost }) {
   setAttrs(rollContent);
 }
 
-on('clicked:repeating_skill:updaterollsectioncontent', function () {
-  console.log('clicked:repeating_skill:updaterollsectioncontent');
+on('clicked:repeating_skill:updateRollSectionContent', function () {
+  console.log('clicked:repeating_skill:updateRollSectionContent');
   getAttrs(['repeating_skill_skillname', 'repeating_skill_skillability', 'repeating_skill_skillmodifier'], (attributes) => {
     const { ['repeating_skill_skillname']: skillName } = attributes;
     const skillAbility = Number(attributes['repeating_skill_skillability'] ?? 0);
