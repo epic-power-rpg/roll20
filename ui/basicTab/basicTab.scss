@@ -1,10 +1,16 @@
 @import '../components/gridTable/gridTable.scss';
+@import '../powerStats/editableTable.scss';
 
 /* --------- Basic Tab ------------ */
 .basic-tab {
   .advantages-and-feats {
     display: flex;
     gap: 16px;
+  }
+  .character-attributes-and-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
   }
   .character-attributes {
     $character-attributes-grid-template: getResponsiveGridWidths(64px, 96px);

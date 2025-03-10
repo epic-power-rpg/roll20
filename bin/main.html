@@ -101,19 +101,12 @@
         <div class="roll-description-line">
           <label for="attr_action_description">Description</label>
           <input class="flexing" id="attr_action_description" name="attr_action_description" type="text" />
-          <label for="attr_action_feats">Feats</label>
+          <label for="attr_action_feats">Feat PWR</label>
           <input class="narrowish" id="attr_action_feats" name="attr_action_feats" type="number" value="0" />
-          <label for="attr_action_feats_EP">PWR &ensp;</label>
-          <input class="narrow" id="attr_action_feats_EP" name="attr_action_feats_EP" value="@{action_feats}" disabled="true" />
           <label for="attr_action_EP">PWR</label>
           <input class="narrowish" id="attr_action_EP" name="attr_action_EP" type="number" value="0" />
           <label for="attr_action_SP">ER</label>
           <input class="narrowish" id="attr_action_SP" name="attr_action_SP" type="number" value="0" />
-          <span class="inlne-spacer"></span>
-          <input class="disable-do" id="attr_disable_do" name="attr_disable_do" type="hidden" value="0" />
-          <button class="do" name="act_topaction" type="action"></button>
-          &ensp;
-          <button class="undo" name="act_undotopaction" type="action"></button>
         </div>
         <div class="roll-description-line">
           <label for="attr_roll_skill">Skill</label>
@@ -141,82 +134,73 @@
     <!-- Top section -->
 
     <div class="top-section">
-      <!-- Left top section -->
       <div class="flex-stack space-between">
-        <div class="effectiveness-power-depth-cp-fp-section">
-          <div class="effectiveness">
-            <div class="effectiveness inline bold right middle">Eff</div>
-            <input class="power medium bold middle" name="attr_effectiveness" type="hidden" value="0" />
-            <span class="power left bold middle" name="attr_effectiveness"></span>
+        <div class="leftTopSection">
+          <div class="diceRollSection">
+            <div class="attributeRollSection">
+              <div class="attributeName">Init</div>
+              <div class="attributeField">
+                <span name="attr_initiative"></span>
+                <span> + </span>
+                <input name="attr_initiativemodifier" type="number" value="0" />
+              </div>
+              <button class="actionRollButton epRoll_initiative" name="act_epRoll_initiative" type="action"></button>
+            </div>
           </div>
-          <div class="power-depth">
-            <input class="cpcontrol" name="attr_chosentab" type="hidden" value="basic" />
-            <div class="power inline bold right middle">EPN</div>
-            <!-- Power is editable in basic tab only -->
-            <span class="power left bold middle not-basic-tab" name="attr_power"></span>
-            <input class="power medium bold middle basic-tab-only" name="attr_power" type="number" value="0" />
+          <div class="weightSection">
+            <div>Speed<span class="narrowish center bold larger value" name="attr_speed"></span>
+              <span>
+                <button class="popoverButton circledButton" name="act_popover_weightPenalties" type="action">?</button>
+                <input class="sectioncontrol" name="attr_chosenPopover" type="hidden" value="false" />
+                <div class="section weightPenalties popoverContainer">
+                  <div class="popoverBackdrop">
+                    <button name="act_popover_weightPenalties" type="action">Close popover</button>
+                  </div>
+                  <div class="popover">
+                    <button class="closePopoverButton" name="act_popover_weightPenalties" type="action">X</button>
+                    <div class="center wideish bold">Weight Penalties</div>
+                    <div class="weight-penalty-table flex-stack">
+                      <div class="table-header">
+                        <div></div>
+                        <div>Pen.</div>
+                        <div>Wt.</div>
+                      </div>
+                      <div>
+                        <input name="attr_highlight_weight_penalty_1" type="hidden" />
+                        <div>-1</div>
+                        <span name="attr_penalty_weight_1"></span>
+                      </div>
+                      <div>
+                        <input name="attr_highlight_weight_penalty_2" type="hidden" />
+                        <div>-2</div>
+                        <span name="attr_penalty_weight_2"></span>
+                      </div>
+                      <div>
+                        <input name="attr_highlight_weight_penalty_3" type="hidden" />
+                        <div>-3</div>
+                        <span name="attr_penalty_weight_3"></span>
+                      </div>
+                      <div>
+                        <input name="attr_highlight_weight_penalty_4" type="hidden" />
+                        <div>-4</div>
+                        <span name="attr_penalty_weight_4"></span>
+                      </div>
+                      <div>
+                        <input name="attr_highlight_weight_penalty_5" type="hidden" />
+                        <div>-5</div>
+                        <span name="attr_penalty_weight_5"></span>
+                      </div>
+                      <div>
+                        <input name="attr_highlight_weight_penalty_6" type="hidden" />
+                        <div>-&infin;</div>
+                        <span name="attr_penalty_weight_6"></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </span>
+            </div>
           </div>
-          <div class="cp-section">
-            <input class="cpcontrol" name="attr_chosentab" type="hidden" value="basic" />
-            <div class="CP inline bold right middle">CP</div>
-            <input class="CP bold center narrow" name="attr_CPU" value="@{CP}          -(@{attribute_CP})          -(@{advantage_total_CP})          -(@{feat_total_CP})          -(@{skill_total_CP})          -(@{arcane_total_CP})          -(@{innate_total_CP})" disabled="true" />
-            <span>/&nbsp;</span>
-            <!-- CP is editable in basic tab only -->
-            <span class="CP bold middle not-basic-tab" name="attr_CP"></span>
-            <input class="CP bold medium middle basic-tab-only" name="attr_CP" type="number" value="10" />
-          </div>
-          <div class="fp-section">
-            <div class="FP inline bold right middle">FP</div>
-            <input class="FP bold center narrow" name="attr_FPU" value="@{FP}        - (@{skill_total_FP})        - (@{arcane_total_FP})" disabled="true" />
-            <span>/&nbsp;</span>
-            <span class="FP bold middle center" name="attr_FP" value="2"></span>
-          </div>
-        </div>
-
-        <!-- IQ, DX, BR -->
-        <!--
-        These are read only, except in the basic tab,
-        where they can be changed, and their CP cost is shown
-        -->
-        <div class="attribute-row">
-          <input class="attributecontrol cpcontrol" name="attr_chosentab" type="hidden" value="basic" />
-          <div class="attribute-name big">IQ</div>
-          &ensp;
-          <span class="attribute-value center not-basic-tab" name="attr_IQ"></span>
-          <div class="inline not-basic-tab"> + </div>
-          <input class="modifier-width not-basic-tab" name="attr_IQmodifier" type="number" value="0" />
-          <button class="actionRollButton epRoll_IQmodifier not-basic-tab" name="act_epRoll_IQmodifier" type="action"></button>
-          <input class="attribute-value narrowish center basic-tab-only" name="attr_IQ" type="number" value="1" />
-          <div class="attribute-name big">DX</div>
-          &ensp;
-          <span class="attribute-value center" name="attr_DX"></span>
-          <div class="inline not-basic-tab"> + </div>
-          <input class="modifier-width not-basic-tab" name="attr_DXmodifier" type="number" value="0" />
-          <button class="actionRollButton epRoll_DXmodifier not-basic-tab" name="act_epRoll_DXmodifier" type="action"></button>
-          <input class="attribute-value narrowish center" name="attr_DX" type="number" value="1" />
-          &emsp;
-          <div class="attribute-name big">BR</div>
-          &ensp;
-          <span class="attribute-value center" name="attr_BR"></span>
-          <div class="inline not-basic-tab"> + </div>
-          <input class="modifier-width not-basic-tab" name="attr_BRmodifier" type="number" value="0" />
-          <button class="actionRollButton epRoll_BRmodifier not-basic-tab" name="act_epRoll_BRmodifier" type="action"></button>
-          <input class="attribute-value narrowish center basic-tab-only" name="attr_BR" type="number" value="1" />
-          <input name="attr_attribute_CP" type="hidden" value="-5" />
-          <input name="attr_displayed_attribute_CP" type="hidden" value="-5" />
-          <input class="narrow right CP basic-tab-only" name="attr_show_displayed_attribute_CP" value="@{displayed_attribute_CP}" disabled="true" />
-          <input class="narrow right CP basic-tab-only" name="attr_never_used" value="CP" disabled="true" />
-        </div>
-        <!-- Rolling -->
-        <div display="inline-block">
-          <button class="actionRollButton epRoll" name="act_epRoll" type="action"></button>
-          &emsp;
-          <button class="actionRollButton epRoll_roll_modifier" name="act_epRoll_roll_modifier" type="action"></button> +
-          <input class="narrowish" name="attr_roll_modifier" type="number" value="0" />
-          <div class="attribute-name wideish larger">Initiative</div>
-          <span class="narrow center bold larger value" name="attr_initiative"></span> +
-          <input class="narrowish" name="attr_initiativemodifier" type="number" value="0" />
-          <button class="actionRollButton epRoll_initiative" name="act_epRoll_initiative" type="action"></button>
         </div>
         <!-- tab buttons -->
         <div class="tab-holder">
@@ -234,73 +218,7 @@
         </div>
       </div>
       <!-- Movement & DR -->
-      <div class="children-separated no-shrink">
-        <div class="center">
-          <label class="wideish larger narrow-spacing" for="attr_reaction_penalty">Defense Penalty</label>
-          <input class="attribute-value narrowish center" id="attr_reaction_penalty" name="attr_reaction_penalty" type="number" value="0" />
-        </div>
-        <div>
-          <div class="attribute-name wide larger">
-            <button class="popoverButton circledButton" name="act_popover_weightPenalties" type="action">?</button>
-            <input class="sectioncontrol" name="attr_chosenPopover" type="hidden" value="false" />
-            <div class="section weightPenalties popoverContainer">
-              <div class="popoverBackdrop">
-                <button name="act_popover_weightPenalties" type="action">Close popover</button>
-              </div>
-              <div class="popover">
-                <button class="closePopoverButton" name="act_popover_weightPenalties" type="action">X</button>
-                <div class="center wideish bold">Weight Penalties</div>
-                <div class="weight-penalty-table flex-stack">
-                  <div class="table-header">
-                    <div></div>
-                    <div>Pen.</div>
-                    <div>Wt.</div>
-                  </div>
-                  <div>
-                    <input name="attr_highlight_weight_penalty_1" type="hidden" />
-                    <div>-1</div>
-                    <span name="attr_penalty_weight_1"></span>
-                  </div>
-                  <div>
-                    <input name="attr_highlight_weight_penalty_2" type="hidden" />
-                    <div>-2</div>
-                    <span name="attr_penalty_weight_2"></span>
-                  </div>
-                  <div>
-                    <input name="attr_highlight_weight_penalty_3" type="hidden" />
-                    <div>-3</div>
-                    <span name="attr_penalty_weight_3"></span>
-                  </div>
-                  <div>
-                    <input name="attr_highlight_weight_penalty_4" type="hidden" />
-                    <div>-4</div>
-                    <span name="attr_penalty_weight_4"></span>
-                  </div>
-                  <div>
-                    <input name="attr_highlight_weight_penalty_5" type="hidden" />
-                    <div>-5</div>
-                    <span name="attr_penalty_weight_5"></span>
-                  </div>
-                  <div>
-                    <input name="attr_highlight_weight_penalty_6" type="hidden" />
-                    <div>-&infin;</div>
-                    <span name="attr_penalty_weight_6"></span>
-                  </div>
-                </div>
-              </div>
-            </div> Wt. Load
-          </div>
-          <span class="narrowish center bold larger value" name="attr_equipment_total_weight"></span>
-        </div>
-        <div>
-          <div class="attribute-name wide larger">Wt. Pen.</div>
-          <span class="narrowish center bold larger value" name="attr_displayed_weight_penalty"></span>
-        </div>
-        <div>
-          <div class="attribute-name wide larger">Speed</div>
-          <span class="narrowish center bold larger value" name="attr_speed"></span>
-        </div>
-      </div>
+      <div class="children-separated no-shrink"></div>
       <!-- Defense -->
       <div class="defense-block">
         <div class="defenses epic-table-header-grid">
@@ -336,12 +254,10 @@
       <div class="children-separated no-shrink">
         <div>
           <div class="attribute-name biggish">PWR</div>
-          <input class="attribute-value biggish narrower medium center" name="attr_EP_t" type="number" />
-          <input class="attributecontrol" name="attr_chosentab" type="hidden" value="basic" />
-          <div class="inline biggish middle basic-tab-only">/</div>
+          <input class="biggish narrower medium center" name="attr_EP_t" type="number" />
+          <div class="inline biggish middle">/</div>
           <button class="reset-total" name="act_reset_ep_t" type="action">&#x21E6;</button>
-          <span class="attribute-value biggish narrow" name="attr_EP_t_max"></span>
-          <input class="attribute-value biggish narrower medium center" name="attr_EP_t_max" type="number" value="0" />
+          <span class="biggish narrow" name="attr_EP_t_max"></span>
         </div>
         <div>
           &emsp;&emsp;&emsp;
@@ -349,24 +265,20 @@
         </div>
         <div>
           <div class="attribute-name biggish">&ensp;&ensp;&ensp;ER</div>
-          <input class="attribute-value biggish narrower medium center" name="attr_SP" type="number" />
+          <input class="biggish narrower medium center" name="attr_SP" type="number" />
           <span>
-            <input class="attributecontrol" name="attr_chosentab" type="hidden" value="basic" />
-            <div class="inline biggish middle basic-tab-only">/</div>
             <button class="reset-total" name="act_reset_sp" type="action">&#x21E6;</button>
           </span>
-          <span class="attribute-value biggish narrow" name="attr_SP_max" value="0"></span>
+          <span class="biggish narrow" name="attr_SP_max" value="0"></span>
         </div>
         <div>
           <div class="attribute-name biggish">HP</div>
           <!-- TODO: Move this to sheet worker, who can do it right. -->
-          <input class="attribute-value biggish medium center" name="attr_HP" type="number" />
+          <input class="biggish medium center" name="attr_HP" type="number" />
           <span>
-            <input class="attributecontrol" name="attr_chosentab" type="hidden" value="basic" />
-            <div class="inline biggish middle basic-tab-only">/</div>
             <button class="reset-total" name="act_reset_hp" type="action">&#x21E6;</button>
           </span>
-          <span class="attribute-value biggish narrow" name="attr_HP_max" value="16"></span>
+          <span class="biggish narrow" name="attr_HP_max" value="16"></span>
         </div>
       </div>
     </div>
@@ -379,138 +291,138 @@
     <!-- Overview section -->
     <div class="overview section overview-tab">
       <div class="tables-container">
-        <!-- Advantages -->
-        <div class="advantage-overview no-add-or-modify-buttons">
-          <div class="advantage epic-table-header-grid">
-            <div>Advantage / Disadvantage</div>
-          </div>
-          <div class="advantage-table" data-epic-table-name="advantage">
-            <div class="conditional-something">
-              <!-- This input is used by CSS to hide advantage-row-->
-              <input class="advantageField" name="attr_advantage_healthy_count" type="hidden" />
-              <div class="advantage-row">
-                <div class="advantage-name">Healthy</div>
-                <span class="advantage-value" name="attr_advantage_healthy_count"></span>
+        <div class="advantages-and-feats">
+          <!-- Advantages -->
+          <div class="advantage-overview no-add-or-modify-buttons">
+            <div class="advantage epic-table-header-grid">
+              <div>Advantage / Disadvantage</div>
+            </div>
+            <div class="advantage-table" data-epic-table-name="advantage">
+              <div class="conditional-something">
+                <!-- This input is used by CSS to hide advantage-row-->
+                <input class="advantageField" name="attr_advantage_healthy_count" type="hidden" />
+                <div class="advantage-row">
+                  <div class="advantage-name">Healthy</div>
+                  <span class="advantage-value" name="attr_advantage_healthy_count"></span>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="advantage-table" data-epic-table-name="advantage">
-            <div class="conditional-something">
-              <!-- This input is used by CSS to hide advantage-row-->
-              <input class="advantageField" name="attr_advantage_packmule_count" type="hidden" />
-              <div class="advantage-row">
-                <div class="advantage-name">Pack Mule</div>
-                <span class="advantage-value" name="attr_advantage_packmule_count"></span>
+            <div class="advantage-table" data-epic-table-name="advantage">
+              <div class="conditional-something">
+                <!-- This input is used by CSS to hide advantage-row-->
+                <input class="advantageField" name="attr_advantage_packmule_count" type="hidden" />
+                <div class="advantage-row">
+                  <div class="advantage-name">Pack Mule</div>
+                  <span class="advantage-value" name="attr_advantage_packmule_count"></span>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="advantage-table" data-epic-table-name="advantage">
-            <div class="conditional-something">
-              <!-- This input is used by CSS to hide advantage-row-->
-              <input class="advantageField" name="attr_advantage_strongarms_count" type="hidden" />
-              <div class="advantage-row">
-                <div class="advantage-name">Strong Arms</div>
-                <span class="advantage-value" name="attr_advantage_strongarms_count"></span>
+            <div class="advantage-table" data-epic-table-name="advantage">
+              <div class="conditional-something">
+                <!-- This input is used by CSS to hide advantage-row-->
+                <input class="advantageField" name="attr_advantage_strongarms_count" type="hidden" />
+                <div class="advantage-row">
+                  <div class="advantage-name">Strong Arms</div>
+                  <span class="advantage-value" name="attr_advantage_strongarms_count"></span>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="advantage-table" data-epic-table-name="advantage">
-            <div class="conditional-something">
-              <!-- This input is used by CSS to hide advantage-row-->
-              <input class="advantageField" name="attr_advantage_brute_count" type="hidden" />
-              <div class="advantage-row">
-                <div class="advantage-name">Brute</div>
-                <span class="advantage-value" name="attr_advantage_brute_count"></span>
+            <div class="advantage-table" data-epic-table-name="advantage">
+              <div class="conditional-something">
+                <!-- This input is used by CSS to hide advantage-row-->
+                <input class="advantageField" name="attr_advantage_brute_count" type="hidden" />
+                <div class="advantage-row">
+                  <div class="advantage-name">Brute</div>
+                  <span class="advantage-value" name="attr_advantage_brute_count"></span>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="advantage-table" data-epic-table-name="advantage">
-            <div class="conditional-something">
-              <!-- This input is used by CSS to hide advantage-row-->
-              <input class="advantageField" name="attr_advantage_fast_count" type="hidden" />
-              <div class="advantage-row">
-                <div class="advantage-name">Fast</div>
-                <span class="advantage-value" name="attr_advantage_fast_count"></span>
+            <div class="advantage-table" data-epic-table-name="advantage">
+              <div class="conditional-something">
+                <!-- This input is used by CSS to hide advantage-row-->
+                <input class="advantageField" name="attr_advantage_fast_count" type="hidden" />
+                <div class="advantage-row">
+                  <div class="advantage-name">Fast</div>
+                  <span class="advantage-value" name="attr_advantage_fast_count"></span>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="advantage-table" data-epic-table-name="advantage">
-            <div class="conditional-something">
-              <!-- This input is used by CSS to hide advantage-row-->
-              <input class="advantageField" name="attr_advantage_athlete_count" type="hidden" />
-              <div class="advantage-row">
-                <div class="advantage-name">Natural Athlete</div>
-                <span class="advantage-value" name="attr_advantage_athlete_count"></span>
+            <div class="advantage-table" data-epic-table-name="advantage">
+              <div class="conditional-something">
+                <!-- This input is used by CSS to hide advantage-row-->
+                <input class="advantageField" name="attr_advantage_athlete_count" type="hidden" />
+                <div class="advantage-row">
+                  <div class="advantage-name">Natural Athlete</div>
+                  <span class="advantage-value" name="attr_advantage_athlete_count"></span>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="advantage-table" data-epic-table-name="advantage">
-            <div class="conditional-something">
-              <!-- This input is used by CSS to hide advantage-row-->
-              <input class="advantageField" name="attr_advantage_alert_count" type="hidden" />
-              <div class="advantage-row">
-                <div class="advantage-name">Alert</div>
-                <span class="advantage-value" name="attr_advantage_alert_count"></span>
+            <div class="advantage-table" data-epic-table-name="advantage">
+              <div class="conditional-something">
+                <!-- This input is used by CSS to hide advantage-row-->
+                <input class="advantageField" name="attr_advantage_alert_count" type="hidden" />
+                <div class="advantage-row">
+                  <div class="advantage-name">Alert</div>
+                  <span class="advantage-value" name="attr_advantage_alert_count"></span>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="advantage-table" data-epic-table-name="advantage">
-            <div class="conditional-something">
-              <!-- This input is used by CSS to hide advantage-row-->
-              <input class="advantageField" name="attr_advantage_wary_count" type="hidden" />
-              <div class="advantage-row">
-                <div class="advantage-name">Wary</div>
-                <span class="advantage-value" name="attr_advantage_wary_count"></span>
+            <div class="advantage-table" data-epic-table-name="advantage">
+              <div class="conditional-something">
+                <!-- This input is used by CSS to hide advantage-row-->
+                <input class="advantageField" name="attr_advantage_wary_count" type="hidden" />
+                <div class="advantage-row">
+                  <div class="advantage-name">Wary</div>
+                  <span class="advantage-value" name="attr_advantage_wary_count"></span>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="advantage-table" data-epic-table-name="advantage">
-            <div class="conditional-something">
-              <!-- This input is used by CSS to hide advantage-row-->
-              <input class="advantageField" name="attr_advantage_attractive_count" type="hidden" />
-              <div class="advantage-row">
-                <div class="advantage-name">Attractive</div>
-                <span class="advantage-value" name="attr_advantage_attractive_count"></span>
+            <div class="advantage-table" data-epic-table-name="advantage">
+              <div class="conditional-something">
+                <!-- This input is used by CSS to hide advantage-row-->
+                <input class="advantageField" name="attr_advantage_attractive_count" type="hidden" />
+                <div class="advantage-row">
+                  <div class="advantage-name">Attractive</div>
+                  <span class="advantage-value" name="attr_advantage_attractive_count"></span>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="advantage-table" data-epic-table-name="advantage">
-            <div class="conditional-something">
-              <!-- This input is used by CSS to hide advantage-row-->
-              <input class="advantageField" name="attr_advantage_mage_count" type="hidden" />
-              <div class="advantage-row">
-                <div class="advantage-name">Mage</div>
-                <span class="advantage-value" name="attr_advantage_mage_count"></span>
+            <div class="advantage-table" data-epic-table-name="advantage">
+              <div class="conditional-something">
+                <!-- This input is used by CSS to hide advantage-row-->
+                <input class="advantageField" name="attr_advantage_mage_count" type="hidden" />
+                <div class="advantage-row">
+                  <div class="advantage-name">Mage</div>
+                  <span class="advantage-value" name="attr_advantage_mage_count"></span>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="advantage-table" data-epic-table-name="advantage">
-            <div class="conditional-something">
-              <!-- This input is used by CSS to hide advantage-row-->
-              <input class="advantageField" name="attr_advantage_devout_count" type="hidden" />
-              <div class="advantage-row">
-                <div class="advantage-name">Devout</div>
-                <span class="advantage-value" name="attr_advantage_devout_count"></span>
+            <div class="advantage-table" data-epic-table-name="advantage">
+              <div class="conditional-something">
+                <!-- This input is used by CSS to hide advantage-row-->
+                <input class="advantageField" name="attr_advantage_devout_count" type="hidden" />
+                <div class="advantage-row">
+                  <div class="advantage-name">Devout</div>
+                  <span class="advantage-value" name="attr_advantage_devout_count"></span>
+                </div>
               </div>
             </div>
+            <fieldset class="repeating_extraadvantage">
+              <span class="extraadvantagename extraadvantage-row" name="attr_extraadvantagename"></span>
+            </fieldset>
           </div>
-          <fieldset class="repeating_extraadvantage">
-            <span class="extraadvantagename extraadvantage-row" name="attr_extraadvantagename"></span>
-          </fieldset>
-          <div class="character-avatars">
-            <img name="attr_character_token" />
+          <!-- Feats -->
+          <div class="feat-overview no-add-or-modify-buttons">
+            <div class="feat epic-table-header-grid">
+              <div class="featextraordinaryletter">Extr</div>
+              <div class="featname">Epic Feat</div>
+            </div>
+            <fieldset class="repeating_feat">
+              <span class="featextraordinaryletter feat-row" name="attr_featextraordinaryletter"></span>
+              <span class="featname feat-row" name="attr_featname"></span>
+              <button class="skill-roll addRollSectionFeat" name="act_addrollsectionfeat" type="action">&#8679;</button>
+            </fieldset>
           </div>
-        </div>
-        <!-- Feats -->
-        <div class="feat-overview no-add-or-modify-buttons">
-          <div class="feat epic-table-header-grid">
-            <div class="featextraordinaryletter">Extr</div>
-            <div class="featname">Epic Feat</div>
-          </div>
-          <fieldset class="repeating_feat">
-            <span class="featextraordinaryletter feat-row" name="attr_featextraordinaryletter"></span>
-            <span class="featname feat-row" name="attr_featname"></span>
-          </fieldset>
         </div>
         <!-- Skills -->
         <div class="skills-overview no-add-or-modify-buttons">
@@ -519,6 +431,38 @@
             <div class="skillability">Ability</div>
             <div class="skillbase">Mod</div>
           </div>
+          <div class="general-dice-rolls" data-epic-table-name="general-dice-rolls">
+            <span class="diceRollName">Roll + Mod</span>
+            <span class="ability">&nbsp;</span>
+            <span class="mod">
+              <input name="attr_roll_modifier" type="number" value="0" />
+            </span>
+            <button class="generalDiceRoll updateRollSectionContent" name="act_updateRollSectionContent_modifier" type="action">&#8679;</button>
+          </div>
+          <div class="general-dice-rolls" data-epic-table-name="general-dice-rolls">
+            <span class="diceRollName">IQ</span>
+            <span class="ability" name="attr_IQ"></span>
+            <span class="mod">
+              <input name="attr_IQModifier" type="number" value="0" />
+            </span>
+            <button class="generalDiceRoll updateRollSectionContent" name="act_updateRollSectionContent_IQ" type="action">&#8679;</button>
+          </div>
+          <div class="general-dice-rolls" data-epic-table-name="general-dice-rolls">
+            <span class="diceRollName">DX</span>
+            <span class="ability" name="attr_DX"></span>
+            <span class="mod">
+              <input name="attr_DXmodifier" type="number" value="0" />
+            </span>
+            <button class="generalDiceRoll updateRollSectionContent" name="act_updateRollSectionContent_DX" type="action">&#8679;</button>
+          </div>
+          <div class="general-dice-rolls" data-epic-table-name="general-dice-rolls">
+            <span class="diceRollName">BR</span>
+            <span class="ability" name="attr_BR"></span>
+            <span class="mod">
+              <input name="attr_BRmodifier" type="number" value="0" />
+            </span>
+            <button class="generalDiceRoll updateRollSectionContent" name="act_updateRollSectionContent_BR" type="action">&#8679;</button>
+          </div>
           <fieldset class="repeating_skill">
             <!-- This input is used by CSS to hide disciplines-->
             <input class="isdiscipline" name="attr_skillisdiscipline" type="hidden" />
@@ -526,13 +470,7 @@
               <span class="skillname" name="attr_skillname"></span>
               <span class="skillability" name="attr_skillability"></span>
               <input class="skillbase" name="attr_skillmodifier" type="number" />
-              <!--
-              These hidden inputs are necessary for the roll to find
-              skillability and skillname
-              -->
-              <input name="attr_skillability" type="hidden" />
-              <input name="attr_skillname" type="hidden" />
-              <button class="skill-roll" name="roll_skillroll" type="roll" value="!EPRoll @{skillability}+@{skillmodifier} Tries @{skillname}: @{skillability} + @{skillmodifier}"></button>
+              <button class="skill-roll updateRollSectionContent" name="act_updaterollsectioncontent" type="action">&#8679;</button>
             </div>
           </fieldset>
         </div>
@@ -543,7 +481,6 @@
             <div class="equipmentcount">Count</div>
             <div class="equipmentdamage">Damage</div>
             <div class="equipmentrange">Range</div>
-            <div class="equipmentdefense">Def</div>
           </div>
           <fieldset class="repeating_weapon">
             <div class="weapons-table-row">
@@ -552,7 +489,6 @@
                 <input class="equipmentcount" name="attr_weaponcount" type="number" value="1" />
                 <span class="equipmentdamage" name="attr_weapondamage"></span>
                 <span class="equipmentrange" name="attr_weaponrange"></span>
-                <span class="equipmentdefense" name="attr_weapondefense"></span>
               </div>
               <!-- This input is used by CSS to hide weaponnotes-->
               <input class="attr_weaponnotes" name="attr_weaponnotes" type="hidden" />
@@ -564,37 +500,102 @@
         </div>
       </div>
     </div>
-    <!-- Basic section -->
+    <!-- Basic section-->
     <div class="basic section basic-tab">
       <div class="advantages-and-feats">
-        <!-- Character Attributes -->
-        <div class="character-attributes">
-          <div class="character-attributes epic-table-header-grid">
-            <div class="character-attributes-name-grid">Attr.</div>
-            <div class="character-attributes-value-grid">Value</div>
-          </div>
-          <div class="character-attributes-table" data-epic-table-name="character-attributes">
-            <div class="character-attributes-name-grid">Race</div>
-            <input class="character-attributes-value-grid" name="attr_race" type="text" />
-          </div>
-          <div class="character-attributes-table" data-epic-table-name="character-attributes">
-            <div class="character-attributes-name-grid">Gender</div>
-            <input class="character-attributes-value-grid" name="attr_gender" type="text" />
-          </div>
-          <div class="character-attributes-table" data-epic-table-name="character-attributes">
-            <div class="character-attributes-name-grid">Height</div>
-            <input class="character-attributes-value-grid" name="attr_height" type="text" />
-          </div>
-          <div class="character-attributes-table" data-epic-table-name="character-attributes">
-            <div class="character-attributes-name-grid">Weight</div>
-            <input class="character-attributes-value-grid" name="attr_weight" type="number" />
-          </div>
-          <div class="character-attributes-table" data-epic-table-name="character-attributes">
-            <div class="character-attributes-name-grid">Age</div>
-            <input class="character-attributes-value-grid" name="attr_age" type="number" />
+        <div class="power-stats-and-avatars">
+          <div class="editable-epic-power-stats-table">
+            <div class="epic-power-stats">
+              <div class="epic-power-stats epic-table-header-grid">
+                <div class="epic-power-stats-name-grid">Attr.</div>
+                <div class="epic-power-stats-value-grid">Available</div>
+                <div class="epic-power-stats-value-grid">Total</div>
+              </div>
+              <div class="epic-power-stats-table effectiveness" data-epic-table-name="epic-power-stats">
+                <div class="epic-power-stats-name-grid">Eff.</div>
+                <span>&nbsp;</span>
+                <input class="epic-power-stats-value-grid" name="attr_effectiveness" type="hidden" value="0" />
+                <span class="epic-power-stats-value-grid" name="attr_effectiveness"></span>
+              </div>
+              <div class="epic-power-stats-table" data-epic-table-name="epic-power-stats">
+                <div class="epic-power-stats-name-grid">EPN</div>
+                <span>&nbsp;</span>
+                <input class="epic-power-stats-value-grid" name="attr_power" type="number" value="0" />
+              </div>
+              <div class="epic-power-stats-table" data-epic-table-name="epic-power-stats">
+                <div class="epic-power-stats-name-grid">PWR</div>
+                <span class="CP center" name="attr_EP_t"></span>
+                <input class="epic-power-stats-value-grid" name="attr_EP_t_max" type="number" value="0" />
+              </div>
+              <div class="epic-power-stats-table" data-epic-table-name="epic-power-stats">
+                <div class="epic-power-stats-name-grid bold">ER</div>
+                <input class="epic-power-stats-value-grid" name="attr_SP" type="hidden" value="0" />
+                <span class="ER center" name="attr_SP"></span>
+                <input class="epic-power-stats grid" name="attr_SP_max" type="hidden" value="2" />
+                <span class="epic-power-stats-value-grid center" name="attr_SP_max" type="number" value="0"></span>
+              </div>
+              <div class="epic-power-stats-table" data-epic-table-name="epic-power-stats">
+                <div class="epic-power-stats-name-grid CP bold">CP</div>
+                <input class="epic-power-stats-value-grid" name="attr_remaining_cp" type="hidden" value="0" />
+                <span class="CP center" name="attr_remaining_cp"></span>
+                <input class="epic-power-stats-value-grid CP" name="attr_CP" type="number" value="10" />
+              </div>
+              <div class="epic-power-stats-table" data-epic-table-name="epic-power-stats">
+                <div class="epic-power-stats-name-grid FP bold">FP</div>
+                <input class="epic-power-stats-value-grid" name="attr_remaining_fp" type="hidden" value="0" />
+                <span class="FP center" name="attr_remaining_fp"></span>
+                <input class="epic-power-stats grid" name="attr_FP" type="hidden" value="2" />
+                <span class="epic-power-stats-value-grid center FP" name="attr_FP" type="number" value="2"></span>
+              </div>
+            </div>
           </div>
           <div class="character-avatars">
             <img name="attr_character_token" />
+          </div>
+        </div>
+        <div class="character-attributes-and-stats">
+          <div class="character-attributes">
+            <div class="character-attributes epic-table-header-grid">
+              <div class="character-attributes-name-grid">Attr.</div>
+              <div class="character-attributes-value-grid">Value</div>
+            </div>
+            <div class="character-attributes-table" data-epic-table-name="character-attributes">
+              <div class="character-attributes-name-grid">Race</div>
+              <input class="character-attributes-value-grid" name="attr_race" type="text" />
+            </div>
+            <div class="character-attributes-table" data-epic-table-name="character-attributes">
+              <div class="character-attributes-name-grid">Gender</div>
+              <input class="character-attributes-value-grid" name="attr_gender" type="text" />
+            </div>
+            <div class="character-attributes-table" data-epic-table-name="character-attributes">
+              <div class="character-attributes-name-grid">Height</div>
+              <input class="character-attributes-value-grid" name="attr_height" type="text" />
+            </div>
+            <div class="character-attributes-table" data-epic-table-name="character-attributes">
+              <div class="character-attributes-name-grid">Weight</div>
+              <input class="character-attributes-value-grid" name="attr_weight" type="number" />
+            </div>
+            <div class="character-attributes-table" data-epic-table-name="character-attributes">
+              <div class="character-attributes-name-grid">Age</div>
+              <input class="character-attributes-value-grid" name="attr_age" type="number" />
+            </div>
+            <div class="character-attributes-table" data-epic-table-name="character-attributes">
+              <div class="character-attributes-name-grid">IQ</div>
+              <input class="character-attributes-value-grid" name="attr_IQ" type="number" value="1" />
+            </div>
+            <div class="character-attributes-table" data-epic-table-name="character-attributes">
+              <div class="character-attributes-name-grid">DX</div>
+              <input class="character-attributes-value-grid" name="attr_DX" type="number" value="1" />
+            </div>
+            <div class="character-attributes-table" data-epic-table-name="character-attributes">
+              <div class="character-attributes-name-grid">BR</div>
+              <input class="character-attributes-value-grid" name="attr_BR" type="number" value="1" />
+            </div>
+            <div class="character-attributes-table" data-epic-table-name="character-attributes">
+              <div class="character-attributes-name-grid">CP Cost</div>
+              <input name="attr_displayed_attribute_CP" type="hidden" value="-2" />
+              <span class="character-attributes-value-grid CP" name="attr_displayed_attribute_CP"></span>
+            </div>
           </div>
         </div>
         <!-- Advantages and Disadvantages -->
@@ -749,7 +750,20 @@
     <!-- skill section -->
     <div class="skills section epic-skills-tab">
       <div>
-        <div class="bold">Disciplines &amp; Skills</div>
+        <span class="bold">
+          <span>Disciplines &amp; Skills</span>
+          <span>&nbsp;</span>
+          <span class="epic-fp-and-cp bold">
+            <span>Available:</span>
+            <span class="FP bold">FP</span>
+            <input name="attr_remaining_fp" type="hidden" value="0" />
+            <span class="FP" name="attr_remaining_fp"></span>
+            <span>&nbsp;</span>
+            <span class="CP bold">CP</span>
+            <input name="attr_remaining_cp" type="hidden" value="0" />
+            <span class="CP" name="attr_remaining_cp"></span>
+          </span>
+        </span>
       </div>
       <div class="epic-skill-table">
         <input name="attr_skill_total_FP" type="hidden" value="0" />
@@ -758,8 +772,18 @@
           <div class="skilldisciplineinfo-grid">Discipline?</div>
           <div class="skillname-grid">Name</div>
           <div class="skillability-grid">Ability</div>
-          <div class="skillFP-grid">FP</div>
-          <div class="skillCP-grid">CP</div>
+          <div class="skillFP-grid">
+            <input name="attr_remaining_fp" type="hidden" value="0" />
+            <span>
+              FP
+              (<span class="FP" name="attr_remaining_fp"></span>)</span>
+          </div>
+          <div class="skillCP-grid">
+            <input name="attr_remaining_cp" type="hidden" value="0" />
+            <span>
+              CP
+              (<span class="CP" name="attr_remaining_cp"></span>)</span>
+          </div>
           <div class="skillexpertise-grid">Exper.</div>
           <div class="skillattribute-grid">Attribute</div>
           <div class="skillbase-grid">Base</div>
@@ -839,6 +863,10 @@
         <div>
           <div class="attribute-name larger inline bold right middle">Equip Weight</div>
           <span class="center bold larger value middle" name="attr_equipment_total_weight"></span>
+        </div>
+        <div>
+          <div class="attribute-name larger inline bold right middle">Wt. Pen.</div>
+          <span class="narrowish center bold larger value" name="attr_displayed_weight_penalty"></span>
         </div>
       </div>
 
@@ -963,18 +991,17 @@
           <input name="attr_spell_hit" type="hidden" />
           <span class="center bold larger middle" name="attr_spell_hit"></span>
           <input class="skillbase" name="attr_spell_hit_modifier" type="number" />
-          <button type="roll" value="!EPRoll @{spell_hit}+@{spell_hit_modifier} Hits with Spell: @{spell_hit} + @{spell_hit_modifier}"></button>
-          &emsp;
+          <button class="spellRoll updateRollSectionContent" name="act_updateRollSectionContent_spell_hit" type="action">&#8679;</button>
           <div class="label wide larger">Affliction</div>
           <input name="attr_affliction" type="hidden" />
           <span class="center bold larger middle" name="attr_affliction"></span>
           <input class="skillbase" name="attr_affliction_modifier" type="number" />
-          <button type="roll" value="!EPRoll @{affliction}+@{affliction_modifier} Affliction Attack: @{affliction} + @{affliction_modifier}"></button>&emsp;
+          <button class="spellRoll updateRollSectionContent" name="act_updateRollSectionContent_affliction" type="action">&#8679;</button>
           <div class="label wide larger">Mental</div>
           <input name="attr_mental" type="hidden" />
           <span class="center bold larger middle" name="attr_mental"></span>
           <input class="skillbase" name="attr_mental_modifier" type="number" />
-          <button type="roll" value="!EPRoll @{mental}+@{mental_modifier} Mental Attack: @{mental} + @{mental_modifier}"></button>
+          <button class="spellRoll updateRollSectionContent" name="act_updateRollSectionContent_mental" type="action">&#8679;</button>
         </div>
       </div>
       <!-- Arcane spells -->
@@ -995,8 +1022,18 @@
           <div class="spelltarget-grid">Target</div>
           <div class="spellduration-grid">Damage/ Duration</div>
           <div class="spellhasnote-grid">Notes</div>
-          <div class="skillFP-grid">FP</div>
-          <div class="skillCP-grid">CP</div>
+          <div class="skillFP-grid">
+            <input name="attr_remaining_fp" type="hidden" value="0" />
+            <span>
+              FP
+              (<span class="FP" name="attr_remaining_fp"></span>)</span>
+          </div>
+          <div class="skillCP-grid">
+            <input name="attr_remaining_cp" type="hidden" value="0" />
+            <span>
+              CP
+              (<span class="CP" name="attr_remaining_cp"></span>)</span>
+          </div>
           <div class="skillexpertise-grid">Exper.</div>
           <div class="skillattribute-grid arcane-iq-plus-minus-attribute">IQ &pm;</div>
           <div class="skillbase-grid">Base</div>
@@ -1017,7 +1054,7 @@
           <!-- Make the button able to access the ability -->
           <input name="attr_skillability" hidden="true" />
           <input class="skillbase-grid" name="attr_skillmodifier" type="number" />
-          <button class="skill-grid-roll" name="roll_spellroll" type="roll" value="!EPRoll @{skillability}+@{skillmodifier} Tries @{skillname}: @{skillability} + @{skillmodifier}"></button>
+          <button class="skill-grid-roll updateRollSectionContent" name="act_updaterollsectioncontent" type="action">&#8679;</button>
           <input class="spellEP-grid" name="attr_spellEP" type="text" />
           <input class="spellcasttime-grid" name="attr_spellcasttime" type="text" />
           <select class="spelltype-grid" name="attr_spelltype" type="text">
@@ -1187,7 +1224,12 @@
           <div class="spellrange-grid">Range</div>
           <div class="spelltarget-grid">Target</div>
           <div class="spellduration-grid">Damage/ Duration</div>
-          <div class="skillCP-grid">CP</div>
+          <div class="skillCP-grid">
+            <input name="attr_remaining_cp" type="hidden" value="0" />
+            <span>
+              CP
+              (<span class="CP" name="attr_remaining_cp"></span>)</span>
+          </div>
         </div>
         <fieldset class="repeating_innate">
           <select class="skill-innatesphere-grid" name="attr_skillinnatesphere">
@@ -1262,6 +1304,10 @@
     <!-- Notes section -->
     <div class="notes section">
       <div class="flex-stack">
+        <p>Utils</p>
+        <p>Test Epic Dice
+          <button class="actionRollButton epRoll" name="act_epRoll" type="action"></button>
+        </p>
         <div class="table-header">
           <div class="notecategory">Category</div>
           <div class="notenote">Note</div>
@@ -1300,7 +1346,7 @@ function generateTrulyUniqueRowId() {
 // ----- Utilities -----
 const removeNonNumeric = function (s) {
   return String(s).trim().replace(/[^\d.-]/g, '');
-}
+};
 
 // Strip out any non-numeric stuff, then interpret the string as a float.
 // For example, this will turn '5+S' into 5.
@@ -1393,11 +1439,21 @@ const toggleSavePending = function () {
 };
 on('clicked:saveroll', toggleSavePending);
 
-const roll_keys = ['action_description', 'action_feats',
-  'action_EP', 'action_SP',
-  'roll_skill', 'roll_ability',
-  'roll_mod1', 'roll_mod2', 'roll_mod3',
-  'roll_advance_boost'];
+const numericRollKeys = [
+  'action_feats',
+  'action_EP',
+  'action_SP',
+  'roll_ability',
+  'roll_mod1',
+  'roll_mod2',
+  'roll_mod3',
+  'roll_advance_boost',
+];
+const roll_keys = [
+  'action_description',
+  'roll_skill',
+  ...numericRollKeys,
+];
 
 const saveRollState = function (key, roll_chosen) {
   getAttrs(roll_keys,
@@ -1457,6 +1513,131 @@ const doChooseRoll = function (number) {
 const roll_choices = ['1', '2', '3', '4', '5', '6'];
 roll_choices.forEach(function (value) {
   on(`clicked:choose_roll_${value}`, function () { doChooseRoll(value); });
+});
+
+function updateRollSectionContent({ skillName, abilityValue, advanceBoost, power }) {
+  const baseNumericContent = {};
+  numericRollKeys.forEach((key) => {
+    baseNumericContent[key] = 0;
+  });
+
+  const rollContent = {
+    ...baseNumericContent,
+    'action_description': '',
+    'roll_skill': skillName,
+    'roll_ability': abilityValue,
+    'roll_advance_boost': advanceBoost,
+  };
+  if (isValueDefined(power)) {
+    rollContent['action_EP'] = power;
+  }
+  setAttrs(rollContent);
+}
+['repeating_skill', 'repeating_arcane'].forEach((sectionName) => {
+  on(`clicked:${sectionName}:updateRollSectionContent`, function () {
+    console.log('clicked:repeating_skill:updateRollSectionContent');
+    getAttrs([
+      'repeating_skill_skillname',
+      'repeating_skill_skillability',
+      'repeating_skill_skillmodifier',
+      'repeating_spell_spellEP'
+    ], (attributes) => {
+      const { ['repeating_skill_skillname']: skillName } = attributes;
+      const skillAbility = Number(attributes['repeating_skill_skillability'] ?? 0);
+      const advanceBoost = Number(attributes['repeating_skill_skillmodifier'] ?? 0);
+      const spellPwr = isValueDefined(attributes['repeating_spell_spellEP']) ?
+        Number(attributes['repeating_spell_spellEP'] ?? 0) :
+        undefined;
+      console.log({skillName, skillAbility, advanceBoost});
+      updateRollSectionContent({ skillName, abilityValue: skillAbility, advanceBoost, power: spellPwr });
+    });
+  });
+});
+
+on('clicked:repeating_feat:addrollsectionfeat', function () {
+  console.log('clicked:repeating_feat:addrollsectionfeat');
+  getAttrs(['repeating_feat_featextraordinary', 'repeating_feat_featname', 'action_description', 'action_feats'], (attributes) => {
+    const {
+      ['repeating_feat_featextraordinary']: extraordniaryFeat,
+      ['repeating_feat_featname']: featName,
+      ['action_description']: actionDescription,
+      ['action_feats']: actionFeats,
+    } = attributes;
+    console.log({extraordniaryFeat, featName, actionDescription, actionFeats});
+    const featCost = extraordniaryFeat === '1' ? 2 : 1;
+    const currentFeatDescriptions = new Set(actionDescription.split(/, ?/).map((value) => value.trim()).filter(Boolean));
+    if (currentFeatDescriptions.has(featName)) {
+      return;
+    }
+    currentFeatDescriptions.add(featName);
+    setAttrs({
+      'action_description': [...currentFeatDescriptions].join(', '),
+      'action_feats': Number(actionFeats) + featCost,
+    });
+  });
+});
+
+const GENERAL_UPDATE_ROLL_SECTION_OPTIONS = [{
+  actionId: 'updateRollSectionContent_modifier',
+  skillName: 'Roll',
+  attributes: {
+    advanceBoostKey: 'roll_modifier',
+  },
+}, {
+  actionId: 'updateRollSectionContent_IQ',
+  skillName: 'Tries to be smart',
+  attributes: {
+    skillAbilityKey: 'IQ',
+    advanceBoostKey: 'IQmodifier',
+  },
+}, {
+  actionId: 'updateRollSectionContent_DX',
+  skillName: 'Tries to be nimble',
+  attributes: {
+    skillAbilityKey: 'DX',
+    advanceBoostKey: 'DXmodifier',
+  },
+}, {
+  actionId: 'updateRollSectionContent_BR',
+  skillName: 'Tries to be strong',
+  attributes: {
+    skillAbilityKey: 'BR',
+    advanceBoostKey: 'BRmodifier',
+  },
+}, {
+  actionId: 'updateRollSectionContent_spell_hit',
+  skillName: 'Hits with spell',
+  attributes: {
+    skillAbilityKey: 'spell_hit',
+    advanceBoostKey: 'spell_hit_modifier',
+  },
+}, {
+  actionId: 'updateRollSectionContent_affliction',
+  skillName: 'Affliction attack',
+  attributes: {
+    skillAbilityKey: 'affliction',
+    advanceBoostKey: 'affliction_modifier',
+  },
+}, {
+  actionId: 'updateRollSectionContent_mental',
+  skillName: 'Mental attack',
+  attributes: {
+    skillAbilityKey: 'mental',
+    advanceBoostKey: 'mental_modifier',
+  },
+}];
+
+GENERAL_UPDATE_ROLL_SECTION_OPTIONS.forEach((rollOption) => {
+  const { actionId, skillName, attributes } = rollOption;
+  on(`clicked:${actionId}`, () => {
+    const { skillAbilityKey, advanceBoostKey } = attributes;
+    getAttrs([skillAbilityKey, advanceBoostKey].filter(Boolean), (values) => {
+      const abilityValue = Number(values[skillAbilityKey] ?? 0);
+      const advanceBoost = Number(values[advanceBoostKey] ?? 0);
+
+      updateRollSectionContent({ skillName,abilityValue, advanceBoost });
+    });
+  });
 });
 
 const topActionDeltas = function (values) {
@@ -1542,35 +1723,6 @@ const deltasDescription = function (deltas) {
   }
   return description;
 };
-
-const doTopAction = function () {
-  getAttrs(['EP_t', 'EP_t_max', 'SP',
-    'action_description', 'action_feats',
-    'action_EP', 'action_SP'],
-  function (values) {
-    let deltas = topActionDeltas(values);
-    let update = makeUpdate(values, deltas);
-    update['pendingchat'] = (values['action_description']
-        + deltasDescription(deltas));
-    setAttrs(update);
-  });
-};
-on('clicked:topaction', doTopAction);
-
-const undoTopAction = function () {
-  getAttrs(['EP_t', 'EP_t_max', 'SP',
-    'action_feats', 'action_EP', 'action_SP'],
-  function (values) {
-    let deltas = multiplyDeltas(topActionDeltas(values), -1);
-    let update = makeUpdate(values, deltas);
-    let restored = deltasDescription(deltas);
-    if (restored !== '') {
-      update['pendingchat'] = 'Undo restoring' + restored;
-    }
-    setAttrs(update);
-  });
-};
-on('clicked:undotopaction', undoTopAction);
 
 const topRollCommand = function (values) {
   let ability = Number(values['roll_ability']);
@@ -1686,8 +1838,6 @@ const updateTopActEnables = function () {
     log(values);
     log(top_action_deltas);
     let update = {
-      'disable_do':
-          isLegalUpdate(values, top_action_deltas) ? '0' : '1',
       'disable_do_and_roll':
           isLegalUpdate(values, top_roll_deltas) ? '0' : '1'
     };
@@ -1834,6 +1984,46 @@ const updateAttributeCost = function () {
   });
 };
 on('change:iq change:dx change:br', updateAttributeCost);
+
+function updateRemainingCp() {
+  const attributeNames = [
+    'attribute_CP',
+    'advantage_total_CP',
+    'feat_total_CP',
+    'skill_total_CP',
+    'arcane_total_CP',
+    'innate_total_CP',
+  ];
+  getAttrs(['CP', ...attributeNames], function (values) {
+    const CP = Number(values.CP);
+    const usedCp = attributeNames.reduce((memo, name) => memo + Number(values[name]), 0);
+    setAttrs({ remaining_cp: CP - usedCp });
+  });
+}
+on('change:CP' +
+  ' change:attribute_CP ' +
+  ' change:advantage_total_CP' +
+  ' change:feat_total_CP' +
+  ' change:skill_total_CP' +
+  ' change:arcane_total_CP' +
+  ' change:innate_total_CP' +
+  ' sheet:opened', updateRemainingCp);
+
+function updateRemainingFp() {
+  const attributeNames = [
+    'skill_total_FP',
+    'arcane_total_FP',
+  ];
+  getAttrs(['FP', ...attributeNames], function (values) {
+    const FP = Number(values.FP);
+    const usedFp = attributeNames.reduce((memo, name) => memo + Number(values[name]), 0);
+    setAttrs({ remaining_fp: FP - usedFp });
+  });
+}
+on('change:FP' + 
+  ' change:skill_total_FP' + 
+  ' change:arcane_total_FP' + 
+  ' sheet:opened', updateRemainingFp);
 
 // ----- Advantage and disadvantage costs -----
 const advantageCosts = {
@@ -2576,9 +2766,8 @@ const updateDefenseValues = function () {
   const defenseBoostName = 'defense_boost';
   const highestWeaponDefenseName = 'best_weapon_defense';
   const guardName = 'guard';
-  const reactionPenaltyName = 'reaction_penalty';
   getAttrs([armorName, shieldName, defenseBoostName, highestWeaponDefenseName,
-            guardName, reactionPenaltyName],
+            guardName],
     function (values) {
       const cur_armor = getNumberIfValid(values[armorName]);
       const cur_shield = getNumberIfValid(values[shieldName]);
@@ -2589,14 +2778,10 @@ const updateDefenseValues = function () {
         const defenseIsDodge = defense === 'dodge';
         const defenseIsBlock = defense === 'block';
         const defenseIsParry = defense === 'parry';
-        /**
-         * FIXME - Deprecate `reaction_penalty` since it is redundant with `defense_boost` as a follow up.
-         */
         const total = (
           guard_n
           + (defenseIsBlock ? cur_shield : 0)
           + (defenseIsParry ? highestWeaponDefense : 0)
-          - Math.abs(getNumberIfValid(values[reactionPenaltyName]))
           + getNumberIfValid(values[defenseBoostName])
         );
         /**
@@ -2613,7 +2798,7 @@ const updateDefenseValues = function () {
 }
 on('change:armor_defense change:shield_defense change:best_weapon_defense' +
    ' change:guard' +
-   ' change:defense_boost change:reaction_penalty sheet:opened',
+   ' change:defense_boost sheet:opened',
 updateDefenseValues);
 
 const updateSpeed = function () {

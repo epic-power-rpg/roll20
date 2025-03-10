@@ -1,10 +1,3 @@
-button.actionRollButton {
-  padding: 2px 3px;
-  font-size: 1.3em;
-  margin: 0 3px;
-  border-width: 1px;
-}
-
 @mixin action-button {
   font-weight: bold;
   outline: 1px solid #666;
@@ -39,6 +32,15 @@ button.actionRollButton::before {
   content: "⧉";
 }
 
+@mixin updateRollSectionButton {
+  padding: 0px 2px;
+  box-sizing: border-box;
+  margin: auto 2px;
+  height: 20px;
+  font-size: 1.3em;
+  @include roll-action-button();
+}
+
 /* Change the character for the do and roll dice button to be
    a big heavy two joined squares character */
 button.do-and-roll::before {
@@ -48,30 +50,12 @@ button.do-and-roll::before {
   font-weight: bold;
 }
 
-/* Change the character for do buttons to be
-   the play forward character */
-button.do::before {
-  font-family: sans-serif;
-  content: "▶";
-}
-
-button.do,
 button.do-and-roll {
   @include roll-action-button;
 }
 
-button.do {
-  width: 18px;
-}
-
 button.big-control.do-and-roll {
   width: 20px;
-}
-
-.disable-do[value="1"]~.do {
-  background-image: linear-gradient(90deg, #ddd, #ddd);
-  pointer-events: none;
-  @include hovered-button();
 }
 
 .disable-do-and-roll[value="1"]~.do-and-roll {

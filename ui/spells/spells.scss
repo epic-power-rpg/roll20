@@ -45,6 +45,9 @@ $notes-popover-width: 30px;
     label, .label {
       @include theme-color(primary-color);
     }
+    button.spellRoll {
+      @include updateRollSectionButton();
+    }
   }
   @import './spellsNotesPopover.scss';
 
@@ -70,6 +73,9 @@ $notes-popover-width: 30px;
 
   @include epic-table-grid('arcane', $arcane-grid-template);
   @include epic-table-grid-row-border('arcane');
+  button.updateRollSectionContent {
+    @include updateRollSectionButton();
+  }
   .narrow-table-heading {
     font-size: 12px;
     font-weight: normal !important;
@@ -109,7 +115,7 @@ $notes-popover-width: 30px;
     2fr, // Range
     3fr, // Target
     2fr, // Damage/Duration
-    32px, // CP
+    48px, // CP
   );
   @include epic-table-grid('innate', $innate-grid-template);
   @include epic-table-grid-row-border('innate');
