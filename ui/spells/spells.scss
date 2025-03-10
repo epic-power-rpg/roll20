@@ -115,7 +115,7 @@ $notes-popover-width: 30px;
     2fr, // Range
     3fr, // Target
     2fr, // Damage/Duration
-    32px, // CP
+    48px, // CP
   );
   @include epic-table-grid('innate', $innate-grid-template);
   @include epic-table-grid-row-border('innate');
