@@ -38,8 +38,6 @@
       span.center.bold.larger.middle(name='attr_mental')
       input.skillbase(name='attr_mental_modifier' type='number')
       button(type='roll' value='!EPRoll @{mental}+@{mental_modifier} Mental Attack: @{mental} + @{mental_modifier}')
-      .power-stats
-        include ../powerStats/cpAndFpText.pug
   // Arcane spells 
   .arcane.section
     input(name='attr_arcane_total_FP' type='hidden' value='0')
@@ -58,8 +56,10 @@
       .spelltarget-grid Target
       .spellduration-grid Damage/ Duration
       .spellhasnote-grid Notes
-      .skillFP-grid FP
-      .skillCP-grid CP
+      .skillFP-grid
+        include ../powerStats/fpColumnHeader.pug
+      .skillCP-grid
+        include ../powerStats/cpColumnHeader.pug
       .skillexpertise-grid Exper.
       .skillattribute-grid.arcane-iq-plus-minus-attribute IQ &pm;
       .skillbase-grid Base
@@ -147,7 +147,8 @@
       .spellrange-grid Range
       .spelltarget-grid Target
       .spellduration-grid Damage/ Duration
-      .skillCP-grid CP
+      .skillCP-grid
+        include ../powerStats/cpColumnHeader.pug
     fieldset.repeating_innate
       select.skill-innatesphere-grid(name='attr_skillinnatesphere')
         option(value=' ')

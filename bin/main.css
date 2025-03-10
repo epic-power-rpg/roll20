@@ -2217,7 +2217,7 @@ body.sheet-darkmode .basic-tab .feats .epic-table-header-grid .skillCP-grid, bod
 }
 .epic-skills-tab .epic-table-header-grid.skill {
   display: grid;
-  grid-template-columns: minmax(0, 40px) minmax(0, 4fr) minmax(0, 40px) minmax(0, 24px) minmax(0, 24px) minmax(0, 1fr) minmax(0, 72px) minmax(0, 40px);
+  grid-template-columns: minmax(0, 40px) minmax(0, 4fr) minmax(0, 40px) minmax(0, 48px) minmax(0, 48px) minmax(0, 1fr) minmax(0, 72px) minmax(0, 40px);
   column-gap: 2px;
   color: #fff;
   background-color: #b56632;
@@ -2240,7 +2240,7 @@ body.sheet-darkmode .epic-skills-tab .epic-table-header-grid.skill {
 .epic-skills-tab div[data-groupname=repeating_skill] > div,
 .epic-skills-tab div[data-epic-table-name=skill] {
   display: grid;
-  grid-template-columns: minmax(0, 40px) minmax(0, 4fr) minmax(0, 40px) minmax(0, 24px) minmax(0, 24px) minmax(0, 1fr) minmax(0, 72px) minmax(0, 40px);
+  grid-template-columns: minmax(0, 40px) minmax(0, 4fr) minmax(0, 40px) minmax(0, 48px) minmax(0, 48px) minmax(0, 1fr) minmax(0, 72px) minmax(0, 40px);
   row-gap: 0;
   column-gap: 2px;
   background: transparent;
@@ -2976,7 +2976,7 @@ body.sheet-darkmode .spells div[data-epic-table-name=divine] + div[data-epic-tab
 }
 .spells .epic-table-header-grid.innate {
   display: grid;
-  grid-template-columns: minmax(0, 40px) minmax(0, 4fr) minmax(0, 30px) minmax(0, 32px) minmax(0, 2fr) minmax(0, 2fr) minmax(0, 2fr) minmax(0, 3fr) minmax(0, 2fr) minmax(0, 32px);
+  grid-template-columns: minmax(0, 40px) minmax(0, 4fr) minmax(0, 30px) minmax(0, 32px) minmax(0, 2fr) minmax(0, 2fr) minmax(0, 2fr) minmax(0, 3fr) minmax(0, 2fr) minmax(0, 48px);
   column-gap: 2px;
   color: #fff;
   background-color: #b56632;
@@ -2999,7 +2999,7 @@ body.sheet-darkmode .spells .epic-table-header-grid.innate {
 .spells div[data-groupname=repeating_innate] > div,
 .spells div[data-epic-table-name=innate] {
   display: grid;
-  grid-template-columns: minmax(0, 40px) minmax(0, 4fr) minmax(0, 30px) minmax(0, 32px) minmax(0, 2fr) minmax(0, 2fr) minmax(0, 2fr) minmax(0, 3fr) minmax(0, 2fr) minmax(0, 32px);
+  grid-template-columns: minmax(0, 40px) minmax(0, 4fr) minmax(0, 30px) minmax(0, 32px) minmax(0, 2fr) minmax(0, 2fr) minmax(0, 2fr) minmax(0, 3fr) minmax(0, 2fr) minmax(0, 48px);
   row-gap: 0;
   column-gap: 2px;
   background: transparent;

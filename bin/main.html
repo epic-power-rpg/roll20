@@ -778,8 +778,18 @@
           <div class="skilldisciplineinfo-grid">Discipline?</div>
           <div class="skillname-grid">Name</div>
           <div class="skillability-grid">Ability</div>
-          <div class="skillFP-grid">FP</div>
-          <div class="skillCP-grid">CP</div>
+          <div class="skillFP-grid">
+            <input name="attr_remaining_fp" type="hidden" value="0" />
+            <span>
+              FP
+              (<span class="FP" name="attr_remaining_fp"></span>)</span>
+          </div>
+          <div class="skillCP-grid">
+            <input name="attr_remaining_cp" type="hidden" value="0" />
+            <span>
+              CP
+              (<span class="CP" name="attr_remaining_cp"></span>)</span>
+          </div>
           <div class="skillexpertise-grid">Exper.</div>
           <div class="skillattribute-grid">Attribute</div>
           <div class="skillbase-grid">Base</div>
@@ -995,18 +1005,6 @@
           <span class="center bold larger middle" name="attr_mental"></span>
           <input class="skillbase" name="attr_mental_modifier" type="number" />
           <button type="roll" value="!EPRoll @{mental}+@{mental_modifier} Mental Attack: @{mental} + @{mental_modifier}"></button>
-          <div class="power-stats">
-            <span class="epic-fp-and-cp bold">
-              <span>Available:</span>
-              <span class="FP bold">FP</span>
-              <input name="attr_remaining_fp" type="hidden" value="0" />
-              <span class="FP" name="attr_remaining_fp"></span>
-              <span>&nbsp;</span>
-              <span class="CP bold">CP</span>
-              <input name="attr_remaining_cp" type="hidden" value="0" />
-              <span class="CP" name="attr_remaining_cp"></span>
-            </span>
-          </div>
         </div>
       </div>
       <!-- Arcane spells -->
@@ -1027,8 +1025,18 @@
           <div class="spelltarget-grid">Target</div>
           <div class="spellduration-grid">Damage/ Duration</div>
           <div class="spellhasnote-grid">Notes</div>
-          <div class="skillFP-grid">FP</div>
-          <div class="skillCP-grid">CP</div>
+          <div class="skillFP-grid">
+            <input name="attr_remaining_fp" type="hidden" value="0" />
+            <span>
+              FP
+              (<span class="FP" name="attr_remaining_fp"></span>)</span>
+          </div>
+          <div class="skillCP-grid">
+            <input name="attr_remaining_cp" type="hidden" value="0" />
+            <span>
+              CP
+              (<span class="CP" name="attr_remaining_cp"></span>)</span>
+          </div>
           <div class="skillexpertise-grid">Exper.</div>
           <div class="skillattribute-grid arcane-iq-plus-minus-attribute">IQ &pm;</div>
           <div class="skillbase-grid">Base</div>
@@ -1219,7 +1227,12 @@
           <div class="spellrange-grid">Range</div>
           <div class="spelltarget-grid">Target</div>
           <div class="spellduration-grid">Damage/ Duration</div>
-          <div class="skillCP-grid">CP</div>
+          <div class="skillCP-grid">
+            <input name="attr_remaining_cp" type="hidden" value="0" />
+            <span>
+              CP
+              (<span class="CP" name="attr_remaining_cp"></span>)</span>
+          </div>
         </div>
         <fieldset class="repeating_innate">
           <select class="skill-innatesphere-grid" name="attr_skillinnatesphere">
