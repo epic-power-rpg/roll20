@@ -30,6 +30,12 @@
     display: none;
   }
 
+  .leftTopSection {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
   .diceRollSection {
     margin-left: 4px;
     .attributeRollSection {

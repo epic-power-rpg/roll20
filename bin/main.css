@@ -671,6 +671,11 @@ body.sheet-darkmode .top-section {
 .top-section .cpcontrol:not([value=basic]) ~ .basic-tab-only {
   display: none;
 }
+.top-section .leftTopSection {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
 .top-section .diceRollSection {
   margin-left: 4px;
 }

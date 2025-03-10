@@ -135,15 +135,71 @@
 
     <div class="top-section">
       <div class="flex-stack space-between">
-        <div class="diceRollSection">
-          <div class="attributeRollSection">
-            <div class="attributeName">Init</div>
-            <div class="attributeField">
-              <span name="attr_initiative"></span>
-              <span> + </span>
-              <input name="attr_initiativemodifier" type="number" value="0" />
+        <div class="leftTopSection">
+          <div class="diceRollSection">
+            <div class="attributeRollSection">
+              <div class="attributeName">Init</div>
+              <div class="attributeField">
+                <span name="attr_initiative"></span>
+                <span> + </span>
+                <input name="attr_initiativemodifier" type="number" value="0" />
+              </div>
+              <button class="actionRollButton epRoll_initiative" name="act_epRoll_initiative" type="action"></button>
             </div>
-            <button class="actionRollButton epRoll_initiative" name="act_epRoll_initiative" type="action"></button>
+          </div>
+          <div class="weightSection">
+            <div>Speed<span class="narrowish center bold larger value" name="attr_speed"></span>
+              <span>
+                <button class="popoverButton circledButton" name="act_popover_weightPenalties" type="action">?</button>
+                <input class="sectioncontrol" name="attr_chosenPopover" type="hidden" value="false" />
+                <div class="section weightPenalties popoverContainer">
+                  <div class="popoverBackdrop">
+                    <button name="act_popover_weightPenalties" type="action">Close popover</button>
+                  </div>
+                  <div class="popover">
+                    <button class="closePopoverButton" name="act_popover_weightPenalties" type="action">X</button>
+                    <div class="center wideish bold">Weight Penalties</div>
+                    <div class="weight-penalty-table flex-stack">
+                      <div class="table-header">
+                        <div></div>
+                        <div>Pen.</div>
+                        <div>Wt.</div>
+                      </div>
+                      <div>
+                        <input name="attr_highlight_weight_penalty_1" type="hidden" />
+                        <div>-1</div>
+                        <span name="attr_penalty_weight_1"></span>
+                      </div>
+                      <div>
+                        <input name="attr_highlight_weight_penalty_2" type="hidden" />
+                        <div>-2</div>
+                        <span name="attr_penalty_weight_2"></span>
+                      </div>
+                      <div>
+                        <input name="attr_highlight_weight_penalty_3" type="hidden" />
+                        <div>-3</div>
+                        <span name="attr_penalty_weight_3"></span>
+                      </div>
+                      <div>
+                        <input name="attr_highlight_weight_penalty_4" type="hidden" />
+                        <div>-4</div>
+                        <span name="attr_penalty_weight_4"></span>
+                      </div>
+                      <div>
+                        <input name="attr_highlight_weight_penalty_5" type="hidden" />
+                        <div>-5</div>
+                        <span name="attr_penalty_weight_5"></span>
+                      </div>
+                      <div>
+                        <input name="attr_highlight_weight_penalty_6" type="hidden" />
+                        <div>-&infin;</div>
+                        <span name="attr_penalty_weight_6"></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </span>
+            </div>
           </div>
         </div>
         <!-- tab buttons -->
@@ -162,69 +218,7 @@
         </div>
       </div>
       <!-- Movement & DR -->
-      <div class="children-separated no-shrink">
-        <div>
-          <div class="attribute-name wide larger">
-            <button class="popoverButton circledButton" name="act_popover_weightPenalties" type="action">?</button>
-            <input class="sectioncontrol" name="attr_chosenPopover" type="hidden" value="false" />
-            <div class="section weightPenalties popoverContainer">
-              <div class="popoverBackdrop">
-                <button name="act_popover_weightPenalties" type="action">Close popover</button>
-              </div>
-              <div class="popover">
-                <button class="closePopoverButton" name="act_popover_weightPenalties" type="action">X</button>
-                <div class="center wideish bold">Weight Penalties</div>
-                <div class="weight-penalty-table flex-stack">
-                  <div class="table-header">
-                    <div></div>
-                    <div>Pen.</div>
-                    <div>Wt.</div>
-                  </div>
-                  <div>
-                    <input name="attr_highlight_weight_penalty_1" type="hidden" />
-                    <div>-1</div>
-                    <span name="attr_penalty_weight_1"></span>
-                  </div>
-                  <div>
-                    <input name="attr_highlight_weight_penalty_2" type="hidden" />
-                    <div>-2</div>
-                    <span name="attr_penalty_weight_2"></span>
-                  </div>
-                  <div>
-                    <input name="attr_highlight_weight_penalty_3" type="hidden" />
-                    <div>-3</div>
-                    <span name="attr_penalty_weight_3"></span>
-                  </div>
-                  <div>
-                    <input name="attr_highlight_weight_penalty_4" type="hidden" />
-                    <div>-4</div>
-                    <span name="attr_penalty_weight_4"></span>
-                  </div>
-                  <div>
-                    <input name="attr_highlight_weight_penalty_5" type="hidden" />
-                    <div>-5</div>
-                    <span name="attr_penalty_weight_5"></span>
-                  </div>
-                  <div>
-                    <input name="attr_highlight_weight_penalty_6" type="hidden" />
-                    <div>-&infin;</div>
-                    <span name="attr_penalty_weight_6"></span>
-                  </div>
-                </div>
-              </div>
-            </div> Wt. Load
-          </div>
-          <span class="narrowish center bold larger value" name="attr_equipment_total_weight"></span>
-        </div>
-        <div>
-          <div class="attribute-name wide larger">Wt. Pen.</div>
-          <span class="narrowish center bold larger value" name="attr_displayed_weight_penalty"></span>
-        </div>
-        <div>
-          <div class="attribute-name wide larger">Speed</div>
-          <span class="narrowish center bold larger value" name="attr_speed"></span>
-        </div>
-      </div>
+      <div class="children-separated no-shrink"></div>
       <!-- Defense -->
       <div class="defense-block">
         <div class="defenses epic-table-header-grid">
@@ -869,6 +863,10 @@
         <div>
           <div class="attribute-name larger inline bold right middle">Equip Weight</div>
           <span class="center bold larger value middle" name="attr_equipment_total_weight"></span>
+        </div>
+        <div>
+          <div class="attribute-name larger inline bold right middle">Wt. Pen.</div>
+          <span class="narrowish center bold larger value" name="attr_displayed_weight_penalty"></span>
         </div>
       </div>
 
