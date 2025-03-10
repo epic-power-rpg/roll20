@@ -73,6 +73,9 @@ $notes-popover-width: 30px;
 
   @include epic-table-grid('arcane', $arcane-grid-template);
   @include epic-table-grid-row-border('arcane');
+  button.updateRollSectionContent {
+    @include updateRollSectionButton();
+  }
   .narrow-table-heading {
     font-size: 12px;
     font-weight: normal !important;
