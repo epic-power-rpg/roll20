@@ -2738,21 +2738,37 @@ body.sheet-darkmode .spell-tabs {
 }
 
 /* Avoid space between items in the row */
-.spells .spells-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 8px;
-}
-.spells .spells-header .spell-header-action-area {
+.spells .spell-header-action-area {
   display: flex;
   gap: 8px;
 }
-.spells .spells-header .spell-header-action-area label, .spells .spells-header .spell-header-action-area .label {
+.spells .spell-header-action-area label, .spells .spell-header-action-area .label {
   color: #111;
 }
-body.sheet-darkmode .spells .spells-header .spell-header-action-area label, body.sheet-darkmode .spells .spells-header .spell-header-action-area .label {
+body.sheet-darkmode .spells .spell-header-action-area label, body.sheet-darkmode .spells .spell-header-action-area .label {
   color: #fff;
+}
+.spells .spell-header-action-area button.spellRoll {
+  padding: 0px 2px;
+  box-sizing: border-box;
+  margin: auto 2px;
+  height: 20px;
+  font-size: 1.3em;
+  font-weight: bold;
+  outline: 1px solid #666;
+  border: none;
+  border-radius: 4px;
+  background: linear-gradient(90deg, rgb(245, 201, 162), #c2815b);
+}
+body.sheet-darkmode .spells .spell-header-action-area button.spellRoll {
+  background: linear-gradient(90deg, #944d10, #c2815b);
+}
+.spells .spell-header-action-area button.spellRoll:hover {
+  background-image: unset;
+  background: #c2815b;
+}
+body.sheet-darkmode .spells .spell-header-action-area button.spellRoll:hover {
+  background: #c2815b;
 }
 .spells .spellNotesPopover {
   background-color: #efd6c4;
