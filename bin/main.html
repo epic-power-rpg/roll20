@@ -438,12 +438,20 @@
             <div class="skillbase">Mod</div>
           </div>
           <div class="general-dice-rolls" data-epic-table-name="general-dice-rolls">
+            <span class="diceRollName">Roll + Mod</span>
+            <span class="ability">&nbsp;</span>
+            <span class="mod">
+              <input name="attr_roll_modifier" type="number" value="0" />
+            </span>
+            <button class="generalDiceRoll updateRollSectionContent" name="act_updateRollSectionContent_modifier" type="action">&#8679;</button>
+          </div>
+          <div class="general-dice-rolls" data-epic-table-name="general-dice-rolls">
             <span class="diceRollName">IQ</span>
             <span class="ability" name="attr_IQ"></span>
             <span class="mod">
               <input name="attr_IQModifier" type="number" value="0" />
             </span>
-            <button class="actionRollButton epRoll_roll_modifier" name="act_epRoll_IQmodifier" type="action"></button>
+            <button class="generalDiceRoll updateRollSectionContent" name="act_updateRollSectionContent_IQ" type="action">&#8679;</button>
           </div>
           <div class="general-dice-rolls" data-epic-table-name="general-dice-rolls">
             <span class="diceRollName">DX</span>
@@ -451,7 +459,7 @@
             <span class="mod">
               <input name="attr_DXmodifier" type="number" value="0" />
             </span>
-            <button class="actionRollButton epRoll_roll_modifier" name="act_epRoll_DXmodifier" type="action"></button>
+            <button class="generalDiceRoll updateRollSectionContent" name="act_updateRollSectionContent_DX" type="action">&#8679;</button>
           </div>
           <div class="general-dice-rolls" data-epic-table-name="general-dice-rolls">
             <span class="diceRollName">BR</span>
@@ -459,15 +467,7 @@
             <span class="mod">
               <input name="attr_BRmodifier" type="number" value="0" />
             </span>
-            <button class="actionRollButton epRoll_roll_modifier" name="act_epRoll_BRmodifier" type="action"></button>
-          </div>
-          <div class="general-dice-rolls" data-epic-table-name="general-dice-rolls">
-            <span class="diceRollName">Roll + Mod</span>
-            <span class="ability">&nbsp;</span>
-            <span class="mod">
-              <input name="attr_roll_modifier" type="number" value="0" />
-            </span>
-            <button class="actionRollButton epRoll_roll_modifier" name="act_epRoll_roll_modifier" type="action"></button>
+            <button class="generalDiceRoll updateRollSectionContent" name="act_updateRollSectionContent_BR" type="action">&#8679;</button>
           </div>
           <fieldset class="repeating_skill">
             <!-- This input is used by CSS to hide disciplines-->
@@ -1505,7 +1505,7 @@ roll_choices.forEach(function (value) {
   on(`clicked:choose_roll_${value}`, function () { doChooseRoll(value); });
 });
 
-function updateRollSectionContent({ skillName, abilityValue, skillModifier1 }) {
+function updateRollSectionContent({ skillName, abilityValue, advanceBoost }) {
   const baseNumericContent = {};
   numericRollKeys.forEach((key) => {
     baseNumericContent[key] = 0;
@@ -1516,7 +1516,7 @@ function updateRollSectionContent({ skillName, abilityValue, skillModifier1 }) {
     'action_description': '',
     'roll_skill': skillName,
     'roll_ability': abilityValue,
-    'roll_advance_boost': skillModifier1,
+    'roll_advance_boost': advanceBoost,
   };
   setAttrs(rollContent);
 }
@@ -1526,9 +1526,9 @@ on('clicked:repeating_skill:updaterollsectioncontent', function () {
   getAttrs(['repeating_skill_skillname', 'repeating_skill_skillability', 'repeating_skill_skillmodifier'], (attributes) => {
     const { ['repeating_skill_skillname']: skillName } = attributes;
     const skillAbility = Number(attributes['repeating_skill_skillability'] ?? 0);
-    const skillModifier1 = Number(attributes['repeating_skill_skillmodifier'] ?? 0);
-    console.log({skillName, skillAbility, skillModifier1});
-    updateRollSectionContent({ skillName, abilityValue: skillAbility, skillModifier1 });
+    const advanceBoost = Number(attributes['repeating_skill_skillmodifier'] ?? 0);
+    console.log({skillName, skillAbility, advanceBoost});
+    updateRollSectionContent({ skillName, abilityValue: skillAbility, advanceBoost });
   });
 });
 
@@ -1551,6 +1551,48 @@ on('clicked:repeating_feat:addrollsectionfeat', function () {
     setAttrs({
       'action_description': [...currentFeatDescriptions].join(', '),
       'action_feats': Number(actionFeats) + featCost,
+    });
+  });
+});
+
+const GENERAL_SKILL_ROLL_OPTIONS = [{
+  actionId: 'updateRollSectionContent_modifier',
+  skillName: 'Roll',
+  attributes: {
+    advanceBoostKey: 'roll_modifier',
+  },
+}, {
+  actionId: 'updateRollSectionContent_IQ',
+  skillName: 'Tries to be smart',
+  attributes: {
+    skillAbilityKey: 'IQ',
+    advanceBoostKey: 'IQmodifier',
+  },
+}, {
+  actionId: 'updateRollSectionContent_DX',
+  skillName: 'Tries to be nimble',
+  attributes: {
+    skillAbilityKey: 'DX',
+    advanceBoostKey: 'DXmodifier',
+  },
+}, {
+  actionId: 'updateRollSectionContent_BR',
+  skillName: 'Tries to be strong',
+  attributes: {
+    skillAbilityKey: 'BR',
+    advanceBoostKey: 'BRmodifier',
+  },
+}];
+
+GENERAL_SKILL_ROLL_OPTIONS.forEach((rollOption) => {
+  const { actionId, skillName, attributes } = rollOption;
+  on(`clicked:${actionId}`, () => {
+    const { skillAbilityKey, advanceBoostKey } = attributes;
+    getAttrs([skillAbilityKey, advanceBoostKey].filter(Boolean), (values) => {
+      const abilityValue = Number(values[skillAbilityKey] ?? 0);
+      const advanceBoost = Number(values[advanceBoostKey] ?? 0);
+
+      updateRollSectionContent({ skillName,abilityValue, advanceBoost });
     });
   });
 });

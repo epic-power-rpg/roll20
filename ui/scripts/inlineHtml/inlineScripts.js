@@ -174,7 +174,7 @@ roll_choices.forEach(function (value) {
   on(`clicked:choose_roll_${value}`, function () { doChooseRoll(value); });
 });
 
-function updateRollSectionContent({ skillName, abilityValue, skillModifier1 }) {
+function updateRollSectionContent({ skillName, abilityValue, advanceBoost }) {
   const baseNumericContent = {};
   numericRollKeys.forEach((key) => {
     baseNumericContent[key] = 0;
@@ -185,7 +185,7 @@ function updateRollSectionContent({ skillName, abilityValue, skillModifier1 }) {
     'action_description': '',
     'roll_skill': skillName,
     'roll_ability': abilityValue,
-    'roll_advance_boost': skillModifier1,
+    'roll_advance_boost': advanceBoost,
   };
   setAttrs(rollContent);
 }
@@ -195,9 +195,9 @@ on('clicked:repeating_skill:updaterollsectioncontent', function () {
   getAttrs(['repeating_skill_skillname', 'repeating_skill_skillability', 'repeating_skill_skillmodifier'], (attributes) => {
     const { ['repeating_skill_skillname']: skillName } = attributes;
     const skillAbility = Number(attributes['repeating_skill_skillability'] ?? 0);
-    const skillModifier1 = Number(attributes['repeating_skill_skillmodifier'] ?? 0);
-    console.log({skillName, skillAbility, skillModifier1});
-    updateRollSectionContent({ skillName, abilityValue: skillAbility, skillModifier1 });
+    const advanceBoost = Number(attributes['repeating_skill_skillmodifier'] ?? 0);
+    console.log({skillName, skillAbility, advanceBoost});
+    updateRollSectionContent({ skillName, abilityValue: skillAbility, advanceBoost });
   });
 });
 
@@ -220,6 +220,48 @@ on('clicked:repeating_feat:addrollsectionfeat', function () {
     setAttrs({
       'action_description': [...currentFeatDescriptions].join(', '),
       'action_feats': Number(actionFeats) + featCost,
+    });
+  });
+});
+
+const GENERAL_SKILL_ROLL_OPTIONS = [{
+  actionId: 'updateRollSectionContent_modifier',
+  skillName: 'Roll',
+  attributes: {
+    advanceBoostKey: 'roll_modifier',
+  },
+}, {
+  actionId: 'updateRollSectionContent_IQ',
+  skillName: 'Tries to be smart',
+  attributes: {
+    skillAbilityKey: 'IQ',
+    advanceBoostKey: 'IQmodifier',
+  },
+}, {
+  actionId: 'updateRollSectionContent_DX',
+  skillName: 'Tries to be nimble',
+  attributes: {
+    skillAbilityKey: 'DX',
+    advanceBoostKey: 'DXmodifier',
+  },
+}, {
+  actionId: 'updateRollSectionContent_BR',
+  skillName: 'Tries to be strong',
+  attributes: {
+    skillAbilityKey: 'BR',
+    advanceBoostKey: 'BRmodifier',
+  },
+}];
+
+GENERAL_SKILL_ROLL_OPTIONS.forEach((rollOption) => {
+  const { actionId, skillName, attributes } = rollOption;
+  on(`clicked:${actionId}`, () => {
+    const { skillAbilityKey, advanceBoostKey } = attributes;
+    getAttrs([skillAbilityKey, advanceBoostKey].filter(Boolean), (values) => {
+      const abilityValue = Number(values[skillAbilityKey] ?? 0);
+      const advanceBoost = Number(values[advanceBoostKey] ?? 0);
+
+      updateRollSectionContent({ skillName,abilityValue, advanceBoost });
     });
   });
 });

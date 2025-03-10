@@ -1482,13 +1482,27 @@ body.sheet-darkmode .overview-tab .skills-overview .general-dice-rolls {
   margin-right: 4px;
   line-height: 1;
 }
-.overview-tab .skills-overview .general-dice-rolls button.actionRollButton {
+.overview-tab .skills-overview .general-dice-rolls button.generalDiceRoll {
   padding: 0px 2px;
   box-sizing: border-box;
   margin: auto 2px;
   height: 20px;
   font-size: 1.3em;
-  font-weight: normal;
+  font-weight: bold;
+  outline: 1px solid #666;
+  border: none;
+  border-radius: 4px;
+  background: linear-gradient(90deg, rgb(245, 201, 162), #c2815b);
+}
+body.sheet-darkmode .overview-tab .skills-overview .general-dice-rolls button.generalDiceRoll {
+  background: linear-gradient(90deg, #944d10, #c2815b);
+}
+.overview-tab .skills-overview .general-dice-rolls button.generalDiceRoll:hover {
+  background-image: unset;
+  background: #c2815b;
+}
+body.sheet-darkmode .overview-tab .skills-overview .general-dice-rolls button.generalDiceRoll:hover {
+  background: #c2815b;
 }
 .overview-tab .skills-overview > div[data-groupname] .skill-overview-row-container {
   border: solid;
