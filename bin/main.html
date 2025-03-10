@@ -993,18 +993,17 @@
           <input name="attr_spell_hit" type="hidden" />
           <span class="center bold larger middle" name="attr_spell_hit"></span>
           <input class="skillbase" name="attr_spell_hit_modifier" type="number" />
-          <button type="roll" value="!EPRoll @{spell_hit}+@{spell_hit_modifier} Hits with Spell: @{spell_hit} + @{spell_hit_modifier}"></button>
-          &emsp;
+          <button class="spellRoll updateRollSectionContent" name="act_updateRollSectionContent_spell_hit" type="action">&#8679;</button>
           <div class="label wide larger">Affliction</div>
           <input name="attr_affliction" type="hidden" />
           <span class="center bold larger middle" name="attr_affliction"></span>
           <input class="skillbase" name="attr_affliction_modifier" type="number" />
-          <button type="roll" value="!EPRoll @{affliction}+@{affliction_modifier} Affliction Attack: @{affliction} + @{affliction_modifier}"></button>&emsp;
+          <button class="spellRoll updateRollSectionContent" name="act_updateRollSectionContent_affliction" type="action">&#8679;</button>
           <div class="label wide larger">Mental</div>
           <input name="attr_mental" type="hidden" />
           <span class="center bold larger middle" name="attr_mental"></span>
           <input class="skillbase" name="attr_mental_modifier" type="number" />
-          <button type="roll" value="!EPRoll @{mental}+@{mental_modifier} Mental Attack: @{mental} + @{mental_modifier}"></button>
+          <button class="spellRoll updateRollSectionContent" name="act_updateRollSectionContent_mental" type="action">&#8679;</button>
         </div>
       </div>
       <!-- Arcane spells -->
@@ -1568,7 +1567,7 @@ on('clicked:repeating_feat:addrollsectionfeat', function () {
   });
 });
 
-const GENERAL_SKILL_ROLL_OPTIONS = [{
+const GENERAL_UPDATE_ROLL_SECTION_OPTIONS = [{
   actionId: 'updateRollSectionContent_modifier',
   skillName: 'Roll',
   attributes: {
@@ -1595,9 +1594,30 @@ const GENERAL_SKILL_ROLL_OPTIONS = [{
     skillAbilityKey: 'BR',
     advanceBoostKey: 'BRmodifier',
   },
+}, {
+  actionId: 'updateRollSectionContent_spell_hit',
+  skillName: 'Hits with spell',
+  attributes: {
+    skillAbilityKey: 'spell_hit',
+    advanceBoostKey: 'spell_hit_modifier',
+  },
+}, {
+  actionId: 'updateRollSectionContent_affliction',
+  skillName: 'Affliction attack',
+  attributes: {
+    skillAbilityKey: 'affliction',
+    advanceBoostKey: 'affliction_modifier',
+  },
+}, {
+  actionId: 'updateRollSectionContent_mental',
+  skillName: 'Mental attack',
+  attributes: {
+    skillAbilityKey: 'mental',
+    advanceBoostKey: 'mental_modifier',
+  },
 }];
 
-GENERAL_SKILL_ROLL_OPTIONS.forEach((rollOption) => {
+GENERAL_UPDATE_ROLL_SECTION_OPTIONS.forEach((rollOption) => {
   const { actionId, skillName, attributes } = rollOption;
   on(`clicked:${actionId}`, () => {
     const { skillAbilityKey, advanceBoostKey } = attributes;

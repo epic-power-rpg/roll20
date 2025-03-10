@@ -224,7 +224,7 @@ on('clicked:repeating_feat:addrollsectionfeat', function () {
   });
 });
 
-const GENERAL_SKILL_ROLL_OPTIONS = [{
+const GENERAL_UPDATE_ROLL_SECTION_OPTIONS = [{
   actionId: 'updateRollSectionContent_modifier',
   skillName: 'Roll',
   attributes: {
@@ -251,9 +251,30 @@ const GENERAL_SKILL_ROLL_OPTIONS = [{
     skillAbilityKey: 'BR',
     advanceBoostKey: 'BRmodifier',
   },
+}, {
+  actionId: 'updateRollSectionContent_spell_hit',
+  skillName: 'Hits with spell',
+  attributes: {
+    skillAbilityKey: 'spell_hit',
+    advanceBoostKey: 'spell_hit_modifier',
+  },
+}, {
+  actionId: 'updateRollSectionContent_affliction',
+  skillName: 'Affliction attack',
+  attributes: {
+    skillAbilityKey: 'affliction',
+    advanceBoostKey: 'affliction_modifier',
+  },
+}, {
+  actionId: 'updateRollSectionContent_mental',
+  skillName: 'Mental attack',
+  attributes: {
+    skillAbilityKey: 'mental',
+    advanceBoostKey: 'mental_modifier',
+  },
 }];
 
-GENERAL_SKILL_ROLL_OPTIONS.forEach((rollOption) => {
+GENERAL_UPDATE_ROLL_SECTION_OPTIONS.forEach((rollOption) => {
   const { actionId, skillName, attributes } = rollOption;
   on(`clicked:${actionId}`, () => {
     const { skillAbilityKey, advanceBoostKey } = attributes;
