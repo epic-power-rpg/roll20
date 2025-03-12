@@ -517,13 +517,24 @@ on('change:cp sheet:opened', updateFP);
 // ----- Attribute costs -----
 const updateAttributeCost = function () {
   getAttrs(['IQ', 'DX', 'BR'], function (attributes) {
-    const IQ = Number(attributes.IQ);
-    const DX = Number(attributes.DX);
-    const BR = Number(attributes.BR);
-    const total = IQ + DX + BR;
-    const total_squares = IQ ** 2 + DX ** 2 + BR ** 2;
+    const values = [Number(attributes.IQ),
+                        Number(attributes.DX),
+                        Number(attributes.BR)]
+    values.sort((a,b) => a - b);
+    var total = values.reduce((acc, x) => acc + x);
+    // The total is normally 3, but not if a species adjusts it.
+    // Get the unadjusted values, making the most charitable assumption.
+    if (total == 2) {
+      // Maybe an attribute got reduced. Assume it was the lowest one.
+      values[0] += 1;
+    } else if (total == 4) {
+      // Maybe an attribute got increased. Assume it was the highest one.
+      values[2] -= 1;
+    }
+    total = values.reduce((acc, x) => acc + x);
     let cost = '??';
     if (total === 3) {
+      const total_squares = values.reduce((acc, x) => acc + x**2, 0);
       if (total_squares === 3) {
         cost = -2;
       } else if (total_squares === 5) {
