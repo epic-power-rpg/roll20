@@ -527,7 +527,7 @@ const updateAttributeCost = function () {
     if (total === 2) {
       // Maybe an attribute got reduced. Assume it was the lowest one.
       values[0] += 1;
-    } else if (total == 4) {
+    } else if (total === 4) {
       // Maybe an attribute got increased. Assume it was the highest one.
       values[2] -= 1;
     }
