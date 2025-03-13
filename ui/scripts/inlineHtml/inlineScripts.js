@@ -524,7 +524,7 @@ const updateAttributeCost = function () {
     var total = values.reduce((acc, x) => acc + x);
     // The total is normally 3, but not if a species adjusts it.
     // Get the unadjusted values, making the most charitable assumption.
-    if (total == 2) {
+    if (total === 2) {
       // Maybe an attribute got reduced. Assume it was the lowest one.
       values[0] += 1;
     } else if (total == 4) {
