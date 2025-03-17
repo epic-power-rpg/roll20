@@ -33,6 +33,15 @@ include ../global/advantages.pug
           span.mod
             input(name='attr_BRmodifier' type='number' value='0')
           button.generalDiceRoll.updateRollSectionContent(name='act_updateRollSectionContent_BR' type='action')
+      // Feats 
+      .feat-overview.no-add-or-modify-buttons
+        .feat.epic-table-header-grid
+          .featextraordinaryletter Extr
+          .featname Epic Feat
+        fieldset.repeating_feat
+          span.featextraordinaryletter.feat-row(name='attr_featextraordinaryletter')
+          span.featname.feat-row(name='attr_featname')
+          button.skill-roll.addRollSectionFeat(name='act_addrollsectionfeat' type='action')
       // Advantages 
       .advantage-overview.no-add-or-modify-buttons
         .advantage.epic-table-header-grid
@@ -51,15 +60,6 @@ include ../global/advantages.pug
           .advantage-row
             div.advantage-name Speed
             span.advantage-value(name='attr_speed')
-      // Feats 
-      .feat-overview.no-add-or-modify-buttons
-        .feat.epic-table-header-grid
-          .featextraordinaryletter Extr
-          .featname Epic Feat
-        fieldset.repeating_feat
-          span.featextraordinaryletter.feat-row(name='attr_featextraordinaryletter')
-          span.featname.feat-row(name='attr_featname')
-          button.skill-roll.addRollSectionFeat(name='act_addrollsectionfeat' type='action')
     // Skills 
     .skills-overview.no-add-or-modify-buttons
       .skills-table.epic-table-header-grid
