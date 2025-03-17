@@ -4,6 +4,35 @@ include ../global/advantages.pug
 .overview.section.overview-tab
   .tables-container
     .advantages-and-feats
+      .generalDiceRollsSection
+        .general-dice-rolls.epic-table-header-grid
+          div Attr
+          div Ability
+          div Mod
+        .general-dice-rolls(data-epic-table-name="general-dice-rolls")
+          span.diceRollName Roll
+          span.ability &nbsp;
+          span.mod
+            input(name='attr_roll_modifier' type='number' value='0')
+          button.generalDiceRoll.updateRollSectionContent(name='act_updateRollSectionContent_modifier' type='action')
+        .general-dice-rolls(data-epic-table-name="general-dice-rolls")
+          span.diceRollName IQ
+          span.ability(name='attr_IQ')
+          span.mod
+            input(name='attr_IQModifier' type='number' value='0')
+          button.generalDiceRoll.updateRollSectionContent(name='act_updateRollSectionContent_IQ' type='action')
+        .general-dice-rolls(data-epic-table-name="general-dice-rolls")
+          span.diceRollName DX
+          span.ability(name='attr_DX')
+          span.mod
+            input(name='attr_DXmodifier' type='number' value='0')
+          button.generalDiceRoll.updateRollSectionContent(name='act_updateRollSectionContent_DX' type='action')
+        .general-dice-rolls(data-epic-table-name="general-dice-rolls")
+          span.diceRollName BR
+          span.ability(name='attr_BR')
+          span.mod
+            input(name='attr_BRmodifier' type='number' value='0')
+          button.generalDiceRoll.updateRollSectionContent(name='act_updateRollSectionContent_BR' type='action')
       // Advantages 
       .advantage-overview.no-add-or-modify-buttons
         .advantage.epic-table-header-grid
@@ -37,30 +66,6 @@ include ../global/advantages.pug
         .skillname Skill
         .skillability Ability
         .skillbase Mod
-      .general-dice-rolls(data-epic-table-name="general-dice-rolls")
-        span.diceRollName Roll + Mod
-        span.ability &nbsp;
-        span.mod
-          input(name='attr_roll_modifier' type='number' value='0')
-        button.generalDiceRoll.updateRollSectionContent(name='act_updateRollSectionContent_modifier' type='action')
-      .general-dice-rolls(data-epic-table-name="general-dice-rolls")
-        span.diceRollName IQ
-        span.ability(name='attr_IQ')
-        span.mod
-          input(name='attr_IQModifier' type='number' value='0')
-        button.generalDiceRoll.updateRollSectionContent(name='act_updateRollSectionContent_IQ' type='action')
-      .general-dice-rolls(data-epic-table-name="general-dice-rolls")
-        span.diceRollName DX
-        span.ability(name='attr_DX')
-        span.mod
-          input(name='attr_DXmodifier' type='number' value='0')
-        button.generalDiceRoll.updateRollSectionContent(name='act_updateRollSectionContent_DX' type='action')
-      .general-dice-rolls(data-epic-table-name="general-dice-rolls")
-        span.diceRollName BR
-        span.ability(name='attr_BR')
-        span.mod
-          input(name='attr_BRmodifier' type='number' value='0')
-        button.generalDiceRoll.updateRollSectionContent(name='act_updateRollSectionContent_BR' type='action')
       fieldset.repeating_skill
         // This input is used by CSS to hide disciplines
         input.isdiscipline(name='attr_skillisdiscipline' type='hidden')

@@ -1014,11 +1014,118 @@ body.sheet-darkmode .tabcontrol[value=notes] ~ .tab[name=act_notes] {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  width: 156px;
   /* ------------ Feat Overview -------------- */
+}
+.overview-tab .advantages-and-feats .generalDiceRollsSection .epic-table-header-grid.general-dice-rolls {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 40px) minmax(0, 36px) minmax(0, 24px);
+  column-gap: 2px;
+  color: #fff;
+  background-color: #b56632;
+  padding: 0 2px;
+  margin-bottom: 2px;
+}
+body.sheet-darkmode .overview-tab .advantages-and-feats .generalDiceRollsSection .epic-table-header-grid.general-dice-rolls {
+  color: #fff;
+}
+body.sheet-darkmode .overview-tab .advantages-and-feats .generalDiceRollsSection .epic-table-header-grid.general-dice-rolls {
+  background-color: #b56632;
+}
+.overview-tab .advantages-and-feats .generalDiceRollsSection .epic-table-header-grid.general-dice-rolls > div {
+  text-align: center;
+  margin: auto;
+  font-weight: bold;
+  width: 100%;
+  overflow: hidden;
+}
+.overview-tab .advantages-and-feats .generalDiceRollsSection div[data-groupname=repeating_general-dice-rolls] > div,
+.overview-tab .advantages-and-feats .generalDiceRollsSection div[data-epic-table-name=general-dice-rolls] {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 40px) minmax(0, 36px) minmax(0, 24px);
+  row-gap: 0;
+  column-gap: 2px;
+  background: transparent;
+  word-break: break-word;
+}
+.overview-tab .advantages-and-feats .generalDiceRollsSection div[data-groupname=repeating_general-dice-rolls] > div input, .overview-tab .advantages-and-feats .generalDiceRollsSection div[data-groupname=repeating_general-dice-rolls] > div input[type=number], .overview-tab .advantages-and-feats .generalDiceRollsSection div[data-groupname=repeating_general-dice-rolls] > div textarea, .overview-tab .advantages-and-feats .generalDiceRollsSection div[data-groupname=repeating_general-dice-rolls] > div select,
+.overview-tab .advantages-and-feats .generalDiceRollsSection div[data-epic-table-name=general-dice-rolls] input,
+.overview-tab .advantages-and-feats .generalDiceRollsSection div[data-epic-table-name=general-dice-rolls] input[type=number],
+.overview-tab .advantages-and-feats .generalDiceRollsSection div[data-epic-table-name=general-dice-rolls] textarea,
+.overview-tab .advantages-and-feats .generalDiceRollsSection div[data-epic-table-name=general-dice-rolls] select {
+  width: 100% !important;
+  margin-left: unset;
+  height: auto;
+}
+.overview-tab .advantages-and-feats .generalDiceRollsSection div[data-groupname=repeating_general-dice-rolls] > div input[type=text],
+.overview-tab .advantages-and-feats .generalDiceRollsSection div[data-epic-table-name=general-dice-rolls] input[type=text] {
+  text-align: left;
+}
+.overview-tab .advantages-and-feats .generalDiceRollsSection div[data-groupname=repeating_general-dice-rolls] > div input, .overview-tab .advantages-and-feats .generalDiceRollsSection div[data-groupname=repeating_general-dice-rolls] > div select,
+.overview-tab .advantages-and-feats .generalDiceRollsSection div[data-epic-table-name=general-dice-rolls] input,
+.overview-tab .advantages-and-feats .generalDiceRollsSection div[data-epic-table-name=general-dice-rolls] select {
+  white-space: nowrap;
+}
+.overview-tab .advantages-and-feats .generalDiceRollsSection div[data-groupname=repeating_general-dice-rolls] > div span,
+.overview-tab .advantages-and-feats .generalDiceRollsSection div[data-epic-table-name=general-dice-rolls] span {
+  text-align: center;
+  margin: auto 0;
+}
+.overview-tab .advantages-and-feats .generalDiceRollsSection div[data-groupname=repeating_general-dice-rolls] > div button, .overview-tab .advantages-and-feats .generalDiceRollsSection div[data-groupname=repeating_general-dice-rolls] > div button[type=roll],
+.overview-tab .advantages-and-feats .generalDiceRollsSection div[data-epic-table-name=general-dice-rolls] button,
+.overview-tab .advantages-and-feats .generalDiceRollsSection div[data-epic-table-name=general-dice-rolls] button[type=roll] {
+  margin: 0;
+}
+.overview-tab .advantages-and-feats .generalDiceRollsSection div[data-groupname=repeating_general-dice-rolls] > div .epic-table-row.conditional-one,
+.overview-tab .advantages-and-feats .generalDiceRollsSection div[data-epic-table-name=general-dice-rolls] .epic-table-row.conditional-one {
+  display: grid;
+  grid-column-start: 1;
+  grid-column-end: 5;
+}
+.overview-tab .advantages-and-feats .generalDiceRollsSection .general-dice-rolls {
+  border: solid;
+  border-color: rgba(181, 102, 50, 0.7);
+  border-width: 0px 0px 1px 0px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+body.sheet-darkmode .overview-tab .advantages-and-feats .generalDiceRollsSection .general-dice-rolls {
+  border-color: rgba(181, 102, 50, 0.7);
+}
+.overview-tab .advantages-and-feats .generalDiceRollsSection .general-dice-rolls .diceRollName {
+  text-align: right;
+  margin-right: 4px;
+  line-height: 1;
+}
+.overview-tab .advantages-and-feats .generalDiceRollsSection .general-dice-rolls button.generalDiceRoll {
+  padding: 0px 2px;
+  box-sizing: border-box;
+  margin: auto 2px;
+  height: 20px;
+  font-size: 1em;
+  padding-top: 2px;
+  font-weight: bold;
+  outline: 1px solid #666;
+  border: none;
+  border-radius: 4px;
+  background: linear-gradient(90deg, rgb(245, 201, 162), #c2815b);
+}
+body.sheet-darkmode .overview-tab .advantages-and-feats .generalDiceRollsSection .general-dice-rolls button.generalDiceRoll {
+  background: linear-gradient(90deg, #944d10, #c2815b);
+}
+.overview-tab .advantages-and-feats .generalDiceRollsSection .general-dice-rolls button.generalDiceRoll:hover {
+  background-image: unset;
+  background: #c2815b;
+}
+body.sheet-darkmode .overview-tab .advantages-and-feats .generalDiceRollsSection .general-dice-rolls button.generalDiceRoll:hover {
+  background: #c2815b;
+}
+.overview-tab .advantages-and-feats .generalDiceRollsSection .general-dice-rolls button.generalDiceRoll::before {
+  content: "☝";
 }
 .overview-tab .advantages-and-feats .advantage-overview .epic-table-header-grid.advantage {
   display: grid;
-  grid-template-columns: minmax(0, 152px);
+  grid-template-columns: minmax(0, 1fr);
   column-gap: 2px;
   color: #fff;
   background-color: #b56632;
@@ -1041,7 +1148,7 @@ body.sheet-darkmode .overview-tab .advantages-and-feats .advantage-overview .epi
 .overview-tab .advantages-and-feats .advantage-overview div[data-groupname=repeating_advantage] > div,
 .overview-tab .advantages-and-feats .advantage-overview div[data-epic-table-name=advantage] {
   display: grid;
-  grid-template-columns: minmax(0, 152px);
+  grid-template-columns: minmax(0, 1fr);
   row-gap: 0;
   column-gap: 2px;
   background: transparent;
@@ -1083,7 +1190,7 @@ body.sheet-darkmode .overview-tab .advantages-and-feats .advantage-overview .epi
 }
 .overview-tab .advantages-and-feats .advantage-overview .epic-table-header-grid.extraadvantage {
   display: grid;
-  grid-template-columns: minmax(0, 152px);
+  grid-template-columns: minmax(0, 1fr);
   column-gap: 2px;
   color: #fff;
   background-color: #b56632;
@@ -1106,7 +1213,7 @@ body.sheet-darkmode .overview-tab .advantages-and-feats .advantage-overview .epi
 .overview-tab .advantages-and-feats .advantage-overview div[data-groupname=repeating_extraadvantage] > div,
 .overview-tab .advantages-and-feats .advantage-overview div[data-epic-table-name=extraadvantage] {
   display: grid;
-  grid-template-columns: minmax(0, 152px);
+  grid-template-columns: minmax(0, 1fr);
   row-gap: 0;
   column-gap: 2px;
   background: transparent;
@@ -1187,7 +1294,7 @@ body.sheet-darkmode .overview-tab .advantages-and-feats .advantage-overview .ext
 }
 .overview-tab .advantages-and-feats .feat-overview .epic-table-header-grid.feat {
   display: grid;
-  grid-template-columns: minmax(0, 32px) minmax(0, 96px) minmax(0, 24px);
+  grid-template-columns: minmax(0, 32px) minmax(0, 1fr) minmax(0, 24px);
   column-gap: 2px;
   color: #fff;
   background-color: #b56632;
@@ -1210,7 +1317,7 @@ body.sheet-darkmode .overview-tab .advantages-and-feats .feat-overview .epic-tab
 .overview-tab .advantages-and-feats .feat-overview div[data-groupname=repeating_feat] > div,
 .overview-tab .advantages-and-feats .feat-overview div[data-epic-table-name=feat] {
   display: grid;
-  grid-template-columns: minmax(0, 32px) minmax(0, 96px) minmax(0, 24px);
+  grid-template-columns: minmax(0, 32px) minmax(0, 1fr) minmax(0, 24px);
   row-gap: 0;
   column-gap: 2px;
   background: transparent;
@@ -1294,7 +1401,7 @@ body.sheet-darkmode .overview-tab .advantages-and-feats .feat-overview > div[dat
   content: "☝";
 }
 .overview-tab .skills-overview {
-  flex: 2;
+  flex: 3;
   max-width: 320px;
 }
 .overview-tab .skills-overview .isdiscipline[value="1"] ~ * {
@@ -1302,7 +1409,7 @@ body.sheet-darkmode .overview-tab .advantages-and-feats .feat-overview > div[dat
 }
 .overview-tab .skills-overview .epic-table-header-grid.skills-table {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 36px) minmax(0, 36px) minmax(0, 24px);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 40px) minmax(0, 36px) minmax(0, 24px);
   column-gap: 2px;
   color: #fff;
   background-color: #b56632;
@@ -1325,7 +1432,7 @@ body.sheet-darkmode .overview-tab .skills-overview .epic-table-header-grid.skill
 .overview-tab .skills-overview div[data-groupname=repeating_skills-table] > div,
 .overview-tab .skills-overview div[data-epic-table-name=skills-table] {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 36px) minmax(0, 36px) minmax(0, 24px);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 40px) minmax(0, 36px) minmax(0, 24px);
   row-gap: 0;
   column-gap: 2px;
   background: transparent;
@@ -1364,115 +1471,6 @@ body.sheet-darkmode .overview-tab .skills-overview .epic-table-header-grid.skill
   display: grid;
   grid-column-start: 1;
   grid-column-end: 5;
-}
-.overview-tab .skills-overview .epic-table-header-grid.general-dice-rolls {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 36px) minmax(0, 36px) minmax(0, 24px);
-  column-gap: 2px;
-  color: #fff;
-  background-color: #b56632;
-  padding: 0 2px;
-  margin-bottom: 2px;
-}
-body.sheet-darkmode .overview-tab .skills-overview .epic-table-header-grid.general-dice-rolls {
-  color: #fff;
-}
-body.sheet-darkmode .overview-tab .skills-overview .epic-table-header-grid.general-dice-rolls {
-  background-color: #b56632;
-}
-.overview-tab .skills-overview .epic-table-header-grid.general-dice-rolls > div {
-  text-align: center;
-  margin: auto;
-  font-weight: bold;
-  width: 100%;
-  overflow: hidden;
-}
-.overview-tab .skills-overview div[data-groupname=repeating_general-dice-rolls] > div,
-.overview-tab .skills-overview div[data-epic-table-name=general-dice-rolls] {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 36px) minmax(0, 36px) minmax(0, 24px);
-  row-gap: 0;
-  column-gap: 2px;
-  background: transparent;
-  word-break: break-word;
-}
-.overview-tab .skills-overview div[data-groupname=repeating_general-dice-rolls] > div input, .overview-tab .skills-overview div[data-groupname=repeating_general-dice-rolls] > div input[type=number], .overview-tab .skills-overview div[data-groupname=repeating_general-dice-rolls] > div textarea, .overview-tab .skills-overview div[data-groupname=repeating_general-dice-rolls] > div select,
-.overview-tab .skills-overview div[data-epic-table-name=general-dice-rolls] input,
-.overview-tab .skills-overview div[data-epic-table-name=general-dice-rolls] input[type=number],
-.overview-tab .skills-overview div[data-epic-table-name=general-dice-rolls] textarea,
-.overview-tab .skills-overview div[data-epic-table-name=general-dice-rolls] select {
-  width: 100% !important;
-  margin-left: unset;
-  height: auto;
-}
-.overview-tab .skills-overview div[data-groupname=repeating_general-dice-rolls] > div input[type=text],
-.overview-tab .skills-overview div[data-epic-table-name=general-dice-rolls] input[type=text] {
-  text-align: left;
-}
-.overview-tab .skills-overview div[data-groupname=repeating_general-dice-rolls] > div input, .overview-tab .skills-overview div[data-groupname=repeating_general-dice-rolls] > div select,
-.overview-tab .skills-overview div[data-epic-table-name=general-dice-rolls] input,
-.overview-tab .skills-overview div[data-epic-table-name=general-dice-rolls] select {
-  white-space: nowrap;
-}
-.overview-tab .skills-overview div[data-groupname=repeating_general-dice-rolls] > div span,
-.overview-tab .skills-overview div[data-epic-table-name=general-dice-rolls] span {
-  text-align: center;
-  margin: auto 0;
-}
-.overview-tab .skills-overview div[data-groupname=repeating_general-dice-rolls] > div button, .overview-tab .skills-overview div[data-groupname=repeating_general-dice-rolls] > div button[type=roll],
-.overview-tab .skills-overview div[data-epic-table-name=general-dice-rolls] button,
-.overview-tab .skills-overview div[data-epic-table-name=general-dice-rolls] button[type=roll] {
-  margin: 0;
-}
-.overview-tab .skills-overview div[data-groupname=repeating_general-dice-rolls] > div .epic-table-row.conditional-one,
-.overview-tab .skills-overview div[data-epic-table-name=general-dice-rolls] .epic-table-row.conditional-one {
-  display: grid;
-  grid-column-start: 1;
-  grid-column-end: 5;
-}
-.overview-tab .skills-overview .epic-table-header-grid .skillability {
-  font-weight: normal !important;
-}
-.overview-tab .skills-overview .general-dice-rolls {
-  border: solid;
-  border-color: rgba(181, 102, 50, 0.7);
-  border-width: 0px 0px 1px 0px;
-  padding-top: 2px;
-  padding-bottom: 2px;
-}
-body.sheet-darkmode .overview-tab .skills-overview .general-dice-rolls {
-  border-color: rgba(181, 102, 50, 0.7);
-}
-.overview-tab .skills-overview .general-dice-rolls .diceRollName {
-  text-align: right;
-  margin-right: 4px;
-  line-height: 1;
-}
-.overview-tab .skills-overview .general-dice-rolls button.generalDiceRoll {
-  padding: 0px 2px;
-  box-sizing: border-box;
-  margin: auto 2px;
-  height: 20px;
-  font-size: 1em;
-  padding-top: 2px;
-  font-weight: bold;
-  outline: 1px solid #666;
-  border: none;
-  border-radius: 4px;
-  background: linear-gradient(90deg, rgb(245, 201, 162), #c2815b);
-}
-body.sheet-darkmode .overview-tab .skills-overview .general-dice-rolls button.generalDiceRoll {
-  background: linear-gradient(90deg, #944d10, #c2815b);
-}
-.overview-tab .skills-overview .general-dice-rolls button.generalDiceRoll:hover {
-  background-image: unset;
-  background: #c2815b;
-}
-body.sheet-darkmode .overview-tab .skills-overview .general-dice-rolls button.generalDiceRoll:hover {
-  background: #c2815b;
-}
-.overview-tab .skills-overview .general-dice-rolls button.generalDiceRoll::before {
-  content: "☝";
 }
 .overview-tab .skills-overview > div[data-groupname] .skill-overview-row-container {
   border: solid;
@@ -1527,7 +1525,7 @@ body.sheet-darkmode .overview-tab .skills-overview > div[data-groupname] .skill-
   content: "☝";
 }
 .overview-tab .weapons-overview {
-  flex: 2;
+  flex: 3;
   max-width: 400px;
 }
 .overview-tab .weapons-overview .epic-table-header-grid.weapons-table {
