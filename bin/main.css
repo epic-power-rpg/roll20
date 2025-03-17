@@ -705,14 +705,6 @@ body.sheet-darkmode .top-section {
 .top-section .tab-holder {
   margin-top: 4px;
 }
-.top-section .sectioncontrol[value=weightPenalties] ~ div.popoverContainer.weightPenalties,
-.top-section input.popoverController[value="1"] ~ div.popoverContainer.weightPenalties {
-  display: inline;
-}
-.top-section .sectioncontrol[value=weightPenalties] ~ div.popoverContainer.weightPenalties .popover,
-.top-section input.popoverController[value="1"] ~ div.popoverContainer.weightPenalties .popover {
-  display: block;
-}
 .top-section .defense-block .armor-header {
   text-decoration: line-through;
   font-weight: normal !important;
@@ -2380,6 +2372,15 @@ body.sheet-darkmode .epic-skills-tab button.add-base-skills-button, body.sheet-d
 }
 .epic-skills-tab .add-base-skills-section .sectioncontrol[value=addBaseSkills] ~ div.popoverContainer.addBaseSkills .popover,
 .epic-skills-tab .add-base-skills-section input.popoverController[value="1"] ~ div.popoverContainer.addBaseSkills .popover {
+  display: block;
+}
+
+.speedTooltip .sectioncontrol[value=weightPenalties] ~ div.popoverContainer.weightPenalties,
+.speedTooltip input.popoverController[value="1"] ~ div.popoverContainer.weightPenalties {
+  display: inline;
+}
+.speedTooltip .sectioncontrol[value=weightPenalties] ~ div.popoverContainer.weightPenalties .popover,
+.speedTooltip input.popoverController[value="1"] ~ div.popoverContainer.weightPenalties .popover {
   display: block;
 }
 
