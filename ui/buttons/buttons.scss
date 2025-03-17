@@ -37,8 +37,12 @@ button.actionRollButton::before {
   box-sizing: border-box;
   margin: auto 2px;
   height: 20px;
-  font-size: 1.3em;
+  font-size: 1em;
+  padding-top: 2px;
   @include roll-action-button();
+  &::before {
+    content: "☝";
+  }
 }
 
 /* Change the character for the do and roll dice button to be

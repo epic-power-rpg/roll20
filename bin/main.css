@@ -1315,7 +1315,8 @@ body.sheet-darkmode .overview-tab .advantages-and-feats .feat-overview > div[dat
   box-sizing: border-box;
   margin: auto 2px;
   height: 20px;
-  font-size: 1.3em;
+  font-size: 1em;
+  padding-top: 2px;
   font-weight: bold;
   outline: 1px solid #666;
   border: none;
@@ -1331,6 +1332,9 @@ body.sheet-darkmode .overview-tab .advantages-and-feats .feat-overview > div[dat
 }
 body.sheet-darkmode .overview-tab .advantages-and-feats .feat-overview > div[data-groupname] button.addRollSectionFeat:hover {
   background: #c2815b;
+}
+.overview-tab .advantages-and-feats .feat-overview > div[data-groupname] button.addRollSectionFeat::before {
+  content: "☝";
 }
 .overview-tab .skills-overview {
   flex: 2;
@@ -1492,7 +1496,8 @@ body.sheet-darkmode .overview-tab .skills-overview .general-dice-rolls {
   box-sizing: border-box;
   margin: auto 2px;
   height: 20px;
-  font-size: 1.3em;
+  font-size: 1em;
+  padding-top: 2px;
   font-weight: bold;
   outline: 1px solid #666;
   border: none;
@@ -1508,6 +1513,9 @@ body.sheet-darkmode .overview-tab .skills-overview .general-dice-rolls button.ge
 }
 body.sheet-darkmode .overview-tab .skills-overview .general-dice-rolls button.generalDiceRoll:hover {
   background: #c2815b;
+}
+.overview-tab .skills-overview .general-dice-rolls button.generalDiceRoll::before {
+  content: "☝";
 }
 .overview-tab .skills-overview > div[data-groupname] .skill-overview-row-container {
   border: solid;
@@ -1540,7 +1548,8 @@ body.sheet-darkmode .overview-tab .skills-overview > div[data-groupname] .skill-
   box-sizing: border-box;
   margin: auto 2px;
   height: 20px;
-  font-size: 1.3em;
+  font-size: 1em;
+  padding-top: 2px;
   font-weight: bold;
   outline: 1px solid #666;
   border: none;
@@ -1556,6 +1565,9 @@ body.sheet-darkmode .overview-tab .skills-overview > div[data-groupname] .skill-
 }
 body.sheet-darkmode .overview-tab .skills-overview > div[data-groupname] .skill-overview-row-container button.updateRollSectionContent:hover {
   background: #c2815b;
+}
+.overview-tab .skills-overview > div[data-groupname] .skill-overview-row-container button.updateRollSectionContent::before {
+  content: "☝";
 }
 .overview-tab .weapons-overview {
   flex: 2;
@@ -2758,7 +2770,8 @@ body.sheet-darkmode .spells .spell-header-action-area label, body.sheet-darkmode
   box-sizing: border-box;
   margin: auto 2px;
   height: 20px;
-  font-size: 1.3em;
+  font-size: 1em;
+  padding-top: 2px;
   font-weight: bold;
   outline: 1px solid #666;
   border: none;
@@ -2774,6 +2787,9 @@ body.sheet-darkmode .spells .spell-header-action-area button.spellRoll {
 }
 body.sheet-darkmode .spells .spell-header-action-area button.spellRoll:hover {
   background: #c2815b;
+}
+.spells .spell-header-action-area button.spellRoll::before {
+  content: "☝";
 }
 .spells .spellNotesPopover {
   background-color: #efd6c4;
@@ -2901,7 +2917,8 @@ body.sheet-darkmode .spells div[data-epic-table-name=arcane] + div[data-epic-tab
   box-sizing: border-box;
   margin: auto 2px;
   height: 20px;
-  font-size: 1.3em;
+  font-size: 1em;
+  padding-top: 2px;
   font-weight: bold;
   outline: 1px solid #666;
   border: none;
@@ -2917,6 +2934,9 @@ body.sheet-darkmode .spells button.updateRollSectionContent {
 }
 body.sheet-darkmode .spells button.updateRollSectionContent:hover {
   background: #c2815b;
+}
+.spells button.updateRollSectionContent::before {
+  content: "☝";
 }
 .spells .narrow-table-heading {
   font-size: 12px;
