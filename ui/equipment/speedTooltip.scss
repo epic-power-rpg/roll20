@@ -1,3 +1,32 @@
 .speedTooltip {
   @include popover-control('weightPenalties');
+  .weight-penalty-table {
+    margin-top: 8px;
+
+    >div {
+      text-align: center;
+      display: flex;
+      flex-direction: row;
+    }
+
+    >div:not(:last-child):not(.table-header) {
+      border-bottom: solid 1px;
+      @include theme-border-color(table-row-underline-color);
+    }
+
+    >div> :nth-child(2) {
+      display: inline-block;
+      width: 64px;
+    }
+
+    >div> :last-child {
+      display: inline-block;
+      width: 64px;
+    }
+
+    >div> :first-child[value="1"]~* {
+      font-weight: bold;
+      padding: 2px 0px;
+    }
+  }
 }

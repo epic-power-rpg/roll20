@@ -1001,41 +1001,6 @@ body.sheet-darkmode .tabcontrol[value=notes] ~ .tab[name=act_notes] {
   display: block;
 }
 
-/* Weight penalties */
-.weight-penalty-table {
-  border: solid black;
-  border-width: 1px 0px;
-}
-
-.weight-penalty-table > div {
-  text-align: center;
-  display: flex;
-  flex-direction: row;
-}
-
-.weight-penalty-table > div:not(:last-child):not(.table-header) {
-  border-bottom: solid 1px;
-  border-color: rgba(181, 102, 50, 0.7);
-}
-body.sheet-darkmode .weight-penalty-table > div:not(:last-child):not(.table-header) {
-  border-color: rgba(181, 102, 50, 0.7);
-}
-
-.weight-penalty-table > div > :nth-child(2) {
-  display: inline-block;
-  width: 30px;
-}
-
-.weight-penalty-table > div > :last-child {
-  display: inline-block;
-  width: 30px;
-}
-
-.weight-penalty-table > div > :first-child[value="1"] ~ * {
-  font-weight: bold;
-  padding: 2px 0px;
-}
-
 /* ---------- Overview tab ------------- */
 .overview-tab {
   /* ------------ Skills Overview -------------- */
@@ -2382,6 +2347,33 @@ body.sheet-darkmode .epic-skills-tab button.add-base-skills-button, body.sheet-d
 .speedTooltip .sectioncontrol[value=weightPenalties] ~ div.popoverContainer.weightPenalties .popover,
 .speedTooltip input.popoverController[value="1"] ~ div.popoverContainer.weightPenalties .popover {
   display: block;
+}
+.speedTooltip .weight-penalty-table {
+  margin-top: 8px;
+}
+.speedTooltip .weight-penalty-table > div {
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+}
+.speedTooltip .weight-penalty-table > div:not(:last-child):not(.table-header) {
+  border-bottom: solid 1px;
+  border-color: rgba(181, 102, 50, 0.7);
+}
+body.sheet-darkmode .speedTooltip .weight-penalty-table > div:not(:last-child):not(.table-header) {
+  border-color: rgba(181, 102, 50, 0.7);
+}
+.speedTooltip .weight-penalty-table > div > :nth-child(2) {
+  display: inline-block;
+  width: 64px;
+}
+.speedTooltip .weight-penalty-table > div > :last-child {
+  display: inline-block;
+  width: 64px;
+}
+.speedTooltip .weight-penalty-table > div > :first-child[value="1"] ~ * {
+  font-weight: bold;
+  padding: 2px 0px;
 }
 
 /* -------- Equipment --------- */
