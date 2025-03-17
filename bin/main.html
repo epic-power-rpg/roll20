@@ -135,23 +135,7 @@
 
     <div class="top-section">
       <div class="flex-stack space-between">
-        <div class="leftTopSection">
-          <div class="diceRollSection">
-            <div class="attributeRollSection">
-              <div class="attributeName">Init</div>
-              <div class="attributeField">
-                <span name="attr_initiative"></span>
-                <span> + </span>
-                <input name="attr_initiativemodifier" type="number" value="0" />
-              </div>
-              <button class="actionRollButton epRoll_initiative" name="act_epRoll_initiative" type="action"></button>
-            </div>
-          </div>
-          <div class="weightSection">
-            <div>Speed<span class="narrowish center bold larger value" name="attr_speed"></span>
-            </div>
-          </div>
-        </div>
+        <div></div>
         <!-- tab buttons -->
         <div class="tab-holder">
           <!--
@@ -255,6 +239,14 @@
                 <input name="attr_roll_modifier" type="number" value="0" />
               </span>
               <button class="generalDiceRoll updateRollSectionContent" name="act_updateRollSectionContent_modifier" type="action"></button>
+            </div>
+            <div class="general-dice-rolls" data-epic-table-name="general-dice-rolls">
+              <span class="attributeName">Init</span>
+              <span name="attr_initiative"></span>
+              <span class="mod">
+                <input name="attr_initiativemodifier" type="number" value="0" />
+              </span>
+              <button class="actionRollButton epRoll_initiative" name="act_epRoll_initiative" type="action"></button>
             </div>
             <div class="general-dice-rolls" data-epic-table-name="general-dice-rolls">
               <span class="diceRollName">IQ</span>

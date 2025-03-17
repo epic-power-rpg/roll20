@@ -16,6 +16,12 @@ include ../global/advantages.pug
             input(name='attr_roll_modifier' type='number' value='0')
           button.generalDiceRoll.updateRollSectionContent(name='act_updateRollSectionContent_modifier' type='action')
         .general-dice-rolls(data-epic-table-name="general-dice-rolls")
+          span.attributeName Init
+          span(name='attr_initiative')
+          span.mod
+            input(name='attr_initiativemodifier' type='number' value='0')
+          button.actionRollButton.epRoll_initiative(name='act_epRoll_initiative' type='action')
+        .general-dice-rolls(data-epic-table-name="general-dice-rolls")
           span.diceRollName IQ
           span.ability(name='attr_IQ')
           span.mod

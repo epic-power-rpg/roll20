@@ -35,33 +35,6 @@
     flex-direction: column;
     gap: 2px;
   }
-
-  .diceRollSection {
-    margin-left: 4px;
-    .attributeRollSection {
-      display: grid;
-      width: fit-content;
-      grid-template-columns: [name] auto [field] 1fr [roll-button] auto;
-      align-items: center;
-      row-gap: 4px;
-      .attributeName {
-        grid-column: name;
-        font-weight: bold;
-        text-align: right;
-        margin-right: 8px;
-      }
-      .attributeField {
-        grid-column: field;
-      }
-      .actionRollButton {
-        grid-column: roll-button;
-        padding: 2px 3px;
-        font-size: 1.3em;
-        margin: 0 3px;
-        border-width: 1px;
-      }
-    }
-  }
   .tab-holder {
     margin-top: 4px;
   }

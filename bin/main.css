@@ -676,32 +676,6 @@ body.sheet-darkmode .top-section {
   flex-direction: column;
   gap: 2px;
 }
-.top-section .diceRollSection {
-  margin-left: 4px;
-}
-.top-section .diceRollSection .attributeRollSection {
-  display: grid;
-  width: fit-content;
-  grid-template-columns: [name] auto [field] 1fr [roll-button] auto;
-  align-items: center;
-  row-gap: 4px;
-}
-.top-section .diceRollSection .attributeRollSection .attributeName {
-  grid-column: name;
-  font-weight: bold;
-  text-align: right;
-  margin-right: 8px;
-}
-.top-section .diceRollSection .attributeRollSection .attributeField {
-  grid-column: field;
-}
-.top-section .diceRollSection .attributeRollSection .actionRollButton {
-  grid-column: roll-button;
-  padding: 2px 3px;
-  font-size: 1.3em;
-  margin: 0 3px;
-  border-width: 1px;
-}
 .top-section .tab-holder {
   margin-top: 4px;
 }
@@ -1092,10 +1066,9 @@ body.sheet-darkmode .overview-tab .advantages-and-feats .generalDiceRollsSection
 body.sheet-darkmode .overview-tab .advantages-and-feats .generalDiceRollsSection .general-dice-rolls {
   border-color: rgba(181, 102, 50, 0.7);
 }
-.overview-tab .advantages-and-feats .generalDiceRollsSection .general-dice-rolls .diceRollName {
+.overview-tab .advantages-and-feats .generalDiceRollsSection .general-dice-rolls .diceRollName, .overview-tab .advantages-and-feats .generalDiceRollsSection .general-dice-rolls .attributeName {
   text-align: right;
   margin-right: 4px;
-  line-height: 1;
 }
 .overview-tab .advantages-and-feats .generalDiceRollsSection .general-dice-rolls button.generalDiceRoll {
   padding: 0px 2px;

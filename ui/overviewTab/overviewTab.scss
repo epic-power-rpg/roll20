@@ -26,10 +26,9 @@
       @include epic-table-grid('general-dice-rolls', $general-dice-rolls-grid-template);
       .general-dice-rolls {
         @include underline-row();
-        .diceRollName {
+        .diceRollName, .attributeName {
             text-align: right;
             margin-right: 4px;
-            line-height: 1;
         }
         button.generalDiceRoll {
           @include updateRollSectionButton();
