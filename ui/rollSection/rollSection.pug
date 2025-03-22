@@ -30,26 +30,26 @@
     | &emsp;
   .roll-description-section
     .roll-description-line
-      label(for='attr_action_description') Description
+      label.action-area-text(for='attr_action_description') Description
       input#attr_action_description.flexing(name='attr_action_description' type='text')
-      label(for='attr_action_feats') Feat PWR
+      label.action-area-text(for='attr_action_feats') Feat PWR
       input#attr_action_feats.narrowish(name='attr_action_feats' type='number' value='0')
-      label(for='attr_action_EP') PWR
+      label.action-area-text(for='attr_action_EP') PWR
       input#attr_action_EP.narrowish(name='attr_action_EP' type='number' value='0')
-      label(for='attr_action_SP') ER
+      label.action-area-text(for='attr_action_SP') ER
       input#attr_action_SP.narrowish(name='attr_action_SP' type='number' value='0')
     .roll-description-line
-      label(for='attr_roll_skill') Skill
+      label.action-area-text(for='attr_roll_skill') Skill
       input#attr_roll_skill.flexing(name='attr_roll_skill' type='text')
-      label(for='attr_roll_ability') Ability
+      label.action-area-text(for='attr_roll_ability') Ability
       input#attr_roll_ability.narrowish(name='attr_roll_ability' type='number' value='0')
       label Mods
       input#attr_roll_mod1.narrowish(name='attr_roll_mod1' type='number' value='0')
       input#attr_roll_mod2.narrowish(name='attr_roll_mod2' type='number' value='0')
       input#attr_roll_mod3.narrowish(name='attr_roll_mod3' type='number' value='0')
-      label(for='attr_roll_advance_boost') Boost
+      label.action-area-text(for='attr_roll_advance_boost') Boost
       input#attr_roll_advance_boost.narrowish(name='attr_roll_advance_boost' type='number' value='0')
-      label(for='attr_action_roll_EP') PWR
+      label.action-area-text(for='attr_action_roll_EP') PWR
       input#attr_action_roll_EP.narrow(name='attr_action_roll_EP' value='@{roll_advance_boost}' disabled='true')
   = '\n'
   | &ensp;

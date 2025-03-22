@@ -2,6 +2,13 @@
 
 .roll-section {
   display: flex;
+  .action-area-text {
+    @include theme-color(update-action-color);
+    font-weight: bold;
+  }
+  input {
+    @include theme-background-color(update-action-background-color);
+  }
 }
 
 .roll-select-section {

@@ -34,8 +34,17 @@ button.actionRollButton::before {
 
 @mixin update-action-button {
   @include action-button;
-  @include theme-background(button-update-action-gradient);
-  @include hovered-button();
+  // Replace with `main` branch once this is merged
+  background-image: url(https://raw.githubusercontent.com/epic-power-rpg/roll20/jazeee-add-images/ui/images/actionButton.svg);
+  width: 20px;
+  height: 20px;
+  border: none;
+  background-repeat: no-repeat;
+  background-size: contain;
+  &:hover {
+    // Remove Roll20 default styles
+    opacity: 0.9;
+  }
 }
 
 @mixin updateRollSectionButton {
@@ -46,9 +55,6 @@ button.actionRollButton::before {
   font-size: 1em;
   padding-top: 2px;
   @include update-action-button();
-  &::before {
-    content: "☝";
-  }
 }
 
 /* Change the character for the do and roll dice button to be
