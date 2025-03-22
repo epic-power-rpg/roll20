@@ -268,27 +268,6 @@ body.sheet-darkmode button.reset-total:hover {
   background: #c2815b;
 }
 
-button.convert-button {
-  font-weight: bold;
-  outline: 1px solid #666;
-  border: none;
-  border-radius: 4px;
-  background: linear-gradient(180deg, rgb(245, 201, 162), #c2815b);
-  padding: 0px 2px 4px 2px;
-  vertical-align: middle;
-  font-size: 200%;
-}
-body.sheet-darkmode button.convert-button {
-  background: linear-gradient(180deg, #944d10, #c2815b);
-}
-button.convert-button:hover {
-  background-image: unset;
-  background: #c2815b;
-}
-body.sheet-darkmode button.convert-button:hover {
-  background: #c2815b;
-}
-
 /* Generic styles */
 button, input, optgroup, select, textarea {
   color: #111;
@@ -663,16 +642,111 @@ radio > span.checked {
 body.sheet-darkmode .top-section {
   background: linear-gradient(to top, rgba(194, 148, 91, 0.5019607843) 0%, transparent 100%);
 }
-.top-section .effectiveness-power-depth-cp-fp-section {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+.top-section .pwr-er-hp {
+  width: 160px;
 }
-.top-section .effectiveness-power-depth-cp-fp-section input.FP {
-  width: 2ch;
+.top-section .pwr-er-hp .epic-table-header-grid.pwr-er-hp {
+  display: grid;
+  grid-template-columns: minmax(0, 48px) minmax(0, 1fr) minmax(0, 48px);
+  column-gap: 2px;
+  color: #fff;
+  background-color: #b56632;
+  padding: 0 2px;
+  margin-bottom: 2px;
 }
-.top-section .effectiveness-power-depth-cp-fp-section .effectiveness {
-  color: #FFD0FF;
+body.sheet-darkmode .top-section .pwr-er-hp .epic-table-header-grid.pwr-er-hp {
+  color: #fff;
+}
+body.sheet-darkmode .top-section .pwr-er-hp .epic-table-header-grid.pwr-er-hp {
+  background-color: #b56632;
+}
+.top-section .pwr-er-hp .epic-table-header-grid.pwr-er-hp > div {
+  text-align: center;
+  margin: auto;
+  font-weight: bold;
+  width: 100%;
+  overflow: hidden;
+}
+.top-section .pwr-er-hp div[data-groupname=repeating_pwr-er-hp] > div,
+.top-section .pwr-er-hp div[data-epic-table-name=pwr-er-hp] {
+  display: grid;
+  grid-template-columns: minmax(0, 48px) minmax(0, 1fr) minmax(0, 48px);
+  row-gap: 0;
+  column-gap: 2px;
+  background: transparent;
+  word-break: break-word;
+}
+.top-section .pwr-er-hp div[data-groupname=repeating_pwr-er-hp] > div input, .top-section .pwr-er-hp div[data-groupname=repeating_pwr-er-hp] > div input[type=number], .top-section .pwr-er-hp div[data-groupname=repeating_pwr-er-hp] > div textarea, .top-section .pwr-er-hp div[data-groupname=repeating_pwr-er-hp] > div select,
+.top-section .pwr-er-hp div[data-epic-table-name=pwr-er-hp] input,
+.top-section .pwr-er-hp div[data-epic-table-name=pwr-er-hp] input[type=number],
+.top-section .pwr-er-hp div[data-epic-table-name=pwr-er-hp] textarea,
+.top-section .pwr-er-hp div[data-epic-table-name=pwr-er-hp] select {
+  width: 100% !important;
+  margin-left: unset;
+  height: auto;
+}
+.top-section .pwr-er-hp div[data-groupname=repeating_pwr-er-hp] > div input[type=text],
+.top-section .pwr-er-hp div[data-epic-table-name=pwr-er-hp] input[type=text] {
+  text-align: left;
+}
+.top-section .pwr-er-hp div[data-groupname=repeating_pwr-er-hp] > div input, .top-section .pwr-er-hp div[data-groupname=repeating_pwr-er-hp] > div select,
+.top-section .pwr-er-hp div[data-epic-table-name=pwr-er-hp] input,
+.top-section .pwr-er-hp div[data-epic-table-name=pwr-er-hp] select {
+  white-space: nowrap;
+}
+.top-section .pwr-er-hp div[data-groupname=repeating_pwr-er-hp] > div span,
+.top-section .pwr-er-hp div[data-epic-table-name=pwr-er-hp] span {
+  text-align: center;
+  margin: auto 0;
+}
+.top-section .pwr-er-hp div[data-groupname=repeating_pwr-er-hp] > div button, .top-section .pwr-er-hp div[data-groupname=repeating_pwr-er-hp] > div button[type=roll],
+.top-section .pwr-er-hp div[data-epic-table-name=pwr-er-hp] button,
+.top-section .pwr-er-hp div[data-epic-table-name=pwr-er-hp] button[type=roll] {
+  margin: 0;
+}
+.top-section .pwr-er-hp div[data-groupname=repeating_pwr-er-hp] > div .epic-table-row.conditional-one,
+.top-section .pwr-er-hp div[data-epic-table-name=pwr-er-hp] .epic-table-row.conditional-one {
+  display: grid;
+  grid-column-start: 1;
+  grid-column-end: 4;
+}
+.top-section .pwr-er-hp div[data-groupname=repeating_pwr-er-hp] > div > input, .top-section .pwr-er-hp div[data-groupname=repeating_pwr-er-hp] > div > select, .top-section .pwr-er-hp div[data-groupname=repeating_pwr-er-hp] > div > textarea,
+.top-section .pwr-er-hp div[data-epic-table-name=pwr-er-hp] > input,
+.top-section .pwr-er-hp div[data-epic-table-name=pwr-er-hp] > select,
+.top-section .pwr-er-hp div[data-epic-table-name=pwr-er-hp] > textarea {
+  border: unset;
+}
+.top-section .pwr-er-hp div[data-groupname=repeating_pwr-er-hp] > div + div,
+.top-section .pwr-er-hp div[data-epic-table-name=pwr-er-hp] + div[data-epic-table-name=pwr-er-hp] {
+  border-top: 1px solid;
+  border-color: rgba(181, 102, 50, 0.7);
+}
+body.sheet-darkmode .top-section .pwr-er-hp div[data-groupname=repeating_pwr-er-hp] > div + div,
+body.sheet-darkmode .top-section .pwr-er-hp div[data-epic-table-name=pwr-er-hp] + div[data-epic-table-name=pwr-er-hp] {
+  border-color: rgba(181, 102, 50, 0.7);
+}
+.top-section .pwr-er-hp .pwr-er-hp-table-row {
+  column-gap: 4px !important;
+}
+.top-section .pwr-er-hp button.convert-button {
+  font-weight: bold;
+  outline: 1px solid #666;
+  border: none;
+  border-radius: 4px;
+  background: linear-gradient(180deg, rgb(245, 201, 162), #c2815b);
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+}
+body.sheet-darkmode .top-section .pwr-er-hp button.convert-button {
+  background: linear-gradient(180deg, #944d10, #c2815b);
+}
+.top-section .pwr-er-hp button.convert-button:hover {
+  background-image: unset;
+  background: #c2815b;
+}
+body.sheet-darkmode .top-section .pwr-er-hp button.convert-button:hover {
+  background: #c2815b;
 }
 .top-section .attributecontrol[value=basic] ~ button.reset-total,
 .top-section .attributecontrol[value=basic] ~ .not-basic-tab,
@@ -683,11 +757,6 @@ body.sheet-darkmode .top-section {
 .top-section .attributecontrol:not([value=basic]) ~ .basic-tab-only,
 .top-section .cpcontrol:not([value=basic]) ~ .basic-tab-only {
   display: none;
-}
-.top-section .leftTopSection {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
 }
 .top-section .tab-holder {
   margin-top: 4px;

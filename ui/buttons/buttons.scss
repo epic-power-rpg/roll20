@@ -108,12 +108,3 @@ button.reset-total {
   vertical-align: middle;
   @include hovered-button();
 }
-
-button.convert-button {
-  @include action-button;
-  @include theme-background(button-roll-top-bottom-gradient);
-  padding: 0px 2px 4px 2px;
-  vertical-align: middle;
-  font-size: 200%;
-  @include hovered-button();
-}

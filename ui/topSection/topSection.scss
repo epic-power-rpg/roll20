@@ -1,4 +1,5 @@
 /* --------- Top section ----------------- */
+@import '../components/gridTable/gridTable.scss';
 
 .top-section {
   display: flex;
@@ -6,15 +7,22 @@
   border-bottom: solid black 1px;
   margin-bottom: 6px;
   @include theme-background(paper-gradient-color);
-  .effectiveness-power-depth-cp-fp-section {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    input.FP {
-      width: 2ch;
+  .pwr-er-hp {
+    width: 160px;
+    $pwr-er-hp-grid-template: getResponsiveGridWidths(48px, 1fr, 48px);
+    @include epic-table-grid('pwr-er-hp', $pwr-er-hp-grid-template);
+    @include epic-table-grid-row-border('pwr-er-hp');
+    .pwr-er-hp-table-row {
+      column-gap: 4px !important;
     }
-    .effectiveness {
-      color: #FFD0FF;
+
+    button.convert-button {
+      @include action-button;
+      @include theme-background(button-roll-top-bottom-gradient);
+      @include hovered-button();
+      width: 100%;
+      padding-left: 0;
+      padding-right: 0;
     }
   }
 
@@ -30,11 +38,6 @@
     display: none;
   }
 
-  .leftTopSection {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-  }
   .tab-holder {
     margin-top: 4px;
   }
