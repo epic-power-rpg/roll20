@@ -587,9 +587,7 @@ body.sheet-darkmode .roll-chosen[value="4"] ~ .save-radio-row > button.roll-4,
 body.sheet-darkmode .roll-chosen[value="5"] ~ .save-radio-row > button.roll-5,
 body.sheet-darkmode .roll-chosen[value="6"] ~ .save-radio-row > button.roll-6 {
   border-color: #fff;
-}
-
-/* Configure the radio button styling. */
+} /* Configure the radio button styling. */
 .radio {
   padding: 0;
   margin: 2px;
@@ -1081,10 +1079,10 @@ body.sheet-darkmode .overview-tab .advantages-and-feats .generalDiceRollsSection
   outline: 1px solid #666;
   border: none;
   border-radius: 4px;
-  background: linear-gradient(90deg, rgb(245, 201, 162), #c2815b);
+  background: linear-gradient(90deg, #104b94, #5b98c2);
 }
 body.sheet-darkmode .overview-tab .advantages-and-feats .generalDiceRollsSection .general-dice-rolls button.generalDiceRoll {
-  background: linear-gradient(90deg, #944d10, #c2815b);
+  background: linear-gradient(90deg, #104b94, #5b98c2);
 }
 .overview-tab .advantages-and-feats .generalDiceRollsSection .general-dice-rolls button.generalDiceRoll:hover {
   background-image: unset;
@@ -1358,10 +1356,10 @@ body.sheet-darkmode .overview-tab .advantages-and-feats .feat-overview > div[dat
   outline: 1px solid #666;
   border: none;
   border-radius: 4px;
-  background: linear-gradient(90deg, rgb(245, 201, 162), #c2815b);
+  background: linear-gradient(90deg, #104b94, #5b98c2);
 }
 body.sheet-darkmode .overview-tab .advantages-and-feats .feat-overview > div[data-groupname] button.addRollSectionFeat {
-  background: linear-gradient(90deg, #944d10, #c2815b);
+  background: linear-gradient(90deg, #104b94, #5b98c2);
 }
 .overview-tab .advantages-and-feats .feat-overview > div[data-groupname] button.addRollSectionFeat:hover {
   background-image: unset;
@@ -1482,10 +1480,10 @@ body.sheet-darkmode .overview-tab .skills-overview > div[data-groupname] .skill-
   outline: 1px solid #666;
   border: none;
   border-radius: 4px;
-  background: linear-gradient(90deg, rgb(245, 201, 162), #c2815b);
+  background: linear-gradient(90deg, #104b94, #5b98c2);
 }
 body.sheet-darkmode .overview-tab .skills-overview > div[data-groupname] .skill-overview-row-container button.updateRollSectionContent {
-  background: linear-gradient(90deg, #944d10, #c2815b);
+  background: linear-gradient(90deg, #104b94, #5b98c2);
 }
 .overview-tab .skills-overview > div[data-groupname] .skill-overview-row-container button.updateRollSectionContent:hover {
   background-image: unset;
@@ -2740,10 +2738,10 @@ body.sheet-darkmode .spells .spell-header-action-area label, body.sheet-darkmode
   outline: 1px solid #666;
   border: none;
   border-radius: 4px;
-  background: linear-gradient(90deg, rgb(245, 201, 162), #c2815b);
+  background: linear-gradient(90deg, #104b94, #5b98c2);
 }
 body.sheet-darkmode .spells .spell-header-action-area button.spellRoll {
-  background: linear-gradient(90deg, #944d10, #c2815b);
+  background: linear-gradient(90deg, #104b94, #5b98c2);
 }
 .spells .spell-header-action-area button.spellRoll:hover {
   background-image: unset;
@@ -2887,10 +2885,10 @@ body.sheet-darkmode .spells div[data-epic-table-name=arcane] + div[data-epic-tab
   outline: 1px solid #666;
   border: none;
   border-radius: 4px;
-  background: linear-gradient(90deg, rgb(245, 201, 162), #c2815b);
+  background: linear-gradient(90deg, #104b94, #5b98c2);
 }
 body.sheet-darkmode .spells button.updateRollSectionContent {
-  background: linear-gradient(90deg, #944d10, #c2815b);
+  background: linear-gradient(90deg, #104b94, #5b98c2);
 }
 .spells button.updateRollSectionContent:hover {
   background-image: unset;

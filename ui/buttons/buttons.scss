@@ -32,6 +32,12 @@ button.actionRollButton::before {
   content: "⧉";
 }
 
+@mixin update-action-button {
+  @include action-button;
+  @include theme-background(button-update-action-gradient);
+  @include hovered-button();
+}
+
 @mixin updateRollSectionButton {
   padding: 0px 2px;
   box-sizing: border-box;
@@ -39,7 +45,7 @@ button.actionRollButton::before {
   height: 20px;
   font-size: 1em;
   padding-top: 2px;
-  @include roll-action-button();
+  @include update-action-button();
   &::before {
     content: "☝";
   }
