@@ -1173,6 +1173,7 @@
         <input name="attr_divine_total_CP" type="hidden" value="0" />
         <input name="attr_divine_total_single_CP" type="hidden" value="0" />
         <div class="divine epic-table-header-grid">
+          <div class="skilldeity-grid">Deity</div>
           <div class="skillname-grid">Name</div>
           <div class="spellhasnote-grid">Notes</div>
           <div class="spellEP-grid">PWR</div>
@@ -1183,6 +1184,15 @@
           <div class="spellduration-grid">Damage/ Duration</div>
         </div>
         <fieldset class="repeating_divine">
+          <select class="skilldisciplineinfo-grid" name="attr_skilldisciplineinfo">
+            <option value="⇡">&#x21E1;</option>
+            <option value="D">D</option>
+          </select>
+          <!--
+          The next input puts whether we are a deity into the
+          value property, where CSS can see it. All hail Jaz the Mighty!
+          -->
+          <input class="isdiscipline-grid" name="attr_skillisdiscipline" type="hidden" />
           <input class="skillname-grid" name="attr_skillname" type="text" />
           <div class="spellNotesPopover">
             <input class="spellnote-hidden" name="attr_spellnote" type="hidden" />

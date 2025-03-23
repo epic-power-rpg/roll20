@@ -109,6 +109,7 @@
     input(name='attr_divine_total_CP' type='hidden' value='0')
     input(name='attr_divine_total_single_CP' type='hidden' value='0')
     .divine.epic-table-header-grid
+      .skilldeity-grid Deity
       .skillname-grid Name
       .spellhasnote-grid Notes
       .spellEP-grid PWR
@@ -118,6 +119,13 @@
       .spelltarget-grid Target
       .spellduration-grid Damage/ Duration
     fieldset.repeating_divine
+      select.skilldisciplineinfo-grid(name='attr_skilldisciplineinfo')
+        option(value='⇡') &#x21E1;
+        option(value='D') D
+      //
+        The next input puts whether we are a deity into the
+        value property, where CSS can see it. All hail Jaz the Mighty!
+      input.isdiscipline-grid(name='attr_skillisdiscipline' type='hidden')
       input.skillname-grid(name='attr_skillname' type='text')
       include ./spellsNotesPopover.pug
       input.spellEP-grid(name='attr_spellEP' type='number')

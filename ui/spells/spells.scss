@@ -61,7 +61,7 @@ $notes-popover-width: 30px;
     1fr, // Cast Time
     80px, // Touch/ Ray/ Missile - 80px for two rows not three
     1.5fr, // Range
-    2fr, // Target
+    64px, // Target
     1.5fr, // Damage/ Duration
     $notes-popover-width, // N(otes)
     24px, // FP
@@ -101,10 +101,34 @@ $notes-popover-width: 30px;
     white-space: nowrap;
   }
 
-  $divine-grid-template: getResponsiveGridWidths(2fr, $notes-popover-width, 1fr, 1fr, 2fr, 1fr, 1fr, 2fr);
-  @include epic-table-grid('divine', $divine-grid-template);
-  @include epic-table-grid-row-border('divine');
+  .divine-spells-grid {
+    $divine-grid-template: getResponsiveGridWidths(
+      40px, // Deity?
+      2fr, // Name
+      $notes-popover-width, // Notes
+      1fr, // PWR
+      1fr, // Cast time
+      2fr, // Touch/Ray/Missile
+      1fr, // Range
+      1fr, // Target
+      2fr, // Damage/Duration
+    );
+    @include epic-table-grid('divine', $divine-grid-template);
+    @include epic-table-grid-row-border('divine');
 
+    .isdiscipline-grid[value="1"] {
+      ~:not(.skillname-grid) {
+        opacity: 0;
+        cursor: default;
+        pointer-events: none;
+      }
+    }
+
+    .isdiscipline-grid[value="1"]~.skillname-grid {
+      font-weight: bold;
+      text-align: center;
+    }
+  }
   $innate-grid-template: getResponsiveGridWidths(
     40px, // Sphere?
     4fr, // Name
