@@ -5,14 +5,30 @@
     text-decoration: line-through;
     font-weight: normal !important;
   }
-  $defenses-grid-template-with-spanning-input: getResponsiveGridWidths(50px, 100px);
+  $defenses-grid-template-with-spanning-input: getResponsiveGridWidths(56px, 96px);
   @include epic-table-grid('defenses-with-spanning-input', $defenses-grid-template-with-spanning-input);
-  $defenses-grid-template: getResponsiveGridWidths(50px, 50px, 50px);
+  $defenses-grid-template: getResponsiveGridWidths(56px, 48px, 48px);
   @include epic-table-grid('defenses', $defenses-grid-template);
   @include epic-table-grid-row-border('defenses');
   div.bonus-row {
     grid-template-columns: $defenses-grid-template-with-spanning-input;
   }
+
+  .table-label {
+    text-align: right;
+    margin: auto;
+    margin-right: 2px;
+    font-weight: bold;
+  }
+
+  input[type=number] {
+    text-align: center;
+  }
+}
+.defense-extra-block {
+  $defenses-extra-grid-template: getResponsiveGridWidths(64px, 64px);
+  @include epic-table-grid('defenses-extra', $defenses-extra-grid-template);
+  @include epic-table-grid-row-border('defenses-extra');
 
   .table-label {
     text-align: right;

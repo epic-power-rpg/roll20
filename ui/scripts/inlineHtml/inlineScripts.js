@@ -1130,6 +1130,18 @@ const updateCopiedAbilities = function () {
         }
         update[skill.replaceAll(' ', '_')] = ability;
       }
+      for (let skillInfo of [
+        {skillName: 'resolve', attributeName: 'current_resolve', base: IQ_n },
+        {skillName: 'robustness', attributeName: 'current_robustness', base: BR_n },
+      ]) {
+        const { skillName, attributeName, base } = skillInfo;
+        let ability = base;
+        const skillIndex = skill_map[skillName];
+        if (isValueDefined(skillIndex) && values[disciplineinfoFields[skillIndex]] !== 'D') {
+          ability = Number(values[abilityFields[skillIndex]]);
+        }
+        update[attributeName] = ability;
+      }
       setAttrs(update);
     });
   });

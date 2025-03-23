@@ -767,7 +767,7 @@ body.sheet-darkmode .top-section .pwr-er-hp button.convert-button:hover {
 }
 .top-section .defense-block .epic-table-header-grid.defenses-with-spanning-input {
   display: grid;
-  grid-template-columns: minmax(0, 50px) minmax(0, 100px);
+  grid-template-columns: minmax(0, 56px) minmax(0, 96px);
   column-gap: 2px;
   color: #fff;
   background-color: #b56632;
@@ -790,7 +790,7 @@ body.sheet-darkmode .top-section .defense-block .epic-table-header-grid.defenses
 .top-section .defense-block div[data-groupname=repeating_defenses-with-spanning-input] > div,
 .top-section .defense-block div[data-epic-table-name=defenses-with-spanning-input] {
   display: grid;
-  grid-template-columns: minmax(0, 50px) minmax(0, 100px);
+  grid-template-columns: minmax(0, 56px) minmax(0, 96px);
   row-gap: 0;
   column-gap: 2px;
   background: transparent;
@@ -832,7 +832,7 @@ body.sheet-darkmode .top-section .defense-block .epic-table-header-grid.defenses
 }
 .top-section .defense-block .epic-table-header-grid.defenses {
   display: grid;
-  grid-template-columns: minmax(0, 50px) minmax(0, 50px) minmax(0, 50px);
+  grid-template-columns: minmax(0, 56px) minmax(0, 48px) minmax(0, 48px);
   column-gap: 2px;
   color: #fff;
   background-color: #b56632;
@@ -855,7 +855,7 @@ body.sheet-darkmode .top-section .defense-block .epic-table-header-grid.defenses
 .top-section .defense-block div[data-groupname=repeating_defenses] > div,
 .top-section .defense-block div[data-epic-table-name=defenses] {
   display: grid;
-  grid-template-columns: minmax(0, 50px) minmax(0, 50px) minmax(0, 50px);
+  grid-template-columns: minmax(0, 56px) minmax(0, 48px) minmax(0, 48px);
   row-gap: 0;
   column-gap: 2px;
   background: transparent;
@@ -911,7 +911,7 @@ body.sheet-darkmode .top-section .defense-block div[data-epic-table-name=defense
   border-color: rgba(181, 102, 50, 0.7);
 }
 .top-section .defense-block div.bonus-row {
-  grid-template-columns: minmax(0, 50px) minmax(0, 100px);
+  grid-template-columns: minmax(0, 56px) minmax(0, 96px);
 }
 .top-section .defense-block .table-label {
   text-align: right;
@@ -920,6 +920,95 @@ body.sheet-darkmode .top-section .defense-block div[data-epic-table-name=defense
   font-weight: bold;
 }
 .top-section .defense-block input[type=number] {
+  text-align: center;
+}
+.top-section .defense-extra-block .epic-table-header-grid.defenses-extra {
+  display: grid;
+  grid-template-columns: minmax(0, 64px) minmax(0, 64px);
+  column-gap: 2px;
+  color: #fff;
+  background-color: #b56632;
+  padding: 0 2px;
+  margin-bottom: 2px;
+}
+body.sheet-darkmode .top-section .defense-extra-block .epic-table-header-grid.defenses-extra {
+  color: #fff;
+}
+body.sheet-darkmode .top-section .defense-extra-block .epic-table-header-grid.defenses-extra {
+  background-color: #b56632;
+}
+.top-section .defense-extra-block .epic-table-header-grid.defenses-extra > div {
+  text-align: center;
+  margin: auto;
+  font-weight: bold;
+  width: 100%;
+  overflow: hidden;
+}
+.top-section .defense-extra-block div[data-groupname=repeating_defenses-extra] > div,
+.top-section .defense-extra-block div[data-epic-table-name=defenses-extra] {
+  display: grid;
+  grid-template-columns: minmax(0, 64px) minmax(0, 64px);
+  row-gap: 0;
+  column-gap: 2px;
+  background: transparent;
+  word-break: break-word;
+}
+.top-section .defense-extra-block div[data-groupname=repeating_defenses-extra] > div input, .top-section .defense-extra-block div[data-groupname=repeating_defenses-extra] > div input[type=number], .top-section .defense-extra-block div[data-groupname=repeating_defenses-extra] > div textarea, .top-section .defense-extra-block div[data-groupname=repeating_defenses-extra] > div select,
+.top-section .defense-extra-block div[data-epic-table-name=defenses-extra] input,
+.top-section .defense-extra-block div[data-epic-table-name=defenses-extra] input[type=number],
+.top-section .defense-extra-block div[data-epic-table-name=defenses-extra] textarea,
+.top-section .defense-extra-block div[data-epic-table-name=defenses-extra] select {
+  width: 100% !important;
+  margin-left: unset;
+  height: auto;
+}
+.top-section .defense-extra-block div[data-groupname=repeating_defenses-extra] > div input[type=text],
+.top-section .defense-extra-block div[data-epic-table-name=defenses-extra] input[type=text] {
+  text-align: left;
+}
+.top-section .defense-extra-block div[data-groupname=repeating_defenses-extra] > div input, .top-section .defense-extra-block div[data-groupname=repeating_defenses-extra] > div select,
+.top-section .defense-extra-block div[data-epic-table-name=defenses-extra] input,
+.top-section .defense-extra-block div[data-epic-table-name=defenses-extra] select {
+  white-space: nowrap;
+}
+.top-section .defense-extra-block div[data-groupname=repeating_defenses-extra] > div span,
+.top-section .defense-extra-block div[data-epic-table-name=defenses-extra] span {
+  text-align: center;
+  margin: auto 0;
+}
+.top-section .defense-extra-block div[data-groupname=repeating_defenses-extra] > div button, .top-section .defense-extra-block div[data-groupname=repeating_defenses-extra] > div button[type=roll],
+.top-section .defense-extra-block div[data-epic-table-name=defenses-extra] button,
+.top-section .defense-extra-block div[data-epic-table-name=defenses-extra] button[type=roll] {
+  margin: 0;
+}
+.top-section .defense-extra-block div[data-groupname=repeating_defenses-extra] > div .epic-table-row.conditional-one,
+.top-section .defense-extra-block div[data-epic-table-name=defenses-extra] .epic-table-row.conditional-one {
+  display: grid;
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+.top-section .defense-extra-block div[data-groupname=repeating_defenses-extra] > div > input, .top-section .defense-extra-block div[data-groupname=repeating_defenses-extra] > div > select, .top-section .defense-extra-block div[data-groupname=repeating_defenses-extra] > div > textarea,
+.top-section .defense-extra-block div[data-epic-table-name=defenses-extra] > input,
+.top-section .defense-extra-block div[data-epic-table-name=defenses-extra] > select,
+.top-section .defense-extra-block div[data-epic-table-name=defenses-extra] > textarea {
+  border: unset;
+}
+.top-section .defense-extra-block div[data-groupname=repeating_defenses-extra] > div + div,
+.top-section .defense-extra-block div[data-epic-table-name=defenses-extra] + div[data-epic-table-name=defenses-extra] {
+  border-top: 1px solid;
+  border-color: rgba(181, 102, 50, 0.7);
+}
+body.sheet-darkmode .top-section .defense-extra-block div[data-groupname=repeating_defenses-extra] > div + div,
+body.sheet-darkmode .top-section .defense-extra-block div[data-epic-table-name=defenses-extra] + div[data-epic-table-name=defenses-extra] {
+  border-color: rgba(181, 102, 50, 0.7);
+}
+.top-section .defense-extra-block .table-label {
+  text-align: right;
+  margin: auto;
+  margin-right: 2px;
+  font-weight: bold;
+}
+.top-section .defense-extra-block input[type=number] {
   text-align: center;
 }
 

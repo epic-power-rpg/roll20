@@ -183,6 +183,21 @@
           <span class="center bold larger" name="attr_current_parry_without_armor" type="number" value="0"></span>
         </div>
       </div>
+      <div class="defense-extra-block">
+        <div class="defenses-extra epic-table-header-grid">
+          <div>Def.</div>
+          <div>Skill</div>
+        </div>
+        <div class="defenses-extra-table-row" data-epic-table-name="defenses-extra">
+          <div class="table-label larger">Resolve</div>
+          <input name="attr_block" type="hidden" />
+          <span class="center bold larger" name="attr_current_resolve" value="0"></span>
+        </div>
+        <div class="defenses-extra-table-row parry-row" data-epic-table-name="defenses-extra">
+          <div class="table-label larger">Robust</div>
+          <span class="center bold larger" name="attr_current_robustness" type="number" value="0"></span>
+        </div>
+      </div>
 
       <!-- HP, PWR, ER -->
       <div class="pwr-er-hp">
@@ -2478,6 +2493,18 @@ const updateCopiedAbilities = function () {
           ability = ability + weight_penalty_n;
         }
         update[skill.replaceAll(' ', '_')] = ability;
+      }
+      for (let skillInfo of [
+        {skillName: 'resolve', attributeName: 'current_resolve', base: IQ_n },
+        {skillName: 'robustness', attributeName: 'current_robustness', base: BR_n },
+      ]) {
+        const { skillName, attributeName, base } = skillInfo;
+        let ability = base;
+        const skillIndex = skill_map[skillName];
+        if (isValueDefined(skillIndex) && values[disciplineinfoFields[skillIndex]] !== 'D') {
+          ability = Number(values[abilityFields[skillIndex]]);
+        }
+        update[attributeName] = ability;
       }
       setAttrs(update);
     });
