@@ -174,7 +174,7 @@ roll_choices.forEach(function (value) {
   on(`clicked:choose_roll_${value}`, function () { doChooseRoll(value); });
 });
 
-function updateRollSectionContent({ skillName, abilityValue, advanceBoost, power }) {
+function updateRollSectionContent({ skillName, description = '', abilityValue, advanceBoost, power }) {
   const baseNumericContent = {};
   numericRollKeys.forEach((key) => {
     baseNumericContent[key] = 0;
@@ -182,7 +182,7 @@ function updateRollSectionContent({ skillName, abilityValue, advanceBoost, power
 
   const rollContent = {
     ...baseNumericContent,
-    'action_description': '',
+    'action_description': description,
     'roll_skill': skillName,
     'roll_ability': abilityValue,
     'roll_advance_boost': advanceBoost,
@@ -192,23 +192,26 @@ function updateRollSectionContent({ skillName, abilityValue, advanceBoost, power
   }
   setAttrs(rollContent);
 }
-['repeating_skill', 'repeating_arcane'].forEach((sectionName) => {
+['repeating_skill', 'repeating_arcane', 'repeating_divine'].forEach((sectionName) => {
   on(`clicked:${sectionName}:updateRollSectionContent`, function () {
     console.log('clicked:repeating_skill:updateRollSectionContent');
     getAttrs([
       'repeating_skill_skillname',
       'repeating_skill_skillability',
       'repeating_skill_skillmodifier',
+      'repeating_skill_skill_deity_name',
       'repeating_spell_spellEP'
     ], (attributes) => {
       const { ['repeating_skill_skillname']: skillName } = attributes;
       const skillAbility = Number(attributes['repeating_skill_skillability'] ?? 0);
       const advanceBoost = Number(attributes['repeating_skill_skillmodifier'] ?? 0);
+      const deityName = attributes['repeating_skill_skill_deity_name'];
+      let description = sectionName === 'repeating_divine' && deityName ? `Pray to ${deityName} ` : '';
       const spellPwr = isValueDefined(attributes['repeating_spell_spellEP']) ?
         Number(attributes['repeating_spell_spellEP'] ?? 0) :
         undefined;
       console.log({skillName, skillAbility, advanceBoost});
-      updateRollSectionContent({ skillName, abilityValue: skillAbility, advanceBoost, power: spellPwr });
+      updateRollSectionContent({ skillName, description, abilityValue: skillAbility, advanceBoost, power: spellPwr });
     });
   });
 });
@@ -1207,6 +1210,70 @@ const updateSkillDisciplineExpertises = function (section) {
   });
 };
 
+function updateDivineAttributes() {
+  const section = 'divine';
+  getSectionIDsOrdered(section, function (ids) {
+    const disciplineinfoFields = ids.map(
+      id => `repeating_${section}_${id}_skilldisciplineinfo`);
+    const isdisciplineFields = ids.map(
+      id => `repeating_${section}_${id}_skillisdiscipline`);
+    const nameFields = ids.map(
+      id => `repeating_${section}_${id}_skillname`);
+    const deityNameFields = ids.map(
+      id => `repeating_${section}_${id}_skill_deity_name`);
+    const deityAbilityFields = ids.map(
+      id => `repeating_${section}_${id}_skillability`);
+    getSectionIDs('skill', function (skillIds) {
+      const skillNameFields = skillIds.map(skillId => `repeating_skill_${skillId}_skillname`);
+      const skillAbilityFields = skillIds.map(skillId => `repeating_skill_${skillId}_skillability`);
+      getAttrs(disciplineinfoFields
+        .concat(isdisciplineFields)
+        .concat(nameFields)
+        .concat(deityNameFields)
+        .concat(deityAbilityFields)
+        .concat(skillNameFields)
+        .concat(skillAbilityFields),
+      function (attributes) {
+        let deityName = 'Deity';
+        let update = {};
+        for (let i = 0; i < ids.length; ++i) {
+          if (attributes[disciplineinfoFields[i]] === 'D') {
+            deityName = attributes[nameFields[i]];
+            if (attributes[isdisciplineFields[i]] !== '1') {
+              update[isdisciplineFields[i]] = '1';
+            }
+          } else {
+            if (attributes[isdisciplineFields[i]] !== '0') {
+              update[isdisciplineFields[i]] = '0';
+            }
+            for (let skillIndex = 0; skillIndex < skillIds.length; ++skillIndex) {
+              const skillName = attributes[skillNameFields[skillIndex]];
+              if (skillName?.toLowerCase().trim().includes(deityName.toLowerCase().trim())) {
+                const skillAbility = Number(attributes[skillAbilityFields[skillIndex]] || 0);
+                const deityAbility = Number(attributes[deityAbilityFields[i]] || 0);
+                if (skillAbility !== deityAbility) {
+                  update[deityAbilityFields[i]] = skillAbility;
+                }
+              }
+            }
+            if (deityName !== attributes[deityNameFields[i]]) {
+              update[deityNameFields[i]] = deityName;
+            }
+          }
+        }
+        if (!_.isEmpty(update)) {
+          setAttrs(update);
+        }
+      });
+    });
+  });
+}
+
+on('change:repeating_divine:skilldisciplineinfo' +
+  ' change:repeating_divine:skillname' +
+  ' sheet:opened',
+updateDivineAttributes);
+
 const updateSkillDerivedForId = function (section, row_id) {
   const name = `repeating_${section}_${row_id}_skillname`;
   const disciplineinfo = `repeating_${section}_${row_id}_skilldisciplineinfo`;
@@ -1345,6 +1412,13 @@ on('change:repeating_skill:skilldisciplineinfo' +
   ' change:repeating_skill:skillattribute' +
   ' change:repeating_skill:skillbase',
 function (event) { updateSkillDerived('skill', event); });
+
+on('change:repeating_skill:skilldisciplineinfo' +
+  ' change:repeating_skill:skillexpertise' +
+  ' change:repeating_skill:skilldisciplineexpertise' +
+  ' change:repeating_skill:skillattribute' +
+  ' change:repeating_skill:skillbase',
+updateDivineAttributes);
 
 on('change:IQ change:DX change:BR'
   + ' change:advantage_mage_count change:advantage_devout_count',

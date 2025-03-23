@@ -3095,7 +3095,7 @@ body.sheet-darkmode .spells .arcane-spells-grid div[data-epic-table-name=arcane]
 }
 .spells .divine-spells-grid .epic-table-header-grid.divine {
   display: grid;
-  grid-template-columns: minmax(0, 40px) minmax(0, 2fr) minmax(0, 30px) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr);
+  grid-template-columns: minmax(0, 40px) minmax(0, 2fr) minmax(0, 30px) minmax(0, 40px) minmax(0, 20px) minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr);
   column-gap: 2px;
   color: #fff;
   background-color: #b56632;
@@ -3118,7 +3118,7 @@ body.sheet-darkmode .spells .divine-spells-grid .epic-table-header-grid.divine {
 .spells .divine-spells-grid div[data-groupname=repeating_divine] > div,
 .spells .divine-spells-grid div[data-epic-table-name=divine] {
   display: grid;
-  grid-template-columns: minmax(0, 40px) minmax(0, 2fr) minmax(0, 30px) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr);
+  grid-template-columns: minmax(0, 40px) minmax(0, 2fr) minmax(0, 30px) minmax(0, 40px) minmax(0, 20px) minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr);
   row-gap: 0;
   column-gap: 2px;
   background: transparent;
@@ -3156,7 +3156,7 @@ body.sheet-darkmode .spells .divine-spells-grid .epic-table-header-grid.divine {
 .spells .divine-spells-grid div[data-epic-table-name=divine] .epic-table-row.conditional-one {
   display: grid;
   grid-column-start: 1;
-  grid-column-end: 10;
+  grid-column-end: 11;
 }
 .spells .divine-spells-grid div[data-groupname=repeating_divine] > div > input, .spells .divine-spells-grid div[data-groupname=repeating_divine] > div > select, .spells .divine-spells-grid div[data-groupname=repeating_divine] > div > textarea,
 .spells .divine-spells-grid div[data-epic-table-name=divine] > input,
@@ -3172,6 +3172,27 @@ body.sheet-darkmode .spells .divine-spells-grid .epic-table-header-grid.divine {
 body.sheet-darkmode .spells .divine-spells-grid div[data-groupname=repeating_divine] > div + div,
 body.sheet-darkmode .spells .divine-spells-grid div[data-epic-table-name=divine] + div[data-epic-table-name=divine] {
   border-color: rgba(181, 102, 50, 0.7);
+}
+.spells .divine-spells-grid button.updateRollSectionContent {
+  padding: 0px 2px;
+  box-sizing: border-box;
+  margin: auto 2px;
+  height: 20px;
+  font-size: 1em;
+  padding-top: 2px;
+  font-weight: bold;
+  outline: 1px solid #666;
+  border: none;
+  border-radius: 4px;
+  background-image: url(https://raw.githubusercontent.com/epic-power-rpg/roll20/jazeee-add-images/ui/images/actionButton.svg);
+  width: 20px;
+  height: 20px;
+  border: none;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.spells .divine-spells-grid button.updateRollSectionContent:hover {
+  opacity: 0.9;
 }
 .spells .divine-spells-grid .isdiscipline-grid[value="1"] ~ :not(.skillname-grid, .spellNotesPopover) {
   opacity: 0;

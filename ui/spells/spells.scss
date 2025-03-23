@@ -56,8 +56,8 @@ $notes-popover-width: 30px;
       4fr, // Name
       1fr, // Ability
       40px, // Mod
-      20px, // (Dice)
-      40px, // EP
+      20px, // Update roll section
+      40px, // PWR
       1fr, // Cast Time
       80px, // Touch/ Ray/ Missile - 80px for two rows not three
       1.5fr, // Range
@@ -107,7 +107,8 @@ $notes-popover-width: 30px;
       40px, // Deity?
       2fr, // Name
       $notes-popover-width, // Notes
-      1fr, // PWR
+      40px, // PWR
+      20px, // Update roll section
       1fr, // Cast time
       2fr, // Touch/Ray/Missile
       1fr, // Range
@@ -116,6 +117,9 @@ $notes-popover-width: 30px;
     );
     @include epic-table-grid('divine', $divine-grid-template);
     @include epic-table-grid-row-border('divine');
+    button.updateRollSectionContent {
+      @include updateRollSectionButton();
+    }
 
     .isdiscipline-grid[value="1"] {
       ~:not(.skillname-grid, .spellNotesPopover) {

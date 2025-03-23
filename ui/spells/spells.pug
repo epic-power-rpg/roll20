@@ -113,6 +113,7 @@
       .skillname-grid Name
       .spellhasnote-grid Notes
       .spellEP-grid PWR
+      .spellUpdateRollSection-grid
       .spellcasttime-grid Cast Time
       .spelltype-grid Touch/ Ray/ Missile
       .spellrange-grid Range
@@ -126,9 +127,12 @@
         The next input puts whether we are a deity into the
         value property, where CSS can see it. All hail Jaz the Mighty!
       input.isdiscipline-grid(name='attr_skillisdiscipline' type='hidden')
+      input.deityName-grid(name='attr_skill_deity_name' type='hidden')
+      input.skillAbility-grid(name='attr_skill_skillability' type='hidden')
       input.skillname-grid(name='attr_skillname' type='text')
       include ./spellsNotesPopover.pug
       input.spellEP-grid(name='attr_spellEP' type='number')
+      button.skill-grid-roll.updateRollSectionContent(name='act_updaterollsectioncontent' type='action')
       input.spellcasttime-grid(name='attr_spellcasttime' type='text')
       select.spelltype-grid(name='attr_spelltype' type='text')
         option(value='-') None
