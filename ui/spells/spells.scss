@@ -50,55 +50,56 @@ $notes-popover-width: 30px;
     }
   }
   @import './spellsNotesPopover.scss';
+  .arcane-spells-grid {
+    $arcane-grid-template: getResponsiveGridWidths(
+      1fr, // Discipline?
+      4fr, // Name
+      1fr, // Ability
+      40px, // Mod
+      20px, // (Dice)
+      40px, // EP
+      1fr, // Cast Time
+      80px, // Touch/ Ray/ Missile - 80px for two rows not three
+      1.5fr, // Range
+      64px, // Target
+      1.5fr, // Damage/ Duration
+      $notes-popover-width, // N(otes)
+      24px, // FP
+      24px, // CP
+      40px, // Exper.
+      auto, // IQ ±
+      40px, // Base
+    );
 
-  $arcane-grid-template: getResponsiveGridWidths(
-    1fr, // Discipline?
-    4fr, // Name
-    1fr, // Ability
-    40px, // Mod
-    20px, // (Dice)
-    40px, // EP
-    1fr, // Cast Time
-    80px, // Touch/ Ray/ Missile - 80px for two rows not three
-    1.5fr, // Range
-    64px, // Target
-    1.5fr, // Damage/ Duration
-    $notes-popover-width, // N(otes)
-    24px, // FP
-    24px, // CP
-    40px, // Exper.
-    auto, // IQ ±
-    40px, // Base
-  );
-
-  @include epic-table-grid('arcane', $arcane-grid-template);
-  @include epic-table-grid-row-border('arcane');
-  button.updateRollSectionContent {
-    @include updateRollSectionButton();
-  }
-  .narrow-table-heading {
-    font-size: 12px;
-    font-weight: normal !important;
-  }
-
-  .isdiscipline-grid[value="1"] {
-    ~:not(.skillname-grid, .skillCP-grid, .skillexpertise-grid) {
-      opacity: 0;
-      cursor: default;
-      pointer-events: none;
+    @include epic-table-grid('arcane', $arcane-grid-template);
+    @include epic-table-grid-row-border('arcane');
+    button.updateRollSectionContent {
+      @include updateRollSectionButton();
     }
-  }
+    .narrow-table-heading {
+      font-size: 12px;
+      font-weight: normal !important;
+    }
 
-  .isdiscipline-grid[value="1"]~.skillname-grid {
-    font-weight: bold;
-    text-align: center;
-  }
-  .isdiscipline-grid:not([value="1"])~.skillname-grid {
-    text-align: right;
-  }
+    .isdiscipline-grid[value="1"] {
+      ~:not(.skillname-grid, .skillCP-grid, .skillexpertise-grid) {
+        opacity: 0;
+        cursor: default;
+        pointer-events: none;
+      }
+    }
 
-  .arcane-iq-plus-minus-attribute {
-    white-space: nowrap;
+    .isdiscipline-grid[value="1"]~.skillname-grid {
+      font-weight: bold;
+      text-align: center;
+    }
+    .isdiscipline-grid:not([value="1"])~.skillname-grid {
+      text-align: right;
+    }
+
+    .arcane-iq-plus-minus-attribute {
+      white-space: nowrap;
+    }
   }
 
   .divine-spells-grid {
@@ -117,7 +118,7 @@ $notes-popover-width: 30px;
     @include epic-table-grid-row-border('divine');
 
     .isdiscipline-grid[value="1"] {
-      ~:not(.skillname-grid) {
+      ~:not(.skillname-grid, .spellNotesPopover) {
         opacity: 0;
         cursor: default;
         pointer-events: none;
@@ -129,38 +130,34 @@ $notes-popover-width: 30px;
       text-align: center;
     }
   }
-  $innate-grid-template: getResponsiveGridWidths(
-    40px, // Sphere?
-    4fr, // Name
-    $notes-popover-width, // Note Popover
-    32px, //EP
-    2fr, // Cast Time
-    2fr, // Touch/Ray/Missle
-    2fr, // Range
-    3fr, // Target
-    2fr, // Damage/Duration
-    48px, // CP
-  );
-  @include epic-table-grid('innate', $innate-grid-template);
-  @include epic-table-grid-row-border('innate');
+  .innate-spells-grid {
+    $innate-grid-template: getResponsiveGridWidths(
+      40px, // Sphere?
+      4fr, // Name
+      $notes-popover-width, // Note Popover
+      32px, //EP
+      2fr, // Cast Time
+      2fr, // Touch/Ray/Missle
+      2fr, // Range
+      3fr, // Target
+      2fr, // Damage/Duration
+      48px, // CP
+    );
+    @include epic-table-grid('innate', $innate-grid-template);
+    @include epic-table-grid-row-border('innate');
 
-  .innatesphere-hidden[value|="S"]{
-    ~.skillname-grid {
-      // If the row is a sphere, style it
-      font-weight: bold;
-      text-align: center;
+    .innatesphere-hidden[value|="S"]{
+      ~.skillname-grid {
+        // If the row is a sphere, style it
+        font-weight: bold;
+        text-align: center;
+      }
+      ~:not(.skillname-grid, .skillCP-grid) {
+        opacity: 0;
+        cursor: default;
+        pointer-events: none;
+      }
     }
-    ~:not(.skillname-grid, .skillCP-grid) {
-      opacity: 0;
-      cursor: default;
-      pointer-events: none;
-    }
-  }
-
-  @include grid-table-fp-cp-columns();
-
-  .spell-note {
-    margin-bottom: 1px;
   }
 
   @include popover-control('spellNotePopover');

@@ -2929,6 +2929,7 @@ body.sheet-darkmode .spells .spell-header-action-area label, body.sheet-darkmode
   opacity: 0.9;
 }
 .spells .spellNotesPopover {
+  text-align: center;
   background-color: #efd6c4;
 }
 body.sheet-darkmode .spells .spellNotesPopover {
@@ -2954,6 +2955,9 @@ body.sheet-darkmode .spells .spellNotesPopover button.popoverButton {
 body.sheet-darkmode .spells .spellNotesPopover button.popoverButton {
   background-color: #b56632;
 }
+.spells .spellNotesPopover .spell-note {
+  margin-bottom: 1px;
+}
 .spells .spellNotesPopover .spellnote-hidden[value] ~ button.popoverButton::after {
   content: "s";
   color: #80ffff;
@@ -2969,7 +2973,7 @@ body.sheet-darkmode .spells .spellNotesPopover button.popoverButton {
 .spells .spellNotesPopover .extra-spell-attributes .attribute-section input {
   width: 100%;
 }
-.spells .epic-table-header-grid.arcane {
+.spells .arcane-spells-grid .epic-table-header-grid.arcane {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 4fr) minmax(0, 1fr) minmax(0, 40px) minmax(0, 20px) minmax(0, 40px) minmax(0, 1fr) minmax(0, 80px) minmax(0, 1.5fr) minmax(0, 64px) minmax(0, 1.5fr) minmax(0, 30px) minmax(0, 24px) minmax(0, 24px) minmax(0, 40px) minmax(0, auto) minmax(0, 40px);
   column-gap: 2px;
@@ -2978,21 +2982,21 @@ body.sheet-darkmode .spells .spellNotesPopover button.popoverButton {
   padding: 0 2px;
   margin-bottom: 2px;
 }
-body.sheet-darkmode .spells .epic-table-header-grid.arcane {
+body.sheet-darkmode .spells .arcane-spells-grid .epic-table-header-grid.arcane {
   color: #fff;
 }
-body.sheet-darkmode .spells .epic-table-header-grid.arcane {
+body.sheet-darkmode .spells .arcane-spells-grid .epic-table-header-grid.arcane {
   background-color: #b56632;
 }
-.spells .epic-table-header-grid.arcane > div {
+.spells .arcane-spells-grid .epic-table-header-grid.arcane > div {
   text-align: center;
   margin: auto;
   font-weight: bold;
   width: 100%;
   overflow: hidden;
 }
-.spells div[data-groupname=repeating_arcane] > div,
-.spells div[data-epic-table-name=arcane] {
+.spells .arcane-spells-grid div[data-groupname=repeating_arcane] > div,
+.spells .arcane-spells-grid div[data-epic-table-name=arcane] {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 4fr) minmax(0, 1fr) minmax(0, 40px) minmax(0, 20px) minmax(0, 40px) minmax(0, 1fr) minmax(0, 80px) minmax(0, 1.5fr) minmax(0, 64px) minmax(0, 1.5fr) minmax(0, 30px) minmax(0, 24px) minmax(0, 24px) minmax(0, 40px) minmax(0, auto) minmax(0, 40px);
   row-gap: 0;
@@ -3000,56 +3004,56 @@ body.sheet-darkmode .spells .epic-table-header-grid.arcane {
   background: transparent;
   word-break: break-word;
 }
-.spells div[data-groupname=repeating_arcane] > div input, .spells div[data-groupname=repeating_arcane] > div input[type=number], .spells div[data-groupname=repeating_arcane] > div textarea, .spells div[data-groupname=repeating_arcane] > div select,
-.spells div[data-epic-table-name=arcane] input,
-.spells div[data-epic-table-name=arcane] input[type=number],
-.spells div[data-epic-table-name=arcane] textarea,
-.spells div[data-epic-table-name=arcane] select {
+.spells .arcane-spells-grid div[data-groupname=repeating_arcane] > div input, .spells .arcane-spells-grid div[data-groupname=repeating_arcane] > div input[type=number], .spells .arcane-spells-grid div[data-groupname=repeating_arcane] > div textarea, .spells .arcane-spells-grid div[data-groupname=repeating_arcane] > div select,
+.spells .arcane-spells-grid div[data-epic-table-name=arcane] input,
+.spells .arcane-spells-grid div[data-epic-table-name=arcane] input[type=number],
+.spells .arcane-spells-grid div[data-epic-table-name=arcane] textarea,
+.spells .arcane-spells-grid div[data-epic-table-name=arcane] select {
   width: 100% !important;
   margin-left: unset;
   height: auto;
 }
-.spells div[data-groupname=repeating_arcane] > div input[type=text],
-.spells div[data-epic-table-name=arcane] input[type=text] {
+.spells .arcane-spells-grid div[data-groupname=repeating_arcane] > div input[type=text],
+.spells .arcane-spells-grid div[data-epic-table-name=arcane] input[type=text] {
   text-align: left;
 }
-.spells div[data-groupname=repeating_arcane] > div input, .spells div[data-groupname=repeating_arcane] > div select,
-.spells div[data-epic-table-name=arcane] input,
-.spells div[data-epic-table-name=arcane] select {
+.spells .arcane-spells-grid div[data-groupname=repeating_arcane] > div input, .spells .arcane-spells-grid div[data-groupname=repeating_arcane] > div select,
+.spells .arcane-spells-grid div[data-epic-table-name=arcane] input,
+.spells .arcane-spells-grid div[data-epic-table-name=arcane] select {
   white-space: nowrap;
 }
-.spells div[data-groupname=repeating_arcane] > div span,
-.spells div[data-epic-table-name=arcane] span {
+.spells .arcane-spells-grid div[data-groupname=repeating_arcane] > div span,
+.spells .arcane-spells-grid div[data-epic-table-name=arcane] span {
   text-align: center;
   margin: auto 0;
 }
-.spells div[data-groupname=repeating_arcane] > div button, .spells div[data-groupname=repeating_arcane] > div button[type=roll],
-.spells div[data-epic-table-name=arcane] button,
-.spells div[data-epic-table-name=arcane] button[type=roll] {
+.spells .arcane-spells-grid div[data-groupname=repeating_arcane] > div button, .spells .arcane-spells-grid div[data-groupname=repeating_arcane] > div button[type=roll],
+.spells .arcane-spells-grid div[data-epic-table-name=arcane] button,
+.spells .arcane-spells-grid div[data-epic-table-name=arcane] button[type=roll] {
   margin: 0;
 }
-.spells div[data-groupname=repeating_arcane] > div .epic-table-row.conditional-one,
-.spells div[data-epic-table-name=arcane] .epic-table-row.conditional-one {
+.spells .arcane-spells-grid div[data-groupname=repeating_arcane] > div .epic-table-row.conditional-one,
+.spells .arcane-spells-grid div[data-epic-table-name=arcane] .epic-table-row.conditional-one {
   display: grid;
   grid-column-start: 1;
   grid-column-end: 18;
 }
-.spells div[data-groupname=repeating_arcane] > div > input, .spells div[data-groupname=repeating_arcane] > div > select, .spells div[data-groupname=repeating_arcane] > div > textarea,
-.spells div[data-epic-table-name=arcane] > input,
-.spells div[data-epic-table-name=arcane] > select,
-.spells div[data-epic-table-name=arcane] > textarea {
+.spells .arcane-spells-grid div[data-groupname=repeating_arcane] > div > input, .spells .arcane-spells-grid div[data-groupname=repeating_arcane] > div > select, .spells .arcane-spells-grid div[data-groupname=repeating_arcane] > div > textarea,
+.spells .arcane-spells-grid div[data-epic-table-name=arcane] > input,
+.spells .arcane-spells-grid div[data-epic-table-name=arcane] > select,
+.spells .arcane-spells-grid div[data-epic-table-name=arcane] > textarea {
   border: unset;
 }
-.spells div[data-groupname=repeating_arcane] > div + div,
-.spells div[data-epic-table-name=arcane] + div[data-epic-table-name=arcane] {
+.spells .arcane-spells-grid div[data-groupname=repeating_arcane] > div + div,
+.spells .arcane-spells-grid div[data-epic-table-name=arcane] + div[data-epic-table-name=arcane] {
   border-top: 1px solid;
   border-color: rgba(181, 102, 50, 0.7);
 }
-body.sheet-darkmode .spells div[data-groupname=repeating_arcane] > div + div,
-body.sheet-darkmode .spells div[data-epic-table-name=arcane] + div[data-epic-table-name=arcane] {
+body.sheet-darkmode .spells .arcane-spells-grid div[data-groupname=repeating_arcane] > div + div,
+body.sheet-darkmode .spells .arcane-spells-grid div[data-epic-table-name=arcane] + div[data-epic-table-name=arcane] {
   border-color: rgba(181, 102, 50, 0.7);
 }
-.spells button.updateRollSectionContent {
+.spells .arcane-spells-grid button.updateRollSectionContent {
   padding: 0px 2px;
   box-sizing: border-box;
   margin: auto 2px;
@@ -3067,26 +3071,26 @@ body.sheet-darkmode .spells div[data-epic-table-name=arcane] + div[data-epic-tab
   background-repeat: no-repeat;
   background-size: contain;
 }
-.spells button.updateRollSectionContent:hover {
+.spells .arcane-spells-grid button.updateRollSectionContent:hover {
   opacity: 0.9;
 }
-.spells .narrow-table-heading {
+.spells .arcane-spells-grid .narrow-table-heading {
   font-size: 12px;
   font-weight: normal !important;
 }
-.spells .isdiscipline-grid[value="1"] ~ :not(.skillname-grid, .skillCP-grid, .skillexpertise-grid) {
+.spells .arcane-spells-grid .isdiscipline-grid[value="1"] ~ :not(.skillname-grid, .skillCP-grid, .skillexpertise-grid) {
   opacity: 0;
   cursor: default;
   pointer-events: none;
 }
-.spells .isdiscipline-grid[value="1"] ~ .skillname-grid {
+.spells .arcane-spells-grid .isdiscipline-grid[value="1"] ~ .skillname-grid {
   font-weight: bold;
   text-align: center;
 }
-.spells .isdiscipline-grid:not([value="1"]) ~ .skillname-grid {
+.spells .arcane-spells-grid .isdiscipline-grid:not([value="1"]) ~ .skillname-grid {
   text-align: right;
 }
-.spells .arcane-iq-plus-minus-attribute {
+.spells .arcane-spells-grid .arcane-iq-plus-minus-attribute {
   white-space: nowrap;
 }
 .spells .divine-spells-grid .epic-table-header-grid.divine {
@@ -3169,7 +3173,7 @@ body.sheet-darkmode .spells .divine-spells-grid div[data-groupname=repeating_div
 body.sheet-darkmode .spells .divine-spells-grid div[data-epic-table-name=divine] + div[data-epic-table-name=divine] {
   border-color: rgba(181, 102, 50, 0.7);
 }
-.spells .divine-spells-grid .isdiscipline-grid[value="1"] ~ :not(.skillname-grid) {
+.spells .divine-spells-grid .isdiscipline-grid[value="1"] ~ :not(.skillname-grid, .spellNotesPopover) {
   opacity: 0;
   cursor: default;
   pointer-events: none;
@@ -3178,7 +3182,7 @@ body.sheet-darkmode .spells .divine-spells-grid div[data-epic-table-name=divine]
   font-weight: bold;
   text-align: center;
 }
-.spells .epic-table-header-grid.innate {
+.spells .innate-spells-grid .epic-table-header-grid.innate {
   display: grid;
   grid-template-columns: minmax(0, 40px) minmax(0, 4fr) minmax(0, 30px) minmax(0, 32px) minmax(0, 2fr) minmax(0, 2fr) minmax(0, 2fr) minmax(0, 3fr) minmax(0, 2fr) minmax(0, 48px);
   column-gap: 2px;
@@ -3187,21 +3191,21 @@ body.sheet-darkmode .spells .divine-spells-grid div[data-epic-table-name=divine]
   padding: 0 2px;
   margin-bottom: 2px;
 }
-body.sheet-darkmode .spells .epic-table-header-grid.innate {
+body.sheet-darkmode .spells .innate-spells-grid .epic-table-header-grid.innate {
   color: #fff;
 }
-body.sheet-darkmode .spells .epic-table-header-grid.innate {
+body.sheet-darkmode .spells .innate-spells-grid .epic-table-header-grid.innate {
   background-color: #b56632;
 }
-.spells .epic-table-header-grid.innate > div {
+.spells .innate-spells-grid .epic-table-header-grid.innate > div {
   text-align: center;
   margin: auto;
   font-weight: bold;
   width: 100%;
   overflow: hidden;
 }
-.spells div[data-groupname=repeating_innate] > div,
-.spells div[data-epic-table-name=innate] {
+.spells .innate-spells-grid div[data-groupname=repeating_innate] > div,
+.spells .innate-spells-grid div[data-epic-table-name=innate] {
   display: grid;
   grid-template-columns: minmax(0, 40px) minmax(0, 4fr) minmax(0, 30px) minmax(0, 32px) minmax(0, 2fr) minmax(0, 2fr) minmax(0, 2fr) minmax(0, 3fr) minmax(0, 2fr) minmax(0, 48px);
   row-gap: 0;
@@ -3209,92 +3213,63 @@ body.sheet-darkmode .spells .epic-table-header-grid.innate {
   background: transparent;
   word-break: break-word;
 }
-.spells div[data-groupname=repeating_innate] > div input, .spells div[data-groupname=repeating_innate] > div input[type=number], .spells div[data-groupname=repeating_innate] > div textarea, .spells div[data-groupname=repeating_innate] > div select,
-.spells div[data-epic-table-name=innate] input,
-.spells div[data-epic-table-name=innate] input[type=number],
-.spells div[data-epic-table-name=innate] textarea,
-.spells div[data-epic-table-name=innate] select {
+.spells .innate-spells-grid div[data-groupname=repeating_innate] > div input, .spells .innate-spells-grid div[data-groupname=repeating_innate] > div input[type=number], .spells .innate-spells-grid div[data-groupname=repeating_innate] > div textarea, .spells .innate-spells-grid div[data-groupname=repeating_innate] > div select,
+.spells .innate-spells-grid div[data-epic-table-name=innate] input,
+.spells .innate-spells-grid div[data-epic-table-name=innate] input[type=number],
+.spells .innate-spells-grid div[data-epic-table-name=innate] textarea,
+.spells .innate-spells-grid div[data-epic-table-name=innate] select {
   width: 100% !important;
   margin-left: unset;
   height: auto;
 }
-.spells div[data-groupname=repeating_innate] > div input[type=text],
-.spells div[data-epic-table-name=innate] input[type=text] {
+.spells .innate-spells-grid div[data-groupname=repeating_innate] > div input[type=text],
+.spells .innate-spells-grid div[data-epic-table-name=innate] input[type=text] {
   text-align: left;
 }
-.spells div[data-groupname=repeating_innate] > div input, .spells div[data-groupname=repeating_innate] > div select,
-.spells div[data-epic-table-name=innate] input,
-.spells div[data-epic-table-name=innate] select {
+.spells .innate-spells-grid div[data-groupname=repeating_innate] > div input, .spells .innate-spells-grid div[data-groupname=repeating_innate] > div select,
+.spells .innate-spells-grid div[data-epic-table-name=innate] input,
+.spells .innate-spells-grid div[data-epic-table-name=innate] select {
   white-space: nowrap;
 }
-.spells div[data-groupname=repeating_innate] > div span,
-.spells div[data-epic-table-name=innate] span {
+.spells .innate-spells-grid div[data-groupname=repeating_innate] > div span,
+.spells .innate-spells-grid div[data-epic-table-name=innate] span {
   text-align: center;
   margin: auto 0;
 }
-.spells div[data-groupname=repeating_innate] > div button, .spells div[data-groupname=repeating_innate] > div button[type=roll],
-.spells div[data-epic-table-name=innate] button,
-.spells div[data-epic-table-name=innate] button[type=roll] {
+.spells .innate-spells-grid div[data-groupname=repeating_innate] > div button, .spells .innate-spells-grid div[data-groupname=repeating_innate] > div button[type=roll],
+.spells .innate-spells-grid div[data-epic-table-name=innate] button,
+.spells .innate-spells-grid div[data-epic-table-name=innate] button[type=roll] {
   margin: 0;
 }
-.spells div[data-groupname=repeating_innate] > div .epic-table-row.conditional-one,
-.spells div[data-epic-table-name=innate] .epic-table-row.conditional-one {
+.spells .innate-spells-grid div[data-groupname=repeating_innate] > div .epic-table-row.conditional-one,
+.spells .innate-spells-grid div[data-epic-table-name=innate] .epic-table-row.conditional-one {
   display: grid;
   grid-column-start: 1;
   grid-column-end: 11;
 }
-.spells div[data-groupname=repeating_innate] > div > input, .spells div[data-groupname=repeating_innate] > div > select, .spells div[data-groupname=repeating_innate] > div > textarea,
-.spells div[data-epic-table-name=innate] > input,
-.spells div[data-epic-table-name=innate] > select,
-.spells div[data-epic-table-name=innate] > textarea {
+.spells .innate-spells-grid div[data-groupname=repeating_innate] > div > input, .spells .innate-spells-grid div[data-groupname=repeating_innate] > div > select, .spells .innate-spells-grid div[data-groupname=repeating_innate] > div > textarea,
+.spells .innate-spells-grid div[data-epic-table-name=innate] > input,
+.spells .innate-spells-grid div[data-epic-table-name=innate] > select,
+.spells .innate-spells-grid div[data-epic-table-name=innate] > textarea {
   border: unset;
 }
-.spells div[data-groupname=repeating_innate] > div + div,
-.spells div[data-epic-table-name=innate] + div[data-epic-table-name=innate] {
+.spells .innate-spells-grid div[data-groupname=repeating_innate] > div + div,
+.spells .innate-spells-grid div[data-epic-table-name=innate] + div[data-epic-table-name=innate] {
   border-top: 1px solid;
   border-color: rgba(181, 102, 50, 0.7);
 }
-body.sheet-darkmode .spells div[data-groupname=repeating_innate] > div + div,
-body.sheet-darkmode .spells div[data-epic-table-name=innate] + div[data-epic-table-name=innate] {
+body.sheet-darkmode .spells .innate-spells-grid div[data-groupname=repeating_innate] > div + div,
+body.sheet-darkmode .spells .innate-spells-grid div[data-epic-table-name=innate] + div[data-epic-table-name=innate] {
   border-color: rgba(181, 102, 50, 0.7);
 }
-.spells .innatesphere-hidden[value|=S] ~ .skillname-grid {
+.spells .innate-spells-grid .innatesphere-hidden[value|=S] ~ .skillname-grid {
   font-weight: bold;
   text-align: center;
 }
-.spells .innatesphere-hidden[value|=S] ~ :not(.skillname-grid, .skillCP-grid) {
+.spells .innate-spells-grid .innatesphere-hidden[value|=S] ~ :not(.skillname-grid, .skillCP-grid) {
   opacity: 0;
   cursor: default;
   pointer-events: none;
-}
-.spells .skillFP-grid, .spells .FP-grid {
-  color: #267200;
-  font-weight: bold;
-}
-body.sheet-darkmode .spells .skillFP-grid, body.sheet-darkmode .spells .FP-grid {
-  color: #c4fda8;
-}
-.spells .skillCP-grid, .spells .CP-grid {
-  color: blue;
-  font-weight: bold;
-}
-body.sheet-darkmode .spells .skillCP-grid, body.sheet-darkmode .spells .CP-grid {
-  color: rgb(145, 145, 246);
-}
-.spells .epic-table-header-grid .skillFP-grid, .spells .epic-table-header-grid .FP-grid {
-  color: #267200;
-}
-body.sheet-darkmode .spells .epic-table-header-grid .skillFP-grid, body.sheet-darkmode .spells .epic-table-header-grid .FP-grid {
-  color: #c4fda8;
-}
-.spells .epic-table-header-grid .skillCP-grid, .spells .epic-table-header-grid .CP-grid {
-  color: blue;
-}
-body.sheet-darkmode .spells .epic-table-header-grid .skillCP-grid, body.sheet-darkmode .spells .epic-table-header-grid .CP-grid {
-  color: rgb(145, 145, 246);
-}
-.spells .spell-note {
-  margin-bottom: 1px;
 }
 .spells .sectioncontrol[value=spellNotePopover] ~ div.popoverContainer.spellNotePopover,
 .spells input.popoverController[value="1"] ~ div.popoverContainer.spellNotePopover {
