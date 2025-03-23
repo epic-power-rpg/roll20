@@ -566,6 +566,12 @@ on('sheet:opened', fixPower);
       setAttrs({ chosentab: button });
     });
   });
+['defense_equipment', 'defense_skills'].forEach(
+  button => {
+    on(`clicked:${button}`, function () {
+      setAttrs({ defense_tab: button });
+    });
+  });
 
 // ----- Popovers -----
 // Close all popovers on page load

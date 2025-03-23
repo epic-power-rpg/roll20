@@ -761,6 +761,28 @@ body.sheet-darkmode .top-section .pwr-er-hp button.convert-button:hover {
 .top-section .tab-holder {
   margin-top: 4px;
 }
+.top-section .defense-block div.attribute-column {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+.top-section .defense-block div.attribute-column button.toggleDefenseTab {
+  background-color: transparent;
+  border: unset;
+  width: 14px;
+  height: 14px;
+  padding: 0;
+  font-family: Pictos;
+  color: inherit;
+}
+.top-section .defense-block div.attribute-column button.toggleDefenseTab::after {
+  content: "0";
+  font-size: 1.25em;
+}
+.top-section .defense-block .sectioncontrol[value=defense_equipment] ~ div.defense_equipment,
+.top-section .defense-block .sectioncontrol[value=defense_skills] ~ div.defense_skills {
+  display: block;
+}
 .top-section .defense-block .armor-header {
   text-decoration: line-through;
   font-weight: normal !important;
@@ -922,7 +944,7 @@ body.sheet-darkmode .top-section .defense-block div[data-epic-table-name=defense
 .top-section .defense-block input[type=number] {
   text-align: center;
 }
-.top-section .defense-extra-block .epic-table-header-grid.defenses-extra {
+.top-section .defense-block .defense-extra-block .epic-table-header-grid.defenses-extra {
   display: grid;
   grid-template-columns: minmax(0, 64px) minmax(0, 64px);
   column-gap: 2px;
@@ -931,21 +953,21 @@ body.sheet-darkmode .top-section .defense-block div[data-epic-table-name=defense
   padding: 0 2px;
   margin-bottom: 2px;
 }
-body.sheet-darkmode .top-section .defense-extra-block .epic-table-header-grid.defenses-extra {
+body.sheet-darkmode .top-section .defense-block .defense-extra-block .epic-table-header-grid.defenses-extra {
   color: #fff;
 }
-body.sheet-darkmode .top-section .defense-extra-block .epic-table-header-grid.defenses-extra {
+body.sheet-darkmode .top-section .defense-block .defense-extra-block .epic-table-header-grid.defenses-extra {
   background-color: #b56632;
 }
-.top-section .defense-extra-block .epic-table-header-grid.defenses-extra > div {
+.top-section .defense-block .defense-extra-block .epic-table-header-grid.defenses-extra > div {
   text-align: center;
   margin: auto;
   font-weight: bold;
   width: 100%;
   overflow: hidden;
 }
-.top-section .defense-extra-block div[data-groupname=repeating_defenses-extra] > div,
-.top-section .defense-extra-block div[data-epic-table-name=defenses-extra] {
+.top-section .defense-block .defense-extra-block div[data-groupname=repeating_defenses-extra] > div,
+.top-section .defense-block .defense-extra-block div[data-epic-table-name=defenses-extra] {
   display: grid;
   grid-template-columns: minmax(0, 64px) minmax(0, 64px);
   row-gap: 0;
@@ -953,62 +975,62 @@ body.sheet-darkmode .top-section .defense-extra-block .epic-table-header-grid.de
   background: transparent;
   word-break: break-word;
 }
-.top-section .defense-extra-block div[data-groupname=repeating_defenses-extra] > div input, .top-section .defense-extra-block div[data-groupname=repeating_defenses-extra] > div input[type=number], .top-section .defense-extra-block div[data-groupname=repeating_defenses-extra] > div textarea, .top-section .defense-extra-block div[data-groupname=repeating_defenses-extra] > div select,
-.top-section .defense-extra-block div[data-epic-table-name=defenses-extra] input,
-.top-section .defense-extra-block div[data-epic-table-name=defenses-extra] input[type=number],
-.top-section .defense-extra-block div[data-epic-table-name=defenses-extra] textarea,
-.top-section .defense-extra-block div[data-epic-table-name=defenses-extra] select {
+.top-section .defense-block .defense-extra-block div[data-groupname=repeating_defenses-extra] > div input, .top-section .defense-block .defense-extra-block div[data-groupname=repeating_defenses-extra] > div input[type=number], .top-section .defense-block .defense-extra-block div[data-groupname=repeating_defenses-extra] > div textarea, .top-section .defense-block .defense-extra-block div[data-groupname=repeating_defenses-extra] > div select,
+.top-section .defense-block .defense-extra-block div[data-epic-table-name=defenses-extra] input,
+.top-section .defense-block .defense-extra-block div[data-epic-table-name=defenses-extra] input[type=number],
+.top-section .defense-block .defense-extra-block div[data-epic-table-name=defenses-extra] textarea,
+.top-section .defense-block .defense-extra-block div[data-epic-table-name=defenses-extra] select {
   width: 100% !important;
   margin-left: unset;
   height: auto;
 }
-.top-section .defense-extra-block div[data-groupname=repeating_defenses-extra] > div input[type=text],
-.top-section .defense-extra-block div[data-epic-table-name=defenses-extra] input[type=text] {
+.top-section .defense-block .defense-extra-block div[data-groupname=repeating_defenses-extra] > div input[type=text],
+.top-section .defense-block .defense-extra-block div[data-epic-table-name=defenses-extra] input[type=text] {
   text-align: left;
 }
-.top-section .defense-extra-block div[data-groupname=repeating_defenses-extra] > div input, .top-section .defense-extra-block div[data-groupname=repeating_defenses-extra] > div select,
-.top-section .defense-extra-block div[data-epic-table-name=defenses-extra] input,
-.top-section .defense-extra-block div[data-epic-table-name=defenses-extra] select {
+.top-section .defense-block .defense-extra-block div[data-groupname=repeating_defenses-extra] > div input, .top-section .defense-block .defense-extra-block div[data-groupname=repeating_defenses-extra] > div select,
+.top-section .defense-block .defense-extra-block div[data-epic-table-name=defenses-extra] input,
+.top-section .defense-block .defense-extra-block div[data-epic-table-name=defenses-extra] select {
   white-space: nowrap;
 }
-.top-section .defense-extra-block div[data-groupname=repeating_defenses-extra] > div span,
-.top-section .defense-extra-block div[data-epic-table-name=defenses-extra] span {
+.top-section .defense-block .defense-extra-block div[data-groupname=repeating_defenses-extra] > div span,
+.top-section .defense-block .defense-extra-block div[data-epic-table-name=defenses-extra] span {
   text-align: center;
   margin: auto 0;
 }
-.top-section .defense-extra-block div[data-groupname=repeating_defenses-extra] > div button, .top-section .defense-extra-block div[data-groupname=repeating_defenses-extra] > div button[type=roll],
-.top-section .defense-extra-block div[data-epic-table-name=defenses-extra] button,
-.top-section .defense-extra-block div[data-epic-table-name=defenses-extra] button[type=roll] {
+.top-section .defense-block .defense-extra-block div[data-groupname=repeating_defenses-extra] > div button, .top-section .defense-block .defense-extra-block div[data-groupname=repeating_defenses-extra] > div button[type=roll],
+.top-section .defense-block .defense-extra-block div[data-epic-table-name=defenses-extra] button,
+.top-section .defense-block .defense-extra-block div[data-epic-table-name=defenses-extra] button[type=roll] {
   margin: 0;
 }
-.top-section .defense-extra-block div[data-groupname=repeating_defenses-extra] > div .epic-table-row.conditional-one,
-.top-section .defense-extra-block div[data-epic-table-name=defenses-extra] .epic-table-row.conditional-one {
+.top-section .defense-block .defense-extra-block div[data-groupname=repeating_defenses-extra] > div .epic-table-row.conditional-one,
+.top-section .defense-block .defense-extra-block div[data-epic-table-name=defenses-extra] .epic-table-row.conditional-one {
   display: grid;
   grid-column-start: 1;
   grid-column-end: 3;
 }
-.top-section .defense-extra-block div[data-groupname=repeating_defenses-extra] > div > input, .top-section .defense-extra-block div[data-groupname=repeating_defenses-extra] > div > select, .top-section .defense-extra-block div[data-groupname=repeating_defenses-extra] > div > textarea,
-.top-section .defense-extra-block div[data-epic-table-name=defenses-extra] > input,
-.top-section .defense-extra-block div[data-epic-table-name=defenses-extra] > select,
-.top-section .defense-extra-block div[data-epic-table-name=defenses-extra] > textarea {
+.top-section .defense-block .defense-extra-block div[data-groupname=repeating_defenses-extra] > div > input, .top-section .defense-block .defense-extra-block div[data-groupname=repeating_defenses-extra] > div > select, .top-section .defense-block .defense-extra-block div[data-groupname=repeating_defenses-extra] > div > textarea,
+.top-section .defense-block .defense-extra-block div[data-epic-table-name=defenses-extra] > input,
+.top-section .defense-block .defense-extra-block div[data-epic-table-name=defenses-extra] > select,
+.top-section .defense-block .defense-extra-block div[data-epic-table-name=defenses-extra] > textarea {
   border: unset;
 }
-.top-section .defense-extra-block div[data-groupname=repeating_defenses-extra] > div + div,
-.top-section .defense-extra-block div[data-epic-table-name=defenses-extra] + div[data-epic-table-name=defenses-extra] {
+.top-section .defense-block .defense-extra-block div[data-groupname=repeating_defenses-extra] > div + div,
+.top-section .defense-block .defense-extra-block div[data-epic-table-name=defenses-extra] + div[data-epic-table-name=defenses-extra] {
   border-top: 1px solid;
   border-color: rgba(181, 102, 50, 0.7);
 }
-body.sheet-darkmode .top-section .defense-extra-block div[data-groupname=repeating_defenses-extra] > div + div,
-body.sheet-darkmode .top-section .defense-extra-block div[data-epic-table-name=defenses-extra] + div[data-epic-table-name=defenses-extra] {
+body.sheet-darkmode .top-section .defense-block .defense-extra-block div[data-groupname=repeating_defenses-extra] > div + div,
+body.sheet-darkmode .top-section .defense-block .defense-extra-block div[data-epic-table-name=defenses-extra] + div[data-epic-table-name=defenses-extra] {
   border-color: rgba(181, 102, 50, 0.7);
 }
-.top-section .defense-extra-block .table-label {
+.top-section .defense-block .defense-extra-block .table-label {
   text-align: right;
   margin: auto;
   margin-right: 2px;
   font-weight: bold;
 }
-.top-section .defense-extra-block input[type=number] {
+.top-section .defense-block .defense-extra-block input[type=number] {
   text-align: center;
 }
 

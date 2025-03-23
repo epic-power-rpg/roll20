@@ -155,47 +155,58 @@
       <div class="children-separated no-shrink"></div>
       <!-- Defense -->
       <div class="defense-block">
-        <div class="defenses epic-table-header-grid">
-          <div>Def.</div>
-          <div>Armor</div>
-          <div class="armor-header epic-tooltip">None<span class="epic-tooltip-text right">Ability without Armor</span>
+        <input class="sectioncontrol" name="attr_defense_tab" type="hidden" value="defense_equipment" />
+        <div class="defense_equipment section">
+          <div class="defenses epic-table-header-grid">
+            <div class="attribute-column">
+              <button class="toggleDefenseTab" name="act_defense_skills" type="action" aria-label="Toggle Defense Skills"></button>
+              <span>Def.</span>
+            </div>
+            <div>Armor</div>
+            <div class="armor-header epic-tooltip">None<span class="epic-tooltip-text right">Ability without Armor</span>
+            </div>
+          </div>
+          <div class="defenses-table-row bonus-row" data-epic-table-name="defenses">
+            <div class="table-label">+bonus</div>
+            <input class="center bold larger" name="attr_defense_boost" type="number" value="0" />
+          </div>
+          <div class="defenses-table-row" data-epic-table-name="defenses">
+            <div class="table-label larger">Dodge</div>
+            <input name="attr_dodge" type="hidden" />
+            <span class="center bold larger" name="attr_current_dodge_with_armor" value="0"></span>
+            <span class="center bold larger" name="attr_current_dodge_without_armor" value="0"></span>
+          </div>
+          <div class="defenses-table-row" data-epic-table-name="defenses">
+            <div class="table-label larger">Block</div>
+            <input name="attr_block" type="hidden" />
+            <span class="center bold larger" name="attr_current_block_with_armor" value="0"></span>
+            <span class="center bold larger" name="attr_current_block_without_armor" value="0"></span>
+          </div>
+          <div class="defenses-table-row parry-row" data-epic-table-name="defenses">
+            <div class="table-label larger">Parry</div>
+            <span class="center bold larger" name="attr_current_parry_with_armor" type="number" value="0"></span>
+            <span class="center bold larger" name="attr_current_parry_without_armor" type="number" value="0"></span>
           </div>
         </div>
-        <div class="defenses-table-row bonus-row" data-epic-table-name="defenses">
-          <div class="table-label">+bonus</div>
-          <input class="center bold larger" name="attr_defense_boost" type="number" value="0" />
-        </div>
-        <div class="defenses-table-row" data-epic-table-name="defenses">
-          <div class="table-label larger">Dodge</div>
-          <input name="attr_dodge" type="hidden" />
-          <span class="center bold larger" name="attr_current_dodge_with_armor" value="0"></span>
-          <span class="center bold larger" name="attr_current_dodge_without_armor" value="0"></span>
-        </div>
-        <div class="defenses-table-row" data-epic-table-name="defenses">
-          <div class="table-label larger">Block</div>
-          <input name="attr_block" type="hidden" />
-          <span class="center bold larger" name="attr_current_block_with_armor" value="0"></span>
-          <span class="center bold larger" name="attr_current_block_without_armor" value="0"></span>
-        </div>
-        <div class="defenses-table-row parry-row" data-epic-table-name="defenses">
-          <div class="table-label larger">Parry</div>
-          <span class="center bold larger" name="attr_current_parry_with_armor" type="number" value="0"></span>
-          <span class="center bold larger" name="attr_current_parry_without_armor" type="number" value="0"></span>
-        </div>
-      </div>
-      <div class="defense-extra-block">
-        <div class="defenses-extra epic-table-header-grid">
-          <div>Def.</div>
-          <div>Skill</div>
-        </div>
-        <div class="defenses-extra-table-row" data-epic-table-name="defenses-extra">
-          <div class="table-label larger">Resolve</div>
-          <input name="attr_block" type="hidden" />
-          <span class="center bold larger" name="attr_current_resolve" value="0"></span>
-        </div>
-        <div class="defenses-extra-table-row parry-row" data-epic-table-name="defenses-extra">
-          <div class="table-label larger">Robust</div>
-          <span class="center bold larger" name="attr_current_robustness" type="number" value="0"></span>
+        <div class="defense_skills section">
+          <div class="defense-extra-block">
+            <div class="defenses-extra epic-table-header-grid">
+              <div class="attribute-column">
+                <button class="toggleDefenseTab" name="act_defense_equipment" type="action" aria-label="Toggle Defense Equipment"></button>
+                <span>Def.</span>
+              </div>
+              <div>Skill</div>
+            </div>
+            <div class="defenses-extra-table-row" data-epic-table-name="defenses-extra">
+              <div class="table-label larger">Resolve</div>
+              <input name="attr_block" type="hidden" />
+              <span class="center bold larger" name="attr_current_resolve" value="0"></span>
+            </div>
+            <div class="defenses-extra-table-row parry-row" data-epic-table-name="defenses-extra">
+              <div class="table-label larger">Robust</div>
+              <span class="center bold larger" name="attr_current_robustness" type="number" value="0"></span>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -1928,6 +1939,12 @@ on('sheet:opened', fixPower);
   button => {
     on(`clicked:${button}`, function () {
       setAttrs({ chosentab: button });
+    });
+  });
+['defense_equipment', 'defense_skills'].forEach(
+  button => {
+    on(`clicked:${button}`, function () {
+      setAttrs({ defense_tab: button });
     });
   });
 

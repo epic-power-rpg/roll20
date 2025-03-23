@@ -1,6 +1,28 @@
 @import '../../components/gridTable/gridTable.scss';
 
 .defense-block {
+  div.attribute-column {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    button.toggleDefenseTab {
+      background-color: transparent;
+      border: unset;
+      width: 14px;
+      height: 14px;
+      padding: 0;
+      font-family: Pictos;
+      color: inherit;
+      &::after {
+        content: "0";
+        font-size: 1.25em;
+      }
+    }
+  }
+  .sectioncontrol[value="defense_equipment"]~div.defense_equipment,
+  .sectioncontrol[value="defense_skills"]~div.defense_skills {
+    display: block;
+  }
   .armor-header {
     text-decoration: line-through;
     font-weight: normal !important;
@@ -24,20 +46,20 @@
   input[type=number] {
     text-align: center;
   }
-}
-.defense-extra-block {
-  $defenses-extra-grid-template: getResponsiveGridWidths(64px, 64px);
-  @include epic-table-grid('defenses-extra', $defenses-extra-grid-template);
-  @include epic-table-grid-row-border('defenses-extra');
+  .defense-extra-block {
+    $defenses-extra-grid-template: getResponsiveGridWidths(64px, 64px);
+    @include epic-table-grid('defenses-extra', $defenses-extra-grid-template);
+    @include epic-table-grid-row-border('defenses-extra');
 
-  .table-label {
-    text-align: right;
-    margin: auto;
-    margin-right: 2px;
-    font-weight: bold;
-  }
+    .table-label {
+      text-align: right;
+      margin: auto;
+      margin-right: 2px;
+      font-weight: bold;
+    }
 
-  input[type=number] {
-    text-align: center;
+    input[type=number] {
+      text-align: center;
+    }
   }
 }
