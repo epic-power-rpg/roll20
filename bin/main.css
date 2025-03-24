@@ -613,6 +613,7 @@ radio > span.checked {
   display: inline-flex;
   flex-direction: column;
   flex-grow: 1;
+  row-gap: 2px;
 }
 
 .roll-description-line {
