@@ -10,6 +10,13 @@
     div
       .attribute-name.larger.inline.bold.right.middle Equip Weight
       span.center.bold.larger.value.middle(name='attr_equipment_total_weight')
+    div
+      .attribute-name.larger.inline.bold.right.middle Wt. Pen.
+      span.narrowish.center.bold.larger.value(name='attr_displayed_weight_penalty')
+      include ./speedTooltip.pug
+    div
+      .attribute-name.larger.inline.bold.right.middle Speed
+      span.narrowish.center.bold.larger.value(name='attr_speed')
   = '\n'
   .small-spacer
   .armor-table

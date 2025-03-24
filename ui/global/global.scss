@@ -4,6 +4,9 @@
 button, input, optgroup, select, textarea {
   @include theme-color(primary-color);
   @include theme-background-color(field-background-color);
+  &[disabled] {
+    background-color: transparent !important;
+  }
 }
 .charsheet, .attributesabilities > * > *, .bioinfo > * > * {
   @include theme-color(primary-color);
@@ -65,10 +68,6 @@ button, input, optgroup, select, textarea {
   width: 25px;
 }
 
-.modifier-width.modifier-width.modifier-width {
-  width: 35px;
-}
-
 .narrowish.narrowish.narrowish {
   width: 40px;
 }
@@ -95,10 +94,6 @@ button, input, optgroup, select, textarea {
 
 .small-spacer {
   height: 8px;
-}
-
-.inlne-spacer {
-  width: 8px;
 }
 
 .flexing {
@@ -160,26 +155,6 @@ button, input, optgroup, select, textarea {
   display: inline-block;
   vertical-align: middle;
   text-align: right;
-}
-
-.attribute-value {
-  font-size: 150%;
-  vertical-align: middle;
-  margin: 1px;
-  border-width: 1px;
-  padding: 0px;
-  box-sizing: border-box;
-}
-
-/* Make the height override the box's usual height */
-input.attribute-value.attribute-value.attribute-value {
-  height: 24px;
-}
-
-span.attribute-value {
-  /* Make the height work for span. */
-  display: inline-block;
-  border-color: transparent;
 }
 
 input[disabled],

@@ -104,7 +104,6 @@ div.popoverContainer > .fixedPlacementPopover {
 }
 
 .character-avatars {
-  margin-top: 16px;
   display: flex;
   gap: 16px;
 }
@@ -148,13 +147,6 @@ select {
   text-align-last: center;
 }
 
-button.actionRollButton {
-  padding: 2px 3px;
-  font-size: 1.3em;
-  margin: 0 3px;
-  border-width: 1px;
-}
-
 /* Change the character for dice roll buttons to be
    the two joined squares character and add styles */
 button.btn.ui-draggable[type=roll],
@@ -194,14 +186,6 @@ button.do-and-roll::before {
   font-weight: bold;
 }
 
-/* Change the character for do buttons to be
-   the play forward character */
-button.do::before {
-  font-family: sans-serif;
-  content: "▶";
-}
-
-button.do,
 button.do-and-roll {
   font-weight: bold;
   outline: 1px solid #666;
@@ -209,38 +193,19 @@ button.do-and-roll {
   border-radius: 4px;
   background: linear-gradient(90deg, rgb(245, 201, 162), #c2815b);
 }
-body.sheet-darkmode button.do,
 body.sheet-darkmode button.do-and-roll {
   background: linear-gradient(90deg, #944d10, #c2815b);
 }
-button.do:hover,
 button.do-and-roll:hover {
   background-image: unset;
   background: #c2815b;
 }
-body.sheet-darkmode button.do:hover,
 body.sheet-darkmode button.do-and-roll:hover {
   background: #c2815b;
 }
 
-button.do {
-  width: 18px;
-}
-
 button.big-control.do-and-roll {
   width: 20px;
-}
-
-.disable-do[value="1"] ~ .do {
-  background-image: linear-gradient(90deg, #ddd, #ddd);
-  pointer-events: none;
-}
-.disable-do[value="1"] ~ .do:hover {
-  background-image: unset;
-  background: #c2815b;
-}
-body.sheet-darkmode .disable-do[value="1"] ~ .do:hover {
-  background: #c2815b;
 }
 
 .disable-do-and-roll[value="1"] ~ .do-and-roll {
@@ -303,27 +268,6 @@ body.sheet-darkmode button.reset-total:hover {
   background: #c2815b;
 }
 
-button.convert-button {
-  font-weight: bold;
-  outline: 1px solid #666;
-  border: none;
-  border-radius: 4px;
-  background: linear-gradient(180deg, rgb(245, 201, 162), #c2815b);
-  padding: 0px 2px 4px 2px;
-  vertical-align: middle;
-  font-size: 200%;
-}
-body.sheet-darkmode button.convert-button {
-  background: linear-gradient(180deg, #944d10, #c2815b);
-}
-button.convert-button:hover {
-  background-image: unset;
-  background: #c2815b;
-}
-body.sheet-darkmode button.convert-button:hover {
-  background: #c2815b;
-}
-
 /* Generic styles */
 button, input, optgroup, select, textarea {
   color: #111;
@@ -334,6 +278,9 @@ body.sheet-darkmode button, body.sheet-darkmode input, body.sheet-darkmode optgr
 }
 body.sheet-darkmode button, body.sheet-darkmode input, body.sheet-darkmode optgroup, body.sheet-darkmode select, body.sheet-darkmode textarea {
   background-color: #222;
+}
+button[disabled], input[disabled], optgroup[disabled], select[disabled], textarea[disabled] {
+  background-color: transparent !important;
 }
 
 .charsheet, .attributesabilities > * > *, .bioinfo > * > * {
@@ -406,10 +353,6 @@ body.sheet-darkmode .ui-dialog {
   width: 25px;
 }
 
-.modifier-width.modifier-width.modifier-width {
-  width: 35px;
-}
-
 .narrowish.narrowish.narrowish {
   width: 40px;
 }
@@ -436,10 +379,6 @@ body.sheet-darkmode .ui-dialog {
 
 .small-spacer {
   height: 8px;
-}
-
-.inlne-spacer {
-  width: 8px;
 }
 
 .flexing {
@@ -512,26 +451,6 @@ body.sheet-darkmode .children-separated > :not(:first-child) {
   text-align: right;
 }
 
-.attribute-value {
-  font-size: 150%;
-  vertical-align: middle;
-  margin: 1px;
-  border-width: 1px;
-  padding: 0px;
-  box-sizing: border-box;
-}
-
-/* Make the height override the box's usual height */
-input.attribute-value.attribute-value.attribute-value {
-  height: 24px;
-}
-
-span.attribute-value {
-  /* Make the height work for span. */
-  display: inline-block;
-  border-color: transparent;
-}
-
 input[disabled],
 input[readonly] {
   border-color: transparent;
@@ -582,6 +501,19 @@ input[readonly] {
 /* ---------- Roll section ------------- */
 .roll-section {
   display: flex;
+}
+.roll-section .action-area-text {
+  color: hsl(213deg, 80%, 60%);
+  font-weight: bold;
+}
+body.sheet-darkmode .roll-section .action-area-text {
+  color: hsl(213deg, 80%, 60%);
+}
+.roll-section input {
+  background-color: hsl(213deg, 80%, 98%);
+}
+body.sheet-darkmode .roll-section input {
+  background-color: hsl(213deg, 80%, 12%);
 }
 
 .roll-select-section {
@@ -681,6 +613,7 @@ radio > span.checked {
   display: inline-flex;
   flex-direction: column;
   flex-grow: 1;
+  row-gap: 2px;
 }
 
 .roll-description-line {
@@ -710,43 +643,145 @@ radio > span.checked {
 body.sheet-darkmode .top-section {
   background: linear-gradient(to top, rgba(194, 148, 91, 0.5019607843) 0%, transparent 100%);
 }
-.top-section .effectiveness-power-depth-cp-fp-section {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+.top-section .pwr-er-hp {
+  width: 160px;
 }
-.top-section .effectiveness-power-depth-cp-fp-section input.FP {
-  width: 2ch;
+.top-section .pwr-er-hp .epic-table-header-grid.pwr-er-hp {
+  display: grid;
+  grid-template-columns: minmax(0, 48px) minmax(0, 1fr) minmax(0, 48px);
+  column-gap: 2px;
+  color: #fff;
+  background-color: #b56632;
+  padding: 0 2px;
+  margin-bottom: 2px;
 }
-.top-section .effectiveness-power-depth-cp-fp-section .effectiveness {
-  color: #FFD0FF;
+body.sheet-darkmode .top-section .pwr-er-hp .epic-table-header-grid.pwr-er-hp {
+  color: #fff;
 }
-.top-section .attributecontrol[value=basic] ~ span.attribute-value,
+body.sheet-darkmode .top-section .pwr-er-hp .epic-table-header-grid.pwr-er-hp {
+  background-color: #b56632;
+}
+.top-section .pwr-er-hp .epic-table-header-grid.pwr-er-hp > div {
+  text-align: center;
+  margin: auto;
+  font-weight: bold;
+  width: 100%;
+  overflow: hidden;
+}
+.top-section .pwr-er-hp div[data-groupname=repeating_pwr-er-hp] > div,
+.top-section .pwr-er-hp div[data-epic-table-name=pwr-er-hp] {
+  display: grid;
+  grid-template-columns: minmax(0, 48px) minmax(0, 1fr) minmax(0, 48px);
+  row-gap: 0;
+  column-gap: 2px;
+  background: transparent;
+  word-break: break-word;
+}
+.top-section .pwr-er-hp div[data-groupname=repeating_pwr-er-hp] > div input, .top-section .pwr-er-hp div[data-groupname=repeating_pwr-er-hp] > div input[type=number], .top-section .pwr-er-hp div[data-groupname=repeating_pwr-er-hp] > div textarea, .top-section .pwr-er-hp div[data-groupname=repeating_pwr-er-hp] > div select,
+.top-section .pwr-er-hp div[data-epic-table-name=pwr-er-hp] input,
+.top-section .pwr-er-hp div[data-epic-table-name=pwr-er-hp] input[type=number],
+.top-section .pwr-er-hp div[data-epic-table-name=pwr-er-hp] textarea,
+.top-section .pwr-er-hp div[data-epic-table-name=pwr-er-hp] select {
+  width: 100% !important;
+  margin-left: unset;
+  height: auto;
+}
+.top-section .pwr-er-hp div[data-groupname=repeating_pwr-er-hp] > div input[type=text],
+.top-section .pwr-er-hp div[data-epic-table-name=pwr-er-hp] input[type=text] {
+  text-align: left;
+}
+.top-section .pwr-er-hp div[data-groupname=repeating_pwr-er-hp] > div input, .top-section .pwr-er-hp div[data-groupname=repeating_pwr-er-hp] > div select,
+.top-section .pwr-er-hp div[data-epic-table-name=pwr-er-hp] input,
+.top-section .pwr-er-hp div[data-epic-table-name=pwr-er-hp] select {
+  white-space: nowrap;
+}
+.top-section .pwr-er-hp div[data-groupname=repeating_pwr-er-hp] > div span,
+.top-section .pwr-er-hp div[data-epic-table-name=pwr-er-hp] span {
+  text-align: center;
+  margin: auto 0;
+}
+.top-section .pwr-er-hp div[data-groupname=repeating_pwr-er-hp] > div button, .top-section .pwr-er-hp div[data-groupname=repeating_pwr-er-hp] > div button[type=roll],
+.top-section .pwr-er-hp div[data-epic-table-name=pwr-er-hp] button,
+.top-section .pwr-er-hp div[data-epic-table-name=pwr-er-hp] button[type=roll] {
+  margin: 0;
+}
+.top-section .pwr-er-hp div[data-groupname=repeating_pwr-er-hp] > div .epic-table-row.conditional-one,
+.top-section .pwr-er-hp div[data-epic-table-name=pwr-er-hp] .epic-table-row.conditional-one {
+  display: grid;
+  grid-column-start: 1;
+  grid-column-end: 4;
+}
+.top-section .pwr-er-hp div[data-groupname=repeating_pwr-er-hp] > div > input, .top-section .pwr-er-hp div[data-groupname=repeating_pwr-er-hp] > div > select, .top-section .pwr-er-hp div[data-groupname=repeating_pwr-er-hp] > div > textarea,
+.top-section .pwr-er-hp div[data-epic-table-name=pwr-er-hp] > input,
+.top-section .pwr-er-hp div[data-epic-table-name=pwr-er-hp] > select,
+.top-section .pwr-er-hp div[data-epic-table-name=pwr-er-hp] > textarea {
+  border: unset;
+}
+.top-section .pwr-er-hp div[data-groupname=repeating_pwr-er-hp] > div + div,
+.top-section .pwr-er-hp div[data-epic-table-name=pwr-er-hp] + div[data-epic-table-name=pwr-er-hp] {
+  border-top: 1px solid;
+  border-color: rgba(181, 102, 50, 0.7);
+}
+body.sheet-darkmode .top-section .pwr-er-hp div[data-groupname=repeating_pwr-er-hp] > div + div,
+body.sheet-darkmode .top-section .pwr-er-hp div[data-epic-table-name=pwr-er-hp] + div[data-epic-table-name=pwr-er-hp] {
+  border-color: rgba(181, 102, 50, 0.7);
+}
+.top-section .pwr-er-hp .pwr-er-hp-table-row {
+  column-gap: 4px !important;
+}
+.top-section .pwr-er-hp button.convert-button {
+  font-weight: bold;
+  outline: 1px solid #666;
+  border: none;
+  border-radius: 4px;
+  background: linear-gradient(180deg, rgb(245, 201, 162), #c2815b);
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+}
+body.sheet-darkmode .top-section .pwr-er-hp button.convert-button {
+  background: linear-gradient(180deg, #944d10, #c2815b);
+}
+.top-section .pwr-er-hp button.convert-button:hover {
+  background-image: unset;
+  background: #c2815b;
+}
+body.sheet-darkmode .top-section .pwr-er-hp button.convert-button:hover {
+  background: #c2815b;
+}
 .top-section .attributecontrol[value=basic] ~ button.reset-total,
-.top-section .attributecontrol[value=basic] ~ .attribute-roll,
 .top-section .attributecontrol[value=basic] ~ .not-basic-tab,
 .top-section .cpcontrol[value=basic] ~ .not-basic-tab {
   display: none;
 }
-.top-section .attributecontrol:not([value=basic]) ~ input.attribute-value,
 .top-section .attributecontrol:not([value=basic]) ~ button.reset-total .attributecontrol:not([value=basic]) ~ .CP,
 .top-section .attributecontrol:not([value=basic]) ~ .basic-tab-only,
 .top-section .cpcontrol:not([value=basic]) ~ .basic-tab-only {
   display: none;
 }
-.top-section .attribute-row {
-  display: flex;
-  align-items: center;
-}
 .top-section .tab-holder {
   margin-top: 4px;
 }
-.top-section .sectioncontrol[value=weightPenalties] ~ div.popoverContainer.weightPenalties,
-.top-section input.popoverController[value="1"] ~ div.popoverContainer.weightPenalties {
-  display: inline;
+.top-section .defense-block div.attribute-column {
+  display: flex;
+  align-items: center;
+  gap: 2px;
 }
-.top-section .sectioncontrol[value=weightPenalties] ~ div.popoverContainer.weightPenalties .popover,
-.top-section input.popoverController[value="1"] ~ div.popoverContainer.weightPenalties .popover {
+.top-section .defense-block div.attribute-column button.toggleDefenseTab {
+  background-color: transparent;
+  border: unset;
+  width: 14px;
+  height: 14px;
+  padding: 0;
+  font-family: Pictos;
+  color: inherit;
+}
+.top-section .defense-block div.attribute-column button.toggleDefenseTab::after {
+  content: "0";
+  font-size: 1.25em;
+}
+.top-section .defense-block .sectioncontrol[value=defense_equipment] ~ div.defense_equipment,
+.top-section .defense-block .sectioncontrol[value=defense_skills] ~ div.defense_skills {
   display: block;
 }
 .top-section .defense-block .armor-header {
@@ -755,7 +790,7 @@ body.sheet-darkmode .top-section {
 }
 .top-section .defense-block .epic-table-header-grid.defenses-with-spanning-input {
   display: grid;
-  grid-template-columns: minmax(0, 50px) minmax(0, 100px);
+  grid-template-columns: minmax(0, 56px) minmax(0, 96px);
   column-gap: 2px;
   color: #fff;
   background-color: #b56632;
@@ -778,7 +813,7 @@ body.sheet-darkmode .top-section .defense-block .epic-table-header-grid.defenses
 .top-section .defense-block div[data-groupname=repeating_defenses-with-spanning-input] > div,
 .top-section .defense-block div[data-epic-table-name=defenses-with-spanning-input] {
   display: grid;
-  grid-template-columns: minmax(0, 50px) minmax(0, 100px);
+  grid-template-columns: minmax(0, 56px) minmax(0, 96px);
   row-gap: 0;
   column-gap: 2px;
   background: transparent;
@@ -820,7 +855,7 @@ body.sheet-darkmode .top-section .defense-block .epic-table-header-grid.defenses
 }
 .top-section .defense-block .epic-table-header-grid.defenses {
   display: grid;
-  grid-template-columns: minmax(0, 50px) minmax(0, 50px) minmax(0, 50px);
+  grid-template-columns: minmax(0, 56px) minmax(0, 48px) minmax(0, 48px);
   column-gap: 2px;
   color: #fff;
   background-color: #b56632;
@@ -843,7 +878,7 @@ body.sheet-darkmode .top-section .defense-block .epic-table-header-grid.defenses
 .top-section .defense-block div[data-groupname=repeating_defenses] > div,
 .top-section .defense-block div[data-epic-table-name=defenses] {
   display: grid;
-  grid-template-columns: minmax(0, 50px) minmax(0, 50px) minmax(0, 50px);
+  grid-template-columns: minmax(0, 56px) minmax(0, 48px) minmax(0, 48px);
   row-gap: 0;
   column-gap: 2px;
   background: transparent;
@@ -899,7 +934,7 @@ body.sheet-darkmode .top-section .defense-block div[data-epic-table-name=defense
   border-color: rgba(181, 102, 50, 0.7);
 }
 .top-section .defense-block div.bonus-row {
-  grid-template-columns: minmax(0, 50px) minmax(0, 100px);
+  grid-template-columns: minmax(0, 56px) minmax(0, 96px);
 }
 .top-section .defense-block .table-label {
   text-align: right;
@@ -908,6 +943,95 @@ body.sheet-darkmode .top-section .defense-block div[data-epic-table-name=defense
   font-weight: bold;
 }
 .top-section .defense-block input[type=number] {
+  text-align: center;
+}
+.top-section .defense-block .defense-extra-block .epic-table-header-grid.defenses-extra {
+  display: grid;
+  grid-template-columns: minmax(0, 64px) minmax(0, 64px);
+  column-gap: 2px;
+  color: #fff;
+  background-color: #b56632;
+  padding: 0 2px;
+  margin-bottom: 2px;
+}
+body.sheet-darkmode .top-section .defense-block .defense-extra-block .epic-table-header-grid.defenses-extra {
+  color: #fff;
+}
+body.sheet-darkmode .top-section .defense-block .defense-extra-block .epic-table-header-grid.defenses-extra {
+  background-color: #b56632;
+}
+.top-section .defense-block .defense-extra-block .epic-table-header-grid.defenses-extra > div {
+  text-align: center;
+  margin: auto;
+  font-weight: bold;
+  width: 100%;
+  overflow: hidden;
+}
+.top-section .defense-block .defense-extra-block div[data-groupname=repeating_defenses-extra] > div,
+.top-section .defense-block .defense-extra-block div[data-epic-table-name=defenses-extra] {
+  display: grid;
+  grid-template-columns: minmax(0, 64px) minmax(0, 64px);
+  row-gap: 0;
+  column-gap: 2px;
+  background: transparent;
+  word-break: break-word;
+}
+.top-section .defense-block .defense-extra-block div[data-groupname=repeating_defenses-extra] > div input, .top-section .defense-block .defense-extra-block div[data-groupname=repeating_defenses-extra] > div input[type=number], .top-section .defense-block .defense-extra-block div[data-groupname=repeating_defenses-extra] > div textarea, .top-section .defense-block .defense-extra-block div[data-groupname=repeating_defenses-extra] > div select,
+.top-section .defense-block .defense-extra-block div[data-epic-table-name=defenses-extra] input,
+.top-section .defense-block .defense-extra-block div[data-epic-table-name=defenses-extra] input[type=number],
+.top-section .defense-block .defense-extra-block div[data-epic-table-name=defenses-extra] textarea,
+.top-section .defense-block .defense-extra-block div[data-epic-table-name=defenses-extra] select {
+  width: 100% !important;
+  margin-left: unset;
+  height: auto;
+}
+.top-section .defense-block .defense-extra-block div[data-groupname=repeating_defenses-extra] > div input[type=text],
+.top-section .defense-block .defense-extra-block div[data-epic-table-name=defenses-extra] input[type=text] {
+  text-align: left;
+}
+.top-section .defense-block .defense-extra-block div[data-groupname=repeating_defenses-extra] > div input, .top-section .defense-block .defense-extra-block div[data-groupname=repeating_defenses-extra] > div select,
+.top-section .defense-block .defense-extra-block div[data-epic-table-name=defenses-extra] input,
+.top-section .defense-block .defense-extra-block div[data-epic-table-name=defenses-extra] select {
+  white-space: nowrap;
+}
+.top-section .defense-block .defense-extra-block div[data-groupname=repeating_defenses-extra] > div span,
+.top-section .defense-block .defense-extra-block div[data-epic-table-name=defenses-extra] span {
+  text-align: center;
+  margin: auto 0;
+}
+.top-section .defense-block .defense-extra-block div[data-groupname=repeating_defenses-extra] > div button, .top-section .defense-block .defense-extra-block div[data-groupname=repeating_defenses-extra] > div button[type=roll],
+.top-section .defense-block .defense-extra-block div[data-epic-table-name=defenses-extra] button,
+.top-section .defense-block .defense-extra-block div[data-epic-table-name=defenses-extra] button[type=roll] {
+  margin: 0;
+}
+.top-section .defense-block .defense-extra-block div[data-groupname=repeating_defenses-extra] > div .epic-table-row.conditional-one,
+.top-section .defense-block .defense-extra-block div[data-epic-table-name=defenses-extra] .epic-table-row.conditional-one {
+  display: grid;
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+.top-section .defense-block .defense-extra-block div[data-groupname=repeating_defenses-extra] > div > input, .top-section .defense-block .defense-extra-block div[data-groupname=repeating_defenses-extra] > div > select, .top-section .defense-block .defense-extra-block div[data-groupname=repeating_defenses-extra] > div > textarea,
+.top-section .defense-block .defense-extra-block div[data-epic-table-name=defenses-extra] > input,
+.top-section .defense-block .defense-extra-block div[data-epic-table-name=defenses-extra] > select,
+.top-section .defense-block .defense-extra-block div[data-epic-table-name=defenses-extra] > textarea {
+  border: unset;
+}
+.top-section .defense-block .defense-extra-block div[data-groupname=repeating_defenses-extra] > div + div,
+.top-section .defense-block .defense-extra-block div[data-epic-table-name=defenses-extra] + div[data-epic-table-name=defenses-extra] {
+  border-top: 1px solid;
+  border-color: rgba(181, 102, 50, 0.7);
+}
+body.sheet-darkmode .top-section .defense-block .defense-extra-block div[data-groupname=repeating_defenses-extra] > div + div,
+body.sheet-darkmode .top-section .defense-block .defense-extra-block div[data-epic-table-name=defenses-extra] + div[data-epic-table-name=defenses-extra] {
+  border-color: rgba(181, 102, 50, 0.7);
+}
+.top-section .defense-block .defense-extra-block .table-label {
+  text-align: right;
+  margin: auto;
+  margin-right: 2px;
+  font-weight: bold;
+}
+.top-section .defense-block .defense-extra-block input[type=number] {
   text-align: center;
 }
 
@@ -928,7 +1052,7 @@ body.sheet-darkmode .top-section .defense-block div[data-epic-table-name=defense
   display: none;
 }
 
-.no-add-or-modify-buttons [data-groupname] button:not([type=roll]) {
+.no-add-or-modify-buttons [data-groupname].repcontrol button:not([type=roll]) {
   display: none;
 }
 
@@ -1045,44 +1169,8 @@ body.sheet-darkmode .tabcontrol[value=notes] ~ .tab[name=act_notes] {
   display: block;
 }
 
-/* Weight penalties */
-.weight-penalty-table {
-  border: solid black;
-  border-width: 1px 0px;
-}
-
-.weight-penalty-table > div {
-  text-align: center;
-  display: flex;
-  flex-direction: row;
-}
-
-.weight-penalty-table > div:not(:last-child):not(.table-header) {
-  border-bottom: solid 1px;
-  border-color: rgba(181, 102, 50, 0.7);
-}
-body.sheet-darkmode .weight-penalty-table > div:not(:last-child):not(.table-header) {
-  border-color: rgba(181, 102, 50, 0.7);
-}
-
-.weight-penalty-table > div > :nth-child(2) {
-  display: inline-block;
-  width: 30px;
-}
-
-.weight-penalty-table > div > :last-child {
-  display: inline-block;
-  width: 30px;
-}
-
-.weight-penalty-table > div > :first-child[value="1"] ~ * {
-  font-weight: bold;
-  padding: 2px 0px;
-}
-
 /* ---------- Overview tab ------------- */
 .overview-tab {
-  /* ------------ Feat Overview -------------- */
   /* ------------ Skills Overview -------------- */
   /* ------------ Weapons Overview -------------- */
 }
@@ -1090,142 +1178,249 @@ body.sheet-darkmode .weight-penalty-table > div:not(:last-child):not(.table-head
   display: flex;
   gap: 16px;
 }
-.overview-tab .advantage-overview .epic-table-header-grid.advantage {
+.overview-tab .advantages-and-feats {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 156px;
+  /* ------------ Feat Overview -------------- */
+}
+.overview-tab .advantages-and-feats .generalDiceRollsSection .epic-table-header-grid.general-dice-rolls {
   display: grid;
-  grid-template-columns: minmax(0, 128px);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 40px) minmax(0, 36px) minmax(0, 24px);
   column-gap: 2px;
   color: #fff;
   background-color: #b56632;
   padding: 0 2px;
   margin-bottom: 2px;
 }
-body.sheet-darkmode .overview-tab .advantage-overview .epic-table-header-grid.advantage {
+body.sheet-darkmode .overview-tab .advantages-and-feats .generalDiceRollsSection .epic-table-header-grid.general-dice-rolls {
   color: #fff;
 }
-body.sheet-darkmode .overview-tab .advantage-overview .epic-table-header-grid.advantage {
+body.sheet-darkmode .overview-tab .advantages-and-feats .generalDiceRollsSection .epic-table-header-grid.general-dice-rolls {
   background-color: #b56632;
 }
-.overview-tab .advantage-overview .epic-table-header-grid.advantage > div {
+.overview-tab .advantages-and-feats .generalDiceRollsSection .epic-table-header-grid.general-dice-rolls > div {
   text-align: center;
   margin: auto;
   font-weight: bold;
   width: 100%;
   overflow: hidden;
 }
-.overview-tab .advantage-overview div[data-groupname=repeating_advantage] > div,
-.overview-tab .advantage-overview div[data-epic-table-name=advantage] {
+.overview-tab .advantages-and-feats .generalDiceRollsSection div[data-groupname=repeating_general-dice-rolls] > div,
+.overview-tab .advantages-and-feats .generalDiceRollsSection div[data-epic-table-name=general-dice-rolls] {
   display: grid;
-  grid-template-columns: minmax(0, 128px);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 40px) minmax(0, 36px) minmax(0, 24px);
   row-gap: 0;
   column-gap: 2px;
   background: transparent;
   word-break: break-word;
 }
-.overview-tab .advantage-overview div[data-groupname=repeating_advantage] > div input, .overview-tab .advantage-overview div[data-groupname=repeating_advantage] > div input[type=number], .overview-tab .advantage-overview div[data-groupname=repeating_advantage] > div textarea, .overview-tab .advantage-overview div[data-groupname=repeating_advantage] > div select,
-.overview-tab .advantage-overview div[data-epic-table-name=advantage] input,
-.overview-tab .advantage-overview div[data-epic-table-name=advantage] input[type=number],
-.overview-tab .advantage-overview div[data-epic-table-name=advantage] textarea,
-.overview-tab .advantage-overview div[data-epic-table-name=advantage] select {
+.overview-tab .advantages-and-feats .generalDiceRollsSection div[data-groupname=repeating_general-dice-rolls] > div input, .overview-tab .advantages-and-feats .generalDiceRollsSection div[data-groupname=repeating_general-dice-rolls] > div input[type=number], .overview-tab .advantages-and-feats .generalDiceRollsSection div[data-groupname=repeating_general-dice-rolls] > div textarea, .overview-tab .advantages-and-feats .generalDiceRollsSection div[data-groupname=repeating_general-dice-rolls] > div select,
+.overview-tab .advantages-and-feats .generalDiceRollsSection div[data-epic-table-name=general-dice-rolls] input,
+.overview-tab .advantages-and-feats .generalDiceRollsSection div[data-epic-table-name=general-dice-rolls] input[type=number],
+.overview-tab .advantages-and-feats .generalDiceRollsSection div[data-epic-table-name=general-dice-rolls] textarea,
+.overview-tab .advantages-and-feats .generalDiceRollsSection div[data-epic-table-name=general-dice-rolls] select {
   width: 100% !important;
   margin-left: unset;
   height: auto;
 }
-.overview-tab .advantage-overview div[data-groupname=repeating_advantage] > div input[type=text],
-.overview-tab .advantage-overview div[data-epic-table-name=advantage] input[type=text] {
+.overview-tab .advantages-and-feats .generalDiceRollsSection div[data-groupname=repeating_general-dice-rolls] > div input[type=text],
+.overview-tab .advantages-and-feats .generalDiceRollsSection div[data-epic-table-name=general-dice-rolls] input[type=text] {
   text-align: left;
 }
-.overview-tab .advantage-overview div[data-groupname=repeating_advantage] > div input, .overview-tab .advantage-overview div[data-groupname=repeating_advantage] > div select,
-.overview-tab .advantage-overview div[data-epic-table-name=advantage] input,
-.overview-tab .advantage-overview div[data-epic-table-name=advantage] select {
+.overview-tab .advantages-and-feats .generalDiceRollsSection div[data-groupname=repeating_general-dice-rolls] > div input, .overview-tab .advantages-and-feats .generalDiceRollsSection div[data-groupname=repeating_general-dice-rolls] > div select,
+.overview-tab .advantages-and-feats .generalDiceRollsSection div[data-epic-table-name=general-dice-rolls] input,
+.overview-tab .advantages-and-feats .generalDiceRollsSection div[data-epic-table-name=general-dice-rolls] select {
   white-space: nowrap;
 }
-.overview-tab .advantage-overview div[data-groupname=repeating_advantage] > div span,
-.overview-tab .advantage-overview div[data-epic-table-name=advantage] span {
+.overview-tab .advantages-and-feats .generalDiceRollsSection div[data-groupname=repeating_general-dice-rolls] > div span,
+.overview-tab .advantages-and-feats .generalDiceRollsSection div[data-epic-table-name=general-dice-rolls] span {
   text-align: center;
   margin: auto 0;
 }
-.overview-tab .advantage-overview div[data-groupname=repeating_advantage] > div button, .overview-tab .advantage-overview div[data-groupname=repeating_advantage] > div button[type=roll],
-.overview-tab .advantage-overview div[data-epic-table-name=advantage] button,
-.overview-tab .advantage-overview div[data-epic-table-name=advantage] button[type=roll] {
+.overview-tab .advantages-and-feats .generalDiceRollsSection div[data-groupname=repeating_general-dice-rolls] > div button, .overview-tab .advantages-and-feats .generalDiceRollsSection div[data-groupname=repeating_general-dice-rolls] > div button[type=roll],
+.overview-tab .advantages-and-feats .generalDiceRollsSection div[data-epic-table-name=general-dice-rolls] button,
+.overview-tab .advantages-and-feats .generalDiceRollsSection div[data-epic-table-name=general-dice-rolls] button[type=roll] {
   margin: 0;
 }
-.overview-tab .advantage-overview div[data-groupname=repeating_advantage] > div .epic-table-row.conditional-one,
-.overview-tab .advantage-overview div[data-epic-table-name=advantage] .epic-table-row.conditional-one {
+.overview-tab .advantages-and-feats .generalDiceRollsSection div[data-groupname=repeating_general-dice-rolls] > div .epic-table-row.conditional-one,
+.overview-tab .advantages-and-feats .generalDiceRollsSection div[data-epic-table-name=general-dice-rolls] .epic-table-row.conditional-one {
   display: grid;
   grid-column-start: 1;
-  grid-column-end: 2;
+  grid-column-end: 5;
 }
-.overview-tab .advantage-overview .epic-table-header-grid.extraadvantage {
+.overview-tab .advantages-and-feats .generalDiceRollsSection .general-dice-rolls {
+  border: solid;
+  border-color: rgba(181, 102, 50, 0.7);
+  border-width: 0px 0px 1px 0px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+body.sheet-darkmode .overview-tab .advantages-and-feats .generalDiceRollsSection .general-dice-rolls {
+  border-color: rgba(181, 102, 50, 0.7);
+}
+.overview-tab .advantages-and-feats .generalDiceRollsSection .general-dice-rolls .diceRollName, .overview-tab .advantages-and-feats .generalDiceRollsSection .general-dice-rolls .attributeName {
+  text-align: right;
+  margin-right: 4px;
+}
+.overview-tab .advantages-and-feats .generalDiceRollsSection .general-dice-rolls button.generalDiceRoll {
+  padding: 0px 2px;
+  box-sizing: border-box;
+  margin: auto 2px;
+  height: 20px;
+  font-size: 1em;
+  padding-top: 2px;
+  font-weight: bold;
+  outline: 1px solid #666;
+  border: none;
+  border-radius: 4px;
+  background-image: url(https://raw.githubusercontent.com/epic-power-rpg/roll20/jazeee-add-images/ui/images/actionButton.svg);
+  width: 20px;
+  height: 20px;
+  border: none;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.overview-tab .advantages-and-feats .generalDiceRollsSection .general-dice-rolls button.generalDiceRoll:hover {
+  opacity: 0.9;
+}
+.overview-tab .advantages-and-feats .advantage-overview .epic-table-header-grid.advantage {
   display: grid;
-  grid-template-columns: minmax(0, 128px);
+  grid-template-columns: minmax(0, 1fr);
   column-gap: 2px;
   color: #fff;
   background-color: #b56632;
   padding: 0 2px;
   margin-bottom: 2px;
 }
-body.sheet-darkmode .overview-tab .advantage-overview .epic-table-header-grid.extraadvantage {
+body.sheet-darkmode .overview-tab .advantages-and-feats .advantage-overview .epic-table-header-grid.advantage {
   color: #fff;
 }
-body.sheet-darkmode .overview-tab .advantage-overview .epic-table-header-grid.extraadvantage {
+body.sheet-darkmode .overview-tab .advantages-and-feats .advantage-overview .epic-table-header-grid.advantage {
   background-color: #b56632;
 }
-.overview-tab .advantage-overview .epic-table-header-grid.extraadvantage > div {
+.overview-tab .advantages-and-feats .advantage-overview .epic-table-header-grid.advantage > div {
   text-align: center;
   margin: auto;
   font-weight: bold;
   width: 100%;
   overflow: hidden;
 }
-.overview-tab .advantage-overview div[data-groupname=repeating_extraadvantage] > div,
-.overview-tab .advantage-overview div[data-epic-table-name=extraadvantage] {
+.overview-tab .advantages-and-feats .advantage-overview div[data-groupname=repeating_advantage] > div,
+.overview-tab .advantages-and-feats .advantage-overview div[data-epic-table-name=advantage] {
   display: grid;
-  grid-template-columns: minmax(0, 128px);
+  grid-template-columns: minmax(0, 1fr);
   row-gap: 0;
   column-gap: 2px;
   background: transparent;
   word-break: break-word;
 }
-.overview-tab .advantage-overview div[data-groupname=repeating_extraadvantage] > div input, .overview-tab .advantage-overview div[data-groupname=repeating_extraadvantage] > div input[type=number], .overview-tab .advantage-overview div[data-groupname=repeating_extraadvantage] > div textarea, .overview-tab .advantage-overview div[data-groupname=repeating_extraadvantage] > div select,
-.overview-tab .advantage-overview div[data-epic-table-name=extraadvantage] input,
-.overview-tab .advantage-overview div[data-epic-table-name=extraadvantage] input[type=number],
-.overview-tab .advantage-overview div[data-epic-table-name=extraadvantage] textarea,
-.overview-tab .advantage-overview div[data-epic-table-name=extraadvantage] select {
+.overview-tab .advantages-and-feats .advantage-overview div[data-groupname=repeating_advantage] > div input, .overview-tab .advantages-and-feats .advantage-overview div[data-groupname=repeating_advantage] > div input[type=number], .overview-tab .advantages-and-feats .advantage-overview div[data-groupname=repeating_advantage] > div textarea, .overview-tab .advantages-and-feats .advantage-overview div[data-groupname=repeating_advantage] > div select,
+.overview-tab .advantages-and-feats .advantage-overview div[data-epic-table-name=advantage] input,
+.overview-tab .advantages-and-feats .advantage-overview div[data-epic-table-name=advantage] input[type=number],
+.overview-tab .advantages-and-feats .advantage-overview div[data-epic-table-name=advantage] textarea,
+.overview-tab .advantages-and-feats .advantage-overview div[data-epic-table-name=advantage] select {
   width: 100% !important;
   margin-left: unset;
   height: auto;
 }
-.overview-tab .advantage-overview div[data-groupname=repeating_extraadvantage] > div input[type=text],
-.overview-tab .advantage-overview div[data-epic-table-name=extraadvantage] input[type=text] {
+.overview-tab .advantages-and-feats .advantage-overview div[data-groupname=repeating_advantage] > div input[type=text],
+.overview-tab .advantages-and-feats .advantage-overview div[data-epic-table-name=advantage] input[type=text] {
   text-align: left;
 }
-.overview-tab .advantage-overview div[data-groupname=repeating_extraadvantage] > div input, .overview-tab .advantage-overview div[data-groupname=repeating_extraadvantage] > div select,
-.overview-tab .advantage-overview div[data-epic-table-name=extraadvantage] input,
-.overview-tab .advantage-overview div[data-epic-table-name=extraadvantage] select {
+.overview-tab .advantages-and-feats .advantage-overview div[data-groupname=repeating_advantage] > div input, .overview-tab .advantages-and-feats .advantage-overview div[data-groupname=repeating_advantage] > div select,
+.overview-tab .advantages-and-feats .advantage-overview div[data-epic-table-name=advantage] input,
+.overview-tab .advantages-and-feats .advantage-overview div[data-epic-table-name=advantage] select {
   white-space: nowrap;
 }
-.overview-tab .advantage-overview div[data-groupname=repeating_extraadvantage] > div span,
-.overview-tab .advantage-overview div[data-epic-table-name=extraadvantage] span {
+.overview-tab .advantages-and-feats .advantage-overview div[data-groupname=repeating_advantage] > div span,
+.overview-tab .advantages-and-feats .advantage-overview div[data-epic-table-name=advantage] span {
   text-align: center;
   margin: auto 0;
 }
-.overview-tab .advantage-overview div[data-groupname=repeating_extraadvantage] > div button, .overview-tab .advantage-overview div[data-groupname=repeating_extraadvantage] > div button[type=roll],
-.overview-tab .advantage-overview div[data-epic-table-name=extraadvantage] button,
-.overview-tab .advantage-overview div[data-epic-table-name=extraadvantage] button[type=roll] {
+.overview-tab .advantages-and-feats .advantage-overview div[data-groupname=repeating_advantage] > div button, .overview-tab .advantages-and-feats .advantage-overview div[data-groupname=repeating_advantage] > div button[type=roll],
+.overview-tab .advantages-and-feats .advantage-overview div[data-epic-table-name=advantage] button,
+.overview-tab .advantages-and-feats .advantage-overview div[data-epic-table-name=advantage] button[type=roll] {
   margin: 0;
 }
-.overview-tab .advantage-overview div[data-groupname=repeating_extraadvantage] > div .epic-table-row.conditional-one,
-.overview-tab .advantage-overview div[data-epic-table-name=extraadvantage] .epic-table-row.conditional-one {
+.overview-tab .advantages-and-feats .advantage-overview div[data-groupname=repeating_advantage] > div .epic-table-row.conditional-one,
+.overview-tab .advantages-and-feats .advantage-overview div[data-epic-table-name=advantage] .epic-table-row.conditional-one {
   display: grid;
   grid-column-start: 1;
   grid-column-end: 2;
 }
-.overview-tab .advantage-overview input.advantageField:not([value]) ~ .advantage-row,
-.overview-tab .advantage-overview input.advantageField[value=""] ~ .advantage-row,
-.overview-tab .advantage-overview input.advantageField[value=" "] ~ .advantage-row {
+.overview-tab .advantages-and-feats .advantage-overview .epic-table-header-grid.extraadvantage {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  column-gap: 2px;
+  color: #fff;
+  background-color: #b56632;
+  padding: 0 2px;
+  margin-bottom: 2px;
+}
+body.sheet-darkmode .overview-tab .advantages-and-feats .advantage-overview .epic-table-header-grid.extraadvantage {
+  color: #fff;
+}
+body.sheet-darkmode .overview-tab .advantages-and-feats .advantage-overview .epic-table-header-grid.extraadvantage {
+  background-color: #b56632;
+}
+.overview-tab .advantages-and-feats .advantage-overview .epic-table-header-grid.extraadvantage > div {
+  text-align: center;
+  margin: auto;
+  font-weight: bold;
+  width: 100%;
+  overflow: hidden;
+}
+.overview-tab .advantages-and-feats .advantage-overview div[data-groupname=repeating_extraadvantage] > div,
+.overview-tab .advantages-and-feats .advantage-overview div[data-epic-table-name=extraadvantage] {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  row-gap: 0;
+  column-gap: 2px;
+  background: transparent;
+  word-break: break-word;
+}
+.overview-tab .advantages-and-feats .advantage-overview div[data-groupname=repeating_extraadvantage] > div input, .overview-tab .advantages-and-feats .advantage-overview div[data-groupname=repeating_extraadvantage] > div input[type=number], .overview-tab .advantages-and-feats .advantage-overview div[data-groupname=repeating_extraadvantage] > div textarea, .overview-tab .advantages-and-feats .advantage-overview div[data-groupname=repeating_extraadvantage] > div select,
+.overview-tab .advantages-and-feats .advantage-overview div[data-epic-table-name=extraadvantage] input,
+.overview-tab .advantages-and-feats .advantage-overview div[data-epic-table-name=extraadvantage] input[type=number],
+.overview-tab .advantages-and-feats .advantage-overview div[data-epic-table-name=extraadvantage] textarea,
+.overview-tab .advantages-and-feats .advantage-overview div[data-epic-table-name=extraadvantage] select {
+  width: 100% !important;
+  margin-left: unset;
+  height: auto;
+}
+.overview-tab .advantages-and-feats .advantage-overview div[data-groupname=repeating_extraadvantage] > div input[type=text],
+.overview-tab .advantages-and-feats .advantage-overview div[data-epic-table-name=extraadvantage] input[type=text] {
+  text-align: left;
+}
+.overview-tab .advantages-and-feats .advantage-overview div[data-groupname=repeating_extraadvantage] > div input, .overview-tab .advantages-and-feats .advantage-overview div[data-groupname=repeating_extraadvantage] > div select,
+.overview-tab .advantages-and-feats .advantage-overview div[data-epic-table-name=extraadvantage] input,
+.overview-tab .advantages-and-feats .advantage-overview div[data-epic-table-name=extraadvantage] select {
+  white-space: nowrap;
+}
+.overview-tab .advantages-and-feats .advantage-overview div[data-groupname=repeating_extraadvantage] > div span,
+.overview-tab .advantages-and-feats .advantage-overview div[data-epic-table-name=extraadvantage] span {
+  text-align: center;
+  margin: auto 0;
+}
+.overview-tab .advantages-and-feats .advantage-overview div[data-groupname=repeating_extraadvantage] > div button, .overview-tab .advantages-and-feats .advantage-overview div[data-groupname=repeating_extraadvantage] > div button[type=roll],
+.overview-tab .advantages-and-feats .advantage-overview div[data-epic-table-name=extraadvantage] button,
+.overview-tab .advantages-and-feats .advantage-overview div[data-epic-table-name=extraadvantage] button[type=roll] {
+  margin: 0;
+}
+.overview-tab .advantages-and-feats .advantage-overview div[data-groupname=repeating_extraadvantage] > div .epic-table-row.conditional-one,
+.overview-tab .advantages-and-feats .advantage-overview div[data-epic-table-name=extraadvantage] .epic-table-row.conditional-one {
+  display: grid;
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
+.overview-tab .advantages-and-feats .advantage-overview input.advantageField:not([value]) ~ .advantage-row,
+.overview-tab .advantages-and-feats .advantage-overview input.advantageField[value=""] ~ .advantage-row,
+.overview-tab .advantages-and-feats .advantage-overview input.advantageField[value=" "] ~ .advantage-row {
   display: none;
 }
-.overview-tab .advantage-overview .advantage-row {
+.overview-tab .advantages-and-feats .advantage-overview .advantage-row {
   display: flex;
   justify-content: space-between;
   width: 100%;
@@ -1237,13 +1432,13 @@ body.sheet-darkmode .overview-tab .advantage-overview .epic-table-header-grid.ex
   /* If the name wraps, make the lines close. */
   line-height: 1;
 }
-body.sheet-darkmode .overview-tab .advantage-overview .advantage-row {
+body.sheet-darkmode .overview-tab .advantages-and-feats .advantage-overview .advantage-row {
   border-color: rgba(181, 102, 50, 0.7);
 }
-.overview-tab .advantage-overview .advantage-row div, .overview-tab .advantage-overview .advantage-row span {
+.overview-tab .advantages-and-feats .advantage-overview .advantage-row div, .overview-tab .advantages-and-feats .advantage-overview .advantage-row span {
   text-align: left !important;
 }
-.overview-tab .advantage-overview .extraadvantage-row {
+.overview-tab .advantages-and-feats .advantage-overview .extraadvantage-row {
   border: solid;
   border-color: rgba(181, 102, 50, 0.7);
   border-width: 0px 0px 1px 0px;
@@ -1253,100 +1448,125 @@ body.sheet-darkmode .overview-tab .advantage-overview .advantage-row {
   line-height: 1;
   text-align: left !important;
 }
-body.sheet-darkmode .overview-tab .advantage-overview .extraadvantage-row {
+body.sheet-darkmode .overview-tab .advantages-and-feats .advantage-overview .extraadvantage-row {
   border-color: rgba(181, 102, 50, 0.7);
 }
-.overview-tab .advantage-overview > .conditional-something > :first-child[value="-1"] ~ * {
+.overview-tab .advantages-and-feats .advantage-overview > .conditional-something > :first-child[value="-1"] ~ * {
   color: red;
 }
-.overview-tab .feat-overview .epic-table-header-grid.feat {
+.overview-tab .advantages-and-feats .feat-overview .epic-table-header-grid.feat {
   display: grid;
-  grid-template-columns: minmax(0, 32px) minmax(0, 96px);
+  grid-template-columns: minmax(0, 32px) minmax(0, 1fr) minmax(0, 24px);
   column-gap: 2px;
   color: #fff;
   background-color: #b56632;
   padding: 0 2px;
   margin-bottom: 2px;
 }
-body.sheet-darkmode .overview-tab .feat-overview .epic-table-header-grid.feat {
+body.sheet-darkmode .overview-tab .advantages-and-feats .feat-overview .epic-table-header-grid.feat {
   color: #fff;
 }
-body.sheet-darkmode .overview-tab .feat-overview .epic-table-header-grid.feat {
+body.sheet-darkmode .overview-tab .advantages-and-feats .feat-overview .epic-table-header-grid.feat {
   background-color: #b56632;
 }
-.overview-tab .feat-overview .epic-table-header-grid.feat > div {
+.overview-tab .advantages-and-feats .feat-overview .epic-table-header-grid.feat > div {
   text-align: center;
   margin: auto;
   font-weight: bold;
   width: 100%;
   overflow: hidden;
 }
-.overview-tab .feat-overview div[data-groupname=repeating_feat] > div,
-.overview-tab .feat-overview div[data-epic-table-name=feat] {
+.overview-tab .advantages-and-feats .feat-overview div[data-groupname=repeating_feat] > div,
+.overview-tab .advantages-and-feats .feat-overview div[data-epic-table-name=feat] {
   display: grid;
-  grid-template-columns: minmax(0, 32px) minmax(0, 96px);
+  grid-template-columns: minmax(0, 32px) minmax(0, 1fr) minmax(0, 24px);
   row-gap: 0;
   column-gap: 2px;
   background: transparent;
   word-break: break-word;
 }
-.overview-tab .feat-overview div[data-groupname=repeating_feat] > div input, .overview-tab .feat-overview div[data-groupname=repeating_feat] > div input[type=number], .overview-tab .feat-overview div[data-groupname=repeating_feat] > div textarea, .overview-tab .feat-overview div[data-groupname=repeating_feat] > div select,
-.overview-tab .feat-overview div[data-epic-table-name=feat] input,
-.overview-tab .feat-overview div[data-epic-table-name=feat] input[type=number],
-.overview-tab .feat-overview div[data-epic-table-name=feat] textarea,
-.overview-tab .feat-overview div[data-epic-table-name=feat] select {
+.overview-tab .advantages-and-feats .feat-overview div[data-groupname=repeating_feat] > div input, .overview-tab .advantages-and-feats .feat-overview div[data-groupname=repeating_feat] > div input[type=number], .overview-tab .advantages-and-feats .feat-overview div[data-groupname=repeating_feat] > div textarea, .overview-tab .advantages-and-feats .feat-overview div[data-groupname=repeating_feat] > div select,
+.overview-tab .advantages-and-feats .feat-overview div[data-epic-table-name=feat] input,
+.overview-tab .advantages-and-feats .feat-overview div[data-epic-table-name=feat] input[type=number],
+.overview-tab .advantages-and-feats .feat-overview div[data-epic-table-name=feat] textarea,
+.overview-tab .advantages-and-feats .feat-overview div[data-epic-table-name=feat] select {
   width: 100% !important;
   margin-left: unset;
   height: auto;
 }
-.overview-tab .feat-overview div[data-groupname=repeating_feat] > div input[type=text],
-.overview-tab .feat-overview div[data-epic-table-name=feat] input[type=text] {
+.overview-tab .advantages-and-feats .feat-overview div[data-groupname=repeating_feat] > div input[type=text],
+.overview-tab .advantages-and-feats .feat-overview div[data-epic-table-name=feat] input[type=text] {
   text-align: left;
 }
-.overview-tab .feat-overview div[data-groupname=repeating_feat] > div input, .overview-tab .feat-overview div[data-groupname=repeating_feat] > div select,
-.overview-tab .feat-overview div[data-epic-table-name=feat] input,
-.overview-tab .feat-overview div[data-epic-table-name=feat] select {
+.overview-tab .advantages-and-feats .feat-overview div[data-groupname=repeating_feat] > div input, .overview-tab .advantages-and-feats .feat-overview div[data-groupname=repeating_feat] > div select,
+.overview-tab .advantages-and-feats .feat-overview div[data-epic-table-name=feat] input,
+.overview-tab .advantages-and-feats .feat-overview div[data-epic-table-name=feat] select {
   white-space: nowrap;
 }
-.overview-tab .feat-overview div[data-groupname=repeating_feat] > div span,
-.overview-tab .feat-overview div[data-epic-table-name=feat] span {
+.overview-tab .advantages-and-feats .feat-overview div[data-groupname=repeating_feat] > div span,
+.overview-tab .advantages-and-feats .feat-overview div[data-epic-table-name=feat] span {
   text-align: center;
   margin: auto 0;
 }
-.overview-tab .feat-overview div[data-groupname=repeating_feat] > div button, .overview-tab .feat-overview div[data-groupname=repeating_feat] > div button[type=roll],
-.overview-tab .feat-overview div[data-epic-table-name=feat] button,
-.overview-tab .feat-overview div[data-epic-table-name=feat] button[type=roll] {
+.overview-tab .advantages-and-feats .feat-overview div[data-groupname=repeating_feat] > div button, .overview-tab .advantages-and-feats .feat-overview div[data-groupname=repeating_feat] > div button[type=roll],
+.overview-tab .advantages-and-feats .feat-overview div[data-epic-table-name=feat] button,
+.overview-tab .advantages-and-feats .feat-overview div[data-epic-table-name=feat] button[type=roll] {
   margin: 0;
 }
-.overview-tab .feat-overview div[data-groupname=repeating_feat] > div .epic-table-row.conditional-one,
-.overview-tab .feat-overview div[data-epic-table-name=feat] .epic-table-row.conditional-one {
+.overview-tab .advantages-and-feats .feat-overview div[data-groupname=repeating_feat] > div .epic-table-row.conditional-one,
+.overview-tab .advantages-and-feats .feat-overview div[data-epic-table-name=feat] .epic-table-row.conditional-one {
   display: grid;
   grid-column-start: 1;
-  grid-column-end: 3;
+  grid-column-end: 4;
 }
-.overview-tab .feat-overview > div[data-groupname] > div {
+.overview-tab .advantages-and-feats .feat-overview > div[data-groupname] > div {
   border: solid;
   border-color: rgba(181, 102, 50, 0.7);
   border-width: 0px 0px 1px 0px;
   padding-top: 2px;
   padding-bottom: 2px;
 }
-body.sheet-darkmode .overview-tab .feat-overview > div[data-groupname] > div {
+body.sheet-darkmode .overview-tab .advantages-and-feats .feat-overview > div[data-groupname] > div {
   border-color: rgba(181, 102, 50, 0.7);
 }
-.overview-tab .feat-overview > div[data-groupname] .feat-row.featextraordinaryletter {
+.overview-tab .advantages-and-feats .feat-overview > div[data-groupname] .feat-row.featextraordinaryletter {
   text-align: center;
 }
-.overview-tab .feat-overview > div[data-groupname] .feat-row.featname {
-  text-align: left;
+.overview-tab .advantages-and-feats .feat-overview > div[data-groupname] .feat-row.featname {
+  text-align: center;
   line-height: 1;
+}
+.overview-tab .advantages-and-feats .feat-overview > div[data-groupname] button.addRollSectionFeat {
+  padding: 0px 2px;
+  box-sizing: border-box;
+  margin: auto 2px;
+  height: 20px;
+  font-size: 1em;
+  padding-top: 2px;
+  font-weight: bold;
+  outline: 1px solid #666;
+  border: none;
+  border-radius: 4px;
+  background-image: url(https://raw.githubusercontent.com/epic-power-rpg/roll20/jazeee-add-images/ui/images/actionButton.svg);
+  width: 20px;
+  height: 20px;
+  border: none;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.overview-tab .advantages-and-feats .feat-overview > div[data-groupname] button.addRollSectionFeat:hover {
+  opacity: 0.9;
+}
+.overview-tab .skills-overview {
+  flex: 3;
+  max-width: 320px;
 }
 .overview-tab .skills-overview .isdiscipline[value="1"] ~ * {
   display: none;
 }
 .overview-tab .skills-overview .epic-table-header-grid.skills-table {
   display: grid;
-  grid-template-columns: minmax(0, 96px) minmax(0, 36px) minmax(0, 36px) minmax(0, 24px);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 40px) minmax(0, 36px) minmax(0, 24px);
   column-gap: 2px;
   color: #fff;
   background-color: #b56632;
@@ -1369,7 +1589,7 @@ body.sheet-darkmode .overview-tab .skills-overview .epic-table-header-grid.skill
 .overview-tab .skills-overview div[data-groupname=repeating_skills-table] > div,
 .overview-tab .skills-overview div[data-epic-table-name=skills-table] {
   display: grid;
-  grid-template-columns: minmax(0, 96px) minmax(0, 36px) minmax(0, 36px) minmax(0, 24px);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 40px) minmax(0, 36px) minmax(0, 24px);
   row-gap: 0;
   column-gap: 2px;
   background: transparent;
@@ -1409,9 +1629,6 @@ body.sheet-darkmode .overview-tab .skills-overview .epic-table-header-grid.skill
   grid-column-start: 1;
   grid-column-end: 5;
 }
-.overview-tab .skills-overview .epic-table-header-grid .skillability {
-  font-weight: normal !important;
-}
 .overview-tab .skills-overview > div[data-groupname] .skill-overview-row-container {
   border: solid;
   border-color: rgba(181, 102, 50, 0.7);
@@ -1438,12 +1655,34 @@ body.sheet-darkmode .overview-tab .skills-overview > div[data-groupname] .skill-
   margin: auto 2px;
   height: 20px;
 }
+.overview-tab .skills-overview > div[data-groupname] .skill-overview-row-container button.updateRollSectionContent {
+  padding: 0px 2px;
+  box-sizing: border-box;
+  margin: auto 2px;
+  height: 20px;
+  font-size: 1em;
+  padding-top: 2px;
+  font-weight: bold;
+  outline: 1px solid #666;
+  border: none;
+  border-radius: 4px;
+  background-image: url(https://raw.githubusercontent.com/epic-power-rpg/roll20/jazeee-add-images/ui/images/actionButton.svg);
+  width: 20px;
+  height: 20px;
+  border: none;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.overview-tab .skills-overview > div[data-groupname] .skill-overview-row-container button.updateRollSectionContent:hover {
+  opacity: 0.9;
+}
 .overview-tab .weapons-overview {
-  width: 50%;
+  flex: 3;
+  max-width: 400px;
 }
 .overview-tab .weapons-overview .epic-table-header-grid.weapons-table {
   display: grid;
-  grid-template-columns: minmax(0, 128px) minmax(0, 48px) minmax(0, 60px) minmax(0, 56px) minmax(0, 48px);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 48px) minmax(0, 60px) minmax(0, 40px);
   column-gap: 2px;
   color: #fff;
   background-color: #b56632;
@@ -1466,7 +1705,7 @@ body.sheet-darkmode .overview-tab .weapons-overview .epic-table-header-grid.weap
 .overview-tab .weapons-overview div[data-groupname=repeating_weapons-table] > div,
 .overview-tab .weapons-overview div[data-epic-table-name=weapons-table] {
   display: grid;
-  grid-template-columns: minmax(0, 128px) minmax(0, 48px) minmax(0, 60px) minmax(0, 56px) minmax(0, 48px);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 48px) minmax(0, 60px) minmax(0, 40px);
   row-gap: 0;
   column-gap: 2px;
   background: transparent;
@@ -1504,7 +1743,7 @@ body.sheet-darkmode .overview-tab .weapons-overview .epic-table-header-grid.weap
 .overview-tab .weapons-overview div[data-epic-table-name=weapons-table] .epic-table-row.conditional-one {
   display: grid;
   grid-column-start: 1;
-  grid-column-end: 6;
+  grid-column-end: 5;
 }
 .overview-tab .weapons-overview .epic-table-header-grid.weapons-equipmentnotes-table {
   display: grid;
@@ -1599,16 +1838,109 @@ body.sheet-darkmode .overview-tab .weapons-overview > div[data-groupname] .weapo
 }
 .overview-tab .weapons-overview > div[data-groupname] .weapons-table-row .equipmentnotes {
   line-height: 1;
-  text-align: left;
-  margin-left: 40px;
+  text-align: right;
   margin-top: 4px;
   font-style: italic;
+}
+
+.editable-epic-power-stats-table .epic-power-stats .epic-table-header-grid.epic-power-stats {
+  display: grid;
+  grid-template-columns: minmax(0, 40px) minmax(0, 56px) minmax(0, 64px);
+  column-gap: 2px;
+  color: #fff;
+  background-color: #b56632;
+  padding: 0 2px;
+  margin-bottom: 2px;
+}
+body.sheet-darkmode .editable-epic-power-stats-table .epic-power-stats .epic-table-header-grid.epic-power-stats {
+  color: #fff;
+}
+body.sheet-darkmode .editable-epic-power-stats-table .epic-power-stats .epic-table-header-grid.epic-power-stats {
+  background-color: #b56632;
+}
+.editable-epic-power-stats-table .epic-power-stats .epic-table-header-grid.epic-power-stats > div {
+  text-align: center;
+  margin: auto;
+  font-weight: bold;
+  width: 100%;
+  overflow: hidden;
+}
+.editable-epic-power-stats-table .epic-power-stats div[data-groupname=repeating_epic-power-stats] > div,
+.editable-epic-power-stats-table .epic-power-stats div[data-epic-table-name=epic-power-stats] {
+  display: grid;
+  grid-template-columns: minmax(0, 40px) minmax(0, 56px) minmax(0, 64px);
+  row-gap: 0;
+  column-gap: 2px;
+  background: transparent;
+  word-break: break-word;
+}
+.editable-epic-power-stats-table .epic-power-stats div[data-groupname=repeating_epic-power-stats] > div input, .editable-epic-power-stats-table .epic-power-stats div[data-groupname=repeating_epic-power-stats] > div input[type=number], .editable-epic-power-stats-table .epic-power-stats div[data-groupname=repeating_epic-power-stats] > div textarea, .editable-epic-power-stats-table .epic-power-stats div[data-groupname=repeating_epic-power-stats] > div select,
+.editable-epic-power-stats-table .epic-power-stats div[data-epic-table-name=epic-power-stats] input,
+.editable-epic-power-stats-table .epic-power-stats div[data-epic-table-name=epic-power-stats] input[type=number],
+.editable-epic-power-stats-table .epic-power-stats div[data-epic-table-name=epic-power-stats] textarea,
+.editable-epic-power-stats-table .epic-power-stats div[data-epic-table-name=epic-power-stats] select {
+  width: 100% !important;
+  margin-left: unset;
+  height: auto;
+}
+.editable-epic-power-stats-table .epic-power-stats div[data-groupname=repeating_epic-power-stats] > div input[type=text],
+.editable-epic-power-stats-table .epic-power-stats div[data-epic-table-name=epic-power-stats] input[type=text] {
+  text-align: left;
+}
+.editable-epic-power-stats-table .epic-power-stats div[data-groupname=repeating_epic-power-stats] > div input, .editable-epic-power-stats-table .epic-power-stats div[data-groupname=repeating_epic-power-stats] > div select,
+.editable-epic-power-stats-table .epic-power-stats div[data-epic-table-name=epic-power-stats] input,
+.editable-epic-power-stats-table .epic-power-stats div[data-epic-table-name=epic-power-stats] select {
+  white-space: nowrap;
+}
+.editable-epic-power-stats-table .epic-power-stats div[data-groupname=repeating_epic-power-stats] > div span,
+.editable-epic-power-stats-table .epic-power-stats div[data-epic-table-name=epic-power-stats] span {
+  text-align: center;
+  margin: auto 0;
+}
+.editable-epic-power-stats-table .epic-power-stats div[data-groupname=repeating_epic-power-stats] > div button, .editable-epic-power-stats-table .epic-power-stats div[data-groupname=repeating_epic-power-stats] > div button[type=roll],
+.editable-epic-power-stats-table .epic-power-stats div[data-epic-table-name=epic-power-stats] button,
+.editable-epic-power-stats-table .epic-power-stats div[data-epic-table-name=epic-power-stats] button[type=roll] {
+  margin: 0;
+}
+.editable-epic-power-stats-table .epic-power-stats div[data-groupname=repeating_epic-power-stats] > div .epic-table-row.conditional-one,
+.editable-epic-power-stats-table .epic-power-stats div[data-epic-table-name=epic-power-stats] .epic-table-row.conditional-one {
+  display: grid;
+  grid-column-start: 1;
+  grid-column-end: 4;
+}
+.editable-epic-power-stats-table .epic-power-stats div[data-groupname=repeating_epic-power-stats] > div > input, .editable-epic-power-stats-table .epic-power-stats div[data-groupname=repeating_epic-power-stats] > div > select, .editable-epic-power-stats-table .epic-power-stats div[data-groupname=repeating_epic-power-stats] > div > textarea,
+.editable-epic-power-stats-table .epic-power-stats div[data-epic-table-name=epic-power-stats] > input,
+.editable-epic-power-stats-table .epic-power-stats div[data-epic-table-name=epic-power-stats] > select,
+.editable-epic-power-stats-table .epic-power-stats div[data-epic-table-name=epic-power-stats] > textarea {
+  border: unset;
+}
+.editable-epic-power-stats-table .epic-power-stats div[data-groupname=repeating_epic-power-stats] > div + div,
+.editable-epic-power-stats-table .epic-power-stats div[data-epic-table-name=epic-power-stats] + div[data-epic-table-name=epic-power-stats] {
+  border-top: 1px solid;
+  border-color: rgba(181, 102, 50, 0.7);
+}
+body.sheet-darkmode .editable-epic-power-stats-table .epic-power-stats div[data-groupname=repeating_epic-power-stats] > div + div,
+body.sheet-darkmode .editable-epic-power-stats-table .epic-power-stats div[data-epic-table-name=epic-power-stats] + div[data-epic-table-name=epic-power-stats] {
+  border-color: rgba(181, 102, 50, 0.7);
+}
+.editable-epic-power-stats-table .epic-power-stats .epic-power-stats-name-grid {
+  text-align: right;
+  font-weight: bold;
+  margin-right: 8px;
+}
+.editable-epic-power-stats-table .epic-power-stats .effectiveness {
+  color: #FFD0FF;
 }
 
 /* --------- Basic Tab ------------ */
 .basic-tab .advantages-and-feats {
   display: flex;
   gap: 16px;
+}
+.basic-tab .character-attributes-and-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 .basic-tab .character-attributes .epic-table-header-grid.character-attributes {
   display: grid;
@@ -2009,7 +2341,7 @@ body.sheet-darkmode .basic-tab .feats .epic-table-header-grid .skillCP-grid, bod
 }
 .epic-skills-tab .epic-table-header-grid.skill {
   display: grid;
-  grid-template-columns: minmax(0, 40px) minmax(0, 4fr) minmax(0, 40px) minmax(0, 24px) minmax(0, 24px) minmax(0, 1fr) minmax(0, 72px) minmax(0, 40px);
+  grid-template-columns: minmax(0, 40px) minmax(0, 4fr) minmax(0, 40px) minmax(0, 48px) minmax(0, 48px) minmax(0, 1fr) minmax(0, 72px) minmax(0, 40px);
   column-gap: 2px;
   color: #fff;
   background-color: #b56632;
@@ -2032,7 +2364,7 @@ body.sheet-darkmode .epic-skills-tab .epic-table-header-grid.skill {
 .epic-skills-tab div[data-groupname=repeating_skill] > div,
 .epic-skills-tab div[data-epic-table-name=skill] {
   display: grid;
-  grid-template-columns: minmax(0, 40px) minmax(0, 4fr) minmax(0, 40px) minmax(0, 24px) minmax(0, 24px) minmax(0, 1fr) minmax(0, 72px) minmax(0, 40px);
+  grid-template-columns: minmax(0, 40px) minmax(0, 4fr) minmax(0, 40px) minmax(0, 48px) minmax(0, 48px) minmax(0, 1fr) minmax(0, 72px) minmax(0, 40px);
   row-gap: 0;
   column-gap: 2px;
   background: transparent;
@@ -2156,6 +2488,42 @@ body.sheet-darkmode .epic-skills-tab button.add-base-skills-button, body.sheet-d
 .epic-skills-tab .add-base-skills-section .sectioncontrol[value=addBaseSkills] ~ div.popoverContainer.addBaseSkills .popover,
 .epic-skills-tab .add-base-skills-section input.popoverController[value="1"] ~ div.popoverContainer.addBaseSkills .popover {
   display: block;
+}
+
+.speedTooltip .sectioncontrol[value=weightPenalties] ~ div.popoverContainer.weightPenalties,
+.speedTooltip input.popoverController[value="1"] ~ div.popoverContainer.weightPenalties {
+  display: inline;
+}
+.speedTooltip .sectioncontrol[value=weightPenalties] ~ div.popoverContainer.weightPenalties .popover,
+.speedTooltip input.popoverController[value="1"] ~ div.popoverContainer.weightPenalties .popover {
+  display: block;
+}
+.speedTooltip .weight-penalty-table {
+  margin-top: 8px;
+}
+.speedTooltip .weight-penalty-table > div {
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+}
+.speedTooltip .weight-penalty-table > div:not(:last-child):not(.table-header) {
+  border-bottom: solid 1px;
+  border-color: rgba(181, 102, 50, 0.7);
+}
+body.sheet-darkmode .speedTooltip .weight-penalty-table > div:not(:last-child):not(.table-header) {
+  border-color: rgba(181, 102, 50, 0.7);
+}
+.speedTooltip .weight-penalty-table > div > :nth-child(2) {
+  display: inline-block;
+  width: 64px;
+}
+.speedTooltip .weight-penalty-table > div > :last-child {
+  display: inline-block;
+  width: 64px;
+}
+.speedTooltip .weight-penalty-table > div > :first-child[value="1"] ~ * {
+  font-weight: bold;
+  padding: 2px 0px;
 }
 
 /* -------- Equipment --------- */
@@ -2540,7 +2908,29 @@ body.sheet-darkmode .spell-tabs {
 body.sheet-darkmode .spells .spell-header-action-area label, body.sheet-darkmode .spells .spell-header-action-area .label {
   color: #fff;
 }
+.spells .spell-header-action-area button.spellRoll {
+  padding: 0px 2px;
+  box-sizing: border-box;
+  margin: auto 2px;
+  height: 20px;
+  font-size: 1em;
+  padding-top: 2px;
+  font-weight: bold;
+  outline: 1px solid #666;
+  border: none;
+  border-radius: 4px;
+  background-image: url(https://raw.githubusercontent.com/epic-power-rpg/roll20/jazeee-add-images/ui/images/actionButton.svg);
+  width: 20px;
+  height: 20px;
+  border: none;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.spells .spell-header-action-area button.spellRoll:hover {
+  opacity: 0.9;
+}
 .spells .spellNotesPopover {
+  text-align: center;
   background-color: #efd6c4;
 }
 body.sheet-darkmode .spells .spellNotesPopover {
@@ -2566,6 +2956,9 @@ body.sheet-darkmode .spells .spellNotesPopover button.popoverButton {
 body.sheet-darkmode .spells .spellNotesPopover button.popoverButton {
   background-color: #b56632;
 }
+.spells .spellNotesPopover .spell-note {
+  margin-bottom: 1px;
+}
 .spells .spellNotesPopover .spellnote-hidden[value] ~ button.popoverButton::after {
   content: "s";
   color: #80ffff;
@@ -2581,302 +2974,324 @@ body.sheet-darkmode .spells .spellNotesPopover button.popoverButton {
 .spells .spellNotesPopover .extra-spell-attributes .attribute-section input {
   width: 100%;
 }
-.spells .epic-table-header-grid.arcane {
+.spells .arcane-spells-grid .epic-table-header-grid.arcane {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 4fr) minmax(0, 1fr) minmax(0, 40px) minmax(0, 20px) minmax(0, 40px) minmax(0, 1fr) minmax(0, 80px) minmax(0, 1.5fr) minmax(0, 2fr) minmax(0, 1.5fr) minmax(0, 30px) minmax(0, 24px) minmax(0, 24px) minmax(0, 40px) minmax(0, auto) minmax(0, 40px);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 4fr) minmax(0, 1fr) minmax(0, 40px) minmax(0, 20px) minmax(0, 40px) minmax(0, 1fr) minmax(0, 80px) minmax(0, 1.5fr) minmax(0, 64px) minmax(0, 1.5fr) minmax(0, 30px) minmax(0, 24px) minmax(0, 24px) minmax(0, 40px) minmax(0, auto) minmax(0, 40px);
   column-gap: 2px;
   color: #fff;
   background-color: #b56632;
   padding: 0 2px;
   margin-bottom: 2px;
 }
-body.sheet-darkmode .spells .epic-table-header-grid.arcane {
+body.sheet-darkmode .spells .arcane-spells-grid .epic-table-header-grid.arcane {
   color: #fff;
 }
-body.sheet-darkmode .spells .epic-table-header-grid.arcane {
+body.sheet-darkmode .spells .arcane-spells-grid .epic-table-header-grid.arcane {
   background-color: #b56632;
 }
-.spells .epic-table-header-grid.arcane > div {
+.spells .arcane-spells-grid .epic-table-header-grid.arcane > div {
   text-align: center;
   margin: auto;
   font-weight: bold;
   width: 100%;
   overflow: hidden;
 }
-.spells div[data-groupname=repeating_arcane] > div,
-.spells div[data-epic-table-name=arcane] {
+.spells .arcane-spells-grid div[data-groupname=repeating_arcane] > div,
+.spells .arcane-spells-grid div[data-epic-table-name=arcane] {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 4fr) minmax(0, 1fr) minmax(0, 40px) minmax(0, 20px) minmax(0, 40px) minmax(0, 1fr) minmax(0, 80px) minmax(0, 1.5fr) minmax(0, 2fr) minmax(0, 1.5fr) minmax(0, 30px) minmax(0, 24px) minmax(0, 24px) minmax(0, 40px) minmax(0, auto) minmax(0, 40px);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 4fr) minmax(0, 1fr) minmax(0, 40px) minmax(0, 20px) minmax(0, 40px) minmax(0, 1fr) minmax(0, 80px) minmax(0, 1.5fr) minmax(0, 64px) minmax(0, 1.5fr) minmax(0, 30px) minmax(0, 24px) minmax(0, 24px) minmax(0, 40px) minmax(0, auto) minmax(0, 40px);
   row-gap: 0;
   column-gap: 2px;
   background: transparent;
   word-break: break-word;
 }
-.spells div[data-groupname=repeating_arcane] > div input, .spells div[data-groupname=repeating_arcane] > div input[type=number], .spells div[data-groupname=repeating_arcane] > div textarea, .spells div[data-groupname=repeating_arcane] > div select,
-.spells div[data-epic-table-name=arcane] input,
-.spells div[data-epic-table-name=arcane] input[type=number],
-.spells div[data-epic-table-name=arcane] textarea,
-.spells div[data-epic-table-name=arcane] select {
+.spells .arcane-spells-grid div[data-groupname=repeating_arcane] > div input, .spells .arcane-spells-grid div[data-groupname=repeating_arcane] > div input[type=number], .spells .arcane-spells-grid div[data-groupname=repeating_arcane] > div textarea, .spells .arcane-spells-grid div[data-groupname=repeating_arcane] > div select,
+.spells .arcane-spells-grid div[data-epic-table-name=arcane] input,
+.spells .arcane-spells-grid div[data-epic-table-name=arcane] input[type=number],
+.spells .arcane-spells-grid div[data-epic-table-name=arcane] textarea,
+.spells .arcane-spells-grid div[data-epic-table-name=arcane] select {
   width: 100% !important;
   margin-left: unset;
   height: auto;
 }
-.spells div[data-groupname=repeating_arcane] > div input[type=text],
-.spells div[data-epic-table-name=arcane] input[type=text] {
+.spells .arcane-spells-grid div[data-groupname=repeating_arcane] > div input[type=text],
+.spells .arcane-spells-grid div[data-epic-table-name=arcane] input[type=text] {
   text-align: left;
 }
-.spells div[data-groupname=repeating_arcane] > div input, .spells div[data-groupname=repeating_arcane] > div select,
-.spells div[data-epic-table-name=arcane] input,
-.spells div[data-epic-table-name=arcane] select {
+.spells .arcane-spells-grid div[data-groupname=repeating_arcane] > div input, .spells .arcane-spells-grid div[data-groupname=repeating_arcane] > div select,
+.spells .arcane-spells-grid div[data-epic-table-name=arcane] input,
+.spells .arcane-spells-grid div[data-epic-table-name=arcane] select {
   white-space: nowrap;
 }
-.spells div[data-groupname=repeating_arcane] > div span,
-.spells div[data-epic-table-name=arcane] span {
+.spells .arcane-spells-grid div[data-groupname=repeating_arcane] > div span,
+.spells .arcane-spells-grid div[data-epic-table-name=arcane] span {
   text-align: center;
   margin: auto 0;
 }
-.spells div[data-groupname=repeating_arcane] > div button, .spells div[data-groupname=repeating_arcane] > div button[type=roll],
-.spells div[data-epic-table-name=arcane] button,
-.spells div[data-epic-table-name=arcane] button[type=roll] {
+.spells .arcane-spells-grid div[data-groupname=repeating_arcane] > div button, .spells .arcane-spells-grid div[data-groupname=repeating_arcane] > div button[type=roll],
+.spells .arcane-spells-grid div[data-epic-table-name=arcane] button,
+.spells .arcane-spells-grid div[data-epic-table-name=arcane] button[type=roll] {
   margin: 0;
 }
-.spells div[data-groupname=repeating_arcane] > div .epic-table-row.conditional-one,
-.spells div[data-epic-table-name=arcane] .epic-table-row.conditional-one {
+.spells .arcane-spells-grid div[data-groupname=repeating_arcane] > div .epic-table-row.conditional-one,
+.spells .arcane-spells-grid div[data-epic-table-name=arcane] .epic-table-row.conditional-one {
   display: grid;
   grid-column-start: 1;
   grid-column-end: 18;
 }
-.spells div[data-groupname=repeating_arcane] > div > input, .spells div[data-groupname=repeating_arcane] > div > select, .spells div[data-groupname=repeating_arcane] > div > textarea,
-.spells div[data-epic-table-name=arcane] > input,
-.spells div[data-epic-table-name=arcane] > select,
-.spells div[data-epic-table-name=arcane] > textarea {
+.spells .arcane-spells-grid div[data-groupname=repeating_arcane] > div > input, .spells .arcane-spells-grid div[data-groupname=repeating_arcane] > div > select, .spells .arcane-spells-grid div[data-groupname=repeating_arcane] > div > textarea,
+.spells .arcane-spells-grid div[data-epic-table-name=arcane] > input,
+.spells .arcane-spells-grid div[data-epic-table-name=arcane] > select,
+.spells .arcane-spells-grid div[data-epic-table-name=arcane] > textarea {
   border: unset;
 }
-.spells div[data-groupname=repeating_arcane] > div + div,
-.spells div[data-epic-table-name=arcane] + div[data-epic-table-name=arcane] {
+.spells .arcane-spells-grid div[data-groupname=repeating_arcane] > div + div,
+.spells .arcane-spells-grid div[data-epic-table-name=arcane] + div[data-epic-table-name=arcane] {
   border-top: 1px solid;
   border-color: rgba(181, 102, 50, 0.7);
 }
-body.sheet-darkmode .spells div[data-groupname=repeating_arcane] > div + div,
-body.sheet-darkmode .spells div[data-epic-table-name=arcane] + div[data-epic-table-name=arcane] {
+body.sheet-darkmode .spells .arcane-spells-grid div[data-groupname=repeating_arcane] > div + div,
+body.sheet-darkmode .spells .arcane-spells-grid div[data-epic-table-name=arcane] + div[data-epic-table-name=arcane] {
   border-color: rgba(181, 102, 50, 0.7);
 }
-.spells .narrow-table-heading {
+.spells .arcane-spells-grid button.updateRollSectionContent {
+  padding: 0px 2px;
+  box-sizing: border-box;
+  margin: auto 2px;
+  height: 20px;
+  font-size: 1em;
+  padding-top: 2px;
+  font-weight: bold;
+  outline: 1px solid #666;
+  border: none;
+  border-radius: 4px;
+  background-image: url(https://raw.githubusercontent.com/epic-power-rpg/roll20/jazeee-add-images/ui/images/actionButton.svg);
+  width: 20px;
+  height: 20px;
+  border: none;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.spells .arcane-spells-grid button.updateRollSectionContent:hover {
+  opacity: 0.9;
+}
+.spells .arcane-spells-grid .narrow-table-heading {
   font-size: 12px;
   font-weight: normal !important;
 }
-.spells .isdiscipline-grid[value="1"] ~ :not(.skillname-grid, .skillCP-grid, .skillexpertise-grid) {
+.spells .arcane-spells-grid .isdiscipline-grid[value="1"] ~ :not(.skillname-grid, .skillCP-grid, .skillexpertise-grid) {
   opacity: 0;
   cursor: default;
   pointer-events: none;
 }
-.spells .isdiscipline-grid[value="1"] ~ .skillname-grid {
+.spells .arcane-spells-grid .isdiscipline-grid[value="1"] ~ .skillname-grid {
   font-weight: bold;
   text-align: center;
 }
-.spells .isdiscipline-grid:not([value="1"]) ~ .skillname-grid {
+.spells .arcane-spells-grid .isdiscipline-grid:not([value="1"]) ~ .skillname-grid {
   text-align: right;
 }
-.spells .arcane-iq-plus-minus-attribute {
+.spells .arcane-spells-grid .arcane-iq-plus-minus-attribute {
   white-space: nowrap;
 }
-.spells .epic-table-header-grid.divine {
+.spells .divine-spells-grid .epic-table-header-grid.divine {
   display: grid;
-  grid-template-columns: minmax(0, 2fr) minmax(0, 30px) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr);
+  grid-template-columns: minmax(0, 40px) minmax(0, 2fr) minmax(0, 30px) minmax(0, 40px) minmax(0, 20px) minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr);
   column-gap: 2px;
   color: #fff;
   background-color: #b56632;
   padding: 0 2px;
   margin-bottom: 2px;
 }
-body.sheet-darkmode .spells .epic-table-header-grid.divine {
+body.sheet-darkmode .spells .divine-spells-grid .epic-table-header-grid.divine {
   color: #fff;
 }
-body.sheet-darkmode .spells .epic-table-header-grid.divine {
+body.sheet-darkmode .spells .divine-spells-grid .epic-table-header-grid.divine {
   background-color: #b56632;
 }
-.spells .epic-table-header-grid.divine > div {
+.spells .divine-spells-grid .epic-table-header-grid.divine > div {
   text-align: center;
   margin: auto;
   font-weight: bold;
   width: 100%;
   overflow: hidden;
 }
-.spells div[data-groupname=repeating_divine] > div,
-.spells div[data-epic-table-name=divine] {
+.spells .divine-spells-grid div[data-groupname=repeating_divine] > div,
+.spells .divine-spells-grid div[data-epic-table-name=divine] {
   display: grid;
-  grid-template-columns: minmax(0, 2fr) minmax(0, 30px) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr);
+  grid-template-columns: minmax(0, 40px) minmax(0, 2fr) minmax(0, 30px) minmax(0, 40px) minmax(0, 20px) minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr);
   row-gap: 0;
   column-gap: 2px;
   background: transparent;
   word-break: break-word;
 }
-.spells div[data-groupname=repeating_divine] > div input, .spells div[data-groupname=repeating_divine] > div input[type=number], .spells div[data-groupname=repeating_divine] > div textarea, .spells div[data-groupname=repeating_divine] > div select,
-.spells div[data-epic-table-name=divine] input,
-.spells div[data-epic-table-name=divine] input[type=number],
-.spells div[data-epic-table-name=divine] textarea,
-.spells div[data-epic-table-name=divine] select {
+.spells .divine-spells-grid div[data-groupname=repeating_divine] > div input, .spells .divine-spells-grid div[data-groupname=repeating_divine] > div input[type=number], .spells .divine-spells-grid div[data-groupname=repeating_divine] > div textarea, .spells .divine-spells-grid div[data-groupname=repeating_divine] > div select,
+.spells .divine-spells-grid div[data-epic-table-name=divine] input,
+.spells .divine-spells-grid div[data-epic-table-name=divine] input[type=number],
+.spells .divine-spells-grid div[data-epic-table-name=divine] textarea,
+.spells .divine-spells-grid div[data-epic-table-name=divine] select {
   width: 100% !important;
   margin-left: unset;
   height: auto;
 }
-.spells div[data-groupname=repeating_divine] > div input[type=text],
-.spells div[data-epic-table-name=divine] input[type=text] {
+.spells .divine-spells-grid div[data-groupname=repeating_divine] > div input[type=text],
+.spells .divine-spells-grid div[data-epic-table-name=divine] input[type=text] {
   text-align: left;
 }
-.spells div[data-groupname=repeating_divine] > div input, .spells div[data-groupname=repeating_divine] > div select,
-.spells div[data-epic-table-name=divine] input,
-.spells div[data-epic-table-name=divine] select {
+.spells .divine-spells-grid div[data-groupname=repeating_divine] > div input, .spells .divine-spells-grid div[data-groupname=repeating_divine] > div select,
+.spells .divine-spells-grid div[data-epic-table-name=divine] input,
+.spells .divine-spells-grid div[data-epic-table-name=divine] select {
   white-space: nowrap;
 }
-.spells div[data-groupname=repeating_divine] > div span,
-.spells div[data-epic-table-name=divine] span {
+.spells .divine-spells-grid div[data-groupname=repeating_divine] > div span,
+.spells .divine-spells-grid div[data-epic-table-name=divine] span {
   text-align: center;
   margin: auto 0;
 }
-.spells div[data-groupname=repeating_divine] > div button, .spells div[data-groupname=repeating_divine] > div button[type=roll],
-.spells div[data-epic-table-name=divine] button,
-.spells div[data-epic-table-name=divine] button[type=roll] {
+.spells .divine-spells-grid div[data-groupname=repeating_divine] > div button, .spells .divine-spells-grid div[data-groupname=repeating_divine] > div button[type=roll],
+.spells .divine-spells-grid div[data-epic-table-name=divine] button,
+.spells .divine-spells-grid div[data-epic-table-name=divine] button[type=roll] {
   margin: 0;
 }
-.spells div[data-groupname=repeating_divine] > div .epic-table-row.conditional-one,
-.spells div[data-epic-table-name=divine] .epic-table-row.conditional-one {
-  display: grid;
-  grid-column-start: 1;
-  grid-column-end: 9;
-}
-.spells div[data-groupname=repeating_divine] > div > input, .spells div[data-groupname=repeating_divine] > div > select, .spells div[data-groupname=repeating_divine] > div > textarea,
-.spells div[data-epic-table-name=divine] > input,
-.spells div[data-epic-table-name=divine] > select,
-.spells div[data-epic-table-name=divine] > textarea {
-  border: unset;
-}
-.spells div[data-groupname=repeating_divine] > div + div,
-.spells div[data-epic-table-name=divine] + div[data-epic-table-name=divine] {
-  border-top: 1px solid;
-  border-color: rgba(181, 102, 50, 0.7);
-}
-body.sheet-darkmode .spells div[data-groupname=repeating_divine] > div + div,
-body.sheet-darkmode .spells div[data-epic-table-name=divine] + div[data-epic-table-name=divine] {
-  border-color: rgba(181, 102, 50, 0.7);
-}
-.spells .epic-table-header-grid.innate {
-  display: grid;
-  grid-template-columns: minmax(0, 40px) minmax(0, 4fr) minmax(0, 30px) minmax(0, 32px) minmax(0, 2fr) minmax(0, 2fr) minmax(0, 2fr) minmax(0, 3fr) minmax(0, 2fr) minmax(0, 32px);
-  column-gap: 2px;
-  color: #fff;
-  background-color: #b56632;
-  padding: 0 2px;
-  margin-bottom: 2px;
-}
-body.sheet-darkmode .spells .epic-table-header-grid.innate {
-  color: #fff;
-}
-body.sheet-darkmode .spells .epic-table-header-grid.innate {
-  background-color: #b56632;
-}
-.spells .epic-table-header-grid.innate > div {
-  text-align: center;
-  margin: auto;
-  font-weight: bold;
-  width: 100%;
-  overflow: hidden;
-}
-.spells div[data-groupname=repeating_innate] > div,
-.spells div[data-epic-table-name=innate] {
-  display: grid;
-  grid-template-columns: minmax(0, 40px) minmax(0, 4fr) minmax(0, 30px) minmax(0, 32px) minmax(0, 2fr) minmax(0, 2fr) minmax(0, 2fr) minmax(0, 3fr) minmax(0, 2fr) minmax(0, 32px);
-  row-gap: 0;
-  column-gap: 2px;
-  background: transparent;
-  word-break: break-word;
-}
-.spells div[data-groupname=repeating_innate] > div input, .spells div[data-groupname=repeating_innate] > div input[type=number], .spells div[data-groupname=repeating_innate] > div textarea, .spells div[data-groupname=repeating_innate] > div select,
-.spells div[data-epic-table-name=innate] input,
-.spells div[data-epic-table-name=innate] input[type=number],
-.spells div[data-epic-table-name=innate] textarea,
-.spells div[data-epic-table-name=innate] select {
-  width: 100% !important;
-  margin-left: unset;
-  height: auto;
-}
-.spells div[data-groupname=repeating_innate] > div input[type=text],
-.spells div[data-epic-table-name=innate] input[type=text] {
-  text-align: left;
-}
-.spells div[data-groupname=repeating_innate] > div input, .spells div[data-groupname=repeating_innate] > div select,
-.spells div[data-epic-table-name=innate] input,
-.spells div[data-epic-table-name=innate] select {
-  white-space: nowrap;
-}
-.spells div[data-groupname=repeating_innate] > div span,
-.spells div[data-epic-table-name=innate] span {
-  text-align: center;
-  margin: auto 0;
-}
-.spells div[data-groupname=repeating_innate] > div button, .spells div[data-groupname=repeating_innate] > div button[type=roll],
-.spells div[data-epic-table-name=innate] button,
-.spells div[data-epic-table-name=innate] button[type=roll] {
-  margin: 0;
-}
-.spells div[data-groupname=repeating_innate] > div .epic-table-row.conditional-one,
-.spells div[data-epic-table-name=innate] .epic-table-row.conditional-one {
+.spells .divine-spells-grid div[data-groupname=repeating_divine] > div .epic-table-row.conditional-one,
+.spells .divine-spells-grid div[data-epic-table-name=divine] .epic-table-row.conditional-one {
   display: grid;
   grid-column-start: 1;
   grid-column-end: 11;
 }
-.spells div[data-groupname=repeating_innate] > div > input, .spells div[data-groupname=repeating_innate] > div > select, .spells div[data-groupname=repeating_innate] > div > textarea,
-.spells div[data-epic-table-name=innate] > input,
-.spells div[data-epic-table-name=innate] > select,
-.spells div[data-epic-table-name=innate] > textarea {
+.spells .divine-spells-grid div[data-groupname=repeating_divine] > div > input, .spells .divine-spells-grid div[data-groupname=repeating_divine] > div > select, .spells .divine-spells-grid div[data-groupname=repeating_divine] > div > textarea,
+.spells .divine-spells-grid div[data-epic-table-name=divine] > input,
+.spells .divine-spells-grid div[data-epic-table-name=divine] > select,
+.spells .divine-spells-grid div[data-epic-table-name=divine] > textarea {
   border: unset;
 }
-.spells div[data-groupname=repeating_innate] > div + div,
-.spells div[data-epic-table-name=innate] + div[data-epic-table-name=innate] {
+.spells .divine-spells-grid div[data-groupname=repeating_divine] > div + div,
+.spells .divine-spells-grid div[data-epic-table-name=divine] + div[data-epic-table-name=divine] {
   border-top: 1px solid;
   border-color: rgba(181, 102, 50, 0.7);
 }
-body.sheet-darkmode .spells div[data-groupname=repeating_innate] > div + div,
-body.sheet-darkmode .spells div[data-epic-table-name=innate] + div[data-epic-table-name=innate] {
+body.sheet-darkmode .spells .divine-spells-grid div[data-groupname=repeating_divine] > div + div,
+body.sheet-darkmode .spells .divine-spells-grid div[data-epic-table-name=divine] + div[data-epic-table-name=divine] {
   border-color: rgba(181, 102, 50, 0.7);
 }
-.spells .innatesphere-hidden[value|=S] ~ .skillname-grid {
+.spells .divine-spells-grid button.updateRollSectionContent {
+  padding: 0px 2px;
+  box-sizing: border-box;
+  margin: auto 2px;
+  height: 20px;
+  font-size: 1em;
+  padding-top: 2px;
   font-weight: bold;
-  text-align: center;
+  outline: 1px solid #666;
+  border: none;
+  border-radius: 4px;
+  background-image: url(https://raw.githubusercontent.com/epic-power-rpg/roll20/jazeee-add-images/ui/images/actionButton.svg);
+  width: 20px;
+  height: 20px;
+  border: none;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
-.spells .innatesphere-hidden[value|=S] ~ :not(.skillname-grid, .skillCP-grid) {
+.spells .divine-spells-grid button.updateRollSectionContent:hover {
+  opacity: 0.9;
+}
+.spells .divine-spells-grid .isdiscipline-grid[value="1"] ~ :not(.skillname-grid, .spellNotesPopover) {
   opacity: 0;
   cursor: default;
   pointer-events: none;
 }
-.spells .skillFP-grid, .spells .FP-grid {
-  color: #267200;
+.spells .divine-spells-grid .isdiscipline-grid[value="1"] ~ .skillname-grid {
   font-weight: bold;
+  text-align: center;
 }
-body.sheet-darkmode .spells .skillFP-grid, body.sheet-darkmode .spells .FP-grid {
-  color: #c4fda8;
+.spells .innate-spells-grid .epic-table-header-grid.innate {
+  display: grid;
+  grid-template-columns: minmax(0, 40px) minmax(0, 4fr) minmax(0, 30px) minmax(0, 32px) minmax(0, 2fr) minmax(0, 2fr) minmax(0, 2fr) minmax(0, 3fr) minmax(0, 2fr) minmax(0, 48px);
+  column-gap: 2px;
+  color: #fff;
+  background-color: #b56632;
+  padding: 0 2px;
+  margin-bottom: 2px;
 }
-.spells .skillCP-grid, .spells .CP-grid {
-  color: blue;
+body.sheet-darkmode .spells .innate-spells-grid .epic-table-header-grid.innate {
+  color: #fff;
+}
+body.sheet-darkmode .spells .innate-spells-grid .epic-table-header-grid.innate {
+  background-color: #b56632;
+}
+.spells .innate-spells-grid .epic-table-header-grid.innate > div {
+  text-align: center;
+  margin: auto;
   font-weight: bold;
+  width: 100%;
+  overflow: hidden;
 }
-body.sheet-darkmode .spells .skillCP-grid, body.sheet-darkmode .spells .CP-grid {
-  color: rgb(145, 145, 246);
+.spells .innate-spells-grid div[data-groupname=repeating_innate] > div,
+.spells .innate-spells-grid div[data-epic-table-name=innate] {
+  display: grid;
+  grid-template-columns: minmax(0, 40px) minmax(0, 4fr) minmax(0, 30px) minmax(0, 32px) minmax(0, 2fr) minmax(0, 2fr) minmax(0, 2fr) minmax(0, 3fr) minmax(0, 2fr) minmax(0, 48px);
+  row-gap: 0;
+  column-gap: 2px;
+  background: transparent;
+  word-break: break-word;
 }
-.spells .epic-table-header-grid .skillFP-grid, .spells .epic-table-header-grid .FP-grid {
-  color: #267200;
+.spells .innate-spells-grid div[data-groupname=repeating_innate] > div input, .spells .innate-spells-grid div[data-groupname=repeating_innate] > div input[type=number], .spells .innate-spells-grid div[data-groupname=repeating_innate] > div textarea, .spells .innate-spells-grid div[data-groupname=repeating_innate] > div select,
+.spells .innate-spells-grid div[data-epic-table-name=innate] input,
+.spells .innate-spells-grid div[data-epic-table-name=innate] input[type=number],
+.spells .innate-spells-grid div[data-epic-table-name=innate] textarea,
+.spells .innate-spells-grid div[data-epic-table-name=innate] select {
+  width: 100% !important;
+  margin-left: unset;
+  height: auto;
 }
-body.sheet-darkmode .spells .epic-table-header-grid .skillFP-grid, body.sheet-darkmode .spells .epic-table-header-grid .FP-grid {
-  color: #c4fda8;
+.spells .innate-spells-grid div[data-groupname=repeating_innate] > div input[type=text],
+.spells .innate-spells-grid div[data-epic-table-name=innate] input[type=text] {
+  text-align: left;
 }
-.spells .epic-table-header-grid .skillCP-grid, .spells .epic-table-header-grid .CP-grid {
-  color: blue;
+.spells .innate-spells-grid div[data-groupname=repeating_innate] > div input, .spells .innate-spells-grid div[data-groupname=repeating_innate] > div select,
+.spells .innate-spells-grid div[data-epic-table-name=innate] input,
+.spells .innate-spells-grid div[data-epic-table-name=innate] select {
+  white-space: nowrap;
 }
-body.sheet-darkmode .spells .epic-table-header-grid .skillCP-grid, body.sheet-darkmode .spells .epic-table-header-grid .CP-grid {
-  color: rgb(145, 145, 246);
+.spells .innate-spells-grid div[data-groupname=repeating_innate] > div span,
+.spells .innate-spells-grid div[data-epic-table-name=innate] span {
+  text-align: center;
+  margin: auto 0;
 }
-.spells .spell-note {
-  margin-bottom: 1px;
+.spells .innate-spells-grid div[data-groupname=repeating_innate] > div button, .spells .innate-spells-grid div[data-groupname=repeating_innate] > div button[type=roll],
+.spells .innate-spells-grid div[data-epic-table-name=innate] button,
+.spells .innate-spells-grid div[data-epic-table-name=innate] button[type=roll] {
+  margin: 0;
+}
+.spells .innate-spells-grid div[data-groupname=repeating_innate] > div .epic-table-row.conditional-one,
+.spells .innate-spells-grid div[data-epic-table-name=innate] .epic-table-row.conditional-one {
+  display: grid;
+  grid-column-start: 1;
+  grid-column-end: 11;
+}
+.spells .innate-spells-grid div[data-groupname=repeating_innate] > div > input, .spells .innate-spells-grid div[data-groupname=repeating_innate] > div > select, .spells .innate-spells-grid div[data-groupname=repeating_innate] > div > textarea,
+.spells .innate-spells-grid div[data-epic-table-name=innate] > input,
+.spells .innate-spells-grid div[data-epic-table-name=innate] > select,
+.spells .innate-spells-grid div[data-epic-table-name=innate] > textarea {
+  border: unset;
+}
+.spells .innate-spells-grid div[data-groupname=repeating_innate] > div + div,
+.spells .innate-spells-grid div[data-epic-table-name=innate] + div[data-epic-table-name=innate] {
+  border-top: 1px solid;
+  border-color: rgba(181, 102, 50, 0.7);
+}
+body.sheet-darkmode .spells .innate-spells-grid div[data-groupname=repeating_innate] > div + div,
+body.sheet-darkmode .spells .innate-spells-grid div[data-epic-table-name=innate] + div[data-epic-table-name=innate] {
+  border-color: rgba(181, 102, 50, 0.7);
+}
+.spells .innate-spells-grid .innatesphere-hidden[value|=S] ~ .skillname-grid {
+  font-weight: bold;
+  text-align: center;
+}
+.spells .innate-spells-grid .innatesphere-hidden[value|=S] ~ :not(.skillname-grid, .skillCP-grid) {
+  opacity: 0;
+  cursor: default;
+  pointer-events: none;
 }
 .spells .sectioncontrol[value=spellNotePopover] ~ div.popoverContainer.spellNotePopover,
 .spells input.popoverController[value="1"] ~ div.popoverContainer.spellNotePopover {

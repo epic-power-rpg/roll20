@@ -1,10 +1,3 @@
-button.actionRollButton {
-  padding: 2px 3px;
-  font-size: 1.3em;
-  margin: 0 3px;
-  border-width: 1px;
-}
-
 @mixin action-button {
   font-weight: bold;
   outline: 1px solid #666;
@@ -39,6 +32,31 @@ button.actionRollButton::before {
   content: "⧉";
 }
 
+@mixin update-action-button {
+  @include action-button;
+  // Replace with `main` branch once this is merged
+  background-image: url(https://raw.githubusercontent.com/epic-power-rpg/roll20/jazeee-add-images/ui/images/actionButton.svg);
+  width: 20px;
+  height: 20px;
+  border: none;
+  background-repeat: no-repeat;
+  background-size: contain;
+  &:hover {
+    // Remove Roll20 default styles
+    opacity: 0.9;
+  }
+}
+
+@mixin updateRollSectionButton {
+  padding: 0px 2px;
+  box-sizing: border-box;
+  margin: auto 2px;
+  height: 20px;
+  font-size: 1em;
+  padding-top: 2px;
+  @include update-action-button();
+}
+
 /* Change the character for the do and roll dice button to be
    a big heavy two joined squares character */
 button.do-and-roll::before {
@@ -48,30 +66,12 @@ button.do-and-roll::before {
   font-weight: bold;
 }
 
-/* Change the character for do buttons to be
-   the play forward character */
-button.do::before {
-  font-family: sans-serif;
-  content: "▶";
-}
-
-button.do,
 button.do-and-roll {
   @include roll-action-button;
 }
 
-button.do {
-  width: 18px;
-}
-
 button.big-control.do-and-roll {
   width: 20px;
-}
-
-.disable-do[value="1"]~.do {
-  background-image: linear-gradient(90deg, #ddd, #ddd);
-  pointer-events: none;
-  @include hovered-button();
 }
 
 .disable-do-and-roll[value="1"]~.do-and-roll {
@@ -106,14 +106,5 @@ button.reset-total {
   line-height: 1;
   padding: 2px;
   vertical-align: middle;
-  @include hovered-button();
-}
-
-button.convert-button {
-  @include action-button;
-  @include theme-background(button-roll-top-bottom-gradient);
-  padding: 0px 2px 4px 2px;
-  vertical-align: middle;
-  font-size: 200%;
   @include hovered-button();
 }

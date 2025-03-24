@@ -3,29 +3,69 @@ include ../global/advantages.pug
 // Overview section 
 .overview.section.overview-tab
   .tables-container
-    // Advantages 
-    .advantage-overview.no-add-or-modify-buttons
-      .advantage.epic-table-header-grid
-        div Advantage / Disadvantage
-      each advantage in advantages
+    .advantages-and-feats
+      .generalDiceRollsSection
+        .general-dice-rolls.epic-table-header-grid
+          div Attr
+          div Ability
+          div Mod
+        .general-dice-rolls(data-epic-table-name="general-dice-rolls")
+          span.diceRollName Roll
+          span.ability &nbsp;
+          span.mod
+            input(name='attr_roll_modifier' type='number' value='0')
+          button.generalDiceRoll.updateRollSectionContent(name='act_updateRollSectionContent_modifier' type='action')
+        .general-dice-rolls(data-epic-table-name="general-dice-rolls")
+          span.attributeName Init
+          span(name='attr_initiative')
+          span.mod
+            input(name='attr_initiativemodifier' type='number' value='0')
+          button.actionRollButton.epRoll_initiative(name='act_epRoll_initiative' type='action')
+        .general-dice-rolls(data-epic-table-name="general-dice-rolls")
+          span.diceRollName IQ
+          span.ability(name='attr_IQ')
+          span.mod
+            input(name='attr_IQModifier' type='number' value='0')
+          button.generalDiceRoll.updateRollSectionContent(name='act_updateRollSectionContent_IQ' type='action')
+        .general-dice-rolls(data-epic-table-name="general-dice-rolls")
+          span.diceRollName DX
+          span.ability(name='attr_DX')
+          span.mod
+            input(name='attr_DXmodifier' type='number' value='0')
+          button.generalDiceRoll.updateRollSectionContent(name='act_updateRollSectionContent_DX' type='action')
+        .general-dice-rolls(data-epic-table-name="general-dice-rolls")
+          span.diceRollName BR
+          span.ability(name='attr_BR')
+          span.mod
+            input(name='attr_BRmodifier' type='number' value='0')
+          button.generalDiceRoll.updateRollSectionContent(name='act_updateRollSectionContent_BR' type='action')
+      // Feats 
+      .feat-overview.no-add-or-modify-buttons
+        .feat.epic-table-header-grid
+          .featextraordinaryletter Extr
+          .featname Epic Feat
+        fieldset.repeating_feat
+          span.featextraordinaryletter.feat-row(name='attr_featextraordinaryletter')
+          span.featname.feat-row(name='attr_featname')
+          button.skill-roll.addRollSectionFeat(name='act_addrollsectionfeat' type='action')
+      // Advantages 
+      .advantage-overview.no-add-or-modify-buttons
+        .advantage.epic-table-header-grid
+          div Advantage / Disadvantage
+        each advantage in advantages
+          .advantage-table(data-epic-table-name="advantage")
+            .conditional-something
+              // This input is used by CSS to hide advantage-row
+              input.advantageField(name=advantage.fieldName type='hidden')
+              .advantage-row
+                div.advantage-name=advantage.description
+                span.advantage-value(name=advantage.fieldName)
+        fieldset.repeating_extraadvantage
+          span.extraadvantagename.extraadvantage-row(name='attr_extraadvantagename')
         .advantage-table(data-epic-table-name="advantage")
-          .conditional-something
-            // This input is used by CSS to hide advantage-row
-            input.advantageField(name=advantage.fieldName type='hidden')
-            .advantage-row
-              div.advantage-name=advantage.description
-              span.advantage-value(name=advantage.fieldName)
-      fieldset.repeating_extraadvantage
-        span.extraadvantagename.extraadvantage-row(name='attr_extraadvantagename')
-      include ../avatars/avatars.pug
-    // Feats 
-    .feat-overview.no-add-or-modify-buttons
-      .feat.epic-table-header-grid
-        .featextraordinaryletter Extr
-        .featname Epic Feat
-      fieldset.repeating_feat
-        span.featextraordinaryletter.feat-row(name='attr_featextraordinaryletter')
-        span.featname.feat-row(name='attr_featname')
+          .advantage-row
+            div.advantage-name Speed
+            span.advantage-value(name='attr_speed')
     // Skills 
     .skills-overview.no-add-or-modify-buttons
       .skills-table.epic-table-header-grid
@@ -39,12 +79,7 @@ include ../global/advantages.pug
           span.skillname(name='attr_skillname')
           span.skillability(name='attr_skillability')
           input.skillbase(name='attr_skillmodifier' type='number')
-          //
-            These hidden inputs are necessary for the roll to find
-            skillability and skillname
-          input(name='attr_skillability' type='hidden')
-          input(name='attr_skillname' type='hidden')
-          button.skill-roll(name='roll_skillroll' type='roll' value='!EPRoll @{skillability}+@{skillmodifier} Tries @{skillname}: @{skillability} + @{skillmodifier}')
+          button.skill-roll.updateRollSectionContent(name='act_updaterollsectioncontent' type='action')
     // Weapons 
     .weapons-overview.no-add-or-modify-buttons
       .weapons-table.epic-table-header-grid
@@ -52,7 +87,6 @@ include ../global/advantages.pug
         .equipmentcount Count
         .equipmentdamage Damage
         .equipmentrange Range
-        .equipmentdefense Def
       fieldset.repeating_weapon
         .weapons-table-row
           .weapons-overview-row-container(data-epic-table-name="weapons-table")
@@ -60,7 +94,6 @@ include ../global/advantages.pug
             input.equipmentcount(name='attr_weaponcount' type='number' value='1')
             span.equipmentdamage(name='attr_weapondamage')
             span.equipmentrange(name='attr_weaponrange')
-            span.equipmentdefense(name='attr_weapondefense')
           // This input is used by CSS to hide weaponnotes
           input.attr_weaponnotes(name='attr_weaponnotes' type='hidden')
           .weapons-overview-row-notes-container(data-epic-table-name="weapons-equipmentnotes-table")

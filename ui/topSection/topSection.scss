@@ -1,4 +1,5 @@
 /* --------- Top section ----------------- */
+@import '../components/gridTable/gridTable.scss';
 
 .top-section {
   display: flex;
@@ -6,40 +7,39 @@
   border-bottom: solid black 1px;
   margin-bottom: 6px;
   @include theme-background(paper-gradient-color);
-  .effectiveness-power-depth-cp-fp-section {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    input.FP {
-      width: 2ch;
+  .pwr-er-hp {
+    width: 160px;
+    $pwr-er-hp-grid-template: getResponsiveGridWidths(48px, 1fr, 48px);
+    @include epic-table-grid('pwr-er-hp', $pwr-er-hp-grid-template);
+    @include epic-table-grid-row-border('pwr-er-hp');
+    .pwr-er-hp-table-row {
+      column-gap: 4px !important;
     }
-    .effectiveness {
-      color: #FFD0FF;
+
+    button.convert-button {
+      @include action-button;
+      @include theme-background(button-roll-top-bottom-gradient);
+      @include hovered-button();
+      width: 100%;
+      padding-left: 0;
+      padding-right: 0;
     }
   }
 
-  .attributecontrol[value="basic"]~span.attribute-value,
   .attributecontrol[value="basic"]~button.reset-total,
-  .attributecontrol[value="basic"]~.attribute-roll,
   .attributecontrol[value="basic"]~.not-basic-tab,
   .cpcontrol[value="basic"]~.not-basic-tab {
     display: none;
   }
 
-  .attributecontrol:not([value="basic"])~input.attribute-value,
   .attributecontrol:not([value="basic"])~button.reset-total .attributecontrol:not([value="basic"])~.CP,
   .attributecontrol:not([value="basic"])~.basic-tab-only,
   .cpcontrol:not([value="basic"])~.basic-tab-only {
     display: none;
   }
 
-  .attribute-row {
-    display: flex;
-    align-items: center;
-  }
   .tab-holder {
     margin-top: 4px;
   }
-  @include popover-control('weightPenalties');
   @import './components/defenseBlock.scss';
 }

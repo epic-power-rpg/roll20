@@ -1,6 +1,7 @@
 @import '../colors.scss';
 
 .spellNotesPopover {
+  text-align: center;
   @include theme-background-color(field-background-color);
   button.popoverButton {
     // See https://wiki.roll20.net/Roll20_UI_Icons
@@ -17,6 +18,10 @@
     @include theme-color(paper-color);
     @include theme-background-color(primary-highlight-background-color);
   }
+
+  .spell-note {
+    margin-bottom: 1px;
+  }
   .spellnote-hidden[value]{
     ~button.popoverButton::after {
       // See https://wiki.roll20.net/Roll20_UI_Icons
@@ -24,7 +29,7 @@
       color: #80ffff;
     }
   }
-  .spellnote-hidden:not([value]), .spellnote-hidden[value=""]{ 
+  .spellnote-hidden:not([value]), .spellnote-hidden[value=""]{
     ~button.popoverButton::after {
       // See https://wiki.roll20.net/Roll20_UI_Icons
       content: '&'; // Plus sign
