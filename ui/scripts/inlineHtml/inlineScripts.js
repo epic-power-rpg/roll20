@@ -98,21 +98,29 @@ const toggleSavePending = function () {
 };
 on('clicked:saveroll', toggleSavePending);
 
-const numericRollKeys = [
+/**
+ * Ordered list of roll keys (Do not reorganize)
+ */
+const roll_keys = [
+  'action_description',
   'action_feats',
   'action_EP',
   'action_SP',
+  'roll_skill',
   'roll_ability',
   'roll_mod1',
   'roll_mod2',
   'roll_mod3',
   'roll_advance_boost',
 ];
-const roll_keys = [
+const nonUpdateRollSectionKeys = new Set([
   'action_description',
   'roll_skill',
-  ...numericRollKeys,
-];
+  'roll_mod2',
+  'roll_mod3',
+]);
+
+const updateRollSectionNumericRollKeys = roll_keys.filter((key) => !nonUpdateRollSectionKeys.has(key));
 
 const saveRollState = function (key, roll_chosen) {
   getAttrs(roll_keys,
@@ -176,7 +184,7 @@ roll_choices.forEach(function (value) {
 
 function updateRollSectionContent({ skillName, description = '', abilityValue, advanceBoost, power }) {
   const baseNumericContent = {};
-  numericRollKeys.forEach((key) => {
+  updateRollSectionNumericRollKeys.forEach((key) => {
     baseNumericContent[key] = 0;
   });
 
@@ -203,12 +211,12 @@ function updateRollSectionContent({ skillName, description = '', abilityValue, a
       'repeating_spell_spellEP'
     ], (attributes) => {
       const { ['repeating_skill_skillname']: skillName } = attributes;
-      const skillAbility = Number(attributes['repeating_skill_skillability'] ?? 0);
-      const advanceBoost = Number(attributes['repeating_skill_skillmodifier'] ?? 0);
+      const skillAbility = getNumberIfValid(attributes['repeating_skill_skillability']);
+      const advanceBoost = getNumberIfValid(attributes['repeating_skill_skillmodifier']);
       const deityName = attributes['repeating_skill_skill_deity_name'];
       let description = sectionName === 'repeating_divine' && deityName ? `Pray to ${deityName} ` : '';
       const spellPwr = isValueDefined(attributes['repeating_spell_spellEP']) ?
-        Number(attributes['repeating_spell_spellEP'] ?? 0) :
+        getNumberIfValid(attributes['repeating_spell_spellEP']) :
         undefined;
       console.log({skillName, skillAbility, advanceBoost});
       updateRollSectionContent({ skillName, description, abilityValue: skillAbility, advanceBoost, power: spellPwr });
@@ -294,8 +302,8 @@ GENERAL_UPDATE_ROLL_SECTION_OPTIONS.forEach((rollOption) => {
   on(`clicked:${actionId}`, () => {
     const { skillAbilityKey, advanceBoostKey } = attributes;
     getAttrs([skillAbilityKey, advanceBoostKey].filter(Boolean), (values) => {
-      const abilityValue = Number(values[skillAbilityKey] ?? 0);
-      const advanceBoost = Number(values[advanceBoostKey] ?? 0);
+      const abilityValue = getNumberIfValid(values[skillAbilityKey]);
+      const advanceBoost = getNumberIfValid(values[advanceBoostKey]);
 
       updateRollSectionContent({ skillName,abilityValue, advanceBoost });
     });
@@ -813,7 +821,7 @@ const updateAdvantagesCosts = function () {
             return {
               description_key: prefix + 'CPdescription',
               base_cost: advantageCosts[advantage],
-              count: Number(attributes[prefix + 'count'])
+              count: getNumberIfValid(attributes[prefix + 'count'])
             };
           });
         const extra_advantages = extra_ids.map(
@@ -821,7 +829,7 @@ const updateAdvantagesCosts = function () {
             const prefix = 'repeating_extraadvantage_' + extra_id + '_';
             return {
               description_key: prefix + 'extraadvantageCPdescription',
-              base_cost: Number(attributes[prefix + 'extraadvantageCP']),
+              base_cost: getNumberIfValid(attributes[prefix + 'extraadvantageCP']),
               count: 1
             };
           });
@@ -1249,8 +1257,8 @@ function updateDivineAttributes() {
             for (let skillIndex = 0; skillIndex < skillIds.length; ++skillIndex) {
               const skillName = attributes[skillNameFields[skillIndex]];
               if (skillName?.toLowerCase().trim().includes(deityName.toLowerCase().trim())) {
-                const skillAbility = Number(attributes[skillAbilityFields[skillIndex]] || 0);
-                const deityAbility = Number(attributes[deityAbilityFields[i]] || 0);
+                const skillAbility = getNumberIfValid(attributes[skillAbilityFields[skillIndex]]);
+                const deityAbility = getNumberIfValid(attributes[deityAbilityFields[i]]);
                 if (skillAbility !== deityAbility) {
                   update[deityAbilityFields[i]] = skillAbility;
                 }
@@ -1622,7 +1630,7 @@ const updateWeightPenalties = function () {
     if (current_level === 6) { current_level = 100; }
     update['weight_penalty'] = -current_level;
     update['displayed_weight_penalty'] = (
-      current_level === 0 ? ' ' :
+      current_level === 0 ? '0' :
         current_level === 100 ? '-∞' :
           -current_level);
     setAttrs(update);
