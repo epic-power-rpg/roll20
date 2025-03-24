@@ -848,10 +848,6 @@
         <div>
           <div class="attribute-name larger inline bold right middle">Wt. Pen.</div>
           <span class="narrowish center bold larger value" name="attr_displayed_weight_penalty"></span>
-        </div>
-        <div>
-          <div class="attribute-name larger inline bold right middle">Speed</div>
-          <span class="narrowish center bold larger value" name="attr_speed"></span>
           <span class="speedTooltip">
             <button class="popoverButton circledButton" name="act_popover_weightPenalties" type="action">?</button>
             <input class="sectioncontrol" name="attr_chosenPopover" type="hidden" value="false" />
@@ -901,6 +897,10 @@
               </div>
             </div>
           </span>
+        </div>
+        <div>
+          <div class="attribute-name larger inline bold right middle">Speed</div>
+          <span class="narrowish center bold larger value" name="attr_speed"></span>
         </div>
       </div>
 
@@ -3019,7 +3019,7 @@ const updateWeightPenalties = function () {
     if (current_level === 6) { current_level = 100; }
     update['weight_penalty'] = -current_level;
     update['displayed_weight_penalty'] = (
-      current_level === 0 ? ' ' :
+      current_level === 0 ? '0' :
         current_level === 100 ? '-∞' :
           -current_level);
     setAttrs(update);

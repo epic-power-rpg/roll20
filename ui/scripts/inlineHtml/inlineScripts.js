@@ -1630,7 +1630,7 @@ const updateWeightPenalties = function () {
     if (current_level === 6) { current_level = 100; }
     update['weight_penalty'] = -current_level;
     update['displayed_weight_penalty'] = (
-      current_level === 0 ? ' ' :
+      current_level === 0 ? '0' :
         current_level === 100 ? '-∞' :
           -current_level);
     setAttrs(update);
