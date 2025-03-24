@@ -1487,21 +1487,29 @@ const toggleSavePending = function () {
 };
 on('clicked:saveroll', toggleSavePending);
 
-const numericRollKeys = [
+/**
+ * Ordered list of roll keys (Do not reorganize)
+ */
+const roll_keys = [
+  'action_description',
   'action_feats',
   'action_EP',
   'action_SP',
+  'roll_skill',
   'roll_ability',
   'roll_mod1',
   'roll_mod2',
   'roll_mod3',
   'roll_advance_boost',
 ];
-const roll_keys = [
+const nonUpdateRollSectionKeys = new Set([
   'action_description',
   'roll_skill',
-  ...numericRollKeys,
-];
+  'roll_mod2',
+  'roll_mod3',
+]);
+
+const updateRollSectionNumericRollKeys = roll_keys.filter((key) => !nonUpdateRollSectionKeys.has(key));
 
 const saveRollState = function (key, roll_chosen) {
   getAttrs(roll_keys,
@@ -1565,7 +1573,7 @@ roll_choices.forEach(function (value) {
 
 function updateRollSectionContent({ skillName, description = '', abilityValue, advanceBoost, power }) {
   const baseNumericContent = {};
-  numericRollKeys.forEach((key) => {
+  updateRollSectionNumericRollKeys.forEach((key) => {
     baseNumericContent[key] = 0;
   });
 
