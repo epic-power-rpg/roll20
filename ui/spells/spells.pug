@@ -24,22 +24,19 @@
       input(name='attr_spell_hit' type='hidden')
       span.center.bold.larger.middle(name='attr_spell_hit')
       input.skillbase(name='attr_spell_hit_modifier' type='number')
-      button(type='roll' value='!EPRoll @{spell_hit}+@{spell_hit_modifier} Hits with Spell: @{spell_hit} + @{spell_hit_modifier}')
-      = '\n'
-      | &emsp;
+      button.spellRoll.updateRollSectionContent(name='act_updateRollSectionContent_spell_hit' type='action')
       .label.wide.larger Affliction
       input(name='attr_affliction' type='hidden')
       span.center.bold.larger.middle(name='attr_affliction')
       input.skillbase(name='attr_affliction_modifier' type='number')
-      button(type='roll' value='!EPRoll @{affliction}+@{affliction_modifier} Affliction Attack: @{affliction} + @{affliction_modifier}')
-      | &emsp;
+      button.spellRoll.updateRollSectionContent(name='act_updateRollSectionContent_affliction' type='action')
       .label.wide.larger Mental
       input(name='attr_mental' type='hidden')
       span.center.bold.larger.middle(name='attr_mental')
       input.skillbase(name='attr_mental_modifier' type='number')
-      button(type='roll' value='!EPRoll @{mental}+@{mental_modifier} Mental Attack: @{mental} + @{mental_modifier}')
+      button.spellRoll.updateRollSectionContent(name='act_updateRollSectionContent_mental' type='action')
   // Arcane spells 
-  .arcane.section
+  .arcane.section.arcane-spells-grid
     input(name='attr_arcane_total_FP' type='hidden' value='0')
     input(name='attr_arcane_total_CP' type='hidden' value='0')
     input(name='attr_arcane_total_single_CP' type='hidden' value='0')
@@ -56,8 +53,10 @@
       .spelltarget-grid Target
       .spellduration-grid Damage/ Duration
       .spellhasnote-grid Notes
-      .skillFP-grid FP
-      .skillCP-grid CP
+      .skillFP-grid
+        include ../powerStats/fpColumnHeader.pug
+      .skillCP-grid
+        include ../powerStats/cpColumnHeader.pug
       .skillexpertise-grid Exper.
       .skillattribute-grid.arcane-iq-plus-minus-attribute IQ &pm;
       .skillbase-grid Base
@@ -75,7 +74,7 @@
       // Make the button able to access the ability 
       input(name='attr_skillability' hidden='true')
       input.skillbase-grid(name='attr_skillmodifier' type='number')
-      button.skill-grid-roll(name='roll_spellroll' type='roll' value='!EPRoll @{skillability}+@{skillmodifier} Tries @{skillname}: @{skillability} + @{skillmodifier}')
+      button.skill-grid-roll.updateRollSectionContent(name='act_updaterollsectioncontent' type='action')
       input.spellEP-grid(name='attr_spellEP' type='text')
       input.spellcasttime-grid(name='attr_spellcasttime' type='text')
       select.spelltype-grid(name='attr_spelltype' type='text')
@@ -110,18 +109,30 @@
     input(name='attr_divine_total_CP' type='hidden' value='0')
     input(name='attr_divine_total_single_CP' type='hidden' value='0')
     .divine.epic-table-header-grid
+      .skilldeity-grid Deity
       .skillname-grid Name
       .spellhasnote-grid Notes
       .spellEP-grid PWR
+      .spellUpdateRollSection-grid
       .spellcasttime-grid Cast Time
       .spelltype-grid Touch/ Ray/ Missile
       .spellrange-grid Range
       .spelltarget-grid Target
       .spellduration-grid Damage/ Duration
     fieldset.repeating_divine
+      select.skilldisciplineinfo-grid(name='attr_skilldisciplineinfo')
+        option(value='⇡') &#x21E1;
+        option(value='D') D
+      //
+        The next input puts whether we are a deity into the
+        value property, where CSS can see it. All hail Jaz the Mighty!
+      input.isdiscipline-grid(name='attr_skillisdiscipline' type='hidden')
+      input.deityName-grid(name='attr_skill_deity_name' type='hidden')
+      input.skillAbility-grid(name='attr_skill_skillability' type='hidden')
       input.skillname-grid(name='attr_skillname' type='text')
       include ./spellsNotesPopover.pug
       input.spellEP-grid(name='attr_spellEP' type='number')
+      button.skill-grid-roll.updateRollSectionContent(name='act_updaterollsectioncontent' type='action')
       input.spellcasttime-grid(name='attr_spellcasttime' type='text')
       select.spelltype-grid(name='attr_spelltype' type='text')
         option(value='-') None
@@ -145,7 +156,8 @@
       .spellrange-grid Range
       .spelltarget-grid Target
       .spellduration-grid Damage/ Duration
-      .skillCP-grid CP
+      .skillCP-grid
+        include ../powerStats/cpColumnHeader.pug
     fieldset.repeating_innate
       select.skill-innatesphere-grid(name='attr_skillinnatesphere')
         option(value=' ')

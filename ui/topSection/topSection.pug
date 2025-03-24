@@ -1,93 +1,8 @@
 // Top section 
 = '\n'
 .top-section
-  // Left top section 
   .flex-stack.space-between
-    .effectiveness-power-depth-cp-fp-section
-      .effectiveness
-        .effectiveness.inline.bold.right.middle Eff
-        input.power.medium.bold.middle(name='attr_effectiveness' type='hidden' value='0')
-        span.power.left.bold.middle(name='attr_effectiveness')
-      .power-depth
-        input.cpcontrol(name='attr_chosentab' type='hidden' value='basic')
-        .power.inline.bold.right.middle EPN
-        // Power is editable in basic tab only 
-        span.power.left.bold.middle.not-basic-tab(name='attr_power')
-        input.power.medium.bold.middle.basic-tab-only(name='attr_power' type='number' value='0')
-      .cp-section
-        input.cpcontrol(name='attr_chosentab' type='hidden' value='basic')
-        .CP.inline.bold.right.middle CP
-        input.CP.bold.center.narrow(name='attr_CPU' value='@{CP}\
-          -(@{attribute_CP})\
-          -(@{advantage_total_CP})\
-          -(@{feat_total_CP})\
-          -(@{skill_total_CP})\
-          -(@{arcane_total_CP})\
-          -(@{innate_total_CP})' disabled='true')
-        span /&nbsp;
-        // CP is editable in basic tab only 
-        span.CP.bold.middle.not-basic-tab(name='attr_CP')
-        input.CP.bold.medium.middle.basic-tab-only(name='attr_CP' type='number' value='10')
-      .fp-section
-        .FP.inline.bold.right.middle FP
-        input.FP.bold.center.narrow(name='attr_FPU' value='@{FP}\
-        - (@{skill_total_FP})\
-        - (@{arcane_total_FP})' disabled='true')
-        span /&nbsp;
-        span.FP.bold.middle.center(name='attr_FP' value='2')
-    = '\n'
-    // IQ, DX, BR 
-    //
-      These are read only, except in the basic tab,
-      where they can be changed, and their CP cost is shown
-    .attribute-row
-      input.attributecontrol.cpcontrol(name='attr_chosentab' type='hidden' value='basic')
-      .attribute-name.big IQ
-      = '\n'
-      | &ensp;
-      = '\n'
-      span.attribute-value.center.not-basic-tab(name='attr_IQ')
-      .inline.not-basic-tab  + 
-      input.modifier-width.not-basic-tab(name='attr_IQmodifier' type='number' value='0')
-      button.actionRollButton.epRoll_IQmodifier.not-basic-tab(name='act_epRoll_IQmodifier' type='action')
-      input.attribute-value.narrowish.center.basic-tab-only(name='attr_IQ' type='number' value='1')
-      .attribute-name.big DX
-      = '\n'
-      | &ensp;
-      = '\n'
-      span.attribute-value.center(name='attr_DX')
-      .inline.not-basic-tab  + 
-      input.modifier-width.not-basic-tab(name='attr_DXmodifier' type='number' value='0')
-      button.actionRollButton.epRoll_DXmodifier.not-basic-tab(name='act_epRoll_DXmodifier' type='action')
-      input.attribute-value.narrowish.center(name='attr_DX' type='number' value='1')
-      = '\n'
-      | &emsp;
-      .attribute-name.big BR
-      = '\n'
-      | &ensp;
-      = '\n'
-      span.attribute-value.center(name='attr_BR')
-      .inline.not-basic-tab  + 
-      input.modifier-width.not-basic-tab(name='attr_BRmodifier' type='number' value='0')
-      button.actionRollButton.epRoll_BRmodifier.not-basic-tab(name='act_epRoll_BRmodifier' type='action')
-      input.attribute-value.narrowish.center.basic-tab-only(name='attr_BR' type='number' value='1')
-      input(name='attr_attribute_CP' type='hidden' value='-5')
-      input(name='attr_displayed_attribute_CP' type='hidden' value='-5')
-      input.narrow.right.CP.basic-tab-only(name='attr_show_displayed_attribute_CP' value='@{displayed_attribute_CP}' disabled='true')
-      input.narrow.right.CP.basic-tab-only(name='attr_never_used' value='CP' disabled='true')
-    // Rolling 
-    div(display='inline-block')
-      button.actionRollButton.epRoll(name='act_epRoll' type='action')
-      = '\n'
-      | &emsp;
-      button.actionRollButton.epRoll_roll_modifier(name='act_epRoll_roll_modifier' type='action')
-      |       +
-      input.narrowish(name='attr_roll_modifier' type='number' value='0')
-      .attribute-name.wideish.larger Initiative
-      span.narrow.center.bold.larger.value(name='attr_initiative')
-      |       +
-      input.narrowish(name='attr_initiativemodifier' type='number' value='0')
-      button.actionRollButton.epRoll_initiative(name='act_epRoll_initiative' type='action')
+    div
     // tab buttons 
     .tab-holder
       //
@@ -108,92 +23,32 @@
         | Notes
   // Movement & DR 
   .children-separated.no-shrink
-    .center
-      label.wideish.larger.narrow-spacing(for='attr_reaction_penalty') Defense Penalty
-      input#attr_reaction_penalty.attribute-value.narrowish.center(name='attr_reaction_penalty' type='number' value='0')
-    div
-      .attribute-name.wide.larger
-        button.popoverButton.circledButton(name='act_popover_weightPenalties' type='action')
-          | ?
-        input.sectioncontrol(name='attr_chosenPopover' type='hidden' value='false')
-        .section.weightPenalties.popoverContainer
-          .popoverBackdrop
-            button(name='act_popover_weightPenalties' type='action') Close popover
-          .popover
-            button.closePopoverButton(name='act_popover_weightPenalties' type='action') X
-            .center.wideish.bold Weight Penalties
-            .weight-penalty-table.flex-stack
-              .table-header
-                div
-                div Pen.
-                div Wt.
-              div
-                input(name='attr_highlight_weight_penalty_1' type='hidden')
-                div -1
-                span(name='attr_penalty_weight_1')
-              div
-                input(name='attr_highlight_weight_penalty_2' type='hidden')
-                div -2
-                span(name='attr_penalty_weight_2')
-              div
-                input(name='attr_highlight_weight_penalty_3' type='hidden')
-                div -3
-                span(name='attr_penalty_weight_3')
-              div
-                input(name='attr_highlight_weight_penalty_4' type='hidden')
-                div -4
-                span(name='attr_penalty_weight_4')
-              div
-                input(name='attr_highlight_weight_penalty_5' type='hidden')
-                div -5
-                span(name='attr_penalty_weight_5')
-              div
-                input(name='attr_highlight_weight_penalty_6' type='hidden')
-                div -&infin;
-                span(name='attr_penalty_weight_6')
-        |         Wt. Load
-      span.narrowish.center.bold.larger.value(name='attr_equipment_total_weight')
-    div
-      .attribute-name.wide.larger Wt. Pen.
-      span.narrowish.center.bold.larger.value(name='attr_displayed_weight_penalty')
-    div
-      .attribute-name.wide.larger Speed
-      span.narrowish.center.bold.larger.value(name='attr_speed')
   include ./components/defenseBlock.pug
   = '\n'
   // HP, PWR, ER 
-  .children-separated.no-shrink
-    div
+  .pwr-er-hp
+    .pwr-er-hp-table-row(data-epic-table-name="pwr-er-hp")
       .attribute-name.biggish PWR
-      input.attribute-value.biggish.narrower.medium.center(name='attr_EP_t' type='number')
-      input.attributecontrol(name='attr_chosentab' type='hidden' value='basic')
-      .inline.biggish.middle.basic-tab-only /
-      button.reset-total(name='act_reset_ep_t' type='action')
-        | &#x21E6;
-      span.attribute-value.biggish.narrow(name='attr_EP_t_max')
-      input.attribute-value.biggish.narrower.medium.center(name='attr_EP_t_max' type='number' value='0')
+      input.biggish.narrower.medium.center(name='attr_EP_t' type='number')
+      div
+        button.reset-total(name='act_reset_ep_t' type='action')
+          | &#x21E6;
+        span.biggish.narrow(name='attr_EP_t_max')
     div
-      = '\n'
-      | &emsp;&emsp;&emsp;
       button.convert-button(name='act_convert_sp' type='action')
-        | &nbsp;&#x21EF;
-    div
-      .attribute-name.biggish &ensp;&ensp;&ensp;ER
-      input.attribute-value.biggish.narrower.medium.center(name='attr_SP' type='number')
-      span
-        input.attributecontrol(name='attr_chosentab' type='hidden' value='basic')
-        .inline.biggish.middle.basic-tab-only /
+        | 1 ER ↝ 2 PWR
+    .pwr-er-hp-table-row(data-epic-table-name="pwr-er-hp")
+      .attribute-name.biggish ER
+      input.biggish.narrower.medium.center(name='attr_SP' type='number')
+      div
         button.reset-total(name='act_reset_sp' type='action')
           | &#x21E6;
-      span.attribute-value.biggish.narrow(name='attr_SP_max' value='0')
-    div
+        span.biggish.narrow(name='attr_SP_max' value='0')
+    .pwr-er-hp-table-row(data-epic-table-name="pwr-er-hp")
       .attribute-name.biggish HP
       // TODO: Move this to sheet worker, who can do it right. 
-      input.attribute-value.biggish.medium.center(name='attr_HP' type='number')
-      span
-        input.attributecontrol(name='attr_chosentab' type='hidden' value='basic')
-        .inline.biggish.middle.basic-tab-only /
+      input.biggish.medium.center(name='attr_HP' type='number')
+      div
         button.reset-total(name='act_reset_hp' type='action')
           | &#x21E6;
-      span.attribute-value.biggish.narrow(name='attr_HP_max' value='16')
-      
+        span.biggish.narrow(name='attr_HP_max' value='16')

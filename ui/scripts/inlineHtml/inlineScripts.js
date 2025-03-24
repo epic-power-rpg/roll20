@@ -5,7 +5,7 @@
 // ----- Utilities -----
 const removeNonNumeric = function (s) {
   return String(s).trim().replace(/[^\d.-]/g, '');
-}
+};
 
 // Strip out any non-numeric stuff, then interpret the string as a float.
 // For example, this will turn '5+S' into 5.
@@ -98,11 +98,29 @@ const toggleSavePending = function () {
 };
 on('clicked:saveroll', toggleSavePending);
 
-const roll_keys = ['action_description', 'action_feats',
-  'action_EP', 'action_SP',
-  'roll_skill', 'roll_ability',
-  'roll_mod1', 'roll_mod2', 'roll_mod3',
-  'roll_advance_boost'];
+/**
+ * Ordered list of roll keys (Do not reorganize)
+ */
+const roll_keys = [
+  'action_description',
+  'action_feats',
+  'action_EP',
+  'action_SP',
+  'roll_skill',
+  'roll_ability',
+  'roll_mod1',
+  'roll_mod2',
+  'roll_mod3',
+  'roll_advance_boost',
+];
+const nonUpdateRollSectionKeys = new Set([
+  'action_description',
+  'roll_skill',
+  'roll_mod2',
+  'roll_mod3',
+]);
+
+const updateRollSectionNumericRollKeys = roll_keys.filter((key) => !nonUpdateRollSectionKeys.has(key));
 
 const saveRollState = function (key, roll_chosen) {
   getAttrs(roll_keys,
@@ -162,6 +180,134 @@ const doChooseRoll = function (number) {
 const roll_choices = ['1', '2', '3', '4', '5', '6'];
 roll_choices.forEach(function (value) {
   on(`clicked:choose_roll_${value}`, function () { doChooseRoll(value); });
+});
+
+function updateRollSectionContent({ skillName, description = '', abilityValue, advanceBoost, power }) {
+  const baseNumericContent = {};
+  updateRollSectionNumericRollKeys.forEach((key) => {
+    baseNumericContent[key] = 0;
+  });
+
+  const rollContent = {
+    ...baseNumericContent,
+    'action_description': description,
+    'roll_skill': skillName,
+    'roll_ability': abilityValue,
+    'roll_advance_boost': advanceBoost,
+  };
+  if (isValueDefined(power)) {
+    rollContent['action_EP'] = power;
+  }
+  setAttrs(rollContent);
+}
+['repeating_skill', 'repeating_arcane', 'repeating_divine'].forEach((sectionName) => {
+  on(`clicked:${sectionName}:updateRollSectionContent`, function () {
+    console.log('clicked:repeating_skill:updateRollSectionContent');
+    getAttrs([
+      'repeating_skill_skillname',
+      'repeating_skill_skillability',
+      'repeating_skill_skillmodifier',
+      'repeating_skill_skill_deity_name',
+      'repeating_spell_spellEP'
+    ], (attributes) => {
+      const { ['repeating_skill_skillname']: skillName } = attributes;
+      const skillAbility = getNumberIfValid(attributes['repeating_skill_skillability']);
+      const advanceBoost = getNumberIfValid(attributes['repeating_skill_skillmodifier']);
+      const deityName = attributes['repeating_skill_skill_deity_name'];
+      let description = sectionName === 'repeating_divine' && deityName ? `Pray to ${deityName} ` : '';
+      const spellPwr = isValueDefined(attributes['repeating_spell_spellEP']) ?
+        getNumberIfValid(attributes['repeating_spell_spellEP']) :
+        undefined;
+      console.log({skillName, skillAbility, advanceBoost});
+      updateRollSectionContent({ skillName, description, abilityValue: skillAbility, advanceBoost, power: spellPwr });
+    });
+  });
+});
+
+on('clicked:repeating_feat:addrollsectionfeat', function () {
+  console.log('clicked:repeating_feat:addrollsectionfeat');
+  getAttrs(['repeating_feat_featextraordinary', 'repeating_feat_featname', 'action_description', 'action_feats'], (attributes) => {
+    const {
+      ['repeating_feat_featextraordinary']: extraordniaryFeat,
+      ['repeating_feat_featname']: featName,
+      ['action_description']: actionDescription,
+      ['action_feats']: actionFeats,
+    } = attributes;
+    console.log({extraordniaryFeat, featName, actionDescription, actionFeats});
+    const featCost = extraordniaryFeat === '1' ? 2 : 1;
+    const currentFeatDescriptions = new Set(actionDescription.split(/, ?/).map((value) => value.trim()).filter(Boolean));
+    if (currentFeatDescriptions.has(featName)) {
+      return;
+    }
+    currentFeatDescriptions.add(featName);
+    setAttrs({
+      'action_description': [...currentFeatDescriptions].join(', '),
+      'action_feats': Number(actionFeats) + featCost,
+    });
+  });
+});
+
+const GENERAL_UPDATE_ROLL_SECTION_OPTIONS = [{
+  actionId: 'updateRollSectionContent_modifier',
+  skillName: 'Roll',
+  attributes: {
+    advanceBoostKey: 'roll_modifier',
+  },
+}, {
+  actionId: 'updateRollSectionContent_IQ',
+  skillName: 'Tries to be smart',
+  attributes: {
+    skillAbilityKey: 'IQ',
+    advanceBoostKey: 'IQmodifier',
+  },
+}, {
+  actionId: 'updateRollSectionContent_DX',
+  skillName: 'Tries to be nimble',
+  attributes: {
+    skillAbilityKey: 'DX',
+    advanceBoostKey: 'DXmodifier',
+  },
+}, {
+  actionId: 'updateRollSectionContent_BR',
+  skillName: 'Tries to be strong',
+  attributes: {
+    skillAbilityKey: 'BR',
+    advanceBoostKey: 'BRmodifier',
+  },
+}, {
+  actionId: 'updateRollSectionContent_spell_hit',
+  skillName: 'Hits with spell',
+  attributes: {
+    skillAbilityKey: 'spell_hit',
+    advanceBoostKey: 'spell_hit_modifier',
+  },
+}, {
+  actionId: 'updateRollSectionContent_affliction',
+  skillName: 'Affliction attack',
+  attributes: {
+    skillAbilityKey: 'affliction',
+    advanceBoostKey: 'affliction_modifier',
+  },
+}, {
+  actionId: 'updateRollSectionContent_mental',
+  skillName: 'Mental attack',
+  attributes: {
+    skillAbilityKey: 'mental',
+    advanceBoostKey: 'mental_modifier',
+  },
+}];
+
+GENERAL_UPDATE_ROLL_SECTION_OPTIONS.forEach((rollOption) => {
+  const { actionId, skillName, attributes } = rollOption;
+  on(`clicked:${actionId}`, () => {
+    const { skillAbilityKey, advanceBoostKey } = attributes;
+    getAttrs([skillAbilityKey, advanceBoostKey].filter(Boolean), (values) => {
+      const abilityValue = getNumberIfValid(values[skillAbilityKey]);
+      const advanceBoost = getNumberIfValid(values[advanceBoostKey]);
+
+      updateRollSectionContent({ skillName,abilityValue, advanceBoost });
+    });
+  });
 });
 
 const topActionDeltas = function (values) {
@@ -247,35 +393,6 @@ const deltasDescription = function (deltas) {
   }
   return description;
 };
-
-const doTopAction = function () {
-  getAttrs(['EP_t', 'EP_t_max', 'SP',
-    'action_description', 'action_feats',
-    'action_EP', 'action_SP'],
-  function (values) {
-    let deltas = topActionDeltas(values);
-    let update = makeUpdate(values, deltas);
-    update['pendingchat'] = (values['action_description']
-        + deltasDescription(deltas));
-    setAttrs(update);
-  });
-};
-on('clicked:topaction', doTopAction);
-
-const undoTopAction = function () {
-  getAttrs(['EP_t', 'EP_t_max', 'SP',
-    'action_feats', 'action_EP', 'action_SP'],
-  function (values) {
-    let deltas = multiplyDeltas(topActionDeltas(values), -1);
-    let update = makeUpdate(values, deltas);
-    let restored = deltasDescription(deltas);
-    if (restored !== '') {
-      update['pendingchat'] = 'Undo restoring' + restored;
-    }
-    setAttrs(update);
-  });
-};
-on('clicked:undotopaction', undoTopAction);
 
 const topRollCommand = function (values) {
   let ability = Number(values['roll_ability']);
@@ -391,8 +508,6 @@ const updateTopActEnables = function () {
     log(values);
     log(top_action_deltas);
     let update = {
-      'disable_do':
-          isLegalUpdate(values, top_action_deltas) ? '0' : '1',
       'disable_do_and_roll':
           isLegalUpdate(values, top_roll_deltas) ? '0' : '1'
     };
@@ -460,6 +575,12 @@ on('sheet:opened', fixPower);
   button => {
     on(`clicked:${button}`, function () {
       setAttrs({ chosentab: button });
+    });
+  });
+['defense_equipment', 'defense_skills'].forEach(
+  button => {
+    on(`clicked:${button}`, function () {
+      setAttrs({ defense_tab: button });
     });
   });
 
@@ -550,6 +671,46 @@ const updateAttributeCost = function () {
   });
 };
 on('change:iq change:dx change:br', updateAttributeCost);
+
+function updateRemainingCp() {
+  const attributeNames = [
+    'attribute_CP',
+    'advantage_total_CP',
+    'feat_total_CP',
+    'skill_total_CP',
+    'arcane_total_CP',
+    'innate_total_CP',
+  ];
+  getAttrs(['CP', ...attributeNames], function (values) {
+    const CP = Number(values.CP);
+    const usedCp = attributeNames.reduce((memo, name) => memo + Number(values[name]), 0);
+    setAttrs({ remaining_cp: CP - usedCp });
+  });
+}
+on('change:CP' +
+  ' change:attribute_CP ' +
+  ' change:advantage_total_CP' +
+  ' change:feat_total_CP' +
+  ' change:skill_total_CP' +
+  ' change:arcane_total_CP' +
+  ' change:innate_total_CP' +
+  ' sheet:opened', updateRemainingCp);
+
+function updateRemainingFp() {
+  const attributeNames = [
+    'skill_total_FP',
+    'arcane_total_FP',
+  ];
+  getAttrs(['FP', ...attributeNames], function (values) {
+    const FP = Number(values.FP);
+    const usedFp = attributeNames.reduce((memo, name) => memo + Number(values[name]), 0);
+    setAttrs({ remaining_fp: FP - usedFp });
+  });
+}
+on('change:FP' + 
+  ' change:skill_total_FP' + 
+  ' change:arcane_total_FP' + 
+  ' sheet:opened', updateRemainingFp);
 
 // ----- Advantage and disadvantage costs -----
 const advantageCosts = {
@@ -660,7 +821,7 @@ const updateAdvantagesCosts = function () {
             return {
               description_key: prefix + 'CPdescription',
               base_cost: advantageCosts[advantage],
-              count: Number(attributes[prefix + 'count'])
+              count: getNumberIfValid(attributes[prefix + 'count'])
             };
           });
         const extra_advantages = extra_ids.map(
@@ -668,7 +829,7 @@ const updateAdvantagesCosts = function () {
             const prefix = 'repeating_extraadvantage_' + extra_id + '_';
             return {
               description_key: prefix + 'extraadvantageCPdescription',
-              base_cost: Number(attributes[prefix + 'extraadvantageCP']),
+              base_cost: getNumberIfValid(attributes[prefix + 'extraadvantageCP']),
               count: 1
             };
           });
@@ -986,6 +1147,18 @@ const updateCopiedAbilities = function () {
         }
         update[skill.replaceAll(' ', '_')] = ability;
       }
+      for (let skillInfo of [
+        {skillName: 'resolve', attributeName: 'current_resolve', base: IQ_n },
+        {skillName: 'robustness', attributeName: 'current_robustness', base: BR_n },
+      ]) {
+        const { skillName, attributeName, base } = skillInfo;
+        let ability = base;
+        const skillIndex = skill_map[skillName];
+        if (isValueDefined(skillIndex) && values[disciplineinfoFields[skillIndex]] !== 'D') {
+          ability = Number(values[abilityFields[skillIndex]]);
+        }
+        update[attributeName] = ability;
+      }
       setAttrs(update);
     });
   });
@@ -1044,6 +1217,70 @@ const updateSkillDisciplineExpertises = function (section) {
     });
   });
 };
+
+function updateDivineAttributes() {
+  const section = 'divine';
+  getSectionIDsOrdered(section, function (ids) {
+    const disciplineinfoFields = ids.map(
+      id => `repeating_${section}_${id}_skilldisciplineinfo`);
+    const isdisciplineFields = ids.map(
+      id => `repeating_${section}_${id}_skillisdiscipline`);
+    const nameFields = ids.map(
+      id => `repeating_${section}_${id}_skillname`);
+    const deityNameFields = ids.map(
+      id => `repeating_${section}_${id}_skill_deity_name`);
+    const deityAbilityFields = ids.map(
+      id => `repeating_${section}_${id}_skillability`);
+    getSectionIDs('skill', function (skillIds) {
+      const skillNameFields = skillIds.map(skillId => `repeating_skill_${skillId}_skillname`);
+      const skillAbilityFields = skillIds.map(skillId => `repeating_skill_${skillId}_skillability`);
+      getAttrs(disciplineinfoFields
+        .concat(isdisciplineFields)
+        .concat(nameFields)
+        .concat(deityNameFields)
+        .concat(deityAbilityFields)
+        .concat(skillNameFields)
+        .concat(skillAbilityFields),
+      function (attributes) {
+        let deityName = 'Deity';
+        let update = {};
+        for (let i = 0; i < ids.length; ++i) {
+          if (attributes[disciplineinfoFields[i]] === 'D') {
+            deityName = attributes[nameFields[i]];
+            if (attributes[isdisciplineFields[i]] !== '1') {
+              update[isdisciplineFields[i]] = '1';
+            }
+          } else {
+            if (attributes[isdisciplineFields[i]] !== '0') {
+              update[isdisciplineFields[i]] = '0';
+            }
+            for (let skillIndex = 0; skillIndex < skillIds.length; ++skillIndex) {
+              const skillName = attributes[skillNameFields[skillIndex]];
+              if (skillName?.toLowerCase().trim().includes(deityName.toLowerCase().trim())) {
+                const skillAbility = getNumberIfValid(attributes[skillAbilityFields[skillIndex]]);
+                const deityAbility = getNumberIfValid(attributes[deityAbilityFields[i]]);
+                if (skillAbility !== deityAbility) {
+                  update[deityAbilityFields[i]] = skillAbility;
+                }
+              }
+            }
+            if (deityName !== attributes[deityNameFields[i]]) {
+              update[deityNameFields[i]] = deityName;
+            }
+          }
+        }
+        if (!_.isEmpty(update)) {
+          setAttrs(update);
+        }
+      });
+    });
+  });
+}
+
+on('change:repeating_divine:skilldisciplineinfo' +
+  ' change:repeating_divine:skillname' +
+  ' sheet:opened',
+updateDivineAttributes);
 
 const updateSkillDerivedForId = function (section, row_id) {
   const name = `repeating_${section}_${row_id}_skillname`;
@@ -1184,6 +1421,13 @@ on('change:repeating_skill:skilldisciplineinfo' +
   ' change:repeating_skill:skillbase',
 function (event) { updateSkillDerived('skill', event); });
 
+on('change:repeating_skill:skilldisciplineinfo' +
+  ' change:repeating_skill:skillexpertise' +
+  ' change:repeating_skill:skilldisciplineexpertise' +
+  ' change:repeating_skill:skillattribute' +
+  ' change:repeating_skill:skillbase',
+updateDivineAttributes);
+
 on('change:IQ change:DX change:BR'
   + ' change:advantage_mage_count change:advantage_devout_count',
 function () { updateAllSkillsDerived('skill'); });
@@ -1292,9 +1536,8 @@ const updateDefenseValues = function () {
   const defenseBoostName = 'defense_boost';
   const highestWeaponDefenseName = 'best_weapon_defense';
   const guardName = 'guard';
-  const reactionPenaltyName = 'reaction_penalty';
   getAttrs([armorName, shieldName, defenseBoostName, highestWeaponDefenseName,
-            guardName, reactionPenaltyName],
+            guardName],
     function (values) {
       const cur_armor = getNumberIfValid(values[armorName]);
       const cur_shield = getNumberIfValid(values[shieldName]);
@@ -1305,14 +1548,10 @@ const updateDefenseValues = function () {
         const defenseIsDodge = defense === 'dodge';
         const defenseIsBlock = defense === 'block';
         const defenseIsParry = defense === 'parry';
-        /**
-         * FIXME - Deprecate `reaction_penalty` since it is redundant with `defense_boost` as a follow up.
-         */
         const total = (
           guard_n
           + (defenseIsBlock ? cur_shield : 0)
           + (defenseIsParry ? highestWeaponDefense : 0)
-          - Math.abs(getNumberIfValid(values[reactionPenaltyName]))
           + getNumberIfValid(values[defenseBoostName])
         );
         /**
@@ -1329,7 +1568,7 @@ const updateDefenseValues = function () {
 }
 on('change:armor_defense change:shield_defense change:best_weapon_defense' +
    ' change:guard' +
-   ' change:defense_boost change:reaction_penalty sheet:opened',
+   ' change:defense_boost sheet:opened',
 updateDefenseValues);
 
 const updateSpeed = function () {
@@ -1391,7 +1630,7 @@ const updateWeightPenalties = function () {
     if (current_level === 6) { current_level = 100; }
     update['weight_penalty'] = -current_level;
     update['displayed_weight_penalty'] = (
-      current_level === 0 ? ' ' :
+      current_level === 0 ? '0' :
         current_level === 100 ? '-∞' :
           -current_level);
     setAttrs(update);

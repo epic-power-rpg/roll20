@@ -1,0 +1,38 @@
+span.speedTooltip
+  button.popoverButton.circledButton(name='act_popover_weightPenalties' type='action')
+    | ?
+  input.sectioncontrol(name='attr_chosenPopover' type='hidden' value='false')
+  .section.weightPenalties.popoverContainer
+    .popoverBackdrop
+      button(name='act_popover_weightPenalties' type='action') Close popover
+    .popover
+      button.closePopoverButton(name='act_popover_weightPenalties' type='action') X
+      .weight-penalty-table.flex-stack
+        .table-header
+          div
+          div Penalty
+          div Weight
+        div
+          input(name='attr_highlight_weight_penalty_1' type='hidden')
+          div -1
+          span(name='attr_penalty_weight_1')
+        div
+          input(name='attr_highlight_weight_penalty_2' type='hidden')
+          div -2
+          span(name='attr_penalty_weight_2')
+        div
+          input(name='attr_highlight_weight_penalty_3' type='hidden')
+          div -3
+          span(name='attr_penalty_weight_3')
+        div
+          input(name='attr_highlight_weight_penalty_4' type='hidden')
+          div -4
+          span(name='attr_penalty_weight_4')
+        div
+          input(name='attr_highlight_weight_penalty_5' type='hidden')
+          div -5
+          span(name='attr_penalty_weight_5')
+        div
+          input(name='attr_highlight_weight_penalty_6' type='hidden')
+          div -&infin;
+          span(name='attr_penalty_weight_6')

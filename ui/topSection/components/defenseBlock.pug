@@ -1,24 +1,42 @@
 // Defense 
 .defense-block
-  .defenses.epic-table-header-grid
-    div Def.
-    div Armor
-    div.armor-header.epic-tooltip None
-      span.epic-tooltip-text.right Ability without Armor
-  .defenses-table-row.bonus-row(data-epic-table-name="defenses")
-    .table-label +bonus
-    input.center.bold.larger(name='attr_defense_boost' type='number' value='0')
-  .defenses-table-row(data-epic-table-name="defenses")
-    .table-label.larger Dodge
-    input(name='attr_dodge' type='hidden')
-    span.center.bold.larger(name='attr_current_dodge_with_armor' value='0')
-    span.center.bold.larger(name='attr_current_dodge_without_armor' value='0')
-  .defenses-table-row(data-epic-table-name="defenses")
-    .table-label.larger Block
-    input(name='attr_block' type='hidden')
-    span.center.bold.larger(name='attr_current_block_with_armor' value='0')
-    span.center.bold.larger(name='attr_current_block_without_armor' value='0')
-  .defenses-table-row.parry-row(data-epic-table-name="defenses")
-    .table-label.larger Parry
-    span.center.bold.larger(name='attr_current_parry_with_armor' type='number' value='0')
-    span.center.bold.larger(name='attr_current_parry_without_armor' type='number' value='0')
+  input.sectioncontrol(name='attr_defense_tab' type='hidden' value='defense_equipment')
+  .defense_equipment.section
+    .defenses.epic-table-header-grid
+      div.attribute-column
+        button.toggleDefenseTab(name='act_defense_skills' type='action' aria-label="Toggle Defense Skills")
+        span Def.
+      div Armor
+      div.armor-header.epic-tooltip None
+        span.epic-tooltip-text.right Ability without Armor
+    .defenses-table-row.bonus-row(data-epic-table-name="defenses")
+      .table-label +bonus
+      input.center.bold.larger(name='attr_defense_boost' type='number' value='0')
+    .defenses-table-row(data-epic-table-name="defenses")
+      .table-label.larger Dodge
+      input(name='attr_dodge' type='hidden')
+      span.center.bold.larger(name='attr_current_dodge_with_armor' value='0')
+      span.center.bold.larger(name='attr_current_dodge_without_armor' value='0')
+    .defenses-table-row(data-epic-table-name="defenses")
+      .table-label.larger Block
+      input(name='attr_block' type='hidden')
+      span.center.bold.larger(name='attr_current_block_with_armor' value='0')
+      span.center.bold.larger(name='attr_current_block_without_armor' value='0')
+    .defenses-table-row.parry-row(data-epic-table-name="defenses")
+      .table-label.larger Parry
+      span.center.bold.larger(name='attr_current_parry_with_armor' type='number' value='0')
+      span.center.bold.larger(name='attr_current_parry_without_armor' type='number' value='0')
+  .defense_skills.section
+    .defense-extra-block
+      .defenses-extra.epic-table-header-grid
+        div.attribute-column
+          button.toggleDefenseTab(name='act_defense_equipment' type='action' aria-label="Toggle Defense Equipment")
+          span Def.
+        div Skill
+      .defenses-extra-table-row(data-epic-table-name="defenses-extra")
+        .table-label.larger Resolve
+        input(name='attr_block' type='hidden')
+        span.center.bold.larger(name='attr_current_resolve' value='0')
+      .defenses-extra-table-row.parry-row(data-epic-table-name="defenses-extra")
+        .table-label.larger Robust
+        span.center.bold.larger(name='attr_current_robustness' type='number' value='0')
