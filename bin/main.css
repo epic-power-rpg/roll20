@@ -502,13 +502,13 @@ input[readonly] {
 .roll-section {
   display: flex;
   border: solid;
-  color: hsl(213deg, 80%, 60%);
+  border-color: hsl(213deg, 80%, 60%);
   border-width: 1px;
   border-radius: 5px;
   padding: 1px;
 }
 body.sheet-darkmode .roll-section {
-  color: hsl(213deg, 80%, 60%);
+  border-color: hsl(213deg, 80%, 60%);
 }
 .roll-section .action-area-text {
   color: hsl(213deg, 80%, 60%);
