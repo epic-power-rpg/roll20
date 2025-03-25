@@ -182,7 +182,7 @@ roll_choices.forEach(function (value) {
   on(`clicked:choose_roll_${value}`, function () { doChooseRoll(value); });
 });
 
-function updateRollSectionContent({ skillName, description = '', abilityValue, advanceBoost, power }) {
+function updateRollSectionContent({ skillName, description = '', abilityValue, modifier, power }) {
   const baseNumericContent = {};
   updateRollSectionNumericRollKeys.forEach((key) => {
     baseNumericContent[key] = 0;
@@ -192,7 +192,7 @@ function updateRollSectionContent({ skillName, description = '', abilityValue, a
     ...baseNumericContent,
     'action_description': description,
     'roll_skill': skillName,
-    'roll_ability': abilityValue,
+    'roll_mod1': modifier,
     'roll_advance_boost': advanceBoost,
   };
   if (isValueDefined(power)) {
@@ -212,14 +212,14 @@ function updateRollSectionContent({ skillName, description = '', abilityValue, a
     ], (attributes) => {
       const { ['repeating_skill_skillname']: skillName } = attributes;
       const skillAbility = getNumberIfValid(attributes['repeating_skill_skillability']);
-      const advanceBoost = getNumberIfValid(attributes['repeating_skill_skillmodifier']);
+      const modifier = getNumberIfValid(attributes['repeating_skill_skillmodifier']);
       const deityName = attributes['repeating_skill_skill_deity_name'];
       let description = sectionName === 'repeating_divine' && deityName ? `Pray to ${deityName} ` : '';
       const spellPwr = isValueDefined(attributes['repeating_spell_spellEP']) ?
         getNumberIfValid(attributes['repeating_spell_spellEP']) :
         undefined;
       console.log({skillName, skillAbility, advanceBoost});
-      updateRollSectionContent({ skillName, description, abilityValue: skillAbility, advanceBoost, power: spellPwr });
+      updateRollSectionContent({ skillName, description, abilityValue: skillAbility, modifier, power: spellPwr });
     });
   });
 });
