@@ -116,8 +116,6 @@ const roll_keys = [
 const nonUpdateRollSectionKeys = new Set([
   'action_description',
   'roll_skill',
-  'roll_mod2',
-  'roll_mod3',
 ]);
 
 const updateRollSectionNumericRollKeys = roll_keys.filter((key) => !nonUpdateRollSectionKeys.has(key));
