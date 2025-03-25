@@ -68,6 +68,13 @@ $themes: (
   }
 }
 
+@mixin theme-border-color($color-name) {
+  border-color: epic-theme(light, $color-name);
+  @include theme-mode {
+    border-color: epic-theme(dark, $color-name);
+  }
+}
+
 @mixin theme-background($color-name) {
   background: epic-theme(light, $color-name);
   @include theme-mode {
