@@ -3,7 +3,7 @@
 .roll-section {
   display: flex;
   border: solid;
-  border-color: @include theme-color(update-action-color);
+  @include theme-color(roll-section-border-color);
   border-width: 1px;
   border-radius: 5px;
   padding: 1px;
