@@ -1505,8 +1505,6 @@ const roll_keys = [
 const nonUpdateRollSectionKeys = new Set([
   'action_description',
   'roll_skill',
-  'roll_mod2',
-  'roll_mod3',
 ]);
 
 const updateRollSectionNumericRollKeys = roll_keys.filter((key) => !nonUpdateRollSectionKeys.has(key));
@@ -1571,7 +1569,7 @@ roll_choices.forEach(function (value) {
   on(`clicked:choose_roll_${value}`, function () { doChooseRoll(value); });
 });
 
-function updateRollSectionContent({ skillName, description = '', abilityValue, advanceBoost, power }) {
+function updateRollSectionContent({ skillName, description = '', abilityValue, modifier, power }) {
   const baseNumericContent = {};
   updateRollSectionNumericRollKeys.forEach((key) => {
     baseNumericContent[key] = 0;
@@ -1582,7 +1580,7 @@ function updateRollSectionContent({ skillName, description = '', abilityValue, a
     'action_description': description,
     'roll_skill': skillName,
     'roll_ability': abilityValue,
-    'roll_advance_boost': advanceBoost,
+    'roll_mod1': modifier,
   };
   if (isValueDefined(power)) {
     rollContent['action_EP'] = power;
@@ -1601,14 +1599,14 @@ function updateRollSectionContent({ skillName, description = '', abilityValue, a
     ], (attributes) => {
       const { ['repeating_skill_skillname']: skillName } = attributes;
       const skillAbility = getNumberIfValid(attributes['repeating_skill_skillability']);
-      const advanceBoost = getNumberIfValid(attributes['repeating_skill_skillmodifier']);
+      const modifier = getNumberIfValid(attributes['repeating_skill_skillmodifier']);
       const deityName = attributes['repeating_skill_skill_deity_name'];
       let description = sectionName === 'repeating_divine' && deityName ? `Pray to ${deityName} ` : '';
       const spellPwr = isValueDefined(attributes['repeating_spell_spellEP']) ?
         getNumberIfValid(attributes['repeating_spell_spellEP']) :
         undefined;
-      console.log({skillName, skillAbility, advanceBoost});
-      updateRollSectionContent({ skillName, description, abilityValue: skillAbility, advanceBoost, power: spellPwr });
+      console.log({skillName, skillAbility, modifier});
+      updateRollSectionContent({ skillName, description, abilityValue: skillAbility, modifier, power: spellPwr });
     });
   });
 });
@@ -1640,61 +1638,61 @@ const GENERAL_UPDATE_ROLL_SECTION_OPTIONS = [{
   actionId: 'updateRollSectionContent_modifier',
   skillName: 'Roll',
   attributes: {
-    advanceBoostKey: 'roll_modifier',
+    modifierKey: 'roll_modifier',
   },
 }, {
   actionId: 'updateRollSectionContent_IQ',
   skillName: 'Tries to be smart',
   attributes: {
     skillAbilityKey: 'IQ',
-    advanceBoostKey: 'IQmodifier',
+    modifierKey: 'IQmodifier',
   },
 }, {
   actionId: 'updateRollSectionContent_DX',
   skillName: 'Tries to be nimble',
   attributes: {
     skillAbilityKey: 'DX',
-    advanceBoostKey: 'DXmodifier',
+    modifierKey: 'DXmodifier',
   },
 }, {
   actionId: 'updateRollSectionContent_BR',
   skillName: 'Tries to be strong',
   attributes: {
     skillAbilityKey: 'BR',
-    advanceBoostKey: 'BRmodifier',
+    modifierKey: 'BRmodifier',
   },
 }, {
   actionId: 'updateRollSectionContent_spell_hit',
   skillName: 'Hits with spell',
   attributes: {
     skillAbilityKey: 'spell_hit',
-    advanceBoostKey: 'spell_hit_modifier',
+    modifierKey: 'spell_hit_modifier',
   },
 }, {
   actionId: 'updateRollSectionContent_affliction',
   skillName: 'Affliction attack',
   attributes: {
     skillAbilityKey: 'affliction',
-    advanceBoostKey: 'affliction_modifier',
+    modifierKey: 'affliction_modifier',
   },
 }, {
   actionId: 'updateRollSectionContent_mental',
   skillName: 'Mental attack',
   attributes: {
     skillAbilityKey: 'mental',
-    advanceBoostKey: 'mental_modifier',
+    modifierKey: 'mental_modifier',
   },
 }];
 
 GENERAL_UPDATE_ROLL_SECTION_OPTIONS.forEach((rollOption) => {
   const { actionId, skillName, attributes } = rollOption;
   on(`clicked:${actionId}`, () => {
-    const { skillAbilityKey, advanceBoostKey } = attributes;
-    getAttrs([skillAbilityKey, advanceBoostKey].filter(Boolean), (values) => {
+    const { skillAbilityKey, modifierKey } = attributes;
+    getAttrs([skillAbilityKey, modifierKey].filter(Boolean), (values) => {
       const abilityValue = getNumberIfValid(values[skillAbilityKey]);
-      const advanceBoost = getNumberIfValid(values[advanceBoostKey]);
+      const modifier = getNumberIfValid(values[modifierKey]);
 
-      updateRollSectionContent({ skillName,abilityValue, advanceBoost });
+      updateRollSectionContent({ skillName,abilityValue, modifier });
     });
   });
 });
