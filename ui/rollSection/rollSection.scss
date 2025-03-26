@@ -2,6 +2,11 @@
 
 .roll-section {
   display: flex;
+  border: solid;
+  @include theme-border-color(roll-section-border-color);
+  border-width: 1px;
+  border-radius: 5px;
+  padding: 1px;
   .action-area-text {
     @include theme-color(update-action-color);
     font-weight: bold;

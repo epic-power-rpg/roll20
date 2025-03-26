@@ -501,6 +501,14 @@ input[readonly] {
 /* ---------- Roll section ------------- */
 .roll-section {
   display: flex;
+  border: solid;
+  border-color: hsl(213deg, 80%, 80%);
+  border-width: 1px;
+  border-radius: 5px;
+  padding: 1px;
+}
+body.sheet-darkmode .roll-section {
+  border-color: hsl(213deg, 80%, 80%);
 }
 .roll-section .action-area-text {
   color: hsl(213deg, 80%, 60%);
