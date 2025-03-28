@@ -5,7 +5,7 @@
   border: solid;
   @include theme-border-color(roll-section-border-color);
   border-width: 1px;
-  border-radius: 5px;
+  border-radius: 6px;
   padding: 1px;
   .action-area-text {
     @include theme-color(update-action-color);
