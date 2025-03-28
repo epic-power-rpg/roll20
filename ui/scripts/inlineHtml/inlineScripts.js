@@ -1378,9 +1378,12 @@ const updateSkillDerivedForId = function (section, row_id) {
         if (section === 'arcane') {
           ability_v += Number(values[mage]) * 2;
         }
-        if (values[name].toLowerCase().trim().startsWith('pray')) {
-          ability_v += Number(values[devout]) * 2;
-        }
+        // The rules have changed to no longer have Devout give a bonus to pray.
+        // We comment out the code that did that, so it is easy to bring back
+        // if the rule change proves misguided.
+        // if (values[name].toLowerCase().trim().startsWith('pray')) {
+        //   ability_v += Number(values[devout]) * 2;
+        // }
         update[ability] = ability_v;
       }
     }
