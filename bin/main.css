@@ -504,7 +504,7 @@ input[readonly] {
   border: solid;
   border-color: hsl(213deg, 80%, 80%);
   border-width: 1px;
-  border-radius: 5px;
+  border-radius: 6px;
   padding: 1px;
 }
 body.sheet-darkmode .roll-section {
