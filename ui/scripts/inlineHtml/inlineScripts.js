@@ -1277,6 +1277,7 @@ function updateDivineAttributes() {
 
 on('change:repeating_divine:skilldisciplineinfo' +
   ' change:repeating_divine:skillname' +
+  ' change:_reporder:divine' +
   ' sheet:opened',
 updateDivineAttributes);
 
