@@ -120,7 +120,7 @@
           <label class="action-area-text" for="attr_roll_advance_boost">Boost</label>
           <input class="narrowish" id="attr_roll_advance_boost" name="attr_roll_advance_boost" type="number" value="0" />
           <label class="action-area-text" for="attr_action_roll_EP">PWR</label>
-          <input class="narrow" id="attr_action_roll_EP" name="attr_action_roll_EP" value="@{roll_advance_boost}" disabled="true" />
+          <input class="narrow" id="attr_action_roll_EP" name="attr_action_roll_EP" value="@{roll_advance_boost} + @{action_feats} + @{action_EP}" disabled="true" />
         </div>
       </div>
       &ensp;

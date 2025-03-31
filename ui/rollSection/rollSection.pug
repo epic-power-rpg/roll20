@@ -50,7 +50,7 @@
       label.action-area-text(for='attr_roll_advance_boost') Boost
       input#attr_roll_advance_boost.narrowish(name='attr_roll_advance_boost' type='number' value='0')
       label.action-area-text(for='attr_action_roll_EP') PWR
-      input#attr_action_roll_EP.narrow(name='attr_action_roll_EP' value='@{roll_advance_boost}' disabled='true')
+      input#attr_action_roll_EP.narrow(name='attr_action_roll_EP' value='@{roll_advance_boost} + @{action_feats} + @{action_EP}' disabled='true')
   = '\n'
   | &ensp;
   input.disable-do-and-roll(name='attr_disable_do_and_roll' type='hidden' value='0')
