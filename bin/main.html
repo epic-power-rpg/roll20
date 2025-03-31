@@ -1596,11 +1596,12 @@ function updateRollSectionContent({ skillName, description = '', abilityValue, m
       'repeating_skill_skill_deity_name',
       'repeating_spell_spellEP'
     ], (attributes) => {
-      const { ['repeating_skill_skillname']: skillName } = attributes;
+      const { ['repeating_skill_skillname']: spellName } = attributes;
       const skillAbility = getNumberIfValid(attributes['repeating_skill_skillability']);
       const modifier = getNumberIfValid(attributes['repeating_skill_skillmodifier']);
       const deityName = attributes['repeating_skill_skill_deity_name'];
-      let description = sectionName === 'repeating_divine' && deityName ? `Pray to ${deityName} ` : '';
+      let skillName = sectionName === 'repeating_divine' && deityName ? `Pray to ${deityName} ` : spellName;
+      let description = sectionName === 'repeating_divine' ? spellName : '';
       const spellPwr = isValueDefined(attributes['repeating_spell_spellEP']) ?
         getNumberIfValid(attributes['repeating_spell_spellEP']) :
         undefined;
@@ -2025,8 +2026,8 @@ on('change:cp sheet:opened', updateFP);
 const updateAttributeCost = function () {
   getAttrs(['IQ', 'DX', 'BR'], function (attributes) {
     const values = [Number(attributes.IQ),
-                        Number(attributes.DX),
-                        Number(attributes.BR)]
+      Number(attributes.DX),
+      Number(attributes.BR)];
     values.sort((a,b) => a - b);
     let total = values.reduce((acc, x) => acc + x);
     // The total is normally 3, but not if a species adjusts it.
@@ -2357,15 +2358,15 @@ function updateUserStatistics() {
 }
 // The change:repeating_skill:skillname catches new skills.
 on('sheet:opened change:race change:repeating_skill:skillname remove:repeating_skill', 
-   updateUserStatistics);
+  updateUserStatistics);
 
 function updateEffectiveness() {
   getAttrs(['EP_t_max', 'SP_max', 'HP_max', 'best_weapon_damage', 'best_attack', 'best_attack_is_spell',
-            'current_dodge_with_armor', 'current_parry_with_armor', 'current_block_with_armor'], (attrs) => {
+    'current_dodge_with_armor', 'current_parry_with_armor', 'current_block_with_armor'], (attrs) => {
     const attack = getNumberIfValid(attrs['best_attack']);
     const defense = Math.max(getNumberIfValid(attrs['current_dodge_with_armor']),
-                             getNumberIfValid(attrs['current_parry_with_armor']),
-                             getNumberIfValid(attrs['current_block_with_armor']));
+      getNumberIfValid(attrs['current_parry_with_armor']),
+      getNumberIfValid(attrs['current_block_with_armor']));
     const EP = getNumberIfValid(attrs['EP_t_max']);
     const SP = getNumberIfValid(attrs['SP_max']);
     const HP = getNumberIfValid(attrs['HP_max']);
@@ -2373,11 +2374,11 @@ function updateEffectiveness() {
     console.log('attack is spell: ' + attackIsSpell.toString() +
                 '  best weapon damage: ' + getNumberIfValid(attrs['best_weapon_damage']).toString());
     const damagePerAttack = (attackIsSpell ?
-                             8 :
-                             (getNumberIfValid(attrs['best_weapon_damage']) + 2));
+      8 :
+      (getNumberIfValid(attrs['best_weapon_damage']) + 2));
     const enemyHealth = 16;
     const damagePerIncomingAttack = 8;
-    const normalizingFactor = 0.3
+    const normalizingFactor = 0.3;
     console.log('EP: ' + EP.toString() +
                 '  SP: ' + SP.toString() +
                 '  HP: ' + HP.toString() +
@@ -2418,7 +2419,7 @@ function updateEffectiveness() {
 on('change:EP change:SP change:HP change:best_weapon_damage change:best_attack change:best_attack_is_spell' +
    ' change:current_dodge_with_armor change:current_parry_with_armor change:current_block_with_armor' +
    ' sheet:opened',
-   updateEffectiveness)
+updateEffectiveness);
 
 // Calculate these ability values from the skills, modify them for the weight
 // penalty if appropriate, and set attributes to record the result:
@@ -2454,8 +2455,8 @@ const updateCopiedAbilities = function () {
       let bestAttack = -5;
       const nonPhysicalAttacks = new Set(['mental attack', 'mental', 'affliction attack', 'affliction']);
       const spellAttacks = nonPhysicalAttacks.union(new Set(['spell hit', // Include obsolete spell attacks
-                                                             'spell touch', 'aim spell',
-                                                             'engulf with spell', 'engulf']));
+        'spell touch', 'aim spell',
+        'engulf with spell', 'engulf']));
       let bestAttackIsSpell = 0;
       let under_attack_discipline = false;
       for (let i = 0; i < ids.length; ++i) {
@@ -2480,7 +2481,7 @@ const updateCopiedAbilities = function () {
       }
       console.log('Best attack: ' + bestAttack.toString());
       let update = {'best_attack': bestAttack,
-                   'best_attack_is_spell': bestAttackIsSpell};
+        'best_attack_is_spell': bestAttackIsSpell};
       // Make a map from skill names to their index.
       let skill_map = _.object(
         nameFields.map(name => values[name].toLowerCase().trim()),
@@ -2505,19 +2506,19 @@ const updateCopiedAbilities = function () {
       for (let skill of ['guard', 'spell hit', 'affliction', 'mental']) {
         // First, get the ability assuming there is no training
         let base = (skill === 'guard' ? DX_n - 3 :
-                    skill === 'spell hit' ? DX_n + 4 :
-                    skill === 'affliction' ? BR_n + 1 :
-                    IQ_n + 1)
+          skill === 'spell hit' ? DX_n + 4 :
+            skill === 'affliction' ? BR_n + 1 :
+              IQ_n + 1);
         let ability = base + (skill === 'guard' ?
-                              Math.max(min_focus_plus_expertises['defense'],
-                                       min_focus_plus_expertises['defend']):
-                              min_focus_plus_expertises['attack']);
+          Math.max(min_focus_plus_expertises['defense'],
+            min_focus_plus_expertises['defend']):
+          min_focus_plus_expertises['attack']);
         // Check for both alternative names for the skill and obsolete names.
         let possible_names = (skill === 'guard' ? ['guard', 'dodge', 'block', 'shield', 'parry'] :
-                              skill === 'spell hit' ? ['spell hit', 'engulf', 'engulf with spell',
-                                                       'aim spell', 'spell touch'] :
-                              skill === 'affliction' ? ['affliction', 'afflict', 'affliction attack'] :
-                              ['mental', 'mental attack']);
+          skill === 'spell hit' ? ['spell hit', 'engulf', 'engulf with spell',
+            'aim spell', 'spell touch'] :
+            skill === 'affliction' ? ['affliction', 'afflict', 'affliction attack'] :
+              ['mental', 'mental attack']);
         for (let name of possible_names) {
           let skill_index = skill_map[name];
           if (isValueDefined(skill_index) && values[disciplineinfoFields[skill_index]] !== 'D') {
@@ -2915,7 +2916,7 @@ const updateCopiedWeaponInfo = function () {
       setAttrs(update);
     });
   });
-}
+};
 on('change:repeating_weapon:weaponcount change:repeating_weapon:weapondefense' +
    ' change:repeating_weapon:weapondamage remove:repeating_weapon sheet:opened',
 updateCopiedWeaponInfo);
@@ -2927,35 +2928,35 @@ const updateDefenseValues = function () {
   const highestWeaponDefenseName = 'best_weapon_defense';
   const guardName = 'guard';
   getAttrs([armorName, shieldName, defenseBoostName, highestWeaponDefenseName,
-            guardName],
-    function (values) {
-      const cur_armor = getNumberIfValid(values[armorName]);
-      const cur_shield = getNumberIfValid(values[shieldName]);
-      const highestWeaponDefense = getNumberIfValid(values[highestWeaponDefenseName]);
-      const update = {};
-      const guard_n = getNumberIfValid(values[guardName]);
-      for (let defense of ['dodge', 'block', 'parry']) {
-        const defenseIsDodge = defense === 'dodge';
-        const defenseIsBlock = defense === 'block';
-        const defenseIsParry = defense === 'parry';
-        const total = (
-          guard_n
+    guardName],
+  function (values) {
+    const cur_armor = getNumberIfValid(values[armorName]);
+    const cur_shield = getNumberIfValid(values[shieldName]);
+    const highestWeaponDefense = getNumberIfValid(values[highestWeaponDefenseName]);
+    const update = {};
+    const guard_n = getNumberIfValid(values[guardName]);
+    for (let defense of ['dodge', 'block', 'parry']) {
+      const defenseIsDodge = defense === 'dodge';
+      const defenseIsBlock = defense === 'block';
+      const defenseIsParry = defense === 'parry';
+      const total = (
+        guard_n
           + (defenseIsBlock ? cur_shield : 0)
           + (defenseIsParry ? highestWeaponDefense : 0)
           + getNumberIfValid(values[defenseBoostName])
-        );
+      );
         /**
           * Block is only valid if there is a shield value and Parry is only valid if there is a weapon.
           */
-        const blockIsValid = defenseIsBlock && cur_shield;
-        const parryIsValid = defenseIsParry && highestWeaponDefense;
-        const defenseIsValid = defenseIsDodge || blockIsValid || parryIsValid;
-        update[`current_${defense}_without_armor`] = defenseIsValid ? String(total) : '--';
-        update[`current_${defense}_with_armor`] = defenseIsValid ? String(total + cur_armor) : '--';
-      }
-      setAttrs(update);
-    });
-}
+      const blockIsValid = defenseIsBlock && cur_shield;
+      const parryIsValid = defenseIsParry && highestWeaponDefense;
+      const defenseIsValid = defenseIsDodge || blockIsValid || parryIsValid;
+      update[`current_${defense}_without_armor`] = defenseIsValid ? String(total) : '--';
+      update[`current_${defense}_with_armor`] = defenseIsValid ? String(total + cur_armor) : '--';
+    }
+    setAttrs(update);
+  });
+};
 on('change:armor_defense change:shield_defense change:best_weapon_defense' +
    ' change:guard' +
    ' change:defense_boost sheet:opened',

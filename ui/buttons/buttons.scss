@@ -35,7 +35,7 @@ button.actionRollButton::before {
 @mixin update-action-button {
   @include action-button;
   // Replace with `main` branch once this is merged
-  background-image: url(https://raw.githubusercontent.com/epic-power-rpg/roll20/jazeee-add-images/ui/images/actionButton.svg);
+  background-image: url(https://raw.githubusercontent.com/epic-power-rpg/roll20/main/ui/images/actionButton.svg);
   width: 20px;
   height: 20px;
   border: none;
