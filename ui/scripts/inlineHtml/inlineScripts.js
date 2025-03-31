@@ -208,11 +208,12 @@ function updateRollSectionContent({ skillName, description = '', abilityValue, m
       'repeating_skill_skill_deity_name',
       'repeating_spell_spellEP'
     ], (attributes) => {
-      const { ['repeating_skill_skillname']: skillName } = attributes;
+      const { ['repeating_skill_skillname']: spellName } = attributes;
       const skillAbility = getNumberIfValid(attributes['repeating_skill_skillability']);
       const modifier = getNumberIfValid(attributes['repeating_skill_skillmodifier']);
       const deityName = attributes['repeating_skill_skill_deity_name'];
-      let description = sectionName === 'repeating_divine' && deityName ? `Pray to ${deityName} ` : '';
+      let skillName = sectionName === 'repeating_divine' && deityName ? `Pray to ${deityName} ` : spellName;
+      let description = sectionName === 'repeating_divine' ? spellName : '';
       const spellPwr = isValueDefined(attributes['repeating_spell_spellEP']) ?
         getNumberIfValid(attributes['repeating_spell_spellEP']) :
         undefined;
