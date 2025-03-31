@@ -1283,12 +1283,16 @@ body.sheet-darkmode .overview-tab .advantages-and-feats .generalDiceRollsSection
   outline: 1px solid #666;
   border: none;
   border-radius: 4px;
-  background-image: url(https://raw.githubusercontent.com/epic-power-rpg/roll20/main/ui/images/actionButton.svg);
+  background-image: url(https://raw.githubusercontent.com/epic-power-rpg/roll20/jazeee-add-images-2/ui/images/actionButtonLight.svg);
+  outline: none;
   width: 20px;
   height: 20px;
   border: none;
   background-repeat: no-repeat;
   background-size: contain;
+}
+body.sheet-darkmode .overview-tab .advantages-and-feats .generalDiceRollsSection .general-dice-rolls button.generalDiceRoll {
+  background-image: url(https://raw.githubusercontent.com/epic-power-rpg/roll20/jazeee-add-images-2/ui/images/actionButton.svg);
 }
 .overview-tab .advantages-and-feats .generalDiceRollsSection .general-dice-rolls button.generalDiceRoll:hover {
   opacity: 0.9;
@@ -1555,12 +1559,16 @@ body.sheet-darkmode .overview-tab .advantages-and-feats .feat-overview > div[dat
   outline: 1px solid #666;
   border: none;
   border-radius: 4px;
-  background-image: url(https://raw.githubusercontent.com/epic-power-rpg/roll20/main/ui/images/actionButton.svg);
+  background-image: url(https://raw.githubusercontent.com/epic-power-rpg/roll20/jazeee-add-images-2/ui/images/actionButtonLight.svg);
+  outline: none;
   width: 20px;
   height: 20px;
   border: none;
   background-repeat: no-repeat;
   background-size: contain;
+}
+body.sheet-darkmode .overview-tab .advantages-and-feats .feat-overview > div[data-groupname] button.addRollSectionFeat {
+  background-image: url(https://raw.githubusercontent.com/epic-power-rpg/roll20/jazeee-add-images-2/ui/images/actionButton.svg);
 }
 .overview-tab .advantages-and-feats .feat-overview > div[data-groupname] button.addRollSectionFeat:hover {
   opacity: 0.9;
@@ -1674,12 +1682,16 @@ body.sheet-darkmode .overview-tab .skills-overview > div[data-groupname] .skill-
   outline: 1px solid #666;
   border: none;
   border-radius: 4px;
-  background-image: url(https://raw.githubusercontent.com/epic-power-rpg/roll20/main/ui/images/actionButton.svg);
+  background-image: url(https://raw.githubusercontent.com/epic-power-rpg/roll20/jazeee-add-images-2/ui/images/actionButtonLight.svg);
+  outline: none;
   width: 20px;
   height: 20px;
   border: none;
   background-repeat: no-repeat;
   background-size: contain;
+}
+body.sheet-darkmode .overview-tab .skills-overview > div[data-groupname] .skill-overview-row-container button.updateRollSectionContent {
+  background-image: url(https://raw.githubusercontent.com/epic-power-rpg/roll20/jazeee-add-images-2/ui/images/actionButton.svg);
 }
 .overview-tab .skills-overview > div[data-groupname] .skill-overview-row-container button.updateRollSectionContent:hover {
   opacity: 0.9;
@@ -2927,12 +2939,16 @@ body.sheet-darkmode .spells .spell-header-action-area label, body.sheet-darkmode
   outline: 1px solid #666;
   border: none;
   border-radius: 4px;
-  background-image: url(https://raw.githubusercontent.com/epic-power-rpg/roll20/main/ui/images/actionButton.svg);
+  background-image: url(https://raw.githubusercontent.com/epic-power-rpg/roll20/jazeee-add-images-2/ui/images/actionButtonLight.svg);
+  outline: none;
   width: 20px;
   height: 20px;
   border: none;
   background-repeat: no-repeat;
   background-size: contain;
+}
+body.sheet-darkmode .spells .spell-header-action-area button.spellRoll {
+  background-image: url(https://raw.githubusercontent.com/epic-power-rpg/roll20/jazeee-add-images-2/ui/images/actionButton.svg);
 }
 .spells .spell-header-action-area button.spellRoll:hover {
   opacity: 0.9;
@@ -3073,12 +3089,16 @@ body.sheet-darkmode .spells .arcane-spells-grid div[data-epic-table-name=arcane]
   outline: 1px solid #666;
   border: none;
   border-radius: 4px;
-  background-image: url(https://raw.githubusercontent.com/epic-power-rpg/roll20/main/ui/images/actionButton.svg);
+  background-image: url(https://raw.githubusercontent.com/epic-power-rpg/roll20/jazeee-add-images-2/ui/images/actionButtonLight.svg);
+  outline: none;
   width: 20px;
   height: 20px;
   border: none;
   background-repeat: no-repeat;
   background-size: contain;
+}
+body.sheet-darkmode .spells .arcane-spells-grid button.updateRollSectionContent {
+  background-image: url(https://raw.githubusercontent.com/epic-power-rpg/roll20/jazeee-add-images-2/ui/images/actionButton.svg);
 }
 .spells .arcane-spells-grid button.updateRollSectionContent:hover {
   opacity: 0.9;
@@ -3193,12 +3213,16 @@ body.sheet-darkmode .spells .divine-spells-grid div[data-epic-table-name=divine]
   outline: 1px solid #666;
   border: none;
   border-radius: 4px;
-  background-image: url(https://raw.githubusercontent.com/epic-power-rpg/roll20/main/ui/images/actionButton.svg);
+  background-image: url(https://raw.githubusercontent.com/epic-power-rpg/roll20/jazeee-add-images-2/ui/images/actionButtonLight.svg);
+  outline: none;
   width: 20px;
   height: 20px;
   border: none;
   background-repeat: no-repeat;
   background-size: contain;
+}
+body.sheet-darkmode .spells .divine-spells-grid button.updateRollSectionContent {
+  background-image: url(https://raw.githubusercontent.com/epic-power-rpg/roll20/jazeee-add-images-2/ui/images/actionButton.svg);
 }
 .spells .divine-spells-grid button.updateRollSectionContent:hover {
   opacity: 0.9;
