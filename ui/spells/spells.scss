@@ -59,7 +59,7 @@ $notes-popover-width: 30px;
       20px, // Update roll section
       40px, // PWR
       1fr, // Cast Time
-      80px, // Touch/ Ray/ Missile - 80px for two rows not three
+      70px, // Attack Type - Just wide enough to make "Missile" fit. Uses two lines for the header.
       1.5fr, // Range
       64px, // Target
       1.5fr, // Damage/ Duration
@@ -110,7 +110,7 @@ $notes-popover-width: 30px;
       40px, // PWR
       20px, // Update roll section
       1fr, // Cast time
-      2fr, // Touch/Ray/Missile
+      70px, // Attack Type - Just wide enough to make "Missile" fit. Uses two lines for the header.
       1fr, // Range
       1fr, // Target
       2fr, // Damage/Duration
@@ -141,7 +141,7 @@ $notes-popover-width: 30px;
       $notes-popover-width, // Note Popover
       32px, //EP
       2fr, // Cast Time
-      2fr, // Touch/Ray/Missle
+      70px, // Attack Type - Just wide enough to make "Missile" fit. Uses two lines for the header.
       2fr, // Range
       3fr, // Target
       2fr, // Damage/Duration
