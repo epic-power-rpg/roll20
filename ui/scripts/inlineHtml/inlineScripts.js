@@ -281,11 +281,11 @@ const GENERAL_UPDATE_ROLL_SECTION_OPTIONS = [{
     modifierKey: 'spell_hit_modifier',
   },
 }, {
-  actionId: 'updateRollSectionContent_affliction',
-  skillName: 'Affliction attack',
+  actionId: 'updateRollSectionContent_vigor',
+  skillName: 'Vigor attack',
   attributes: {
-    skillAbilityKey: 'affliction',
-    modifierKey: 'affliction_modifier',
+    skillAbilityKey: 'vigor',
+    modifierKey: 'vigor_modifier',
   },
 }, {
   actionId: 'updateRollSectionContent_mental',
@@ -1035,7 +1035,7 @@ on('change:EP change:SP change:HP change:best_weapon_damage change:best_attack c
 
 // Calculate these ability values from the skills, modify them for the weight
 // penalty if appropriate, and set attributes to record the result:
-//    guard, spell hit, affliction, mental,
+//    guard, spell hit, vigor, mental,
 //    best_attack, best_attack_is_spell
 // Then update everything that depends on those quantities.
 const updateCopiedAbilities = function () {
@@ -1065,7 +1065,8 @@ const updateCopiedAbilities = function () {
       //  Because the base is so high. But we only consider skills that are actualy listed on the sheet,
       //  on the theory those are the ones that the character will actualy be using.) 
       let bestAttack = -5;
-      const nonPhysicalAttacks = new Set(['mental attack', 'mental', 'affliction attack', 'affliction']);
+      // For backward compatibility with old character sheets, we recognize "affliction" as a synonym for "vigor".
+      const nonPhysicalAttacks = new Set(['mental attack', 'mental', 'vigor attack', 'vigor', 'affliction attack', 'affliction', 'afflict']);
       const spellAttacks = nonPhysicalAttacks.union(new Set(['spell hit', // Include obsolete spell attacks
                                                              'spell touch', 'aim spell',
                                                              'engulf with spell', 'engulf']));
@@ -1115,11 +1116,11 @@ const updateCopiedAbilities = function () {
         min_focus_plus_expertises[discipline] = min_focus_plus_expertise;
       }
       // Try to find an ability for each skill.
-      for (let skill of ['guard', 'spell hit', 'affliction', 'mental']) {
+      for (let skill of ['guard', 'spell hit', 'vigor', 'mental']) {
         // First, get the ability assuming there is no training
         let base = (skill === 'guard' ? DX_n - 3 :
                     skill === 'spell hit' ? DX_n + 4 :
-                    skill === 'affliction' ? BR_n + 1 :
+                    skill === 'vigor' ? BR_n + 1 :
                     IQ_n + 1)
         let ability = base + (skill === 'guard' ?
                               Math.max(min_focus_plus_expertises['defense'],
@@ -1129,7 +1130,7 @@ const updateCopiedAbilities = function () {
         let possible_names = (skill === 'guard' ? ['guard', 'dodge', 'block', 'shield', 'parry'] :
                               skill === 'spell hit' ? ['spell hit', 'engulf', 'engulf with spell',
                                                        'aim spell', 'spell touch'] :
-                              skill === 'affliction' ? ['affliction', 'afflict', 'affliction attack'] :
+                              skill === 'vigor' ? ['vigor', 'vigor attack', 'affliction', 'afflict', 'affliction attack'] :
                               ['mental', 'mental attack']);
         for (let name of possible_names) {
           let skill_index = skill_map[name];
