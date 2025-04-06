@@ -25,11 +25,11 @@
       span.center.bold.larger.middle(name='attr_spell_hit')
       input.skillbase(name='attr_spell_hit_modifier' type='number')
       button.spellRoll.updateRollSectionContent(name='act_updateRollSectionContent_spell_hit' type='action')
-      .label.wide.larger Affliction
-      input(name='attr_affliction' type='hidden')
-      span.center.bold.larger.middle(name='attr_affliction')
-      input.skillbase(name='attr_affliction_modifier' type='number')
-      button.spellRoll.updateRollSectionContent(name='act_updateRollSectionContent_affliction' type='action')
+      .label.wide.larger Vigor
+      input(name='attr_vigor' type='hidden')
+      span.center.bold.larger.middle(name='attr_vigor')
+      input.skillbase(name='attr_vigor_modifier' type='number')
+      button.spellRoll.updateRollSectionContent(name='act_updateRollSectionContent_vigor' type='action')
       .label.wide.larger Mental
       input(name='attr_mental' type='hidden')
       span.center.bold.larger.middle(name='attr_mental')
@@ -48,7 +48,7 @@
       .skill--gridroll
       .spellEP-grid PWR
       .spellcasttime-grid Cast Time
-      .spelltype-grid Touch/ Ray/ Missile
+      .spelltype-grid Attack Type
       .spellrange-grid Range
       .spelltarget-grid Target
       .spellduration-grid Damage/ Duration
@@ -82,6 +82,9 @@
         option(value='touch') Touch
         option(value='ray') Ray
         option(value='missile') Missile
+        option(value='mental') Mental
+        option(value='vigor') Vigor
+        option(value='area') Area
       input.spellrange-grid(name='attr_spellrange' type='text')
       input.spelltarget-grid(name='attr_spelltarget' type='text')
       input.spellduration-grid(name='attr_spellduration' type='text')
@@ -115,7 +118,7 @@
       .spellEP-grid PWR
       .spellUpdateRollSection-grid
       .spellcasttime-grid Cast Time
-      .spelltype-grid Touch/ Ray/ Missile
+      .spelltype-grid Attack Type
       .spellrange-grid Range
       .spelltarget-grid Target
       .spellduration-grid Damage/ Duration
@@ -139,6 +142,9 @@
         option(value='touch') Touch
         option(value='ray') Ray
         option(value='missile') Missile
+        option(value='mental') Mental
+        option(value='vigor') Vigor
+        option(value='area') Area
       input.spellrange-grid(name='attr_spellrange' type='text')
       input.spelltarget-grid(name='attr_spelltarget' type='text')
       input.spellduration-grid(name='attr_spellduration' type='text')
@@ -152,7 +158,7 @@
       .spellhasnote-grid Notes
       .spellEP-grid PWR
       .spellcasttime-grid Cast Time
-      .spelltype-grid Touch/ Ray/ Missile
+      .spelltype-grid Attack Type
       .spellrange-grid Range
       .spelltarget-grid Target
       .spellduration-grid Damage/ Duration
@@ -173,6 +179,9 @@
         option(value='touch') Touch
         option(value='ray') Ray
         option(value='missile') Missile
+        option(value='mental') Mental
+        option(value='vigor') Vigor
+        option(value='area') Area
       input.spellrange-grid(name='attr_spellrange' type='text')
       input.spelltarget-grid(name='attr_spelltarget' type='text')
       input.spellduration-grid(name='attr_spellduration' type='text')
