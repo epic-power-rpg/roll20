@@ -1025,11 +1025,11 @@
           <span class="center bold larger middle" name="attr_spell_hit"></span>
           <input class="skillbase" name="attr_spell_hit_modifier" type="number" />
           <button class="spellRoll updateRollSectionContent" name="act_updateRollSectionContent_spell_hit" type="action"></button>
-          <div class="label wide larger">Affliction</div>
-          <input name="attr_affliction" type="hidden" />
-          <span class="center bold larger middle" name="attr_affliction"></span>
-          <input class="skillbase" name="attr_affliction_modifier" type="number" />
-          <button class="spellRoll updateRollSectionContent" name="act_updateRollSectionContent_affliction" type="action"></button>
+          <div class="label wide larger">Vigor</div>
+          <input name="attr_vigor" type="hidden" />
+          <span class="center bold larger middle" name="attr_vigor"></span>
+          <input class="skillbase" name="attr_vigor_modifier" type="number" />
+          <button class="spellRoll updateRollSectionContent" name="act_updateRollSectionContent_vigor" type="action"></button>
           <div class="label wide larger">Mental</div>
           <input name="attr_mental" type="hidden" />
           <span class="center bold larger middle" name="attr_mental"></span>
@@ -1050,7 +1050,7 @@
           <div class="skill--gridroll"></div>
           <div class="spellEP-grid">PWR</div>
           <div class="spellcasttime-grid">Cast Time</div>
-          <div class="spelltype-grid">Touch/ Ray/ Missile</div>
+          <div class="spelltype-grid">Attack Type</div>
           <div class="spellrange-grid">Range</div>
           <div class="spelltarget-grid">Target</div>
           <div class="spellduration-grid">Damage/ Duration</div>
@@ -1095,6 +1095,9 @@
             <option value="touch">Touch</option>
             <option value="ray">Ray</option>
             <option value="missile">Missile</option>
+            <option value="mental">Mental</option>
+            <option value="vigor">Vigor</option>
+            <option value="area">Area</option>
           </select>
           <input class="spellrange-grid" name="attr_spellrange" type="text" />
           <input class="spelltarget-grid" name="attr_spelltarget" type="text" />
@@ -1178,7 +1181,7 @@
           <div class="spellEP-grid">PWR</div>
           <div class="spellUpdateRollSection-grid"></div>
           <div class="spellcasttime-grid">Cast Time</div>
-          <div class="spelltype-grid">Touch/ Ray/ Missile</div>
+          <div class="spelltype-grid">Attack Type</div>
           <div class="spellrange-grid">Range</div>
           <div class="spelltarget-grid">Target</div>
           <div class="spellduration-grid">Damage/ Duration</div>
@@ -1251,6 +1254,9 @@
             <option value="touch">Touch</option>
             <option value="ray">Ray</option>
             <option value="missile">Missile</option>
+            <option value="mental">Mental</option>
+            <option value="vigor">Vigor</option>
+            <option value="area">Area</option>
           </select>
           <input class="spellrange-grid" name="attr_spellrange" type="text" />
           <input class="spelltarget-grid" name="attr_spelltarget" type="text" />
@@ -1267,7 +1273,7 @@
           <div class="spellhasnote-grid">Notes</div>
           <div class="spellEP-grid">PWR</div>
           <div class="spellcasttime-grid">Cast Time</div>
-          <div class="spelltype-grid">Touch/ Ray/ Missile</div>
+          <div class="spelltype-grid">Attack Type</div>
           <div class="spellrange-grid">Range</div>
           <div class="spelltarget-grid">Target</div>
           <div class="spellduration-grid">Damage/ Duration</div>
@@ -1340,6 +1346,9 @@
             <option value="touch">Touch</option>
             <option value="ray">Ray</option>
             <option value="missile">Missile</option>
+            <option value="mental">Mental</option>
+            <option value="vigor">Vigor</option>
+            <option value="area">Area</option>
           </select>
           <input class="spellrange-grid" name="attr_spellrange" type="text" />
           <input class="spelltarget-grid" name="attr_spelltarget" type="text" />
