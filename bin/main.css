@@ -639,6 +639,7 @@ radio > span.checked {
 
 .roll-description-line input[type=text] {
   flex: 1;
+  width: 150px;
 }
 
 .roll-description-line input + label {
