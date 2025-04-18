@@ -3517,6 +3517,9 @@ body.sheet-darkmode .character-sheet-page input.new-user-control:not([value=""])
 .main-content .new-user-creator, .main-content .existing-user {
   display: none;
 }
+.main-content .existing-user {
+  width: fit-content;
+}
 .main-content input.new-user-control[value=true] ~ div.new-user-creator, .main-content input.new-user-control:not([value=true]) ~ div.existing-user {
   display: block;
 }
