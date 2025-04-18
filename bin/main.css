@@ -2925,12 +2925,14 @@ body.sheet-darkmode .spell-tabs {
 /* Avoid space between items in the row */
 .spells .spell-header-action-area {
   display: flex;
+  flex: 1;
   gap: 8px;
 }
-.spells .spell-header-action-area label, .spells .spell-header-action-area .label {
+.spells .spell-header-action-area .label {
+  flex: 1;
   color: #111;
 }
-body.sheet-darkmode .spells .spell-header-action-area label, body.sheet-darkmode .spells .spell-header-action-area .label {
+body.sheet-darkmode .spells .spell-header-action-area .label {
   color: #fff;
 }
 .spells .spell-header-action-area button.spellRoll {
