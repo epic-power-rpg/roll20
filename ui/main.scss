@@ -23,7 +23,7 @@
     display: none;
   }
   .existing-user {
-    width: fit-content;
+    min-width: fit-content;
   }
   input.new-user-control {
     &[value="true"] ~ div.new-user-creator,
