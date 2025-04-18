@@ -41,8 +41,10 @@ $notes-popover-width: 30px;
 .spells {
   .spell-header-action-area {
     display: flex;
+    flex: 1;
     gap: 8px;
-    label, .label {
+    .label {
+      flex: 1;
       @include theme-color(primary-color);
     }
     button.spellRoll {
