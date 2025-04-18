@@ -501,6 +501,7 @@ input[readonly] {
 /* ---------- Roll section ------------- */
 .roll-section {
   display: flex;
+  min-width: min-content;
   border: solid;
   border-color: hsl(213deg, 80%, 80%);
   border-width: 1px;
