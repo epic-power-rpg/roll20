@@ -385,6 +385,10 @@ body.sheet-darkmode .ui-dialog {
   flex-grow: 1;
 }
 
+.flexing input {
+  width: 150px;
+}
+
 .no-shrink {
   flex-shrink: 0;
 }
