@@ -2,6 +2,7 @@
 
 .roll-section {
   display: flex;
+  min-width: min-content;
   border: solid;
   @include theme-border-color(roll-section-border-color);
   border-width: 1px;
