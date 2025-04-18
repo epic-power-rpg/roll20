@@ -22,6 +22,9 @@
   .new-user-creator, .existing-user {
     display: none;
   }
+  .existing-user {
+    width: fit-content;
+  }
   input.new-user-control {
     &[value="true"] ~ div.new-user-creator,
     &:not([value="true"]) ~ div.existing-user {
