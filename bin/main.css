@@ -411,7 +411,7 @@ body.sheet-darkmode .ui-dialog {
   color: blue;
 }
 body.sheet-darkmode .CP.CP.CP.CP {
-  color: rgb(145, 145, 246);
+  color: hsl(240deg, 100%, 80%);
 }
 
 .FP.FP.FP.FP {
@@ -2237,7 +2237,7 @@ body.sheet-darkmode .basic-tab .advantages .skillFP-grid, body.sheet-darkmode .b
   font-weight: bold;
 }
 body.sheet-darkmode .basic-tab .advantages .skillCP-grid, body.sheet-darkmode .basic-tab .advantages .CP-grid {
-  color: rgb(145, 145, 246);
+  color: hsl(240deg, 100%, 80%);
 }
 .basic-tab .advantages .epic-table-header-grid .skillFP-grid, .basic-tab .advantages .epic-table-header-grid .FP-grid {
   color: #267200;
@@ -2249,7 +2249,7 @@ body.sheet-darkmode .basic-tab .advantages .epic-table-header-grid .skillFP-grid
   color: blue;
 }
 body.sheet-darkmode .basic-tab .advantages .epic-table-header-grid .skillCP-grid, body.sheet-darkmode .basic-tab .advantages .epic-table-header-grid .CP-grid {
-  color: rgb(145, 145, 246);
+  color: hsl(240deg, 100%, 80%);
 }
 .basic-tab .feats .epic-table-header-grid.feat {
   display: grid;
@@ -2346,7 +2346,7 @@ body.sheet-darkmode .basic-tab .feats .skillFP-grid, body.sheet-darkmode .basic-
   font-weight: bold;
 }
 body.sheet-darkmode .basic-tab .feats .skillCP-grid, body.sheet-darkmode .basic-tab .feats .CP-grid {
-  color: rgb(145, 145, 246);
+  color: hsl(240deg, 100%, 80%);
 }
 .basic-tab .feats .epic-table-header-grid .skillFP-grid, .basic-tab .feats .epic-table-header-grid .FP-grid {
   color: #267200;
@@ -2358,7 +2358,7 @@ body.sheet-darkmode .basic-tab .feats .epic-table-header-grid .skillFP-grid, bod
   color: blue;
 }
 body.sheet-darkmode .basic-tab .feats .epic-table-header-grid .skillCP-grid, body.sheet-darkmode .basic-tab .feats .epic-table-header-grid .CP-grid {
-  color: rgb(145, 145, 246);
+  color: hsl(240deg, 100%, 80%);
 }
 
 /* -------- Skills --------- */
@@ -2469,7 +2469,7 @@ body.sheet-darkmode .epic-skills-tab .skillFP-grid, body.sheet-darkmode .epic-sk
   font-weight: bold;
 }
 body.sheet-darkmode .epic-skills-tab .skillCP-grid, body.sheet-darkmode .epic-skills-tab .CP-grid {
-  color: rgb(145, 145, 246);
+  color: hsl(240deg, 100%, 80%);
 }
 .epic-skills-tab .epic-table-header-grid .skillFP-grid, .epic-skills-tab .epic-table-header-grid .FP-grid {
   color: #267200;
@@ -2481,7 +2481,7 @@ body.sheet-darkmode .epic-skills-tab .epic-table-header-grid .skillFP-grid, body
   color: blue;
 }
 body.sheet-darkmode .epic-skills-tab .epic-table-header-grid .skillCP-grid, body.sheet-darkmode .epic-skills-tab .epic-table-header-grid .CP-grid {
-  color: rgb(145, 145, 246);
+  color: hsl(240deg, 100%, 80%);
 }
 .epic-skills-tab button.add-base-skills-button {
   min-width: 128px;
