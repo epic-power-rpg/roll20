@@ -26,7 +26,7 @@ $themes: (
     table-row-underline-color: color.scale(#b56632, $alpha: -30%),
   ),
   dark: (
-    cp-color: rgb(145, 145, 246),
+    cp-color: hsl(240, 100%, 80%),
     fp-color: #c4fda8,
     paper-color: #c4bdaf,
     paper-gradient-color: linear-gradient(to top, #c2945b80 0%, transparent 100%),
