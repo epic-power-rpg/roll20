@@ -1842,45 +1842,89 @@ const undoTopRoll = function () {
 };
 on('clicked:undotoproll', undoTopRoll);
 
+async function consumePower(powerConsumption) {
+  const powerConsumptionValue = Number(powerConsumption) ?? 0;
+  if (powerConsumptionValue <= 0) {
+    return;
+  }
+  return new Promise((resolve) => {
+    getAttrs(['EP_t'], function (values) {
+      const currentPower = Number(values['EP_t']);
+      const newPower = currentPower - powerConsumptionValue;
+      if (newPower < 0) {
+        console.log(`You are weak and lack the PWR to do that. Current power: ${currentPower}, consumption: ${powerConsumptionValue}`);
+        throw new Error('You are weak and lack the PWR to do that.');
+      }
+      console.log(`Consuming ${powerConsumptionValue} power. Current power: ${currentPower}, new power: ${newPower}`);
+      setAttrs({ EP_t: newPower }, null, resolve);
+    });
+  });
+}
+
 const EP_ROLL_OPTIONS = [{
   actionId: 'epRoll',
   attributes: [],
-  getChatMessage: () => {
+  getChatMessage: async () => {
     return '!EPRoll';
   },
 }, {
   actionId: 'epRoll_roll_modifier',
   attributes: ['roll_modifier'],
-  getChatMessage: (values) => {
+  getChatMessage: async (values) => {
     const { roll_modifier } = values;
+    try {
+      await consumePower(roll_modifier);
+    } catch (error) {
+      return String(error);
+    }
     return `!EPRoll ${roll_modifier}`;
   },
 }, {
   actionId: 'epRoll_initiative',
-  attributes: ['initiative', 'initiativemodifier', 'character_id'],
-  getChatMessage: (values) => {
-    const { initiative, initiativemodifier, character_id } = values;
+  attributes: ['power', 'initiative', 'initiativemodifier', 'character_id'],
+  getChatMessage: async (values) => {
+    const { power, initiative, initiativemodifier, character_id } = values;
+    try {
+      await consumePower(initiativemodifier);
+    } catch (error) {
+      return String(error);
+    }
     return `!EPRoll ${initiative}+${initiativemodifier} Rolls initiative ${initiative} + ${initiativemodifier} SEND_TO_TRACKER ${character_id}`;
   },
 }, {
   actionId: 'epRoll_IQmodifier',
   attributes: ['IQ', 'IQmodifier'],
-  getChatMessage: (values) => {
+  getChatMessage: async (values) => {
     const { IQ, IQmodifier } = values;
+    try {
+      await consumePower(IQmodifier);
+    } catch (error) {
+      return String(error);
+    }
     return `!EPRoll ${IQ}+${IQmodifier} Tries to be smart: ${IQ} + ${IQmodifier}`;
   },
 }, {
   actionId: 'epRoll_DXmodifier',
   attributes: ['DX', 'DXmodifier'],
-  getChatMessage: (values) => {
+  getChatMessage: async (values) => {
     const { DX, DXmodifier } = values;
+    try {
+      await consumePower(DXmodifier);
+    } catch (error) {
+      return String(error);
+    }
     return `!EPRoll ${DX}+${DXmodifier} Tries to be nimble: ${DX} + ${DXmodifier}`;
   },
 }, {
   actionId: 'epRoll_BRmodifier',
   attributes: ['BR', 'BRmodifier'],
-  getChatMessage: (values) => {
+  getChatMessage: async (values) => {
     const { BR, BRmodifier } = values;
+    try {
+      await consumePower(BRmodifier);
+    } catch (error) {
+      return String(error);
+    }
     return `!EPRoll ${BR}+${BRmodifier} Tries to be strong: ${BR} + ${BRmodifier}`;
   },
 }];
@@ -1888,8 +1932,8 @@ const EP_ROLL_OPTIONS = [{
 EP_ROLL_OPTIONS.forEach((rollOption) => {
   const { actionId, attributes, getChatMessage } = rollOption;
   on(`clicked:${actionId}`, () => {
-    getAttrs(attributes, (values) => {
-      setAttrs({ pendingchat: getChatMessage(values) });
+    getAttrs(attributes, async (values) => {
+      setAttrs({ pendingchat: await getChatMessage(values) });
     });
   });
 });
@@ -1935,7 +1979,7 @@ const updateEP = function () {
       power_v :
       Math.floor(5 * (Math.sqrt(power_v - 1) - 1)));
     const new_SP_max = Math.floor((power_points - 3 * EP_t_max_v) / 2);
-    // We get called from spurrios changes to SP_max,
+    // We get called from spurious changes to SP_max,
     // So only reset all the values if something actually changed.
     log('EP_t: ' + EP_t_max_v + '  SP: ' + SP_max_v
       + '  new SP: ' + new_SP_max);
